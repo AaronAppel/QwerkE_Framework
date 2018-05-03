@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Framework", "QwerkE_Framework\QwerkE_Framework.vcxitems", "{1632D713-EA31-4C99-A364-447C70E7A758}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Common", "QwerkE_Common\QwerkE_Common.vcxitems", "{E86D5770-08C5-4BC8-A65D-36F233233AEB}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4444CD3A-D706-4070-8243-8673ADB2AED5}
+	EndGlobalSection
+EndGlobal

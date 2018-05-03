@@ -1,0 +1,12 @@
+finurlig-demo.regular.otf
+http://www.1001fonts.com/finurlig-demo-font.html#styles
+License: Free for personal use.
+
+arial.ttf
+vera.ttf
+https://github.com/JotJunior/PHP-Boleto-ZF2/blob/master/public/assets/fonts/
+License: Unknown
+
+FREESCPT.TTF
+https://fontzone.net/font-details/freestyle-script
+License: Unknown

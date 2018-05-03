@@ -1,0 +1,59 @@
+{
+	"ObjectList":	[{
+			"Cube0":	[{
+					"ObjectTag":	3,
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	0
+						}]
+				}],
+			"Cube1":	[{
+					"ObjectTag":	3,
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	0
+						}]
+				}],
+			"Plane2":	[{
+					"ObjectTag":	4,
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	-2,
+							"PositionZ":	0
+						}]
+				}]
+		}],
+	"CameraList":	[{
+			"Camera0":	[{
+					"ObjectTag":	1,
+					"CamType":	3,
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	-5
+						}]
+				}],
+			"Camera1":	[{
+					"ObjectTag":	1,
+					"CamType":	0,
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	-10
+						}]
+				}]
+		}],
+	"LightList":	[{
+			"Light0":	[{
+					"ObjectTag":	2,
+					"LightType": 0,
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	2,
+							"PositionZ":	-3
+						}]
+				}]
+		}]
+}

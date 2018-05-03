@@ -1,0 +1,2547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{15b1654c-d345-434e-86e1-ecd0df372f3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{d235f16c-a74d-4c76-94b9-4a69370431a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{b0ce6020-b3dc-422f-9c02-4ebb0390afe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Custom_Classes">
+      <UniqueIdentifier>{beb0d2e5-bc87-4299-9b91-8032f65d3a03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Block_Menu">
+      <UniqueIdentifier>{21320213-93df-4088-b711-46d02dffedeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3">
+      <UniqueIdentifier>{21e5befc-c546-447f-a397-a038d1799298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3\BulletCollision">
+      <UniqueIdentifier>{5f5c5460-8f58-4b34-8590-59b0f0be69c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3\BulletDynamics">
+      <UniqueIdentifier>{216dd767-8aa8-4185-866c-74e38fef156f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3\LinearMath">
+      <UniqueIdentifier>{758dc96c-eb99-4e21-baa0-98290f54c771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\cJSON">
+      <UniqueIdentifier>{ff3c732d-0b60-4b70-a872-9b87965952e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Xinput">
+      <UniqueIdentifier>{1b8086ad-efc6-4323-b3fb-9ea579734cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\freetype2">
+      <UniqueIdentifier>{800f09f3-319c-4bb4-a375-191ca5c44692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\glew">
+      <UniqueIdentifier>{5e088ad3-32b8-41b9-8e7b-bc97334919ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\glfw">
+      <UniqueIdentifier>{e06d2762-dd37-4917-a666-1d62b9bd85cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\glm">
+      <UniqueIdentifier>{ca1e3c1e-b996-45a2-a521-3ae672f72fa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\imgui">
+      <UniqueIdentifier>{e2ead501-2f0e-425d-99a4-95c640e783a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\lodepng">
+      <UniqueIdentifier>{b5a322bd-0c85-4c17-ae17-34708ed83ee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Math">
+      <UniqueIdentifier>{4de0d17d-edec-4243-b1fd-b8d68d986b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\OpenAL">
+      <UniqueIdentifier>{c8585c09-6803-4cde-aa11-1431b8e9c89d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\RakNet">
+      <UniqueIdentifier>{0aa96634-876b-4768-89a8-aa792f1ec6b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\stb">
+      <UniqueIdentifier>{8e952058-89c7-47bd-850a-bd4cee27135e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\pThreads">
+      <UniqueIdentifier>{84bc33a0-971c-4dc5-93e8-4bbc33471ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders">
+      <UniqueIdentifier>{202a3a09-6140-4aa3-badf-642265a9b2d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\LevelData">
+      <UniqueIdentifier>{5dceebcc-a4f7-47d7-978a-a89330492668}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\CPPList.h">
+      <Filter>Custom_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\MyLinkedList.h">
+      <Filter>Custom_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\ObjectPool.h">
+      <Filter>Custom_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\Timer.h">
+      <Filter>Custom_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Block_Menu.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\ImageItem.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\MenuItem.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuManager.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Menus\Menu.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\ExampleWindow.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\MenuWindow.h">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btBroadphaseProxy.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btDbvt.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btDbvtBroadphase.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btDispatcher.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btOverlappingPairCache.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btOverlappingPairCallback.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btQuantizedBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btSimpleBroadphase.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btBoxBoxDetector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionConfiguration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionCreateFunc.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionDispatcher.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionObject.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionObjectWrapper.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionWorld.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionWorldImporter.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btGhostObject.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btHashedSimplePairCache.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btInternalEdgeUtility.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btManifoldResult.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSimulationIslandManager.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btUnionFind.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\SphereTriangleDetector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btBox2dShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btBoxShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCapsuleShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCollisionMargin.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCollisionShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCompoundShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConcaveShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConeShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvex2dShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexHullShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexInternalShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexPointCloudShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexPolyhedron.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCylinderShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btEmptyShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMaterial.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMinkowskiSumShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMultiSphereShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btOptimizedBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btPolyhedralConvexShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btShapeHull.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btSphereShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btStaticPlaneShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btStridingMeshInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTetrahedronShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleBuffer.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleCallback.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleInfoMap.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleMesh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btUniformScalingShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btBoxCollision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btClipPolygon.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btCompoundFromGimpact.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btContactProcessing.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btContactProcessingStructs.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGenericPoolAllocator.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGeometryOperations.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactBvhStructs.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactMassUtil.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactQuantizedBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactQuantizedBvhStructs.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btQuantization.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btTriangleShapeEx.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_array.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_basic_geometry_operations.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_bitset.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_box_collision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_box_set.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_clip_polygon.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_contact.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_geometry.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_geom_types.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_hash_table.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_linear_math.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_math.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_memory.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_radixsort.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_tri_collision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btComputeGjkEpaPenetration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btConvexCast.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btConvexPenetrationDepthSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btDiscreteCollisionDetectorInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkCollisionDescription.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkEpa2.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkEpa3.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btManifoldPoint.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btMprPenetration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btPersistentManifold.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btPointCollector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btRaycastCallback.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btSimplexSolverInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Character\btCharacterControllerInterface.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Character\btKinematicCharacterController.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btConeTwistConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btContactConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btContactSolverInfo.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btFixedConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGearConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btHinge2Constraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btHingeConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btJacobianEntry.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSliderConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSolverBody.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSolverConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btTypedConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btUniversalConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btActionInterface.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btRigidBody.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btSimpleDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btSimulationIslandManagerMt.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBody.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyGearConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyJointFeedback.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyJointMotor.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyLink.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyLinkCollider.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyPoint2Point.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodySliderConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodySolverConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btDantzigLCP.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btDantzigSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btLemkeSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btMLCPSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btMLCPSolverInterface.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btPATHSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btSolveProjectedGaussSeidel.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Vehicle\btRaycastVehicle.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Vehicle\btVehicleRaycaster.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Vehicle\btWheelInfo.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btAabbUtil2.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btAlignedAllocator.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btAlignedObjectArray.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btConvexHull.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btConvexHullComputer.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btCpuFeatureUtility.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btDefaultMotionState.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btGeometryUtil.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btGrahamScan2dConvexHull.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btHashMap.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btIDebugDraw.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btList.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMatrix3x3.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMatrixX.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMinMax.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMotionState.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btPolarDecomposition.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btPoolAllocator.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btQuadWord.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btQuaternion.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btQuickprof.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btRandom.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btScalar.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btSerializer.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btSpatialAlgebra.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btStackAlloc.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btThreads.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btTransform.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btTransformUtil.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btVector3.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSON.h">
+      <Filter>Libraries\cJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSONInterface.h">
+      <Filter>Libraries\cJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\EasyXinput\EasyXinput.h">
+      <Filter>Libraries\Xinput</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\config\ftconfig.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\config\ftheader.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\config\ftmodule.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\config\ftoption.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\config\ftstdlib.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\freetype.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftadvanc.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftbbox.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftbdf.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftbitmap.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftbzip2.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftcache.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftchapters.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftcid.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftdriver.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\fterrdef.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\fterrors.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftfntfmt.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftgasp.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftglyph.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftgxval.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftgzip.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftimage.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftincrem.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftlcdfil.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftlist.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftlzw.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftmac.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftmm.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftmodapi.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftmoderr.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftotval.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftoutln.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftparams.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftpfr.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftrender.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftsizes.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftsnames.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftstroke.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftsynth.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftsystem.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\fttrigon.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\fttypes.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ftwinfnt.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\autohint.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\cffotypes.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\cfftypes.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftcalc.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftdebug.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftdrv.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftgloadr.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\fthash.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftmemory.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftobjs.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftpic.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftpsprop.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftrfork.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftserv.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftstream.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\fttrace.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\ftvalid.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\internal.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\psaux.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\pshints.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svbdf.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svcfftl.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svcid.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svfntfmt.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svgldict.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svgxval.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svkern.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svmetric.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svmm.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svotval.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svpfr.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svpostnm.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svprop.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svpscmap.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svpsinfo.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svsfnt.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svttcmap.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svtteng.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svttglyf.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\services\svwinfnt.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\sfnt.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\t1types.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\internal\tttypes.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\t1tables.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\ttnameid.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\tttables.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\freetype\tttags.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\freetype2\ft2build.h">
+      <Filter>Libraries\freetype2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glew\eglew.h">
+      <Filter>Libraries\glew</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glew\GL\glew.h">
+      <Filter>Libraries\glew</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glew\GL\wglew.h">
+      <Filter>Libraries\glew</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glew\glxew.h">
+      <Filter>Libraries\glew</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glfw\GLFW\glfw3.h">
+      <Filter>Libraries\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glfw\GLFW\glfw3native.h">
+      <Filter>Libraries\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\common.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_exponential.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_geometric.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_integer.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_matrix.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_packing.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_trigonometric.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_vector_relational.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\precision.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\setup.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_float.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_gentype.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_half.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_int.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat2x2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat2x3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat2x4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat3x2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat3x3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat3x4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec1.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\_features.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\_fixes.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\_noise.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\_swizzle.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\_swizzle_func.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\_vectorize.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\exponential.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\ext.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\fwd.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\geometric.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\glm.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\bitfield.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\color_space.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\constants.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\epsilon.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\functions.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\integer.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_access.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_integer.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_inverse.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_transform.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\noise.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\packing.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\quaternion.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\random.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\reciprocal.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\round.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\type_aligned.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\type_precision.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\type_ptr.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\ulp.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\vec1.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\associated_min_max.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\bit.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\closest_point.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\color_space.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\color_space_YCoCg.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\common.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\compatibility.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\component_wise.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\dual_quaternion.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\euler_angles.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\extend.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\extended_min_max.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\fast_exponential.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\fast_square_root.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\fast_trigonometry.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\gradient_paint.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\handed_coordinate_space.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\hash.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\integer.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\intersect.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\io.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\log_base.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_cross_product.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_decompose.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_interpolation.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_major_storage.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_operation.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_query.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_transform_2d.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\mixed_product.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\norm.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\normal.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\normalize_dot.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\number_precision.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\optimum_pow.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\orthonormalize.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\perpendicular.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\polar_coordinates.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\projection.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\quaternion.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\range.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\raw_data.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\rotate_normalized_axis.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\rotate_vector.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\scalar_multiplication.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\scalar_relational.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\spline.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\std_based_type.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\string_cast.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\transform.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\transform2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\type_aligned.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\type_trait.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\vector_angle.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\vector_query.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\wrap.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\integer.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat2x2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat2x3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat2x4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat3x2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat3x3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat3x4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat4x2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat4x3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\mat4x4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\matrix.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\packing.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\common.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\exponential.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\geometric.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\integer.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\matrix.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\packing.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\platform.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\trigonometric.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\simd\vector_relational.h">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\trigonometric.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\vec2.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\vec3.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\vec4.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\vector_relational.hpp">
+      <Filter>Libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\imconfig.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui_impl_glfw_gl3.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui_internal.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\stb_rect_pack.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\stb_textedit.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\imgui\stb_truetype.h">
+      <Filter>Libraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\lodepng\lodepng.h">
+      <Filter>Libraries\lodepng</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MathConstants.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MathFunctions.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MathHelpers.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MathStuff.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MyMatrix.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MyQuaternion.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.h">
+      <Filter>Libraries\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\al.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alc.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\efx-creative.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\EFX-Util.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\efx.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\xram.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\AutopatcherPatchContext.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\AutopatcherRepositoryInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Base64Encoder.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\BitStream.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CCRakNetSlidingWindow.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CCRakNetUDT.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CheckSum.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CloudClient.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CloudCommon.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CloudServer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\CommandParserInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ConnectionGraph2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ConsoleServer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DataCompressor.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DirectoryDeltaTransfer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DR_SHA1.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_BinarySearchTree.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_BPlusTree.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_BytePool.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_ByteQueue.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Hash.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Heap.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_HuffmanEncodingTree.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_HuffmanEncodingTreeFactory.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_HuffmanEncodingTreeNode.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_LinkedList.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_List.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Map.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_MemoryPool.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Multilist.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_OrderedChannelHeap.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_OrderedList.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Queue.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_QueueLinkedList.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_RangeList.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Table.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_ThreadsafeAllocatingQueue.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_Tree.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DS_WeightedGraph.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\DynDNS.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\EmailSender.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\EmptyHeader.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\EpochTimeToString.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Export.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FileList.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FileListNodeContext.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FileListTransfer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FileListTransferCBInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FileOperations.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FormatString.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\FullyConnectedMesh2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Getche.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Gets.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\GetTime.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\gettimeofday.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\GridSectorizer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\HTTPConnection.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\HTTPConnection2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\IncrementalReadInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\InternalPacket.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Itoa.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Kbhit.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\LinuxStrings.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\LocklessTypes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\LogCommandParser.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\MessageFilter.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\MessageIdentifiers.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\MTUSize.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NativeFeatureIncludes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NativeFeatureIncludesOverrides.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NativeTypes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NatPunchthroughClient.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NatPunchthroughServer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NatTypeDetectionClient.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NatTypeDetectionCommon.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NatTypeDetectionServer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NetworkIDManager.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\NetworkIDObject.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketConsoleLogger.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketFileLogger.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketizedTCP.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketLogger.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketOutputWindowLogger.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketPool.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PacketPriority.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PluginInterface2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PS3Includes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\PS4Includes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Rackspace.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakAlloca.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakAssert.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakMemoryOverride.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetCommandParser.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetDefines.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetDefinesOverrides.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetSmartPtr.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetSocket.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetSocket2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetStatistics.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetTime.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetTransport2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetTypes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakNetVersion.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakPeer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakPeerInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakSleep.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakString.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakThread.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RakWString.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Rand.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RandSync.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ReadyEvent.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RefCountedObj.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RelayPlugin.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ReliabilityLayer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ReplicaEnums.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ReplicaManager3.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\Router2.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\RPC4Plugin.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SecureHandshake.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SendToThread.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SignaledEvent.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SimpleMutex.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SimpleTCPServer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SingleProducerConsumer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SocketDefines.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SocketIncludes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SocketLayer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\StatisticsHistory.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\StringCompressor.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\StringTable.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\SuperFastHash.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TableSerializer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TCPInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TeamBalancer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TeamManager.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TelnetTransport.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ThreadPool.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\ThreadsafePacketLogger.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TransportInterface.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\TwoWayAuthentication.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\UDPForwarder.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\UDPProxyClient.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\UDPProxyCommon.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\UDPProxyCoordinator.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\UDPProxyServer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\VariableDeltaSerializer.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\VariableListDeltaTracker.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\VariadicSQLParser.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\VitaIncludes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\WindowsIncludes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\WSAStartupSingleton.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\XBox360Includes.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\_FindFirst.h">
+      <Filter>Libraries\RakNet</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\stb_image.h">
+      <Filter>Libraries\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\pThreads\pthread.h">
+      <Filter>Libraries\pThreads</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\pThreads\sched.h">
+      <Filter>Libraries\pThreads</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\pThreads\semaphore.h">
+      <Filter>Libraries\pThreads</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math_Includes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\ImageItem.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\MenuItem.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuManager.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Menus\Menu.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\ExampleWindow.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\MenuWindow.cpp">
+      <Filter>Libraries\Block_Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSON.cpp">
+      <Filter>Libraries\cJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSONInterface.cpp">
+      <Filter>Libraries\cJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\EasyXinput\EasyXinput.cpp">
+      <Filter>Libraries\Xinput</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\glm\glm.cpp">
+      <Filter>Libraries\glm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui.cpp">
+      <Filter>Libraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui_demo.cpp">
+      <Filter>Libraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui_draw.cpp">
+      <Filter>Libraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui_impl_glfw_gl3.cpp">
+      <Filter>Libraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\lodepng\lodepng.cpp">
+      <Filter>Libraries\lodepng</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MathFunctions.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MathStuff.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MyMatrix.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MyQuaternion.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp">
+      <Filter>Libraries\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_exponential.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_exponential_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_geometric.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_geometric_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_integer.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_integer_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_matrix.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_matrix_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_packing.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_packing_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_trigonometric.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_trigonometric_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_vector_relational.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_vector_relational_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_gentype.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_half.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat2x2.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat2x3.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat2x4.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat3x2.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat3x3.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat3x4.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x2.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x3.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x4.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_mat4x4_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec1.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec2.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec3.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec4.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\type_vec4_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\bitfield.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\color_encoding.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\color_space.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\constants.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\epsilon.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\functions.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\integer.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_access.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_inverse.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\matrix_transform.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\noise.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\packing.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\quaternion.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\quaternion_simd.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\random.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\reciprocal.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\round.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\type_precision.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\type_ptr.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\ulp.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtc\vec1.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\associated_min_max.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\bit.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\closest_point.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\color_space.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\color_space_YCoCg.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\common.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\compatibility.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\component_wise.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\dual_quaternion.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\euler_angles.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\extend.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\extended_min_max.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\fast_exponential.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\fast_square_root.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\fast_trigonometry.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\float_notmalize.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\gradient_paint.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\handed_coordinate_space.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\hash.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\integer.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\intersect.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\io.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\log_base.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_cross_product.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_decompose.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_interpolation.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_major_storage.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_operation.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_query.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\matrix_transform_2d.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\mixed_product.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\norm.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\normal.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\normalize_dot.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\number_precision.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\optimum_pow.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\orthonormalize.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\perpendicular.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\polar_coordinates.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\projection.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\quaternion.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\raw_data.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\rotate_normalized_axis.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\rotate_vector.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\scalar_relational.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\spline.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\std_based_type.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\string_cast.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\transform.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\transform2.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\type_aligned.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\type_trait.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\vector_angle.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\vector_query.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\wrap.inl">
+      <Filter>Libraries\glm</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenu.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenu.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenuText.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenuText.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2D.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2D.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTex.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTex.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTransform.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTransform.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\BasicLighting.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\BasicLighting.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\EmptyShader.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\EmptyShader.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\GlitchedEffect.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\LitMaterial.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\LitMaterial.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\NullShader.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\NullShader.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Sprite2D.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Sprite2D.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\TestShader.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\TestShader.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\text.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\text.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\vec3Material.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\vec3Material.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\TestScene.json">
+      <Filter>Resources\LevelData</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\Backup.json">
+      <Filter>Resources\LevelData</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,4 @@
+container.png
+https://learnopengl.com/img/textures/container.jpg
+container_specular.png
+https://learnopengl.com/img/textures/container2.png
