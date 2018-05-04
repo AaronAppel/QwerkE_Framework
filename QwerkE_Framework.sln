@@ -7,7 +7,31 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Framework", "QwerkE_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Common", "QwerkE_Common\QwerkE_Common.vcxitems", "{E86D5770-08C5-4BC8-A65D-36F233233AEB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_Game1", "Test_Game1\Test_Game1.vcxproj", "{41C9E154-B482-4A7D-A173-77BED0FB233A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		QwerkE_Framework\QwerkE_Framework.vcxitems*{1632d713-ea31-4c99-a364-447c70e7a758}*SharedItemsImports = 9
+		QwerkE_Common\QwerkE_Common.vcxitems*{41c9e154-b482-4a7d-a173-77bed0fb233a}*SharedItemsImports = 4
+		QwerkE_Framework\QwerkE_Framework.vcxitems*{41c9e154-b482-4a7d-a173-77bed0fb233a}*SharedItemsImports = 4
+		QwerkE_Common\QwerkE_Common.vcxitems*{e86d5770-08c5-4bc8-a65d-36f233233aeb}*SharedItemsImports = 9
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Debug|x64.ActiveCfg = Debug|x64
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Debug|x64.Build.0 = Debug|x64
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Debug|x86.ActiveCfg = Debug|Win32
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Debug|x86.Build.0 = Debug|Win32
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Release|x64.ActiveCfg = Release|x64
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Release|x64.Build.0 = Release|x64
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Release|x86.ActiveCfg = Release|Win32
+		{41C9E154-B482-4A7D-A173-77BED0FB233A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

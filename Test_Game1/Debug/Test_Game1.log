@@ -1,0 +1,118 @@
+﻿  AddItem.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\menuitems\menuitem.h(5): fatal error C1083: Cannot open include file: '../../Containers/MyLinkedList.h': No such file or directory
+  ImageItem.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\menuitems\menuitem.h(5): fatal error C1083: Cannot open include file: '../../Containers/MyLinkedList.h': No such file or directory
+  MenuItem.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\menuitems\menuitem.h(5): fatal error C1083: Cannot open include file: '../../Containers/MyLinkedList.h': No such file or directory
+  MenuManager.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\menumanager.cpp(4): fatal error C1083: Cannot open include file: '../../../Shared_Engine/Engine_Enums.h': No such file or directory
+  Menu.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\menus\menu.h(4): fatal error C1083: Cannot open include file: '../../Math_Includes.h': No such file or directory
+  ExampleWindow.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\windows\menuwindow.h(5): fatal error C1083: Cannot open include file: '../../Containers/MyLinkedList.h': No such file or directory
+  MenuWindow.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\block_menu\windows\menuwindow.h(5): fatal error C1083: Cannot open include file: '../../Containers/MyLinkedList.h': No such file or directory
+  cJSON.cpp
+  cJSONInterface.cpp
+  EasyXinput.cpp
+c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\winnt.h(154): fatal error C1189: #error:  "No Target Architecture"
+  glm.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw_gl3.cpp
+  lodepng.cpp
+  MathFunctions.cpp
+  MathStuff.cpp
+  MyMatrix.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries\math\mymatrix.cpp(14): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  MyQuaternion.cpp
+  Generating Code...
+  Compiling...
+  ValueChecking.cpp
+  Vector.cpp
+  VectorMathHelpers.cpp
+  Libraries_Initialize.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_common\libraries_initialize.cpp(1): fatal error C1083: Cannot open include file: '../../../Shared_Engine/Engine_Defines.h': No such file or directory
+  CallBackFunctions.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\callbackfunctions.h(4): fatal error C1083: Cannot open include file: '../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  Framework.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\framework.cpp(1): fatal error C1083: Cannot open include file: 'Engine.h': No such file or directory
+  AudioManager.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\audiomanager.h(5): fatal error C1083: Cannot open include file: '../../Shared_Generic/Libraries/OpenAL/include/al.h': No such file or directory
+  Build_Block_Menu.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\factory\build_block_menu.cpp(1): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Libraries/Block_Menu/Block_Menu.h': No such file or directory
+  Cameras.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\factory\factory.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  Characters.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\gameobject\gameobject.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  Factory.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\factory\factory.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  LevelLoader.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\datamanager.h(19): fatal error C1083: Cannot open include file: '../../Shared_Generic/Math_Includes.h': No such file or directory
+  Lights.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\factory\factory.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  MasterAssetList.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\resourcemanager.h(4): fatal error C1083: Cannot open include file: '../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  Shapes.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\factory\factory.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  Testing.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\factory\factory.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  CubeMap.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  FrameBufferObject.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  FontTest.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\fontrendering\fonttest.h(8): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glm/glm/glm.hpp': No such file or directory
+  Mesh.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\model\mesh\mesh.h(4): fatal error C1083: Cannot open include file: '../../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  Generating Code...
+  Compiling...
+  MeshFactory.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\model\mesh\meshfactory.cpp(1): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Utilities/FileIO/FileUtilities.h': No such file or directory
+  MeshUtilities.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\model\mesh\meshutilities.h(4): fatal error C1083: Cannot open include file: '../../../../../Shared_Generic/Math_Includes.h': No such file or directory
+  Model.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\model\mesh\mesh.h(4): fatal error C1083: Cannot open include file: '../../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  OpenGLHelpers.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  OpenGLManager.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\openglmanager.h(6): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  Basic2DShader.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  Basic3DShader.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  LitMaterial.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  ShaderFactory.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.h(7): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glew/GL/glew.h': No such file or directory
+  ShaderProgram.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\shaderprogram\shaderprogram.cpp(1): fatal error C1083: Cannot open include file: '../../../Engine_Defines.h': No such file or directory
+  Sprite.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\sprite\sprite.h(4): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  AssignGLFWKeys.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\input\inputmanager.h(5): fatal error C1083: Cannot open include file: '../../Engine_Defines.h': No such file or directory
+  AssignWin32Keys.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\input\inputmanager.h(5): fatal error C1083: Cannot open include file: '../../Engine_Defines.h': No such file or directory
+  Controller.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\input\controller.h(7): fatal error C1083: Cannot open include file: '../../../Shared_Generic/Math_Includes.h': No such file or directory
+  InputManager.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\input\inputmanager.h(5): fatal error C1083: Cannot open include file: '../../Engine_Defines.h': No such file or directory
+  PhysicsManager.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\physicsmanager.cpp(2): fatal error C1083: Cannot open include file: '../Shared_Generic/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h': No such file or directory
+  PhysicsWorld.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\physicsworld.h(4): fatal error C1083: Cannot open include file: 'LinearMath/btAlignedObjectArray.h': No such file or directory
+  Renderer.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\graphics\fontrendering\fonttest.h(8): fatal error C1083: Cannot open include file: '../../../../Shared_Generic/Libraries/glm/glm/glm.hpp': No such file or directory
+  ServiceLocator.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\servicelocator.h(10): fatal error C1083: Cannot open include file: '../Engine_Enums.h': No such file or directory
+  Window.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\window.h(4): fatal error C1083: Cannot open include file: '../Math/Vector.h': No such file or directory
+  Generating Code...
+  Compiling...
+  WindowManager.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\windowmanager.cpp(12): warning C4150: deletion of pointer to incomplete type 'Window'; no destructor called
+  c:\users\aaron appel\desktop\github\qwerke_framework\qwerke_framework\systems\windowmanager.h(6): note: see declaration of 'Window'
+  Main.cpp
+c:\users\aaron appel\desktop\github\qwerke_framework\qwerke.h(72): fatal error C1083: Cannot open include file: 'Shared_Engine/Engine_Include.h': No such file or directory
+  Generating Code...
