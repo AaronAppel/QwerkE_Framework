@@ -1,4 +1,5 @@
 # QwerkE_Framework
+*This project is a work in progess*
 Qwerk Engine is a simple framework that developers can use to build games.
 
 There are simple systems like rendering, audio, input, etc, that can be utilized or replaced with custom systems as you wish.
@@ -7,7 +8,7 @@ The whole framework is built to be modular and allow as much customization while
 Look for examples and documentation to see intended implementation examples as well as custom system overrides.
 
 There is also a runtime application that has engine features such as scene editing, scripting, debugging, and more.
-That project lives here: https://github.com/AaronAppel/QwerkE_Engine
+That project lives here: https://github.com/AaronAppel/Qwerk_Engine
 
 ## Getting Started
 ...
