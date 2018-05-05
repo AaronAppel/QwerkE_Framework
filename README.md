@@ -1,5 +1,13 @@
 # QwerkE_Framework
-The core structure of the QwerkEngine system. Use this library to access the functionality of QwerkE without the run time editor.
+Qwerk Engine is a simple framework that developers can use to build games.
+
+There are simple systems like rendering, audio, input, etc, that can be utilized or replaced with custom systems as you wish.
+The whole framework is built to be modular and allow as much customization while maintaining the structure or "scaffolding" if you will.
+
+Look for examples and documentation to see intended implementation examples as well as custom system overrides.
+
+There is also a runtime application that has engine features such as scene editing, scripting, debugging, and more.
+That project lives here: https://github.com/AaronAppel/QwerkE_Engine
 
 ## Getting Started
 ...
