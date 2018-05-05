@@ -17,11 +17,11 @@ class Window;
 // service. Or just find a nother way to prevent multiple instances
 // while offering a nice interface.
 
-class Engine
+class Framework // TODO: Might not need this class
 {
 public: // External API
-	Engine();
-	~Engine();
+	Framework();
+	~Framework();
 
 	eEngineMessage Startup();
 	eEngineMessage TearDown();

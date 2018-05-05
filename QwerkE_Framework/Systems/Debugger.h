@@ -3,7 +3,7 @@
 
 #include "../QwerkE_Defines.h"
 
-#ifdef _QDEBUG
+#ifdef _QDebug
 namespace QwerkE
 {
     class Debugger

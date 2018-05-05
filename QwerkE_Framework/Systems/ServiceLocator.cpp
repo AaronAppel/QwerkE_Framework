@@ -14,7 +14,6 @@ namespace QwerkE
     EventManager* QwerkE::ServiceLocator::m_EventManager = nullptr;
     SceneManager* QwerkE::ServiceLocator::m_SceneManager = nullptr;
     Factory* QwerkE::ServiceLocator::m_Factory = nullptr;
-    Editor* QwerkE::ServiceLocator::m_Editor = nullptr;
 	PhysicsManager* QwerkE::ServiceLocator::m_PhysicsManager = nullptr;
 	MessageManager* QwerkE::ServiceLocator::m_MessageManager = nullptr;
 	Renderer* QwerkE::ServiceLocator::m_Renderer = nullptr;
@@ -43,9 +42,6 @@ namespace QwerkE
             break;
         case eEngineServices::Factory_Entity:
             ServiceLocator::m_Factory = (Factory*)service;
-            break;
-        case eEngineServices::Editor:
-            ServiceLocator::m_Editor = (Editor*)service;
             break;
 		case eEngineServices::PhysicsManager:
 			ServiceLocator::m_PhysicsManager = (PhysicsManager*)service;
@@ -103,11 +99,6 @@ namespace QwerkE
         case eEngineServices::Factory_Entity:
             temp = ServiceLocator::m_Factory;
             ServiceLocator::m_Factory = nullptr;
-            return temp;
-            break;
-        case eEngineServices::Editor:
-            temp = ServiceLocator::m_Editor;
-            ServiceLocator::m_Editor = nullptr;
             return temp;
             break;
 		case eEngineServices::PhysicsManager:
@@ -171,9 +162,6 @@ namespace QwerkE
         case eEngineServices::Factory_Entity:
             return ServiceLocator::m_Factory;
             break;
-        case eEngineServices::Editor:
-            return ServiceLocator::m_Editor;
-            break;
 		case eEngineServices::PhysicsManager:
 			return ServiceLocator::m_PhysicsManager;
 			break;
@@ -226,10 +214,6 @@ namespace QwerkE
                 break;
             case eEngineServices::Factory_Entity:
                 if (ServiceLocator::m_Factory == nullptr)
-                    return eEngineMessage::_QFail; // not loaded
-                break;
-            case eEngineServices::Editor:
-                if (ServiceLocator::m_Editor == nullptr)
                     return eEngineMessage::_QFail; // not loaded
                 break;
 			case eEngineServices::PhysicsManager:

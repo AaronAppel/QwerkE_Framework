@@ -31,7 +31,7 @@ void ResourceManager::Init()
 Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 {
 	// TODO: Use MeshDir
-#define MeshDir(a) Test("../Shared_Generic/Resources/Models/", a) // Folder or shaders
+#define MeshDir(a) Test("../QwerkE_Common/Resources/Models/", a) // Folder or shaders
 
 	MeshFactory t_MeshFactory;
 	Mesh* mesh = nullptr;
@@ -82,7 +82,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 
 ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 {
-#define ShaderDir(a) Test("../Shared_Generic/Resources/Shaders/", a) // Folder or shaders
+#define ShaderDir(a) Test("../QwerkE_Common/Resources/Shaders/", a) // Folder or shaders
 
 	// Read directory for file?
 	ShaderProgram* shader = new ShaderProgram();
@@ -155,7 +155,7 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 GLuint ResourceManager::InstantiateTexture(const char* textureName)
 {
     // TODO: OpenGLHelpers.cpp is a different directory.
-#define TextureDir(a) Test("../Shared_Generic/Resources/Textures/", a) // Folder or shaders
+#define TextureDir(a) Test("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
 	GLuint textureHandle = -1;
 	if (textureName == "PeriodicHeal") // Asset name
 	{
@@ -227,7 +227,7 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 {
 	// TODO: Use MaterialDir
-#define MaterialDir(a) Test("../Shared_Generic/Resources/Textures/", a) // Folder or shaders
+#define MaterialDir(a) Test("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
 	MaterialData* material = nullptr;
 	if (matName == "container") // Asset name
 	{
@@ -263,7 +263,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 Model* ResourceManager::InstantiateModel(const char* modelName)
 {
 	// TODO: Use ModelDir
-#define ModelDir(a) Test("../Shared_Generic/Resources/Textures/", a) // Folder or shaders
+#define ModelDir(a) Test("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
 
 	MeshFactory meshFact;
 	Model* model;

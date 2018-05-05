@@ -24,7 +24,6 @@ enum class eEngineServices : std::uint8_t
     Factory_Entity,
     Factory_Mesh,
     Factory_Shader,
-    Editor,
 	PhysicsManager,
 	MessageManager,
 	Renderer,

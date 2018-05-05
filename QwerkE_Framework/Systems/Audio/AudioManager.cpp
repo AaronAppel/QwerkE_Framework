@@ -1,5 +1,6 @@
 #include "AudioManager.h"
-#include "../../Shared_Generic/Utilities/PrintFunctions.h"
+#include "../QwerkE_Common/Utilities/PrintFunctions.h"
+#include <stddef.h> // NULL
 
 // OpenAL Reference: https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 // wav loading: https://blog.csdn.net/u011417605/article/details/49662535

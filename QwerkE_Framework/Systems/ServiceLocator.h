@@ -17,7 +17,6 @@ class InputManager;
 class EventManager;
 class SceneManager;
 class Factory;
-class Editor;
 class PhysicsManager;
 class MessageManager;
 class Renderer;
@@ -70,7 +69,6 @@ namespace QwerkE
         static EventManager* m_EventManager;
         static SceneManager* m_SceneManager;
         static Factory* m_Factory;
-        static Editor* m_Editor;
 		static PhysicsManager* m_PhysicsManager;
 		static MessageManager* m_MessageManager;
 		static Renderer* m_Renderer;
