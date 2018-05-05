@@ -2,12 +2,12 @@
 #define _AudioManager_H_
 
 // TODO: Remove unecessary includes
-#include "../../Shared_Generic/Libraries/OpenAL/include/al.h"
-#include "../../Shared_Generic/Libraries/OpenAL/include/alc.h"
-#include "../../Shared_Generic/Libraries/OpenAL/include/efx.h"
-#include "../../Shared_Generic/Libraries/OpenAL/include/efx-creative.h"
-#include "../../Shared_Generic/Libraries/OpenAL/include/EFX-Util.h"
-#include "../../Shared_Generic/Libraries/OpenAL/include/xram.h"
+#include "../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../QwerkE_Common/Libraries/OpenAL/include/alc.h"
+#include "../QwerkE_Common/Libraries/OpenAL/include/efx.h"
+#include "../QwerkE_Common/Libraries/OpenAL/include/efx-creative.h"
+#include "../QwerkE_Common/Libraries/OpenAL/include/EFX-Util.h"
+#include "../QwerkE_Common/Libraries/OpenAL/include/xram.h"
 
 class AudioManager
 {

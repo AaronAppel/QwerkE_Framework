@@ -1,10 +1,10 @@
 #include "Factory.h"
 #include "../../Systems/Graphics/Model/Model.h"
 #include "../../Scene/Scene.h"
-#include "../../../Shared_Generic/Utilities/Helpers.h"
-#include "../../GameObject/Components/RenderComponent.h"
+#include "../../../QwerkE_Common/Utilities/Helpers.h"
+#include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager.h"
-#include "../../GameObject/Routines/RenderRoutine.h"
+#include "../../Entities/Routines/RenderRoutine.h"
 
 // Scenery + Props
 GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)

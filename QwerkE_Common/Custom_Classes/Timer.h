@@ -9,6 +9,8 @@
 // Use a CallBack* to notify listeners of timer expiry,
 // or trigger a function.
 
+#include <float.h>
+
 class Timer
 {
 public:

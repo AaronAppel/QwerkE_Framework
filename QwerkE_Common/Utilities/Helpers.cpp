@@ -16,7 +16,7 @@ double helpers_Time()
 	return timeseconds;
 }
 #else
-double helpers_Time() { return 0.0f; }
+double helpers_Time() { return 0.0f; } // TODO:
 #endif // _WIN32
 
 static unsigned int g_UniqueID = 0; // static counter to increment for unique value

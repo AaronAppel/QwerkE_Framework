@@ -11,7 +11,7 @@ public:
 	~ObjectPool();
 
 	std::vector<POOL_OBJECT_TYPE> m_Objects;
-	
+
 	void ReturnObjectToPool(POOL_OBJECT_TYPE);
 	void AddItemToPool(POOL_OBJECT_TYPE);
 	POOL_OBJECT_TYPE GetItemFromPool();

@@ -1,7 +1,6 @@
 #ifndef _OpenGLHelpers_H_
 #define _OpenGLHelpers_H_
 
-
 void CheckforGLErrors();
 void CheckforGLErrors(char* file, int line);
 void CheckforGLErrors(const char* file, int line);

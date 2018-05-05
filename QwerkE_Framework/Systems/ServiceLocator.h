@@ -7,8 +7,8 @@
 // To add a system add it to RegisterService(), UnregisterService,
 // GetService(), and ServicesLoaded().
 
-#include "../Engine_Enums.h"
-#include "./../../Shared_Generic/Utilities/PrintFunctions.h"
+#include "../QwerkE_Enums.h"
+#include "./../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "ResourceManager.h"
 #include "Input/InputManager.h"
 
@@ -36,11 +36,11 @@ namespace QwerkE
 
     // To avoid dependencies redesign how services are registered/unregistered
     // for order dependency issues.
-    
+
     // Consider returning NULL objects if service is nullptr;
     // Try to avoid if(null) check inside a getter(). Make sure services are
     // initialized at start to null and have null checks inside a register() call.
-    
+
     // Consider limiting accessible scope on systems like NetworkManager to only a
     // few classes. Maybe create a INetwork interface that needs to be implemented
     // by a class to access the network service... or something like that.

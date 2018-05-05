@@ -1,7 +1,7 @@
 #ifndef _VertexData_H_
 #define _VertexData_H_
 
-#include "../../../../../Shared_Generic/Math_Includes.h"
+#include "../../../../../QwerkE_Common/Math_Includes.h"
 
 
 struct VertexData

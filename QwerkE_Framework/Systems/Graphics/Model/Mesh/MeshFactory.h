@@ -1,7 +1,7 @@
 #ifndef _MeshFactory_H_
 #define _MeshFactory_H_
 
-#include "../../../../../Shared_Generic/Math_Includes.h"
+#include "../../../../../QwerkE_Common/Math_Includes.h"
 #include "../Model.h"
 
 struct VertexData;

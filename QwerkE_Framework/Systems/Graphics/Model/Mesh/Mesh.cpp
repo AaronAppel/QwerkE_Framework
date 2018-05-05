@@ -2,7 +2,8 @@
 #include "VertexData.h"
 #include "../../ShaderProgram/ShaderProgram.h"
 #include "../../OpenGLHelpers.h"
-#include "../../../Shared_Generic/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 #include <string>
 #include <assert.h>

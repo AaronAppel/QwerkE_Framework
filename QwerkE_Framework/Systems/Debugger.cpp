@@ -1,7 +1,7 @@
 #include "Debugger.h"
-#include "../../Shared_Generic/Utilities/PrintFunctions.h"
+#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 
-#ifdef _QDEBUG
+#ifdef _QDebug
 namespace QwerkE
 {
     bool Debugger::m_ConsoleIsOpen = false;
@@ -40,4 +40,4 @@ namespace QwerkE
         }
     }
 }
-#endif // !_QDEBUG
+#endif // !_QDebug

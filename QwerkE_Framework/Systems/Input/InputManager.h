@@ -2,9 +2,9 @@
 #define _InputManager_H_
 
 #include "QwerKE_eKeys.h"
-#include "../../Engine_Defines.h"
-#include "../../Engine_Platform.h"
-#include "../../../Shared_Generic/Libraries_Include.h"
+#include "../../QwerkE_Defines.h"
+#include "../../QwerkE_Platform.h"
+#include "../../../QwerkE_Common/Libraries_Include.h"
 
 class Controller;
 

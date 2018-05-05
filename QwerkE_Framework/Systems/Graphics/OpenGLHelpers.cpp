@@ -1,8 +1,8 @@
 #include "../Graphics_Header.h"
-#include "../../../Shared_Generic/Utilities/PrintFunctions.h"
-#include "../../../Shared_Generic/Utilities/FileIO/FileUtilities.h"
-#include "../../../Shared_Generic/Utilities/ImageHelpers.h"
-#include "../../../Shared_Generic/Libraries/lodepng/lodepng.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
+#include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
 
 // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 

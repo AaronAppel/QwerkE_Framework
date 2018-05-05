@@ -1,5 +1,5 @@
-#include "../../../Shared_Engine/Engine_Defines.h"
-#include "../../../Shared_Engine/Engine_Platform.h"
+#include "../../QwerkE_Framework/QwerkE_Defines.h"
+#include "../../QwerkE_Framework/QwerkE_Platform.h"
 #include "PrintFunctions.h"
 
 // #include <cstdio> // vsnprintf_s

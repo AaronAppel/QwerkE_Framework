@@ -1,9 +1,6 @@
 #ifndef __Helpers_H__
 #define __Helpers_H__
 
-// current system time
-double MyGetSystemTime();
-
 double helpers_Time();
 
 // seed rand()

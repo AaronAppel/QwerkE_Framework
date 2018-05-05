@@ -2,7 +2,7 @@
 #define _glfw_Window_H_
 
 #include "Window.h"
-#include "../../Shared_Generic/Libraries/glfw/GLFW/glfw3.h"
+#include "../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 
 class glfw_Window : public Window
 {
@@ -11,7 +11,7 @@ public:
     ~glfw_Window();
 
     void* GetContext() { return m_Window; }; // TODO: Remove
-    
+
     void SwapBuffers() { glfwSwapBuffers(m_Window); };
 
 private:

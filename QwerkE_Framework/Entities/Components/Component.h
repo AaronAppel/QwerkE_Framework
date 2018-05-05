@@ -1,7 +1,7 @@
 #ifndef _Component_H_
 #define _Component_H_
 
-#include "../../Engine_Enums.h"
+#include "../../QwerkE_Enums.h"
 
 class GameObject;
 

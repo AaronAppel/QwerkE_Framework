@@ -1,9 +1,9 @@
 #ifndef _LightComponent_H_
 #define _LightComponent_H_
 
-#include "../../GameObject/Components/Component.h"
-#include "../../Engine_Enums.h"
-#include "../../../Shared_Generic/Math_Includes.h"
+#include "../../Entities/Components/Component.h"
+#include "../../QwerkE_Enums.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
 
 class MyMatrix;
 

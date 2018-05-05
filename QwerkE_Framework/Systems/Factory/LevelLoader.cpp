@@ -1,9 +1,9 @@
 #include "LevelLoader.h"
 #include "Factory.h"
-#include "../../../Shared_Generic/Libraries/cJSON_Interface/cJSONInterface.h"
+#include "../../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Scene/Scene.h"
-#include "../../../Shared_Generic/Utilities/PrintFunctions.h"
-#include "../../Engine_Enums.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../QwerkE_Enums.h"
 
 #include <string>
 #include <map>

@@ -2,12 +2,12 @@
 #include "../Routines/Routine.h"
 #include "../Components/RenderComponent.h"
 #include "RenderRoutine.h"
-#include "../../Engine_Enums.h"
+#include "../../QwerkE_Enums.h"
 #include "../../Systems/Graphics/Model/Mesh/Mesh.h"
 #include "../../Systems/Graphics_Header.h"
 #include "../../Systems/Graphics/MaterialData.h"
 #include "../../Systems/Graphics/OpenGLHelpers.h"
-#include "../../../Shared_Generic/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 
 #include <assert.h>
 

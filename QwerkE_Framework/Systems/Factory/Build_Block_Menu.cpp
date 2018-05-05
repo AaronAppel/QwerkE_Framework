@@ -1,6 +1,6 @@
-#include "../../../Shared_Generic/Libraries/Block_Menu/Block_Menu.h"
+#include "../../../QwerkE_Common/Libraries/Block_Menu/Block_Menu.h"
 #include "Factory.h"
-#include "../../../Shared_Generic/Math_Includes.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
 #include "../Graphics/Model/Mesh/Mesh.h"
 #include "../../Systems/ResourceManager.h"
 

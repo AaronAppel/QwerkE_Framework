@@ -1,7 +1,7 @@
-#ifndef __Sprite_H__
-#define __Sprite_H__
+#ifndef _Sprite_H_
+#define _Sprite_H_
 
-#include "../../../Shared_Generic/Math_Includes.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
 #include "../Model/Mesh/Mesh.h"
 
 class Mesh;

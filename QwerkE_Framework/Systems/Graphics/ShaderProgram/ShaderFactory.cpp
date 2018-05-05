@@ -1,5 +1,5 @@
 #include "../../Graphics_Header.h"
-#include "../../../Shared_Generic/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 
 ShaderProgram* ShaderFactory::CreateShader(eShaderTypes type)
 {

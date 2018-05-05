@@ -1,9 +1,9 @@
-#include "../../../Engine_Defines.h"
-#include "../../../Engine_Platform.h" // TODO: Need?
+#include "../../../QwerkE_Defines.h"
+#include "../../../QwerkE_Platform.h" // TODO: Need?
 #include "../../Graphics_Header.h"
-#include "../../../../Shared_Generic/Utilities/FileIO/FileUtilities.h"
-#include "../../../../Shared_Generic/Utilities/StringHelpers.h"
-#include "../../../../Shared_Generic/Utilities/PrintFunctions.h"
+#include "../../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../OpenGLHelpers.h"
 
 #include <stdlib.h>

@@ -1,9 +1,9 @@
 #ifndef _Factory_H_
 #define _Factory_H_
 
-#include "../../../Shared_Generic/Math_Includes.h"
-#include "../../Engine_Enums.h"
-#include "../../GameObject/GameObject.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
+#include "../../QwerkE_Enums.h"
+#include "../../Entities/GameObject.h"
 #include "../../Scene/Scene.h"
 
 class ResourceManager;

@@ -1,9 +1,9 @@
 #ifndef _FreeCameraComponent_H_
 #define _FreeCameraComponent_H_
 
-#include "../../Engine_Enums.h"
-#include "../../../Shared_Generic/Math_Includes.h"
-#include "../../../Shared_Generic/Libraries/glew/GL/glew.h"
+#include "../../QwerkE_Enums.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "Component.h"
 #include "CameraComponent.h"
 #include "../../Global_Constants.h"

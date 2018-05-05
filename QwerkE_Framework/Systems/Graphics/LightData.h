@@ -1,5 +1,7 @@
-#ifndef __LightData_H__
-#define __LightData_H__
+#ifndef _LightData_H_
+#define _LightData_H_
+
+#include "../../Math_Includes.h"
 
 struct LightData
 {

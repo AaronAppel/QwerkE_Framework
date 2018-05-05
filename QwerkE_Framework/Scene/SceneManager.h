@@ -1,7 +1,7 @@
 #ifndef _SceneManager_H_
 #define _SceneManager_H_
 
-#include "../Engine_Enums.h"
+#include "../QwerkE_Enums.h"
 #include <map>
 
 class GameCore;

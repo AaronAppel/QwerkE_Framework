@@ -1,17 +1,17 @@
 #include "MyFileWriter.h"
 
 // FileUtilities.cpp
-void AppendToFile(char* fileDirectory, char* data) // WriteStringToFile
+void AppendToFile(char* fileDirectory, char* data)
 {
-
+	// TODO:
 }
 
-void OverWriteFile(char* fileDirectory, char* data) // LoadCompleteFile
+void OverWriteFile(char* fileDirectory, char* data)
 {
-
+	// TODO:
 }
 
-void WriteToNewFile(char* fileDirectory, char* data) // LoadCompleteFile
+void WriteToNewFile(char* fileDirectory, char* data)
 {
-
+	// TODO:
 }

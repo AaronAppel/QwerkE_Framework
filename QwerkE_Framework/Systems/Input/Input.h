@@ -3,7 +3,7 @@
 
 /* Makes sure all input files are included properly */
 
-#include "../Shared_Generic/Libraries/EasyXinput/EasyXinput.h" // XBOX controller input
+#include "../QwerkE_Common/Libraries/EasyXinput/EasyXinput.h" // XBOX controller input
 #include "InputManager.h"
 
 #endif //!_InputManager_H_

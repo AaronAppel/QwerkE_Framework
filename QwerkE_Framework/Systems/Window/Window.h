@@ -2,7 +2,7 @@
 #define _Window_H_
 
 #include "../Math/Vector.h"
-#include "../../Shared_Generic/Math_Includes.h"
+#include "../QwerkE_Common/Math_Includes.h"
 
 struct GLFWwindow;
 
@@ -15,7 +15,7 @@ public:
 
 	void SetResolution(vec2 resolution) { m_Resolution = resolution; }
 	vec2 GetResolution() { return m_Resolution; }
-    
+
     virtual void* GetContext() = 0; // TODO: Remove
 
     virtual void SwapBuffers() = 0;

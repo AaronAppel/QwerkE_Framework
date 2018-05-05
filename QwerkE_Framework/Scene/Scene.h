@@ -1,9 +1,10 @@
 #ifndef _Scene_H_
 #define _Scene_H_
 
-#include "../../Shared_Generic/Containers/MyLinkedList.h"
-#include "../../Shared_Generic/Math_Includes.h"
-#include "../Engine_Enums.h"
+#include "../../QwerkE_Common/Custom_Classes/MyLinkedList.h"
+#include "../../QwerkE_Common/Math_Includes.h"
+#include "QwerkE_Enums.h"
+
 #include <map>
 
 extern int g_WindowWidth, g_WindowHeight;

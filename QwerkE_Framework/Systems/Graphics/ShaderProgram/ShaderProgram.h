@@ -4,7 +4,7 @@
 // This class requires access to OpenGL functions.
 // https ://stackoverflow.com/questions/440144/in-opengl-is-there-a-way-to-get-a-list-of-all-uniforms-attribs-used-by-a-shade
 
-#include "../../../../Shared_Generic/Libraries/glew/GL/glew.h"
+#include "../../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include <vector>
 
 class ShaderProgram

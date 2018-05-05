@@ -1,7 +1,8 @@
 #ifndef _ResourceManager_H_
 #define _ResourceManager_H_
 
-#include "../../Shared_Generic/Libraries/glew/GL/glew.h"
+#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+
 #include <string>
 #include <map>
 

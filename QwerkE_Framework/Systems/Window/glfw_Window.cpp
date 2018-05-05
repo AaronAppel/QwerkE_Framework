@@ -1,8 +1,8 @@
 #include "glfw_Window.h"
-#include "../CallbackFunctions.h"
+#include "CallbackFunctions.h"
 #include "WindowManager.h"
-#include "ServiceLocator.h"
-#include "../../../Shared_Generic/Libraries/imgui/imgui_impl_glfw_gl3.h"
+#include "../ServiceLocator.h"
+#include "../../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
 
 void close_callback(GLFWwindow* window);
 

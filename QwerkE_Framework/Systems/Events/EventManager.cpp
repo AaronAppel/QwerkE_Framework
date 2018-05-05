@@ -1,10 +1,10 @@
 #include "EventManager.h"
-#include "../../Shared_Generic/Utilities/PrintFunctions.h"
-#include "../../Shared_Generic/Utilities/Helpers.h"
+#include "../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../QwerkE_Common/Utilities/Helpers.h"
 #include "Event.h"
 
 EventManager::EventManager()
-{	
+{
 }
 
 EventManager::~EventManager()

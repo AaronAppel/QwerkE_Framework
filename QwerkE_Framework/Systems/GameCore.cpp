@@ -2,10 +2,11 @@
 #include "ResourceManager.h"
 #include "Graphics/OpenGLManager.h"
 #include "Graphics/FBO/FrameBufferObject.h"
-#include "../../../Shared_Generic/Math_Includes.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
 #include "../Systems/Factory/Factory.h"
 #include "../Systems/Factory/LevelLoader.h"
 #include "../Scene/SceneManager.h"
+#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 GameCore::GameCore()
 {

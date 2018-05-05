@@ -1,6 +1,6 @@
-#include "../../GameObject/Components/LightComponent.h"
-#include "../../Engine_Enums.h"
-#include "../../GameObject/Components/Component.h"
+#include "../../Entities/Components/LightComponent.h"
+#include "../../QwerkE_Enums.h"
+#include "../../Entities/Components/Component.h"
 
 LightComponent::LightComponent()
 {

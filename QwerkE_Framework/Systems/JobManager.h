@@ -9,7 +9,7 @@
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
-#include "../../Shared_Generic/Libraries/pThreads/pthread.h"
+#include "../../QwerkE_Common/Libraries/pThreads/pthread.h"
 
 class QJob
 {

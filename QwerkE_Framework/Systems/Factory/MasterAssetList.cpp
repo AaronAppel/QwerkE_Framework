@@ -3,8 +3,10 @@
 #include "../../Systems/Graphics/OpenGLHelpers.h"
 #include "../../Systems/Graphics/MaterialData.h"
 #include "../../Systems/Graphics/ShaderProgram/ShaderFactory.h"
-#include "../../../Shared_Generic/Utilities/StringHelpers.h"
-#include "../../../Shared_Generic/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../Math_Includes.h"
+#include "../../Libraries/glew/GL/glew.h"
 
 const char* Test(const char* a, const char* b)
 {

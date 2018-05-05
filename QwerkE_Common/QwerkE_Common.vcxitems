@@ -674,6 +674,17 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Math_Includes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\GUID.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Helpers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ImageHelpers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\PrintFunctions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\SmartPointer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Tween\Tween.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Tween\TweenFuncs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp" />
@@ -700,6 +711,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\ImageHelpers.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\PrintFunctions.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Tween\TweenFuncs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common.inl" />

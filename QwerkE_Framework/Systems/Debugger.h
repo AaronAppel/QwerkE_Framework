@@ -1,7 +1,7 @@
 #ifndef _Debugger_H_
 #define _Debugger_H_
 
-#include "../Engine_Defines.h"
+#include "../QwerkE_Defines.h"
 
 #ifdef _QDEBUG
 namespace QwerkE

@@ -1,23 +1,23 @@
 #ifndef _QwerkE_Include_H_
 #define _QwerkE_Include_H_
 
-#include "Engine_Defines.h" // platform, architecture,
-#include "Engine_Platform.h" // platform libraries
+#include "QwerkE_Defines.h" // platform, architecture,
+#include "QwerkE_Platform.h" // platform libraries
 
 // enums, constants
-#include "Engine_Enums.h"
+#include "QwerkE_Enums.h"
 #include "Global_Constants.h"
 
 //////////////////////////////
 // Libraries //
 //////////////////////////////
-#include "../Shared_Generic/Libraries_Include.h" // openGL, Bullet, GLFW, etc
+#include "../QwerkE_Common/Libraries_Include.h" // openGL, Bullet, GLFW, etc
 //////////////////////////////
 
 //////////////////////////////
 // Engine //
 //////////////////////////////
-#include "Engine.h"
+#include "Framework.h"
 //////////////////////////////
 
 //////////////////////////////

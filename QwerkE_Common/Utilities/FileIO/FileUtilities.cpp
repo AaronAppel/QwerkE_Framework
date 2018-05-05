@@ -8,6 +8,7 @@
 
 #ifdef _Win32
 #include <windows.h>
+#include <handleapi.h> // INVALID_HANDLE_VALUE
 #include <vector>
 // https://msdn.microsoft.com/en-us/library/windows/desktop/aa364418(v=vs.85).aspx
 // https://msdn.microsoft.com/en-us/library/windows/desktop/aa365740(v=vs.85).aspx

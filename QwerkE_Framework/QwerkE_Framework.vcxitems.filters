@@ -234,6 +234,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\FreeCameraComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Framework.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -407,5 +409,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\FreeCameraComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Global_Constants.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Defines.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Enums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Include.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h" />
   </ItemGroup>
 </Project>

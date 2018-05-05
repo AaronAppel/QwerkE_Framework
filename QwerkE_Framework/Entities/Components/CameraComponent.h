@@ -3,8 +3,8 @@
 
 #include "../../Global_Constants.h"
 #include "../../Math_Includes.h"
-#include "../../../Shared_Generic/Libraries/glew/GL/glew.h"
-#include "../../Engine_Enums.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../QwerkE_Enums.h"
 #include "../Components/Component.h"
 
 const vec3 g_WORLDUP = vec3(0, -1, 0); // TODO: Fix inverted world Y-axis

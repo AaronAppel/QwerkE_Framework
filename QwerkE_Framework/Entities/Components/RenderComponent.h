@@ -2,8 +2,8 @@
 #define _RenderComponent_H_
 
 #include "../Components/Component.h"
-#include "../../../Shared_Generic/Libraries/glew/GL/glew.h"
-#include "../../../Shared_Generic/Math_Includes.h"
+#include "../../../QwerkE_common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
 #include "../Components/Component.h"
 
 #include <vector>

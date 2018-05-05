@@ -1,13 +1,13 @@
 #include "RenderRoutine.h"
 #include "../../Systems/Graphics/ShaderProgram/ShaderProgram.h"
 #include "../GameObject.h"
-#include "../../GameObject/Components/Component.h"
-#include "../../GameObject/Components/CameraComponent.h"
-#include "../../GameObject/Components/RenderComponent.h"
-#include "../../GameObject/Components/LightComponent.h"
+#include "../../Entities/Components/Component.h"
+#include "../../Entities/Components/CameraComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
+#include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/Graphics/MaterialData.h"
 #include "../../Scene/Scene.h"
-#include "../../../Shared_Generic/Math_Includes.h"
+#include "../../../QwerkE_Common/Math_Includes.h"
 
 #include <string>
 

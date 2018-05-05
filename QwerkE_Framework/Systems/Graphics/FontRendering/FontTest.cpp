@@ -3,6 +3,10 @@
 #include "../ShaderProgram/ShaderProgram.h"
 #include "../freetype2/ft2build.h"
 #include "freetype/freetype.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Common/Libraries/glm/glm/common.hpp"
+#include "../../../QwerkE_Common/Libraries/glm/glm/gtc/type_ptr.hpp"
+#include "../../../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
 
 #include <iostream>
 #include <map>

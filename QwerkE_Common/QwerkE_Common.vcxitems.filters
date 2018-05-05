@@ -73,6 +73,12 @@
     <Filter Include="Resources\LevelData">
       <UniqueIdentifier>{5dceebcc-a4f7-47d7-978a-a89330492668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\FileIO">
+      <UniqueIdentifier>{3c6df7ea-0ce0-44eb-9d2e-101fdd989d25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Tween">
+      <UniqueIdentifier>{f7ca28ab-8482-4ce4-be31-c6fe7418d180}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\CPPList.h">
@@ -2049,6 +2055,39 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Math_Includes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\GUID.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Helpers.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ImageHelpers.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\PrintFunctions.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\SmartPointer.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Tween\Tween.h">
+      <Filter>Utilities\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Tween\TweenFuncs.h">
+      <Filter>Utilities\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.h">
+      <Filter>Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h">
+      <Filter>Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.h">
+      <Filter>Utilities\FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp">
@@ -2121,6 +2160,30 @@
       <Filter>Libraries\Math</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\ImageHelpers.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\PrintFunctions.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Tween\TweenFuncs.cpp">
+      <Filter>Utilities\Tween</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp">
+      <Filter>Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp">
+      <Filter>Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.cpp">
+      <Filter>Utilities\FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common.inl">

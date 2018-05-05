@@ -1,6 +1,6 @@
 #include "MenuWindow.h"
-#include "../../../Shared_Engine/Systems/Graphics/ShaderProgram/ShaderProgram.h"
-#include "../../../Shared_Engine/Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/ShaderProgram/ShaderProgram.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
 #include "../MenuItems/ImageItem.h"
 
 MenuWindow::MenuWindow(ShaderProgram* shader, Mesh* mesh, int items)

@@ -1,5 +1,5 @@
 #include "InputManager.h"
-#include "../../../Shared_Generic/Libraries/glfw/GLFW/glfw3.h"
+#include "../../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 
 // Windows 32 bit
 void InputManager::AssignGLFWKeys()

@@ -1,5 +1,5 @@
-#include "../../GameObject/GameObject.h"
-#include "../../GameObject/Components/Component.h"
-#include "../../GameObject/Routines/Routine.h"
+#include "../../Entities/GameObject.h"
+#include "../../Entities/Components/Component.h"
+#include "../../Entities/Routines/Routine.h"
 
 // CreatePlayer(), Enemy(), etc

@@ -1,11 +1,11 @@
 #include "Factory.h"
 #include "../../Scene/Scene.h"
-#include "../../../Shared_Generic/Utilities/Helpers.h"
-#include "../../../Shared_Engine/Engine_Enums.h"
-#include "../../GameObject/Components/Component.h"
-#include "../../GameObject/Components/RenderComponent.h"
+#include "../../../QwerkE_Common/Utilities/Helpers.h"
+#include "../QwerkE_Framework/QwerkE_Enums.h"
+#include "../../Entities/Components/Component.h"
+#include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager.h"
-#include "../../GameObject/Routines/RenderRoutine.h"
+#include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/OpenGLHelpers.h"
 
 /* Shapes */
