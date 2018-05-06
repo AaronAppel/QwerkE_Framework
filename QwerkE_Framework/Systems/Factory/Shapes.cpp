@@ -1,7 +1,7 @@
 #include "Factory.h"
 #include "../../Scene/Scene.h"
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
-#include "../QwerkE_Framework/QwerkE_Enums.h"
+#include "../../QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager.h"
@@ -18,9 +18,9 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	RenderComponent* renderComp = new RenderComponent();
 	// Assign assets from ResourceManager()
 	renderComp->SetMesh(m_pResources->GetMesh("TutorialCube")); // CreCube
-	// renderComp->SetModel(m_pResources->GetModel("CubeModel"));
+																// renderComp->SetModel(m_pResources->GetModel("CubeModel"));
 	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
-	renderComp->SetColour(vec4(0,1,0,1));
+	renderComp->SetColour(vec4(0, 1, 0, 1));
 	renderComp->SetMaterial(m_pResources->GetMaterial("container"));
 
 	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1));

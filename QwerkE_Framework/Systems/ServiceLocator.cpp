@@ -1,6 +1,6 @@
 #include "ServiceLocator.h"
-#include "QwerkE_Enums.h"
-#include "Utilities/PrintFunctions.h"
+#include "../QwerkE_Enums.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 #include <assert.h>
 
@@ -11,16 +11,16 @@ namespace QwerkE
 
 	ResourceManager* QwerkE::ServiceLocator::m_ResourceManager = nullptr;
 	InputManager* QwerkE::ServiceLocator::m_InputManager = nullptr;
-    EventManager* QwerkE::ServiceLocator::m_EventManager = nullptr;
-    SceneManager* QwerkE::ServiceLocator::m_SceneManager = nullptr;
-    Factory* QwerkE::ServiceLocator::m_Factory = nullptr;
+	EventManager* QwerkE::ServiceLocator::m_EventManager = nullptr;
+	SceneManager* QwerkE::ServiceLocator::m_SceneManager = nullptr;
+	Factory* QwerkE::ServiceLocator::m_Factory = nullptr;
 	PhysicsManager* QwerkE::ServiceLocator::m_PhysicsManager = nullptr;
 	MessageManager* QwerkE::ServiceLocator::m_MessageManager = nullptr;
 	Renderer* QwerkE::ServiceLocator::m_Renderer = nullptr;
-    AudioManager* QwerkE::ServiceLocator::m_AudioManager = nullptr;
-    JobManager* QwerkE::ServiceLocator::m_JobManager = nullptr;
+	AudioManager* QwerkE::ServiceLocator::m_AudioManager = nullptr;
+	JobManager* QwerkE::ServiceLocator::m_JobManager = nullptr;
 	Window* QwerkE::ServiceLocator::m_Window = nullptr;
-    NetworkManager* QwerkE::ServiceLocator::m_NetworkManager = nullptr;
+	NetworkManager* QwerkE::ServiceLocator::m_NetworkManager = nullptr;
 
 	void ServiceLocator::RegisterService(eEngineServices serviceType, void* service)
 	{
@@ -34,15 +34,15 @@ namespace QwerkE
 		case eEngineServices::Input_Manager:
 			ServiceLocator::m_InputManager = (InputManager*)service;
 			break;
-        case eEngineServices::Event_System:
-            ServiceLocator::m_EventManager = (EventManager*)service;
-            break;
-        case eEngineServices::Scene_Manager:
-            ServiceLocator::m_SceneManager = (SceneManager*)service;
-            break;
-        case eEngineServices::Factory_Entity:
-            ServiceLocator::m_Factory = (Factory*)service;
-            break;
+		case eEngineServices::Event_System:
+			ServiceLocator::m_EventManager = (EventManager*)service;
+			break;
+		case eEngineServices::Scene_Manager:
+			ServiceLocator::m_SceneManager = (SceneManager*)service;
+			break;
+		case eEngineServices::Factory_Entity:
+			ServiceLocator::m_Factory = (Factory*)service;
+			break;
 		case eEngineServices::PhysicsManager:
 			ServiceLocator::m_PhysicsManager = (PhysicsManager*)service;
 			break;
@@ -52,18 +52,18 @@ namespace QwerkE
 		case eEngineServices::Renderer:
 			ServiceLocator::m_Renderer = (Renderer*)service;
 			break;
-        case eEngineServices::Audio_Manager:
-            ServiceLocator::m_AudioManager = (AudioManager*)service;
-            break;
+		case eEngineServices::Audio_Manager:
+			ServiceLocator::m_AudioManager = (AudioManager*)service;
+			break;
 		case eEngineServices::JobManager:
 			ServiceLocator::m_JobManager = (JobManager*)service;
 			break;
 		case eEngineServices::WindowManager:
 			ServiceLocator::m_Window = (Window*)service;
 			break;
-        case eEngineServices::NetworkManager:
-            ServiceLocator::m_NetworkManager = (NetworkManager*)service;
-            break;
+		case eEngineServices::NetworkManager:
+			ServiceLocator::m_NetworkManager = (NetworkManager*)service;
+			break;
 		default:
 			ConsolePrint("ServiceLocator::RegisterService(): Invalid service!");
 			break;
@@ -87,20 +87,20 @@ namespace QwerkE
 			ServiceLocator::m_InputManager = nullptr;
 			return temp;
 			break;
-        case eEngineServices::Event_System:
-            temp = ServiceLocator::m_EventManager;
-            ServiceLocator::m_EventManager = nullptr;
-            return temp;
-        case eEngineServices::Scene_Manager:
-            temp = ServiceLocator::m_SceneManager;
-            ServiceLocator::m_SceneManager = nullptr;
-            return temp;
-            break;
-        case eEngineServices::Factory_Entity:
-            temp = ServiceLocator::m_Factory;
-            ServiceLocator::m_Factory = nullptr;
-            return temp;
-            break;
+		case eEngineServices::Event_System:
+			temp = ServiceLocator::m_EventManager;
+			ServiceLocator::m_EventManager = nullptr;
+			return temp;
+		case eEngineServices::Scene_Manager:
+			temp = ServiceLocator::m_SceneManager;
+			ServiceLocator::m_SceneManager = nullptr;
+			return temp;
+			break;
+		case eEngineServices::Factory_Entity:
+			temp = ServiceLocator::m_Factory;
+			ServiceLocator::m_Factory = nullptr;
+			return temp;
+			break;
 		case eEngineServices::PhysicsManager:
 			temp = ServiceLocator::m_PhysicsManager;
 			ServiceLocator::m_PhysicsManager = nullptr;
@@ -116,11 +116,11 @@ namespace QwerkE
 			ServiceLocator::m_Renderer = nullptr;
 			return temp;
 			break;
-        case eEngineServices::Audio_Manager:
-            temp = ServiceLocator::m_AudioManager;
-            ServiceLocator::m_AudioManager = nullptr;
-            return temp;
-            break;
+		case eEngineServices::Audio_Manager:
+			temp = ServiceLocator::m_AudioManager;
+			ServiceLocator::m_AudioManager = nullptr;
+			return temp;
+			break;
 		case eEngineServices::JobManager:
 			temp = ServiceLocator::m_JobManager;
 			ServiceLocator::m_JobManager = nullptr;
@@ -131,11 +131,11 @@ namespace QwerkE
 			ServiceLocator::m_Window = nullptr;
 			return temp;
 			break;
-        case eEngineServices::NetworkManager:
-            temp = ServiceLocator::m_NetworkManager;
-            ServiceLocator::m_NetworkManager = nullptr;
-            return temp;
-            break;
+		case eEngineServices::NetworkManager:
+			temp = ServiceLocator::m_NetworkManager;
+			ServiceLocator::m_NetworkManager = nullptr;
+			return temp;
+			break;
 		default:
 			ConsolePrint("ServiceLocator::UnregisterService(): Invalid service!");
 			return nullptr;
@@ -153,15 +153,15 @@ namespace QwerkE
 		case eEngineServices::Input_Manager:
 			return ServiceLocator::m_InputManager;
 			break;
-        case eEngineServices::Event_System:
-            return ServiceLocator::m_EventManager;
-            break;
-        case eEngineServices::Scene_Manager:
-            return ServiceLocator::m_SceneManager;
-            break;
-        case eEngineServices::Factory_Entity:
-            return ServiceLocator::m_Factory;
-            break;
+		case eEngineServices::Event_System:
+			return ServiceLocator::m_EventManager;
+			break;
+		case eEngineServices::Scene_Manager:
+			return ServiceLocator::m_SceneManager;
+			break;
+		case eEngineServices::Factory_Entity:
+			return ServiceLocator::m_Factory;
+			break;
 		case eEngineServices::PhysicsManager:
 			return ServiceLocator::m_PhysicsManager;
 			break;
@@ -171,18 +171,18 @@ namespace QwerkE
 		case eEngineServices::Renderer:
 			return ServiceLocator::m_Renderer;
 			break;
-        case eEngineServices::Audio_Manager:
-            return ServiceLocator::m_AudioManager;
-            break;
+		case eEngineServices::Audio_Manager:
+			return ServiceLocator::m_AudioManager;
+			break;
 		case eEngineServices::JobManager:
 			return ServiceLocator::m_JobManager;
 			break;
 		case eEngineServices::WindowManager:
 			return ServiceLocator::m_Window;
 			break;
-        case eEngineServices::NetworkManager:
-            return ServiceLocator::m_NetworkManager;
-            break;
+		case eEngineServices::NetworkManager:
+			return ServiceLocator::m_NetworkManager;
+			break;
 		default:
 			ConsolePrint("ServiceLocator::GetService(): Invalid service!");
 			return nullptr;
@@ -204,18 +204,18 @@ namespace QwerkE
 				if (ServiceLocator::m_InputManager == nullptr)
 					return eEngineMessage::_QFail; // not loaded
 				break;
-            case eEngineServices::Event_System:
-                if (ServiceLocator::m_EventManager == nullptr)
-                    return eEngineMessage::_QFail; // not loaded
-                break;
-            case eEngineServices::Scene_Manager:
-                if (ServiceLocator::m_SceneManager == nullptr)
-                    return eEngineMessage::_QFail; // not loaded
-                break;
-            case eEngineServices::Factory_Entity:
-                if (ServiceLocator::m_Factory == nullptr)
-                    return eEngineMessage::_QFail; // not loaded
-                break;
+			case eEngineServices::Event_System:
+				if (ServiceLocator::m_EventManager == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
+			case eEngineServices::Scene_Manager:
+				if (ServiceLocator::m_SceneManager == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
+			case eEngineServices::Factory_Entity:
+				if (ServiceLocator::m_Factory == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
 			case eEngineServices::PhysicsManager:
 				if (ServiceLocator::m_PhysicsManager == nullptr)
 					return eEngineMessage::_QFail; // not loaded
@@ -228,10 +228,10 @@ namespace QwerkE
 				if (ServiceLocator::m_Renderer == nullptr)
 					return eEngineMessage::_QFail; // not loaded
 				break;
-            case eEngineServices::Audio_Manager:
-                if (ServiceLocator::m_AudioManager == nullptr)
-                    return eEngineMessage::_QFail; // not loaded
-                break;
+			case eEngineServices::Audio_Manager:
+				if (ServiceLocator::m_AudioManager == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
 			case eEngineServices::JobManager:
 				if (ServiceLocator::m_JobManager == nullptr)
 					return eEngineMessage::_QFail; // not loaded
@@ -240,10 +240,10 @@ namespace QwerkE
 				if (ServiceLocator::m_Window == nullptr)
 					return eEngineMessage::_QFail; // not loaded
 				break;
-            case eEngineServices::NetworkManager:
-                if (ServiceLocator::m_NetworkManager == nullptr)
-                    return eEngineMessage::_QFail; // not loaded
-                break;
+			case eEngineServices::NetworkManager:
+				if (ServiceLocator::m_NetworkManager == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
 			}
 
 			i = (eEngineServices)((int)i + 1); // increment service

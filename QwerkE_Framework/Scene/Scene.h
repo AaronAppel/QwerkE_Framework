@@ -3,7 +3,7 @@
 
 #include "../../QwerkE_Common/Custom_Classes/MyLinkedList.h"
 #include "../../QwerkE_Common/Math_Includes.h"
-#include "QwerkE_Enums.h"
+#include "../QwerkE_Enums.h"
 
 #include <map>
 
@@ -17,15 +17,15 @@ class GameObject;
 class Scene; // forward declare for function* typedef
 typedef void (Scene::*UpdateFunc)(double deltatime); // Scene pause
 
-// TODO: Create derived classes for scenes like SplashScreen, GameScene, etc
+													 // TODO: Create derived classes for scenes like SplashScreen, GameScene, etc
 class Scene // Abstract class
 {
 public:
-    Scene();
-    virtual ~Scene();
+	Scene();
+	virtual ~Scene();
 
-    virtual void OnWindowResize(unsigned int width, unsigned int height);
-    virtual void Initialize();
+	virtual void OnWindowResize(unsigned int width, unsigned int height);
+	virtual void Initialize();
 	virtual void ResetScene();
 
 	virtual void Update(double deltatime) { (this->*m_UpdateFunc)(deltatime); };
@@ -46,13 +46,13 @@ public:
 
 	virtual void RemoveAllObjectsFromScene(); // Possibly a scene reset
 
-	// Save/Load
+											  // Save/Load
 	virtual void SaveScene();
 	virtual void LoadScene();
 
 	/* Getters + Setters */
 	// getters
-    GameObject* GetGameObject(const char* name);
+	GameObject* GetGameObject(const char* name);
 	bool GetIsEnabled() { return m_IsEnabled; };
 	SceneManager* GetSceneManager() { return m_pSceneManager; };
 	Linear2LinkedList<GameObject*> GetCameraList() { return m_CameraList; };
@@ -89,9 +89,9 @@ protected:
 
 	Linear2LinkedList<GameObject*> m_SceneDrawList; // sorted by render order
 
-	//MenuManager* m_pMenuManager = nullptr;
+													//MenuManager* m_pMenuManager = nullptr;
 
-	// TODO:: Store window size in cameras?
+													// TODO:: Store window size in cameras?
 	vec3 m_ViewWindowPosition = 0; // world pos 3D
 	vec2 m_ViewWindowSize = vec2(g_WindowWidth, g_WindowHeight); // screen size
 };

@@ -6,7 +6,7 @@
 #include "../Systems/Factory/Factory.h"
 #include "../Systems/Factory/LevelLoader.h"
 #include "../Scene/SceneManager.h"
-#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 GameCore::GameCore()
 {
@@ -25,7 +25,7 @@ GameCore::GameCore()
 
 GameCore::~GameCore()
 {
-    delete m_pProjectionMatrix;
+	delete m_pProjectionMatrix;
 	//delete m_pAudioManager;
 	delete m_pFactory;
 	delete m_pResourceManager;
@@ -35,7 +35,7 @@ GameCore::~GameCore()
 	delete m_FBO;
 
 	m_pProjectionMatrix = 0; // Null pointers
-	//m_pAudioManager = 0;
+							 //m_pAudioManager = 0;
 	m_pFactory = 0;
 	m_pResourceManager = 0;
 	m_pDataManager = 0;
@@ -47,10 +47,10 @@ GameCore::~GameCore()
 void GameCore::OnWindowResize(unsigned int width, unsigned int height)
 {
 	// TODO:: Add support for multiple windows
-    glViewport( 0, 0, width, height );
+	glViewport(0, 0, width, height);
 
-    m_WindowWidth = width;
-    m_WindowHeight = height;
+	m_WindowWidth = width;
+	m_WindowHeight = height;
 
 	// TODO: Tell scene to resize camera view ports
 	// TODO:: resize scene viewWindow size

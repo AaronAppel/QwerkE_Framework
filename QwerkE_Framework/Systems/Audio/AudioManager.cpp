@@ -1,5 +1,6 @@
 #include "AudioManager.h"
-#include "../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+
 #include <stddef.h> // NULL
 
 // OpenAL Reference: https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
@@ -8,67 +9,67 @@
 
 AudioManager::AudioManager()
 {
-    // Initialization
-    Device = alcOpenDevice(NULL); // select the "preferred device"
+	// Initialization
+	Device = alcOpenDevice(NULL); // select the "preferred device"
 
-    if (Device) {
-        Context = alcCreateContext(Device, NULL);
-        alcMakeContextCurrent(Context);
-    }
-    // Check for EAX 2.0 support
-    g_bEAX = alIsExtensionPresent("EAX2.0");
-    // Generate Buffers
-    alGetError(); // clear error code
-    alGenBuffers(NUM_BUFFERS, g_Buffers);
-    ALenum error;
-    if ((error = alGetError()) != AL_NO_ERROR)
-    {
-        // DisplayALError("alGenBuffers :", error);
-        return;
-    }
-    /*
-    // Load test.wav
-    loadWAVFile(test_wav, &format, &data, &size, &freq, &loop);
-    if ((error = alGetError()) != AL_NO_ERROR)
-    {
-        // DisplayALError("alutLoadWAVFile test.wav : ", error);
-        alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-        return;
-    }
-    // Copy test.wav data into AL Buffer 0
-    alBufferData(g_Buffers[0], format, data, size, freq);
-    if ((error = alGetError()) != AL_NO_ERROR)
-    {
-        // DisplayALError("alBufferData buffer 0 : ", error);
-        alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-        return;
-    }
-    */
+	if (Device) {
+		Context = alcCreateContext(Device, NULL);
+		alcMakeContextCurrent(Context);
+	}
+	// Check for EAX 2.0 support
+	g_bEAX = alIsExtensionPresent("EAX2.0");
+	// Generate Buffers
+	alGetError(); // clear error code
+	alGenBuffers(NUM_BUFFERS, g_Buffers);
+	ALenum error;
+	if ((error = alGetError()) != AL_NO_ERROR)
+	{
+		// DisplayALError("alGenBuffers :", error);
+		return;
+	}
+	/*
+	// Load test.wav
+	loadWAVFile(test_wav, &format, &data, &size, &freq, &loop);
+	if ((error = alGetError()) != AL_NO_ERROR)
+	{
+	// DisplayALError("alutLoadWAVFile test.wav : ", error);
+	alDeleteBuffers(NUM_BUFFERS, g_Buffers);
+	return;
+	}
+	// Copy test.wav data into AL Buffer 0
+	alBufferData(g_Buffers[0], format, data, size, freq);
+	if ((error = alGetError()) != AL_NO_ERROR)
+	{
+	// DisplayALError("alBufferData buffer 0 : ", error);
+	alDeleteBuffers(NUM_BUFFERS, g_Buffers);
+	return;
+	}
+	*/
 }
 
 AudioManager::~AudioManager()
 {
-    /*
-    // Unload test.wav
-    unloadWAV(format, data, size, freq);
-    if ((error = alGetError()) != AL_NO_ERROR)
-    {
-        // DisplayALError("alutUnloadWAV : ", error);
-        alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-        return;
-    }
-    // Exit
-    Context = alcGetCurrentContext();
-    Device = alcGetContextsDevice(Context);
-    alcMakeContextCurrent(NULL);
-    alcDestroyContext(Context);
-    alcCloseDevice(Device);
-    */
+	/*
+	// Unload test.wav
+	unloadWAV(format, data, size, freq);
+	if ((error = alGetError()) != AL_NO_ERROR)
+	{
+	// DisplayALError("alutUnloadWAV : ", error);
+	alDeleteBuffers(NUM_BUFFERS, g_Buffers);
+	return;
+	}
+	// Exit
+	Context = alcGetCurrentContext();
+	Device = alcGetContextsDevice(Context);
+	alcMakeContextCurrent(NULL);
+	alcDestroyContext(Context);
+	alcCloseDevice(Device);
+	*/
 }
 
 void AudioManager::PlaySound()
 {
-    ConsolePrint("\nSound requested!");
+	ConsolePrint("\nSound requested!");
 }
 
 /*

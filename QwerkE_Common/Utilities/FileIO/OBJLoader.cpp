@@ -1,10 +1,10 @@
 #include "OBJLoader.h"
-#include "../QwerkE_Framework/Systems/Graphics_Header.h"
+#include "../../../QwerkE_Framework/Systems/Graphics_Header.h"
 #include "FileUtilities.h"
 #include "../PrintFunctions.h"
-#include "../QwerkE_Framework/Systems/Graphics/Model/Model.h"
-#include "../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
-#include "../QwerkE_Framework/Systems/Graphics/Model/Mesh/MeshUtilities.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Model/Model.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/MeshUtilities.h"
 
 #include <cstring>
 
@@ -180,7 +180,7 @@ Model* ImportOBJModel(const char* fileDirectory, vec3 objScale, vec2 UVScale, bo
 				// pushback all vertices for each object
 				VertexData t_Temp;
 				t_Temp = t_VertexData.at(VertexIndices.at(j)); // Use stored range for object data
-				// TODO: Check for unique results
+															   // TODO: Check for unique results
 				t_ObjectVertsList.at(objectIndex).push_back(t_Temp);
 			}
 			loopcounter += rangeList.at(objectIndex);

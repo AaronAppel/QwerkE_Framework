@@ -12,24 +12,24 @@ enum class eEngineMessage : std::uint8_t
 	_QMax
 };
 
-enum class eEngineServices : std::uint8_t
+enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
 {
 	Resource_Manager = 0,
 	Input_Manager,
-    Audio_Manager,
-    Data_Manager,
-    // Graphics (OpenGLManager)
-    Event_System,
-    Scene_Manager,
-    Factory_Entity,
-    Factory_Mesh,
-    Factory_Shader,
+	Audio_Manager,
+	Data_Manager,
+	// Graphics (OpenGLManager)
+	Event_System,
+	Scene_Manager,
+	Factory_Entity,
+	Factory_Mesh,
+	Factory_Shader,
 	PhysicsManager,
 	MessageManager,
 	Renderer,
 	JobManager,
 	WindowManager,
-    NetworkManager,
+	NetworkManager,
 
 	Service_Max
 };
@@ -54,7 +54,7 @@ enum eComponentTags
 	Component_Light,
 	Component_Controller,
 	Component_Render,
-    Component_Print,
+	Component_Print,
 	Component_SkyBox,
 	Component_Animation,
 	Component_Character,
@@ -110,7 +110,7 @@ enum eSceneTypes
 	//// list in order of opening if possible
 	// fullscreen
 	Scene_TestScene = 0,
-    Scene_GameScene,
+	Scene_GameScene,
 	// overlays
 	// Scene_OverLays,
 	// *options

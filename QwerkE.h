@@ -70,5 +70,6 @@
 
 // START:
 #include "QwerkE_Include.h"
+#include "QwerkE_Framework/QwerkE_Include.h"
 
 #endif // !_QwerkE_H_

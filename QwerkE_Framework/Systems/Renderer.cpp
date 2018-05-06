@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include "Graphics/FontRendering/FontTest.h"
 #include "ServiceLocator.h"
-#include "QwerkE_Enums.h"
+#include "../QwerkE_Enums.h"
 
 Renderer::Renderer()
 {

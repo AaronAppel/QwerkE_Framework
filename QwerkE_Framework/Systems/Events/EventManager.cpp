@@ -1,6 +1,6 @@
 #include "EventManager.h"
-#include "../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "../QwerkE_Common/Utilities/Helpers.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/Helpers.h"
 #include "Event.h"
 
 EventManager::EventManager()

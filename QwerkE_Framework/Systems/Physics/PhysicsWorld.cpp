@@ -1,11 +1,11 @@
 #include "PhysicsWorld.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
-#include "../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
 
 #include <assert.h>
 
@@ -60,15 +60,15 @@ void PhysicsWorld::Cleanup()
 	// Remove the rigidbodies from the dynamics world and delete them.
 	/*for (int i = m_pDynamicsWorld->getNumCollisionObjects() - 1; i >= 0; i--)
 	{
-		btCollisionObject* obj = m_pDynamicsWorld->getCollisionObjectArray()[i];
-		btRigidBody* body = btRigidBody::upcast(obj);
-		if (body && body->getMotionState())
-		{
-			delete body->getMotionState();
-		}
+	btCollisionObject* obj = m_pDynamicsWorld->getCollisionObjectArray()[i];
+	btRigidBody* body = btRigidBody::upcast(obj);
+	if (body && body->getMotionState())
+	{
+	delete body->getMotionState();
+	}
 
-		m_pDynamicsWorld->removeCollisionObject(obj);
-		delete obj;
+	m_pDynamicsWorld->removeCollisionObject(obj);
+	delete obj;
 	}*/
 
 	// Delete collision shapes.

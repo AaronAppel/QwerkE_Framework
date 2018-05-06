@@ -416,5 +416,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Enums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h" />
   </ItemGroup>
 </Project>
