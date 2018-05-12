@@ -295,11 +295,6 @@ namespace QwerkE
 			m_Window->SwapBuffers(); // Change frame buffers
 		}
 
-		void Test()
-		{
-
-		}
-
 		bool StillRunning()
 		{
 			return m_IsRunning;
