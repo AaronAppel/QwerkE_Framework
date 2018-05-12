@@ -6,8 +6,7 @@
 #ifdef _QEasy // Beginner API
 int main()
 {
-	Framework qwerkE;
-	if (qwerkE.Startup() == eEngineMessage::_QFail)
+	if (QwerkE::Framework::Startup() == eEngineMessage::_QFail)
 	{
 		OutputPrint("\nMain(): Error loading services!\n");
 		assert(false);
@@ -18,9 +17,9 @@ int main()
 	sceneManager->Initialize(); // Setup test scene
 	sceneManager->GetCurrentScene()->SetIsEnabled(true);
 
-	qwerkE.Run();
+	QwerkE::Framework::Run();
 
-	qwerkE.TearDown();
+	QwerkE::Framework::TearDown();
 }
 
 #elif defined(_QMedium) // Simple control

@@ -14,32 +14,33 @@ class Window;
 
 // If only 1 engine should exist at a time then it could be wrapped in
 // the QwerkE namespace and have static functions like a singleton or
-// service. Or just find a nother way to prevent multiple instances
+// service. Or just find another way to prevent multiple instances
 // while offering a nice interface.
 
-class Framework // TODO: Might not need this class
+
+// private framework variables
+static Window * m_Window = nullptr;
+static bool m_IsRunning = false;
+static SceneManager* m_SceneManager = nullptr;
+static Editor* m_Editor = nullptr;
+
+namespace QwerkE
 {
-public: // External API
-	Framework();
-	~Framework();
+	namespace Framework
+	{
+		eEngineMessage Startup();
+		eEngineMessage TearDown();
 
-	eEngineMessage Startup();
-	eEngineMessage TearDown();
+		void Run();
+		void Stop();
 
-	void Run();
+		void NewFrame();
+		void Input();
+		void Update(double deltatime);
+		void Draw();
 
-	void NewFrame();
-	void Input();
-	void Update(double deltatime);
-	void Draw();
-
-	bool StillRunning() { return m_IsRunning; };
-
-private:
-    Window* m_Window = nullptr;
-	bool m_IsRunning = false;
-	SceneManager* m_SceneManager = nullptr;
-    Editor* m_Editor = nullptr;
-};
+		bool StillRunning();
+	}
+}
 
 #endif // !_Framework_H_

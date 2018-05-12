@@ -59,12 +59,12 @@
 //////////////////////////////
 // Graphics //
 //////////////////////////////
-// //
+// OpenGL //
 // open graphics library
 #ifdef _Q32Bit
 #pragma comment( lib, "opengl32.lib" ) // load
 #else
-// TODO: Is there a 64 bit openGL library?
+#pragma comment( lib, "opengl32.lib" ) // still the same name...
 #endif
 // openGL extensions wrangler //
 // GLEW
