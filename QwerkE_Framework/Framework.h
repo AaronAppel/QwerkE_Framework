@@ -39,6 +39,8 @@ namespace QwerkE
 		void Update(double deltatime);
 		void Draw();
 
+		void Test();
+
 		bool StillRunning();
 	}
 }
