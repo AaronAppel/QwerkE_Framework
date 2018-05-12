@@ -43,7 +43,6 @@
 
 // font loading/rendering
 // freetype2
-#pragma comment( lib, "../QwerkE_Common/Libraries/freetype2/freetype.lib" ) // load
 #include "Libraries/freetype2/ft2build.h"
 #include "Libraries/freetype2/freetype/freetype.h"
 //////////////////////////////
@@ -68,13 +67,9 @@
 #endif
 // openGL extensions wrangler //
 // GLEW
-// TODO: Check for architecture and debug/release
-#pragma comment( lib, "../QwerkE_Common/Libraries/glew/glew32d.lib" ) // load
 #include "Libraries/glew/GL/glew.h"
 // window creation //
 // GLFW
-// TODO: Check for architecture and debug/release
-#pragma comment( lib, "../QwerkE_Common/Libraries/glfw/glfw3.lib" ) // load
 #include "Libraries/glfw/GLFW/glfw3.h"
 //////////////////////////////
 
@@ -83,9 +78,6 @@
 //////////////////////////////
 // TODO: Setup OpenAL
 // https://ffainelli.github.io/openal-example/
-// TODO: Crashing if I uninstall SDK
-#pragma comment( lib, "../QwerkE_Common/Libraries/OpenAL/libs/Win32/OpenAL32.lib" ) // load
-//#pragma comment( lib, "../QwerkE_Common/Libraries/OpenAL/libs/Win32/EFX-Util_MT/EFX-Util.lib" ) // load
 #include "Libraries/OpenAL/include/al.h"
 //#include "Libraries/OpenAL/include/alc.h"
 //////////////////////////////
@@ -110,7 +102,6 @@
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
-#pragma comment( lib, "../QwerkE_Common/Libraries/pThreads/lib/x86/pthreadVC2.lib" ) // load
 //////////////////////////////
 
 //////////////////////////////
@@ -118,7 +109,6 @@
 //////////////////////////////
 // RakNet
 // TODO: Check for architecture and debug/release
-#pragma comment( lib, "../QwerkE_Common/Libraries/RakNet/RakNet_VS2008_DLL_Debug_Win32.lib" ) // load
 // http://www.raknet.net/raknet/manual/tutorialsample3.html
 //////////////////////////////
 
@@ -139,21 +129,13 @@
 // physics
 //////////////////////////////
 // Bullet3
-// TODO: Check for architecture
-#if _DEBUG // and windows specific?
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/BulletCollision.lib" ) // load
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/BulletDynamics.lib" ) // load
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/LinearMath.lib" ) // load
-#else // Release
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletCollision.lib" ) // load
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletDynamics.lib" ) // load
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/LinearMath.lib" ) // load
-#endif
-
-// TODO: Add necessary headers.
-// TODO: Remove unecessary headers.
 // Consider creating a library for bullet projects.
 // #include "Libraries/Bullet3/btAabbUtil2.h"
 /////////////////////////////
+
+// TODO: Add necessary headers.
+// TODO: Remove unecessary headers.
+
+#include "Libraries_Load.h" // load .libs
 
 #endif // !_Libraries_Include_H_

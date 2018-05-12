@@ -4,7 +4,7 @@
 /* Defines values to be used in other ares of code.*/
 
 // defines
-// #define IncludeDir "../Shared_Generic/Utilities/FileIO/FileUtilities.h"
+// #define IncludeDir "../Shared_Common/Utilities/FileIO/FileUtilities.h"
 
 // type definitions
 // TODO: Is there an easy way of reducing typing without coupling files like typedef does

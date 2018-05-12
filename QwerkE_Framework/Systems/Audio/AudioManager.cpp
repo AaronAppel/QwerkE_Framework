@@ -5,7 +5,7 @@
 
 // OpenAL Reference: https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 // wav loading: https://blog.csdn.net/u011417605/article/details/49662535
-// const char* test_wav = "../../Shared_Generic/Resources/Sounds/Test.wav";
+// const char* test_wav = "../../Shared_Common/Resources/Sounds/Test.wav";
 
 AudioManager::AudioManager()
 {
