@@ -127,29 +127,10 @@ bool Libs_Setup()
     // Audio
     //////////////////////////////
     // OpenAL
-    // TODO: Fix OpenAL so it does not crash when the SDK is uninstalled
-    //ALCdevice* device;
+	// TODO: Test startup and shutdown of system
+	// TODO: Init alut?
+	// ConsolePrint("\nError loading OpenAL!\n");
 
-    //device = alcOpenDevice(NULL);
-    //if (!device)
-    //{
-    //	// error
-    //	OutputPrint("\nError loading OpenAL!\n");
-    //}
-    //else
-    //{
-    //	alcCloseDevice(device);
-    //}
-
-    if (false)
-    {
-        /*alDeleteSources(1, &source);
-        alDeleteBuffers(1, &buffer);
-        device = alcGetContextsDevice(context);
-        alcMakeContextCurrent(NULL);
-        alcDestroyContext(context);
-        alcCloseDevice(device);*/
-    }
     //////////////////////////////
 
     return errorFree;

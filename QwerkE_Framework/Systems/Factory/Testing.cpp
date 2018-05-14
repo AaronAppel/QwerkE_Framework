@@ -43,10 +43,10 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	t_Model->SetRenderOrder(50);
 	t_Model->SetTag(GO_Tag_TestModel);
 	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("NullMesh"));
+	renderComp->SetModel(m_pResources->GetModel("mynanosuit"));
 
 	// renderComp->SetShader(m_pResources->GetShader("Basic3D"));
-	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
+	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
 	renderComp->GetModel()->SetupMeshes(renderComp->GetShader());
 	renderComp->SetMaterial(m_pResources->GetMaterial("UV_Map"));
 

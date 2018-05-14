@@ -39,13 +39,16 @@ extern InputManager* g_InputManager = nullptr;
 extern Controller* g_Player1Controller = nullptr;
 extern bool g_Debugging = false;
 
-FrameBufferObject* g_FBO = new FrameBufferObject();
+// private framework variables
+static Window* m_Window = nullptr;
+static bool m_IsRunning = false;
+static SceneManager* m_SceneManager = nullptr;
 
 namespace QwerkE
 {
 	namespace Framework
 	{
-		eEngineMessage Startup()
+		eEngineMessage Framework::Startup()
 		{
 			if (Libs_Setup() == false) // setup libraries
 			{
@@ -110,7 +113,7 @@ namespace QwerkE
 			return QwerkE::ServiceLocator::ServicesLoaded();
 		}
 
-		eEngineMessage TearDown()
+		eEngineMessage Framework::TearDown()
 		{
 			delete (ResourceManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Resource_Manager);
 
@@ -142,7 +145,7 @@ namespace QwerkE
 			return eEngineMessage::_QSuccess;
 		}
 
-		void Run()
+		void Framework::Run()
 		{
 			// TODO: check if(initialized) in case user defined simple API.
 			// Might want to create another function for the game loop and
@@ -153,8 +156,6 @@ namespace QwerkE
 			float frameRate = 0.0f;
 			QwerkE::Time::SetDeltatime(&timeSinceLastFrame);
 			QwerkE::Time::SetFrameRate(&frameRate);
-
-			g_FBO->Init();
 
 			// TODO: GL state init should be in a Window() or OpenGLManager()
 			// class or some type of ::Graphics() system.
@@ -240,25 +241,25 @@ namespace QwerkE
 			QwerkE::ServiceLocator::LockServices(false);
 		}
 
-		void Stop()
+		void Framework::Stop()
 		{
 			m_IsRunning = false;
 		}
 
-		void NewFrame()
+		void Framework::NewFrame()
 		{
 			/* Reset */
 			// TODO: Reset things...
 			ImGui_ImplGlfwGL3_NewFrame();
 		}
 
-		void Input()
+		void Framework::Input()
 		{
 			glfwPollEvents(); // TODO: Better GLFW interface?
 							  // TODO: Tell input manager it is a new frame and it should update key states
 		}
 
-		void Update(double deltatime)
+		void Framework::Update(double deltatime)
 		{
 			m_SceneManager->Update(deltatime);
 
@@ -271,22 +272,8 @@ namespace QwerkE
 			}
 		}
 
-		void Draw()
+		void Framework::Draw()
 		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // new frame
-
-																// TEMP: Render scene to texture
-			g_FBO->Bind();
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			m_SceneManager->Draw();
-			g_FBO->UnBind();
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			// TEMP: End
-
-			ImGui::Begin("Scene Window - Framework.cpp");
-			ImGui::Image(ImTextureID(g_FBO->GetTextureID()), ImVec2(1600 / 3, 900 / 3), ImVec2(0, 1), ImVec2(1, 0));
-			ImGui::End();
-
 			//m_SceneManager->Draw();
 
 			ImGui::Render();
@@ -295,7 +282,7 @@ namespace QwerkE
 			m_Window->SwapBuffers(); // Change frame buffers
 		}
 
-		bool StillRunning()
+		bool Framework::StillRunning()
 		{
 			return m_IsRunning;
 		}

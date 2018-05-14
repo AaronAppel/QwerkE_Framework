@@ -5,9 +5,11 @@
 #include "../../Systems/Graphics/ShaderProgram/ShaderFactory.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
 #include "../../Math_Includes.h"
 #include "../../Libraries/glew/GL/glew.h"
 
+// If engine, need to change directory
 const char* Test(const char* a, const char* b)
 {
 	int size = 0;
@@ -212,7 +214,7 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 	// Cube map
 	else if (false)
 	{
-
+		// TODO:
 	}
 	else
 	{
@@ -287,9 +289,16 @@ Model* ResourceManager::InstantiateModel(const char* modelName)
 	{
 		model = meshFact.ImportOBJModel("Resources/Models/Teapot.obj");
 	}
+	else if (modelName == "mynanosuit")
+	{
+		// model = meshFact.ImportOBJModel("Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
+		model = QwerkE::FileLoader::LoadModelFile("../QwerkE_Framework/QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
+	}
 	else
 	{
         ConsolePrint("\nInstantiateModel(): Model not found!\n");
+		// model = meshFact.ImportOBJModel("Resources/Models/Teapot.obj"); // NullMesh
+		// set mesh name to NullMesh
 		return nullptr;
 	}
 	// TODO: nullptr checks

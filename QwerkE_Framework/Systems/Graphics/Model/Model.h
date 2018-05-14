@@ -1,5 +1,5 @@
-#ifndef __Model_H_
-#define __Model_H_
+#ifndef _Model_H_
+#define _Model_H_
 
 #include <string>
 #include <vector>
@@ -13,7 +13,7 @@ public:
 	Model();
 	~Model();
 
-    void Init(std::vector<Mesh*> meshes) { m_HotMeshes = meshes; };
+    void Init(std::vector<Mesh*> meshes) { m_Meshes = meshes; };
     void SetupMeshes(ShaderProgram* shader);
 
 	void Draw();
@@ -27,7 +27,7 @@ public:
 
 private:
     std::string m_Name = "Uninitialized";
-	std::vector<Mesh*> m_HotMeshes;
+	std::vector<Mesh*> m_Meshes;
 };
 
-#endif //!__Model_H_
+#endif //!_Model_H_

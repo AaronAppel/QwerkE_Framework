@@ -1,12 +1,16 @@
 #ifndef _Libraries_Load_H_
 #define _Libraries_Load_H_
 
-#define Is_Framework false
+#define Is_Framework false // Engine vs Framework usage
+
+// Note: 64 bit not building currently so all .libs are 32bit
 
 // load libraries
 #if Is_Framework
+// assimp
+#pragma comment( lib, "../QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" ) // load
 // freetype2
-#pragma comment( lib, "../QwerkE_Common/Libraries/freetype2/freetype.lib" ) // load
+#pragma comment( lib, "../QwerkE_Common/Libraries/freetype2/x86/freetype.lib" ) // load
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, "../QwerkE_Common/Libraries/glew/glew32d.lib" )
 // TODO: Check for architecture and debug/release
@@ -22,8 +26,10 @@
 #pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletDynamics.lib" )
 #pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/LinearMath.lib" )
 #else
+// assimp
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2
-#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/freetype2/freetype.lib" ) // load
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/freetype2/x86/freetype.lib" )
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/glew/glew32d.lib" )
 // TODO: Check for architecture and debug/release

@@ -114,8 +114,13 @@ void RenderRoutine::SetDrawFunction() // Assign function pointers and initialize
 		// Material
 		else if (t_Material != nullptr)
 		{
-			m_UniformSetupList.push_back(&RenderRoutine::SetupLightingUniforms);
 			m_UniformSetupList.push_back(&RenderRoutine::SetupMaterialUniforms);
+			m_UniformSetupList.push_back(&RenderRoutine::SetupLightingUniforms);
+		}
+		// Lighting
+		else if (false)
+		{
+			// TODO: m_UniformSetupList.push_back(&RenderRoutine::SetupLightingUniforms);
 		}
 	}
 

@@ -8,24 +8,24 @@ Model::Model()
 
 Model::~Model()
 {
-	for (unsigned int i = 0; i < m_HotMeshes.size(); i++)
+	for (unsigned int i = 0; i < m_Meshes.size(); i++)
 	{
-		delete m_HotMeshes.at(i);
+		delete m_Meshes.at(i);
 	}
 }
 
 void Model::SetupMeshes(ShaderProgram* shader)
 {
-    for (unsigned int i = 0; i < m_HotMeshes.size(); i++)
+    for (unsigned int i = 0; i < m_Meshes.size(); i++)
     {
-        m_HotMeshes.at(i)->SetupShaderAttributes(shader);
+        m_Meshes.at(i)->SetupShaderAttributes(shader);
     }
 }
 
 void Model::Draw()
 {
-	for (unsigned int i = 0; i < m_HotMeshes.size(); i++)
+	for (unsigned int i = 0; i < m_Meshes.size(); i++)
 	{
-		m_HotMeshes.at(i)->Draw();
+		m_Meshes.at(i)->Draw();
 	}
 }

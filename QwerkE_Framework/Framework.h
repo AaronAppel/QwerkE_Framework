@@ -17,13 +17,6 @@ class Window;
 // service. Or just find another way to prevent multiple instances
 // while offering a nice interface.
 
-
-// private framework variables
-static Window * m_Window = nullptr;
-static bool m_IsRunning = false;
-static SceneManager* m_SceneManager = nullptr;
-static Editor* m_Editor = nullptr;
-
 namespace QwerkE
 {
 	namespace Framework

@@ -63,6 +63,10 @@ void TestScene::Initialize()
 			t_pFactory->CreateLight(this, vec3((i + 1) * -3.0f, (i + 1) * -1.0f, (i + 1) * -3.0f));
 		}
 		t_pFactory->CreateLight(this, vec3(0, 5, -10));
+
+		// t_pResourceManager->GetModel("../QwerkE_Framework/QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
+		// t_pResourceManager->GetModel("mynanosuit");
+		// t_pFactory->CreateTestModel(this, vec3(0,0,0));
 	}
 }
 

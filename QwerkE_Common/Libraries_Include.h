@@ -16,7 +16,7 @@
 #elif _Linux
 #endif
 
-#elif _Q64Bit // architecture
+#elif defined(_Q64Bit) // architecture
 // platform
 #ifdef _QWindows
 #elif _Android
@@ -78,8 +78,16 @@
 //////////////////////////////
 // TODO: Setup OpenAL
 // https://ffainelli.github.io/openal-example/
-#include "Libraries/OpenAL/include/al.h"
-//#include "Libraries/OpenAL/include/alc.h"
+// #include "Libraries/OpenAL/include/al.h"
+// #include "Libraries/OpenAL/include/alc.h"
+// #include "Libraries/OpenAL/include/efx.h"
+// #include "Libraries/OpenAL/include/efx-creative.h"
+// #include "Libraries/OpenAL/include/EFX-Util.h"
+// #include "Libraries/OpenAL/include/xram.h"
+// #include "Libraries/OpenAL/include/alut.h"
+// #include "Libraries/OpenAL/include/alc.h"
+// #include "alut.h"
+// alutinit?
 //////////////////////////////
 
 //////////////////////////////

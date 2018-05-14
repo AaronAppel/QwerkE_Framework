@@ -79,6 +79,12 @@
     <Filter Include="Utilities\Tween">
       <UniqueIdentifier>{f7ca28ab-8482-4ce4-be31-c6fe7418d180}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Libraries\assimp">
+      <UniqueIdentifier>{377b4338-8fd9-4f4a-aba9-338c89a84490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\FileIO\FileLoader">
+      <UniqueIdentifier>{c0d4ca4a-fa43-42d3-a3a0-6f2b503fdb95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\CPPList.h">
@@ -2088,6 +2094,241 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.h">
       <Filter>Utilities\FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alut.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\LoadWavFile.h">
+      <Filter>Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alutInternal.h">
+      <Filter>Libraries\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.h">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\cimport.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\color4.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\CreateAnimMesh.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\DefaultIOStream.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\DefaultIOSystem.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\DefaultLogger.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Defines.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\defs.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Exceptional.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Exporter.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\fast_atof.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\GenericProperty.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Hash.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Importer.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\importerdesc.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\IOStream.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\IOStreamBuffer.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\IOSystem.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\irrXMLWrapper.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\light.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\LineSplitter.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\LogAux.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Logger.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\LogStream.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Macros.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\material.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\MathFunctions.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\matrix3x3.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\matrix4x4.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\MemoryIOWrapper.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\mesh.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\metadata.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\NullLogger.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\ParsingUtils.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\pbrmaterial.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\postprocess.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Profiler.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\ProgressHandler.hpp">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\qnan.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\quaternion.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\RemoveComments.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\scene.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\SceneCombiner.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\SGSpatialSort.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\SkeletonMeshBuilder.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\SmoothingGroups.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\SpatialSort.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\StandardShapes.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\StreamReader.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\StreamWriter.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\StringComparison.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\StringUtils.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Subdivision.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\texture.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\TinyFormatter.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\vector2.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\vector3.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\version.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Vertex.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\XMLTools.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Compiler\poppack1.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Compiler\pstdint.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Compiler\pushpack1.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\ai_assert.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\anim.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\BaseImporter.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Bitmap.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\BlobIOSystem.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\ByteSwapper.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\camera.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\cexport.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\cfileio.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\config.h">
+      <Filter>Libraries\assimp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp">
@@ -2183,6 +2424,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.cpp">
       <Filter>Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\LoadWavFile.cpp">
+      <Filter>Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2605,6 +2852,36 @@
     </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\Backup.json">
       <Filter>Resources\LevelData</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\color4.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\config.h.in">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\material.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\matrix3x3.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\matrix4x4.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\quaternion.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\SmoothingGroups.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\vector2.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\vector3.inl">
+      <Filter>Libraries\assimp</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\.editorconfig">
+      <Filter>Libraries\assimp</Filter>
     </None>
   </ItemGroup>
 </Project>

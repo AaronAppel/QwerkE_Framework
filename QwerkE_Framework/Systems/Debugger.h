@@ -4,6 +4,10 @@
 #include "../QwerkE_Defines.h"
 
 #ifdef _QDebug
+
+// Error stack like OpenGL and OpenAL for pushing errors.
+// User can manipulate stack to get errors.
+
 namespace QwerkE
 {
     class Debugger
