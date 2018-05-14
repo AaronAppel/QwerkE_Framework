@@ -43,12 +43,17 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	t_Model->SetRenderOrder(50);
 	t_Model->SetTag(GO_Tag_TestModel);
 	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("mynanosuit"));
+	renderComp->SetModel(m_pResources->GetModel("nanosuit"));
 
 	// renderComp->SetShader(m_pResources->GetShader("Basic3D"));
-	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
+	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
 	renderComp->GetModel()->SetupMeshes(renderComp->GetShader());
-	renderComp->SetMaterial(m_pResources->GetMaterial("UV_Map"));
+	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_arms"));
+	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_legs"));
+	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_body"));
+	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_glass"));
+	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_helmet"));
+	renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_hand"));
 
 	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1));
 	t_Model->AddComponent((Component*)renderComp);

@@ -9,25 +9,32 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 // https://learnopengl.com/Model-Loading/Model
 
-#ifdef AI_CONFIG_H_INC
-/*std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, string typeName)
+struct Texture
 {
-	vector<Texture> textures;
+	std::string name;
+	// std::string directory;
+	GLuint handle;
+};
+
+#ifdef AI_CONFIG_H_INC
+std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName, std::vector<Texture>& textures)
+{
 	for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
 	{
 		aiString str;
 		mat->GetTexture(type, i, &str);
 		Texture texture;
-		texture.id = TextureFromFile(str.C_Str(), directory);
-		texture.type = typeName;
-		texture.path = str;
+		texture.name = str.C_Str();
+		// texture.type = typeName;
+		// texture.directory = str.C_Str();
 		textures.push_back(texture);
 	}
 	return textures;
-}*/
+}
 Mesh* processMesh(aiMesh *mesh, const aiScene *scene)
 {
 	Mesh* rMesh = new Mesh();
@@ -58,19 +65,18 @@ Mesh* processMesh(aiMesh *mesh, const aiScene *scene)
 	// std::vector<Texture> textures; // TODO: handle materials and textures
 	if (mesh->mMaterialIndex >= 0)
 	{
-		// TODO:
-		/*
-			aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-			vector<Texture> diffuseMaps = loadMaterialTextures(material,
-			aiTextureType_DIFFUSE, "texture_diffuse");
-			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-			vector<Texture> specularMaps = loadMaterialTextures(material,
-			aiTextureType_SPECULAR, "texture_specular");
-			textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-		*/
+		std::vector<Texture> textures;
+		aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+		std::vector<Texture> diffuseMaps = loadMaterialTextures(material,
+		aiTextureType_DIFFUSE, "texture_diffuse", textures);
+		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+		std::vector<Texture> specularMaps = loadMaterialTextures(material,
+		aiTextureType_SPECULAR, "texture_specular", textures);
+		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 	}
 
 	rMesh->BufferMeshData(vertices.size(), vertices.data(), indices.size(), indices.data());
+	rMesh->SetName(mesh->mName.C_Str());
 	return rMesh; // Mesh(vertices, indices, textures);
 }
 void processNode(aiNode *node, const aiScene *scene, std::vector<Mesh*>& meshes)

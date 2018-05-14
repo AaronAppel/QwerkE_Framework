@@ -46,7 +46,7 @@ public:
 
 	virtual void RemoveAllObjectsFromScene(); // Possibly a scene reset
 
-											  // Save/Load
+	// Save/Load
 	virtual void SaveScene();
 	virtual void LoadScene();
 
@@ -66,12 +66,19 @@ public:
 	void SetIsEnabled(bool isEnabled) { m_IsEnabled = isEnabled; };
 	void SetCurrentCamera(int camera) { m_CurrentCamera = camera; }; // TODO:: Better way for ImGUI to change camera
 	void SetIsPaused(bool isPaused);
+	void TogglePauseState() { SetIsPaused(!m_IsPaused); }
+	void SetIsFrozen(bool isFrozen);
+	// TODO: void ToggleFrozenState() { SetIsFrozen(!m_IsFrozen); }
 
 protected:
 	virtual void p_Update(double deltatime);
+	virtual void p_Frozen(double deltatime); // only update cameras
 	virtual void p_Paused(double deltatime) {}; // Currently empty
 	UpdateFunc m_UpdateFunc = &Scene::p_Update;
 
+	void CameraInput(double deltatime);
+
+	bool m_IsFrozen = false;
 	bool m_IsPaused = false;
 	bool m_IsEnabled = false;
 	const char* m_LevelFileDir = "Uninitialized";
@@ -89,9 +96,9 @@ protected:
 
 	Linear2LinkedList<GameObject*> m_SceneDrawList; // sorted by render order
 
-													//MenuManager* m_pMenuManager = nullptr;
+	//MenuManager* m_pMenuManager = nullptr;
 
-													// TODO:: Store window size in cameras?
+	// TODO:: Store window size in cameras?
 	vec3 m_ViewWindowPosition = 0; // world pos 3D
 	vec2 m_ViewWindowSize = vec2(g_WindowWidth, g_WindowHeight); // screen size
 };

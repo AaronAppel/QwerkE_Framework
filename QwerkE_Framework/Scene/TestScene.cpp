@@ -66,7 +66,7 @@ void TestScene::Initialize()
 
 		// t_pResourceManager->GetModel("../QwerkE_Framework/QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
 		// t_pResourceManager->GetModel("mynanosuit");
-		t_pFactory->CreateTestModel(this, vec3(0,-5,100));
+		obj = t_pFactory->CreateTestModel(this, vec3(0,-5,100));
 	}
 }
 

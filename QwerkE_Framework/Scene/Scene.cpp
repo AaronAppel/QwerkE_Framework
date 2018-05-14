@@ -77,6 +77,25 @@ void Scene::p_Update(double deltatime)
 	}
 
 	// keyboard
+	CameraInput(deltatime);
+
+	// update all of the Scene objects in the list.
+	for (auto object : m_pGameObjects)
+	{
+		object.second->Update(deltatime);
+	}
+}
+
+void Scene::p_Frozen(double deltatime)
+{
+	CameraInput(deltatime);
+}
+
+void Scene::CameraInput(double deltatime) // camera control
+{
+	InputManager* inputmanager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
+	CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.At(m_CurrentCamera)->GetComponent(Component_Camera));
+
 	if (inputmanager->GetIsKeyDown(eKeys::eKeys_W))
 	{
 		t_activecamera->ProcessKeyboard(eCamera_Movement::FORWARD, (float)deltatime);
@@ -100,12 +119,6 @@ void Scene::p_Update(double deltatime)
 	if (inputmanager->GetIsKeyDown(eKeys::eKeys_E))
 	{
 		t_activecamera->ProcessKeyboard(eCamera_Movement::DOWN, (float)deltatime);
-	}
-
-	// update all of the Scene objects in the list.
-	for (auto object : m_pGameObjects)
-	{
-		object.second->Update(deltatime);
 	}
 }
 
@@ -223,13 +236,18 @@ void Scene::SetIsPaused(bool isPaused)
 {
 	m_IsPaused = isPaused;
 	if (m_IsPaused)
-	{
 		m_UpdateFunc = &Scene::p_Paused;
-	}
 	else
-	{
 		m_UpdateFunc = &Scene::p_Update;
-	}
+}
+
+void Scene::SetIsFrozen(bool isFrozen)
+{
+	m_IsFrozen = isFrozen;
+	if (m_IsFrozen)
+		m_UpdateFunc = &Scene::p_Frozen;
+	else
+		m_UpdateFunc = &Scene::p_Update;
 }
 
 void Scene::SaveScene()

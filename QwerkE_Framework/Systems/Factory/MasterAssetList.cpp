@@ -10,7 +10,7 @@
 #include "../../Libraries/glew/GL/glew.h"
 
 // If engine, need to change directory
-const char* Test(const char* a, const char* b)
+const char* StringAppend(const char* a, const char* b) // TODO: Move to utility files
 {
 	int size = 0;
 	size = strlen(a) + strlen(b);
@@ -33,7 +33,7 @@ void ResourceManager::Init()
 Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 {
 	// TODO: Use MeshDir
-#define MeshDir(a) Test("../QwerkE_Common/Resources/Models/", a) // Folder or shaders
+#define MeshDir(a) StringAppend("../QwerkE_Common/Resources/Models/", a) // Folder or shaders
 
 	MeshFactory t_MeshFactory;
 	Mesh* mesh = nullptr;
@@ -84,7 +84,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 
 ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 {
-#define ShaderDir(a) Test("../QwerkE_Common/Resources/Shaders/", a) // Folder or shaders
+#define ShaderDir(a) StringAppend("../QwerkE_Common/Resources/Shaders/", a) // Folder or shaders
 
 	// Read directory for file?
 	ShaderProgram* shader = new ShaderProgram();
@@ -157,7 +157,7 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 GLuint ResourceManager::InstantiateTexture(const char* textureName)
 {
     // TODO: OpenGLHelpers.cpp is a different directory.
-#define TextureDir(a) Test("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
+#define TextureDir(a) StringAppend("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
 	GLuint textureHandle = -1;
 	if (textureName == "PeriodicHeal") // Asset name
 	{
@@ -195,14 +195,6 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 	{
 		textureHandle = Load2DTexture(TextureDir("Menu_Border1.png"));
 	}
-	else if (textureName == "arm_dif")
-	{
-		textureHandle = Load2DTexture(TextureDir("arm_dif.png"));
-	}
-	else if (textureName == "arm_spec")
-	{
-		textureHandle = Load2DTexture(TextureDir("arm_spec.png"));
-	}
 	else if (textureName == "white_canvas")
 	{
 		textureHandle = Load2DTexture(TextureDir("white_canvas.png"));
@@ -229,7 +221,7 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 {
 	// TODO: Use MaterialDir
-#define MaterialDir(a) Test("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
+#define MaterialDir(a) StringAppend("../QwerkE_Common/Resources/Models/", a) // Folder or shaders
 	MaterialData* material = nullptr;
 	if (matName == "container") // Asset name
 	{
@@ -239,13 +231,69 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		// material = new MaterialData(GetTexture("container"), GetTexture("container"), GetTexture("container_specular"));
 	}
-	else if (matName == "nanosuit_legs")
+	else if (matName == "nanosuit_arms") // TODO: Re-use textures
 	{
-		// material = new MaterialData(GetTexture("container"), GetTexture("container"), GetTexture("container_specular"));
+		GLuint dif, spec, norm;
+
+		dif = Load2DTexture(MaterialDir("nanosuit/arm_dif.png"));
+		spec = Load2DTexture(MaterialDir("nanosuit/arm_showroom_spec.png"));
+		// norm = Load2DTexture(MaterialDir("nanosuit/arm_showroom_ddn.png")); // currently unused
+
+		material = new MaterialData(dif, dif, spec);
+	}
+	else if (matName == "nanosuit_legs") // TODO: Re-use textures
+	{
+		GLuint dif, spec, norm;
+
+		dif = Load2DTexture(MaterialDir("nanosuit/leg_dif.png"));
+		spec = Load2DTexture(MaterialDir("nanosuit/leg_showroom_spec.png"));
+		// norm = Load2DTexture(MaterialDir("nanosuit/leg_showroom_ddn.png")); // currently unused
+
+		material = new MaterialData(dif, dif, spec);
+	}
+	else if (matName == "nanosuit_body") // TODO: Re-use textures
+	{
+		GLuint dif, spec, norm;
+
+		dif = Load2DTexture(MaterialDir("nanosuit/body_dif.png"));
+		spec = Load2DTexture(MaterialDir("nanosuit/body_showroom_spec.png"));
+		// norm = Load2DTexture(MaterialDir("nanosuit/body_showroom_ddn.png")); // currently unused
+
+		material = new MaterialData(dif, dif, spec);
+	}
+	else if (matName == "nanosuit_glass") // TODO: Re-use textures
+	{
+		GLuint dif, spec, norm;
+
+		dif = Load2DTexture(MaterialDir("nanosuit/glass_dif.png"));
+		// spec = Load2DTexture(MaterialDir("nanosuit/?????.png"));
+		// norm = Load2DTexture(MaterialDir("nanosuit/glass_ddn.png")); // currently unused
+
+		material = new MaterialData(dif, dif, dif);
+	}
+	else if (matName == "nanosuit_helmet") // TODO: Re-use textures
+	{
+		GLuint dif, spec, norm;
+
+		dif = Load2DTexture(MaterialDir("nanosuit/helmet_diff.png"));
+		spec = Load2DTexture(MaterialDir("nanosuit/helmet_showroom_spec.png"));
+		// norm = Load2DTexture(MaterialDir("nanosuit/helmet_showroom_ddn.png")); // currently unused
+
+		material = new MaterialData(dif, dif, spec);
+	}
+	else if (matName == "nanosuit_hand") // TODO: Re-use textures
+	{
+		GLuint dif, spec, norm;
+
+		dif = Load2DTexture(MaterialDir("nanosuit/hand_dif.png"));
+		spec = Load2DTexture(MaterialDir("nanosuit/hand_showroom_spec.png"));
+		// norm = Load2DTexture(MaterialDir("nanosuit/hand_showroom_ddn.png")); // currently unused
+
+		material = new MaterialData(dif, dif, spec);
 	}
 	else if (matName == "UV_Map")
 	{
-		material = new MaterialData(GetTexture("UV_Map"), GetTexture("UV_Map"), GetTexture("white_canvas"));
+		material = new MaterialData(GetTexture("UV_Map"), GetTexture("UV_Map"), GetTexture("UV_Map"));
 	}
     else if (matName == "null")
     {
@@ -265,7 +313,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 Model* ResourceManager::InstantiateModel(const char* modelName)
 {
 	// TODO: Use ModelDir
-#define ModelDir(a) Test("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
+#define ModelDir(a) StringAppend("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
 
 	MeshFactory meshFact;
 	Model* model;
@@ -289,10 +337,10 @@ Model* ResourceManager::InstantiateModel(const char* modelName)
 	{
 		model = meshFact.ImportOBJModel("Resources/Models/Teapot.obj");
 	}
-	else if (modelName == "mynanosuit")
+	else if (modelName == "nanosuit")
 	{
 		// model = meshFact.ImportOBJModel("Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
-		model = QwerkE::FileLoader::LoadModelFile("../QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
+		model = QwerkE::FileLoader::LoadModelFile("../QwerkE_Common/Resources/Models/nanosuit/nanosuit.obj");
 	}
 	else
 	{

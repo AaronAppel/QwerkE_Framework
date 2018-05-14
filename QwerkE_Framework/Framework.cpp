@@ -256,7 +256,7 @@ namespace QwerkE
 		void Framework::Input()
 		{
 			glfwPollEvents(); // TODO: Better GLFW interface?
-							  // TODO: Tell input manager it is a new frame and it should update key states
+			// TODO: Tell input manager it is a new frame and it should update key states
 		}
 
 		void Framework::Update(double deltatime)
@@ -265,6 +265,16 @@ namespace QwerkE
 
 			//if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE)) // DEBUG: A simple way to close the window while testing
 			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
+			if (inputManager->GetIsKeyDown(eKeys::eKeys_P)) // pause entire scene
+			{
+				m_SceneManager->GetCurrentScene()->TogglePauseState();
+			}
+			if (inputManager->GetIsKeyDown(eKeys::eKeys_F)) // pause actor updates
+			{
+				static bool isFrozen = false;
+				isFrozen = !isFrozen; // toggle bool
+				m_SceneManager->GetCurrentScene()->SetIsFrozen(isFrozen);
+			}
 			if (inputManager->GetIsKeyDown(eKeys::eKeys_Escape))
 			{
 				WindowManager* windowManager = (WindowManager*)QwerkE::ServiceLocator::GetService(eEngineServices::WindowManager);
