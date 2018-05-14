@@ -1,14 +1,14 @@
 #ifndef _Libraries_Load_H_
 #define _Libraries_Load_H_
 
-#define Is_Framework false // Engine vs Framework usage
+#define Is_Framework true // Engine vs Framework usage
 
 // Note: 64 bit not building currently so all .libs are 32bit
 
 // load libraries
 #if Is_Framework
 // assimp
-#pragma comment( lib, "../QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" ) // load
+#pragma comment( lib, "../QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2
 #pragma comment( lib, "../QwerkE_Common/Libraries/freetype2/x86/freetype.lib" ) // load
 // TODO: Check for architecture and debug/release
@@ -22,9 +22,9 @@
 // RakNet
 #pragma comment( lib, "../QwerkE_Common/Libraries/RakNet/RakNet_VS2008_DLL_Debug_Win32.lib" )
 // Bullet3
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletCollision.lib" )
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletDynamics.lib" )
-#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/LinearMath.lib" )
+#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/BulletCollision.lib" )
+#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/BulletDynamics.lib" )
+#pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/LinearMath.lib" )
 #else
 // assimp
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )

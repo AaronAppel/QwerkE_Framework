@@ -14,7 +14,6 @@ int main()
 	}
 
 	SceneManager* sceneManager = (SceneManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Scene_Manager);
-	sceneManager->Initialize(); // Setup test scene
 	sceneManager->GetCurrentScene()->SetIsEnabled(true);
 
 	QwerkE::Framework::Run();

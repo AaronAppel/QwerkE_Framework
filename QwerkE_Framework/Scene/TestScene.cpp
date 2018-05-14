@@ -47,10 +47,10 @@ void TestScene::Initialize()
 	{	// Create scene objects
 		// cubes
 		int cubes = 2;
-		t_pFactory->CreateCube(this, vec3(2, 2, 30));
-		t_pFactory->CreateCube(this, vec3(-2, 1, 40));
+		// t_pFactory->CreateCube(this, vec3(2, 2, 30));
+		// t_pFactory->CreateCube(this, vec3(-2, 1, 40));
 
-		obj = t_pFactory->CreateCube(this, vec3(0,0, 20));
+		obj = t_pFactory->CreateCube(this, vec3(0,0, 150));
 		obj->SetRotation(vec3(45,45,45));
 		// plane
 		// t_pFactory->CreatePlane(this, vec3(0, -1, 0));
@@ -66,7 +66,7 @@ void TestScene::Initialize()
 
 		// t_pResourceManager->GetModel("../QwerkE_Framework/QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
 		// t_pResourceManager->GetModel("mynanosuit");
-		// t_pFactory->CreateTestModel(this, vec3(0,0,0));
+		t_pFactory->CreateTestModel(this, vec3(0,-5,100));
 	}
 }
 

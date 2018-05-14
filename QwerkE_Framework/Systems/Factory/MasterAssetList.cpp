@@ -292,7 +292,7 @@ Model* ResourceManager::InstantiateModel(const char* modelName)
 	else if (modelName == "mynanosuit")
 	{
 		// model = meshFact.ImportOBJModel("Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
-		model = QwerkE::FileLoader::LoadModelFile("../QwerkE_Framework/QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
+		model = QwerkE::FileLoader::LoadModelFile("../QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
 	}
 	else
 	{
@@ -301,8 +301,12 @@ Model* ResourceManager::InstantiateModel(const char* modelName)
 		// set mesh name to NullMesh
 		return nullptr;
 	}
-	// TODO: nullptr checks
-	m_HotModels[modelName] = model;
-	model->SetName(modelName);
+
+	// nullptr check
+	if (model != nullptr)
+	{
+		m_HotModels[modelName] = model;
+		model->SetName(modelName);
+	}
 	return model;
 }

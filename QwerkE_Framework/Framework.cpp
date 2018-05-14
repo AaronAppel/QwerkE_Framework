@@ -274,7 +274,8 @@ namespace QwerkE
 
 		void Framework::Draw()
 		{
-			//m_SceneManager->Draw();
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // new frame
+			m_SceneManager->Draw();
 
 			ImGui::Render();
 			ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());

@@ -33,7 +33,7 @@ void LoadFonts()
 
 	// Load font as face
 	FT_Face face;
-	if (FT_New_Face(ft, "../QwerkE_Framework/QwerkE_Common/Resources/Fonts/finurlig-demo.regular.otf", 0, &face))
+	if (FT_New_Face(ft, "../QwerkE_Common/Resources/Fonts/finurlig-demo.regular.otf", 0, &face))
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
 	// Set size to load glyphs as

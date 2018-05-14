@@ -78,7 +78,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/OpenAL/include;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/;$(SolutionDir)QwerkE_Common/Libraries/OpenAL/include;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
@@ -105,7 +105,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
@@ -123,7 +123,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
