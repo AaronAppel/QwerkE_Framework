@@ -6,6 +6,7 @@
 
 class Mesh;
 class ShaderProgram;
+struct MaterialData;
 
 class Model
 {
@@ -25,9 +26,11 @@ public:
     // Setters
     void SetName(std::string name) { m_Name = name; }
 
+	std::vector<Mesh*> m_Meshes; // TODO: private
+	std::vector<MaterialData*> m_Materials;
+
 private:
     std::string m_Name = "Uninitialized";
-	std::vector<Mesh*> m_Meshes;
 };
 
 #endif //!_Model_H_

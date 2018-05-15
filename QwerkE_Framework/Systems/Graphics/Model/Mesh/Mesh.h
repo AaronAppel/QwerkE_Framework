@@ -30,6 +30,7 @@ public:
 	// Setters
 	void SetName(std::string name) { m_Name = name; }
 	void SetPrimitiveType(GLenum type) { m_PrimitiveType = type; };
+	void ToggleWireframe(); // TODO: Improve
 
 	/* Cleanup */
 	void DestroyMesh(); // Used for assigning new data to an already initialize mesh

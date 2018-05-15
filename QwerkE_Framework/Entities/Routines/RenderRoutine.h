@@ -11,6 +11,7 @@ class RenderComponent;
 class CameraComponent;
 
 class RenderRoutine;
+typedef void (RenderRoutine::*DrawFunc)(GameObject* a_Camera); // draw mesh or model
 typedef void (RenderRoutine::*SetupUniformFunction)(CameraComponent* a_Camera); // Setup shader values function
 
 class RenderRoutine : Routine
@@ -21,9 +22,9 @@ public:
 
 	void Initialize();
 
-	void Draw(GameObject* a_Camera);
+	void Draw(GameObject* a_Camera) { (this->*m_DrawFunc)(a_Camera); };
 
-	void ResetUniformList() { SetDrawFunction(); };
+	void ResetUniformList() { SetDrawFunctions(); };
 
 private:
 	/* Private variables */
@@ -33,7 +34,10 @@ private:
 	bool m_3D = true;
 
 	////* Private functions *////
-	void SetDrawFunction();
+	DrawFunc m_DrawFunc = &RenderRoutine::DrawMesh;
+	void DrawMesh(GameObject* a_Camera);
+	void DrawModel(GameObject* a_Camera);
+	void SetDrawFunctions();
 
 	/* Vertex uniform value assignment */
 	void Setup3DTransform(CameraComponent* a_Camera);

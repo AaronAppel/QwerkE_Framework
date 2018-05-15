@@ -50,7 +50,7 @@ MenuWindow* Factory::CreateBasicGridMenuWindow(vec2 size, int numItems)
 	// menuWindow->SetShader(m_pResources->GetShader("2DMenu"));
 	menuWindow->SetMesh(m_pResources->GetMesh("Box"));
 	menuWindow->GetMesh()->SetupShaderAttributes(menuWindow->GetShader());
-	menuWindow->SetTexture(m_pResources->GetTexture("Menu_Border1"));
+	menuWindow->SetTexture(m_pResources->GetTexture("Menu_Border1.png"));
 
 	menuWindow->SetSpacing(vec2(8, 15));
 	menuWindow->SetResolution(vec2(g_WindowWidth, g_WindowHeight)); // TODO: Handle resolution
@@ -77,7 +77,7 @@ MenuWindow* Factory::CreateImageGridMenuWindow(vec2 size, int numItems)
 	// menuWindow->SetShader(m_pResources->GetShader("2DMenu"));
 	menuWindow->SetMesh(m_pResources->GetMesh("Box"));
 	menuWindow->GetMesh()->SetupShaderAttributes(menuWindow->GetShader());
-	menuWindow->SetTexture(m_pResources->GetTexture("Menu_Border1"));
+	menuWindow->SetTexture(m_pResources->GetTexture("Menu_Border1.png"));
 
 	menuWindow->SetSpacing(vec2(8, 15));
 	menuWindow->SetResolution(vec2(g_WindowWidth, g_WindowHeight)); // TODO: Handle resolution
@@ -125,7 +125,7 @@ MenuItem* Factory::CreateImageMenuItem()
 	// ((ImageItem*)menuItem)->SetShader(m_pResources->GetShader("2DMenuText"));
 
 	menuItem->SetShader(m_pResources->GetShader("2DMenuText"));
-	menuItem->SetTextureID(m_pResources->GetTexture("container"));
+	menuItem->SetTextureID(m_pResources->GetTexture("container.png"));
 	menuItem->GetMesh()->SetupShaderAttributes(menuItem->GetShader());
 
 	menuItem->SetPosition(vec2(0.5f, 0.5f));

@@ -5,6 +5,11 @@
 // Easy to use utility functions for use with std:string
 // TODO: GetStringExtension()
 
+// TODO: String append function that takes a variable number
+// of char*s andappends them in order
+const char* StringAppend(const char* a, const char* b);
+const char* StringAppend(const char* a, const char* b, const char* c);
+
 const char* DeepCopyString(const char* string);
 
 const char* CombineStrings(const char* a, const char* b);

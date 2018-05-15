@@ -1,12 +1,10 @@
 #ifndef _Libraries_Load_H_
 #define _Libraries_Load_H_
 
-#define Is_Framework true // Engine vs Framework usage
-
 // Note: 64 bit not building currently so all .libs are 32bit
 
 // load libraries
-#if Is_Framework
+#ifdef QwerkE_Framework
 // assimp
 #pragma comment( lib, "../QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2

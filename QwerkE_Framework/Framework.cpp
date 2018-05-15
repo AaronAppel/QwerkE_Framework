@@ -162,10 +162,12 @@ namespace QwerkE
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
 			// turn on depth buffer testing
 			glEnable(GL_DEPTH_TEST);
+			glPointSize(10);
+			glLineWidth(10);
 
 			// depth cull for efficiency
-			// Testing: glEnable(GL_CULL_FACE);
-			// Testing: glCullFace(GL_BACK);
+			glEnable(GL_CULL_FACE);
+			glCullFace(GL_BACK);
 			if(Wind_CCW) glFrontFace(GL_CCW);
 			else glFrontFace(GL_CW);
 

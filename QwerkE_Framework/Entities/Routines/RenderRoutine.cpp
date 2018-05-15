@@ -8,6 +8,7 @@
 #include "../../Systems/Graphics/MaterialData.h"
 #include "../../Systems/Graphics/OpenGLHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Entities/Components/CameraComponent.h"
 
 #include <assert.h>
 
@@ -15,29 +16,25 @@ void RenderRoutine::Initialize()
 {
 	m_pParent->AddDrawRoutine(this);
 	m_pRender = (RenderComponent*)m_pParent->GetComponent(Component_Render);
-	SetDrawFunction();
+	SetDrawFunctions();
 	m_Type = eRoutineTypes::Routine_Render;
 }
-
-void RenderRoutine::Draw(GameObject* cameraObject)
+//// Private functions
+void RenderRoutine::DrawMesh(GameObject* a_Camera)
 {
-	this; // Debugging
 	assert(m_pRender != nullptr); // safety check
 
 	/* Variables */
-	CameraComponent* t_pCamera = (CameraComponent*)cameraObject->GetComponent(Component_Camera);
+	CameraComponent* t_pCamera = (CameraComponent*)a_Camera->GetComponent(Component_Camera);
 	Mesh* t_pMesh = m_pRender->GetMesh();
 	ShaderProgram* t_pShader = m_pRender->GetShader();
 
 	/* Safety check */
 	if (t_pShader == nullptr) { return; } // nullptr*?
-	// if (t_pMesh == nullptr) { return; } // nullptr*?
+	if (t_pMesh == nullptr) { return; } // nullptr*?
 
 	/* Use Program */
 	t_pShader->Use();
-
-	// Lighting
-	// if (m_LightingEnabled) { SetupLightingUniforms(); };
 
 	for (unsigned int i = 0; i < m_UniformSetupList.size(); i++)
 	{
@@ -45,18 +42,69 @@ void RenderRoutine::Draw(GameObject* cameraObject)
 	}
 
 	/* Draw */
-    Model* t_Model = m_pRender->GetModel();
-    if (t_Model)
-    {
-        t_Model->Draw();
-    }
-    else if(m_pRender->GetMesh())
-    {
-        t_pMesh->Draw();
-    }
+	t_pMesh->Draw();
 }
-//// Private functions
-void RenderRoutine::SetDrawFunction() // Assign function pointers and initialize values
+
+void RenderRoutine::DrawModel(GameObject* a_Camera)
+{
+	assert(m_pRender != nullptr); // safety check
+
+	/* Variables */
+	CameraComponent* t_pCamera = (CameraComponent*)a_Camera->GetComponent(Component_Camera);
+	Mesh* t_pMesh = m_pRender->GetMesh();
+	ShaderProgram* t_pShader = m_pRender->GetShader();
+
+	/* Use Program */
+	t_pShader->Use();
+
+	for (unsigned int i = 0; i < m_UniformSetupList.size(); i++)
+	{
+		(this->*m_UniformSetupList.at(i))(t_pCamera); // Call setup function
+	}
+
+	Model* t_Model = m_pRender->GetModel();
+
+	for (size_t i = 0; i < t_Model->m_Meshes.size(); i++)
+	{
+		// setup uniforms
+		GLuint ambHandle = t_Model->m_Materials[i]->ambientHandle;
+		GLuint diffHandle = t_Model->m_Materials[i]->diffuseHandle;
+		GLuint specHandle = t_Model->m_Materials[i]->specularHandle;
+		float shine = t_Model->m_Materials[i]->shine;
+
+		// activate textures/material
+		GLuint textures[] = { ambHandle , diffHandle , specHandle };
+		int size = 3;
+
+		t_pShader->SetUniformFloat1("Shine", shine);
+		SetupTextureUniforms(textures, size);
+
+		// draw mesh
+		t_Model->m_Meshes[i]->Draw();
+	}
+
+	//	// setup uniforms
+	//if (t_Model->GetName() == "nanosuit/nanosuit.obj")
+	//{
+	//	int index = 6;
+	//	GLuint ambHandle = t_Model->m_Materials[index]->ambientHandle;
+	//	GLuint diffHandle = t_Model->m_Materials[index]->diffuseHandle;
+	//	GLuint specHandle = t_Model->m_Materials[index]->specularHandle;
+	//	float shine = t_Model->m_Materials[index]->shine;
+
+	//	// activate textures/material
+	//	GLuint textures[] = { ambHandle , diffHandle , specHandle };
+	//	int size = 3;
+
+	//	t_pShader->SetUniformFloat1("Shine", shine);
+	//	SetupTextureUniforms(textures, size);
+
+	//	// draw mesh
+	//	t_Model->m_Meshes[index]->Draw();
+	//}
+}
+
+void RenderRoutine::SetDrawFunctions() // Assign function pointers and initialize values
 {
 	Mesh* t_pMesh = m_pRender->GetMesh();
 	ShaderProgram* t_pShader = m_pRender->GetShader();
@@ -72,6 +120,7 @@ void RenderRoutine::SetDrawFunction() // Assign function pointers and initialize
         if (t_Model)
         {
             t_Model->SetupMeshes(t_pShader);
+			m_DrawFunc = &RenderRoutine::DrawModel;
         }
         else
         {
@@ -82,6 +131,7 @@ void RenderRoutine::SetDrawFunction() // Assign function pointers and initialize
     {
         /* Setup Shader() and Mesh() */
         t_pMesh->SetupShaderAttributes(t_pShader);
+		m_DrawFunc = &RenderRoutine::DrawMesh;
     }
 
 	// TODO:: Improve conditions for assignments.

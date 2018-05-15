@@ -6,6 +6,8 @@
 #include "../../../QwerkE_Framework/Systems/Graphics/Model/Model.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/VertexData.h"
+#include "../../../QwerkE_Framework/Systems/ServiceLocator.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/MaterialData.h"
 
 #include <iostream>
 #include <vector>
@@ -29,6 +31,7 @@ std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, s
 		mat->GetTexture(type, i, &str);
 		Texture texture;
 		texture.name = str.C_Str();
+		// texture.handle = ;
 		// texture.type = typeName;
 		// texture.directory = str.C_Str();
 		textures.push_back(texture);
@@ -134,6 +137,40 @@ namespace QwerkE
 
 			model->Init(meshes);
 			model->SetName(scene->mRootNode->mName.C_Str());
+
+			// TEMP: Set mat data
+			// MaterialData* mat = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_legs.mat");
+			for (size_t i = 0; i < model->m_Meshes.size(); i++)
+			{
+				switch (i)
+				{
+				case 0:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_glass.mat"));
+					break;
+				case 1:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_legs.mat"));
+					break;
+				case 2:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_hand.mat"));
+					break;
+				case 3:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("UV_Map.mat"));
+					break;
+				case 4:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_arms.mat"));
+					break;
+				case 5:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_helmet.mat"));
+					break;
+				case 6:
+					model->m_Materials.push_back(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("nanosuit_body.mat"));
+					break;
+				default:
+					break;
+				}
+				// model->m_Materials.push_back(mat);
+			}
+
 			return model;
 #else
 // separate model loading library

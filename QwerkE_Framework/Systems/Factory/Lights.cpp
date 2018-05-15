@@ -21,7 +21,7 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 
 	// Rendering
 	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("LightBulb"));
+	renderComp->SetModel(m_pResources->GetModel("Light_Bulb.obj"));
 
 	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
 

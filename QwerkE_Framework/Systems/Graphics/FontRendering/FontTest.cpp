@@ -7,6 +7,7 @@
 #include "../../../QwerkE_Common/Libraries/glm/glm/common.hpp"
 #include "../../../QwerkE_Common/Libraries/glm/glm/gtc/type_ptr.hpp"
 #include "../../../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
+#include "../../ServiceLocator.h"
 
 #include <iostream>
 #include <map>
@@ -25,16 +26,8 @@ GLuint VAO, VBO;
 
 void LoadFonts()
 {
-	// FreeType
-	FT_Library ft;
-	// All functions return a value different than 0 whenever an error occurred
-	if (FT_Init_FreeType(&ft))
-		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
-
 	// Load font as face
-	FT_Face face;
-	if (FT_New_Face(ft, "../QwerkE_Common/Resources/Fonts/finurlig-demo.regular.otf", 0, &face))
-		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
+	FT_Face face = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetFont("finurlig-demo.regular.otf");
 
 	// Set size to load glyphs as
 	FT_Set_Pixel_Sizes(face, 0, 48);
@@ -83,7 +76,7 @@ void LoadFonts()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	// Destroy FreeType once we're finished
 	FT_Done_Face(face);
-	FT_Done_FreeType(ft);
+	//FT_Done_FreeType(ft);
 
 
 	// Configure VAO/VBO for texture quads
