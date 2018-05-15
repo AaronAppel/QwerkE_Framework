@@ -12,6 +12,22 @@ class Component;
 class Routine;
 class GameObject;
 
+// TODO: setup a Unity esq transform for a GameObject
+struct Transform
+{
+	MyMatrix m_Mat;
+
+	vec3 m_Position = 0; // calculate from matrix?
+	vec3 m_Rotation = 0;
+	vec3 m_Scale = 1.0f;
+
+	vec3 m_Forward() {} // calculate from matrix?
+	vec3 m_Right() {}
+	vec3 m_Up() {}
+
+	void Rotate(vec3 rotation) {}
+};
+
 class GameObject
 {
 public:
@@ -58,7 +74,7 @@ public:
 	void SetTag(eGameObjectTags tag) { m_Tag = tag; }
 
 private:
-	Scene* m_pScene = nullptr;
+	Scene * m_pScene = nullptr;
 	std::string m_Name = "Uninitialized";
 	eGameObjectTags m_Tag = GO_Tag_Null;
 
@@ -76,7 +92,7 @@ private:
 
 	// Direction vectors
 	float m_FacingAngle = 0; // Y axis
-	vec3 m_Forward = vec3(0,0,1);
+	vec3 m_Forward = vec3(0, 0, 1);
 	vec3 m_Up = vec3(0, 1, 0);
 	vec3 m_Right = vec3(1, 0, 0);
 };

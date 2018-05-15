@@ -82,7 +82,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
-      <PreprocessorDefinitions>QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;Win32Bit;QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,11 +106,11 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QwerkE_Common/Libraries/OpenAL/include/;$(SolutionDir)QwerkE_Common/Libraries/;$(SolutionDir)TestGame1/;$(SolutionDir)QwerkE_Common/Libraries/Bullet3/;$(SolutionDir)QwerkE_Common/Libraries/freetype2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
-      <PreprocessorDefinitions>QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RELEASE;Win32Bit;QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

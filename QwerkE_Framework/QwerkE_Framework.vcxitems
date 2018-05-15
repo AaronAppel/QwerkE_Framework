@@ -21,6 +21,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\FirstPersonCameraComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\FreeCameraComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\StaticCameraComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\ThirdPersonCameraComponent.h" />
@@ -87,6 +88,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\FirstPersonCameraComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\FreeCameraComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\StaticCameraComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\ThirdPersonCameraComponent.cpp" />

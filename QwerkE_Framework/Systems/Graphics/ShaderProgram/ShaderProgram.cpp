@@ -224,7 +224,7 @@ GLuint ShaderProgram::CompileShader(GLenum shaderType, const char* shaderString)
 		GLchar infoLog[512];
 		glGetShaderInfoLog(shaderHandle, 512, NULL, infoLog);
 
-		const char* shaderTypeString;
+		const char* shaderTypeString = nullptr;
 		if (shaderType == GL_VERTEX_SHADER)
 			shaderTypeString = "GL_VERTEX_SHADER";
 		else if (shaderType == GL_FRAGMENT_SHADER)

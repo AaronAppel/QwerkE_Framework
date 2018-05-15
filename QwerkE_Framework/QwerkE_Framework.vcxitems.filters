@@ -236,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Framework.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp">
+      <Filter>Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -417,5 +420,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
