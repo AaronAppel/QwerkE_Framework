@@ -9,19 +9,13 @@
 #include "../../Math_Includes.h"
 #include "../../Libraries/glew/GL/glew.h"
 
-// If engine, need to change directory
-const char* StringAppend(const char* a, const char* b) // TODO: Move to utility files
-{
-	int size = 0;
-	size = strlen(a) + strlen(b);
+#ifdef QwerkE_Framework
+#define AssetDir "../QwerkE_Common/Resources/"
+#else
+#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // TEMP: Engine is 1 directory up
+#endif // QwerkE_Engine
 
-	char* newString = new char[size]; // RAM:
-	strcpy_s(newString, strlen(a) + 1, a);
-	strcat_s(newString, size + 1, b);
-
-	return newString;
-}
-
+// TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 // TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
 // Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
 void ResourceManager::Init()
@@ -32,8 +26,7 @@ void ResourceManager::Init()
 // TODO: Handle errors and deleting assets before returning nullptr
 Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 {
-	// TODO: Use MeshDir
-#define MeshDir(a) StringAppend("../QwerkE_Common/Resources/Models/", a) // Folder or shaders
+#define MeshPath(a) StringAppend(AssetDir, "Models/", a) // Folder or shaders
 
 	MeshFactory t_MeshFactory;
 	Mesh* mesh = nullptr;
@@ -70,49 +63,49 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 	}
     else if (meshName == "Teapot")
     {
-        mesh = t_MeshFactory.ImportOBJMesh(MeshDir("Teapot.obj"), vec3(0.5f,0.5f,0.5f), vec2(1,1), false);
+        mesh = t_MeshFactory.ImportOBJMesh(MeshPath("Teapot.obj"), vec3(0.5f,0.5f,0.5f), vec2(1,1), false);
     }
 	else
 	{
         ConsolePrint("\nInstantiateMesh(): Mesh not found!\n");
 		return nullptr;
 	}
-	m_HotMeshes[meshName] = mesh; // Add to active list
+	m_Meshes[meshName] = mesh; // Add to active list
 	mesh->SetName(meshName);
 	return mesh;
 }
 
 ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 {
-#define ShaderDir(a) StringAppend("../QwerkE_Common/Resources/Shaders/", a) // Folder or shaders
+#define ShaderPath(a) StringAppend(AssetDir, "Shaders/", a) // Folder or shaders
 
 	// Read directory for file?
 	ShaderProgram* shader = new ShaderProgram();
 	// 2D
 	if (shaderName == "Basic2DTex") // Asset name
 	{
-		shader->Init(ShaderDir("Basic2DTex.vert"), ShaderDir("Basic2DTex.frag"), NULL); // Asset directories
+		shader->Init(ShaderPath("Basic2DTex.vert"), ShaderPath("Basic2DTex.frag"), NULL); // Asset directories
 	}
 	else if (shaderName == "2DMenu")
 	{
-		shader->Init(ShaderDir("2DMenu.vert"), ShaderDir("2DMenu.frag"), NULL);
+		shader->Init(ShaderPath("2DMenu.vert"), ShaderPath("2DMenu.frag"), NULL);
 	}
 	else if (shaderName == "Basic2D")
 	{
 		// shader->Init(eShader_Basic2D);
-		shader->Init(ShaderDir("Basic2D.vert"), ShaderDir("Basic2D.frag"), NULL);
+		shader->Init(ShaderPath("Basic2D.vert"), ShaderPath("Basic2D.frag"), NULL);
 	}
 	else if (shaderName == "2DMenuText")
 	{
-		shader->Init(ShaderDir("2DMenuText.vert"), ShaderDir("2DMenuText.frag"), NULL);
+		shader->Init(ShaderPath("2DMenuText.vert"), ShaderPath("2DMenuText.frag"), NULL);
 	}
 	else if (shaderName == "Basic2DTransform")
 	{
-		shader->Init(ShaderDir("Basic2DTransform.vert"), ShaderDir("Basic2DTransform.frag"), NULL);
+		shader->Init(ShaderPath("Basic2DTransform.vert"), ShaderPath("Basic2DTransform.frag"), NULL);
 	}
 	else if (shaderName == "Sprite2D")
 	{
-		shader->Init(ShaderDir("Sprite2D.vert"), ShaderDir("Sprite2D.frag"), NULL);
+		shader->Init(ShaderPath("Sprite2D.vert"), ShaderPath("Sprite2D.frag"), NULL);
 	}
 	// 3D
 	else if (shaderName == "Basic3D")
@@ -122,15 +115,15 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 	}
 	else if (shaderName == "LitMaterial")
 	{
-		shader->Init(ShaderDir("LitMaterial.vert"), ShaderDir("LitMaterial.frag"), NULL);
+		shader->Init(ShaderPath("LitMaterial.vert"), ShaderPath("LitMaterial.frag"), NULL);
 	}
 	else if (shaderName == "vec3Material")
 	{
-		shader->Init(ShaderDir("vec3Material.vert"), ShaderDir("vec3Material.frag"), NULL);
+		shader->Init(ShaderPath("vec3Material.vert"), ShaderPath("vec3Material.frag"), NULL);
 	}
 	else if (shaderName == "BasicLighting")
 	{
-		shader->Init(ShaderDir("vec3Material.vert"), ShaderDir("vec3Material.frag"), NULL);
+		shader->Init(ShaderPath("vec3Material.vert"), ShaderPath("vec3Material.frag"), NULL);
 	}
 	else if (shaderName == "Box2D_Debug")
 	{
@@ -138,11 +131,11 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 	}
 	else if (shaderName == "text")
 	{
-		shader->Init(ShaderDir("text.vert"), ShaderDir("text.frag"), NULL);
+		shader->Init(ShaderPath("text.vert"), ShaderPath("text.frag"), NULL);
 	}
     else if (shaderName == "TestShader")
     {
-        shader->Init(ShaderDir("TestShader.vert"), ShaderDir("TestShader.frag"), NULL);
+        shader->Init(ShaderPath("TestShader.vert"), ShaderPath("TestShader.frag"), NULL);
     }
 	else
 	{
@@ -150,211 +143,159 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 		return nullptr;
 	}
 
-	m_HotShaders[shaderName] = shader;
+	m_Shaders[shaderName] = shader;
 	return shader;
 }
-// TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
+
 GLuint ResourceManager::InstantiateTexture(const char* textureName)
 {
-    // TODO: OpenGLHelpers.cpp is a different directory.
-#define TextureDir(a) StringAppend("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
+#define TexturePath(a) StringAppend(AssetDir, "Textures/", a)
+
 	GLuint textureHandle = -1;
-	if (textureName == "PeriodicHeal") // Asset name
-	{
-		textureHandle = Load2DTexture(TextureDir("PeriodicHeal.png")); // Asset directory
-	}
-	else if (textureName == "FlashHeal")
-	{
-		textureHandle = Load2DTexture(TextureDir("FlashHeal.png"), true);
-	}
-	else if (textureName == "ExampleBackground")
-	{
-		textureHandle = Load2DTexture(TextureDir("ExampleBackground.png"));
-	}
-	else if (textureName == "container")
-	{
-		textureHandle = Load2DTexture(TextureDir("container.png"));
-	}
-	else if (textureName == "container_specular")
-	{
-		textureHandle = Load2DTexture(TextureDir("container_specular.png"));
-	}
-	else if (textureName == "Blue_Engine_UI1")
-	{
-		textureHandle = Load2DTexture(TextureDir("Blue_Engine_UI1.png"));
-	}
-	else if (textureName == "Blue_Engine_UI2")
-	{
-		textureHandle = Load2DTexture(TextureDir("Blue_Engine_UI2.png"));
-	}
-	else if (textureName == "UV_Map")
-	{
-		textureHandle = Load2DTexture(TextureDir("UV_Map.png"));
-	}
-	else if (textureName == "Menu_Border1")
-	{
-		textureHandle = Load2DTexture(TextureDir("Menu_Border1.png"));
-	}
-	else if (textureName == "white_canvas")
-	{
-		textureHandle = Load2DTexture(TextureDir("white_canvas.png"));
-	}
-	else if (textureName == "null")
-	{
-		textureHandle = Load2DTexture(TextureDir("null_texture.png"));
-	}
-	// Cube map
-	else if (false)
-	{
-		// TODO:
-	}
+	textureHandle = Load2DTexture(TexturePath(textureName));
+
+	if (textureHandle != 0)
+		m_Textures[textureName] = textureHandle;
 	else
 	{
-		textureHandle = GetTexture("null"); // failure
-        ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
+		ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
+		textureHandle = GetTexture("null_texture.png"); // fail nicely
 	}
 
-	m_HotTextures[textureName] = textureHandle;
 	return textureHandle;
 }
 
 MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 {
 	// TODO: Use MaterialDir
-#define MaterialDir(a) StringAppend("../QwerkE_Common/Resources/Models/", a) // Folder or shaders
+#define MaterialPath(a) StringAppend(AssetDir, "Models/", a) // Folder or shaders
 	MaterialData* material = nullptr;
-	if (matName == "container") // Asset name
+	if (matName == "container.mat") // Asset name
 	{
-		material = new MaterialData(GetTexture("container"), GetTexture("container"), GetTexture("container_specular")); // Asset names
+		material = new MaterialData(GetTexture("container.png"), GetTexture("container.png"), GetTexture("container_specular.png")); // Asset names
 	}
-	else if (matName == "nanosuit_visor")
-	{
-		// material = new MaterialData(GetTexture("container"), GetTexture("container"), GetTexture("container_specular"));
-	}
-	else if (matName == "nanosuit_arms") // TODO: Re-use textures
+	else if (matName == "nanosuit_arms.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialDir("nanosuit/arm_dif.png"));
-		spec = Load2DTexture(MaterialDir("nanosuit/arm_showroom_spec.png"));
+		dif = Load2DTexture(MaterialPath("nanosuit/arm_dif.png"));
+		spec = Load2DTexture(MaterialPath("nanosuit/arm_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/arm_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
 	}
-	else if (matName == "nanosuit_legs") // TODO: Re-use textures
+	else if (matName == "nanosuit_legs.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialDir("nanosuit/leg_dif.png"));
-		spec = Load2DTexture(MaterialDir("nanosuit/leg_showroom_spec.png"));
+		dif = Load2DTexture(MaterialPath("nanosuit/leg_dif.png"));
+		spec = Load2DTexture(MaterialPath("nanosuit/leg_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/leg_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
 	}
-	else if (matName == "nanosuit_body") // TODO: Re-use textures
+	else if (matName == "nanosuit_body.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialDir("nanosuit/body_dif.png"));
-		spec = Load2DTexture(MaterialDir("nanosuit/body_showroom_spec.png"));
+		dif = Load2DTexture(MaterialPath("nanosuit/body_dif.png"));
+		spec = Load2DTexture(MaterialPath("nanosuit/body_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/body_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
 	}
-	else if (matName == "nanosuit_glass") // TODO: Re-use textures
+	else if (matName == "nanosuit_glass.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialDir("nanosuit/glass_dif.png"));
+		dif = Load2DTexture(MaterialPath("nanosuit/glass_dif.png"));
 		// spec = Load2DTexture(MaterialDir("nanosuit/?????.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/glass_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, dif);
 	}
-	else if (matName == "nanosuit_helmet") // TODO: Re-use textures
+	else if (matName == "nanosuit_helmet.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialDir("nanosuit/helmet_diff.png"));
-		spec = Load2DTexture(MaterialDir("nanosuit/helmet_showroom_spec.png"));
+		dif = Load2DTexture(MaterialPath("nanosuit/helmet_diff.png"));
+		spec = Load2DTexture(MaterialPath("nanosuit/helmet_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/helmet_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
 	}
-	else if (matName == "nanosuit_hand") // TODO: Re-use textures
+	else if (matName == "nanosuit_hand.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialDir("nanosuit/hand_dif.png"));
-		spec = Load2DTexture(MaterialDir("nanosuit/hand_showroom_spec.png"));
+		dif = Load2DTexture(MaterialPath("nanosuit/hand_dif.png"));
+		spec = Load2DTexture(MaterialPath("nanosuit/hand_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/hand_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
 	}
-	else if (matName == "UV_Map")
+	else if (matName == "UV_Map.mat")
 	{
-		material = new MaterialData(GetTexture("UV_Map"), GetTexture("UV_Map"), GetTexture("UV_Map"));
+		material = new MaterialData(GetTexture("UV_Map.png"), GetTexture("UV_Map.png"), GetTexture("UV_Map.png"));
 	}
-    else if (matName == "null")
+    else if (matName == "null_texture.mat")
     {
-        material = new MaterialData(GetTexture("null"), GetTexture("null"), GetTexture("null"));
+        material = new MaterialData(GetTexture("null_texture.png"), GetTexture("null_texture.png"), GetTexture("null_texture.png"));
     }
+	else if (matName == "Test.qmat") // could just check for extension, then handle that
+	{
+		// TODO: Try to load a .qmat file
+	}
 	else
 	{
         ConsolePrint("\nInstantiateMaterial(): Material not found!\n");
-		return GetMaterial("null");
+		return GetMaterial("null_texture.mat");
 	}
 
-	m_HotMaterials[matName] = material;
+	m_Materials[matName] = material;
 	material->name = matName;
 	return material;
 }
 
 Model* ResourceManager::InstantiateModel(const char* modelName)
 {
-	// TODO: Use ModelDir
-#define ModelDir(a) StringAppend("../QwerkE_Common/Resources/Textures/", a) // Folder or shaders
+#define ModelPath(a) StringAppend(AssetDir, "Models/", a) // Folder or shaders
 
-	MeshFactory meshFact;
-	Model* model;
-	if (modelName == "LightBulb") // Asset name
+	// MeshFactory meshFact; // out dated
+	// if (modelName == "LightBulb") // Asset name
+	// model = meshFact.ImportOBJModel("Resources/Models/Light_Bulb.obj"); // Asset directory
+
+	Model* model = QwerkE::FileLoader::LoadModelFile(ModelPath(modelName));
+
+	// null check
+	if (model != nullptr)
 	{
-		model = meshFact.ImportOBJModel("Resources/Models/Light_Bulb.obj"); // Asset directory
-	}
-	else if (modelName == "CubeModel")
-	{
-		model = meshFact.ImportOBJModel("Resources/Models/1M_CubeModel.obj", vec3(0.05f, 0.05f, 0.05f));
-	}
-	else if (modelName == "Pyramid")
-	{
-		model = meshFact.ImportOBJModel("Resources/Models/Pyramid.obj");
-	}
-	else if (modelName == "Nano_Suit")
-	{
-		model = meshFact.ImportOBJModel("Resources/Models/Crysis_Nanosuit/nanosuit.obj");
-	}
-	else if (modelName == "NullMesh")
-	{
-		model = meshFact.ImportOBJModel("Resources/Models/Teapot.obj");
-	}
-	else if (modelName == "nanosuit")
-	{
-		// model = meshFact.ImportOBJModel("Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
-		model = QwerkE::FileLoader::LoadModelFile("../QwerkE_Common/Resources/Models/nanosuit/nanosuit.obj");
+		m_Models[modelName] = model;
+		model->SetName(modelName);
+		return model;
 	}
 	else
 	{
-        ConsolePrint("\nInstantiateModel(): Model not found!\n");
-		// model = meshFact.ImportOBJModel("Resources/Models/Teapot.obj"); // NullMesh
-		// set mesh name to NullMesh
+		ConsolePrint("\nInstantiateModel(): Model not found!\n");
 		return nullptr;
 	}
+}
 
-	// nullptr check
-	if (model != nullptr)
+FT_Face ResourceManager::InstantiateFont(const char* fontName)
+{
+#define FontPath(a) StringAppend(AssetDir, "Fonts/", a) // Folder or shaders
+
+	FT_Face font;
+	FT_Library ft; // TODO: No need to reload ft library
+
+	if (FT_Init_FreeType(&ft))
+		ConsolePrint("ERROR::FREETYPE: Could not init FreeType Library");
+
+	if (FT_New_Face(ft, FontPath(fontName), 0, &font))
 	{
-		m_HotModels[modelName] = model;
-		model->SetName(modelName);
+		ConsolePrint("ERROR::FREETYPE: Failed to load font");
+		return NULL;
 	}
-	return model;
+	m_Fonts[fontName] = font;
+	return font;
 }

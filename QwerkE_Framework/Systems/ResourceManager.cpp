@@ -14,78 +14,87 @@ ResourceManager::~ResourceManager()
 
 void ResourceManager::DeleteAllResources()
 {
-	for (auto object : m_HotMeshes)
+	for (auto object : m_Meshes)
 		delete object.second;
 
-	for (auto object : m_HotShaders)
+	for (auto object : m_Shaders)
 		delete object.second;
 
-	for (auto object : m_HotTextures)
+	for (auto object : m_Textures)
 		glDeleteTextures(1, &object.second);
 
-	for (auto object : m_HotMaterials)
+	for (auto object : m_Materials)
 		delete object.second;
 
-    for (auto object : m_HotModels)
+    for (auto object : m_Models)
         delete object.second;
 
-	m_HotMeshes.clear(); // Empty std::maps
-	m_HotShaders.clear();
-	m_HotTextures.clear();
-	m_HotMaterials.clear();
-	m_HotModels.clear();
+	m_Meshes.clear(); // Empty std::maps
+	m_Shaders.clear();
+	m_Textures.clear();
+	m_Materials.clear();
+	m_Models.clear();
 }
 // getters
 // TODO: Return nullptr values
 Mesh* ResourceManager::GetMesh(const char* name)
 {
-	if (m_HotMeshes.find(name) != m_HotMeshes.end())
+	if (m_Meshes.find(name) != m_Meshes.end())
 	{
-		return m_HotMeshes[name];
+		return m_Meshes[name];
 	}
 	return InstantiateMesh(name);
 }
 
 ShaderProgram* ResourceManager::GetShader(const char* name)
 {
-	if (m_HotShaders.find(name) != m_HotShaders.end()) // unique name
+	if (m_Shaders.find(name) != m_Shaders.end()) // unique name
 	{
-		return m_HotShaders[name];
+		return m_Shaders[name];
 	}
 	return InstantiateShader(name); // TODO: Should The resource manager create assets?
 }
 
 GLuint ResourceManager::GetTexture(const char* name)
 {
-	if (m_HotTextures.find(name) != m_HotTextures.end())
+	if (m_Textures.find(name) != m_Textures.end())
 	{
-		return m_HotTextures[name];
+		return m_Textures[name];
 	}
 	return InstantiateTexture(name);
 }
 
 MaterialData* ResourceManager::GetMaterial(const char* name)
 {
-	if (m_HotMaterials.find(name) != m_HotMaterials.end())
+	if (m_Materials.find(name) != m_Materials.end())
 	{
-		return m_HotMaterials[name];
+		return m_Materials[name];
 	}
 	return InstantiateMaterial(name);
 }
 
 Model* ResourceManager::GetModel(const char* name)
 {
-	if (m_HotModels.find(name) != m_HotModels.end())
+	if (m_Models.find(name) != m_Models.end())
 	{
-		return m_HotModels[name];
+		return m_Models[name];
 	}
 	return InstantiateModel(name);
+}
+
+FT_Face ResourceManager::GetFont(const char* name)
+{
+	if (m_Fonts.find(name) != m_Fonts.end())
+	{
+		return m_Fonts[name];
+	}
+	return InstantiateFont(name);
 }
 // Utilities
 bool ResourceManager::isUnique(Mesh* mesh)
 {
 	std::map<std::string, Mesh*>::iterator it;
-	for (it = m_HotMeshes.begin(); it != m_HotMeshes.end(); it++)
+	for (it = m_Meshes.begin(); it != m_Meshes.end(); it++)
 	{
 		if (it->second == mesh) // pointer comparison
 			return false;
@@ -96,7 +105,7 @@ bool ResourceManager::isUnique(Mesh* mesh)
 bool ResourceManager::isUnique(ShaderProgram* shader)
 {
 	std::map<std::string, ShaderProgram*>::iterator it;
-	for (it = m_HotShaders.begin(); it != m_HotShaders.end(); it++)
+	for (it = m_Shaders.begin(); it != m_Shaders.end(); it++)
 	{
 		if (it->second == shader) // pointer comparison
 			return false;
@@ -107,7 +116,7 @@ bool ResourceManager::isUnique(ShaderProgram* shader)
 bool ResourceManager::isUnique(GLuint texturehandle)
 {
 	std::map<std::string, GLuint>::iterator it;
-	for (it = m_HotTextures.begin(); it != m_HotTextures.end(); it++)
+	for (it = m_Textures.begin(); it != m_Textures.end(); it++)
 	{
 		if (it->second == texturehandle) // pointer comparison
 			return false;
@@ -118,7 +127,7 @@ bool ResourceManager::isUnique(GLuint texturehandle)
 bool ResourceManager::isUnique(MaterialData* material)
 {
 	std::map<std::string, MaterialData*>::iterator it;
-	for (it = m_HotMaterials.begin(); it != m_HotMaterials.end(); it++)
+	for (it = m_Materials.begin(); it != m_Materials.end(); it++)
 	{
 		if (it->second == material) // pointer comparison
 			return false;
@@ -129,9 +138,20 @@ bool ResourceManager::isUnique(MaterialData* material)
 bool ResourceManager::isUnique(Model* model)
 {
 	std::map<std::string, Model*>::iterator it;
-	for (it = m_HotModels.begin(); it != m_HotModels.end(); it++)
+	for (it = m_Models.begin(); it != m_Models.end(); it++)
 	{
 		if (it->second == model) // pointer comparison
+			return false;
+	}
+	return true;
+}
+
+bool ResourceManager::isUnique(FT_Face font)
+{
+	std::map<std::string, FT_Face>::iterator it;
+	for (it = m_Fonts.begin(); it != m_Fonts.end(); it++)
+	{
+		if (it->second == font) // pointer comparison
 			return false;
 	}
 	return true;

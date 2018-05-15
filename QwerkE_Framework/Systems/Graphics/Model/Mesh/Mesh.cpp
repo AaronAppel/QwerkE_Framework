@@ -123,6 +123,18 @@ void Mesh::DrawArrays()
 	glBindVertexArray(0);
 }
 
+void Mesh::ToggleWireframe()
+{
+	if (m_PrimitiveType == GL_TRIANGLES) // TEMP: hacked in for now
+	{
+		m_PrimitiveType = GL_POINTS;
+	}
+	else
+	{
+		m_PrimitiveType = GL_TRIANGLES;
+	}
+}
+
 void Mesh::DestroyMesh()
 {
 	// TODO:: Find a good way to allow for mesh data re-assignment

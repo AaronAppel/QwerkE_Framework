@@ -1,6 +1,31 @@
 #include "StringHelpers.h"
 #include <sstream>
 
+const char* StringAppend(const char* a, const char* b)
+{
+	int size = 0;
+	size = strlen(a) + strlen(b);
+
+	char* newString = new char[size]; // RAM:
+	strcpy_s(newString, strlen(a) + 1, a);
+	strcat_s(newString, size + 1, b);
+
+	return newString;
+}
+
+const char* StringAppend(const char* a, const char* b, const char* c)
+{
+	int size = 0;
+	size = strlen(a) + strlen(b) + strlen(c);
+
+	char* newString = new char[size]; // RAM:
+	strcpy_s(newString, strlen(a) + 1, a);
+	strcat_s(newString, size + 1, b);
+	strcat_s(newString, size + 1, c);
+
+	return newString;
+}
+
 const char* DeepCopyString(const char* string)
 {
 	if (string == 0) return nullptr;

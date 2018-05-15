@@ -5,6 +5,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
+#include "../../Systems/Graphics/MaterialData.h"
 
 // Scenery + Props
 GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
@@ -43,7 +44,7 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	t_Model->SetRenderOrder(50);
 	t_Model->SetTag(GO_Tag_TestModel);
 	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("nanosuit"));
+	renderComp->SetModel(m_pResources->GetModel("nanosuit/nanosuit.obj"));
 
 	// renderComp->SetShader(m_pResources->GetShader("Basic3D"));
 	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
@@ -53,7 +54,7 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_body"));
 	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_glass"));
 	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_helmet"));
-	renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_hand"));
+	renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_hand.mat"));
 
 	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1));
 	t_Model->AddComponent((Component*)renderComp);

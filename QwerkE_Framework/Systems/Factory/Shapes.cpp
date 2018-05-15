@@ -21,7 +21,7 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 																// renderComp->SetModel(m_pResources->GetModel("CubeModel"));
 	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
 	renderComp->SetColour(vec4(0, 1, 0, 1));
-	renderComp->SetMaterial(m_pResources->GetMaterial("container"));
+	renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
 
 	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1));
 	t_Cube->AddComponent(renderComp);
@@ -50,7 +50,7 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	renderComp->SetMesh(m_pResources->GetMesh("Plane"));
 
 	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
-	renderComp->SetMaterial(m_pResources->GetMaterial("container"));
+	renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
 
 	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1)); // random intial colour
 	t_Plane->AddComponent(renderComp);
