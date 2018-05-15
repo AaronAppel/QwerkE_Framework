@@ -82,7 +82,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
-      <PreprocessorDefinitions>DEBUG;Win32Bit;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,6 +95,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
+      <PreprocessorDefinitions>QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -109,6 +110,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
+      <PreprocessorDefinitions>QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -127,6 +129,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
+      <PreprocessorDefinitions>QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
