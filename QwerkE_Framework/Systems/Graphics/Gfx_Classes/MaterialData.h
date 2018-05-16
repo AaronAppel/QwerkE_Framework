@@ -5,6 +5,16 @@
 
 #include <string>
 
+// TODO: Add functionality for new maps...
+// Emissive
+// Height
+// Normals
+// Shininess
+// Opacity
+// Displacement
+// Lightmap
+// Reflection
+
 struct MaterialData
 {
 	std::string name = "";
@@ -13,7 +23,7 @@ struct MaterialData
 	GLuint ambientHandle = 0;
 	GLuint diffuseHandle = 0;
 	GLuint specularHandle = 0;
-	float shine = 1.0f;
+	float shine = 0.5f;
 
 	// Constructors
 	MaterialData() {};

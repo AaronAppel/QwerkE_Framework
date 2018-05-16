@@ -2,7 +2,7 @@
 #define _Sprite_H_
 
 #include "../../../QwerkE_Common/Math_Includes.h"
-#include "../Model/Mesh/Mesh.h"
+#include "../Mesh/Mesh.h"
 
 class Mesh;
 class ShaderProgram;

@@ -24,15 +24,15 @@ enum eShaderTypes
 #include "ShaderProgram/ShaderProgram.h"
 #include "ShaderProgram/ShaderFactory.h"
 
-#include "Model/Mesh/VertexData.h"
-#include "Model/Mesh/Mesh.h"
-#include "Model/Mesh/MeshFactory.h"
-#include "Model/Mesh/MeshUtilities.h"
+#include "Mesh/VertexData.h"
+#include "Mesh/Mesh.h"
+#include "Mesh/MeshFactory.h"
+#include "Mesh/MeshUtilities.h"
 
 #include "Gfx_Classes/Sprite.h"
 
 #include "Gfx_Classes/CubeMap.h"
 #include "Gfx_Classes/FrameBufferObject.h"
-#include "Model/Model.h"
+#include "Mesh/Model.h"
 
 #endif // !_Graphics_Header_H_

@@ -1,7 +1,7 @@
 #include "AddItem.h"
 #include "../Windows/MenuWindow.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/ShaderProgram/ShaderProgram.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
 
 AddButton::AddButton(Mesh* mesh) : MenuItem(mesh)
 {

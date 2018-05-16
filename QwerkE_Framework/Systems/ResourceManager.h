@@ -32,7 +32,16 @@ public:
     virtual ~ResourceManager();
 	void Init();
 
+	bool MeshExists(const char* name);
+	bool ShaderExists(const char* name);
+	bool TextureExists(const char* name);
+	bool MaterialExists(const char* name);
+	bool ModelExists(const char* name);
+	bool FontExists(const char* name);
+
 	// getters
+	// TODO: return const*s so they cannot be modified externally
+	// The following functions guarantee a valid return variable using null or error objects
 	Mesh* GetMesh(const char* name); // specify .ext
 	ShaderProgram* GetShader(const char* name); // specify .ext
 	GLuint GetTexture(const char* name); // specify .ext
@@ -66,7 +75,7 @@ private:
 	bool isUnique(GLuint texturehandle);
 	bool isUnique(MaterialData* material);
 	bool isUnique(Model* model);
-	bool isUnique(FT_Face model);
+	bool isUnique(FT_Face font);
 
 	// Allocations
 	Mesh* InstantiateMesh(const char* name);

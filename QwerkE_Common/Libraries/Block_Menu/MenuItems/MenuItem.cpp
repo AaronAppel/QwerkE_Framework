@@ -1,5 +1,5 @@
 #include "MenuItem.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
 #include "../../../Math_Includes.h"
 #include "../../glew/GL/glew.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/ShaderProgram/ShaderProgram.h"

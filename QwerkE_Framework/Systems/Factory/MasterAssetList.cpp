@@ -1,5 +1,5 @@
 #include "../../Systems/ResourceManager.h"
-#include "../../Systems/Graphics/MaterialData.h"
+#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/ShaderProgram/ShaderFactory.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
@@ -13,6 +13,28 @@
 #define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // TEMP: Engine is 1 directory up
 #endif // QwerkE_Engine
 
+// Define "hardcoded" file names for null objects for ease of use
+// but also to ensure consistency and prevent unintended changes.
+// Any external files should have matching names for the same reasons.
+#define null_mesh "null_mesh"
+#define null_shader "null_shader"
+#define null_texture "null_texture"
+#define null_material "null_material"
+#define null_model "null_model"
+#define null_font "null_font"
+
+// Define paths to resource folders that can change easily from project
+// to project using a preprocessor define. Paths can also change or be
+// manipulated at runtime so be careful since this is a good and bad thing.
+// TODO: Consider moving these to some sort of directory manager file so
+// these macros can be used elsewhere and can be constructed better.
+#define MeshFolderPath(a) StringAppend(AssetDir, "Models/", a) // TODO: Get rid of duplicate mesh path?
+#define ShaderFolderPath(a) StringAppend(AssetDir, "Shaders/", a)
+#define TextureFolderPath(a) StringAppend(AssetDir, "Textures/", a)
+#define MaterialFolderPath(a) StringAppend(AssetDir, "Models/", a)
+#define ModelFolderPath(a) StringAppend(AssetDir, "Models/", a)
+#define FontFolderPath(a) StringAppend(AssetDir, "Fonts/", a)
+
 // TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 // TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
 // Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
@@ -24,8 +46,6 @@ void ResourceManager::Init()
 // TODO: Handle errors and deleting assets before returning nullptr
 Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 {
-#define MeshPath(a) StringAppend(AssetDir, "Models/", a) // Folder or shaders
-
 	MeshFactory t_MeshFactory;
 	Mesh* mesh = nullptr;
     // TODO: Dereference *s?
@@ -59,14 +79,21 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 	{
 		mesh = t_MeshFactory.TutorialCube(vec3(1,1,1));
 	}
-    else if (meshName == "Teapot")
+	// update to use new model loading capabilities
+    /*
+	else if (meshName == "Teapot.obj")
     {
         mesh = t_MeshFactory.ImportOBJMesh(MeshPath("Teapot.obj"), vec3(0.5f,0.5f,0.5f), vec2(1,1), false);
     }
+	*/
+	else if (meshName == null_mesh)
+	{
+		mesh = t_MeshFactory.ImportOBJMesh(ModelFolderPath("Teapot.obj"), vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
+	}
 	else
 	{
         ConsolePrint("\nInstantiateMesh(): Mesh not found!\n");
-		return nullptr;
+		return GetMesh(null_mesh);
 	}
 	m_Meshes[meshName] = mesh; // Add to active list
 	mesh->SetName(meshName);
@@ -75,35 +102,33 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 
 ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 {
-#define ShaderPath(a) StringAppend(AssetDir, "Shaders/", a) // Folder or shaders
-
 	// Read directory for file?
 	ShaderProgram* shader = new ShaderProgram();
 	// 2D
 	if (shaderName == "Basic2DTex") // Asset name
 	{
-		shader->Init(ShaderPath("Basic2DTex.vert"), ShaderPath("Basic2DTex.frag"), NULL); // Asset directories
+		shader->Init(ShaderFolderPath("Basic2DTex.vert"), ShaderFolderPath("Basic2DTex.frag"), NULL); // Asset directories
 	}
 	else if (shaderName == "2DMenu")
 	{
-		shader->Init(ShaderPath("2DMenu.vert"), ShaderPath("2DMenu.frag"), NULL);
+		shader->Init(ShaderFolderPath("2DMenu.vert"), ShaderFolderPath("2DMenu.frag"), NULL);
 	}
 	else if (shaderName == "Basic2D")
 	{
 		// shader->Init(eShader_Basic2D);
-		shader->Init(ShaderPath("Basic2D.vert"), ShaderPath("Basic2D.frag"), NULL);
+		shader->Init(ShaderFolderPath("Basic2D.vert"), ShaderFolderPath("Basic2D.frag"), NULL);
 	}
 	else if (shaderName == "2DMenuText")
 	{
-		shader->Init(ShaderPath("2DMenuText.vert"), ShaderPath("2DMenuText.frag"), NULL);
+		shader->Init(ShaderFolderPath("2DMenuText.vert"), ShaderFolderPath("2DMenuText.frag"), NULL);
 	}
 	else if (shaderName == "Basic2DTransform")
 	{
-		shader->Init(ShaderPath("Basic2DTransform.vert"), ShaderPath("Basic2DTransform.frag"), NULL);
+		shader->Init(ShaderFolderPath("Basic2DTransform.vert"), ShaderFolderPath("Basic2DTransform.frag"), NULL);
 	}
 	else if (shaderName == "Sprite2D")
 	{
-		shader->Init(ShaderPath("Sprite2D.vert"), ShaderPath("Sprite2D.frag"), NULL);
+		shader->Init(ShaderFolderPath("Sprite2D.vert"), ShaderFolderPath("Sprite2D.frag"), NULL);
 	}
 	// 3D
 	else if (shaderName == "Basic3D")
@@ -113,15 +138,15 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 	}
 	else if (shaderName == "LitMaterial")
 	{
-		shader->Init(ShaderPath("LitMaterial.vert"), ShaderPath("LitMaterial.frag"), NULL);
+		shader->Init(ShaderFolderPath("LitMaterial.vert"), ShaderFolderPath("LitMaterial.frag"), NULL);
 	}
 	else if (shaderName == "vec3Material")
 	{
-		shader->Init(ShaderPath("vec3Material.vert"), ShaderPath("vec3Material.frag"), NULL);
+		shader->Init(ShaderFolderPath("vec3Material.vert"), ShaderFolderPath("vec3Material.frag"), NULL);
 	}
 	else if (shaderName == "BasicLighting")
 	{
-		shader->Init(ShaderPath("vec3Material.vert"), ShaderPath("vec3Material.frag"), NULL);
+		shader->Init(ShaderFolderPath("vec3Material.vert"), ShaderFolderPath("vec3Material.frag"), NULL);
 	}
 	else if (shaderName == "Box2D_Debug")
 	{
@@ -129,16 +154,20 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 	}
 	else if (shaderName == "text")
 	{
-		shader->Init(ShaderPath("text.vert"), ShaderPath("text.frag"), NULL);
+		shader->Init(ShaderFolderPath("text.vert"), ShaderFolderPath("text.frag"), NULL);
 	}
     else if (shaderName == "TestShader")
     {
-        shader->Init(ShaderPath("TestShader.vert"), ShaderPath("TestShader.frag"), NULL);
+        shader->Init(ShaderFolderPath("TestShader.vert"), ShaderFolderPath("TestShader.frag"), NULL);
     }
+	else if (shaderName == null_shader)
+	{
+		shader->Init(ShaderFolderPath("null_shader.vert"), ShaderFolderPath("null_shader.frag"), NULL);
+	}
 	else
 	{
         ConsolePrint("\nInstantiateShader(): Shader not found!\n");
-		return nullptr;
+		return GetShader(null_shader);
 	}
 
 	m_Shaders[shaderName] = shader;
@@ -147,10 +176,8 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 
 GLuint ResourceManager::InstantiateTexture(const char* textureName)
 {
-#define TexturePath(a) StringAppend(AssetDir, "Textures/", a)
-
 	GLuint textureHandle = -1;
-	textureHandle = Load2DTexture(TexturePath(textureName));
+	textureHandle = Load2DTexture(TextureFolderPath(textureName));
 
 	if (textureHandle != 0)
 		m_Textures[textureName] = textureHandle;
@@ -165,8 +192,6 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 
 MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 {
-	// TODO: Use MaterialDir
-#define MaterialPath(a) StringAppend(AssetDir, "Models/", a) // Folder or shaders
 	MaterialData* material = nullptr;
 	if (matName == "container.mat") // Asset name
 	{
@@ -176,8 +201,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialPath("nanosuit/arm_dif.png"));
-		spec = Load2DTexture(MaterialPath("nanosuit/arm_showroom_spec.png"));
+		dif = Load2DTexture(MaterialFolderPath("nanosuit/arm_dif.png"));
+		spec = Load2DTexture(MaterialFolderPath("nanosuit/arm_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/arm_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -186,8 +211,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialPath("nanosuit/leg_dif.png"));
-		spec = Load2DTexture(MaterialPath("nanosuit/leg_showroom_spec.png"));
+		dif = Load2DTexture(MaterialFolderPath("nanosuit/leg_dif.png"));
+		spec = Load2DTexture(MaterialFolderPath("nanosuit/leg_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/leg_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -196,8 +221,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialPath("nanosuit/body_dif.png"));
-		spec = Load2DTexture(MaterialPath("nanosuit/body_showroom_spec.png"));
+		dif = Load2DTexture(MaterialFolderPath("nanosuit/body_dif.png"));
+		spec = Load2DTexture(MaterialFolderPath("nanosuit/body_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/body_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -206,7 +231,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialPath("nanosuit/glass_dif.png"));
+		dif = Load2DTexture(MaterialFolderPath("nanosuit/glass_dif.png"));
 		// spec = Load2DTexture(MaterialDir("nanosuit/?????.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/glass_ddn.png")); // currently unused
 
@@ -216,8 +241,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialPath("nanosuit/helmet_diff.png"));
-		spec = Load2DTexture(MaterialPath("nanosuit/helmet_showroom_spec.png"));
+		dif = Load2DTexture(MaterialFolderPath("nanosuit/helmet_diff.png"));
+		spec = Load2DTexture(MaterialFolderPath("nanosuit/helmet_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/helmet_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -226,8 +251,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialPath("nanosuit/hand_dif.png"));
-		spec = Load2DTexture(MaterialPath("nanosuit/hand_showroom_spec.png"));
+		dif = Load2DTexture(MaterialFolderPath("nanosuit/hand_dif.png"));
+		spec = Load2DTexture(MaterialFolderPath("nanosuit/hand_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/hand_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -247,7 +272,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	else
 	{
         ConsolePrint("\nInstantiateMaterial(): Material not found!\n");
-		return GetMaterial("null_texture.mat");
+		return GetMaterial("null_texture.mat"); // do not add another material
 	}
 
 	m_Materials[matName] = material;
@@ -257,13 +282,11 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 
 Model* ResourceManager::InstantiateModel(const char* modelName)
 {
-#define ModelPath(a) StringAppend(AssetDir, "Models/", a) // Folder or shaders
-
 	// MeshFactory meshFact; // out dated
 	// if (modelName == "LightBulb") // Asset name
 	// model = meshFact.ImportOBJModel("Resources/Models/Light_Bulb.obj"); // Asset directory
 
-	Model* model = QwerkE::FileLoader::LoadModelFile(ModelPath(modelName));
+	Model* model = QwerkE::FileLoader::LoadModelFile(ModelFolderPath(modelName));
 
 	// null check
 	if (model != nullptr)
@@ -281,15 +304,13 @@ Model* ResourceManager::InstantiateModel(const char* modelName)
 
 FT_Face ResourceManager::InstantiateFont(const char* fontName)
 {
-#define FontPath(a) StringAppend(AssetDir, "Fonts/", a) // Folder or shaders
-
 	FT_Face font;
 	FT_Library ft; // TODO: No need to reload ft library
 
 	if (FT_Init_FreeType(&ft))
 		ConsolePrint("ERROR::FREETYPE: Could not init FreeType Library");
 
-	if (FT_New_Face(ft, FontPath(fontName), 0, &font))
+	if (FT_New_Face(ft, FontFolderPath(fontName), 0, &font))
 	{
 		ConsolePrint("ERROR::FREETYPE: Failed to load font");
 		return NULL;

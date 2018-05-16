@@ -29,11 +29,44 @@ void ResourceManager::DeleteAllResources()
     for (auto object : m_Models)
         delete object.second;
 
+	// TODO: delete fonts
+
 	m_Meshes.clear(); // Empty std::maps
 	m_Shaders.clear();
 	m_Textures.clear();
 	m_Materials.clear();
 	m_Models.clear();
+	// m_Fonts.clear();
+}
+
+bool ResourceManager::MeshExists(const char* name)
+{
+	return m_Meshes.find(name) != m_Meshes.end();
+}
+
+bool ResourceManager::ShaderExists(const char* name)
+{
+	return m_Shaders.find(name) != m_Shaders.end();
+}
+
+bool ResourceManager::TextureExists(const char* name)
+{
+	return m_Textures.find(name) != m_Textures.end();
+}
+
+bool ResourceManager::MaterialExists(const char* name)
+{
+	return m_Materials.find(name) != m_Materials.end();
+}
+
+bool ResourceManager::ModelExists(const char* name)
+{
+	return m_Models.find(name) != m_Models.end();
+}
+
+bool ResourceManager::FontExists(const char* name)
+{
+	return m_Fonts.find(name) != m_Fonts.end();
 }
 // getters
 // TODO: Return nullptr values

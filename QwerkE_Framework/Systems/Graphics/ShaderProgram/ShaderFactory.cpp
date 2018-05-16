@@ -1,4 +1,4 @@
-#include "../../Graphics_Header.h"
+#include "../../Graphics/Graphics_Header.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 
 ShaderProgram* ShaderFactory::CreateShader(eShaderTypes type)

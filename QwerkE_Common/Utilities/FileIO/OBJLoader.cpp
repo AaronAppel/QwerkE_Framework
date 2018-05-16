@@ -1,10 +1,10 @@
 #include "OBJLoader.h"
-#include "../../../QwerkE_Framework/Systems/Graphics_Header.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Graphics_Header.h"
 #include "FileUtilities.h"
 #include "../PrintFunctions.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Model.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/MeshUtilities.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Model.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/MeshUtilities.h"
 
 #include <cstring>
 

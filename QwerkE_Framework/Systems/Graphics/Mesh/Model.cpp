@@ -1,6 +1,5 @@
 #include "Model.h"
-#include "Mesh/Mesh.h"
-
+#include "Mesh.h"
 
 Model::Model()
 {

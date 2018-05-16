@@ -19,7 +19,7 @@
 #include "Systems/Audio/AudioManager.h"
 #include "Systems/Debugger/Debugger.h"
 #include "Components/Time.h"
-#include "Systems/Graphics/Model/Mesh/MeshFactory.h"
+#include "Systems/Graphics/Mesh/MeshFactory.h"
 #include "Systems/Graphics/ShaderProgram/ShaderFactory.h"
 #include "Systems/JobManager/JobManager.h"
 #include "Systems/Networking/NetworkManager.h"

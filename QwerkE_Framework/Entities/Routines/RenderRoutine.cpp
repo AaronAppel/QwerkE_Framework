@@ -104,7 +104,7 @@ void RenderRoutine::DrawModel(GameObject* a_Camera)
 	//}
 }
 
-void RenderRoutine::SetDrawFunctions() // Assign function pointers and initialize values
+void RenderRoutine::SetDrawFunctions() // Setup routine to render Model/Mesh
 {
 	Mesh* t_pMesh = m_pRender->GetMesh();
 	ShaderProgram* t_pShader = m_pRender->GetShader();
@@ -115,24 +115,27 @@ void RenderRoutine::SetDrawFunctions() // Assign function pointers and initializ
 	m_UniformSetupList.clear(); // reset list when changing shaders
 
 	if (t_pMesh == nullptr)
-    {
-        Model* t_Model = m_pRender->GetModel();
-        if (t_Model)
-        {
-            t_Model->SetupMeshes(t_pShader);
-			m_DrawFunc = &RenderRoutine::DrawModel;
-        }
-        else
-        {
-            return;
-        }
-    }
-    else
-    {
-        /* Setup Shader() and Mesh() */
-        t_pMesh->SetupShaderAttributes(t_pShader);
-		m_DrawFunc = &RenderRoutine::DrawMesh;
-    }
+	{
+		Model* t_Model = m_pRender->GetModel();
+		if (t_Model)
+		{
+			SetModelDrawFunctions();
+		}
+		else
+		{
+			return; // no meshes to draw
+		}
+	}
+	else
+	{
+		/* Setup Shader() and Mesh() */
+		SetMeshDrawFunctions(t_pShader);
+	}
+}
+
+void RenderRoutine::SetMeshDrawFunctions(ShaderProgram* shader)
+{
+	m_UniformSetupList.clear(); // reset list when changing shaders
 
 	// TODO:: Improve conditions for assignments.
 	/* Variables*/
@@ -140,7 +143,7 @@ void RenderRoutine::SetDrawFunctions() // Assign function pointers and initializ
 	MaterialData* t_Material = m_pRender->GetMaterial();
 
 	/* Uniforms */
-	std::vector<std::string> t_Uniforms = t_pShader->GetUniformList();
+	std::vector<std::string> t_Uniforms = shader->GetUniformList();
 	for (size_t i = 0; i < t_Uniforms.size(); i++) // Setup uniforms
 	{
 		// Color
@@ -175,4 +178,19 @@ void RenderRoutine::SetDrawFunctions() // Assign function pointers and initializ
 	}
 
 	CheckGraphicsErrors(__FILE__, __LINE__); // DEBUG:
+}
+
+void RenderRoutine::SetModelDrawFunctions()
+{
+	Model* t_Model = m_pRender->GetModel();
+	ShaderProgram* t_pShader = m_pRender->GetShader();
+
+	t_Model->SetupMeshes(t_pShader);
+	m_DrawFunc = &RenderRoutine::DrawModel;
+
+	// TODO:
+	for (int i = 0; i < t_Model->m_Meshes.size(); i++)
+	{
+		SetMeshDrawFunctions(t_pShader); // TODO: Change component data per mesh
+	}
 }

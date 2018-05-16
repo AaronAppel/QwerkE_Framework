@@ -1,7 +1,7 @@
 #include "FileLoader.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Model.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/VertexData.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Model.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/VertexData.h"
 #include "../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/Gfx_Classes/MaterialData.h"
 

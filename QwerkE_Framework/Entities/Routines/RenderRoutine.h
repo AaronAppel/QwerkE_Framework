@@ -24,7 +24,7 @@ public:
 
 	void Draw(GameObject* a_Camera) { (this->*m_DrawFunc)(a_Camera); };
 
-	void ResetUniformList() { SetDrawFunctions(); };
+	void ResetUniformList() { SetDrawFunctions(); }; // TODO: External use?
 
 private:
 	/* Private variables */
@@ -38,6 +38,9 @@ private:
 	void DrawMesh(GameObject* a_Camera);
 	void DrawModel(GameObject* a_Camera);
 	void SetDrawFunctions();
+	void SetMeshDrawFunctions(ShaderProgram* shader);
+	void SetModelDrawFunctions();
+
 
 	/* Vertex uniform value assignment */
 	void Setup3DTransform(CameraComponent* a_Camera);

@@ -1,6 +1,6 @@
 #include "Sprite.h"
 #include "../ShaderProgram/ShaderProgram.h"
-#include "../Model/Mesh/Mesh.h"
+#include "../Mesh/Mesh.h"
 #include "../../Math_Includes.h"
 
 Sprite2D::Sprite2D()

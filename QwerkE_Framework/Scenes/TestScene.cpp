@@ -6,8 +6,8 @@
 #include "../Entities/GameObject.h"
 #include "../QwerkE_Enums.h"
 #include "../Systems/Factory/Factory.h"
-#include "../Systems/Graphics/Model/Mesh/Mesh.h"
-#include "../Systems/Graphics/Model/Mesh/MeshFactory.h"
+#include "../Systems/Graphics/Mesh/Mesh.h"
+#include "../Systems/Graphics/Mesh/MeshFactory.h"
 #include "../Systems/Graphics/ShaderProgram/ShaderProgram.h"
 #include "../Components/Time.h"
 
@@ -32,6 +32,7 @@ void TestScene::Initialize()
 
 	//t_pDataManager->LoadScene(this, m_LevelFileDir); // Load scene
 	Scene::SetupCameras();
+
 
 	// return;
 	{
@@ -61,11 +62,9 @@ void TestScene::Initialize()
 			t_pFactory->CreateLight(this, vec3((i + 1) * -3.0f, (i + 1) * -1.0f, (i + 1) * -3.0f));
 		}
 		t_pFactory->CreateLight(this, vec3(0, 5, -10));
-
-		// t_pResourceManager->GetModel("../QwerkE_Framework/QwerkE_Common/Resources/Models/Crysis_Nanosuit/mynanosuit.obj");
-		// t_pResourceManager->GetModel("mynanosuit");
-		obj = t_pFactory->CreateTestModel(this, vec3(0,-5,100));
 	}
+	//TEST:
+	obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
 }
 
 void TestScene::p_Update(double deltatime)
