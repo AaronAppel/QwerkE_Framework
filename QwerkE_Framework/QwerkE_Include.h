@@ -1,6 +1,13 @@
 #ifndef _QwerkE_Include_H_
 #define _QwerkE_Include_H_
 
+//////////////////////////////
+// QwerkE_Include.h
+// #includes crucial files for building like defines for platform.
+// Also includes some files for easier access or build time using
+// precompiled headers
+//////////////////////////////
+
 #include "QwerkE_Defines.h" // platform, architecture,
 #include "QwerkE_Platform.h" // platform libraries
 
@@ -15,7 +22,7 @@
 //////////////////////////////
 
 //////////////////////////////
-// Engine //
+// Framework //
 //////////////////////////////
 #include "Framework.h"
 //////////////////////////////
@@ -24,17 +31,14 @@
 // Infrastructure/Systems //
 //////////////////////////////
 // Graphics //
-#include "Systems/Graphics_Header.h"
+#include "Systems/Graphics/Graphics_Header.h"
 
 // Input //
 #include "Systems/Input/Input.h"
 
 // Scene //
-#include "Scene/Scene.h"
-#include "Scene/SceneManager.h"
-
-// GameCore //
-#include "Systems/GameCore.h"
+#include "Scenes/Scene.h"
+#include "Scenes/SceneManager.h"
 
 #include "Systems/ServiceLocator.h" // Audio, Input, Graphics, etc
 //////////////////////////////

@@ -4,7 +4,7 @@
 #include "../../../QwerkE_Common/Math_Includes.h"
 #include "../../QwerkE_Enums.h"
 #include "../../Entities/GameObject.h"
-#include "../../Scene/Scene.h"
+#include "../../Scenes/Scene.h"
 
 class ResourceManager;
 class GameObject;

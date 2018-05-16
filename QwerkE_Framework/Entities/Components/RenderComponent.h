@@ -10,7 +10,7 @@
 
 class Mesh;
 class ShaderProgram;
-class MaterialData;
+struct MaterialData;
 class Model;
 
 class RenderComponent : public Component

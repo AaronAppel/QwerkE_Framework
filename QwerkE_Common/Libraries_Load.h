@@ -14,6 +14,9 @@
 // load libraries
 #ifdef QwerkE_Framework
 #ifdef DEBUG
+// OpenGL
+#define OpenGL
+#pragma comment( lib, "opengl32.lib" ) // load
 // assimp
 #pragma comment( lib, "../QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2
@@ -34,6 +37,9 @@
 #pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/LinearMath.lib" )
 //
 #elif defined(RELEASE)
+// OpenGL
+#define OpenGL
+#pragma comment( lib, "opengl32.lib" ) // load
 // assimp
 #pragma comment( lib, "../QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2
@@ -41,7 +47,7 @@
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, "../QwerkE_Common/Libraries/glew/glew32d.lib" )
 // TODO: Check for architecture and debug/release
-#pragma comment( lib, "../QwerkE_Common/Libraries/glfw/glfw3.lib" )
+#pragma comment( lib, "../QwerkE_Common/Libraries/glfw/glfw3_32Release.lib" )
 // OpenAL
 #pragma comment( lib, "../QwerkE_Common/Libraries/OpenAL/libs/Win32/OpenAL32.lib" )
 // pThreads
@@ -54,8 +60,11 @@
 #pragma comment( lib, "../QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/LinearMath.lib" )
 #endif // Framework
 //
-#else
+#else // Engine or other project
 #ifdef DEBUG
+// OpenGL
+#define OpenGL
+#pragma comment( lib, "opengl32.lib" ) // load
 // assimp
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2
@@ -76,14 +85,17 @@
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/LinearMath.lib" )
 //
 #elif defined(RELEASE)
+// OpenGL
+#define OpenGL
+#pragma comment( lib, "opengl32.lib" ) // load
 // assimp
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2
-#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/freetype2/x86/freetype.lib" )
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/freetype2/x86/Release/freetype271MT.lib" )
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/glew/glew32d.lib" )
 // TODO: Check for architecture and debug/release
-#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/glfw/glfw3.lib" )
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/glfw/x86/Release/glfw3_32Release.lib" )
 // OpenAL
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/OpenAL/libs/Win32/OpenAL32.lib" )
 // pThreads
@@ -91,10 +103,10 @@
 // RakNet
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/RakNet/RakNet_VS2008_DLL_Release_Win32.lib" )
 // Bullet3
-#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/BulletCollision.lib" )
-#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/BulletDynamics.lib" )
-#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Debug/LinearMath.lib" )
-#endif // Engine
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletCollision.lib" )
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/BulletDynamics.lib" )
+#pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/lib/Win32/Release/LinearMath.lib" )
+#endif // Engine or other project
 
 #endif // !QwerkE_Framework
 

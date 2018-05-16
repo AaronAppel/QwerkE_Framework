@@ -10,7 +10,7 @@
 class Mesh;
 class ShaderProgram;
 class Model;
-class MaterialData;
+struct MaterialData;
 
 // For instances where 1 asset may be shared between objects in
 // possibly many scenes, the ResourceManager() may want to count

@@ -4,9 +4,9 @@
 #include "RenderRoutine.h"
 #include "../../QwerkE_Enums.h"
 #include "../../Systems/Graphics/Model/Mesh/Mesh.h"
-#include "../../Systems/Graphics_Header.h"
-#include "../../Systems/Graphics/MaterialData.h"
-#include "../../Systems/Graphics/OpenGLHelpers.h"
+#include "../../Systems/Graphics/Graphics_Header.h"
+#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Entities/Components/CameraComponent.h"
 
@@ -174,5 +174,5 @@ void RenderRoutine::SetDrawFunctions() // Assign function pointers and initializ
 		}
 	}
 
-	CheckforGLErrors(__FILE__, __LINE__); // DEBUG:
+	CheckGraphicsErrors(__FILE__, __LINE__); // DEBUG:
 }

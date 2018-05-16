@@ -22,9 +22,6 @@
     <Filter Include="Systems\Window">
       <UniqueIdentifier>{1967fe8b-8350-4593-89bf-96d865f3d1f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene">
-      <UniqueIdentifier>{06d436d9-21d0-4f8b-9ea0-ab542fdff349}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entities">
       <UniqueIdentifier>{2f68dbda-443a-47de-9e7d-29bab54e479f}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,33 @@
     <Filter Include="Entities\Routine">
       <UniqueIdentifier>{78a4ba38-6495-4076-81b6-ca125db99757}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems\Graphics\GraphicsUtilities">
+      <UniqueIdentifier>{fad3d3df-fd8c-4ae8-bbba-230c2509f2bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Graphics\GraphicsUtilities\OpenGL">
+      <UniqueIdentifier>{f93f3a7c-1e50-44da-98ca-a3b417ae087c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\DataManager">
+      <UniqueIdentifier>{a6710462-743c-4b5c-9a24-4434c95d5b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\JobManager">
+      <UniqueIdentifier>{32cf8499-f553-4a15-8726-9f72f601931a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Debugger">
+      <UniqueIdentifier>{a4fd14af-dad3-44b7-a36a-a52b090fe9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Logger">
+      <UniqueIdentifier>{56b18756-e4ed-4397-bf1f-7b01b8d0ea5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{06d436d9-21d0-4f8b-9ea0-ab542fdff349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{ab4d0c41-db31-4dae-8e2b-da4368d372ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Graphics\Gfx_Classes">
+      <UniqueIdentifier>{344c36f9-e855-4867-aeb9-09635bebfca8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -54,12 +78,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\CubeMap\CubeMap.cpp">
-      <Filter>Systems\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\FBO\FrameBufferObject.cpp">
-      <Filter>Systems\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\FontRendering\FontTest.cpp">
       <Filter>Systems\Graphics</Filter>
     </ClCompile>
@@ -73,9 +91,6 @@
       <Filter>Systems\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Model\Model.cpp">
-      <Filter>Systems\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLHelpers.cpp">
       <Filter>Systems\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.cpp">
@@ -94,9 +109,6 @@
       <Filter>Systems\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.cpp">
-      <Filter>Systems\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Sprite\Sprite.cpp">
       <Filter>Systems\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Build_Block_Menu.cpp">
@@ -128,15 +140,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.cpp">
       <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scene\Scene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scene\SceneManager.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scene\TestScene.cpp">
-      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\Event.cpp">
       <Filter>Systems\Events</Filter>
@@ -172,27 +175,6 @@
       <Filter>Systems</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Time.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\GameCore.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Math.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp">
@@ -239,6 +221,48 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp">
+      <Filter>Systems\Graphics\GraphicsUtilities\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.cpp">
+      <Filter>Systems\Graphics\GraphicsUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp">
+      <Filter>Systems\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.cpp">
+      <Filter>Systems\JobManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp">
+      <Filter>Systems\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp">
+      <Filter>Systems\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\TestScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Components\Time.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Components\Math.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\CubeMap.cpp">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\FrameBufferObject.cpp">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.cpp">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -253,19 +277,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h">
       <Filter>Systems\Input</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\CubeMap\CubeMap.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\FBO\FrameBufferObject.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\FontRendering\FontTest.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\LightData.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\MaterialData.h">
       <Filter>Systems\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Model\Mesh\Mesh.h">
@@ -283,9 +295,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Model\Model.h">
       <Filter>Systems\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLHelpers.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.h">
       <Filter>Systems\Graphics</Filter>
     </ClInclude>
@@ -293,9 +302,6 @@
       <Filter>Systems\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Sprite\Sprite.h">
       <Filter>Systems\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.h">
@@ -306,15 +312,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.h">
       <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scene\Scene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scene\SceneManager.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scene\TestScene.h">
-      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\Event.h">
       <Filter>Systems\Events</Filter>
@@ -353,30 +350,6 @@
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Time.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\GameCore.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics_Header.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\JobManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Math.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\GameObject.h">
@@ -422,6 +395,60 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
       <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h">
+      <Filter>Systems\Graphics\GraphicsUtilities\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.h">
+      <Filter>Systems\Graphics\GraphicsUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h">
+      <Filter>Systems\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.h">
+      <Filter>Systems\JobManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h">
+      <Filter>Systems\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics_Header.h">
+      <Filter>Systems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.h">
+      <Filter>Systems\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\TestScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Components\Time.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Components\Math.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Graphics_Header.h">
+      <Filter>Systems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\CubeMap.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\FrameBufferObject.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\LightData.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

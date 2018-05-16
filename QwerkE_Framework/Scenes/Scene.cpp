@@ -1,11 +1,10 @@
 #include "Scene.h"
-#include "../Systems/GameCore.h"
 #include "../Entities/GameObject.h"
 #include "../Entities/Components/Component.h"
 #include "../Entities/Components/CameraComponent.h"
 #include "../Systems/Input/InputManager.h"
 #include "../Systems/Input/Controller.h"
-#include "../Systems/DataManager.h"
+#include "../Systems/DataManager/DataManager.h"
 #include "../Systems/ServiceLocator.h"
 
 extern int g_WindowWidth;

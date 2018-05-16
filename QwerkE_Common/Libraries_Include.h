@@ -1,6 +1,13 @@
 #ifndef _Libraries_Include_H_
 #define _Libraries_Include_H_
 
+//////////////////////////////
+// Libraries_Include.h
+// #include library files for use throughout program.
+// This is mainly for use with precompiled headers to
+// speed up build time.
+//////////////////////////////
+
 // TODO: Consider having multiple Library_Include files for each platform. Easier management
 // Include/Exclude libraries based on platform, architecture, configuration
 // TODO: Hide loading/unloading behind load/splash screen?
@@ -41,6 +48,10 @@
 // stb
 #include "Libraries/stb_image.h"
 
+// models //
+// assimp
+#include "Libraries/assimp/config.h"
+
 // font loading/rendering
 // freetype2
 #include "Libraries/freetype2/ft2build.h"
@@ -58,13 +69,6 @@
 //////////////////////////////
 // Graphics //
 //////////////////////////////
-// OpenGL //
-// open graphics library
-#ifdef _Q32Bit
-#pragma comment( lib, "opengl32.lib" ) // load
-#else
-#pragma comment( lib, "opengl32.lib" ) // still the same name...
-#endif
 // openGL extensions wrangler //
 // GLEW
 #include "Libraries/glew/GL/glew.h"
@@ -142,7 +146,7 @@
 /////////////////////////////
 
 // TODO: Add necessary headers.
-// TODO: Remove unecessary headers.
+// TODO: Remove unnecessary headers.
 
 #include "Libraries_Load.h" // load .libs
 

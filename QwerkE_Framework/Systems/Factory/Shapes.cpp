@@ -1,12 +1,11 @@
 #include "Factory.h"
-#include "../../Scene/Scene.h"
+#include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
-#include "../../Systems/Graphics/OpenGLHelpers.h"
 
 /* Shapes */
 GameObject* Factory::CreateCube(Scene* scene, vec3 position)

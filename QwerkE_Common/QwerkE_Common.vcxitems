@@ -791,6 +791,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadModelFile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\LoadWavFile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp" />

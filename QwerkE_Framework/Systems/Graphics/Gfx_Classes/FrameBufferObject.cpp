@@ -1,4 +1,4 @@
-#include "../../Graphics_Header.h"
+#include "../../Graphics/Graphics_Header.h"
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 extern int g_WindowWidth, g_WindowHeight;

@@ -1,7 +1,7 @@
 #include "Mesh.h"
 #include "VertexData.h"
 #include "../../ShaderProgram/ShaderProgram.h"
-#include "../../OpenGLHelpers.h"
+#include "../../GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
@@ -61,7 +61,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 
-	CheckforGLErrors(__FILE__, __LINE__);
+	CheckGraphicsErrors(__FILE__, __LINE__);
 
 	/* Assign ShaderProgram() attribute data */
 	std::vector<std::string> attributes = shader->GetAttributeList();
@@ -106,7 +106,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 	}
 	// TODO: Check if vertex arrays should to be disabled after drawing
 	glBindVertexArray(0); // Unbind
-	CheckforGLErrors(__FILE__, __LINE__);
+	CheckGraphicsErrors(__FILE__, __LINE__);
 }
 
 void Mesh::DrawElements()

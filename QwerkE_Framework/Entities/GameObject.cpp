@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include "../Scene/Scene.h"
+#include "../Scenes/Scene.h"
 #include "Routines/Routine.h"
 #include "Components/Component.h"
 #include "../QwerkE_Enums.h"

@@ -9,21 +9,19 @@
 #include "../QwerkE_Common/Utilities/Helpers.h"
 #include "../QwerkE_Common/Libraries_Initialize.h"
 #include "Systems/Events/EventManager.h"
-#include "Scene/SceneManager.h"
+#include "Scenes/SceneManager.h"
 #include "Systems/Factory/Factory.h"
-#include "Systems/Graphics/Sprite/Sprite.h"
-#include "Systems/Graphics_Header.h"
-#include "Systems/Graphics/FBO/FrameBufferObject.h"
+#include "Systems/Graphics/Graphics_Header.h"
 #include "CallbackFunctions.h"
 #include "Systems/Physics/PhysicsManager.h"
 #include "Systems/Renderer.h"
 #include "Systems/MessageManager.h"
 #include "Systems/Audio/AudioManager.h"
-#include "Systems/Debugger.h"
-#include "Systems/Time.h"
+#include "Systems/Debugger/Debugger.h"
+#include "Components/Time.h"
 #include "Systems/Graphics/Model/Mesh/MeshFactory.h"
 #include "Systems/Graphics/ShaderProgram/ShaderFactory.h"
-#include "Systems/JobManager.h"
+#include "Systems/JobManager/JobManager.h"
 #include "Systems/Networking/NetworkManager.h"
 #include "Systems/Window/Window.h"
 #include "Systems/Window/WindowManager.h"
@@ -246,6 +244,7 @@ namespace QwerkE
 		void Framework::Stop()
 		{
 			m_IsRunning = false;
+			m_Window->SetClosing(true);
 		}
 
 		void Framework::NewFrame()

@@ -16,6 +16,7 @@ bool Libs_Setup()
 {
     bool errorFree = true; // Return value. If error occurs set to false
 
+	ConsolePrint("Libs_Setup(): Loading libraries...\n");
     // Setup/Load libraries based on platform, architecture, configuration
     // TODO: Clean up #ifs
 #ifdef _Q32Bit // architecture
@@ -53,8 +54,11 @@ bool Libs_Setup()
         ConsolePrint("\nError loading freetype2!\n");
         errorFree = false;
     }
-    else
-        FT_Done_FreeType(ft);
+	else
+	{
+		ConsolePrint("Freetype Loaded!\n");
+		FT_Done_FreeType(ft);
+	}
     //////////////////////////////
 
     //////////////////////////////
@@ -69,6 +73,7 @@ bool Libs_Setup()
     }
     else
     {
+		ConsolePrint("GLFW Loaded!\n");
         GLFWwindow* window;
         window = glfwCreateWindow(100, 100, "Test", NULL, NULL);
         if (!window)
@@ -86,6 +91,10 @@ bool Libs_Setup()
                 ConsolePrint("\nError loading GLEW!\n");
                 errorFree = false;
             }
+			else
+			{
+				ConsolePrint("GLEW Loaded!\n");
+			}
             glfwDestroyWindow(window);
         }
     }
@@ -105,6 +114,7 @@ bool Libs_Setup()
     }
     else
     {
+		ConsolePrint("imgui Loaded!\n");
         ImGuiIO& io = ImGui::GetIO(); (void)io;
     }
     //////////////////////////////

@@ -2431,6 +2431,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadModelFile.cpp">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common.inl">

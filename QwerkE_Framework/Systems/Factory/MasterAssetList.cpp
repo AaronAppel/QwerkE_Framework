@@ -1,6 +1,4 @@
 #include "../../Systems/ResourceManager.h"
-#include "../../Systems/Graphics_Header.h"
-#include "../../Systems/Graphics/OpenGLHelpers.h"
 #include "../../Systems/Graphics/MaterialData.h"
 #include "../../Systems/Graphics/ShaderProgram/ShaderFactory.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
@@ -297,5 +295,7 @@ FT_Face ResourceManager::InstantiateFont(const char* fontName)
 		return NULL;
 	}
 	m_Fonts[fontName] = font;
+	FT_Done_FreeType(ft);
+	assert(font != NULL);
 	return font;
 }

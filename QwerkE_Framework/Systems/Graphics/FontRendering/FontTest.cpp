@@ -1,5 +1,6 @@
 #include "FontTest.h"
-#include "../../Graphics_Header.h"
+#include "../../Graphics/Graphics_Header.h"
+#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../ShaderProgram/ShaderProgram.h"
 #include "../freetype2/ft2build.h"
 #include "freetype/freetype.h"
@@ -26,8 +27,18 @@ GLuint VAO, VBO;
 
 void LoadFonts()
 {
+	// FreeType
+	FT_Library ft;
+	// All functions return a value different than 0 whenever an error occurred
+	if (FT_Init_FreeType(&ft))
+		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+
 	// Load font as face
-	FT_Face face = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetFont("finurlig-demo.regular.otf");
+	FT_Face face;
+	// TODO:Fix freetype font loading to use ResourceManager().
+	// FT_Face face = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetFont("finurlig-demo.regular.otf");
+	if (FT_New_Face(ft, "../QwerkE_Framework/QwerkE_Common/Resources/Fonts/finurlig-demo.regular.otf", 0, &face))
+		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
 	// Set size to load glyphs as
 	FT_Set_Pixel_Sizes(face, 0, 48);
@@ -74,9 +85,7 @@ void LoadFonts()
 		Characters.insert(std::pair<GLchar, Character>(c, character));
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
-	// Destroy FreeType once we're finished
-	FT_Done_Face(face);
-	//FT_Done_FreeType(ft);
+	// Destroy FreeType once we're finished	FT_Done_Face(face);
 
 
 	// Configure VAO/VBO for texture quads
@@ -144,5 +153,5 @@ void RenderText(ShaderProgram *shader, std::string text, GLfloat x, GLfloat y, G
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	CheckforGLErrors(__FILE__, __LINE__); // Load fonts
+	CheckGraphicsErrors(__FILE__, __LINE__); // DEBUG:
 }

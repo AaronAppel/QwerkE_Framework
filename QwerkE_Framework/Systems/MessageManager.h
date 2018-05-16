@@ -3,6 +3,7 @@
 
 // handles all messages from external code like
 // networking, shared memory, and threading.
+// Works with logger.
 
 // provides global API for sending and receiving messages
 class MessageManager

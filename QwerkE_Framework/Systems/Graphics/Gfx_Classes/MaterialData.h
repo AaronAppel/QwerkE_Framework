@@ -1,9 +1,12 @@
 #ifndef __MaterialData_H__
 #define __MaterialData_H__
 
-class MaterialData
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+
+#include <string>
+
+struct MaterialData
 {
-public:
 	std::string name = "";
 
 	// Texture handles
@@ -29,8 +32,6 @@ public:
 	specularHandle(specular),
 	shine(shiny)
 	{}
-
-
 };
 
 #endif //__MaterialData_H__

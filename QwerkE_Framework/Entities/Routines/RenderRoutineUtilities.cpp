@@ -5,8 +5,8 @@
 #include "../../Entities/Components/CameraComponent.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/Components/LightComponent.h"
-#include "../../Systems/Graphics/MaterialData.h"
-#include "../../Scene/Scene.h"
+#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Math_Includes.h"
 
 #include <string>

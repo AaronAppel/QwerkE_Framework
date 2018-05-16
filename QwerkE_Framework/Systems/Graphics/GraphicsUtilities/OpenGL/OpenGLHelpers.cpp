@@ -1,4 +1,4 @@
-#include "../Graphics_Header.h"
+#include "../../../Graphics_Header.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
@@ -7,7 +7,7 @@
 // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 
 // OpenGLHelpers.cpp
-void CheckforGLErrors()
+void GLCheckforErrors()
 {
 	GLenum error = glGetError();
 	if (error != 0)
@@ -18,7 +18,7 @@ void CheckforGLErrors()
 		OutputPrint("Invalid operation.", error);
 }
 
-void CheckforGLErrors(char* file, int line)
+void GLCheckforErrors(char* file, int line)
 {
 	GLenum error = glGetError();
 	if (error != 0)
@@ -29,7 +29,7 @@ void CheckforGLErrors(char* file, int line)
 		OutputPrint("Invalid operation.", error);
 }
 
-void CheckforGLErrors(const char* file, int line)
+void GLCheckforErrors(const char* file, int line)
 {
 	GLenum error = glGetError();
 	if (error != 0)
@@ -40,7 +40,7 @@ void CheckforGLErrors(const char* file, int line)
 		OutputPrint("Invalid operation.", error);
 }
 
-GLuint Load2DTexture(const char* filename, bool flipVertically)
+GLuint GLLoad2DTexture(const char* filename, bool flipVertically)
 {
 	unsigned char* pngbuffer = 0;
 	unsigned int width, height;
@@ -80,7 +80,7 @@ GLuint Load2DTexture(const char* filename, bool flipVertically)
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // TODO: Handle texture parameters better
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	// glGenerateMipmap(GL_TEXTURE_2D); // Create mipmap
@@ -93,7 +93,7 @@ GLuint Load2DTexture(const char* filename, bool flipVertically)
 	return texhandle;
 }
 
-GLuint LoadCubeMapTexture(const char* filename)
+GLuint GLLoadCubeMapTexture(const char* filename)
 {
 	unsigned char* pngbuffer = 0;
 	unsigned int width, height;
@@ -136,19 +136,4 @@ GLuint LoadCubeMapTexture(const char* filename)
 	free(pngbuffer);
 	delete[] filebuffer;
 	return texhandle;
-}
-
-char* Helper_GetAttributePrefix()
-{
-	return (char*)"a_"; // for attributes or i_ for inputs
-}
-
-char* Helper_GetUniformPrefix()
-{
-	return (char*)"u_"; // uniforms
-}
-
-char* Helper_GetTransferPrefix()
-{
-	return (char*)"t_"; // for transfers or v_ for varyings
 }

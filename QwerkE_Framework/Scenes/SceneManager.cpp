@@ -1,7 +1,7 @@
 #include "SceneManager.h"
 #include "TestScene.h"
 #include "../QwerkE_Enums.h"
-#include "../Scene/Scene.h"
+#include "Scene.h"
 
 #include <map>
 

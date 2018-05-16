@@ -1,6 +1,9 @@
 #ifndef _FileLoader_H_
 #define _FileLoader_H_
 
+// TODO: Depending on how files are loaded, FileLoader
+// should be a part of Framework instead of Common.
+
 class Model;
 
 namespace QwerkE

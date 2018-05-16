@@ -1,17 +1,15 @@
 #include "SceneManager.h"
 #include "TestScene.h"
-#include "../Systems/DataManager.h"
+#include "../Systems/DataManager/DataManager.h"
 #include "../Systems/ServiceLocator.h"
-#include "../Systems/Graphics/OpenGLHelpers.h"
-#include "../Systems/Graphics/Sprite/Sprite.h"
+#include "../Systems/Graphics/Gfx_Classes/Sprite.h"
 #include "../Entities/GameObject.h"
 #include "../QwerkE_Enums.h"
-#include "../Systems/GameCore.h"
 #include "../Systems/Factory/Factory.h"
 #include "../Systems/Graphics/Model/Mesh/Mesh.h"
 #include "../Systems/Graphics/Model/Mesh/MeshFactory.h"
 #include "../Systems/Graphics/ShaderProgram/ShaderProgram.h"
-#include "../Systems/Time.h"
+#include "../Components/Time.h"
 
 TestScene::TestScene() : Scene()
 {
