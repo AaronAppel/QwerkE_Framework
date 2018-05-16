@@ -14,8 +14,6 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\ShaderFactory.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Components\Math.h" />
@@ -64,6 +62,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\VertexData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.h" />
@@ -82,11 +82,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\Basic2DShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\Basic3DShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\LitMaterial.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\ShaderFactory.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\QwerkE_Framework\QwerkE_Framework\Systems\Graphics\ShaderProgram\ShaderProgram.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Math.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Time.cpp" />
@@ -133,6 +128,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Basic2DShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Basic3DShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\LitMaterial.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.cpp" />

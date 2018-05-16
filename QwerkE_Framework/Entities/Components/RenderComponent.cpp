@@ -1,7 +1,7 @@
 #include "RenderComponent.h"
 #include "../GameObject.h"
 #include "../Routines/RenderRoutine.h"
-#include "../../Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../Systems/Graphics/Mesh/Mesh.h"
 
 RenderComponent::RenderComponent()
 {

@@ -1,5 +1,5 @@
 #include "Factory.h"
-#include "../../Systems/Graphics/Model/Model.h"
+#include "../../Systems/Graphics/Mesh/Model.h"
 #include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../Entities/Components/RenderComponent.h"

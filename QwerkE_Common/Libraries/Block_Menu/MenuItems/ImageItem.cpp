@@ -1,6 +1,6 @@
 #include "ImageItem.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/ShaderProgram/ShaderProgram.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
 
 ImageItem::ImageItem(Mesh* mesh) : MenuItem(mesh)
 {

@@ -3,7 +3,7 @@
 #include "../Components/RenderComponent.h"
 #include "RenderRoutine.h"
 #include "../../QwerkE_Enums.h"
-#include "../../Systems/Graphics/Model/Mesh/Mesh.h"
+#include "../../Systems/Graphics/Mesh/Mesh.h"
 #include "../../Systems/Graphics/Graphics_Header.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
@@ -189,7 +189,7 @@ void RenderRoutine::SetModelDrawFunctions()
 	m_DrawFunc = &RenderRoutine::DrawModel;
 
 	// TODO:
-	for (int i = 0; i < t_Model->m_Meshes.size(); i++)
+	for (unsigned int i = 0; i < t_Model->m_Meshes.size(); i++)
 	{
 		SetMeshDrawFunctions(t_pShader); // TODO: Change component data per mesh
 	}

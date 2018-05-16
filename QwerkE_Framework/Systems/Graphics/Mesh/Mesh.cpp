@@ -1,7 +1,7 @@
 #include "Mesh.h"
 #include "VertexData.h"
-#include "../../ShaderProgram/ShaderProgram.h"
-#include "../../GraphicsUtilities/GraphicsHelpers.h"
+#include "../ShaderProgram/ShaderProgram.h"
+#include "../GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
