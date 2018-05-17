@@ -13,7 +13,7 @@
 // https://msdn.microsoft.com/en-us/library/windows/desktop/aa364418(v=vs.85).aspx
 // https://msdn.microsoft.com/en-us/library/windows/desktop/aa365740(v=vs.85).aspx
 // https://stackoverflow.com/questions/26475540/c-having-problems-with-a-simple-example-of-findfirstfile
-
+// https://docs.microsoft.com/en-us/cpp/standard-library/filesystem-functions
 std::vector<std::string> ReadDir(const char* directory)
 {
 	// variables

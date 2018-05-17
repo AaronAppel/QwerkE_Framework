@@ -5,7 +5,6 @@
 void Flip32BitImageVertically(unsigned char* buffer, unsigned int width, unsigned int height)
 {
 	// flip the image in buffer.  Assumes RGBA 32 bit.
-
 	{
 		// temp allocation big enough for one line
 		unsigned int* temp;

@@ -35,7 +35,7 @@ public:
 	void SetTexture(GLuint texture) { m_CurrentTexture = texture; };
 	void SetColour(vec4 Colour) { m_Colour = Colour; };
 	void SetMaterial(MaterialData* mat) { m_Material = mat; };
-    void SetModel(Model* model) { m_Model = model; };
+    void SetModel(Model* model);
 
 private:
 	Mesh* m_pMesh = nullptr;

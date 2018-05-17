@@ -105,6 +105,16 @@ private:
 
 	// Directories
 	const char* m_TextureDir = "Resources/Textures/";
+
+	// null objects
+	// TODO: Find a better place to store objects. ResourceManager should not "own" objects
+	// TODO: Instatiate null objects
+	Mesh* m_NullMesh = nullptr;
+	ShaderProgram* m_NullShader = nullptr;
+	GLuint m_NullTexture = 0;
+	MaterialData* m_NullMaterial = nullptr;
+	Model* m_NullModel = nullptr;
+	FT_Face m_NullFont;
 };
 
 #endif //!_ResourceManager_H_

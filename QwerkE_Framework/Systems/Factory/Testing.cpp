@@ -47,7 +47,8 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	RenderComponent* renderComp = new RenderComponent();
 	// renderComp->SetModel(m_pResources->GetModel("nanosuit/nanosuit.obj"));
 	// renderComp->SetModel(m_pResources->GetModel("Deathwing/Deathwing.obj"));
-	renderComp->SetModel(m_pResources->GetModel("Alexstrasza/Alexstrasza.obj"));
+	// renderComp->SetModel(m_pResources->GetModel("Alexstrasza/Alexstrasza.obj"));
+	renderComp->SetModel(m_pResources->GetModel("scifi_assault_rifle/scifi_assault_rifle.obj"));
 
 	// renderComp->SetShader(m_pResources->GetShader("Basic3D"));
 	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));

@@ -65,13 +65,19 @@ void TestScene::Initialize()
 	}
 	//TEST:
 	obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
+	// obj = t_pFactory->CreateCube(this, vec3(0, 0, 10));
+	obj->SetRotation(vec3(0,0,0));
 }
 
 void TestScene::p_Update(double deltatime)
 {
     obj->SetRotation(vec3(obj->GetRotation().x,
         obj->GetRotation().y + 0.002f / QwerkE::Time::GetDeltaTime(),
-        0));
+		obj->GetRotation().z));
+
+	if (obj->GetRotation().y >= 360.0f)
+		obj->SetRotation(vec3(obj->GetRotation().x, obj->GetRotation().y - 360.0f, obj->GetRotation().z));
+
 	Scene::p_Update(deltatime);
 }
 

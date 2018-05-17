@@ -1,4 +1,4 @@
-// TestShader.vert
+// null_shader.vert
 #version 330 core
 
 // Attribute input

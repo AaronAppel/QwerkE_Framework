@@ -5,6 +5,7 @@
 // should be a part of Framework instead of Common.
 
 class Model;
+class Material;
 
 namespace QwerkE
 {
@@ -19,6 +20,8 @@ namespace QwerkE
 		// TODO: Load scene from software like 3DS Max, Blender, etc
 		// load things like lights, cameras and everything from 1 file
 		// look at creating a conversion helper for QwerkE.scene to unity, blender, etc
+
+		Material* GetMaterialFromMatFile(const char* path);
 	}
 }
 

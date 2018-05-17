@@ -19,5 +19,12 @@ namespace QwerkE
 			// determine image type and use proper library
 			// lodepng, stb_image, SOIL, etc
 		}
+
+		Material* GetMaterialFromMatFile(const char* path)
+		{
+			// TODO:
+			assert(false); // Don't use!
+			return nullptr;
+		}
 	}
 }

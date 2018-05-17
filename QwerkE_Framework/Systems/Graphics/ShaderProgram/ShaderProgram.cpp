@@ -212,7 +212,7 @@ bool ShaderProgram::BuildShaderProgram()
 // Returns new shader handle is successful, else 0
 GLuint ShaderProgram::CompileShader(GLenum shaderType, const char* shaderString)
 {
-	GLuint shaderHandle = glCreateShader(shaderType);
+	GLuint shaderHandle = glCreateShader(shaderType); // fails if context is not current for GLFW
 	glShaderSource(shaderHandle, 1, &shaderString, NULL);
 	glCompileShader(shaderHandle);
 
@@ -234,6 +234,7 @@ GLuint ShaderProgram::CompileShader(GLenum shaderType, const char* shaderString)
 
 		char* next_token = 0;
 		char* ShaderName = strtok_s((char*)shaderString, "\n", &next_token);
+		// TODO: error reads as garbage characters.
 		OutputPrint("\n%s: ShaderProgram: CompileShader() %s compile error-> ", ShaderName, shaderTypeString);
 		OutputPrint(infoLog); // OpenGL message
 

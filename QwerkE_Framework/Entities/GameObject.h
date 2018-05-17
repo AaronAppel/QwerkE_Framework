@@ -64,6 +64,7 @@ public:
 	eGameObjectTags GetTag() { return m_Tag; }
 
 	// setters
+	// TODO: overload functions to take object like float[x]s
 	void UpdatePosition(vec3 position) { m_Position = position; }; // box 2d
 	void UpdateRotation(vec3 rotation) { m_Rotation = rotation; }; // box 2d
 	void SetName(std::string name) { m_Name = name; };

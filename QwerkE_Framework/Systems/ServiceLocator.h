@@ -33,16 +33,26 @@ namespace QwerkE
     //  a system could change during runtime?
     // Consider inline ing service locator sunctions for runtime efficiency
 
-    // To avoid dependencies redesign how services are registered/unregistered
+    // TODO: To avoid dependencies redesign how services are registered/unregistered
     // for order dependency issues.
 
-    // Consider returning NULL objects if service is nullptr;
-    // Try to avoid if(null) check inside a getter(). Make sure services are
+    // TODO: Consider returning NULL objects if service is nullptr like NullAudioManager() or
+	// something more elegant.
+
+    // TODO: Try to avoid if(null) check inside a getter(). Make sure services are
     // initialized at start to null and have null checks inside a register() call.
 
-    // Consider limiting accessible scope on systems like NetworkManager to only a
+    // TODO: Consider limiting accessible scope on systems like NetworkManager to only a
     // few classes. Maybe create a INetwork interface that needs to be implemented
     // by a class to access the network service... or something like that.
+
+	// TODO: May want to create a ServicePtr<Resource*> that points to another pointer
+	// so that services can be easily swapped. This ServicePtr can also act
+	// as a smart pointer to reference count and ensure deletion and global pointer
+	// re-assignment if needed. Also return these ServicePtrs as const to avoid altering.
+	// Note: By abstracting to raw pointer value order dependency becomes less important
+	// during initialization unless the services really rely on each other, rather than
+	// just storing convenience pointers.
 
 	class ServiceLocator
 	{

@@ -1,5 +1,9 @@
 # QwerkEngine MTL File: 'test.qmat'
+# This mat is experimental and intended for trying
+# new rendering techniques within the QwerkE framework.
+
 # Material Count: 1
+
 newmtl Mat1
 Ns 96.078431
 Ka 0.000000 0.000000 0.000000

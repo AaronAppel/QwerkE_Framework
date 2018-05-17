@@ -54,30 +54,35 @@ namespace QwerkE
 				return eEngineMessage::_QFail; // failure
 			}
 
-			// TODO: Try to reduce or avoid order dependency in system creation
+			// TODO: Try to reduce or avoid order dependency in system creation.
+			// current dependencies..
+			// ResourceManager depends on itself to init null objects
+			// Window depends on InputManager for input callbacks
+			// SceneManager needs other systems setup to load a scene
 
 			// load and register systems
 			// Audio, Networking, Graphics (Renderer, GUI), Utilities (Conversion, FileIO, Printing),
 			// Physics, Event, Debug, Memory, Window, Application, Input, Resources
 			QwerkE::ServiceLocator::LockServices(false);
 
-			ResourceManager* resourceManager = new ResourceManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Resource_Manager, resourceManager);
-
 			InputManager* inputManager = new InputManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Input_Manager, inputManager);
 
-		#ifdef _glfw3_h_
+#ifdef _glfw3_h_
 			m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
-		#else
+#else
 			// win32 window or something
 			Window* window = new Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
-		#endif // !_glfw3_h_
+#endif // !_glfw3_h_
 
 			WindowManager* windowManager = new WindowManager();
 			windowManager->AddWindow(m_Window);
 
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::WindowManager, windowManager);
+
+			ResourceManager* resourceManager = new ResourceManager();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Resource_Manager, resourceManager);
+			resourceManager->Init(); // order dependency, init after adding
 
 			EventManager* eventManager = new EventManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Event_System, eventManager);

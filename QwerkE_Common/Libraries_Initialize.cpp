@@ -143,6 +143,7 @@ bool Libs_Setup()
 
     //////////////////////////////
 
+	ConsolePrint("Libs_Setup(): Libraries Loaded\n");
     return errorFree;
 }
 

@@ -24,7 +24,7 @@ out vec4 t_FragColor;
 void main()
 {
     // ambient
-	float ambientStrength = 0.2;
+	float ambientStrength = 0.4;
     vec3 ambient = ambientStrength * texture(u_Texture0, t_UV).rgb;
 	
     // diffuse

@@ -2,6 +2,8 @@
 #include "../GameObject.h"
 #include "../Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
+#include "../../Systems/Graphics/Mesh/Model.h"
+#include "../../Systems/Graphics/ShaderProgram/ShaderProgram.h"
 
 RenderComponent::RenderComponent()
 {
@@ -32,4 +34,11 @@ void RenderComponent::SetShader(ShaderProgram* shader)
 			rRoutine->ResetUniformList();
 		}
 	}
+}
+
+void RenderComponent::SetModel(Model* model)
+{
+	m_Model = model;
+	m_Model->SetupMeshes(m_pShader);
+	m_pShader;
 }

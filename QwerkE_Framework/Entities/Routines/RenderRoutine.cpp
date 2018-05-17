@@ -72,6 +72,13 @@ void RenderRoutine::DrawModel(GameObject* a_Camera)
 		GLuint ambHandle = t_Model->m_Materials[i]->ambientHandle;
 		GLuint diffHandle = t_Model->m_Materials[i]->diffuseHandle;
 		GLuint specHandle = t_Model->m_Materials[i]->specularHandle;
+
+		if (diffHandle == 0)
+			diffHandle = 1;
+
+		if (specHandle == 0)
+			specHandle = 1;
+
 		float shine = t_Model->m_Materials[i]->shine;
 
 		// activate textures/material

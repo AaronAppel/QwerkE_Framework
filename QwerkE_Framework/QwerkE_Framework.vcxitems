@@ -116,7 +116,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\LevelLoader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Lights.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\MasterAssetList.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Shapes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Testing.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\FontRendering\FontTest.cpp" />
@@ -141,6 +140,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MasterAssetList.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.cpp" />

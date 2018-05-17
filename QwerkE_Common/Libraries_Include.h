@@ -45,8 +45,12 @@
 // images //
 // lodepng
 #include "Libraries/lodepng/lodepng.h"
-// stb
-#include "Libraries/stb_image.h"
+// stb_image
+// TODO: stb_image needs to be loaded later on, after some other ???? library
+// #define STB_IMAGE_IMPLEMENTATION
+// #include "Libraries/stb_image.h"
+// SOIL
+// TODO: get soil
 
 // models //
 // assimp

@@ -20,6 +20,7 @@ void CheckGraphicsErrors(const char* file, int line)
 	GLCheckforErrors(file, line);
 }
 
+// TODO: Return a valid handle and try to avoid a stack frame if not necessary
 GLuint Load2DTexture(const char* filename, bool flipVertically)
 {
 	return GLLoad2DTexture(filename, flipVertically);
