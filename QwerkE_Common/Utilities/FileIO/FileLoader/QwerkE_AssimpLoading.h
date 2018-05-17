@@ -3,26 +3,20 @@
 
 // Assimp specific loading function definitions and helpers
 
-#include "../../Libraries/assimp/Importer.hpp"
-#include "../../Libraries/assimp/scene.h"
-#include "../../Libraries/assimp/postprocess.h"
-#include "../../Libraries/assimp/config.h"
-#include "../../Libraries/assimp/material.h"
+#include "../../../Libraries/assimp/Importer.hpp"
+#include "../../../Libraries/assimp/scene.h"
+#include "../../../Libraries/assimp/postprocess.h"
+#include "../../../Libraries/assimp/config.h"
+#include "../../../Libraries/assimp/material.h"
+#include "../../../../QwerkE_Framework/Systems/Graphics/Gfx_Classes/MaterialData.h"
 
 #include <iostream>
 #include <vector>
 #include <string>
 
-struct Texture // TODO: take out of here or delete
-{
-	std::string name;
-	// std::string directory;
-	GLuint handle;
-};
+class aiNode;
+class aiScene;
 
-class Model;
-
-void ProcessNode() {}
-std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName, std::vector<Texture>& textures);
+void QwerkE_assimp_loadSceneNodeData(aiNode *node, const aiScene *scene, std::vector<Mesh*>& meshes, std::string directory, std::vector<std::string>& matNames);
 
 #endif // !_QwerkE_AssimpLoading_H_

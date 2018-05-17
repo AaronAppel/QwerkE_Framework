@@ -1,5 +1,9 @@
 #include "ResourceManager.h"
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "Graphics/Gfx_Classes/MaterialData.h"
+#include "Graphics/Mesh/Mesh.h"
+#include "Graphics/ShaderProgram/ShaderProgram.h"
+#include "Graphics/Mesh/Model.h"
 
 #include <map>
 
@@ -68,8 +72,82 @@ bool ResourceManager::FontExists(const char* name)
 {
 	return m_Fonts.find(name) != m_Fonts.end();
 }
+
+bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
+{
+	if (MeshExists(name))
+		return false;
+
+	if (mesh == nullptr || mesh->GetName() == "Uninitialized")
+		return false;
+
+	m_Meshes[name] = mesh;
+	return true;
+}
+
+bool ResourceManager::AddShader(const char* name, ShaderProgram* shader)
+{
+	if (ShaderExists(name))
+		return false;
+
+	if (shader == nullptr ) // || shader->GetName() == "Uninitialized")
+		return false;
+
+	m_Shaders[name] = shader;
+	return true;
+}
+
+bool ResourceManager::AddTexture(const char* name, GLuint texture)
+{
+	if (TextureExists(name))
+		return false;
+
+	if (texture == 0) // || texture->name == "Uninitialized") // TODO: What should a null texture value be cross platform?
+		return false;
+
+	m_Textures[name] = texture;
+	return true;
+}
+
+bool ResourceManager::AddMaterial(const char* name, MaterialData* material)
+{
+	if (MaterialExists(name))
+		return false;
+
+	if (material == nullptr || material->name == "Uninitialized")
+		return false;
+
+	m_Materials[name] = material;
+	return true;
+}
+
+bool ResourceManager::AddModel(const char* name, Model* model)
+{
+	if (ModelExists(name))
+		return false;
+
+	if (model == nullptr || model->GetName() == "Uninitialized")
+		return false;
+
+	m_Models[name] = model;
+	return true;
+}
+
+bool ResourceManager::AddFont(const char* name, FT_Face font)
+{
+	if (FontExists(name))
+		return false;
+
+	// TODO: How to check for null font? Also need cross library font classes
+	// if (font == nullptr || material->name == "Uninitialized")
+		// return false;
+
+	m_Fonts[name] = font;
+	return true;
+}
+
 // getters
-// TODO: Return nullptr values
+// TODO: Return null objects
 Mesh* ResourceManager::GetMesh(const char* name)
 {
 	if (m_Meshes.find(name) != m_Meshes.end())

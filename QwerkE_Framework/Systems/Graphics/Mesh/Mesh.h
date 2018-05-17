@@ -45,7 +45,7 @@ private:
 	GLuint m_VertCount = 0; // TODO: Is storing this necessary?
 	GLuint m_IndexCount = 0;
 	GLenum m_PrimitiveType = GL_TRIANGLES;
-	std::string m_Name = "Unitialized";
+	std::string m_Name = "Uninitialized";
 
 	/* Draw functionality */
 	MeshFunction m_DrawFunc = &Mesh::NullDraw;

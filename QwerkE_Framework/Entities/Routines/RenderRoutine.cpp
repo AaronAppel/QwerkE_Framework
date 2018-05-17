@@ -57,6 +57,7 @@ void RenderRoutine::DrawModel(GameObject* a_Camera)
 	/* Use Program */
 	t_pShader->Use();
 
+	// TODO:
 	for (unsigned int i = 0; i < m_UniformSetupList.size(); i++)
 	{
 		(this->*m_UniformSetupList.at(i))(t_pCamera); // Call setup function
@@ -64,6 +65,7 @@ void RenderRoutine::DrawModel(GameObject* a_Camera)
 
 	Model* t_Model = m_pRender->GetModel();
 
+	// TODO: Setup model uniform setup functions
 	for (size_t i = 0; i < t_Model->m_Meshes.size(); i++)
 	{
 		// setup uniforms
@@ -73,10 +75,11 @@ void RenderRoutine::DrawModel(GameObject* a_Camera)
 		float shine = t_Model->m_Materials[i]->shine;
 
 		// activate textures/material
-		GLuint textures[] = { ambHandle , diffHandle , specHandle };
+		GLuint textures[] = { ambHandle, diffHandle , specHandle };
 		int size = 3;
 
 		t_pShader->SetUniformFloat1("Shine", shine);
+
 		SetupTextureUniforms(textures, size);
 
 		// draw mesh
@@ -189,8 +192,9 @@ void RenderRoutine::SetModelDrawFunctions()
 	m_DrawFunc = &RenderRoutine::DrawModel;
 
 	// TODO:
+	m_UniformSetupList.push_back(&RenderRoutine::Setup3DTransform);
 	for (unsigned int i = 0; i < t_Model->m_Meshes.size(); i++)
 	{
-		SetMeshDrawFunctions(t_pShader); // TODO: Change component data per mesh
+		// SetMeshDrawFunctions(t_pShader); // TODO: Change component data per mesh
 	}
 }

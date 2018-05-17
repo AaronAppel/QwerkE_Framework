@@ -453,5 +453,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.h">
       <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Dynamic_ShaderProgram.h">
+      <Filter>Systems\Graphics\ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

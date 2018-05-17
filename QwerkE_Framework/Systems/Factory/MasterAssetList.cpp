@@ -19,7 +19,7 @@
 #define null_mesh "null_mesh"
 #define null_shader "null_shader"
 #define null_texture "null_texture"
-#define null_material "null_material"
+#define null_material "null_material.mat"
 #define null_model "null_model"
 #define null_font "null_font"
 
@@ -184,7 +184,7 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 	else
 	{
 		ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
-		textureHandle = GetTexture("null_texture.png"); // fail nicely
+		textureHandle = GetTexture("null_texture.png"); // TODO: prevent infinite loop. Maybe pre-load an image or set to 0
 	}
 
 	return textureHandle;
@@ -261,7 +261,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		material = new MaterialData(GetTexture("UV_Map.png"), GetTexture("UV_Map.png"), GetTexture("UV_Map.png"));
 	}
-    else if (matName == "null_texture.mat")
+    else if (matName == null_material)
     {
         material = new MaterialData(GetTexture("null_texture.png"), GetTexture("null_texture.png"), GetTexture("null_texture.png"));
     }
@@ -272,7 +272,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	else
 	{
         ConsolePrint("\nInstantiateMaterial(): Material not found!\n");
-		return GetMaterial("null_texture.mat"); // do not add another material
+		return GetMaterial(null_material); // do not add another material
 	}
 
 	m_Materials[matName] = material;

@@ -39,6 +39,14 @@ public:
 	bool ModelExists(const char* name);
 	bool FontExists(const char* name);
 
+	bool AddMesh(const char* name, Mesh* mesh);
+	bool AddShader(const char* name, ShaderProgram* shader);
+	bool AddTexture(const char* name, GLuint texture);
+	bool AddMaterial(const char* name, MaterialData* material);
+	bool AddModel(const char* name, Model* model);
+	bool AddFont(const char* name, FT_Face font);
+	// TODO: Other add functions
+
 	// getters
 	// TODO: return const*s so they cannot be modified externally
 	// The following functions guarantee a valid return variable using null or error objects
@@ -55,7 +63,7 @@ public:
 	// Sound* GetSound(const char* name); // specify .ext
 
 	// Load directory
-	// void LoadDirectory(const char* folder);
+	// void LoadDirectory(const char* folder); // TODO: Move outside and into a FileLoader object
 
 	// Cleanup
 	void DeleteAllResources();

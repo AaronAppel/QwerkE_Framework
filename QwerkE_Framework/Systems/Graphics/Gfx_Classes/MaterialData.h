@@ -17,13 +17,18 @@
 
 struct MaterialData
 {
-	std::string name = "";
+	std::string name = "Uninitialized";
 
 	// Texture handles
 	GLuint ambientHandle = 0;
 	GLuint diffuseHandle = 0;
 	GLuint specularHandle = 0;
 	float shine = 0.5f;
+
+	std::string ambientName = "Uninitialized";
+	std::string diffuseName = "Uninitialized";
+	std::string specularName = "Uninitialized";
+	// std::string name = "Uninitialized"; // TODO: More map types
 
 	// Constructors
 	MaterialData() {};

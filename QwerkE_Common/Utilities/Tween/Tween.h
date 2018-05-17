@@ -19,7 +19,7 @@ public:
 
     float Tick(double a_Deltatime)
     {
-        m_ElapsedTime += a_Deltatime;
+        m_ElapsedTime += (float)a_Deltatime;
         return m_pTweenFunction(m_StartingValue, m_Range, m_ElapsedTime, m_EndTime);
     }
 

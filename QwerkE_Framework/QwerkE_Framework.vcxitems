@@ -53,6 +53,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\LightData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Graphics_Header.h" />
@@ -62,6 +63,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\VertexData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Dynamic_ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h" />

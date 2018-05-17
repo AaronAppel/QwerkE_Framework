@@ -63,9 +63,9 @@ void MenuItem::UpdateTransform()
 	// temp = glm::rotate(temp, glm::radians(m_Rotation), vec3(0, 0, 1));
 
 	// translate
-	vec3 finalPos = vec3((m_ParentWindow->GetPosition().x - parentSize.x * 0.5 + parentSize.x * m_Position.x) / m_Resolution.x * 2 - 1,
-		(m_ParentWindow->GetPosition().y - parentSize.y * 0.5 + parentSize.y * m_Position.y) / m_Resolution.y * 2 - 1,
-		0);
+	vec3 finalPos = vec3((m_ParentWindow->GetPosition().x - parentSize.x * 0.5f + parentSize.x * m_Position.x) / m_Resolution.x * 2.0f - 1.0f,
+		(m_ParentWindow->GetPosition().y - parentSize.y * 0.5 + parentSize.y * m_Position.y) / m_Resolution.y * 2.0f - 1.0f,
+		0.0f);
 
 	// temp = glm::translate(temp, vec3(finalPos));
 	// temp = glm::translate(temp, vec3(0, 0, 0));

@@ -7,6 +7,8 @@
 #include "../../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include <vector>
 
+// TODO: Remember to specify floating point precision
+
 class ShaderProgram
 {
 public:
