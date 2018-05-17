@@ -25,7 +25,7 @@ glew: https://github.com/nigels-com/glew
 glfw: https://github.com/glfw/glfw  
 RakNet: https://github.com/facebookarchive/RakNet  
 lodepng: https://github.com/lvandeve/lodepng  
-stb: https://github.com/nothings/stb  
+stb_image: https://github.com/nothings/stb  
 imgui: https://github.com/ocornut/imgui  
 freetype2: https://www.freetype.org/index.html  
 glm: https://github.com/g-truc/glm  
