@@ -1,5 +1,5 @@
 # QwerkE_Framework
-*This project is a work in progess*
+*This project is a work in progess*  
 Qwerk Engine is a simple framework that developers can use to build games.
 
 There are simple systems like rendering, audio, input, etc, that can be utilized or replaced with custom systems as you wish.
@@ -21,19 +21,22 @@ That project lives here: https://github.com/AaronAppel/Qwerk_Engine
 ...
 
 ## 3rd Party Libraries
-glew: https://github.com/nigels-com/glew
-glfw: https://github.com/glfw/glfw
-RakNet: https://github.com/facebookarchive/RakNet
-lodepng: https://github.com/lvandeve/lodepng
-stb: https://github.com/nothings/stb
-imgui: https://github.com/ocornut/imgui
-freetype2: https://www.freetype.org/index.html
-glm: https://github.com/g-truc/glm
-pthreads: https://github.com/coapp-packages/pthreads
-vlc: https://github.com/videolan/vlc
+glew: https://github.com/nigels-com/glew  
+glfw: https://github.com/glfw/glfw  
+RakNet: https://github.com/facebookarchive/RakNet  
+lodepng: https://github.com/lvandeve/lodepng  
+stb: https://github.com/nothings/stb  
+imgui: https://github.com/ocornut/imgui  
+freetype2: https://www.freetype.org/index.html  
+glm: https://github.com/g-truc/glm  
+pthreads: https://github.com/coapp-packages/pthreads  
+vlc: https://github.com/videolan/vlc  
+assimp: https://github.com/assimp/assimp  
 
 ## License
 This project is licensed under the BSD3 License - see the LICENSE file for details.
+
+## References / Resources
 
 ## Acknowledgments
 ...
