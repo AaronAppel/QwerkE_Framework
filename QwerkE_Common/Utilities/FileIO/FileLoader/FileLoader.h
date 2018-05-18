@@ -13,7 +13,9 @@ namespace QwerkE
 	{
 		void LoadSound();
 
-		void LoadImageFile(); // LoadImage is a macro somewhere
+		// TODO: Allow flags for loading images a certain way
+		// TODO: Remove GLenum and any implementation specific variables or styles
+		unsigned char* LoadImageFile(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically = 0); // LoadImage is a macro somewhere
 
 		Model* LoadModelFile(const char* path);
 
@@ -21,7 +23,7 @@ namespace QwerkE
 		// load things like lights, cameras and everything from 1 file
 		// look at creating a conversion helper for QwerkE.scene to unity, blender, etc
 
-		Material* GetMaterialFromMatFile(const char* path);
+		// Material* GetMaterialFromMatFile(const char* path);
 	}
 }
 

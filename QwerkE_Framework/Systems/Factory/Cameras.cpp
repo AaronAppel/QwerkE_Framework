@@ -62,6 +62,8 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 	}
 
 	t_pCamera->AddComponent(t_pCamComp); // add to object
+	t_pCamComp->Setup();
+	t_pCamComp->SetTargetPosition(vec3(0,0,0));
 
 	if (scene->AddCamera(t_pCamera)) // add to scene
 	{

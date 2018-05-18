@@ -57,6 +57,14 @@ public:
 	Model* GetModel(const char* name); // specify .ext
 	FT_Face GetFont(const char* name); // specify .ext
 
+	// TEST:
+	const std::map<std::string, Mesh*>* LookAtMeshes() { return &m_Meshes; };
+	const std::map<std::string, ShaderProgram*>* LookAtShaders() { return &m_Shaders; };
+	const std::map<std::string, GLuint>* LookAtTextures() { return &m_Textures; };
+	const std::map<std::string, MaterialData*>* LookAtMaterials() { return &m_Materials; };
+	const std::map<std::string, Model*>* LookAtModels() { return &m_Models; };
+	// const std::map<std::string, >* LookAtFonts() { return &; };
+
 	// TODO: Handle loading additional resources
 	// CubeMap* GetCubeMap(const char* name); // specify .ext
 	// FBO* GetFBO(const char* name); // specify .ext

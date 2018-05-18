@@ -7,6 +7,8 @@
 // The function bodies vary based on graphics libraries.
 //////////////////////////////
 
+#include "../Gfx_Classes/FrameBufferObject.h"
+
 // TODO: Can I just #macro the functions to avoid a stack frame?
 void CheckAllGraphicsErrors();
 void CheckGraphicsErrors();
@@ -15,6 +17,9 @@ void CheckGraphicsErrors(const char* file, int line);
 
 GLuint Load2DTexture(const char* filename, bool flipVertically = 0);
 GLuint LoadCubeMapTexture(const char* filename);
+
+// GLuint Duplicate2DTexture(GLuint handle, int w, int h, int x, int y);
+GLuint CopyFBOToTexture(FrameBufferObject& handle, int w, int h, int x = 0, int y = 0);
 
 char* Helper_GetAttributePrefix(); // TODO: Move to a shader specific file like ShaderFactory.h
 char* Helper_GetUniformPrefix();

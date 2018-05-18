@@ -107,11 +107,11 @@ void CameraComponent::UpdateCameraVectors()
 	//m_Right = glm::normalize(glm::cross(m_Front, m_WorldUp));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
 	//m_CamUp = glm::normalize(glm::cross(m_Right, m_Front));
 
+	// view
+	m_ViewMatrix->CreateLookAtView(m_Position, vec3(0, 1, 0), m_TargetPosition);
+	// *m_ViewMatrix = glm::lookAt(m_Position, m_TargetPosition + m_Front, m_CamUp);
+
 	// projection
 	m_ProjMatrix->CreatePerspectiveHFoV(m_Zoom * 0.5f, m_ViewportSize.x / m_ViewportSize.y, m_CAMNEAR, m_CAMFAR);
 	// *m_ProjMatrix = glm::perspective(glm::radians(m_Zoom), m_ViewportSize.x / m_ViewportSize.y, m_CAMNEAR, m_CAMFAR);
-
-	// view
-	m_ViewMatrix->CreateLookAtView(m_Position, vec3(0,1,0), m_TargetPosition);
-	// *m_ViewMatrix = glm::lookAt(m_Position, m_TargetPosition + m_Front, m_CamUp);
 }

@@ -44,4 +44,6 @@
 #define _QHard // Mixed control
 #define _QUltra // Full control
 
+#include "QwerkE_Directory_Defines.h"
+
 #endif // !_QwerkE_Defines_H_

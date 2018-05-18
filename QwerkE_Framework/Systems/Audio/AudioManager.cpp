@@ -81,6 +81,9 @@ AudioManager::AudioManager()
 	ALboolean loop = AL_FALSE;
 
 	const char* filename = "test.wav";
+	// https://mackron.github.io/dr_wav
+	// http://wascal.net/music/?p=369
+	// https://stackoverflow.com/questions/16075233/reading-and-processing-wav-file-data-in-c-c
 
 	// alSourcePlay(source); // play
 

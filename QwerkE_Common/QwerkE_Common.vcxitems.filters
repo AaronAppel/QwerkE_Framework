@@ -2332,6 +2332,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.h">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.h">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp">
@@ -2438,6 +2441,9 @@
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.cpp">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.cpp">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "SceneManager.h"
+#include "../Systems/SceneManager.h"
 #include "TestScene.h"
 #include "../Systems/DataManager/DataManager.h"
 #include "../Systems/ServiceLocator.h"
@@ -9,6 +9,8 @@
 #include "../Systems/Graphics/Mesh/Mesh.h"
 #include "../Systems/Graphics/Mesh/MeshFactory.h"
 #include "../Systems/Graphics/ShaderProgram/ShaderProgram.h"
+#include "../Systems/ServiceLocator.h"
+#include "../Systems/ResourceManager.h"
 #include "../Components/Time.h"
 
 TestScene::TestScene() : Scene()
@@ -31,8 +33,6 @@ void TestScene::Initialize()
     //DataManager* t_pDataManager = m_pGameCore->GetDataManager();
 
 	//t_pDataManager->LoadScene(this, m_LevelFileDir); // Load scene
-	Scene::SetupCameras();
-
 
 	// return;
 	{
@@ -64,8 +64,8 @@ void TestScene::Initialize()
 		t_pFactory->CreateLight(this, vec3(0, 5, -10));
 	}
 	//TEST:
-	obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
-	// obj = t_pFactory->CreateCube(this, vec3(0, 0, 10));
+	// obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
+	obj = t_pFactory->CreateCube(this, vec3(0, 0, 10));
 	obj->SetRotation(vec3(0,0,0));
 }
 

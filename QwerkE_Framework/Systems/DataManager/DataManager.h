@@ -1,5 +1,5 @@
-#ifndef __DataManager_H__
-#define __DataManager_H__
+#ifndef _DataManager_H_
+#define _DataManager_H_
 
 /*
 	The DataManager() class is meant to be used to load/save and store
@@ -45,4 +45,4 @@ protected:
 	void AddPositionTocJSONItem(cJSON* item, GameObject* object);
 };
 
-#endif //__ResourceManager_H__
+#endif //!_DataManager_H_

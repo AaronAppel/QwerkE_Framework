@@ -53,6 +53,8 @@ void Mesh::BufferMeshData(int numVerts, VertexData* vertices, int numIndices, un
 
 void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 {
+	CheckGraphicsErrors(__FILE__, __LINE__);
+
 	if (shader == nullptr) { return; } // null ShaderProgram*
 	GLuint t_ShaderHandle = shader->GetProgram();
 

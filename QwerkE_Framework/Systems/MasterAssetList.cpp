@@ -6,35 +6,7 @@
 #include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
 #include "../../Math_Includes.h"
 #include "../../Libraries/glew/GL/glew.h"
-
-#ifdef QwerkE_Framework
-#define AssetDir "../QwerkE_Common/Resources/"
-#else
-#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // TEMP: Engine is 1 directory up
-#endif // QwerkE_Engine
-
-// Define "hardcoded" file names for null objects for ease of use
-// but also to ensure consistency and prevent unintended changes.
-// Any external files should have matching names for the same reasons.
-// TODO: should macros express the file extension? Need to if the loader is looking for that file
-#define null_mesh "null_model.obj"
-#define null_shader "null_shader"
-#define null_texture "null_texture.png"
-#define null_material "null_material.mat"
-#define null_model "null_model.obj"
-#define null_font "null_font.ttf"
-
-// Define paths to resource folders that can change easily from project
-// to project using a preprocessor define. Paths can also change or be
-// manipulated at runtime so be careful since this is a good and bad thing.
-// TODO: Consider moving these to some sort of directory manager file so
-// these macros can be used elsewhere and can be constructed better.
-#define MeshFolderPath(a) StringAppend(AssetDir, "Models/", a) // TODO: Get rid of duplicate mesh path?
-#define ShaderFolderPath(a) StringAppend(AssetDir, "Shaders/", a)
-#define TextureFolderPath(a) StringAppend(AssetDir, "Textures/", a)
-#define MaterialFolderPath(a) StringAppend(AssetDir, "Models/", a)
-#define ModelFolderPath(a) StringAppend(AssetDir, "Models/", a)
-#define FontFolderPath(a) StringAppend(AssetDir, "Fonts/", a)
+#include "../../QwerkE_Framework/QwerkE_Directory_Defines.h"
 
 // TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 // TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
@@ -110,6 +82,11 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 {
 	// Read directory for file?
+
+	// TODO: Create a .qshader file that just lists what shaders to use
+	// and then build a new program using those shaders.
+	// This might be how dynamic shaders work
+
 	ShaderProgram* shader = new ShaderProgram();
 	// 2D
 	if (shaderName == "Basic2DTex") // Asset name
@@ -306,7 +283,7 @@ Model* ResourceManager::InstantiateModel(const char* modelName)
 	else
 	{
 		ConsolePrint("\nInstantiateModel(): Model not found!\n");
-		return nullptr;
+		return m_NullModel;
 	}
 }
 

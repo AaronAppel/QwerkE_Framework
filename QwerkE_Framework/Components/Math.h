@@ -12,6 +12,9 @@
 // May end up defining every math operation and allowing the definition
 // to be modified for whatever function calls the user wants to use.
 
+// divide without division
+// https://www.geeksforgeeks.org/divide-two-integers-without-using-multiplication-division-mod-operator/
+
 namespace QwerkE
 {
     class Math

@@ -6,6 +6,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
+#include "../../Systems/Graphics/Mesh/Mesh.h"
 
 /* Shapes */
 GameObject* Factory::CreateCube(Scene* scene, vec3 position)
@@ -17,8 +18,9 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	RenderComponent* renderComp = new RenderComponent();
 	// Assign assets from ResourceManager()
 	renderComp->SetMesh(m_pResources->GetMesh("TutorialCube")); // CreCube
-																// renderComp->SetModel(m_pResources->GetModel("CubeModel"));
+	// renderComp->SetModel(m_pResources->GetModel("CubeModel"));
 	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
+	renderComp->GetMesh()->SetupShaderAttributes(renderComp->GetShader());
 	renderComp->SetColour(vec4(0, 1, 0, 1));
 	renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
 
@@ -49,6 +51,7 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	renderComp->SetMesh(m_pResources->GetMesh("Plane"));
 
 	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
+	renderComp->GetMesh()->SetupShaderAttributes(renderComp->GetShader());
 	renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
 
 	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1)); // random intial colour

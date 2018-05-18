@@ -6,6 +6,7 @@
 #include "../../Systems/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Systems/Graphics/Mesh/Mesh.h"
 #include "../../Systems/ResourceManager.h"
 
 // Scenery + Props
@@ -22,7 +23,7 @@ GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 	renderComp->SetModel(m_pResources->GetModel("Cube"));
 
 	renderComp->SetShader(m_pResources->GetShader("SkyBox"));
-
+	renderComp->GetMesh()->SetupShaderAttributes(renderComp->GetShader());
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	// Add
 	t_SkyBox->AddComponent((Component*)renderComp);

@@ -118,6 +118,10 @@ enum eSceneTypes
 	// **etc
 
 	Scene_Max,
+
+	// "special" scenes
+	Scene_ViewerScene,
+
 	Scene_Null
 };
 

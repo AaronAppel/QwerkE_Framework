@@ -118,6 +118,7 @@
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
+#include "Libraries/pThreads/pthread.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -131,7 +132,8 @@
 //////////////////////////////
 // math
 //////////////////////////////
-#include "Math_Includes.h" // all math related files included in here
+// glm and other math related includes
+#include "Math_Includes.h"
 /////////////////////////////
 
 //////////////////////////////
@@ -146,7 +148,14 @@
 //////////////////////////////
 // Bullet3
 // Consider creating a library for bullet projects.
-// #include "Libraries/Bullet3/btAabbUtil2.h"
+#include "Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
+#include "Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+#include "Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
+#include "Libraries/Bullet3/LinearMath/btAabbUtil2.h"
+#include "Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+#include "Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
+#include "Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
 /////////////////////////////
 
 // TODO: Add necessary headers.

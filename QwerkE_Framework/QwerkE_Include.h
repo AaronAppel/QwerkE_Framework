@@ -5,7 +5,7 @@
 // QwerkE_Include.h
 // #includes crucial files for building like defines for platform.
 // Also includes some files for easier access or build time using
-// precompiled headers
+// precompiled headers.
 //////////////////////////////
 
 #include "QwerkE_Defines.h" // platform, architecture,
@@ -30,17 +30,59 @@
 //////////////////////////////
 // Infrastructure/Systems //
 //////////////////////////////
-// Graphics //
-#include "Systems/Graphics/Graphics_Header.h"
+#include "Systems/ServiceLocator.h" // Access point for all QwerkE services
 
 // Input //
 #include "Systems/Input/Input.h"
 
 // Scene //
 #include "Scenes/Scene.h"
-#include "Scenes/SceneManager.h"
 
-#include "Systems/ServiceLocator.h" // Audio, Input, Graphics, etc
+#include "Systems/Audio/AudioManager.h"
+
+// Data management //
+#include "Systems/DataManager/DataManager.h"
+
+#include "Systems/Debugger/Debugger.h"
+
+// Events //
+#include "Systems/Events/Event.h"
+#include "Systems/Events/EventManager.h"
+#include "Systems/Events/InputEvent.h"
+
+#include "Systems/Factory/Factory.h"
+#include "Systems/Factory/LevelLoader.h"
+
+// Graphics //
+#include "Systems/Graphics/Graphics_Header.h"
+
+// Rendergin //
+#include "Systems/Renderer.h"
+
+// Input //
+#include "Systems/Input/Input.h"
+#include "Systems/Input/InputManager.h"
+#include "Systems/Input/Controller.h"
+#include "Systems/Input/QwerKE_eKeys.h"
+
+#include "Systems/JobManager/JobManager.h"
+
+#include "Systems/Logger/Logger.h"
+
+#include "Systems/MessageManager.h"
+
+// networking //
+#include "Systems/Networking/NetworkManager.h"
+
+#include "Systems/Physics/PhysicsWorld.h"
+#include "Systems/Physics/PhysicsManager.h"
+
+#include "Systems/ResourceManager.h"
+
+#include "Systems/SceneManager.h"
+
+#include "Systems/Window/Window.h"
+#include "Systems/Window/WindowManager.h"
 //////////////////////////////
 
 #endif // !_QwerkE_Include_H_

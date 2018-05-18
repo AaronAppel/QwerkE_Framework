@@ -218,9 +218,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\TestScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -268,6 +265,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MasterAssetList.cpp">
       <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -402,9 +405,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\TestScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
@@ -459,5 +459,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h">
       <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\SceneManager.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
   </ItemGroup>
 </Project>

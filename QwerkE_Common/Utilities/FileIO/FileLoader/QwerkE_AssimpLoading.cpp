@@ -140,7 +140,7 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 				handle = resMan->GetTexture("null_texture.png");
 				str.Set("Empty"); // handle = resMan->GetTexture("glass_dif.png");
 			}
-
+			//handle = 1;
 			switch (i)
 			{
 			case aiTextureType_DIFFUSE:
