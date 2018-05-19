@@ -15,7 +15,7 @@
 
 TestScene::TestScene() : Scene()
 {
-	m_ID = Scene_TestScene;
+	m_ID = eSceneTypes::Scene_TestScene;
 	m_LevelFileDir = "Resources/LevelData/TestScene.json";
 }
 

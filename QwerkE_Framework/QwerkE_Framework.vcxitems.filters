@@ -272,6 +272,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
+      <Filter>Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -466,5 +469,8 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

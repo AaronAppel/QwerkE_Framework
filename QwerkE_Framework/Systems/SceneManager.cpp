@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "../Scenes/TestScene.h"
+#include "../Scenes/ViewerScene.h"
 #include "../QwerkE_Enums.h"
 #include "../Scenes/Scene.h"
 
@@ -28,12 +29,17 @@ SceneManager::~SceneManager()
 
 void SceneManager::Initialize()
 {
-	// *Do not enable scenes in here*
 	// instantiate and LoadScene() (splash, main menu, game etc...)
 	// test screen
 	Scene* temp = new TestScene();
 	temp->Initialize();
+	temp->SetIsEnabled(true);
 	m_CurrentScene = temp; // Set current
+	m_Scenes[temp->GetSceneID()] = temp;
+
+	temp = new ViewerScene();
+	temp->Initialize();
+	temp->SetIsEnabled(true);
 	m_Scenes[temp->GetSceneID()] = temp;
 }
 

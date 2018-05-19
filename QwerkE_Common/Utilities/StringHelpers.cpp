@@ -74,8 +74,11 @@ std::string DispStrCombine(const char* a, const char* b)
 	return value;
 }
 
-// http://www.cplusplus.com/reference/cstring/strcmp/
-// http://www.cplusplus.com/reference/cstring/strncmp/
+bool StringCompare(const char* a, const char* b)
+{
+	return strcmp(a, b) == 0; // 0 means they are equal
+}
+
 bool StringCompare(std::string a, std::string b)
 {
 	return strcmp(a.c_str(), b.c_str()) == 0; // 0 means they are equal

@@ -9,6 +9,9 @@
 
 #include <assert.h>
 
+// https://www.raywenderlich.com/53077/bullet-physics-tutorial-getting-started
+// http://bulletphysics.org/Bullet/BulletFull/classbtMotionState.html
+
 PhysicsWorld::PhysicsWorld()
 {
 	m_pBroadphase = 0;

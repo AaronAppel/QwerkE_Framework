@@ -3,6 +3,8 @@
 
 #include "Scene.h"
 
+// TODO: Turn into some model viewer scene maybe.
+// Have a targeted camera that rotates around a stationary object.
 class ViewerScene : public Scene
 {
 public:

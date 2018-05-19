@@ -87,7 +87,7 @@ protected:
 	MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
 
 	std::map<std::string, GameObject*> m_pGameObjects;
-	eSceneTypes m_ID = Scene_Null;
+	eSceneTypes m_ID = eSceneTypes::Scene_Null;
 
 	int m_CurrentCamera = 0;
 	Linear2LinkedList<GameObject*> m_CameraList;

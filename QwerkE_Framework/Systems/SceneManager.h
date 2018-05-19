@@ -32,13 +32,12 @@ public:
 	void Draw();
 	void DrawScene(eSceneTypes scene);
 
-	// TODO:: OnScreenSize() call all scenes and update view matrices
-
 	/* Getters + Setters */
 	// getters
-	//PlayerController* GetController() { return m_pController; };
 	Scene* GetScene(eSceneTypes a_SceneType) { return m_Scenes[a_SceneType]; };
 	Scene* GetCurrentScene() { return m_CurrentScene; };
+	int SceneCount() { return m_Scenes.size(); };
+	const std::map<eSceneTypes, Scene*>* LookAtScenes() { return &m_Scenes; };
 
 private:
 	// functions

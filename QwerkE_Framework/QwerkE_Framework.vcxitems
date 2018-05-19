@@ -18,6 +18,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Components\Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Components\Time.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\CameraComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\FirstPersonCameraComponent.h" />
@@ -89,6 +90,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Math.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Time.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\CameraComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\FirstPersonCameraComponent.cpp" />

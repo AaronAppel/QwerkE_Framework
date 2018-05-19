@@ -21,7 +21,7 @@
 #define null_shader "null_shader"
 #define null_texture "null_texture.png"
 #define null_material "null_material.mat"
-#define null_model "scifi_assault_rifle/scifi_assault_rifle.obj"//"null_model.obj"
+#define null_model "null_model.obj"
 #define null_font "null_font.ttf"
 
 // Define paths to resource folders that can change easily from project

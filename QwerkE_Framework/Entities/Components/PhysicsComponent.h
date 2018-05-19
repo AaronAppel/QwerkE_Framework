@@ -1,5 +1,5 @@
-#ifndef _LightComponent_H_
-#define _LightComponent_H_
+#ifndef _PhysicsComponent_H_
+#define _PhysicsComponent_H_
 
 #include "../../Entities/Components/Component.h"
 
@@ -17,4 +17,4 @@ public:
 private:
 };
 
-#endif //!_LightComponent_H_
+#endif //!_PhysicsComponent_H_
