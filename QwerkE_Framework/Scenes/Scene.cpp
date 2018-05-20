@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include "../Entities/GameObject.h"
 #include "../Entities/Components/Component.h"
-#include "../Entities/Components/CameraComponent.h"
+#include "../Entities/Components/Camera/CameraComponent.h"
 #include "../Systems/Input/InputManager.h"
 #include "../Systems/Input/Controller.h"
 #include "../Systems/DataManager/DataManager.h"

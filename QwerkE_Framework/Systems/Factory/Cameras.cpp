@@ -1,10 +1,10 @@
 #include "Factory.h"
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
-#include "../../Entities/Components/CameraComponent.h"
-#include "../../Entities/Components/FirstPersonCameraComponent.h"
-#include "../../Entities/Components/FreeCameraComponent.h"
-#include "../../Entities/Components/StaticCameraComponent.h"
-#include "../../Entities/Components/ThirdPersonCameraComponent.h"
+#include "../../Entities/Components/Camera/CameraComponent.h"
+#include "../../Entities/Components/Camera/FirstPersonCameraComponent.h"
+#include "../../Entities/Components/Camera/FreeCameraComponent.h"
+#include "../../Entities/Components/Camera/StaticCameraComponent.h"
+#include "../../Entities/Components/Camera/ThirdPersonCameraComponent.h"
 #include "../../Entities/GameObject.h"
 
 #include <string>

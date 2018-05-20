@@ -16,4 +16,3 @@ del /Q /F /S Release
 rmdir /Q /S Debug
 rmdir /Q /S x64
 rmdir /Q /S Release
-cd ../

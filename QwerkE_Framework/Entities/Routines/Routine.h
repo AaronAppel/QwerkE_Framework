@@ -8,7 +8,6 @@ class GameObject;
 class Routine
 {
 public:
-	Routine();
 	virtual ~Routine();
 
 	virtual void Update(double a_Deltatime) {};
@@ -33,6 +32,7 @@ public:
 	void SetRoutineType(eRoutineTypes type) { m_Type = type; };
 
 protected:
+	Routine();
 	int m_Priority = 0; // render order / update order
 	GameObject* m_pParent = nullptr;
 	eRoutineTypes m_Type = eRoutineTypes::Routine_NULL;

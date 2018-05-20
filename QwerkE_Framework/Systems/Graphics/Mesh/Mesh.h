@@ -10,6 +10,8 @@ class Mesh;
 
 typedef void (Mesh::*MeshFunction)(); // Draw function
 
+// TODO: Use macro functions to replace OpenGL specific functions.
+// The idea is to abstract library functionality without losing speed.
 class Mesh
 {
 public:

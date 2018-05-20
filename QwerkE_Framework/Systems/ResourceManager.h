@@ -101,7 +101,7 @@ private:
 	MaterialData* InstantiateMaterial(const char* name);
 	Model* InstantiateModel(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
-	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize);
+	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels);
 
 	// Deletions
 	// TODO: void* return? Actually write functions.

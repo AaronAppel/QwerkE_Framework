@@ -70,6 +70,12 @@
     <Filter Include="Systems\Graphics\Mesh">
       <UniqueIdentifier>{d6d45997-01f6-4486-8c03-73a2b16b0dea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities\Components\Extended">
+      <UniqueIdentifier>{ab871d17-ed0d-41d1-b6a2-606557d312d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Components\Camera">
+      <UniqueIdentifier>{31d6fc8c-f727-486d-ba30-a6f81c261510}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -174,22 +180,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\StaticCameraComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\ThirdPersonCameraComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\CameraComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\FirstPersonCameraComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\FreeCameraComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
@@ -275,6 +266,30 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp">
+      <Filter>Systems\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.cpp">
+      <Filter>Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\CameraComponent.cpp">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FirstPersonCameraComponent.cpp">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FreeCameraComponent.cpp">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\StaticCameraComponent.cpp">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\ThirdPersonCameraComponent.cpp">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.cpp">
+      <Filter>Entities\Components\Extended</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -358,22 +373,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\StaticCameraComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\ThirdPersonCameraComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\CameraComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\FirstPersonCameraComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\FreeCameraComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
@@ -471,6 +471,30 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
       <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h">
+      <Filter>Systems\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\CameraComponent.h">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FirstPersonCameraComponent.h">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FreeCameraComponent.h">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\StaticCameraComponent.h">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\ThirdPersonCameraComponent.h">
+      <Filter>Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.h">
+      <Filter>Entities\Components\Extended</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

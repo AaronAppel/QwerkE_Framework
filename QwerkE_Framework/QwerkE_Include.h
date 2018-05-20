@@ -38,6 +38,7 @@
 // Scene //
 #include "Scenes/Scene.h"
 
+// Audio //
 #include "Systems/Audio/AudioManager.h"
 
 // Data management //
@@ -56,7 +57,7 @@
 // Graphics //
 #include "Systems/Graphics/Graphics_Header.h"
 
-// Rendergin //
+// Rendering //
 #include "Systems/Renderer.h"
 
 // Input //
@@ -83,6 +84,19 @@
 
 #include "Systems/Window/Window.h"
 #include "Systems/Window/WindowManager.h"
+//////////////////////////////
+
+//////////////////////////////
+// Entities //
+//////////////////////////////
+// gameobject
+#include "Entities/GameObject.h"
+// TODO: #include components and routines
+
+// components
+
+// routines
+
 //////////////////////////////
 
 #endif // !_QwerkE_Include_H_

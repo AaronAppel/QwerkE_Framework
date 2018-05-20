@@ -1,29 +1,14 @@
 #include "AudioManager.h"
+#include "AudioSource.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/LoadWavFile.h"
 #include "../../QwerkE_Directory_Defines.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 
-#include <stddef.h> // NULL
-
 // OpenAL Reference: https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 // wav loading: https://blog.csdn.net/u011417605/article/details/49662535
 // https://ffainelli.github.io/openal-example/
 // https://stackoverflow.com/questions/13660777/c-reading-the-data-part-of-a-wav-file/13661263
-
-void AudioSource::SetOrientation(vec3 pos, vec3 rot, vec3 vel)
-{
-	alSourcef(m_Buffer, AL_GAIN, 1.0f);
-	alSourcef(m_Buffer, AL_PITCH, 1.0f);
-	alSource3f(m_Buffer, AL_VELOCITY, vel.x, vel.y, vel.z);
-	alSource3f(m_Buffer, AL_POSITION, 0.0f, 0.0f, 0.0f);
-}
-void AudioSource::Play(ALuint buffer)
-{
-	alSourcei(m_Buffer, AL_LOOPING, AL_FALSE);
-	alSourcei(m_Buffer, AL_BUFFER, buffer);
-	alSourcePlay(m_Buffer);
-}
 
 void OpenALError(ALenum error)
 {
@@ -65,9 +50,9 @@ static void list_audio_devices(const ALCchar *devices)
 
 AudioManager::AudioManager()
 {
-	// init openal?
-	ALuint error;
 	// Initialization
+
+	ALuint error;
 	// TODO: Setup device properly
 	list_audio_devices(alcGetString(NULL, ALC_DEVICE_SPECIFIER));
 	Device = alcOpenDevice("OpenAL Soft"); // select the "preferred device"
@@ -79,10 +64,9 @@ AudioManager::AudioManager()
 
 	// Check for EAX 2.0 support
 	g_bEAX = alIsExtensionPresent("EAX2.0"); // Why?
-	const ALCchar* result = alcGetString(Device, AL_EXTENSIONS); // Why?
+	const ALCchar* result = alcGetString(Device, AL_EXTENSIONS); // check for extensions
 
-	if(result != nullptr)
-		ConsolePrint("\nOpenAL extensions available!!!\n");
+	// if(result != nullptr) ConsolePrint("\nOpenAL extensions available!!!\n");
 
 	error = alGetError();
 	if (error != AL_NO_ERROR)
@@ -96,16 +80,20 @@ AudioManager::AudioManager()
 		m_SoundBuffers.push_back(temp);
 	}
 
-	// load a test sound
-	// https://mackron.github.io/dr_wav
-	// http://wascal.net/music/?p=369
-	// https://stackoverflow.com/questions/16075233/reading-and-processing-wav-file-data-in-c-c
-
+	// TODO: Move this code to a better spot
 	DWORD size;
-	unsigned char* data = QwerkE_wav_loadSound(SoundFolderPath("bounce.wav"), size);
-	// TODO: setup format and frequency
-	// alBufferData(m_SoundBuffers.at(0), AL_FORMAT_STEREO16, data, size, ALsizei(44100));
-	alBufferData(m_SoundBuffers.at(0), AL_FORMAT_MONO16, data, size, ALsizei(44100));
+	unsigned short channels;
+	ALsizei frequency;
+	unsigned char* data = QwerkE_wav_loadSound(SoundFolderPath("bounce.wav"), size, channels, frequency);
+	// TODO: read format type and handle loading various sound formats
+	if (channels == 1)
+		alBufferData(m_SoundBuffers.at(0), AL_FORMAT_MONO16, data, size, frequency);
+	else if (channels == 2)
+		alBufferData(m_SoundBuffers.at(0), AL_FORMAT_STEREO16, data, size, frequency);
+	else
+	{
+		assert(false); // invalid channels
+	}
 
 	error = alGetError();
 	if (error != AL_NO_ERROR)
@@ -159,7 +147,7 @@ void AudioManager::SetListenerOrientation(vec3 position, vec3 velocity)
 {
 	// TODO: Create an AudioListener() object or component/routine pair
 	// that will remember and manipulate listener data.
-	alListenerf(AL_GAIN, 1);
+	alListenerf(AL_GAIN, 0.5f);
 	alListener3f(AL_POSITION, position.x, position.y, position.z);
 	alListener3f(AL_VELOCITY, velocity.x, velocity.y, velocity.z);
 	ALfloat listenerOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };

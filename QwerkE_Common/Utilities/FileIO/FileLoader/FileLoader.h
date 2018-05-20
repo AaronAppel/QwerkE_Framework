@@ -11,7 +11,7 @@ namespace QwerkE
 {
 	namespace FileLoader
 	{
-		unsigned char* LoadSoundFile(const char* path, DWORD& bufferSize);
+		unsigned char* LoadSoundFile(const char* path, DWORD& bufferSize, unsigned short& channels);
 
 		// TODO: Allow flags for loading images a certain way
 		// TODO: Remove GLenum and any implementation specific variables or styles

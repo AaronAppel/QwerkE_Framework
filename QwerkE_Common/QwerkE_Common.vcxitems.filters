@@ -2332,9 +2332,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.h">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadSoundFile.h">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.h">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClInclude>

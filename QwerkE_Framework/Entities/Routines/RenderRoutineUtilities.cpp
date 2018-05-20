@@ -2,7 +2,7 @@
 #include "../../Systems/Graphics/ShaderProgram/ShaderProgram.h"
 #include "../GameObject.h"
 #include "../../Entities/Components/Component.h"
-#include "../../Entities/Components/CameraComponent.h"
+#include "../../Entities/Components/Camera/CameraComponent.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"

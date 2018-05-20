@@ -8,7 +8,7 @@
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../Entities/Components/CameraComponent.h"
+#include "../../Entities/Components/Camera/CameraComponent.h"
 
 #include <assert.h>
 

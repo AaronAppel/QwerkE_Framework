@@ -1,19 +1,26 @@
 #include "LoadWavFile.h"
+#include "../../PrintFunctions.h"
 
 #include <iostream>
 
 // load wav file
 // https://stackoverflow.com/questions/38022123/openal-not-playing-sound/50429578#50429578
-unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize)
+unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize, unsigned short& channels, ALsizei& frequency)
 {
+	// TODO: Cleaner error handling
+
 	FILE* f;
 	fopen_s(&f, filePath, "rb"); // "rb" instead of "r"
 
-	assert(f);
+	if (!f)
+	{
+		OutputPrint("QwerkE_wav_loadSound: Error opening file: %s", filePath);
+		return nullptr;
+	}
 
 	char type[4];
 	DWORD size, chunkSize;
-	short formatType, channels;
+	short formatType;
 	DWORD sampleRate, byteRate;
 	short blockAlign, bitsPerSample;
 
@@ -25,7 +32,8 @@ unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize)
 	fread(type, sizeof(char), 4, f); // ChunkID "RIFF"
 	if (!strcmp(type, "RIFF"))
 	{
-		std::cout << "Not RIFF!" << std::endl;
+		OutputPrint("QwerkE_wav_loadSound: Not a \"RIFF\" file: %s", filePath);
+		fclose(f);
 		return nullptr;
 	}
 
@@ -34,7 +42,8 @@ unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize)
 	fread(type, sizeof(char), 4, f);
 	if (!strcmp(type, "WAVE"))
 	{
-		std::cout << "Not WAVE!" << std::endl;
+		OutputPrint("QwerkE_wav_loadSound: Not a \"WAVE\" file: %s", filePath);
+		fclose(f);
 		return nullptr;
 	}
 
@@ -42,7 +51,8 @@ unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize)
 	fread(&subChunk1ID, sizeof(char), 4, f); // "fmt "
 	if (!strcmp(type, "fmt "))
 	{
-		std::cout << "Not fmt!" << std::endl;
+		OutputPrint("QwerkE_wav_loadSound: No format found in file: %s", filePath);
+		fclose(f);
 		return nullptr;
 	}
 
@@ -55,23 +65,27 @@ unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize)
 	fread(&blockAlign, sizeof(short), 1, f);
 	fread(&bitsPerSample, sizeof(short), 1, f);
 
+	frequency = sampleRate;
+
 	// read "data" chunk
 	fread(type, sizeof(char), 4, f);
 	if (!strcmp(type, "data"))
 	{
-		std::cout << "Missing data" << std::endl;
+		OutputPrint("QwerkE_wav_loadSound: No data in file: %s", filePath);
+		fclose(f);
 		return nullptr;
 	}
 
 	fread(&bufferSize, sizeof(DWORD), 1, f);
 
-	unsigned char* buffer = new unsigned char[bufferSize];
+	unsigned char* buffer = new unsigned char[bufferSize]; //RAM: new
 
 	int result = fread(buffer, 1, bufferSize, f);
 
 	if (result != bufferSize || ferror(f) != 0)
 	{
-		std::cout << "Error reading data!" << std::endl;
+		OutputPrint("QwerkE_wav_loadSound: Error reading data in file: %s", filePath);
+		fclose(f);
 		return nullptr;
 	}
 

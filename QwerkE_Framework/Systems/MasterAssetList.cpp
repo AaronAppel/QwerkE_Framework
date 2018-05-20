@@ -307,9 +307,8 @@ FT_Face ResourceManager::InstantiateFont(const char* fontName)
 	return font;
 }
 
-ALuint ResourceManager::InstantiateSound(const char* soundName, DWORD& bufferSize)
+ALuint ResourceManager::InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels)
 {
-	// TODO:
-	QwerkE::FileLoader::LoadSoundFile(SoundFolderPath(soundName), bufferSize);
+	// TODO: QwerkE::FileLoader::LoadSoundFile(SoundFolderPath(soundName), bufferSize, channels, frequency);
 	return 0;
 }
