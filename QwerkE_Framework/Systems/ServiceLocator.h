@@ -9,7 +9,7 @@
 
 #include "../QwerkE_Enums.h"
 #include "./../../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "ResourceManager.h"
+#include "ResourceManager/ResourceManager.h"
 #include "Input/InputManager.h"
 
 class ResourceManager;

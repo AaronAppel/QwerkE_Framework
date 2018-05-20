@@ -2,7 +2,7 @@
 #include "Factory.h"
 #include "../../../QwerkE_Common/Math_Includes.h"
 #include "../Graphics/Mesh/Mesh.h"
-#include "../../Systems/ResourceManager.h"
+#include "../../Systems/ResourceManager/ResourceManager.h"
 
 // Internal Creation Functions
 Menu* Factory::CreateMenu()

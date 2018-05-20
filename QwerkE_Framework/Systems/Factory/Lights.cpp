@@ -3,7 +3,7 @@
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/Components/LightComponent.h"
-#include "../../Systems/ResourceManager.h"
+#include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Mesh/Model.h"
 
@@ -23,9 +23,8 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 	// Rendering
 	RenderComponent* renderComp = new RenderComponent();
 	renderComp->SetModel(m_pResources->GetModel("Light_Bulb.obj"));
-	renderComp->GetModel()->SetupMeshes(renderComp->GetShader());
-
 	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
+	renderComp->GetModel()->SetupMeshes(renderComp->GetShader());
 
 	renderComp->SetColour(vec4(t_pLightComp->GetColour(), 1.0f));
 

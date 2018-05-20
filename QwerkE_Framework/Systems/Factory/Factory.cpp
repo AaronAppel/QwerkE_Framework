@@ -1,5 +1,5 @@
 #include "Factory.h"
-#include "../../Systems/ResourceManager.h"
+#include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
 
 Factory::Factory()
@@ -18,4 +18,8 @@ void Factory::ClearResources()
 GameObject* Factory::CreateGameObject(Scene* scene)
 {
 	return new GameObject(scene);
+}
+GameObject* Factory::CreateGameObject(Scene* scene, vec3 position)
+{
+	return new GameObject(scene, position);
 }

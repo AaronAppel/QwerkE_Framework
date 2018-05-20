@@ -43,12 +43,14 @@ void Mesh::BufferMeshData(int numVerts, VertexData* vertices, int numIndices, un
 	if (m_IndexCount > 0)
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * m_IndexCount, indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * m_IndexCount, indices, GL_STATIC_DRAW);
 	}
 
 	// unbind for safety
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+	CheckGraphicsErrors(__FILE__, __LINE__);
 }
 
 void Mesh::SetupShaderAttributes(ShaderProgram* shader)
@@ -114,6 +116,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 void Mesh::DrawElements()
 {
 	glBindVertexArray(m_VAO); // Enable attribute arrays
+	// if read acces violation it is because SetupAttributes was not called
 	glDrawElements(m_PrimitiveType, m_IndexCount, GL_UNSIGNED_INT, 0); // (drawMode, numIndices, EBOType, dataOffset)
 	glBindVertexArray(0);
 }

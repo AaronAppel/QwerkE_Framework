@@ -197,7 +197,8 @@ void Scene::SetupLights()
 
 bool Scene::AddObjectToScene(GameObject* object)
 {
-	if (m_pGameObjects.find(object->GetName()) == m_pGameObjects.end()) // Name unique?
+	if (object)
+	if (m_pGameObjects.find(object->GetName()) == m_pGameObjects.end())
 	{
 		m_pGameObjects[object->GetName()] = object;
 		// TODO: Sort by draw order

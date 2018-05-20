@@ -32,6 +32,7 @@ public:
 	/* Getters + Setters */
 	// Getters
 	// TODO: GLuint GetShaderName() {}
+	std::string GetName() { return m_Name; }
 	GLuint GetProgram() { return m_ProgramHandle; };
     const char* GetVertString() { return m_VertString; };
     const char* GetFragString() { return m_FragString; };
@@ -42,6 +43,7 @@ public:
 
 	/* Uniform value assignment */
 	// int
+	void SetName(std::string name) { m_Name = name; }
 	void SetUniformInt1(const char* name, int value);
 	void SetUniformInt2(const char* name, int value1, int value2);
 	void SetUniformInt3(const char* name, int value1, int value2, int value3);
@@ -61,6 +63,8 @@ public:
 
 private:
 	/* Variables */
+	std::string m_Name = "Uninitialized";
+
 	const char* m_VertString = 0;
 	const char* m_FragString = 0;
 	const char* m_GeoString = 0;
@@ -71,6 +75,7 @@ private:
 	GLuint m_ProgramHandle = 0;
 
 	/* Functionality */
+	void SetShaderName();
     bool BuildShaderProgram(); // return BuildSucceeded == true
 	GLuint CompileShader(GLenum shaderType, const char* shaderString);
 	GLuint LinkShaders(GLuint vert, GLuint frag, GLuint geo);

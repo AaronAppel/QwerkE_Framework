@@ -36,11 +36,6 @@ void SceneManager::Initialize()
 	temp->SetIsEnabled(true);
 	m_CurrentScene = temp; // Set current
 	m_Scenes[temp->GetSceneID()] = temp;
-
-	temp = new ViewerScene();
-	temp->Initialize();
-	temp->SetIsEnabled(true);
-	m_Scenes[temp->GetSceneID()] = temp;
 }
 
 void SceneManager::ResetScene(eSceneTypes type)
@@ -85,16 +80,22 @@ void SceneManager::DisableAll()
 
 void SceneManager::AddScene(Scene* scene)
 {
-    // TODO: Check if it already exists
-    m_Scenes[scene->GetSceneID()] = scene;
+	if (m_Scenes.find(scene->GetSceneID()) == m_Scenes.end())
+	{
+		m_Scenes[scene->GetSceneID()] = scene;
+	}
 }
 
 Scene* SceneManager::RemoveScene(Scene* scene)
 {
-    // TODO: Check if it exists
-    Scene* returnScene = m_Scenes[scene->GetSceneID()];
-    m_Scenes[scene->GetSceneID()] = nullptr; // TODO: Remove from map
-    return returnScene;
+	if (m_Scenes.find(scene->GetSceneID()) != m_Scenes.end())
+	{
+		m_Scenes.erase(scene->GetSceneID());
+		Scene* returnScene = m_Scenes[scene->GetSceneID()];
+		return returnScene;
+	}
+	else
+		return nullptr;
 }
 
 void SceneManager::Update(double deltatime) // update SceneTypes from bottom up (Max-)

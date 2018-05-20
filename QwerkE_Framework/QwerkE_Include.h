@@ -78,7 +78,7 @@
 #include "Systems/Physics/PhysicsWorld.h"
 #include "Systems/Physics/PhysicsManager.h"
 
-#include "Systems/ResourceManager.h"
+#include "Systems/ResourceManager/ResourceManager.h"
 
 #include "Systems/SceneManager.h"
 

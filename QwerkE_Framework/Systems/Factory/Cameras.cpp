@@ -5,6 +5,9 @@
 #include "../../Entities/Components/Camera/FreeCameraComponent.h"
 #include "../../Entities/Components/Camera/StaticCameraComponent.h"
 #include "../../Entities/Components/Camera/ThirdPersonCameraComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
+#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Entities/GameObject.h"
 
 #include <string>
@@ -64,6 +67,14 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 	t_pCamera->AddComponent(t_pCamComp); // add to object
 	t_pCamComp->Setup();
 	t_pCamComp->SetTargetPosition(vec3(0,0,0));
+
+	RenderComponent* rComp = new RenderComponent();
+	rComp->SetModel(m_pResources->GetModel("Camera.obj"));
+	rComp->SetShader(m_pResources->GetShader("Basic3D"));
+	t_pCamera->AddComponent((Component*)rComp);
+
+	RenderRoutine* renderRoutine = new RenderRoutine();
+	t_pCamera->AddRoutine((Routine*)renderRoutine);
 
 	if (scene->AddCamera(t_pCamera)) // add to scene
 	{

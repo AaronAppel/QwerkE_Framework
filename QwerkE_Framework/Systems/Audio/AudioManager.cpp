@@ -106,7 +106,7 @@ AudioManager::AudioManager()
 
 	m_Source = new AudioSource();
 	m_Source->SetOrientation(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0));
-	m_Source->Play(m_SoundBuffers.at(0));
+	// m_Source->Play(m_SoundBuffers.at(0));
 
 	error = alGetError();
 	if (error != AL_NO_ERROR)

@@ -184,6 +184,21 @@ void ShaderProgram::CleanUp()
 	m_ProgramHandle = 0;
 }
 
+void ShaderProgram::SetShaderName()
+{
+	// TODO: Improve logic
+	if (m_VertString)
+	{
+		std::string test = m_VertString;
+		test = test.substr(3, test.find_first_of('.') - 1 - 2);
+		m_Name = test;
+	}
+	else if (m_FragString) m_FragShaderHandle = CompileShader(GL_FRAGMENT_SHADER, m_FragString);
+	else if (m_GeoString) m_GeoShaderHandle = CompileShader(GL_GEOMETRY_SHADER, m_GeoString);
+	else
+		m_Name = "Null";
+}
+
 bool ShaderProgram::BuildShaderProgram()
 {
     // shader strings should have been loaded by Init(), ShaderFactory, or SetStringData()
@@ -206,7 +221,7 @@ bool ShaderProgram::BuildShaderProgram()
 
 	SetupAttributeList();
 	SetupUniformList();
-
+	SetShaderName();
     return true; // shader built properly
 }
 // Returns new shader handle is successful, else 0

@@ -1,6 +1,6 @@
 #include "ViewerScene.h"
 #include "../Systems/ServiceLocator.h"
-#include "../Systems/ResourceManager.h"
+#include "../Systems/ResourceManager/ResourceManager.h"
 #include "../Systems/Factory/Factory.h"
 
 ViewerScene::ViewerScene()
@@ -19,7 +19,7 @@ void ViewerScene::Initialize()
 	ResourceManager* t_pResourceManager = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
 	// cameras
-	t_pFactory->CreateThirdPersonCamera(this, vec3(0, 0, 5));
+	t_pFactory->CreateFreeCamera(this, vec3(0, 0, 5));
 	Scene::SetupCameras();
 
 	// lights
@@ -27,7 +27,6 @@ void ViewerScene::Initialize()
 
 	// actor
 	// none. Add one and use it to take thumbnail pictures for assets
-	t_pFactory->CreateCube(this, vec3(0,0,10));
 }
 
 void ViewerScene::p_Update(double TimePassed)

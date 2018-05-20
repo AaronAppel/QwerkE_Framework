@@ -10,7 +10,7 @@
 #include "../Systems/Graphics/Mesh/MeshFactory.h"
 #include "../Systems/Graphics/ShaderProgram/ShaderProgram.h"
 #include "../Systems/ServiceLocator.h"
-#include "../Systems/ResourceManager.h"
+#include "../Systems/ResourceManager/ResourceManager.h"
 #include "../Components/Time.h"
 
 TestScene::TestScene() : Scene()

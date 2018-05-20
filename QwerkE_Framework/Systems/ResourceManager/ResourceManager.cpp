@@ -1,9 +1,9 @@
 #include "ResourceManager.h"
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "Graphics/Gfx_Classes/MaterialData.h"
-#include "Graphics/Mesh/Mesh.h"
-#include "Graphics/ShaderProgram/ShaderProgram.h"
-#include "Graphics/Mesh/Model.h"
+#include "../Graphics/Gfx_Classes/MaterialData.h"
+#include "../Graphics/Mesh/Mesh.h"
+#include "../Graphics/ShaderProgram/ShaderProgram.h"
+#include "../Graphics/Mesh/Model.h"
 
 #include <map>
 

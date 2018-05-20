@@ -61,7 +61,8 @@ private:
 
 	/* Private functions */
 	// GameObjects
-	GameObject* CreateGameObject(Scene* scene);
+	GameObject* CreateGameObject(Scene* scene); // TODO: Remove?
+	GameObject* CreateGameObject(Scene* scene, vec3 position);
 
 	// Block_Menu
 	Menu* CreateMenu();

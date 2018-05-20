@@ -1,7 +1,7 @@
 #include "FileLoader.h"
 #include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/Model.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
-#include "../../../../QwerkE_Framework/Systems/ResourceManager.h"
+#include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../StringHelpers.h"
 
 #include <iostream>

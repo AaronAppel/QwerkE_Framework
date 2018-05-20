@@ -32,6 +32,7 @@ class GameObject
 {
 public:
 	GameObject(Scene* scene);
+	GameObject(Scene* scene, vec3 position);
 	~GameObject();
 
 	void Update(double deltatime);
@@ -83,7 +84,7 @@ private:
 	vec3 m_Rotation = 0;
 	vec3 m_Scale = 1.0f;
 
-	int m_BaseUpdateListSize = 0;
+	int m_BaseUpdateListSize = 0; // TODO: make use of these of delete
 	std::vector<Routine*> m_UpdateList;
 	int m_BaseDrawListSize = 0;
 	std::vector<Routine*> m_DrawList;

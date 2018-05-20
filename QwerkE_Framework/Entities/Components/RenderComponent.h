@@ -8,7 +8,6 @@
 
 #include <vector>
 
-class Mesh;
 class ShaderProgram;
 struct MaterialData;
 class Model;
@@ -21,16 +20,14 @@ public:
 
 	/* Getters + Setters */
 	// getters
-	Mesh* GetMesh() { return m_pMesh; };
 	ShaderProgram* GetShader() { return m_pShader; };
 	GLuint GetCurrentTexture() { return m_CurrentTexture; };
-	GLuint GetTextureList() { return m_CurrentTexture; };
+	GLuint GetTextureList() { return m_CurrentTexture; }; // TODO: Remove
 	vec4 GetColour() { return m_Colour; };
 	MaterialData* GetMaterial() { return m_Material; };
     Model* GetModel() { return m_Model; };
 
 	// setters
-	void SetMesh(Mesh* mesh);
 	void SetShader(ShaderProgram* shader);
 	void SetTexture(GLuint texture) { m_CurrentTexture = texture; };
 	void SetColour(vec4 Colour) { m_Colour = Colour; };
@@ -38,7 +35,6 @@ public:
     void SetModel(Model* model);
 
 private:
-	Mesh* m_pMesh = nullptr;
     Model* m_Model = nullptr;
 	ShaderProgram* m_pShader = nullptr;
 	// TODO:: Can m_Texture point to m_Material?

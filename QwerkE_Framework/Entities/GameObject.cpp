@@ -4,8 +4,23 @@
 #include "Components/Component.h"
 #include "../QwerkE_Enums.h"
 
+
 GameObject::GameObject(Scene* scene)
 {
+	m_pScene = scene;
+	for (int i = 0; i < m_BaseUpdateListSize; i++)
+	{
+		m_UpdateList.push_back(nullptr); // fill for runtime
+	}
+	for (int i = 0; i < m_BaseDrawListSize; i++)
+	{
+		m_DrawList.push_back(nullptr); // fill for runtime
+	}
+}
+
+GameObject::GameObject(Scene* scene, vec3 position)
+{
+	m_Position = position;
 	m_pScene = scene;
 	for (int i = 0; i < m_BaseUpdateListSize; i++)
 	{

@@ -76,6 +76,9 @@
     <Filter Include="Entities\Components\Camera">
       <UniqueIdentifier>{31d6fc8c-f727-486d-ba30-a6f81c261510}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems\ResourceManager">
+      <UniqueIdentifier>{9cea2562-1f97-420a-aa12-076dc81cec6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -154,9 +157,6 @@
       <Filter>Systems\Window</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp">
@@ -254,9 +254,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.cpp">
       <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MasterAssetList.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
@@ -289,6 +286,24 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.cpp">
       <Filter>Entities\Components\Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\MasterAssetList.cpp">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.cpp">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset.cpp">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.cpp">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.cpp">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent .cpp">
+      <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +368,6 @@
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\GameObject.h">
@@ -495,6 +507,21 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.h">
       <Filter>Entities\Components\Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.h">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset.h">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.h">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.h">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent.h">
+      <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 #include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/VertexData.h"
 #include "../../../../QwerkE_Framework/Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
-#include "../../../../QwerkE_Framework/Systems/ResourceManager.h"
+#include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../../../QwerkE_Framework/Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../StringHelpers.h"
 
@@ -100,7 +100,7 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 	else
 	{
 		//create new material
-		MaterialData* data = new MaterialData();
+		MaterialData* data = new MaterialData(); // TODO: delete if null
 		data->name = name.C_Str();
 		// load each map/texture into a new material
 

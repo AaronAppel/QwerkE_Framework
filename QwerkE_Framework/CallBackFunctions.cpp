@@ -129,6 +129,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	ImGuiIO& io = ImGui::GetIO();
 	io.MouseWheelH += (float)xoffset;
 	io.MouseWheel += (float)yoffset;
+	// ImGui::SetScrollY(yoffset);
 }
 void joystick_callback(int joy, int event)
 {

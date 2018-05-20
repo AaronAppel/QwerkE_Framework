@@ -2,7 +2,7 @@
 # File Created: 07.04.2018 13:25:32
 
 #
-# object Teapot001
+# object Null_Model
 #
 
 v  6.9454 11.9064 -0.0000
@@ -1357,8 +1357,8 @@ vt 0.3750 0.9500 0.0000
 vt 0.3750 0.9750 0.0000
 # 287 texture coords
 
-o Teapot001
-g Teapot001
+o Null_Model
+g Null_Model
 f 1/1/1 2/2/2 3/3/3 
 f 3/3/3 4/4/4 1/1/1 
 f 4/4/4 3/3/3 5/5/5 
