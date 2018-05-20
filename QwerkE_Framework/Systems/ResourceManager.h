@@ -3,6 +3,7 @@
 
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "../../QwerkE_Common/Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
+#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 
 #include <string>
 #include <map>
@@ -100,6 +101,7 @@ private:
 	MaterialData* InstantiateMaterial(const char* name);
 	Model* InstantiateModel(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
+	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize);
 
 	// Deletions
 	// TODO: void* return? Actually write functions.
@@ -123,6 +125,7 @@ private:
 	MaterialData* m_NullMaterial = nullptr;
 	Model* m_NullModel = nullptr;
 	FT_Face m_NullFont;
+	ALuint m_NullSound;
 };
 
 #endif //!_ResourceManager_H_

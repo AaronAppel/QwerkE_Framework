@@ -15,10 +15,11 @@ void ResourceManager::Init()
 {
 	m_NullMesh = InstantiateMesh(null_mesh);
 	m_NullShader = InstantiateShader(null_shader);
-	m_NullTexture = InstantiateTexture(null_texture);
+	m_NullTexture = InstantiateTexture(null_texture); // TODO: Create a Texture class
 	m_NullMaterial = InstantiateMaterial(null_material);
 	m_NullModel = InstantiateModel(null_model);
 	m_NullFont = InstantiateFont(null_font); // TODO: Create a valid null font
+	// m_NullSound = InstantiateSound(null_sound); // TODO: Create a sound object class
 }
 
 // Instantiation Functions
@@ -304,4 +305,11 @@ FT_Face ResourceManager::InstantiateFont(const char* fontName)
 	FT_Done_FreeType(ft);
 	assert(font != NULL);
 	return font;
+}
+
+ALuint ResourceManager::InstantiateSound(const char* soundName, DWORD& bufferSize)
+{
+	// TODO:
+	QwerkE::FileLoader::LoadSoundFile(SoundFolderPath(soundName), bufferSize);
+	return 0;
 }

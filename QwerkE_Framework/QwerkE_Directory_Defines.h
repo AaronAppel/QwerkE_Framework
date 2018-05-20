@@ -9,8 +9,11 @@
 
 #ifdef QwerkE_Framework
 #define AssetDir "../QwerkE_Common/Resources/"
+#elif defined(Qwerk_Engine)
+#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // 1 directory down
 #else
-#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // TEMP: Engine is 1 directory up
+//USER: Set the offset from your project working directory
+#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/"
 #endif // QwerkE_Engine
 
 // Define "hardcoded" file names for null objects for ease of use
@@ -23,6 +26,7 @@
 #define null_material "null_material.mat"
 #define null_model "null_model.obj"
 #define null_font "null_font.ttf"
+#define null_sound "null_sound.wav"
 
 // Define paths to resource folders that can change easily from project
 // to project using a preprocessor define. Paths can also change or be
@@ -33,6 +37,7 @@
 #define MaterialFolderPath(a) StringAppend(AssetDir, "Models/", a)
 #define ModelFolderPath(a) StringAppend(AssetDir, "Models/", a)
 #define FontFolderPath(a) StringAppend(AssetDir, "Fonts/", a)
+#define SoundFolderPath(a) StringAppend(AssetDir, "Sounds/", a)
 // TODO: Change MaterialFolderPath to use a new material system
 
 #endif // !_QwerkE_Directory_Defines_H_

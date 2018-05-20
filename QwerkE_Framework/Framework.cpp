@@ -271,17 +271,18 @@ namespace QwerkE
 
 			//if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE)) // DEBUG: A simple way to close the window while testing
 			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
-			if (inputManager->GetIsKeyDown(eKeys::eKeys_P)) // pause entire scene
+
+			if (inputManager->FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
 			{
 				m_SceneManager->GetCurrentScene()->TogglePauseState();
 			}
-			if (inputManager->GetIsKeyDown(eKeys::eKeys_F)) // pause actor updates
+			if (inputManager->FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
 			{
 				static bool isFrozen = false;
 				isFrozen = !isFrozen; // toggle bool
 				m_SceneManager->GetCurrentScene()->SetIsFrozen(isFrozen);
 			}
-			if (inputManager->GetIsKeyDown(eKeys::eKeys_Escape))
+			if (inputManager->FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{
 				WindowManager* windowManager = (WindowManager*)QwerkE::ServiceLocator::GetService(eEngineServices::WindowManager);
 				windowManager->GetWindow(0)->SetClosing(true);

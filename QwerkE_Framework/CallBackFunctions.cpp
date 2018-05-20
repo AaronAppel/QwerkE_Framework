@@ -33,6 +33,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
 	if (action == GLFW_PRESS)
 	{
+		// TODO: Just pass int and interperate key inside InputManager
 		l_InputManager->ProcessKeyEvent(l_InputManager->GetKeyCode(key),
 			eKeyState::eKeyState_Press);
 	}

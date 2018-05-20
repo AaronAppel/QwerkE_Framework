@@ -1,7 +1,7 @@
 #include "InputManager.h"
 #include "Controller.h"
 #include "../../QwerkE_Enums.h"
-
+#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 InputManager::InputManager()
 {
@@ -14,6 +14,7 @@ InputManager::InputManager()
 	}
 
 	SetupControllers();
+	NewFrame(); // init buffers
 }
 
 InputManager::~InputManager()
@@ -24,21 +25,64 @@ InputManager::~InputManager()
 	}
 }
 
+void InputManager::NewFrame()
+{
+	// reset 1 frame buffers
+	unsigned int test = eKeys_NULL_KEY;
+	if (m_OneFrameBuffersAreDirty)
+	{
+		memset(m_OneFrameKeyBuffer, eKeys_NULL_KEY, QWERKE_ONE_FRAME_MAX_INPUT * sizeof(short));
+		memset(m_OneFrameValueBuffer, 0, QWERKE_ONE_FRAME_MAX_INPUT); // TODO: Do I want a 3rd key state?
+		m_OneFrameBuffersAreDirty = false;
+	}
+}
+
 void InputManager::ProcessKeyEvent(eKeys key, eKeyState state)
 {
+	m_OneFrameBuffersAreDirty = true;
+	// TODO: improve logic
 	if (state == eKeyState::eKeyState_Release)
 	{
 		m_KeyStates[key] = false; // TODO: Test
+
+		for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
+		{
+			if (m_OneFrameKeyBuffer[i] == eKeys_NULL_KEY)
+			{
+				m_OneFrameKeyBuffer[i] = key;
+				m_OneFrameValueBuffer[i] = 0;
+			}
+		}
 	}
-	else
+	else // eKeyState::eKeyState_Press
 	{
 		m_KeyStates[key] = true;
+
+		for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
+		{
+			if (m_OneFrameKeyBuffer[i] == eKeys_NULL_KEY)
+			{
+				m_OneFrameKeyBuffer[i] = key;
+				m_OneFrameValueBuffer[i] = 1;
+			}
+		}
 	}
 }
 
 eKeys InputManager::GetKeyCode(int key)
 {
 	return (eKeys)m_KeyCodex[key]; // TODO: Make sure this works is cross platform
+}
+
+bool InputManager::FrameKeyAction(eKeys key, eKeyState state)
+{
+	if( m_OneFrameKeyBuffer[0] != eKeys::eKeys_NULL_KEY) // was a key even pressed?
+	for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
+	{
+		if (m_OneFrameKeyBuffer[i] == key)
+			return m_OneFrameValueBuffer[i] == state;
+	}
+	return 0;
 }
 
 void InputManager::SetupControllers()

@@ -12,7 +12,7 @@ enum eKeyState
 
 enum eKeys
 {
-	eKeys_MIN = 0,
+	eKeys_NULL_KEY = 0,
 
 	// Mouse
 	eKeys_LeftClick,

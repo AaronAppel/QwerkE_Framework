@@ -6,6 +6,11 @@
 // #include library files for use throughout program.
 // This is mainly for use with precompiled headers to
 // speed up build time.
+
+// Code that needs to know what library is in use can #include
+// this file instead of directly #including library files that
+// might not be needed otherwise. This allows preprocessor defines
+// to define function bodies for each platform.
 //////////////////////////////
 
 // TODO: Consider having multiple Library_Include files for each platform. Easier management

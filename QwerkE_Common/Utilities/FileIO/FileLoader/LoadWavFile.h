@@ -4,6 +4,6 @@
 #include "../../Libraries/OpenAL/include/al.h"
 #include "../../Libraries/OpenAL/include/alc.h"
 
-bool LoadWavFile(const char* filename, ALuint& data);
+unsigned char* QwerkE_wav_loadSound(const char* filePath, DWORD& bufferSize);
 
 #endif // !_LoadWavFile_H_

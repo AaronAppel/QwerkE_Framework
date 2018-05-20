@@ -2098,9 +2098,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alut.h">
       <Filter>Libraries\OpenAL</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\LoadWavFile.h">
-      <Filter>Utilities\FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alutInternal.h">
       <Filter>Libraries\OpenAL</Filter>
     </ClInclude>
@@ -2335,6 +2332,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.h">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadSoundFile.h">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.h">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp">
@@ -2431,9 +2434,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.cpp">
       <Filter>Utilities\FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\LoadWavFile.cpp">
-      <Filter>Utilities\FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
@@ -2444,6 +2444,12 @@
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.cpp">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadSoundFile.cpp">
+      <Filter>Utilities\FileIO\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.cpp">
       <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
   </ItemGroup>

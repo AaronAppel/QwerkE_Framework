@@ -56,7 +56,7 @@ bool Libs_Setup()
     }
 	else
 	{
-		ConsolePrint("Freetype Loaded!\n");
+		ConsolePrint("Freetype Loaded,\n");
 		FT_Done_FreeType(ft);
 	}
     //////////////////////////////
@@ -73,7 +73,7 @@ bool Libs_Setup()
     }
     else
     {
-		ConsolePrint("GLFW Loaded!\n");
+		ConsolePrint("GLFW Loaded,\n");
         GLFWwindow* window;
         window = glfwCreateWindow(100, 100, "Test", NULL, NULL);
         if (!window)
@@ -93,7 +93,7 @@ bool Libs_Setup()
             }
 			else
 			{
-				ConsolePrint("GLEW Loaded!\n");
+				ConsolePrint("GLEW Loaded,\n");
 			}
             glfwDestroyWindow(window);
         }
@@ -114,7 +114,7 @@ bool Libs_Setup()
     }
     else
     {
-		ConsolePrint("imgui Loaded!\n");
+		ConsolePrint("imgui Loaded,\n");
         ImGuiIO& io = ImGui::GetIO(); (void)io;
     }
     //////////////////////////////
@@ -143,7 +143,7 @@ bool Libs_Setup()
 
     //////////////////////////////
 
-	ConsolePrint("Libs_Setup(): Libraries Loaded\n");
+	ConsolePrint("Libs_Setup(): Libraries Loaded!\n\n");
     return errorFree;
 }
 
