@@ -1,10 +1,10 @@
-#include "Component.h"
+#include "../Component.h"
 #include "CameraComponent.h"
 #include "FirstPersonCameraComponent.h"
 #include "../../../QwerkE_Common/Math_Includes.h"
-#include "../../QwerkE_Enums.h"
-#include "../GameObject.h"
-#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Enums.h"
+#include "../../GameObject.h"
+#include "../../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 FirstPersonCameraComponent::FirstPersonCameraComponent(vec3 position, vec3 up, float yaw, float pitch) :
 	CameraComponent(position, up, yaw, pitch)
