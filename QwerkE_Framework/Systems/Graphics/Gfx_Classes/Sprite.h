@@ -2,7 +2,9 @@
 #define _Sprite_H_
 
 #include "../../../QwerkE_Common/Math_Includes.h"
+#include "../ShaderProgram/ShaderProgram.h"
 #include "../Mesh/Mesh.h"
+#include "../../Math_Includes.h"
 
 class Mesh;
 class ShaderProgram;
@@ -10,10 +12,32 @@ class ShaderProgram;
 class Sprite2D
 {
 public:
-	Sprite2D();
-	~Sprite2D();
+	Sprite2D()
+	{
+		m_Transform = new mat4();
+		UpdateTransform();
+	}
 
-	void Draw();
+	~Sprite2D()
+	{
+		delete m_Transform;
+	}
+
+	void Draw()
+	{
+		if (m_Mesh) // nullptr*?
+		{
+			/* Use Program */
+			m_Shader->Use();
+
+			/* Setup Uniforms */
+			m_Shader->SetUniformMat4("Transform", &m_Transform->m11);
+			m_Shader->SetupTextures(&m_TextureID, 1);
+
+			/* Draw */
+			m_Mesh->Draw();
+		}
+	}
 
 	void SetPosition(vec3 position) { m_Position = position; UpdateTransform(); };
 	void SetScale(vec3 scale) { m_Scale = scale; UpdateTransform(); };
@@ -24,7 +48,10 @@ public:
 	void SetShader(ShaderProgram* shader) { m_Shader = shader; m_Mesh->SetupShaderAttributes(m_Shader); };
 
 private:
-	void UpdateTransform();
+	void UpdateTransform()
+	{
+		m_Transform->CreateSRT(m_Scale, vec3(0, 0, m_Angle), m_Position);
+	}
 
 	vec3 m_Position = 0; // TODO:: Is vec3 useful for 2D depth comparisons?
 	vec3 m_Scale = 1;

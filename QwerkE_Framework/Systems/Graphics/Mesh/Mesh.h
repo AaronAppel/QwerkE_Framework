@@ -54,7 +54,7 @@ private:
 
 	void DrawElements(); // Use IBO
 	void DrawArrays(); // Draw raw vertex data
-	void NullDraw() {}; // TODO: Create event... { OutputMessage("\nMesh: Draw() function* never set properly.\n"); }// NULL
+	void NullDraw(); // Not setup
 };
 
 #endif //!_Mesh_H_

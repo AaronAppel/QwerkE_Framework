@@ -58,6 +58,7 @@ enum eComponentTags
 	Component_SkyBox,
 	Component_Animation,
 	Component_Character,
+	Component_Model,
 	Component_Max,
 	Component_Null
 };

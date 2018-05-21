@@ -2,7 +2,6 @@
 #include "../../../QwerkE_Framework/Systems/Graphics/Graphics_Header.h"
 #include "FileUtilities.h"
 #include "../PrintFunctions.h"
-#include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Model.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
 #include "../../../QwerkE_Framework/Systems/Graphics/Mesh/MeshUtilities.h"
 

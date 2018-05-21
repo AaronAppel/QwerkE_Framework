@@ -3,7 +3,7 @@
 #include "../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 #include "../QwerkE_Common/Libraries/imgui/imgui.h"
 #include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
-#include "Systems/ResourceManager.h"
+#include "Systems/ResourceManager/ResourceManager.h"
 #include "Systems/ServiceLocator.h"
 #include "QwerkE_Enums.h"
 #include "../QwerkE_Common/Utilities/Helpers.h"

@@ -1,12 +1,11 @@
 #include "Factory.h"
-#include "../../Systems/Graphics/Mesh/Model.h"
 #include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
-#include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
+#include "../../Entities/Components/ModelComponent.h"
 
 // Scenery + Props
 GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
@@ -18,15 +17,10 @@ GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 	t_SkyBox->SetName("SkyBox" + std::to_string(helpers_GetUniqueID()));
 
 	// Rendering
-	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("Cube"));
-
-	renderComp->SetShader(m_pResources->GetShader("SkyBox"));
-	t_SkyBox->AddComponent((Component*)renderComp);
+	AddModelComponent(t_SkyBox, "ObjectRecipe1");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	// Add
-	t_SkyBox->AddComponent((Component*)renderComp);
 	t_SkyBox->AddRoutine((Routine*)renderRoutine);
 
 	if (scene->AddObjectToScene(t_SkyBox)) // Add to render list
@@ -41,32 +35,17 @@ GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 // Testing
 GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 {
-	GameObject* t_Model = new GameObject(scene);
+	GameObject* t_Model = new GameObject(scene, position);
+	// info //
 	t_Model->SetName("Object" + std::to_string(helpers_GetUniqueID()));
 	t_Model->SetRenderOrder(50);
 	t_Model->SetTag(GO_Tag_TestModel);
-	RenderComponent* renderComp = new RenderComponent();
-	// renderComp->SetModel(m_pResources->GetModel("nanosuit/nanosuit.obj"));
-	// renderComp->SetModel(m_pResources->GetModel("Deathwing/Deathwing.obj"));
-	// renderComp->SetModel(m_pResources->GetModel("Alexstrasza/Alexstrasza.obj"));
-	renderComp->SetModel(m_pResources->GetModel("scifi_assault_rifle/scifi_assault_rifle.obj"));
 
-	// renderComp->SetShader(m_pResources->GetShader("Basic3D"));
-	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
-	renderComp->GetModel()->SetupMeshes(renderComp->GetShader());
-	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_arms"));
-	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_legs"));
-	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_body"));
-	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_glass"));
-	// renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_helmet"));
-	renderComp->SetMaterial(m_pResources->GetMaterial("nanosuit_hand.mat"));
-
-	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1));
-	t_Model->AddComponent((Component*)renderComp);
-
-	RenderRoutine* renderRoutine = new RenderRoutine();
-	t_Model->AddRoutine((Routine*)renderRoutine);
-	t_Model->SetPosition(position);
+	// Rendering //
+	// model component
+	AddModelComponent(t_Model, "ObjectRecipe1");
+	// render routine
+	t_Model->AddRoutine((Routine*)new RenderRoutine());
 
 	if (scene->AddObjectToScene(t_Model))
 	{

@@ -3,7 +3,7 @@
 
 #include "../AudioComponent.h"
 
-class AudioSource;
+#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 
 class OpenAL_AudioComponent : public AudioComponent
 {
@@ -11,10 +11,10 @@ public:
 	OpenAL_AudioComponent();
 	~OpenAL_AudioComponent();
 
-	AudioSource* GetSource() { return m_Source; }
+	int Play();
 
 private:
-	AudioSource* m_Source;
+	ALuint m_Buffer = 0;
 };
 
 #endif //!_OpenAL_Component_H_

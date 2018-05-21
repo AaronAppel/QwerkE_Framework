@@ -12,6 +12,7 @@ class Scene;
 class MenuWindow;
 class MenuItem;
 class Menu;
+class ModelComponent;
 
 class Factory
 {
@@ -70,6 +71,9 @@ private:
 	MenuItem* CreateMenuItem();
 
 	GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
+
+	// helpers
+	ModelComponent* AddModelComponent(GameObject* entity, const char* modelName);
 };
 
 #endif //!_Factory_H_

@@ -9,11 +9,12 @@ Model::~Model()
 {
 	for (unsigned int i = 0; i < m_Meshes.size(); i++)
 	{
-		delete m_Meshes.at(i);
+		// delete m_Meshes.at(i);
+		// meshes may be stored in resource manager and are being shared
 	}
 }
 
-void Model::SetupMeshes(ShaderProgram* shader)
+void Model::SetupMeshAttributes(ShaderProgram* shader)
 {
     for (unsigned int i = 0; i < m_Meshes.size(); i++)
     {

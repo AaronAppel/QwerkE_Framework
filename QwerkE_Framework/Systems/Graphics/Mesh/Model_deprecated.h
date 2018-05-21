@@ -15,7 +15,7 @@ public:
 	~Model();
 
     void Init(std::vector<Mesh*> meshes) { m_Meshes = meshes; };
-    void SetupMeshes(ShaderProgram* shader);
+    void SetupMeshAttributes(ShaderProgram* shader); // TODO: Deprecate
 
 	void Draw();
 
@@ -28,6 +28,7 @@ public:
 
 	std::vector<Mesh*> m_Meshes; // TODO: private
 	std::vector<MaterialData*> m_Materials;
+	std::vector<ShaderProgram*> m_Shaders;
 
 private:
     std::string m_Name = "Uninitialized";

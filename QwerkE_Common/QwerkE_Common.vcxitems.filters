@@ -2091,9 +2091,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h">
       <Filter>Utilities\FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.h">
-      <Filter>Utilities\FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alut.h">
       <Filter>Libraries\OpenAL</Filter>
@@ -2426,9 +2423,6 @@
       <Filter>Utilities\FileIO</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp">
-      <Filter>Utilities\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.cpp">
       <Filter>Utilities\FileIO</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp">

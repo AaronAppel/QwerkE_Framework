@@ -3,7 +3,6 @@
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
-#include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
@@ -16,13 +15,7 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	t_Cube->SetTag(eGameObjectTags::GO_Tag_Cube);
 	t_Cube->SetRenderOrder(50);
 
-	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
-	renderComp->SetModel(m_pResources->GetModel("CubeModel"));
-	renderComp->SetColour(vec4(0, 1, 0, 1));
-	renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
-	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1));
-	t_Cube->AddComponent(renderComp);
+	AddModelComponent(t_Cube, "ObjectRecipe1");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Cube->AddRoutine((Routine*)renderRoutine);
@@ -44,12 +37,7 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	t_Plane->SetTag(eGameObjectTags::GO_Tag_Plane);
 	t_Plane->SetRenderOrder(50);
 
-	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("Plane.obj"));
-	renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
-	renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
-	renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1)); // random intial colour
-	t_Plane->AddComponent(renderComp);
+	AddModelComponent(t_Plane, "ObjectRecipe1");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Plane->AddRoutine((Routine*)renderRoutine);

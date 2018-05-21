@@ -5,16 +5,15 @@
 
 class AudioSource;
 
-class AudioComponent : public Component
+class AudioComponent : public Component // abstract
 {
 public:
 	virtual ~AudioComponent();
 
-	AudioSource* GetSource() { return m_Source; }
+	virtual int Play() = 0;
 
 protected:
 	AudioComponent();
-	AudioSource* m_Source;
 };
 
 #endif //!_AudioComponent_H_

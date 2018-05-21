@@ -17,6 +17,7 @@ const char* CombineStrings(std::string a, std::string b);
 
 std::string DispStrCombine(const char* a, const char* b);
 
+// TODO: Just macro define strcmp for a nicer name
 bool StringCompare(std::string a, std::string b);
 
 bool SearchForString(std::string line, std::string word);

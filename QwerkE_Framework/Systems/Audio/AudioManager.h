@@ -6,31 +6,25 @@
 
 #include <vector>
 
-class AudioSource;
-
 class AudioManager
 {
 public:
 	AudioManager();
 	~AudioManager();
 
-	void PlaySound();
+	void PlaySound(const char* name);
 	// music, effect, dialogue
 
 	void SetListenerOrientation(vec3 position, vec3 velocity);
 
 private:
-	AudioSource* m_Source = nullptr;
 
 	ALCdevice * Device;
 	ALCcontext* Context;
 
 	ALboolean g_bEAX; // Why?
 
-
 	// buffer data
-	const int NUM_BUFFERS = 1; // number of sound files
-	std::vector<ALuint> m_SoundBuffers;
 	ALboolean loop = AL_FALSE;
 };
 

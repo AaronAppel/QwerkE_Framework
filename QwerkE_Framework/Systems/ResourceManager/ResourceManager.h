@@ -10,7 +10,6 @@
 
 class Mesh;
 class ShaderProgram;
-class Model;
 struct MaterialData;
 
 // For instances where 1 asset may be shared between objects in
@@ -37,15 +36,15 @@ public:
 	bool ShaderExists(const char* name);
 	bool TextureExists(const char* name);
 	bool MaterialExists(const char* name);
-	bool ModelExists(const char* name);
 	bool FontExists(const char* name);
+	bool SoundExists(const char* name);
 
 	bool AddMesh(const char* name, Mesh* mesh);
 	bool AddShader(const char* name, ShaderProgram* shader);
 	bool AddTexture(const char* name, GLuint texture);
 	bool AddMaterial(const char* name, MaterialData* material);
-	bool AddModel(const char* name, Model* model);
 	bool AddFont(const char* name, FT_Face font);
+	bool AddSound(const char* name, ALuint sound);
 	// TODO: Other add functions
 
 	// getters
@@ -55,16 +54,16 @@ public:
 	ShaderProgram* GetShader(const char* name); // specify .ext
 	GLuint GetTexture(const char* name); // specify .ext
 	MaterialData* GetMaterial(const char* name); // specify .ext
-	Model* GetModel(const char* name); // specify .ext
 	FT_Face GetFont(const char* name); // specify .ext
+	ALuint GetSound(const char* name); // specify .ext
 
 	// TEST:
 	const std::map<std::string, Mesh*>* LookAtMeshes() { return &m_Meshes; };
 	const std::map<std::string, ShaderProgram*>* LookAtShaders() { return &m_Shaders; };
 	const std::map<std::string, GLuint>* LookAtTextures() { return &m_Textures; };
 	const std::map<std::string, MaterialData*>* LookAtMaterials() { return &m_Materials; };
-	const std::map<std::string, Model*>* LookAtModels() { return &m_Models; };
 	// const std::map<std::string, >* LookAtFonts() { return &; };
+	const std::map<std::string, ALuint>* LookAtSounds() { return &m_Sounds; };
 
 	// TODO: Handle loading additional resources
 	// CubeMap* GetCubeMap(const char* name); // specify .ext
@@ -83,23 +82,22 @@ private:
 	std::map<std::string, ShaderProgram*> m_Shaders;
 	std::map<std::string, GLuint> m_Textures;
 	std::map<std::string, MaterialData*> m_Materials;
-    std::map<std::string, Model*> m_Models;
 	std::map<std::string, FT_Face> m_Fonts;
+	std::map<std::string, ALuint> m_Sounds;
 
 	// Utilities
 	bool isUnique(Mesh* mesh);
 	bool isUnique(ShaderProgram* shader);
 	bool isUnique(GLuint texturehandle);
 	bool isUnique(MaterialData* material);
-	bool isUnique(Model* model);
 	bool isUnique(FT_Face font);
+	bool isSoundUnique(ALuint sound);
 
 	// Allocations
 	Mesh* InstantiateMesh(const char* name);
 	ShaderProgram* InstantiateShader(const char* name);
 	GLuint InstantiateTexture(const char* name);
 	MaterialData* InstantiateMaterial(const char* name);
-	Model* InstantiateModel(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
 	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels);
 
@@ -110,8 +108,8 @@ private:
 	bool DeleteShader(const char* name) {};
 	bool DeleteTexture(const char* name) {};
 	bool DeleteMaterial(const char* name) {};
-	bool DeleteModel(const char* name) {};
 	bool DeleteFont(const char* name) {};
+	bool DeleteSound(const char* name) {};
 
 	// Directories
 	const char* m_TextureDir = "Resources/Textures/";
@@ -123,7 +121,6 @@ private:
 	ShaderProgram* m_NullShader = nullptr;
 	GLuint m_NullTexture = 0;
 	MaterialData* m_NullMaterial = nullptr;
-	Model* m_NullModel = nullptr;
 	FT_Face m_NullFont;
 	ALuint m_NullSound;
 };

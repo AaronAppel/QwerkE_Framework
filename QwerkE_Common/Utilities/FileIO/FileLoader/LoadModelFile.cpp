@@ -1,7 +1,7 @@
 #include "FileLoader.h"
-#include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/Model.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
+#include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
 #include "../../StringHelpers.h"
 
 #include <iostream>
@@ -21,14 +21,14 @@ namespace QwerkE
 {
 	namespace FileLoader
 	{
-		Model* LoadModelFile(const char* path)
+		Model* LoadModelFileToMeshes(const char* path)
 		{
 			// check if a model with the same name already exists
 			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 			std::string fileName = path;
 			fileName = fileName.substr(fileName.find_last_of('/') + 1, fileName.size()); // get name + ext
-			if ((resMan->ModelExists(fileName.c_str())))
-				return (resMan->GetModel(fileName.c_str())); // already loaded
+
+			// TODO: Prevent the same model from being loaded
 
 			std::string directory = path;
 			directory = directory.substr(0, directory.find_last_of('/') + 1); // folder absolute path
@@ -64,19 +64,14 @@ namespace QwerkE
 #endif // AI_CONFIG_H_INC
 
 			// take copied data from external library and init it for QwerkE systems use.
-			Model* model = new Model();
-			model->Init(meshes);
-			model->SetName(scene->mRootNode->mName.C_Str());
-
-			// assign materials for each mesh
-			if (matNames.size() < 1)
-				model->m_Materials.push_back(resMan->GetMaterial("null_material.mat"));
-			else
-			for (int i = 0; i < matNames.size(); i++)
-				model->m_Materials.push_back(resMan->GetMaterial(matNames.at(i).c_str()));
-
-			// TODO: some type of model null check
-			return model;
+			for (size_t i = 0; i < meshes.size(); i++)
+			{
+				resMan->AddMesh(meshes[i]->GetName().c_str(), meshes[i]);
+			}
+			for (size_t i = 0; i < matNames.size(); i++)
+			{
+				resMan->GetTexture(DispStrCombine(directory.c_str(), matNames[i].c_str()).c_str());
+			}
 		}
 	}
 }

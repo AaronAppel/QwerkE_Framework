@@ -32,10 +32,6 @@ void Mesh::BufferMeshData(int numVerts, VertexData* vertices, int numIndices, un
 	m_VertCount = numVerts;
 	m_IndexCount = numIndices;
 
-	/* Set draw function */
-	if (m_IndexCount > 0) { m_DrawFunc = &Mesh::DrawElements; }
-	else { m_DrawFunc = &Mesh::DrawArrays; }
-
 	/* Buffer mesh data into GPU RAM */
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexData) * m_VertCount, vertices, GL_STATIC_DRAW); // (target, size, data, static/dynamic)
@@ -58,7 +54,11 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 	CheckGraphicsErrors(__FILE__, __LINE__);
 
 	if (shader == nullptr) { return; } // null ShaderProgram*
-	GLuint t_ShaderHandle = shader->GetProgram();
+
+	/* Set draw function */
+	if (m_IndexCount > 0) { m_DrawFunc = &Mesh::DrawElements; } // draw using elements
+	else if (m_VertCount > 0){ m_DrawFunc = &Mesh::DrawArrays; } // no IBOs
+	else { m_DrawFunc = &Mesh::NullDraw; } // not initialized
 
 	/* Setup VAO */
 	glBindVertexArray(m_VAO); // Bind
@@ -73,34 +73,34 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 	{
 		if (StringCompare(attributes.at(i), "Position"))
 		{
-			GLuint aPos = glGetAttribLocation(t_ShaderHandle, DispStrCombine(Helper_GetAttributePrefix(), "Position").c_str());
+			GLuint aPos = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Position").c_str());
 			if (aPos != -1)
 			{
 				glVertexAttribPointer(aPos, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, position));
 				glEnableVertexAttribArray(aPos); // size of vertexData
 			}
 		}
-		if (StringCompare(attributes.at(i), "Color"))
+		else if (StringCompare(attributes.at(i), "Color"))
 		{
-			GLuint aColor = glGetAttribLocation(t_ShaderHandle, DispStrCombine(Helper_GetAttributePrefix(), "Color").c_str());
+			GLuint aColor = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Color").c_str());
 			if (aColor != -1)
 			{
 				glVertexAttribPointer(aColor, 4, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, color));
 				glEnableVertexAttribArray(aColor);
 			}
 		}
-		if (StringCompare(attributes.at(i), "UV"))
+		else if (StringCompare(attributes.at(i), "UV"))
 		{
-			GLuint aUV = glGetAttribLocation(t_ShaderHandle, DispStrCombine(Helper_GetAttributePrefix(), "UV").c_str());
+			GLuint aUV = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "UV").c_str());
 			if (aUV != -1)
 			{
 				glVertexAttribPointer(aUV, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, UV));
 				glEnableVertexAttribArray(aUV);
 			}
 		}
-		if (StringCompare(attributes.at(i), "Normal"))
+		else if (StringCompare(attributes.at(i), "Normal"))
 		{
-			GLuint aNormal = glGetAttribLocation(t_ShaderHandle, DispStrCombine(Helper_GetAttributePrefix(), "Normal").c_str());
+			GLuint aNormal = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Normal").c_str());
 			if (aNormal != -1)
 			{
 				glVertexAttribPointer(aNormal, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, normal));
@@ -126,6 +126,14 @@ void Mesh::DrawArrays()
 	glBindVertexArray(m_VAO); // Enable attribute arrays
 	glDrawArrays(m_PrimitiveType, 0, m_VertCount); // (drawMode, firstIndex, numVerts)
 	glBindVertexArray(0);
+}
+
+void Mesh::NullDraw()
+{
+	// TODO:
+	// SetupShaderAttributes();
+	// if (m_IndexCount > 0) { DrawElements(); }
+	// else if (m_VertCount > 0) { DrawArrays(); }
 }
 
 void Mesh::ToggleWireframe()

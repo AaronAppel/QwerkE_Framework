@@ -17,7 +17,7 @@ namespace QwerkE
 		// TODO: Remove GLenum and any implementation specific variables or styles
 		unsigned char* LoadImageFile(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically = 0); // LoadImage is a macro somewhere
 
-		Model* LoadModelFile(const char* path);
+		Model* LoadModelFileToMeshes(const char* path);
 
 		// TODO: Load scene from software like 3DS Max, Blender, etc
 		// load things like lights, cameras and everything from 1 file

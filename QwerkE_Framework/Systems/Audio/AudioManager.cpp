@@ -1,9 +1,10 @@
 #include "AudioManager.h"
-#include "AudioSource.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/LoadWavFile.h"
 #include "../../QwerkE_Directory_Defines.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../ServiceLocator.h"
+#include "../ResourceManager/ResourceManager.h"
 
 // OpenAL Reference: https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 // wav loading: https://blog.csdn.net/u011417605/article/details/49662535
@@ -72,63 +73,46 @@ AudioManager::AudioManager()
 	if (error != AL_NO_ERROR)
 		OpenALError(error);
 
-	// create sound buffers
-	for (int i = 0; i < NUM_BUFFERS; i++)
-	{
-		ALuint temp;
-		alGenBuffers(1, &temp);
-		m_SoundBuffers.push_back(temp);
-	}
-
 	// TODO: Move this code to a better spot
+	ALuint handle = 0;
 	DWORD size;
 	unsigned short channels;
 	ALsizei frequency;
 	unsigned char* data = QwerkE_wav_loadSound(SoundFolderPath("bounce.wav"), size, channels, frequency);
 	// TODO: read format type and handle loading various sound formats
 	if (channels == 1)
-		alBufferData(m_SoundBuffers.at(0), AL_FORMAT_MONO16, data, size, frequency);
+		alBufferData(handle, AL_FORMAT_MONO16, data, size, frequency);
 	else if (channels == 2)
-		alBufferData(m_SoundBuffers.at(0), AL_FORMAT_STEREO16, data, size, frequency);
+		alBufferData(handle, AL_FORMAT_STEREO16, data, size, frequency);
 	else
 	{
-		assert(false); // invalid channels
+		// invalid number of channels
 	}
+
+	((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddSound(
+		"bounce.wav", handle);
 
 	error = alGetError();
 	if (error != AL_NO_ERROR)
 		OpenALError(error);
 
-	if (error != AL_NO_ERROR || m_SoundBuffers[0] != 1) // TODO: Better error checking
+	if (error != AL_NO_ERROR || handle != 1) // TODO: Better error checking
 		ConsolePrint("\nOpenAL error buffering sound data!\n");
 
 	SetListenerOrientation(vec3(0,0,0), vec3(0,0,0));
 
-	m_Source = new AudioSource();
-	m_Source->SetOrientation(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0));
-	// m_Source->Play(m_SoundBuffers.at(0));
-
 	error = alGetError();
 	if (error != AL_NO_ERROR)
 		OpenALError(error);
 
-	if (error == AL_NO_ERROR || m_SoundBuffers[0] == 1) // TODO: Better error checking
+	if (error == AL_NO_ERROR || handle == 1) // TODO: Better error checking
 		ConsolePrint("\nOpenAL loaded successfully\n\n");
-
 }
 
 AudioManager::~AudioManager()
 {
 	/*
-	// Unload test.wav
-	unloadWAV(format, data, size, freq);
-	if ((error = alGetError()) != AL_NO_ERROR)
-	{
-	// DisplayALError("alutUnloadWAV : ", error);
 	alDeleteBuffers(NUM_BUFFERS, g_Buffers);
-	return;
-	}
-	// Exit
 	Context = alcGetCurrentContext();
 	Device = alcGetContextsDevice(Context);
 	alcMakeContextCurrent(NULL);
@@ -137,9 +121,10 @@ AudioManager::~AudioManager()
 	*/
 }
 
-void AudioManager::PlaySound()
+void AudioManager::PlaySound(const char* name)
 {
-	m_Source->Play(m_SoundBuffers.at(0));
+	if (!((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->SoundExists(name))
+	alSourcePlay(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetSound(name));
 }
 
 
@@ -153,20 +138,3 @@ void AudioManager::SetListenerOrientation(vec3 position, vec3 velocity)
 	ALfloat listenerOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 	alListenerfv(AL_ORIENTATION, listenerOri);
 }
-
-/*
-// Generate Sources
-alGenSources(1,source);
-if ((error = alGetError()) != AL_NO_ERROR)
-{
-DisplayALError("alGenSources 1 : ", error);
-return;
-}
-// Attach buffer 0 to source
-- 10 -
-alSourcei(source[0], AL_BUFFER, g_Buffers[0]);
-if ((error = alGetError()) != AL_NO_ERROR)
-{
-DisplayALError("alSourcei AL_BUFFER 0 : ", error);
-}
-*/

@@ -3,9 +3,10 @@
 #include "../GameObject.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
-#include "../../Entities/Components/RenderComponent.h"
+#include "../../Entities/Components/ModelComponent.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Systems/Graphics/Gfx_Classes/Renderable.h"
 #include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Math_Includes.h"
 
@@ -13,9 +14,9 @@
 
 // Private functions
 /* Vertex uniform value assignment */
-void RenderRoutine::Setup3DTransform(CameraComponent* camera)
+void RenderRoutine::Setup3DTransform(CameraComponent* camera, Renderable* renderable)
 {
-	ShaderProgram* t_pShader = m_pRender->GetShader();
+	ShaderProgram* t_pShader = renderable->s_Shader;
 	// world
 	mat4 worldMat;
 	worldMat.CreateSRT(m_pParent->GetScale(), m_pParent->GetRotation(), m_pParent->GetPosition());
@@ -25,9 +26,9 @@ void RenderRoutine::Setup3DTransform(CameraComponent* camera)
 	// projection
 	t_pShader->SetUniformMat4("ProjMat", &camera->GetProjectionMatrix()->m11); // get from camera
 }
-void RenderRoutine::Setup2DTransform(CameraComponent* camera)
+void RenderRoutine::Setup2DTransform(CameraComponent* camera, Renderable* renderable)
 {
-	ShaderProgram* t_pShader = m_pRender->GetShader();
+	ShaderProgram* t_pShader = renderable->s_Shader;
 	mat4 worldMat;
 
 	worldMat.CreateSRT(m_pParent->GetScale(), m_pParent->GetRotation(), m_pParent->GetPosition());
@@ -35,43 +36,40 @@ void RenderRoutine::Setup2DTransform(CameraComponent* camera)
 	t_pShader->SetUniformMat4("2DTransform", &worldMat.m11); // TODO: Set 2DTransform
 }
 /* Fragment uniform value assignment */
-void RenderRoutine::SetupColorUniforms(CameraComponent* cameraObject)
+void RenderRoutine::SetupColorUniforms(CameraComponent* cameraObject, Renderable* renderable)
 {
-	ShaderProgram* t_pShader = m_pRender->GetShader();
-	vec4 t_Colour = m_pRender->GetColour();
+	ShaderProgram* t_pShader = renderable->s_Shader;
+	// TODO: Still using colour?
+	vec4 t_Colour = vec4(0,1,0,1); // m_pModel->GetColour();
 
 	t_pShader->SetUniformFloat4("ObjectColor", t_Colour.x, t_Colour.y, t_Colour.z, t_Colour.w);
 }
 // Materials
-void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera)
+void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable* renderable)
 {
 	/* Variables */
-	MaterialData* t_Material = m_pRender->GetMaterial();
-	ShaderProgram* t_pShader = m_pRender->GetShader();
 
 	// TODO: Handle Null image handles
-	GLuint ambHandle = t_Material->ambientHandle;
-	GLuint diffHandle = t_Material->diffuseHandle;
-	GLuint specHandle = t_Material->specularHandle;
-	float shine = t_Material->shine;
+	GLuint ambHandle = renderable->s_Material->ambientHandle;
+	GLuint diffHandle = renderable->s_Material->diffuseHandle;
+	GLuint specHandle = renderable->s_Material->specularHandle;
+	float shine = renderable->s_Material->shine;
 
 	/* Assign values */
-	t_pShader->SetUniformFloat1("Shine", shine);
-
-	SetupCameraUniforms(a_Camera);
-	SetupLightingUniforms(a_Camera);
+	renderable->s_Shader->SetUniformFloat1("Shine", shine);
 
 	// activate textures
 	GLuint textures[] = { ambHandle , diffHandle , specHandle};
-	int size = 3;
+	int size = 3; // TODO: Support all material handles
 
-	SetupTextureUniforms(textures, size);
+	SetupTextureUniforms(textures, size, renderable->s_Shader);
 }
 // Lighting
-void RenderRoutine::SetupLightingUniforms(CameraComponent* a_Camera)
+void RenderRoutine::SetupLightingUniforms(CameraComponent* a_Camera, Renderable* renderable)
 {
-	ShaderProgram* t_pShader = m_pRender->GetShader();
-	GameObject* t_Light = m_pRender->GetParent()->GetScene()->GetLightList().At(0); // TODO: Stop hard coding index. Handle multiple lights
+	ShaderProgram* t_pShader = renderable->s_Shader;
+	// TODO: Get light data better
+	GameObject* t_Light = m_pModel->GetParent()->GetScene()->GetLightList().At(0); // TODO: Stop hard coding index. Handle multiple lights
 	LightComponent* t_LightComp = (LightComponent*)t_Light->GetComponent(Component_Light);
 
 	vec3 lightColour = t_LightComp->GetColour();
@@ -82,31 +80,22 @@ void RenderRoutine::SetupLightingUniforms(CameraComponent* a_Camera)
 	t_pShader->SetUniformFloat3("LightColour", lightColour.x, lightColour.y, lightColour.z);
 }
 // Camera
-void RenderRoutine::SetupCameraUniforms(CameraComponent* a_Camera)
+void RenderRoutine::SetupCameraUniforms(CameraComponent* a_Camera, Renderable* renderable)
 {
-	ShaderProgram* t_pShader = m_pRender->GetShader();
+	ShaderProgram* t_pShader = renderable->s_Shader;
 
 	vec3 t_CamPos = a_Camera->GetParent()->GetPosition();
 	t_pShader->SetUniformFloat3("CamPos", t_CamPos.x, t_CamPos.y, t_CamPos.z);
 }
 // Textures
-void RenderRoutine::SetupTextureUniforms(CameraComponent* camera)
+void RenderRoutine::SetupTextureUniforms(GLuint textures[], int size, ShaderProgram* shader)
 {
-	// TODO: Improve texture count handling
-	GLuint textures[] = { m_pRender->GetCurrentTexture() };
-	SetupTextureUniforms(textures, 1);
-}
-
-void RenderRoutine::SetupTextureUniforms(GLuint textures[], int size)
-{
-	ShaderProgram* t_pShader = m_pRender->GetShader();
-
 	// Handle multiple textures
 	for (int i = 0; i < size; i++)
 	{
 		std::string id = "Texture";
 		glActiveTexture(GL_TEXTURE0 + i);
 		glBindTexture(GL_TEXTURE_2D, textures[i]);
-		t_pShader->SetUniformInt1(id.append(std::to_string(i)).c_str(), i);
+		shader->SetUniformInt1(id.append(std::to_string(i)).c_str(), i);
 	}
 }

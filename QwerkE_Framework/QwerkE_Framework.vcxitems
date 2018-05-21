@@ -28,8 +28,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Routine.h" />
@@ -44,7 +44,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\TestScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\Event.h" />
@@ -57,6 +56,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\FrameBufferObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\LightData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.h" />
@@ -65,7 +65,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Mesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\VertexData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Dynamic_ShaderProgram.h" />
@@ -108,7 +107,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutineUtilities.cpp" />
@@ -118,7 +116,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\TestScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\Event.cpp" />
@@ -133,15 +130,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Shapes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Testing.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\FontRendering\FontTest.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\CubeMap.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\FrameBufferObject.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Mesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshFactory.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Basic2DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Basic3DShader.cpp" />

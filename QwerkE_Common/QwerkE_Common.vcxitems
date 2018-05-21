@@ -757,7 +757,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\GUID.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Helpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ImageHelpers.h" />
@@ -800,7 +799,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\OBJLoader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\ImageHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\PrintFunctions.cpp" />

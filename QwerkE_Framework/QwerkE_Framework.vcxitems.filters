@@ -177,9 +177,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
@@ -218,19 +215,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Math.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\CubeMap.cpp">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\FrameBufferObject.cpp">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.cpp">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.cpp">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.cpp">
       <Filter>Systems\Graphics\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Mesh.cpp">
@@ -262,9 +247,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
       <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp">
-      <Filter>Systems\Audio</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.cpp">
       <Filter>Entities\Components</Filter>
@@ -382,9 +364,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
@@ -450,9 +429,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.h">
       <Filter>Systems\Graphics\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Model.h">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\VertexData.h">
       <Filter>Systems\Graphics\Mesh</Filter>
     </ClInclude>
@@ -483,9 +459,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
       <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h">
-      <Filter>Systems\Audio</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h">
       <Filter>Entities\Components</Filter>
@@ -522,6 +495,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent.h">
       <Filter>Systems\Graphics\ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

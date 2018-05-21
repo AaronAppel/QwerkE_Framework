@@ -32,6 +32,5 @@ void RenderComponent::SetShader(ShaderProgram* shader)
 void RenderComponent::SetModel(Model* model)
 {
 	m_Model = model;
-	m_Model->SetupMeshes(m_pShader);
-	m_pShader;
+	m_Model->SetupMeshAttributes(m_pShader);
 }

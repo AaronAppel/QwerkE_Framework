@@ -3,7 +3,6 @@
 #include "../Graphics/Gfx_Classes/MaterialData.h"
 #include "../Graphics/Mesh/Mesh.h"
 #include "../Graphics/ShaderProgram/ShaderProgram.h"
-#include "../Graphics/Mesh/Model.h"
 
 #include <map>
 
@@ -29,17 +28,13 @@ void ResourceManager::DeleteAllResources()
 
 	for (auto object : m_Materials)
 		delete object.second;
-
-    for (auto object : m_Models)
-        delete object.second;
-
+	
 	// TODO: delete fonts
 
 	m_Meshes.clear(); // Empty std::maps
 	m_Shaders.clear();
 	m_Textures.clear();
 	m_Materials.clear();
-	m_Models.clear();
 	// m_Fonts.clear();
 }
 
@@ -63,14 +58,14 @@ bool ResourceManager::MaterialExists(const char* name)
 	return m_Materials.find(name) != m_Materials.end();
 }
 
-bool ResourceManager::ModelExists(const char* name)
-{
-	return m_Models.find(name) != m_Models.end();
-}
-
 bool ResourceManager::FontExists(const char* name)
 {
 	return m_Fonts.find(name) != m_Fonts.end();
+}
+
+bool ResourceManager::SoundExists(const char* name)
+{
+	return m_Sounds.find(name) != m_Sounds.end();
 }
 
 bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
@@ -121,18 +116,6 @@ bool ResourceManager::AddMaterial(const char* name, MaterialData* material)
 	return true;
 }
 
-bool ResourceManager::AddModel(const char* name, Model* model)
-{
-	if (ModelExists(name))
-		return false;
-
-	if (model == nullptr || model->GetName() == "Uninitialized")
-		return false;
-
-	m_Models[name] = model;
-	return true;
-}
-
 bool ResourceManager::AddFont(const char* name, FT_Face font)
 {
 	if (FontExists(name))
@@ -143,6 +126,18 @@ bool ResourceManager::AddFont(const char* name, FT_Face font)
 		// return false;
 
 	m_Fonts[name] = font;
+	return true;
+}
+
+bool ResourceManager::AddSound(const char* name, ALuint sound)
+{
+	if (SoundExists(name))
+		return false;
+
+	if (sound == 0)
+		return false;
+
+	m_Sounds[name] = sound;
 	return true;
 }
 
@@ -184,15 +179,6 @@ MaterialData* ResourceManager::GetMaterial(const char* name)
 	return InstantiateMaterial(name);
 }
 
-Model* ResourceManager::GetModel(const char* name)
-{
-	if (m_Models.find(name) != m_Models.end())
-	{
-		return m_Models[name];
-	}
-	return InstantiateModel(name);
-}
-
 FT_Face ResourceManager::GetFont(const char* name)
 {
 	if (m_Fonts.find(name) != m_Fonts.end())
@@ -201,6 +187,18 @@ FT_Face ResourceManager::GetFont(const char* name)
 	}
 	return InstantiateFont(name);
 }
+
+ALuint ResourceManager::GetSound(const char* name)
+{
+	if (!SoundExists(name))
+	{
+		return m_Sounds[name];
+	}
+	// TODO:
+	// return InstantiateSound(name);
+	return 0;
+}
+
 // Utilities
 bool ResourceManager::isUnique(Mesh* mesh)
 {
@@ -246,23 +244,22 @@ bool ResourceManager::isUnique(MaterialData* material)
 	return true;
 }
 
-bool ResourceManager::isUnique(Model* model)
-{
-	std::map<std::string, Model*>::iterator it;
-	for (it = m_Models.begin(); it != m_Models.end(); it++)
-	{
-		if (it->second == model) // pointer comparison
-			return false;
-	}
-	return true;
-}
-
 bool ResourceManager::isUnique(FT_Face font)
 {
 	std::map<std::string, FT_Face>::iterator it;
 	for (it = m_Fonts.begin(); it != m_Fonts.end(); it++)
 	{
 		if (it->second == font) // pointer comparison
+			return false;
+	}
+	return true;
+}
+bool ResourceManager::isSoundUnique(ALuint sound)
+{
+	std::map<std::string, ALuint>::iterator it;
+	for (it = m_Sounds.begin(); it != m_Sounds.end(); it++)
+	{
+		if (it->second == sound) // pointer comparison
 			return false;
 	}
 	return true;

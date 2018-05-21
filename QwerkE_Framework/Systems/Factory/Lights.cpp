@@ -1,11 +1,9 @@
 #include "Factory.h"
 #include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Utilities/Helpers.h"
-#include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
-#include "../../Systems/Graphics/Mesh/Model.h"
 
 /* Lights */
 // Point Light
@@ -21,17 +19,11 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 	t_pLightComp->SetColour(vec3(1.0f, 1.0f, 1.0f));
 
 	// Rendering
-	RenderComponent* renderComp = new RenderComponent();
-	renderComp->SetModel(m_pResources->GetModel("Light_Bulb.obj"));
-	renderComp->SetShader(m_pResources->GetShader("Basic3D"));
-	renderComp->GetModel()->SetupMeshes(renderComp->GetShader());
-
-	renderComp->SetColour(vec4(t_pLightComp->GetColour(), 1.0f));
+	AddModelComponent(t_pLight, "ObjectRecipe1");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	// Add
 	t_pLight->AddComponent(t_pLightComp);
-	t_pLight->AddComponent(renderComp);
 	t_pLight->AddRoutine((Routine*)renderRoutine);
 
 	if (scene->AddLight(t_pLight))

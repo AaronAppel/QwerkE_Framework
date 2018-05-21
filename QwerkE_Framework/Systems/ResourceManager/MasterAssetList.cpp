@@ -17,7 +17,6 @@ void ResourceManager::Init()
 	m_NullShader = InstantiateShader(null_shader);
 	m_NullTexture = InstantiateTexture(null_texture); // TODO: Create a Texture class
 	m_NullMaterial = InstantiateMaterial(null_material);
-	m_NullModel = InstantiateModel(null_model);
 	m_NullFont = InstantiateFont(null_font); // TODO: Create a valid null font
 	// m_NullSound = InstantiateSound(null_sound); // TODO: Create a sound object class
 }
@@ -264,28 +263,6 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	m_Materials[matName] = material;
 	material->name = matName;
 	return material;
-}
-
-Model* ResourceManager::InstantiateModel(const char* modelName)
-{
-	// MeshFactory meshFact; // out dated
-	// if (modelName == "LightBulb") // Asset name
-	// model = meshFact.ImportOBJModel("Resources/Models/Light_Bulb.obj"); // Asset directory
-
-	Model* model = QwerkE::FileLoader::LoadModelFile(ModelFolderPath(modelName));
-
-	// null check
-	if (model != nullptr)
-	{
-		m_Models[modelName] = model;
-		model->SetName(modelName);
-		return model;
-	}
-	else
-	{
-		ConsolePrint("\nInstantiateModel(): Model not found!\n");
-		return m_NullModel;
-	}
 }
 
 FT_Face ResourceManager::InstantiateFont(const char* fontName)
