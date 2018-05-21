@@ -3,14 +3,14 @@
 
 #include "Asset.h"
 
-class Texture : public Asset
-{
-public:
-	Texture();
-	~Texture();
-
-private:
-
-};
+//class Texture : public Asset
+//{
+//public:
+//	Texture();
+//	~Texture();
+//
+//private:
+//
+//};
 
 #endif // !_Texture_Asset_H_
