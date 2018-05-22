@@ -58,7 +58,7 @@
 #include "Systems/Graphics/Graphics_Header.h"
 
 // Rendering //
-#include "Systems/Renderer.h"
+#include "Systems/Renderer/Renderer.h"
 
 // Input //
 #include "Systems/Input/Input.h"

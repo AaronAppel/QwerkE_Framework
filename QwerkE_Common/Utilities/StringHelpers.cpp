@@ -18,10 +18,10 @@ const char* StringAppend(const char* a, const char* b, const char* c)
 	int size = 0;
 	size = strlen(a) + strlen(b) + strlen(c);
 
-	char* newString = new char[size]; // RAM:
-	strcpy_s(newString, strlen(a) + 1, a);
-	strcat_s(newString, size + 1, b);
-	strcat_s(newString, size + 1, c);
+	const char* newString = new char[size]; // RAM:
+	strcpy_s((char*)newString, strlen(a) + 1, a);
+	strcat_s((char*)newString, size + 1, b);
+	strcat_s((char*)newString, size + 1, c);
 
 	return newString;
 }

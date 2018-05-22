@@ -1,7 +1,7 @@
 #include "Factory.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
-#include "../../Entities/Components/ModelComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
 
 Factory::Factory()
 {
@@ -25,9 +25,9 @@ GameObject* Factory::CreateGameObject(Scene* scene, vec3 position)
 	return new GameObject(scene, position);
 }
 
-ModelComponent* Factory::AddModelComponent(GameObject* entity, const char* objectRecipeName)
+RenderComponent* Factory::AddModelComponent(GameObject* entity, const char* objectRecipeName)
 {
-	ModelComponent* mComp = new ModelComponent();
+	RenderComponent* mComp = new RenderComponent();
 
 	// object recipe
 	// TODO: Read recipe file and load matching values

@@ -111,7 +111,7 @@ bool TypeIsObject(cJSON* item);
 //// Creation Functions ////
 cJSON* CreateBool(const char* key, bool value);
 cJSON* CreateNumber(char* key, double value);
-cJSON* CreateString(const char* key, char* value);
+cJSON* CreateString(const char* key, const char* value);
 cJSON* CreateObject();
 cJSON* CreateArray(const char* key);
 cJSON* CreateTestModel();
@@ -126,6 +126,8 @@ cJSON* CopyRootObject(cJSON* root);
 //// Heplers ////
 bool FileExists(const char* filename);
 void CreateNewFile(const char* filename);
+#define EmptycJSONFile(a) CreateEmptycJSONFile(a)
+void CreateEmptycJSONFile(const char* filePath);
 
 int GetObjectSize(cJSON* cJSONObject);
 int GetArraySize(cJSON* cJSONArray);

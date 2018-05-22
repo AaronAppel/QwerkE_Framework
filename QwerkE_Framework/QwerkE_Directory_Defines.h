@@ -38,6 +38,14 @@
 #define ModelFolderPath(a) StringAppend(AssetDir, "Models/", a)
 #define FontFolderPath(a) StringAppend(AssetDir, "Fonts/", a)
 #define SoundFolderPath(a) StringAppend(AssetDir, "Sounds/", a)
+#define RecipeFolderPath(a) StringAppend(AssetDir, "Recipes/", a)
 // TODO: Change MaterialFolderPath to use a new material system
+
+// Recipes
+#define object_recipe_ext ".orec"
+#define material_recipe_ext ".mrec"
+
+#define null_object_recipe "ObjectRecipe1.orec"
+#define null_material_recipe "MaterialRecipe1.mrec"
 
 #endif // !_QwerkE_Directory_Defines_H_

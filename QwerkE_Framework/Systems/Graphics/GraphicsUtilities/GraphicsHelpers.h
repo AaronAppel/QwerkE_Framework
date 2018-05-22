@@ -21,6 +21,10 @@ GLuint LoadCubeMapTexture(const char* filename);
 // GLuint Duplicate2DTexture(GLuint handle, int w, int h, int x, int y);
 GLuint CopyFBOToTexture(FrameBufferObject& handle, int w, int h, int x = 0, int y = 0);
 
+class RenderComponent;
+void SaveObjectRecipe(RenderComponent* rComp);
+RenderComponent* LoadObjectRecipe(const char* recipePath);
+
 char* Helper_GetAttributePrefix(); // TODO: Move to a shader specific file like ShaderFactory.h
 char* Helper_GetUniformPrefix();
 char* Helper_GetTransferPrefix();

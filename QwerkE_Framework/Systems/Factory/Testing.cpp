@@ -5,7 +5,7 @@
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
-#include "../../Entities/Components/ModelComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
 
 // Scenery + Props
 GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)

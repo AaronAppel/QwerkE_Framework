@@ -28,8 +28,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Routine.h" />
@@ -81,7 +81,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.h" />
@@ -106,8 +106,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutineUtilities.cpp" />
@@ -153,7 +153,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\MasterAssetList.cpp" />

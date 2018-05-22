@@ -6,6 +6,10 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
+#include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
+
+#include "../../../QwerkE_Framework/QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Framework/QwerkE_Directory_Defines.h"
 
 /* Shapes */
 GameObject* Factory::CreateCube(Scene* scene, vec3 position)
@@ -15,7 +19,10 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	t_Cube->SetTag(eGameObjectTags::GO_Tag_Cube);
 	t_Cube->SetRenderOrder(50);
 
-	AddModelComponent(t_Cube, "ObjectRecipe1");
+	RenderComponent* result = AddModelComponent(t_Cube, "ObjectRecipe1");
+
+	SaveObjectRecipe(result);
+	RenderComponent* rComp = LoadObjectRecipe(RecipeFolderPath("ObjectRecipe1.orec"));
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Cube->AddRoutine((Routine*)renderRoutine);

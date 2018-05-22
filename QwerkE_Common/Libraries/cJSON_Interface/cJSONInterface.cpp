@@ -601,6 +601,18 @@ void CreateNewFile(const char* filename) // checks if file already exists
 		fclose(filehandle);
 	}
 }
+// Create empty file with "{\n}" to fill cJSON structure
+void CreateEmptycJSONFile(const char* filePath)
+{
+	FILE* f;
+	fopen_s(&f, filePath, "w+");
+	if (f)
+	{
+		char buffer[] = { '{', '\n', '}' };
+		fwrite(buffer, sizeof(char), sizeof(buffer), f);
+		fclose(f);
+	}
+}
 // writing
 void AddItemToRootOfFile(cJSON* item, const char* filename)
 {

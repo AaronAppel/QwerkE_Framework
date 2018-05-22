@@ -3,7 +3,7 @@
 #include "../GameObject.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
-#include "../../Entities/Components/ModelComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/Gfx_Classes/Renderable.h"

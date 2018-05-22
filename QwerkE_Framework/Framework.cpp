@@ -14,7 +14,7 @@
 #include "Systems/Graphics/Graphics_Header.h"
 #include "CallbackFunctions.h"
 #include "Systems/Physics/PhysicsManager.h"
-#include "Systems/Renderer.h"
+#include "Systems/Renderer/Renderer.h"
 #include "Systems/MessageManager.h"
 #include "Systems/Audio/AudioManager.h"
 #include "Systems/Debugger/Debugger.h"

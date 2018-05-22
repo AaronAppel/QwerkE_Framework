@@ -8,7 +8,7 @@
 #include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
-#include "../../Entities/Components/ModelComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/Gfx_Classes/Renderable.h"
 
@@ -17,7 +17,7 @@
 void RenderRoutine::Initialize()
 {
 	m_pParent->AddDrawRoutine(this);
-	m_pModel = (ModelComponent*)m_pParent->GetComponent(eComponentTags::Component_Model);
+	m_pModel = (RenderComponent*)m_pParent->GetComponent(eComponentTags::Component_Model);
 	m_Type = eRoutineTypes::Routine_Render;
 	SetDrawFunctions();
 }

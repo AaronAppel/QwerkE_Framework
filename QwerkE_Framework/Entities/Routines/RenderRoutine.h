@@ -11,7 +11,7 @@ class GameObject;
 class CameraComponent;
 class ShaderProgram;
 class Mesh;
-class ModelComponent;
+class RenderComponent;
 class MaterialData;
 class RenderRoutine;
 
@@ -34,7 +34,7 @@ public:
 private:
 	/* Private variables */
 	DrawFunc m_DrawFunc = &RenderRoutine::NullDraw;
-	ModelComponent* m_pModel = nullptr;
+	RenderComponent* m_pModel = nullptr;
 	std::vector<std::vector<SetupUniformFunction>> m_UniformSetupList;
 
 	bool m_3D = true; // 2D/3D optimization TODO: Remove?

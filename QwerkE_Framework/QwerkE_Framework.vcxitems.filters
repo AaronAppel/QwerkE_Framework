@@ -82,6 +82,9 @@
     <Filter Include="QwerkE_Headers">
       <UniqueIdentifier>{d04c7991-9141-4e3f-bc15-cf58fbecba5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems\Renderer">
+      <UniqueIdentifier>{43839002-bf90-4069-9c07-79a379cd82ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -158,9 +161,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.cpp">
       <Filter>Systems\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer.cpp">
-      <Filter>Systems</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp">
       <Filter>Systems</Filter>
@@ -290,7 +290,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent .cpp">
       <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp">
+      <Filter>Systems\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -353,9 +356,6 @@
       <Filter>Systems\Window</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\MessageManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\GameObject.h">
@@ -495,9 +495,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent.h">
       <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h">
       <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
@@ -521,6 +518,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Global_Constants.h">
       <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.h">
+      <Filter>Systems\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
+      <Filter>Entities\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

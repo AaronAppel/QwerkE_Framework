@@ -4,7 +4,7 @@
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
-#include "../../Entities/Components/ModelComponent.h"
+#include "../../Entities/Components/RenderComponent.h"
 
 /* Lights */
 // Point Light
@@ -21,7 +21,7 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 
 	// Rendering
 	// AddModelComponent(t_pLight, "ObjectRecipe1");
-	ModelComponent* mComp = new ModelComponent();
+	RenderComponent* mComp = new RenderComponent();
 	mComp->AppendEmptyRenderables(1);
 
 	Renderable ren(m_pResources->GetShader("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Light_Bulb.obj"));
