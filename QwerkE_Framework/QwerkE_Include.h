@@ -13,7 +13,7 @@
 
 // enums, constants
 #include "QwerkE_Enums.h"
-#include "Global_Constants.h"
+#include "QwerkE_Global_Constants.h"
 
 //////////////////////////////
 // Libraries //

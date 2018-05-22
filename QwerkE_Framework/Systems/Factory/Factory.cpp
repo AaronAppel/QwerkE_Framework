@@ -30,15 +30,16 @@ ModelComponent* Factory::AddModelComponent(GameObject* entity, const char* objec
 	ModelComponent* mComp = new ModelComponent();
 
 	// object recipe
+	// TODO: Read recipe file and load matching values
 	// ObjectReciper1.orec
-	mComp->SetData();
-	// renderComp->SetShader(m_pResources->GetShader("LitMaterial"));
-	// renderComp->SetModel(m_pResources->GetModel("Plane.obj"));
-	// renderComp->SetMaterial(m_pResources->GetMaterial("container.mat"));
-	// renderComp->SetColour(vec4(RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), RandFloatInRange(0.0f, 1.0f), 1)); // random intial colour
 
-	// TODO: Read model file and load matching values
-	mComp->SetData(); // TODO:
+	mComp->AppendEmptyRenderables(1);
+
+	mComp->SetShaderAtIndex(0, m_pResources->GetShader("LitMaterial"));
+	mComp->SetMaterialAtIndex(0, m_pResources->GetMaterial("container.mat"));
+	mComp->SetMeshAtIndex(0, m_pResources->GetMesh("Cube.obj"));
+
+
 	entity->AddComponent((Component*)mComp);
 	return mComp;
 }

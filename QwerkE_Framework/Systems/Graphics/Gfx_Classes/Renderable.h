@@ -12,9 +12,17 @@ class MaterialData;
 
 struct Renderable
 {
-	Mesh* s_Mesh = nullptr;
-	MaterialData* s_Material = 0;
 	ShaderProgram* s_Shader = nullptr;
+	MaterialData* s_Material = 0;
+	Mesh* s_Mesh = nullptr;
+
+	Renderable() {}
+	Renderable(ShaderProgram* shader, MaterialData* material, Mesh* mesh)
+	{
+		s_Shader = shader;
+		s_Material = material;
+		s_Mesh = mesh;
+	}
 };
 
 #endif // !_Renderable_H_

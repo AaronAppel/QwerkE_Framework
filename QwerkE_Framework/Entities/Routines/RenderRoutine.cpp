@@ -24,7 +24,11 @@ void RenderRoutine::Initialize()
 //// Private functions
 void RenderRoutine::DrawMeshData(GameObject* a_Camera)
 {
-	if (!m_pModel) m_DrawFunc = &RenderRoutine::NullDraw;
+	if (!m_pModel)
+	{
+		m_DrawFunc = &RenderRoutine::NullDraw;
+		return;
+	}
 
 	/* Variables */
 	CameraComponent* t_pCamera = (CameraComponent*)a_Camera->GetComponent(Component_Camera);
@@ -35,7 +39,7 @@ void RenderRoutine::DrawMeshData(GameObject* a_Camera)
 	{
 		t_Renderables[i].s_Shader->Use();
 
-		for (int j = 0; j < m_UniformSetupList[j].size(); j++)
+		for (int j = 0; j < m_UniformSetupList[i].size(); j++)
 		{
 			(this->*m_UniformSetupList[i][j])(t_pCamera, &t_Renderables[i]);
 		}
@@ -58,7 +62,11 @@ void RenderRoutine::NullDraw(GameObject* a_Camera)
 
 void RenderRoutine::SetDrawFunctions()
 {
-	if (!m_pModel) m_DrawFunc = &RenderRoutine::NullDraw;
+	if (!m_pModel)
+	{
+		m_DrawFunc = &RenderRoutine::NullDraw;
+		return;
+	}
 
 	m_UniformSetupList.clear(); // reset uniform func list
 
@@ -72,7 +80,7 @@ void RenderRoutine::SetDrawFunctions()
 		m_UniformSetupList.push_back(temp);
 	}
 
-	for (int i = 0; i < t_Renderables->size(); i++)
+	for (int i = 0; i < t_Renderables->size(); i++) // for each renderable
 	{
 		std::vector<std::string> t_Uniforms = t_Renderables->at(i).s_Shader->GetUniformList(); // get shader
 		MaterialData* t_Material = t_Renderables->at(i).s_Material;

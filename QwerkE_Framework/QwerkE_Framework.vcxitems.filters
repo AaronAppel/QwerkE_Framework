@@ -79,6 +79,9 @@
     <Filter Include="Systems\ResourceManager">
       <UniqueIdentifier>{9cea2562-1f97-420a-aa12-076dc81cec6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="QwerkE_Headers">
+      <UniqueIdentifier>{d04c7991-9141-4e3f-bc15-cf58fbecba5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -287,6 +290,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent .cpp">
       <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.cpp">
+      <Filter>Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -369,12 +375,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Global_Constants.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Defines.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Enums.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Include.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
@@ -456,7 +456,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
@@ -501,6 +500,27 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h">
       <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Defines.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Enums.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Include.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Global_Constants.h">
+      <Filter>QwerkE_Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

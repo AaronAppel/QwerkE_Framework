@@ -6,7 +6,7 @@
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "../Component.h"
 #include "CameraComponent.h"
-#include "../../../Global_Constants.h"
+#include "../../../QwerkE_Global_Constants.h"
 
 class FreeCameraComponent : public CameraComponent
 {

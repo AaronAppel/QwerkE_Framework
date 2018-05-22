@@ -6,14 +6,30 @@
 
 #include <vector>
 
+class ShaderProgram;
+class MaterialData;
+class Mesh;
+
 class ModelComponent : public Component
 {
 public:
-	ModelComponent() { m_ComponentTag = eComponentTags::Component_Model; }
-	~ModelComponent() {}
+	ModelComponent();
+	ModelComponent(const char* objectRecipe) {}
+	ModelComponent(const char* shaderName, const char* materialName, const char* meshName);
+	~ModelComponent();
 
 	// TODO:
-	void SetData() {}
+	void GenerateRecipe();
+
+	void Setup(const char* shaderName, const char* materialName, const char* meshName);
+	// void Clear();
+
+	void AppendEmptyRenderables(int count);
+	void AddRenderable(Renderable renderable);
+
+	void SetShaderAtIndex(int index, ShaderProgram* shader);
+	void SetMaterialAtIndex(int index, MaterialData* material);
+	void SetMeshAtIndex(int index, Mesh* mesh);
 
 	const std::vector<Renderable>* LookAtRenderableList() { return &m_RenderableList; }
 

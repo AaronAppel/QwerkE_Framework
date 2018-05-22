@@ -1,5 +1,5 @@
-#ifndef _Global_Constants_H_
-#define _Global_Constants_H_
+#ifndef _QwerkE_Global_Constants_H_
+#define _QwerkE_Global_Constants_H_
 
 // Window settings
 const int g_DefaultWindowWidth = 1280, g_DefaultWindowHeight = 720;
@@ -11,4 +11,4 @@ const float g_SPEED = 12.0f;
 const float g_SENSITIVTY = 0.1f;
 const float g_ZOOM = 45.0f;
 
-#endif //__Global_Constants_H_
+#endif //!_QwerkE_Global_Constants_H_

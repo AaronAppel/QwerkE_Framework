@@ -34,10 +34,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Routine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Global_Constants.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Enums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Global_Constants.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scene.h" />
@@ -106,6 +106,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\ModelComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.cpp" />
