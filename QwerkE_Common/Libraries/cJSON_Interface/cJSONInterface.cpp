@@ -460,10 +460,10 @@ cJSON* CreateBool(const char* key, bool value)
 	return returnBool;
 }
 
-cJSON* CreateNumber(char* key, double value)
+cJSON* CreateNumber(const char* key, double value)
 {
 	cJSON* returnNumber = cJSON_CreateNumber(value);
-	returnNumber->string = key;
+	returnNumber->string = _strdup(key);
 	return returnNumber;
 }
 

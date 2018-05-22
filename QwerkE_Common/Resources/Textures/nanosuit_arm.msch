@@ -1,0 +1,19 @@
+{
+	"Name":	"nanosuit_arms.msch",
+	"OtherData":	[{
+			"Shine":	0.500000
+		}],
+	"TextureNames":	[{
+			"AmbientName":	"Empty",
+			"DiffuseName":	"arm_dif.png",
+			"SpecularName":	"arm_showroom_spec.png",
+			"EmissiveName":	"Empty",
+			"HeightName":	"Empty",
+			"NormalName":	"arm_showroom_ddn.png",
+			"ShininessName":	"Empty",
+			"OpacityName":	"Empty",
+			"DisplacementName":	"Empty",
+			"LightMapName":	"Empty",
+			"ReflectionName":	"Empty"
+		}]
+}

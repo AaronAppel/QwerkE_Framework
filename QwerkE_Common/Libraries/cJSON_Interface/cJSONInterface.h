@@ -110,7 +110,7 @@ bool TypeIsObject(cJSON* item);
 
 //// Creation Functions ////
 cJSON* CreateBool(const char* key, bool value);
-cJSON* CreateNumber(char* key, double value);
+cJSON* CreateNumber(const char* key, double value);
 cJSON* CreateString(const char* key, const char* value);
 cJSON* CreateObject();
 cJSON* CreateArray(const char* key);

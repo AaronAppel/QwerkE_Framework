@@ -6,10 +6,7 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
-#include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
-
-#include "../../../QwerkE_Framework/QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../../QwerkE_Framework/QwerkE_Directory_Defines.h"
+#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 
 /* Shapes */
 GameObject* Factory::CreateCube(Scene* scene, vec3 position)
@@ -19,10 +16,7 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	t_Cube->SetTag(eGameObjectTags::GO_Tag_Cube);
 	t_Cube->SetRenderOrder(50);
 
-	RenderComponent* result = AddModelComponent(t_Cube, "ObjectRecipe1");
-
-	SaveObjectRecipe(result);
-	RenderComponent* rComp = LoadObjectRecipe(RecipeFolderPath("ObjectRecipe1.orec"));
+	AddModelComponent(t_Cube, "Cube.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Cube->AddRoutine((Routine*)renderRoutine);
@@ -44,7 +38,7 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	t_Plane->SetTag(eGameObjectTags::GO_Tag_Plane);
 	t_Plane->SetRenderOrder(50);
 
-	AddModelComponent(t_Plane, "ObjectRecipe1");
+	AddModelComponent(t_Plane, "Cube.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Plane->AddRoutine((Routine*)renderRoutine);

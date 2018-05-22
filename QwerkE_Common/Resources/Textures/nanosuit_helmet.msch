@@ -1,0 +1,19 @@
+{
+	"Name":	"nanosuit_helmet.msch",
+	"OtherData":	[{
+			"Shine":	0.500000
+		}],
+	"TextureNames":	[{
+			"AmbientName":	"Empty",
+			"DiffuseName":	"helmet_diff.png",
+			"SpecularName":	"helmet_showroom_spec.png",
+			"EmissiveName":	"Empty",
+			"HeightName":	"Empty",
+			"NormalName":	"helmet_showroom_ddn.png",
+			"ShininessName":	"Empty",
+			"OpacityName":	"Empty",
+			"DisplacementName":	"Empty",
+			"LightMapName":	"Empty",
+			"ReflectionName":	"Empty"
+		}]
+}

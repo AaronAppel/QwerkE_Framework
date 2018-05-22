@@ -93,9 +93,9 @@ FT_BEGIN_HEADER
 #else /* FT_CONFIG_OPTION_PIC */
 
   /* this array is a function in PIC mode, so no ; is needed in END */
-#define CONST_FT_RFORK_RULE_ARRAY_BEGIN( name, type )  \
+#define CONST_FT_RFORK_RULE_ARRAY_BEGIN( s_Name, type )  \
           void                                         \
-          FT_Init_Table_ ## name( type*  storage )     \
+          FT_Init_Table_ ## s_Name( type*  storage )     \
           {                                            \
             type*  local = storage;                    \
                                                        \

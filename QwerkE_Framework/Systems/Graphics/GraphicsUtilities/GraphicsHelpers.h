@@ -22,8 +22,16 @@ GLuint LoadCubeMapTexture(const char* filename);
 GLuint CopyFBOToTexture(FrameBufferObject& handle, int w, int h, int x = 0, int y = 0);
 
 class RenderComponent;
-void SaveObjectRecipe(RenderComponent* rComp);
-RenderComponent* LoadObjectRecipe(const char* recipePath);
+void SaveObjectSchematic(RenderComponent* rComp);
+RenderComponent* LoadObjectSchematic(const char* schematicPath);
+
+class MaterialData;
+void SaveMaterialSchematic(MaterialData* material);
+MaterialData* LoadMaterialSchematic(const char* schematicPath);
+
+class Model;
+void SaveMaterialSchematic(MaterialData* material);
+MaterialData* LoadMaterialSchematic(const char* schematicPath);
 
 char* Helper_GetAttributePrefix(); // TODO: Move to a shader specific file like ShaderFactory.h
 char* Helper_GetUniformPrefix();

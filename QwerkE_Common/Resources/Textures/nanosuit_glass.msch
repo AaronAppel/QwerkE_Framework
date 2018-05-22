@@ -1,0 +1,19 @@
+{
+	"Name":	"nanosuit_glass.msch",
+	"OtherData":	[{
+			"Shine":	0.500000
+		}],
+	"TextureNames":	[{
+			"AmbientName":	"Empty",
+			"DiffuseName":	"glass_dif.png",
+			"SpecularName":	"glass_dif.png",
+			"EmissiveName":	"Empty",
+			"HeightName":	"Empty",
+			"NormalName":	"glass_ddn.png",
+			"ShininessName":	"Empty",
+			"OpacityName":	"Empty",
+			"DisplacementName":	"Empty",
+			"LightMapName":	"Empty",
+			"ReflectionName":	"Empty"
+		}]
+}

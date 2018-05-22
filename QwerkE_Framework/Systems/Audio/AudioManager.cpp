@@ -123,8 +123,8 @@ AudioManager::~AudioManager()
 
 void AudioManager::PlaySound(const char* name)
 {
-	if (!((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->SoundExists(name))
-	alSourcePlay(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetSound(name));
+	if (((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->SoundExists(name) == true)
+		alSourcePlay(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetSound(name));
 }
 
 

@@ -4,8 +4,15 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Systems/Graphics/Mesh/Mesh.h"
 #include "../../Entities/Components/RenderComponent.h"
+
+#include "../../../QwerkE_Framework/QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
+#include "../../../QwerkE_Framework/QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Framework/QwerkE_Directory_Defines.h"
+#include "../../../QwerkE_Framework/Systems/ServiceLocator.h"
+#include "../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 
 // Scenery + Props
 GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
@@ -42,8 +49,14 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	t_Model->SetTag(GO_Tag_TestModel);
 
 	// Rendering //
-	// model component
-	AddModelComponent(t_Model, "ObjectRecipe1");
+	QwerkE::FileLoader::LoadModelFileToMeshes(ModelFolderPath("nanosuit.obj"));
+
+	MaterialData* mat = m_pResources->GetMaterial(null_material);
+	SaveMaterialSchematic(mat);
+	LoadMaterialSchematic(TextureFolderPath("MaterialSchematic1.msch"));
+
+	AddModelComponent(t_Model, "nanosuit.osch");
+
 	// render routine
 	t_Model->AddRoutine((Routine*)new RenderRoutine());
 

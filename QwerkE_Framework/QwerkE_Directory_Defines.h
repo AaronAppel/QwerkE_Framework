@@ -9,8 +9,10 @@
 
 #ifdef QwerkE_Framework
 #define AssetDir "../QwerkE_Common/Resources/"
+#define FrameworkDataFolderPath(a) StringAppend("../QwerkE_Framework/Data/", a)
 #elif defined(Qwerk_Engine)
 #define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // 1 directory down
+#define FrameworkDataFolderPath(a) StringAppend("../QwerkE_Framework/QwerkE_Framework/Data/", a)
 #else
 //USER: Set the offset from your project working directory
 #define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/"
@@ -23,7 +25,7 @@
 #define null_mesh "null_model.obj"
 #define null_shader "null_shader"
 #define null_texture "null_texture.png"
-#define null_material "null_material.mat"
+#define null_material "null_material.msch"
 #define null_model "null_model.obj"
 #define null_font "null_font.ttf"
 #define null_sound "null_sound.wav"
@@ -34,18 +36,17 @@
 #define MeshFolderPath(a) StringAppend(AssetDir, "Models/", a) // TODO: Get rid of duplicate mesh path?
 #define ShaderFolderPath(a) StringAppend(AssetDir, "Shaders/", a)
 #define TextureFolderPath(a) StringAppend(AssetDir, "Textures/", a)
-#define MaterialFolderPath(a) StringAppend(AssetDir, "Models/", a)
 #define ModelFolderPath(a) StringAppend(AssetDir, "Models/", a)
 #define FontFolderPath(a) StringAppend(AssetDir, "Fonts/", a)
 #define SoundFolderPath(a) StringAppend(AssetDir, "Sounds/", a)
-#define RecipeFolderPath(a) StringAppend(AssetDir, "Recipes/", a)
+#define SchematicFolderPath(a) StringAppend(AssetDir, "BluePrints_Prefabs_Schematic/", a)
 // TODO: Change MaterialFolderPath to use a new material system
 
 // Recipes
-#define object_recipe_ext ".orec"
-#define material_recipe_ext ".mrec"
+#define object_schematic_ext ".osch"
+#define material_schematic_ext ".msch"
 
-#define null_object_recipe "ObjectRecipe1.orec"
-#define null_material_recipe "MaterialRecipe1.mrec"
+#define null_object_schematic "ObjectRecipe1.osch"
+#define null_material_schematic "MaterialRecipe1.msch"
 
 #endif // !_QwerkE_Directory_Defines_H_

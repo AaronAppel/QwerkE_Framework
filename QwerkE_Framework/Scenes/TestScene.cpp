@@ -64,8 +64,8 @@ void TestScene::Initialize()
 		t_pFactory->CreateLight(this, vec3(0, 5, -10));
 	}
 	//TEST:
-	// obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
-	obj = t_pFactory->CreateCube(this, vec3(0, 0, 10));
+	obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
+	// obj = t_pFactory->CreateCube(this, vec3(0, 0, 10));
 	obj->SetRotation(vec3(0,0,0));
 }
 

@@ -1,0 +1,19 @@
+{
+	"Name":	"nanosuit_hand.msch",
+	"OtherData":	[{
+			"Shine":	0.500000
+		}],
+	"TextureNames":	[{
+			"AmbientName":	"Empty",
+			"DiffuseName":	"hand_dif.png",
+			"SpecularName":	"hand_showroom_spec.png",
+			"EmissiveName":	"Empty",
+			"HeightName":	"Empty",
+			"NormalName":	"hand_showroom_ddn.png",
+			"ShininessName":	"Empty",
+			"OpacityName":	"Empty",
+			"DisplacementName":	"Empty",
+			"LightMapName":	"Empty",
+			"ReflectionName":	"Empty"
+		}]
+}

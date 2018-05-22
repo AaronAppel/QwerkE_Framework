@@ -1,0 +1,40 @@
+{
+	"Name":	"nanosuit.osch",
+	"Renderables":	[{
+		"Visor": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_glass.msch",
+			"Mesh":	"Visor"
+			}],
+		"Legs": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_leg.msch",
+			"Mesh":	"Legs"
+			}],
+		"Hands": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_hand.msch",
+			"Mesh":	"Hands"
+			}],
+		"Lights": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_glass.msch",
+			"Mesh":	"Lights"
+			}],
+		"Arms": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_arm.msch",
+			"Mesh":	"Arms"
+			}],
+		"Helmet": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_helmet.msch",
+			"Mesh":	"Helmet"
+			}],
+		"Body": [{
+			"Shader":	"LitMaterial",
+			"Material":	"nanosuit_body.msch",
+			"Mesh":	"Body"
+			}]
+		}]
+}

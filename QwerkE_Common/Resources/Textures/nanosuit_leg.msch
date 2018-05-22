@@ -1,0 +1,19 @@
+{
+	"Name":	"nanosuit_body.msch",
+	"OtherData":	[{
+			"Shine":	0.500000
+		}],
+	"TextureNames":	[{
+			"AmbientName":	"Empty",
+			"DiffuseName":	"body_dif.png",
+			"SpecularName":	"body_showroom_spec.png",
+			"EmissiveName":	"Empty",
+			"HeightName":	"Empty",
+			"NormalName":	"body_showroom_ddn.png",
+			"ShininessName":	"Empty",
+			"OpacityName":	"Empty",
+			"DisplacementName":	"Empty",
+			"LightMapName":	"Empty",
+			"ReflectionName":	"Empty"
+		}]
+}

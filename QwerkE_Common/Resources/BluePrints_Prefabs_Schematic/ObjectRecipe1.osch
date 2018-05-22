@@ -4,7 +4,7 @@
 			"R1":	[{
 					"Shader":	"null_shader",
 					"Material":	"null_material.mat",
-					"Mesh":	"null_mesh"
+					"Mesh":	"null_model.obj"
 				}]
 		}]
 }

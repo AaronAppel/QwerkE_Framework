@@ -50,10 +50,10 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 	/* Variables */
 
 	// TODO: Handle Null image handles
-	GLuint ambHandle = renderable->s_Material->ambientHandle;
-	GLuint diffHandle = renderable->s_Material->diffuseHandle;
-	GLuint specHandle = renderable->s_Material->specularHandle;
-	float shine = renderable->s_Material->shine;
+	GLuint ambHandle = renderable->s_Material->s_AmbientHandle;
+	GLuint diffHandle = renderable->s_Material->s_DiffuseHandle;
+	GLuint specHandle = renderable->s_Material->s_SpecularHandle;
+	float shine = renderable->s_Material->s_Shine;
 
 	/* Assign values */
 	renderable->s_Shader->SetUniformFloat1("Shine", shine);

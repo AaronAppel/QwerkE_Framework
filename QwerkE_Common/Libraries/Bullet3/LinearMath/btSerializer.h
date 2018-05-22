@@ -762,10 +762,10 @@ struct btInMemorySerializer : public btDefaultSerializer
         return 0;
     }
 
-	virtual	void	registerNameForPointer(const void* ptr, const char* name)
+	virtual	void	registerNameForPointer(const void* ptr, const char* s_Name)
     {
-       btDefaultSerializer::registerNameForPointer(ptr,name);
-       m_names2Ptr.insert(name,ptr);
+       btDefaultSerializer::registerNameForPointer(ptr,s_Name);
+       m_names2Ptr.insert(s_Name,ptr);
     }
 
     virtual void finishSerialization()

@@ -7,6 +7,8 @@
 #include "../../ServiceLocator.h"
 #include "../Gfx_Classes/MaterialData.h"
 
+#include "../Shared_Engine/Engine_Defines.h"
+
 void CheckAllGraphicsErrors()
 {
 	// TODO: Handle all sorts of graphics system errors?
@@ -80,9 +82,9 @@ GLuint CopyFBOToTexture(FrameBufferObject& fbo, int w, int h, int x, int y)
 
 #endif // OpenGL
 
-void SaveObjectRecipe(RenderComponent* rComp) // save to file
+void SaveObjectSchematic(RenderComponent* rComp) // save to file
 {
-	const char* filePath = StringAppend(AssetDir, "Recipes/ObjectRecipe1", ".orec");
+	const char* filePath = StringAppend(AssetDir, "BluePrints_Prefabs_Schematic/ObjectRecipe1", object_schematic_ext);
 
 	// if file does not exist, create one,otherwise overwrite data
 	if (!FileExists(filePath))
@@ -112,11 +114,11 @@ void SaveObjectRecipe(RenderComponent* rComp) // save to file
 	ClosecJSONStream(root);
 }
 
-RenderComponent* LoadObjectRecipe(const char* recipePath) // load from file
+RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from file
 {
 	RenderComponent* rComp = new RenderComponent();
 
-	cJSON* root = OpencJSONStream(recipePath);
+	cJSON* root = OpencJSONStream(schematicPath);
 
 	if (root)
 	{
@@ -133,9 +135,9 @@ RenderComponent* LoadObjectRecipe(const char* recipePath) // load from file
 		{
 			cJSON* currRenderable = GetItemFromArrayByIndex(renderables, i);
 
-			rComp->SetShaderAtIndex(0, resMan->GetShader(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
-			rComp->SetMaterialAtIndex(0, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
-			rComp->SetMeshAtIndex(0, resMan->GetMesh(GetItemFromArrayByKey(currRenderable, "Mesh")->valuestring));
+			rComp->SetShaderAtIndex(i, resMan->GetShader(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
+			rComp->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
+			rComp->SetMeshAtIndex(i, resMan->GetMesh(GetItemFromArrayByKey(currRenderable, "Mesh")->valuestring));
 		}
 	}
 
@@ -143,6 +145,103 @@ RenderComponent* LoadObjectRecipe(const char* recipePath) // load from file
 
 	return rComp;
 }
+
+void SaveMaterialSchematic(MaterialData* mat)
+{
+	const char* filePath = TextureFolderPath(StringAppend(mat->s_Name.c_str(), material_schematic_ext));
+
+	// if file does not exist, create one,otherwise overwrite data
+	if (!FileExists(filePath))
+	{
+		CreateEmptycJSONFile(filePath);
+	}
+	else
+	{
+		EmptycJSONFile(filePath);
+	}
+
+	// save data
+	// Note: I am not saving texture handles because they are not reliable.
+	// TODO: Should I use struct member names like "s_Name"?
+	cJSON* root = OpencJSONStream(filePath);
+
+	AddItemToRoot(root, CreateString("Name", "MaterialSchematic1.msch"));
+
+	cJSON* OtherData = CreateArray("OtherData");
+	AddItemToArray(OtherData, CreateNumber("Shine", mat->s_Shine));
+	// TODO: LightData AddItemToArray(OtherData, CreateNumber("LightData", mat->s_Shine)); {r,g,b,a}
+
+	cJSON* Names = CreateArray("TextureNames");
+	AddItemToArray(Names, CreateString("AmbientName", mat->s_AmbientName.c_str()));
+	AddItemToArray(Names, CreateString("DiffuseName", mat->s_DiffuseName.c_str()));
+	AddItemToArray(Names, CreateString("SpecularName", mat->s_SpecularName.c_str()));
+	AddItemToArray(Names, CreateString("EmissiveName", mat->s_EmissiveName.c_str()));
+	AddItemToArray(Names, CreateString("HeightName", mat->s_HeightName.c_str()));
+	AddItemToArray(Names, CreateString("NormalName", mat->s_NormalsName.c_str()));
+	AddItemToArray(Names, CreateString("ShininessName", mat->s_ShininessName.c_str()));
+	AddItemToArray(Names, CreateString("OpacityName", mat->s_OpacityName.c_str()));
+	AddItemToArray(Names, CreateString("DisplacementName", mat->s_DisplacementName.c_str()));
+	AddItemToArray(Names, CreateString("LightMapName", mat->s_LightMapName.c_str()));
+	AddItemToArray(Names, CreateString("ReflectionName", mat->s_ReflectionName.c_str()));
+
+	AddItemToRoot(root, OtherData);
+	AddItemToRoot(root, Names);
+
+	PrintRootObjectToFile(filePath, root);
+	ClosecJSONStream(root);
+}
+
+MaterialData* LoadMaterialSchematic(const char* schematicPath)
+{
+	MaterialData* mat = new MaterialData();
+
+	cJSON* root = OpencJSONStream(schematicPath);
+
+	if (root)
+	{
+		// load mat data from file
+		mat->s_Name = GetItemFromRootByKey(root, "Name")->valuestring;
+
+		// load "other" data
+		cJSON* otherData = GetItemFromRootByKey(root, "OtherData");
+		mat->s_Shine = GetItemFromArrayByKey(otherData, "Shine")->valuedouble;
+		// TODO: mat->s_LightValue = GetItemFromArrayByKey(otherData, "LightData")->valuedouble;
+
+		// set texture names
+		cJSON* textureNames = GetItemFromRootByKey(root, "TextureNames");
+		mat->s_AmbientName = GetItemFromArrayByKey(textureNames, "AmbientName")->valuestring;
+		mat->s_DiffuseName = GetItemFromArrayByKey(textureNames, "DiffuseName")->valuestring;
+		mat->s_SpecularName = GetItemFromArrayByKey(textureNames, "SpecularName")->valuestring;
+		mat->s_EmissiveName = GetItemFromArrayByKey(textureNames, "EmissiveName")->valuestring;
+		mat->s_HeightName = GetItemFromArrayByKey(textureNames, "HeightName")->valuestring;
+		mat->s_NormalsName = GetItemFromArrayByKey(textureNames, "NormalName")->valuestring;
+		mat->s_ShininessName = GetItemFromArrayByKey(textureNames, "ShininessName")->valuestring;
+		mat->s_OpacityName = GetItemFromArrayByKey(textureNames, "OpacityName")->valuestring;
+		mat->s_DisplacementName = GetItemFromArrayByKey(textureNames, "DisplacementName")->valuestring;
+		mat->s_LightMapName = GetItemFromArrayByKey(textureNames, "LightMapName")->valuestring;
+		mat->s_ReflectionName = GetItemFromArrayByKey(textureNames, "ReflectionName")->valuestring;
+	}
+
+	ClosecJSONStream(root);
+
+	// load texture handles from ResourceManager
+	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+
+	mat->s_AmbientHandle = resMan->GetTexture(mat->s_AmbientName.c_str());
+	mat->s_DiffuseHandle = resMan->GetTexture(mat->s_DiffuseName.c_str());
+	mat->s_SpecularHandle = resMan->GetTexture(mat->s_SpecularName.c_str());
+	mat->s_EmissiveHandle = resMan->GetTexture(mat->s_EmissiveName.c_str());
+	mat->s_HeightHandle = resMan->GetTexture(mat->s_HeightName.c_str());
+	mat->s_NormalsHandle = resMan->GetTexture(mat->s_NormalsName.c_str());
+	mat->s_ShininessHandle = resMan->GetTexture(mat->s_ShininessName.c_str());
+	mat->s_OpacityHandle = resMan->GetTexture(mat->s_OpacityName.c_str());
+	mat->s_DisplacementHandle = resMan->GetTexture(mat->s_DisplacementName.c_str());
+	mat->s_LightMapHandle = resMan->GetTexture(mat->s_LightMapName.c_str());
+	mat->s_ReflectionHandle = resMan->GetTexture(mat->s_ReflectionName.c_str());
+
+	return mat;
+}
+
 // Shader variable prefixes
 char* Helper_GetAttributePrefix()
 {

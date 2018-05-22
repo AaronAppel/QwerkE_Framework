@@ -1,8 +1,0 @@
-{
-	"Name":	"ObjectRecipe1.orec",
-	"Renderables":	[{
-			"Shader":	"null_shader",
-			"Material":	"null_material.mat",
-			"Mesh":	"null_mesh"
-		}]
-}

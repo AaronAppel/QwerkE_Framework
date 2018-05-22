@@ -82,7 +82,7 @@ public:
 
 	// ------------------------------------------------------------------------------------------------
 	// Extracts android asset
-	bool AndroidExtractAsset(std::string name);
+	bool AndroidExtractAsset(std::string s_Name);
 
 };
 

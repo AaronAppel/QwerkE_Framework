@@ -120,7 +120,7 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 		ShaderFactory temp;
 		shader = temp.CreateShader(eShader_Basic3D);
 	}
-	else if (shaderName == "LitMaterial")
+	else if (strcmp(shaderName, "LitMaterial") == 0)
 	{
 		shader->Init(ShaderFolderPath("LitMaterial.vert"), ShaderFolderPath("LitMaterial.frag"), NULL);
 	}
@@ -177,27 +177,27 @@ GLuint ResourceManager::InstantiateTexture(const char* textureName)
 MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 {
 	MaterialData* material = nullptr;
-	// TODO: Set map names
-	if (matName == "container.mat") // Asset name
+
+	// TODO: Set null data for handles and names
+
+	std::string extension = TextureFolderPath(matName);
+	extension = extension.substr(extension.find_last_of('.') + 1, 4);
+
+	if (strcmp(extension.c_str(), "msch") == 0)
 	{
-		material = new MaterialData(GetTexture("container.png"), GetTexture("container.png"), GetTexture("container_specular.png")); // Asset names
+		// TODO: Handle null or corrupt data
+		material = LoadMaterialSchematic(TextureFolderPath(matName));
+
+		m_Materials[matName] = material; // add to map
+		return material;
 	}
-	else if (matName == "nanosuit_arms.mat") // TODO: Re-use textures
+	else
+	if (matName == "nanosuit_legs.mat") // TODO: Re-use textures
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialFolderPath("nanosuit/arm_dif.png"));
-		spec = Load2DTexture(MaterialFolderPath("nanosuit/arm_showroom_spec.png"));
-		// norm = Load2DTexture(MaterialDir("nanosuit/arm_showroom_ddn.png")); // currently unused
-
-		material = new MaterialData(dif, dif, spec);
-	}
-	else if (matName == "nanosuit_legs.mat") // TODO: Re-use textures
-	{
-		GLuint dif, spec, norm;
-
-		dif = Load2DTexture(MaterialFolderPath("nanosuit/leg_dif.png"));
-		spec = Load2DTexture(MaterialFolderPath("nanosuit/leg_showroom_spec.png"));
+		dif = Load2DTexture(TextureFolderPath("nanosuit/leg_dif.png"));
+		spec = Load2DTexture(TextureFolderPath("nanosuit/leg_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/leg_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -206,8 +206,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialFolderPath("nanosuit/body_dif.png"));
-		spec = Load2DTexture(MaterialFolderPath("nanosuit/body_showroom_spec.png"));
+		dif = Load2DTexture(TextureFolderPath("nanosuit/body_dif.png"));
+		spec = Load2DTexture(TextureFolderPath("nanosuit/body_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/body_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -216,7 +216,7 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialFolderPath("nanosuit/glass_dif.png"));
+		dif = Load2DTexture(TextureFolderPath("nanosuit/glass_dif.png"));
 		// spec = Load2DTexture(MaterialDir("nanosuit/?????.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/glass_ddn.png")); // currently unused
 
@@ -226,8 +226,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialFolderPath("nanosuit/helmet_diff.png"));
-		spec = Load2DTexture(MaterialFolderPath("nanosuit/helmet_showroom_spec.png"));
+		dif = Load2DTexture(TextureFolderPath("nanosuit/helmet_diff.png"));
+		spec = Load2DTexture(TextureFolderPath("nanosuit/helmet_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/helmet_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
@@ -236,32 +236,21 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 	{
 		GLuint dif, spec, norm;
 
-		dif = Load2DTexture(MaterialFolderPath("nanosuit/hand_dif.png"));
-		spec = Load2DTexture(MaterialFolderPath("nanosuit/hand_showroom_spec.png"));
+		dif = Load2DTexture(TextureFolderPath("nanosuit/hand_dif.png"));
+		spec = Load2DTexture(TextureFolderPath("nanosuit/hand_showroom_spec.png"));
 		// norm = Load2DTexture(MaterialDir("nanosuit/hand_showroom_ddn.png")); // currently unused
 
 		material = new MaterialData(dif, dif, spec);
 	}
-	else if (matName == "UV_Map.mat")
-	{
-		material = new MaterialData(GetTexture("UV_Map.png"), GetTexture("UV_Map.png"), GetTexture("UV_Map.png"));
-	}
-    else if (matName == null_material)
-    {
-        material = new MaterialData(GetTexture("null_texture.png"), GetTexture("null_texture.png"), GetTexture("null_texture.png"));
-    }
-	else if (matName == "Test.qmat") // could just check for extension, then handle that
-	{
-		// TODO: Try to load a .qmat file
-	}
-	else
+
+	if(!material)
 	{
         ConsolePrint("\nInstantiateMaterial(): Material not found!\n");
 		return m_NullMaterial; // do not add another material
 	}
 
 	m_Materials[matName] = material;
-	material->name = matName;
+	material->s_Name = matName;
 	return material;
 }
 

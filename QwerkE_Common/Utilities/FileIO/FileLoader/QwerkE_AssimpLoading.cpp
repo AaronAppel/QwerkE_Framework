@@ -101,7 +101,7 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 	{
 		//create new material
 		MaterialData* data = new MaterialData(); // TODO: delete if null
-		data->name = name.C_Str();
+		data->s_Name = name.C_Str();
 		// load each map/texture into a new material
 
 		// iterate through all known texture types, then load the textures
@@ -144,53 +144,53 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 			switch (i)
 			{
 			case aiTextureType_DIFFUSE:
-				data->diffuseHandle = handle;
-				data->diffuseName = str.C_Str();
+				data->s_DiffuseHandle = handle;
+				data->s_DiffuseName = str.C_Str();
 				break;
 			case aiTextureType_SPECULAR:
-				data->specularHandle = handle;
-				data->specularName = str.C_Str();
+				data->s_SpecularHandle = handle;
+				data->s_SpecularName = str.C_Str();
 				break;
 			case aiTextureType_AMBIENT:
-				data->ambientHandle = handle;
-				data->ambientName = str.C_Str();
+				data->s_AmbientHandle = handle;
+				data->s_AmbientName = str.C_Str();
 				break;
 			case aiTextureType_EMISSIVE:
-				data->emissiveHandle = handle;
-				data->emissiveName = str.C_Str();
+				data->s_EmissiveHandle = handle;
+				data->s_EmissiveName = str.C_Str();
 				break;
 			case aiTextureType_HEIGHT:
-				data->heightHandle = handle;
-				data->heightName = str.C_Str();
+				data->s_HeightHandle = handle;
+				data->s_HeightName = str.C_Str();
 				break;
 			case aiTextureType_NORMALS:
-				data->normalsHandle = handle;
-				data->normalsName = str.C_Str();
+				data->s_NormalsHandle = handle;
+				data->s_NormalsName = str.C_Str();
 				break;
 			case aiTextureType_SHININESS:
-				data->shininessHandle = handle;
-				data->shininessName = str.C_Str();
+				data->s_ShininessHandle = handle;
+				data->s_ShininessName = str.C_Str();
 				break;
 			case aiTextureType_OPACITY:
-				data->opacityHandle = handle;
-				data->opacityName = str.C_Str();
+				data->s_OpacityHandle = handle;
+				data->s_OpacityName = str.C_Str();
 				break;
 			case aiTextureType_DISPLACEMENT:
-				data->displacementHandle = handle;
-				data->displacementName = str.C_Str();
+				data->s_DisplacementHandle = handle;
+				data->s_DisplacementName = str.C_Str();
 				break;
 			case aiTextureType_LIGHTMAP:
-				data->lightMapHandle = handle;
-				data->lightMapName = str.C_Str();
+				data->s_LightMapHandle = handle;
+				data->s_LightMapName = str.C_Str();
 				break;
 			case aiTextureType_REFLECTION:
-				data->reflectinoHandle = handle;
-				data->reflectinoName = str.C_Str();
+				data->s_ReflectionHandle = handle;
+				data->s_ReflectionName = str.C_Str();
 				break;
 			}
 		}
 
-		resMan->AddMaterial(data->name.c_str(), data); // add initialized material
+		resMan->AddMaterial(data->s_Name.c_str(), data); // add initialized material
 	}
 
 	matNames.push_back(name.C_Str()); // get name for mat loading later

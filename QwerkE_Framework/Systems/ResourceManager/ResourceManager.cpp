@@ -109,7 +109,7 @@ bool ResourceManager::AddMaterial(const char* name, MaterialData* material)
 	if (MaterialExists(name))
 		return false;
 
-	if (material == nullptr || material->name == "Uninitialized")
+	if (material == nullptr || material->s_Name == "Uninitialized")
 		return false;
 
 	m_Materials[name] = material;
