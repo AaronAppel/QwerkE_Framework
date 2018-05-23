@@ -2,7 +2,6 @@
 #include "TestScene.h"
 #include "../Systems/DataManager/DataManager.h"
 #include "../Systems/ServiceLocator.h"
-#include "../Systems/Graphics/Gfx_Classes/Sprite.h"
 #include "../Entities/GameObject.h"
 #include "../QwerkE_Enums.h"
 #include "../Systems/Factory/Factory.h"

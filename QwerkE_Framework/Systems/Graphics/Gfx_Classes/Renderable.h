@@ -7,17 +7,17 @@
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 class Mesh;
-class ShaderProgram;
+class ShaderProgramData;
 class MaterialData;
 
 struct Renderable
 {
-	ShaderProgram* s_Shader = nullptr;
+	ShaderProgramData* s_Shader = nullptr;
 	MaterialData* s_Material = 0;
 	Mesh* s_Mesh = nullptr;
 
 	Renderable() {}
-	Renderable(ShaderProgram* shader, MaterialData* material, Mesh* mesh)
+	Renderable(ShaderProgramData* shader, MaterialData* material, Mesh* mesh)
 	{
 		s_Shader = shader;
 		s_Material = material;

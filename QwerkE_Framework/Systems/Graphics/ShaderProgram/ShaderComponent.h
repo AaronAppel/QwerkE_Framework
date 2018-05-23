@@ -10,6 +10,14 @@ public:
 	ShaderComponent(const char* shaderPath);
 	~ShaderComponent();
 
+	std::string GetName() { return m_Name; }
+	GLuint GetHandle() { return m_ShaderHandle; }
+	const char* GetStringData() { return m_ShaderString; }
+
+	void SetName(std::string name) { m_Name = name; }
+	void SetHandle(GLuint handle) { m_ShaderHandle = handle; }
+	void SetStringData(const char* shaderData) { m_ShaderString = shaderData; }
+
 private:
 	std::string m_Name = "Uninitialized";
 	std::string m_Type = "Uninitialized";

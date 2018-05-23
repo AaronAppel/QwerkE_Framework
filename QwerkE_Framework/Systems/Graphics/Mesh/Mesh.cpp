@@ -2,6 +2,7 @@
 #include "VertexData.h"
 #include "../ShaderProgram/ShaderProgram.h"
 #include "../GraphicsUtilities/GraphicsHelpers.h"
+#include "../Gfx_Classes/ShaderProgramData.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
@@ -49,7 +50,7 @@ void Mesh::BufferMeshData(int numVerts, VertexData* vertices, int numIndices, un
 	CheckGraphicsErrors(__FILE__, __LINE__);
 }
 
-void Mesh::SetupShaderAttributes(ShaderProgram* shader)
+void Mesh::SetupShaderAttributes(ShaderProgramData* shader)
 {
 	CheckGraphicsErrors(__FILE__, __LINE__);
 
@@ -68,12 +69,12 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 	CheckGraphicsErrors(__FILE__, __LINE__);
 
 	/* Assign ShaderProgram() attribute data */
-	std::vector<std::string> attributes = shader->GetAttributeList();
+	std::vector<std::string> attributes = shader->s_Attributes;
 	for (unsigned int i = 0; i < attributes.size(); i++)
 	{
 		if (StringCompare(attributes.at(i), "Position"))
 		{
-			GLuint aPos = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Position").c_str());
+			GLuint aPos = glGetAttribLocation(shader->s_programHandle, DispStrCombine(Helper_GetAttributePrefix(), "Position").c_str());
 			if (aPos != -1)
 			{
 				glVertexAttribPointer(aPos, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, position));
@@ -82,7 +83,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 		}
 		else if (StringCompare(attributes.at(i), "Color"))
 		{
-			GLuint aColor = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Color").c_str());
+			GLuint aColor = glGetAttribLocation(shader->s_programHandle, DispStrCombine(Helper_GetAttributePrefix(), "Color").c_str());
 			if (aColor != -1)
 			{
 				glVertexAttribPointer(aColor, 4, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, color));
@@ -91,7 +92,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 		}
 		else if (StringCompare(attributes.at(i), "UV"))
 		{
-			GLuint aUV = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "UV").c_str());
+			GLuint aUV = glGetAttribLocation(shader->s_programHandle, DispStrCombine(Helper_GetAttributePrefix(), "UV").c_str());
 			if (aUV != -1)
 			{
 				glVertexAttribPointer(aUV, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, UV));
@@ -100,7 +101,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 		}
 		else if (StringCompare(attributes.at(i), "Normal"))
 		{
-			GLuint aNormal = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Normal").c_str());
+			GLuint aNormal = glGetAttribLocation(shader->s_programHandle, DispStrCombine(Helper_GetAttributePrefix(), "Normal").c_str());
 			if (aNormal != -1)
 			{
 				glVertexAttribPointer(aNormal, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (GLvoid*)offsetof(VertexData, normal));

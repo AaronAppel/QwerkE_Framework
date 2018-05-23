@@ -11,6 +11,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/Gfx_Classes/Renderable.h"
+#include "../../Systems/Graphics/Gfx_Classes/ShaderProgramData.h"
 
 #include <assert.h>
 
@@ -82,7 +83,7 @@ void RenderRoutine::SetDrawFunctions()
 
 	for (int i = 0; i < t_Renderables->size(); i++) // for each renderable
 	{
-		std::vector<std::string> t_Uniforms = t_Renderables->at(i).s_Shader->GetUniformList(); // get shader
+		std::vector<std::string> t_Uniforms = t_Renderables->at(i).s_Shader->s_Uniforms; // get shader
 		MaterialData* t_Material = t_Renderables->at(i).s_Material;
 
 		/* Add functions to setup shader uniforms */

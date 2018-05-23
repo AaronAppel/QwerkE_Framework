@@ -105,9 +105,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.cpp">
       <Filter>Systems\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Build_Block_Menu.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Cameras.cpp">
       <Filter>Systems\Factory</Filter>
     </ClCompile>
@@ -421,9 +418,6 @@
       <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.h">
       <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.h">

@@ -1,10 +1,6 @@
 {
 	"Name":	"LitMaterial.ssch",
-	"Renderables":	[{
-		"Visor": [{
-			"vert":	"LitMaterial.vert",
-			"frag":	"LitMaterial.frag",
-			"geo":	"null"
-			}]
-		}]
+	"vert":	"LitMaterial.vert",
+	"frag":	"LitMaterial.frag",
+	"geo":	"null"
 }

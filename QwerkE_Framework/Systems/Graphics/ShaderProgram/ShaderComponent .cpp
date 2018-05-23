@@ -14,23 +14,19 @@ ShaderComponent::ShaderComponent(const char* shaderPath)
 	{
 		m_Name = GetFileNameWithExt(shaderPath);
 		m_Type = GetFileExtension(shaderPath);
-		m_ShaderString = LoadCompleteFile(shaderPath, 0);
 
 		// compile
 		if (m_Type == "vert")
 		{
-			m_ShaderHandle = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-				GL_VERTEX_SHADER, m_ShaderString);
+			m_ShaderHandle = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateVertexShader(shaderPath);
 		}
 		else if (m_Type == "frag")
 		{
-			m_ShaderHandle = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-				GL_FRAGMENT_SHADER, m_ShaderString);
+			m_ShaderHandle = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateFragmentShader(shaderPath);
 		}
 		else if (m_Type == "geo")
 		{
-			m_ShaderHandle = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-				GL_GEOMETRY_SHADER, m_ShaderString);
+			m_ShaderHandle = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateGeometryShader(shaderPath);
 		}
 		else
 		{

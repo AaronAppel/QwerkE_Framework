@@ -9,7 +9,7 @@
 
 class GameObject;
 class CameraComponent;
-class ShaderProgram;
+class ShaderProgramData;
 class Mesh;
 class RenderComponent;
 class MaterialData;
@@ -59,7 +59,7 @@ private:
 	// Camera
 	void SetupCameraUniforms(CameraComponent* a_Camera, Renderable* renderable);
 	/* Other */
-	void SetupTextureUniforms(GLuint textures[], int size, ShaderProgram* shader);
+	void SetupTextureUniforms(GLuint textures[], int size, ShaderProgramData* shader);
 };
 
 #endif //!_RenderRoutine_H_

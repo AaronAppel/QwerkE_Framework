@@ -73,6 +73,11 @@ bool ResourceManager::ShaderProgramExists(const char* name)
 	return m_ShaderProgramData.find(name) != m_ShaderProgramData.end();
 }
 
+bool ResourceManager::ShaderComponentExists(const char* name)
+{
+	return m_ShaderComponents.find(name) != m_ShaderComponents.end();
+}
+
 bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
 {
 	if (MeshExists(name))
@@ -157,6 +162,18 @@ bool ResourceManager::AddShaderProgramData(const char* name, ShaderProgramData* 
 	m_ShaderProgramData[name] = shaderProgramData;
 	return true;
 }
+
+bool ResourceManager::AddShaderComponentData(const char* name, ShaderComponent* shaderComponent)
+{
+	if (ShaderComponentExists(name))
+		return false;
+
+	if (shaderComponent == nullptr)
+		return false;
+
+	m_ShaderComponents[name] = shaderComponent;
+	return true;
+}
 // getters
 // TODO: Return null objects
 Mesh* ResourceManager::GetMesh(const char* name)
@@ -206,7 +223,7 @@ FT_Face ResourceManager::GetFont(const char* name)
 
 ALuint ResourceManager::GetSound(const char* name)
 {
-	if (!SoundExists(name))
+	if (SoundExists(name))
 	{
 		return m_Sounds[name];
 	}
@@ -217,13 +234,20 @@ ALuint ResourceManager::GetSound(const char* name)
 
 ShaderProgramData* ResourceManager::GetShaderProgramData(const char* name)
 {
-	if (!SoundExists(name))
+	if (ShaderProgramExists(name))
 	{
 		return m_ShaderProgramData[name];
 	}
-	// TODO:
-	// return InstantiateSound(name);
-	return 0;
+	return InstantiateShaderProgramData(name);
+}
+
+ShaderComponent* ResourceManager::GetShaderComponentData(const char* name)
+{
+	if (ShaderComponentExists(name))
+	{
+		return m_ShaderComponents[name];
+	}
+	return InstantiateShaderComponent(name);
 }
 // Utilities
 bool ResourceManager::isUnique(Mesh* mesh)
@@ -298,6 +322,17 @@ bool ResourceManager::isShaderProgramDataUnique(ShaderProgramData* shaderProgram
 	for (it = m_ShaderProgramData.begin(); it != m_ShaderProgramData.end(); it++)
 	{
 		if (it->second == shaderProgramData) // pointer comparison
+			return false;
+	}
+	return true;
+}
+
+bool ResourceManager::isShaderComponentsUnique(ShaderComponent* shaderComponent)
+{
+	std::map<std::string, ShaderComponent*>::iterator it;
+	for (it = m_ShaderComponents.begin(); it != m_ShaderComponents.end(); it++)
+	{
+		if (it->second == shaderComponent) // pointer comparison
 			return false;
 	}
 	return true;

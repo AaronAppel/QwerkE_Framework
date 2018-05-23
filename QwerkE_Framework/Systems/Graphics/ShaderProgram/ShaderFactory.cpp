@@ -1,6 +1,9 @@
 #include "../../Graphics/Graphics_Header.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../Gfx_Classes/ShaderProgramData.h"
+#include "../ShaderProgram/ShaderComponent.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 
 ShaderProgram* ShaderFactory::CreateShader(eShaderTypes type)
 {
@@ -19,9 +22,11 @@ ShaderProgram* ShaderFactory::CreateShader(const char* vertFileDir, const char* 
 	return shader;
 }
 // Returns new shader handle is successful, else 0
-GLuint ShaderFactory::CreateShaderComponent(GLenum shaderType, const char* shaderString)
+ShaderComponent* ShaderFactory::CreateShaderComponent(GLenum shaderType, const char* shaderPath)
 {
 	GLuint shaderHandle = glCreateShader(shaderType); // fails if context is not current for GLFW
+
+	const char* shaderString = LoadCompleteFile(shaderPath, 0);
 	glShaderSource(shaderHandle, 1, &shaderString, NULL);
 	glCompileShader(shaderHandle);
 
@@ -50,9 +55,18 @@ GLuint ShaderFactory::CreateShaderComponent(GLenum shaderType, const char* shade
 		// cleanup
 		glDeleteShader(shaderHandle);
 		shaderHandle = 0;
+		delete[] shaderString;
+		return nullptr;
 	}
+	else
+	{
+		ShaderComponent* comp = new ShaderComponent();
+		comp->SetName(GetFileNameWithExt(shaderPath));
+		comp->SetStringData(shaderString);
+		comp->SetHandle(shaderHandle);
 
-	return shaderHandle;
+		return comp;
+	}
 }
 
 GLuint ShaderFactory::CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo)
@@ -62,6 +76,129 @@ GLuint ShaderFactory::CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo)
 		return 0;
 	}
 	return LinkShaders(vert, frag, geo);
+}
+
+GLuint ShaderFactory::CreateVertexShader(const char* vertPath)
+{
+	GLuint shaderHandle = glCreateShader(GL_VERTEX_SHADER); // fails if context is not current for GLFW
+
+	const char* data = LoadCompleteFile(vertPath, 0);
+	if (data)
+	{
+		glShaderSource(shaderHandle, 1, &data, NULL);
+		glCompileShader(shaderHandle);
+
+		GLint success = 0;
+		glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			// Error compiling shader
+			GLchar infoLog[512];
+			glGetShaderInfoLog(shaderHandle, 512, NULL, infoLog);
+
+			char* next_token = 0;
+			char* ShaderName = strtok_s((char*)data, "\n", &next_token);
+			// TODO: error reads as garbage characters.
+			OutputPrint("\n%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, "GL_VERTEX_SHADER");
+			OutputPrint(infoLog); // OpenGL message
+
+								  // cleanup
+			glDeleteShader(shaderHandle);
+			delete[] data;
+			return 0;
+		}
+		else
+		{
+			delete[] data;
+			return shaderHandle;
+		}
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+GLuint ShaderFactory::CreateFragmentShader(const char* fragPath)
+{
+	GLuint shaderHandle = glCreateShader(GL_FRAGMENT_SHADER); // fails if context is not current for GLFW
+
+	const char* data = LoadCompleteFile(fragPath, 0);
+	if (data)
+	{
+		glShaderSource(shaderHandle, 1, &data, NULL);
+		glCompileShader(shaderHandle);
+
+		GLint success = 0;
+		glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			// Error compiling shader
+			GLchar infoLog[512];
+			glGetShaderInfoLog(shaderHandle, 512, NULL, infoLog);
+
+			char* next_token = 0;
+			char* ShaderName = strtok_s((char*)data, "\n", &next_token);
+			// TODO: error reads as garbage characters.
+			OutputPrint("\n%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, "GL_FRAGMENT_SHADER");
+			OutputPrint(infoLog); // OpenGL message
+
+								  // cleanup
+			glDeleteShader(shaderHandle);
+			delete[] data;
+			return 0;
+		}
+		else
+		{
+			delete[] data;
+			return shaderHandle;
+		}
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+GLuint ShaderFactory::CreateGeometryShader(const char* geoPath)
+{
+	GLuint shaderHandle = glCreateShader(GL_GEOMETRY_SHADER); // fails if context is not current for GLFW
+
+	const char* data = LoadCompleteFile(geoPath, 0);
+	if (data)
+	{
+		glShaderSource(shaderHandle, 1, &data, NULL);
+		glCompileShader(shaderHandle);
+
+		GLint success = 0;
+		glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			// Error compiling shader
+			GLchar infoLog[512];
+			glGetShaderInfoLog(shaderHandle, 512, NULL, infoLog);
+
+			char* next_token = 0;
+			char* ShaderName = strtok_s((char*)data, "\n", &next_token);
+			// TODO: error reads as garbage characters.
+			OutputPrint("\n%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, "GL_GEOMETRY_SHADER");
+			OutputPrint(infoLog); // OpenGL message
+
+								  // cleanup
+			glDeleteShader(shaderHandle);
+			delete[] data;
+			return 0;
+		}
+		else
+		{
+			delete[] data;
+			return shaderHandle;
+		}
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 const char* ShaderFactory::CreateVertexShader(eShaderTypes shaderType)

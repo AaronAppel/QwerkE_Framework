@@ -2,6 +2,7 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Systems/Graphics/Gfx_Classes/ShaderProgramData.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 
@@ -21,7 +22,7 @@ RenderComponent::RenderComponent(const char* shaderName, const char* materialNam
 
 	t_Renderable.s_Material = resMan->GetMaterial(materialName);
 	t_Renderable.s_Mesh = resMan->GetMesh(meshName);
-	t_Renderable.s_Shader = resMan->GetShader(shaderName);
+	t_Renderable.s_Shader = resMan->GetShaderProgramData(shaderName);
 
 	t_Renderable.s_Mesh->SetupShaderAttributes(t_Renderable.s_Shader);
 
@@ -43,7 +44,7 @@ void RenderComponent::Setup(const char* shaderName, const char* materialName, co
 
 	t_Renderable.s_Material = resMan->GetMaterial(materialName);
 	t_Renderable.s_Mesh = resMan->GetMesh(meshName);
-	t_Renderable.s_Shader = resMan->GetShader(shaderName);
+	t_Renderable.s_Shader = resMan->GetShaderProgramData(shaderName);
 
 	t_Renderable.s_Mesh->SetupShaderAttributes(t_Renderable.s_Shader);
 
@@ -60,7 +61,7 @@ void RenderComponent::AppendEmptyRenderables(int count)
 	{
 		Renderable t_Renderable;
 
-		t_Renderable.s_Shader = resMan->GetShader(null_shader);
+		t_Renderable.s_Shader = resMan->GetShaderProgramData(null_shader_schematic);
 		t_Renderable.s_Material = resMan->GetMaterial(null_material);
 		t_Renderable.s_Mesh = resMan->GetMesh(null_mesh);
 
@@ -73,7 +74,7 @@ void RenderComponent::AddRenderable(Renderable renderable)
 	m_RenderableList.push_back(renderable);
 }
 
-void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)
+void RenderComponent::SetShaderAtIndex(int index, ShaderProgramData* shader)
 {
 	// TODO: More error handling
 	if (index < m_RenderableList.size())

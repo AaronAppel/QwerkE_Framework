@@ -92,14 +92,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\version.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\Vertex.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\XMLTools.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Block_Menu.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\ImageItem.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\MenuItem.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Menus\Menu.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\ExampleWindow.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\MenuWindow.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h" />
@@ -767,13 +759,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Tween\TweenFuncs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\AddItem.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\ImageItem.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuItems\MenuItem.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\MenuManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Menus\Menu.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\ExampleWindow.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Block_Menu\Windows\MenuWindow.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSON.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSONInterface.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\EasyXinput\EasyXinput.cpp" />

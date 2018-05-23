@@ -11,6 +11,8 @@
 #include <string>
 
 class ShaderProgram;
+struct ShaderProgramData;
+class ShaderComponent;
 
 // TODO: Think of separating generated shader code somehow
 class ShaderFactory
@@ -21,8 +23,13 @@ public:
 
 	ShaderProgram* CreateShader(eShaderTypes type);
 	ShaderProgram* CreateShader(const char* vertFileDir, const char* fragFileDir, const char* geoFileDir);
-	GLuint CreateShaderComponent(GLenum type, const char* filePath);
+	ShaderComponent* CreateShaderComponent(GLenum type, const char* filePath);
 	GLuint CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo);
+	// TODO: ShaderProgramData* CreateShaderProgramData(GLuint vert, GLuint frag, GLuint geo);
+
+	GLuint CreateVertexShader(const char* vertPath);
+	GLuint CreateFragmentShader(const char* fragPath);
+	GLuint CreateGeometryShader(const char* geoPath);
 
 	const char* CreateVertexShader(eShaderTypes shaderName);
 	const char* CreateFragmentShader(eShaderTypes shaderName);

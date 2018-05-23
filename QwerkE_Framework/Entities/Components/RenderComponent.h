@@ -6,7 +6,7 @@
 
 #include <vector>
 
-class ShaderProgram;
+class ShaderProgramData;
 class MaterialData;
 class Mesh;
 
@@ -27,7 +27,7 @@ public:
 	void AppendEmptyRenderables(int count);
 	void AddRenderable(Renderable renderable);
 
-	void SetShaderAtIndex(int index, ShaderProgram* shader);
+	void SetShaderAtIndex(int index, ShaderProgramData* shader);
 	void SetMaterialAtIndex(int index, MaterialData* material);
 	void SetMeshAtIndex(int index, Mesh* mesh);
 

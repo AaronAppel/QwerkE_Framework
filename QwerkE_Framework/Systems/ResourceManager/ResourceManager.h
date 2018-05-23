@@ -10,6 +10,7 @@
 
 class Mesh;
 class ShaderProgram;
+class ShaderComponent;
 struct MaterialData;
 struct ShaderProgramData;
 
@@ -40,6 +41,7 @@ public:
 	bool FontExists(const char* name);
 	bool SoundExists(const char* name);
 	bool ShaderProgramExists(const char* name);
+	bool ShaderComponentExists(const char* name);
 
 	bool AddMesh(const char* name, Mesh* mesh);
 	bool AddShader(const char* name, ShaderProgram* shader);
@@ -48,11 +50,13 @@ public:
 	bool AddFont(const char* name, FT_Face font);
 	bool AddSound(const char* name, ALuint sound);
 	bool AddShaderProgramData(const char* name, ShaderProgramData* shaderProgramData);
+	bool AddShaderComponentData(const char* name, ShaderComponent* shaderComponent);
 	// TODO: Other add functions
 
 	// getters
 	// TODO: return const*s so they cannot be modified externally
 	// The following functions guarantee a valid return variable using null or error objects
+	// TODO: Should getters generate objects? What would be a better way?
 	Mesh* GetMesh(const char* name); // specify .ext
 	ShaderProgram* GetShader(const char* name); // specify .ext
 	GLuint GetTexture(const char* name); // specify .ext
@@ -60,6 +64,7 @@ public:
 	FT_Face GetFont(const char* name); // specify .ext
 	ALuint GetSound(const char* name); // specify .ext
 	ShaderProgramData* GetShaderProgramData(const char* name); // specify .ext
+	ShaderComponent* GetShaderComponentData(const char* name); // specify .ext
 
 	// TEST:
 	const std::map<std::string, Mesh*>* LookAtMeshes() { return &m_Meshes; };
@@ -69,6 +74,7 @@ public:
 	// const std::map<std::string, >* LookAtFonts() { return &; };
 	const std::map<std::string, ALuint>* LookAtSounds() { return &m_Sounds; };
 	const std::map<std::string, ShaderProgramData*>* LookAtShaderProgramData() { return &m_ShaderProgramData; };
+	const std::map<std::string, ShaderComponent*>* LookAtShaderComponents() { return &m_ShaderComponents; };
 
 	// TODO: Handle loading additional resources
 	// CubeMap* GetCubeMap(const char* name); // specify .ext
@@ -90,6 +96,7 @@ private:
 	std::map<std::string, FT_Face> m_Fonts;
 	std::map<std::string, ALuint> m_Sounds;
 	std::map<std::string, ShaderProgramData*> m_ShaderProgramData;
+	std::map<std::string, ShaderComponent*> m_ShaderComponents;
 
 	// Utilities
 	bool isUnique(Mesh* mesh);
@@ -99,6 +106,7 @@ private:
 	bool isUnique(FT_Face font);
 	bool isSoundUnique(ALuint sound);
 	bool isShaderProgramDataUnique(ShaderProgramData* shaderProgramData);
+	bool isShaderComponentsUnique(ShaderComponent* shaderComponents);
 
 	// Allocations
 	Mesh* InstantiateMesh(const char* name);
@@ -107,7 +115,8 @@ private:
 	MaterialData* InstantiateMaterial(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
 	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels);
-	ShaderProgramData* InstantiateShaderProgramData(const char* fileName);
+	ShaderProgramData* InstantiateShaderProgramData(const char* schematicName);
+	ShaderComponent* InstantiateShaderComponent(const char* componentName);
 
 	// Deletions
 	// TODO: void* return? Actually write functions.
@@ -119,6 +128,7 @@ private:
 	bool DeleteFont(const char* name) {}
 	bool DeleteSound(const char* name) {}
 	bool DeleteShaderProgramData(const char* name) {}
+	bool DeleteShaderComponent(const char* name) {}
 
 	// Directories
 	const char* m_TextureDir = "Resources/Textures/";
@@ -133,6 +143,7 @@ private:
 	FT_Face m_NullFont;
 	ALuint m_NullSound = 0;
 	ShaderProgramData* m_NullShaderData = nullptr;
+	ShaderComponent* m_NullShaderComponent = nullptr; // TODO: Do I need 3 nullComponents?
 };
 
 #endif //!_ResourceManager_H_

@@ -44,17 +44,6 @@ public:
 	// Testing
 	GameObject* CreateTestModel(Scene* scene, vec3 position); // Model
 
-	/* Block_Menu */
-	// Menus
-	Menu* CreatePresetMenu1();
-	Menu* CreatePresetMenu2();
-	// MenuWindows
-	MenuWindow* CreateBasicGridMenuWindow(vec2 size, int numItems);
-	MenuWindow* CreateImageGridMenuWindow(vec2 size, int numItems);
-	// MenuItems
-	MenuItem* CreateBasicMenuItem();
-	MenuItem* CreateImageMenuItem();
-
 private:
 	// Variables
 	int m_Created = 0;
@@ -64,12 +53,6 @@ private:
 	// GameObjects
 	GameObject* CreateGameObject(Scene* scene); // TODO: Remove?
 	GameObject* CreateGameObject(Scene* scene, vec3 position);
-
-	// Block_Menu
-	Menu* CreateMenu();
-	MenuWindow* CreateMenuWindow();
-	MenuItem* CreateMenuItem();
-
 	GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
 
 	// helpers

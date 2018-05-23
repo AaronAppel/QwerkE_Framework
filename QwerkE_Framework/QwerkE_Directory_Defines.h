@@ -51,6 +51,6 @@
 // TODO: Null schematics
 #define null_object_schematic "ObjectRecipe1.osch"
 #define null_material_schematic "MaterialRecipe1.msch"
-#define null_shader_schematic "LitMaterial.msch"
+#define null_shader_schematic "LitMaterial.ssch"
 
 #endif // !_QwerkE_Directory_Defines_H_

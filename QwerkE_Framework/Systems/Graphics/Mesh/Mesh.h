@@ -5,8 +5,9 @@
 #include <string>
 
 struct VertexData;
-class ShaderProgram;
+struct ShaderProgramData;
 class Mesh;
+class ShaderProgram;
 
 typedef void (Mesh::*MeshFunction)(); // Draw function
 
@@ -20,6 +21,7 @@ public:
 
 	/* Setup */
 	void BufferMeshData(int numVerts, VertexData* verts, int numIndices, unsigned int* indices);
+	void SetupShaderAttributes(ShaderProgramData* shader);
 	void SetupShaderAttributes(ShaderProgram* shader);
 
 	/* Draw */

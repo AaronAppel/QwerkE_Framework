@@ -24,7 +24,7 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 	RenderComponent* mComp = new RenderComponent();
 	mComp->AppendEmptyRenderables(1);
 
-	Renderable ren(m_pResources->GetShader("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Light_Bulb.obj"));
+	Renderable ren(m_pResources->GetShaderProgramData("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Light_Bulb.obj"));
 
 	mComp->AddRenderable(ren);
 	t_pLight->AddComponent((Component*)mComp);

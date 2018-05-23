@@ -1,4 +1,5 @@
 #include "../PrintFunctions.h"
+#include "../StringHelpers.h"
 
 #include <fstream>
 #include <iostream>
@@ -217,15 +218,15 @@ void WriteStringToFile(const char* filename, const char* string)
 	*/
 }
 
-const char* GetFileExtension(const char* filePath)
+std::string GetFileExtension(const char* filePath)
 {
 	std::string test = filePath;
 	int extLength = test.size() - test.find_last_of('.') + 1;
 	test = test.substr(test.find_last_of('.') + 1, extLength);
-	return test.c_str();
+	return test;
 }
 
-const char* GetFileNameWithExt(const char* filePath)
+std::string GetFileNameWithExt(const char* filePath)
 {
 	std::string test = filePath;
 
@@ -236,10 +237,10 @@ const char* GetFileNameWithExt(const char* filePath)
 		test = test.substr(test.find_last_of('/') + 1, test.size() - test.find_last_of('/') + 1);
 	}
 
-	return test.c_str();
+	return test;
 }
 
-const char* GetFileNameNoExt(const char* filePath)
+std::string GetFileNameNoExt(const char* filePath)
 {
 	std::string test = filePath;
 
@@ -257,5 +258,5 @@ const char* GetFileNameNoExt(const char* filePath)
 
 
 
-	return test.c_str();
+	return test;
 }

@@ -1,9 +1,11 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
 #include "../../Systems/Graphics/ShaderProgram/ShaderFactory.h"
+#include "../../Systems/ServiceLocator.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
+#include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../Math_Includes.h"
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../QwerkE_Framework/QwerkE_Directory_Defines.h"
@@ -16,8 +18,10 @@ void ResourceManager::Init()
 	m_NullMesh = InstantiateMesh(null_mesh);
 	m_NullShader = InstantiateShader(null_shader);
 	m_NullTexture = InstantiateTexture(null_texture); // TODO: Create a Texture class
-	m_NullMaterial = InstantiateMaterial(null_material);
+	m_NullMaterial = InstantiateMaterial(null_material_schematic);
 	m_NullFont = InstantiateFont(null_font); // TODO: Create a valid null font
+	m_NullShaderData = InstantiateShaderProgramData(null_shader_schematic);
+	m_NullShaderComponent = InstantiateShaderComponent("LitMateial.vert");
 	// m_NullSound = InstantiateSound(null_sound); // TODO: Create a sound object class
 }
 
@@ -183,12 +187,8 @@ MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
 {
 	MaterialData* material = nullptr;
 
-	// TODO: Set null data for handles and names
-
-	std::string extension = TextureFolderPath(matName);
-	extension = extension.substr(extension.find_last_of('.') + 1, 4);
-
-	if (strcmp(extension.c_str(), "msch") == 0)
+	// TODO: Set null data for handles and names like "Empty"
+	if (strcmp(GetFileExtension(matName).c_str(), "msch") == 0)
 	{
 		// TODO: Handle null or corrupt data
 		material = LoadMaterialSchematic(TextureFolderPath(matName));
@@ -286,13 +286,43 @@ ALuint ResourceManager::InstantiateSound(const char* soundName, DWORD& bufferSiz
 
 ShaderProgramData* ResourceManager::InstantiateShaderProgramData(const char* schematicName)
 {
-	ShaderProgramData* result = LoadShaderSchematic(ShaderFolderPath(schematicName));
-	if (result)
+	if (FileExists(ShaderFolderPath(schematicName)))
 	{
-		m_ShaderProgramData[schematicName] = result;
+		ShaderProgramData* result = LoadShaderSchematic(ShaderFolderPath(schematicName));
+		if (result)
+		{
+			m_ShaderProgramData[schematicName] = result;
+			return result;
+		}
+		else
+		{
+			return m_NullShaderData;
+		}
 	}
 	else
 	{
 		return m_NullShaderData;
+	}
+}
+
+ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* componentName)
+{
+	if (FileExists(ShaderFolderPath(componentName)))
+	{
+		ShaderComponent* result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
+			GL_VERTEX_SHADER, ShaderFolderPath(componentName));
+		if (result)
+		{
+			m_ShaderComponents[componentName] = result;
+			return result;
+		}
+		else
+		{
+			return m_NullShaderComponent;
+		}
+	}
+	else
+	{
+		return m_NullShaderComponent;
 	}
 }

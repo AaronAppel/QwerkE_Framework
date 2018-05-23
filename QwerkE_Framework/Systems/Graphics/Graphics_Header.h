@@ -29,7 +29,6 @@ enum eShaderTypes
 #include "Mesh/MeshFactory.h"
 #include "Mesh/MeshUtilities.h"
 
-#include "Gfx_Classes/Sprite.h"
 #include "Gfx_Classes/CubeMap.h"
 #include "Gfx_Classes/FrameBufferObject.h"
 #include "Gfx_Classes/LightData.h"

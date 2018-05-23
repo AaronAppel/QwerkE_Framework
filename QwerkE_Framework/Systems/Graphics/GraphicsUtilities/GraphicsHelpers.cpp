@@ -136,7 +136,7 @@ RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from fil
 		{
 			cJSON* currRenderable = GetItemFromArrayByIndex(renderables, i);
 
-			rComp->SetShaderAtIndex(i, resMan->GetShader(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
+			rComp->SetShaderAtIndex(i, resMan->GetShaderProgramData(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
 			rComp->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
 			rComp->SetMeshAtIndex(i, resMan->GetMesh(GetItemFromArrayByKey(currRenderable, "Mesh")->valuestring));
 		}
@@ -289,7 +289,9 @@ ShaderProgramData* LoadShaderSchematic(const char* schematicPath)
 		shader->s_geoName = GetItemFromRootByKey(root, "geo")->valuestring;
 	}
 
-	// shader->s_vertHandle = resMan->GetShader(shader->s_vertName.c_str());
+	shader->s_vertShader = resMan->GetShaderComponentData(shader->s_vertName.c_str());
+	shader->s_fragShader = resMan->GetShaderComponentData(shader->s_fragName.c_str());
+	shader->s_geoShader = resMan->GetShaderComponentData(shader->s_geoName.c_str());
 
 	ClosecJSONStream(root);
 

@@ -7,13 +7,13 @@
 			"AmbientName":	"container.png",
 			"DiffuseName":	"container.png",
 			"SpecularName":	"container_specular.png",
-			"EmissiveName":	"null_texture.png",
-			"HeightName":	"null_texture.png",
-			"NormalName":	"null_texture.png",
-			"ShininessName":	"null_texture.png",
-			"OpacityName":	"null_texture.png",
-			"DisplacementName":	"null_texture.png",
-			"LightMapName":	"null_texture.png",
-			"ReflectionName":	"null_texture.png"
+			"EmissiveName":	"Empty",
+			"HeightName":	"Empty",
+			"NormalName":	"Empty",
+			"ShininessName":	"Empty",
+			"OpacityName":	"Empty",
+			"DisplacementName":	"Empty",
+			"LightMapName":	"Empty",
+			"ReflectionName":	"Empty"
 		}]
 }

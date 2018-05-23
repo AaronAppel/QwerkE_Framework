@@ -76,7 +76,7 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 
 	QwerkE::FileLoader::LoadModelFileToMeshes(ModelFolderPath("Camera.obj"));
 
-	Renderable ren(m_pResources->GetShader("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Camera"));
+	Renderable ren(m_pResources->GetShaderProgramData("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Camera"));
 
 	mComp->AddRenderable(ren);
 	t_pCamera->AddComponent((Component*)mComp);

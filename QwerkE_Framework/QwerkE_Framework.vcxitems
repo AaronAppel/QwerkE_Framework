@@ -58,7 +58,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\ShaderProgramData.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h" />
@@ -123,7 +122,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\Event.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\EventManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\InputEvent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Build_Block_Menu.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Cameras.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Characters.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.cpp" />
