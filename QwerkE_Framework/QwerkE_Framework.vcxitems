@@ -71,6 +71,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent .cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderUtilities.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.cpp" />

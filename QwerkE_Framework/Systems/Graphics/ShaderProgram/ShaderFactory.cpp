@@ -64,7 +64,7 @@ ShaderComponent* ShaderFactory::CreateShaderComponent(GLenum shaderType, const c
 		comp->SetName(GetFileNameWithExt(shaderPath));
 		comp->SetStringData(shaderString);
 		comp->SetHandle(shaderHandle);
-
+		comp->SetType(DeepCopyString(GetFileExtension(shaderPath).c_str()));
 		return comp;
 	}
 }
@@ -76,6 +76,13 @@ GLuint ShaderFactory::CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo)
 		return 0;
 	}
 	return LinkShaders(vert, frag, geo);
+}
+
+bool ShaderFactory::BuildShaderProgramData(ShaderProgramData* shader)
+{
+    GLuint result = LinkShaders(shader->s_vertShader->GetHandle(), shader->s_fragShader->GetHandle(), NULL);
+	shader->s_programHandle = result;
+	return result != 0;
 }
 
 GLuint ShaderFactory::CreateVertexShader(const char* vertPath)

@@ -34,7 +34,7 @@ public:
 private:
 	/* Private variables */
 	DrawFunc m_DrawFunc = &RenderRoutine::NullDraw;
-	RenderComponent* m_pModel = nullptr;
+	RenderComponent* m_pRenderComp = nullptr;
 	std::vector<std::vector<SetupUniformFunction>> m_UniformSetupList;
 
 	bool m_3D = true; // 2D/3D optimization TODO: Remove?

@@ -3,6 +3,7 @@
 
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../GraphicsUtilities/GraphicsHelpers.h"
+#include "../ShaderProgram/ShaderUtilities.h"
 
 #include <string>
 #include <vector>
@@ -28,6 +29,8 @@ struct ShaderProgramData
 
 	std::vector<std::string> s_Attributes;
 	std::vector<std::string> s_Uniforms;
+
+	void FindAttributesAndUniforms() { FindShaderUniformsAndAttributesInString(this, s_Attributes, s_Uniforms); };
 
 	void Use() { glUseProgram(s_programHandle); }
 

@@ -16,7 +16,7 @@
 /* Vertex uniform value assignment */
 void RenderRoutine::Setup3DTransform(CameraComponent* camera, Renderable* renderable)
 {
-	ShaderProgramData* t_pShader = renderable->s_Shader;
+	ShaderProgramData* t_pShader = renderable->GetShaderSchematic();
 	// world
 	mat4 worldMat;
 	worldMat.CreateSRT(m_pParent->GetScale(), m_pParent->GetRotation(), m_pParent->GetPosition());
@@ -28,7 +28,7 @@ void RenderRoutine::Setup3DTransform(CameraComponent* camera, Renderable* render
 }
 void RenderRoutine::Setup2DTransform(CameraComponent* camera, Renderable* renderable)
 {
-	ShaderProgramData* t_pShader = renderable->s_Shader;
+	ShaderProgramData* t_pShader = renderable->GetShaderSchematic();
 	mat4 worldMat;
 
 	worldMat.CreateSRT(m_pParent->GetScale(), m_pParent->GetRotation(), m_pParent->GetPosition());
@@ -38,35 +38,35 @@ void RenderRoutine::Setup2DTransform(CameraComponent* camera, Renderable* render
 /* Fragment uniform value assignment */
 void RenderRoutine::SetupColorUniforms(CameraComponent* cameraObject, Renderable* renderable)
 {
-	ShaderProgramData* t_pShader = renderable->s_Shader;
+	ShaderProgramData* t_pShader = renderable->GetShaderSchematic();
 	// TODO: Still using colour?
-	vec4 t_Colour = vec4(0,1,0,1); // m_pModel->GetColour();
+	vec4 t_Colour = vec4(0,1,0,1); // m_pRenderComp->GetColour();
 
 	t_pShader->SetUniformFloat4("ObjectColor", t_Colour.x, t_Colour.y, t_Colour.z, t_Colour.w);
 }
 // Materials
 void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable* renderable)
 {
-	GLuint ambHandle = renderable->s_Material->s_AmbientHandle;
-	GLuint diffHandle = renderable->s_Material->s_DiffuseHandle;
-	GLuint specHandle = renderable->s_Material->s_SpecularHandle;
-	float shine = renderable->s_Material->s_Shine;
+	GLuint ambHandle = renderable->GetMaterialSchematic()->s_AmbientHandle;
+	GLuint diffHandle = renderable->GetMaterialSchematic()->s_DiffuseHandle;
+	GLuint specHandle = renderable->GetMaterialSchematic()->s_SpecularHandle;
+	float shine = renderable->GetMaterialSchematic()->s_Shine;
 
 	/* Assign values */
-	renderable->s_Shader->SetUniformFloat1("Shine", shine);
+	renderable->GetShaderSchematic()->SetUniformFloat1("Shine", shine);
 
 	// activate textures
 	GLuint textures[] = { ambHandle , diffHandle , specHandle};
 	int size = 3; // TODO: Support all material handles
 
-	SetupTextureUniforms(textures, size, renderable->s_Shader);
+	SetupTextureUniforms(textures, size, renderable->GetShaderSchematic());
 }
 // Lighting
 void RenderRoutine::SetupLightingUniforms(CameraComponent* a_Camera, Renderable* renderable)
 {
-	ShaderProgramData* t_pShader = renderable->s_Shader;
+	ShaderProgramData* t_pShader = renderable->GetShaderSchematic();
 	// TODO: Get light data better
-	GameObject* t_Light = m_pModel->GetParent()->GetScene()->GetLightList().At(0); // TODO: Stop hard coding index. Handle multiple lights
+	GameObject* t_Light = m_pRenderComp->GetParent()->GetScene()->GetLightList().At(0); // TODO: Stop hard coding index. Handle multiple lights
 	LightComponent* t_LightComp = (LightComponent*)t_Light->GetComponent(Component_Light);
 
 	vec3 lightColour = t_LightComp->GetColour();
@@ -79,7 +79,7 @@ void RenderRoutine::SetupLightingUniforms(CameraComponent* a_Camera, Renderable*
 // Camera
 void RenderRoutine::SetupCameraUniforms(CameraComponent* a_Camera, Renderable* renderable)
 {
-	ShaderProgramData* t_pShader = renderable->s_Shader;
+	ShaderProgramData* t_pShader = renderable->GetShaderSchematic();
 
 	vec3 t_CamPos = a_Camera->GetParent()->GetPosition();
 	t_pShader->SetUniformFloat3("CamPos", t_CamPos.x, t_CamPos.y, t_CamPos.z);

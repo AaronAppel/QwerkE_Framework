@@ -27,6 +27,8 @@ public:
 	GLuint CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo);
 	// TODO: ShaderProgramData* CreateShaderProgramData(GLuint vert, GLuint frag, GLuint geo);
 
+	bool BuildShaderProgramData(ShaderProgramData* shader);
+
 	GLuint CreateVertexShader(const char* vertPath);
 	GLuint CreateFragmentShader(const char* fragPath);
 	GLuint CreateGeometryShader(const char* geoPath);

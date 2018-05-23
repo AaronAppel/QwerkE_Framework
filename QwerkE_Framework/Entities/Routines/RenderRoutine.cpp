@@ -18,14 +18,14 @@
 void RenderRoutine::Initialize()
 {
 	m_pParent->AddDrawRoutine(this);
-	m_pModel = (RenderComponent*)m_pParent->GetComponent(eComponentTags::Component_Model);
+	m_pRenderComp = (RenderComponent*)m_pParent->GetComponent(eComponentTags::Component_Model);
 	m_Type = eRoutineTypes::Routine_Render;
 	SetDrawFunctions();
 }
 //// Private functions
 void RenderRoutine::DrawMeshData(GameObject* a_Camera)
 {
-	if (!m_pModel)
+	if (!m_pRenderComp)
 	{
 		m_DrawFunc = &RenderRoutine::NullDraw;
 		return;
@@ -34,36 +34,37 @@ void RenderRoutine::DrawMeshData(GameObject* a_Camera)
 	/* Variables */
 	CameraComponent* t_pCamera = (CameraComponent*)a_Camera->GetComponent(Component_Camera);
 
-	std::vector<Renderable> t_Renderables = *m_pModel->LookAtRenderableList();
+	std::vector<Renderable> t_Renderables = *m_pRenderComp->LookAtRenderableList();
 
 	for (size_t i = 0; i < t_Renderables.size(); i++)
 	{
-		t_Renderables[i].s_Shader->Use();
+		t_Renderables[i].GetShaderSchematic()->Use();
 
 		for (int j = 0; j < m_UniformSetupList[i].size(); j++)
 		{
 			(this->*m_UniformSetupList[i][j])(t_pCamera, &t_Renderables[i]);
 		}
 
-		t_Renderables[i].s_Mesh->Draw();
+		t_Renderables[i].GetMesh()->Draw();
 	}
 }
 
 void RenderRoutine::NullDraw(GameObject* a_Camera)
 {
 	// look for valid models/materials
-	if (m_pModel)
+	if (m_pRenderComp)
 	{
 		// TODO: Do I need to check that other data is valid?
-		SetDrawFunctions();
 		m_DrawFunc = &RenderRoutine::DrawMeshData;
-		DrawMeshData(a_Camera); // draw current frame
+		SetDrawFunctions();
+		if(m_DrawFunc == &RenderRoutine::DrawMeshData)
+			DrawMeshData(a_Camera); // draw current frame
 	}
 }
 
 void RenderRoutine::SetDrawFunctions()
 {
-	if (!m_pModel)
+	if (!m_pRenderComp)
 	{
 		m_DrawFunc = &RenderRoutine::NullDraw;
 		return;
@@ -71,7 +72,7 @@ void RenderRoutine::SetDrawFunctions()
 
 	m_UniformSetupList.clear(); // reset uniform func list
 
-	const std::vector<Renderable>* t_Renderables = m_pModel->LookAtRenderableList();
+	std::vector<Renderable>* t_Renderables = (std::vector<Renderable>*)m_pRenderComp->LookAtRenderableList();
 
 	// TODO:: Improve conditions for assignments.
 	// append empty vectors to fill
@@ -83,8 +84,9 @@ void RenderRoutine::SetDrawFunctions()
 
 	for (int i = 0; i < t_Renderables->size(); i++) // for each renderable
 	{
-		std::vector<std::string> t_Uniforms = t_Renderables->at(i).s_Shader->s_Uniforms; // get shader
-		MaterialData* t_Material = t_Renderables->at(i).s_Material;
+		if (t_Renderables->at(i).GetShaderSchematic()->s_Uniforms.size() == 0) t_Renderables->at(i).GetShaderSchematic()->FindAttributesAndUniforms();
+		std::vector<std::string> t_Uniforms = t_Renderables->at(i).GetShaderSchematic()->s_Uniforms; // get shader
+		MaterialData* t_Material = t_Renderables->at(i).GetMaterialSchematic();
 
 		/* Add functions to setup shader uniforms */
 		for (size_t j = 0; j < t_Uniforms.size(); j++) // Setup uniforms

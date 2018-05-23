@@ -1,5 +1,7 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Systems/Graphics/Gfx_Classes/ShaderProgramData.h"
+#include "../../Systems/Graphics/ShaderProgram/ShaderComponent.h"
 #include "../../Systems/Graphics/ShaderProgram/ShaderFactory.h"
 #include "../../Systems/ServiceLocator.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
@@ -291,8 +293,19 @@ ShaderProgramData* ResourceManager::InstantiateShaderProgramData(const char* sch
 		ShaderProgramData* result = LoadShaderSchematic(ShaderFolderPath(schematicName));
 		if (result)
 		{
-			m_ShaderProgramData[schematicName] = result;
-			return result;
+			result->s_vertShader = GetShaderComponentData(result->s_vertName.c_str());
+			result->s_fragShader = GetShaderComponentData(result->s_fragName.c_str());
+			// result->s_geoShader = GetShaderComponentData(result->s_geoName.c_str());
+
+			if (((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->BuildShaderProgramData(result))
+			{
+				m_ShaderProgramData[schematicName] = result;
+				return result;
+			}
+			else
+			{
+				return m_NullShaderData;
+			}
 		}
 		else
 		{
@@ -309,8 +322,23 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 {
 	if (FileExists(ShaderFolderPath(componentName)))
 	{
-		ShaderComponent* result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-			GL_VERTEX_SHADER, ShaderFolderPath(componentName));
+		ShaderComponent* result = nullptr;
+		if (strcmp(GetFileExtension(componentName).c_str(), "vert") == 0)
+		{
+			 result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
+				GL_VERTEX_SHADER, ShaderFolderPath(componentName));
+		}
+		else if (strcmp(GetFileExtension(componentName).c_str(), "frag") == 0)
+		{
+			result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
+				GL_FRAGMENT_SHADER, ShaderFolderPath(componentName));
+		}
+		else if (strcmp(GetFileExtension(componentName).c_str(), "geo") == 0)
+		{
+			result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
+				GL_GEOMETRY_SHADER, ShaderFolderPath(componentName));
+		}
+
 		if (result)
 		{
 			m_ShaderComponents[componentName] = result;

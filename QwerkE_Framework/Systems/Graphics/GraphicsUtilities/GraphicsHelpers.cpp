@@ -293,6 +293,8 @@ ShaderProgramData* LoadShaderSchematic(const char* schematicPath)
 	shader->s_fragShader = resMan->GetShaderComponentData(shader->s_fragName.c_str());
 	shader->s_geoShader = resMan->GetShaderComponentData(shader->s_geoName.c_str());
 
+	// TODO: Compile shader program
+
 	ClosecJSONStream(root);
 
 	return shader;

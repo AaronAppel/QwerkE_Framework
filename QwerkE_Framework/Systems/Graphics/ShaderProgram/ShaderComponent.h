@@ -11,10 +11,12 @@ public:
 	~ShaderComponent();
 
 	std::string GetName() { return m_Name; }
+	std::string GetType() { return m_Type; }
 	GLuint GetHandle() { return m_ShaderHandle; }
 	const char* GetStringData() { return m_ShaderString; }
 
 	void SetName(std::string name) { m_Name = name; }
+	void SetType(std::string name) { m_Type = name; }
 	void SetHandle(GLuint handle) { m_ShaderHandle = handle; }
 	void SetStringData(const char* shaderData) { m_ShaderString = shaderData; }
 

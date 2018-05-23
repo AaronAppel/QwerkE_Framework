@@ -10,19 +10,50 @@ class Mesh;
 class ShaderProgramData;
 class MaterialData;
 
-struct Renderable
+class Renderable
 {
-	ShaderProgramData* s_Shader = nullptr;
-	MaterialData* s_Material = 0;
-	Mesh* s_Mesh = nullptr;
-
+public:
 	Renderable() {}
 	Renderable(ShaderProgramData* shader, MaterialData* material, Mesh* mesh)
 	{
-		s_Shader = shader;
-		s_Material = material;
-		s_Mesh = mesh;
+		m_Shader = shader;
+		m_Material = material;
+		m_Mesh = mesh;
 	}
+
+	// Getters + Setters
+	// Getters
+	ShaderProgramData* GetShaderSchematic() { return m_Shader; }
+	MaterialData* GetMaterialSchematic() { return m_Material; }
+	Mesh* GetMesh() { return m_Mesh; }
+
+	// Setters
+	void SetShader(ShaderProgramData* shader)
+	{
+		if (shader)
+		{
+			m_Shader = shader;
+			if (m_Mesh)
+				m_Mesh->SetupShaderAttributes(m_Shader);
+		}
+	}
+
+	void SetMaterial(MaterialData* material)
+	{
+		if (material)
+			m_Material = material;
+	}
+
+	void SetMesh(Mesh* mesh)
+	{
+		if (mesh)
+			m_Mesh = mesh;
+	}
+
+private:
+	ShaderProgramData * m_Shader = nullptr;
+	MaterialData* m_Material = nullptr;
+	Mesh* m_Mesh = nullptr;
 };
 
 #endif // !_Renderable_H_

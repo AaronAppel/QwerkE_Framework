@@ -21,6 +21,11 @@ namespace QwerkE
 {
 	namespace FileLoader
 	{
+		void LoadMeshInFileByName(const char* filePath, const char* meshName)
+		{
+			// TODO:
+		}
+
 		// TODO: API should only ask for fileName, then prepend directory
 		bool LoadModelFileToMeshes(const char* path)
 		{
