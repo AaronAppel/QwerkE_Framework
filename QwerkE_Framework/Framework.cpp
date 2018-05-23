@@ -28,7 +28,7 @@
 #include "Systems/Window/glfw_Window.h"
 
 // TODO: No Globals!
-extern int g_WindowWidth = 1280, g_WindowHeight = 720; // (1280x720)(1600x900)(1920x1080)(2560x1440)
+extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
 extern const char* g_WindowTitle = "QwerkE";
 
 extern GameCore* g_GameCore = nullptr;
@@ -90,8 +90,11 @@ namespace QwerkE
 			m_SceneManager = new SceneManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Scene_Manager, m_SceneManager);
 
-			Factory* factory = new Factory();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Entity, factory);
+			Factory* entityFactory = new Factory();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Entity, entityFactory);
+
+			ShaderFactory* shaderFactory = new ShaderFactory();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory);
 
 			PhysicsManager* physicsManager = new PhysicsManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::PhysicsManager, physicsManager);
@@ -129,6 +132,8 @@ namespace QwerkE
 			delete m_SceneManager;
 
 			delete (Factory*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Factory_Entity);
+
+			delete (ShaderFactory*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Factory_Shader);
 
 			delete (PhysicsManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::PhysicsManager);
 

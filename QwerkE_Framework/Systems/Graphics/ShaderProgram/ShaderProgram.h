@@ -57,8 +57,8 @@ public:
 	void SetUniformMat4(const char* name, const GLfloat* matrix);
 
 	// uniform list
-	std::vector<std::string> GetAttributeList() { return m_AttributeList; };
-	std::vector<std::string> GetUniformList() { return m_UniformList; };
+	std::vector<std::string> GetAttributeList() { return m_AttributeList; }; // TODO: return const*
+	std::vector<std::string> GetUniformList() { return m_UniformList; }; // TODO: return const*
 	void SetUniformList(std::vector<std::string> list) { m_UniformList = list; };
 
 private:

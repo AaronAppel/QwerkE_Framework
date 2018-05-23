@@ -4,7 +4,7 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"Empty",
+			"AmbientName":	"helmet_diff.png",
 			"DiffuseName":	"helmet_diff.png",
 			"SpecularName":	"helmet_showroom_spec.png",
 			"EmissiveName":	"Empty",

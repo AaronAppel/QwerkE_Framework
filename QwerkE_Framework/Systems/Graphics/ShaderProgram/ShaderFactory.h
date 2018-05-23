@@ -1,5 +1,5 @@
-#ifndef __SHADERFACTORY_H__
-#define __SHADERFACTORY_H__
+#ifndef _ShaderFactory_H_
+#define _ShaderFactory_H_
 
 ////* Work in progress *////
 
@@ -10,6 +10,9 @@
 
 #include <string>
 
+class ShaderProgram;
+
+// TODO: Think of separating generated shader code somehow
 class ShaderFactory
 {
 public:
@@ -18,6 +21,8 @@ public:
 
 	ShaderProgram* CreateShader(eShaderTypes type);
 	ShaderProgram* CreateShader(const char* vertFileDir, const char* fragFileDir, const char* geoFileDir);
+	GLuint CreateShaderComponent(GLenum type, const char* filePath);
+	GLuint CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo);
 
 	const char* CreateVertexShader(eShaderTypes shaderName);
 	const char* CreateFragmentShader(eShaderTypes shaderName);
@@ -41,6 +46,9 @@ public:
 	void SetPrefixes(const char* attr, const char* unif, const char* trans);
 
 private:
+	//
+	GLuint LinkShaders(GLuint vert, GLuint frag, GLuint geo);
+
 	/* Write Shader functions */
 	// Basic3D
 	std::string Basic3DShaderVert(std::string vertString);
@@ -53,9 +61,9 @@ private:
 	std::string LitMaterialFrag(std::string fragString);
 
 	/* Values */
-	const char* m_AttributePrefix = Helper_GetAttributePrefix(); // = blue_GetAttributePrefix(); // TODO: a_ probably works for attributes
-	const char* m_UniformPrefix = Helper_GetUniformPrefix(); // = blue_GetUniformPrefix();
-	const char* m_TransferPrefix = Helper_GetTransferPrefix(); // = blue_GetTransferPrefix(); // t_ means the variable is being transferred from one shader to another
+	const char* m_AttributePrefix = Helper_GetAttributePrefix();
+	const char* m_UniformPrefix = Helper_GetUniformPrefix();
+	const char* m_TransferPrefix = Helper_GetTransferPrefix();
 
 	/* Add Shader Variables */
 	// structs
@@ -118,4 +126,4 @@ private:
 	void AddOutputMat4(const char* name, std::string &string);
 };
 
-#endif //__SHADERFACTORY_H__
+#endif //!_ShaderFactory_H_

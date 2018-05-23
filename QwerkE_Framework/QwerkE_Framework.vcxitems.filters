@@ -525,5 +525,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\ShaderProgramData.h">
+      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

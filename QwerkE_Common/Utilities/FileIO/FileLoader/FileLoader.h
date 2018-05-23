@@ -4,9 +4,6 @@
 // TODO: Depending on how files are loaded, FileLoader
 // should be a part of Framework instead of Common.
 
-class Model;
-class Material;
-
 namespace QwerkE
 {
 	namespace FileLoader
@@ -17,7 +14,7 @@ namespace QwerkE
 		// TODO: Remove GLenum and any implementation specific variables or styles
 		unsigned char* LoadImageFile(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically = 0); // LoadImage is a macro somewhere
 
-		Model* LoadModelFileToMeshes(const char* path);
+		bool LoadModelFileToMeshes(const char* path);
 
 		// TODO: Load scene from software like 3DS Max, Blender, etc
 		// load things like lights, cameras and everything from 1 file

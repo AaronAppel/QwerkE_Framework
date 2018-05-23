@@ -9,6 +9,8 @@
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/GameObject.h"
+#include "../../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
 
 #include <string>
 
@@ -72,7 +74,9 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 	RenderComponent* mComp = new RenderComponent();
 	mComp->AppendEmptyRenderables(1);
 
-	Renderable ren(m_pResources->GetShader("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Camera.obj"));
+	QwerkE::FileLoader::LoadModelFileToMeshes(ModelFolderPath("Camera.obj"));
+
+	Renderable ren(m_pResources->GetShader("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Camera"));
 
 	mComp->AddRenderable(ren);
 	t_pCamera->AddComponent((Component*)mComp);

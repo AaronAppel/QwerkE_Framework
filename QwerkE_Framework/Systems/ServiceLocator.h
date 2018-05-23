@@ -24,6 +24,7 @@ class AudioManager;
 class JobManager;
 class Window;
 class NetworkManager;
+class ShaderFactory;
 
 namespace QwerkE
 {
@@ -79,6 +80,7 @@ namespace QwerkE
         static EventManager* m_EventManager;
         static SceneManager* m_SceneManager;
         static Factory* m_Factory;
+		static ShaderFactory* m_ShaderFactory;
 		static PhysicsManager* m_PhysicsManager;
 		static MessageManager* m_MessageManager;
 		static Renderer* m_Renderer;

@@ -28,7 +28,7 @@ void ResourceManager::DeleteAllResources()
 
 	for (auto object : m_Materials)
 		delete object.second;
-	
+
 	// TODO: delete fonts
 
 	m_Meshes.clear(); // Empty std::maps
@@ -66,6 +66,11 @@ bool ResourceManager::FontExists(const char* name)
 bool ResourceManager::SoundExists(const char* name)
 {
 	return m_Sounds.find(name) != m_Sounds.end();
+}
+
+bool ResourceManager::ShaderProgramExists(const char* name)
+{
+	return m_ShaderProgramData.find(name) != m_ShaderProgramData.end();
 }
 
 bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
@@ -141,6 +146,17 @@ bool ResourceManager::AddSound(const char* name, ALuint sound)
 	return true;
 }
 
+bool ResourceManager::AddShaderProgramData(const char* name, ShaderProgramData* shaderProgramData)
+{
+	if (ShaderProgramExists(name))
+		return false;
+
+	if (shaderProgramData == nullptr)
+		return false;
+
+	m_ShaderProgramData[name] = shaderProgramData;
+	return true;
+}
 // getters
 // TODO: Return null objects
 Mesh* ResourceManager::GetMesh(const char* name)
@@ -199,6 +215,16 @@ ALuint ResourceManager::GetSound(const char* name)
 	return 0;
 }
 
+ShaderProgramData* ResourceManager::GetShaderProgramData(const char* name)
+{
+	if (!SoundExists(name))
+	{
+		return m_ShaderProgramData[name];
+	}
+	// TODO:
+	// return InstantiateSound(name);
+	return 0;
+}
 // Utilities
 bool ResourceManager::isUnique(Mesh* mesh)
 {
@@ -254,12 +280,24 @@ bool ResourceManager::isUnique(FT_Face font)
 	}
 	return true;
 }
+
 bool ResourceManager::isSoundUnique(ALuint sound)
 {
 	std::map<std::string, ALuint>::iterator it;
 	for (it = m_Sounds.begin(); it != m_Sounds.end(); it++)
 	{
 		if (it->second == sound) // pointer comparison
+			return false;
+	}
+	return true;
+}
+
+bool ResourceManager::isShaderProgramDataUnique(ShaderProgramData* shaderProgramData)
+{
+	std::map<std::string, ShaderProgramData*>::iterator it;
+	for (it = m_ShaderProgramData.begin(); it != m_ShaderProgramData.end(); it++)
+	{
+		if (it->second == shaderProgramData) // pointer comparison
 			return false;
 	}
 	return true;

@@ -57,6 +57,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\LightData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\ShaderProgramData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Sprite.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.h" />

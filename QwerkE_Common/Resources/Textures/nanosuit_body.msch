@@ -4,7 +4,7 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"Empty",
+			"AmbientName":	"body_dif.png",
 			"DiffuseName":	"body_dif.png",
 			"SpecularName":	"body_showroom_spec.png",
 			"EmissiveName":	"Empty",

@@ -4,7 +4,7 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"Empty",
+			"AmbientName":	"hand_dif.png",
 			"DiffuseName":	"hand_dif.png",
 			"SpecularName":	"hand_showroom_spec.png",
 			"EmissiveName":	"Empty",

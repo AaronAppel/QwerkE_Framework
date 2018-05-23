@@ -33,6 +33,10 @@ class Model;
 void SaveMaterialSchematic(MaterialData* material);
 MaterialData* LoadMaterialSchematic(const char* schematicPath);
 
+class ShaderProgramData;
+void SaveShaderSchematic(ShaderProgramData* shader);
+ShaderProgramData* LoadShaderSchematic(const char* schematicPath);
+
 char* Helper_GetAttributePrefix(); // TODO: Move to a shader specific file like ShaderFactory.h
 char* Helper_GetUniformPrefix();
 char* Helper_GetTransferPrefix();

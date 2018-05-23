@@ -216,3 +216,46 @@ void WriteStringToFile(const char* filename, const char* string)
 	"D" = Specifies a file as temporary. It is deleted when the last file pointer is closed.
 	*/
 }
+
+const char* GetFileExtension(const char* filePath)
+{
+	std::string test = filePath;
+	int extLength = test.size() - test.find_last_of('.') + 1;
+	test = test.substr(test.find_last_of('.') + 1, extLength);
+	return test.c_str();
+}
+
+const char* GetFileNameWithExt(const char* filePath)
+{
+	std::string test = filePath;
+
+	size_t size = test.find_last_of('/') != test.npos;
+
+	if (size)
+	{
+		test = test.substr(test.find_last_of('/') + 1, test.size() - test.find_last_of('/') + 1);
+	}
+
+	return test.c_str();
+}
+
+const char* GetFileNameNoExt(const char* filePath)
+{
+	std::string test = filePath;
+
+	size_t size = test.find_last_of('/') != test.npos;
+
+	if (size)
+	{
+		test = test.substr(test.find_last_of('/') + 1, test.find_last_of('.') - 1 - test.find_last_of('/'));
+
+	}
+	else
+	{
+		test = test.substr(0, test.find_last_of('.') - 1);
+	}
+
+
+
+	return test.c_str();
+}

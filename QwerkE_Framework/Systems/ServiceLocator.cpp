@@ -14,6 +14,7 @@ namespace QwerkE
 	EventManager* QwerkE::ServiceLocator::m_EventManager = nullptr;
 	SceneManager* QwerkE::ServiceLocator::m_SceneManager = nullptr;
 	Factory* QwerkE::ServiceLocator::m_Factory = nullptr;
+	ShaderFactory* QwerkE::ServiceLocator::m_ShaderFactory = nullptr;
 	PhysicsManager* QwerkE::ServiceLocator::m_PhysicsManager = nullptr;
 	MessageManager* QwerkE::ServiceLocator::m_MessageManager = nullptr;
 	Renderer* QwerkE::ServiceLocator::m_Renderer = nullptr;
@@ -42,6 +43,9 @@ namespace QwerkE
 			break;
 		case eEngineServices::Factory_Entity:
 			ServiceLocator::m_Factory = (Factory*)service;
+			break;
+		case eEngineServices::Factory_Shader:
+			ServiceLocator::m_ShaderFactory = (ShaderFactory*)service;
 			break;
 		case eEngineServices::PhysicsManager:
 			ServiceLocator::m_PhysicsManager = (PhysicsManager*)service;
@@ -99,6 +103,11 @@ namespace QwerkE
 		case eEngineServices::Factory_Entity:
 			temp = ServiceLocator::m_Factory;
 			ServiceLocator::m_Factory = nullptr;
+			return temp;
+			break;
+		case eEngineServices::Factory_Shader:
+			temp = ServiceLocator::m_ShaderFactory;
+			ServiceLocator::m_ShaderFactory = nullptr;
 			return temp;
 			break;
 		case eEngineServices::PhysicsManager:
@@ -162,6 +171,9 @@ namespace QwerkE
 		case eEngineServices::Factory_Entity:
 			return ServiceLocator::m_Factory;
 			break;
+		case eEngineServices::Factory_Shader:
+			return ServiceLocator::m_ShaderFactory;
+			break;
 		case eEngineServices::PhysicsManager:
 			return ServiceLocator::m_PhysicsManager;
 			break;
@@ -214,6 +226,10 @@ namespace QwerkE
 				break;
 			case eEngineServices::Factory_Entity:
 				if (ServiceLocator::m_Factory == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
+			case eEngineServices::Factory_Shader:
+				if (ServiceLocator::m_ShaderFactory == nullptr)
 					return eEngineMessage::_QFail; // not loaded
 				break;
 			case eEngineServices::PhysicsManager:

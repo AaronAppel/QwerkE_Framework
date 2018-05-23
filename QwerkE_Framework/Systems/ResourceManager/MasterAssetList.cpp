@@ -27,6 +27,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 {
 	MeshFactory t_MeshFactory;
 	Mesh* mesh = nullptr;
+
     // TODO: Dereference *s?
 	if (meshName == "Box") // Asset name
 	{
@@ -74,6 +75,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
         ConsolePrint("\nInstantiateMesh(): Mesh not found!\n");
 		return m_NullMesh;
 	}
+
 	m_Meshes[meshName] = mesh; // Add to active list
 	mesh->SetName(meshName);
 	return mesh;
@@ -160,8 +162,11 @@ ShaderProgram* ResourceManager::InstantiateShader(const char* shaderName)
 
 GLuint ResourceManager::InstantiateTexture(const char* textureName)
 {
-	GLuint textureHandle = -1;
-	textureHandle = Load2DTexture(TextureFolderPath(textureName));
+	GLuint textureHandle = 0;
+	if (FileExists(TextureFolderPath(textureName)))
+	{
+		textureHandle = Load2DTexture(TextureFolderPath(textureName));
+	}
 
 	if (textureHandle != 0)
 		m_Textures[textureName] = textureHandle;
@@ -277,4 +282,17 @@ ALuint ResourceManager::InstantiateSound(const char* soundName, DWORD& bufferSiz
 {
 	// TODO: QwerkE::FileLoader::LoadSoundFile(SoundFolderPath(soundName), bufferSize, channels, frequency);
 	return 0;
+}
+
+ShaderProgramData* ResourceManager::InstantiateShaderProgramData(const char* schematicName)
+{
+	ShaderProgramData* result = LoadShaderSchematic(ShaderFolderPath(schematicName));
+	if (result)
+	{
+		m_ShaderProgramData[schematicName] = result;
+	}
+	else
+	{
+		return m_NullShaderData;
+	}
 }

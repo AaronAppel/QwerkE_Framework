@@ -22,6 +22,7 @@
 // but also to ensure consistency and prevent unintended changes.
 // Any external files should have matching names for the same reasons.
 // TODO: should macros express the file extension? Need to if the loader is looking for that file
+// TODO: Procedurally generate null object to guarantee instantiation
 #define null_mesh "null_model.obj"
 #define null_shader "null_shader"
 #define null_texture "null_texture.png"
@@ -45,8 +46,11 @@
 // Recipes
 #define object_schematic_ext ".osch"
 #define material_schematic_ext ".msch"
+#define shader_schematic_ext ".ssch"
 
+// TODO: Null schematics
 #define null_object_schematic "ObjectRecipe1.osch"
 #define null_material_schematic "MaterialRecipe1.msch"
+#define null_shader_schematic "LitMaterial.msch"
 
 #endif // !_QwerkE_Directory_Defines_H_

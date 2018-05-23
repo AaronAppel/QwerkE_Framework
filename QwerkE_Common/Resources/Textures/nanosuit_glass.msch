@@ -4,7 +4,7 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"Empty",
+			"AmbientName":	"glass_dif.png",
 			"DiffuseName":	"glass_dif.png",
 			"SpecularName":	"glass_dif.png",
 			"EmissiveName":	"Empty",

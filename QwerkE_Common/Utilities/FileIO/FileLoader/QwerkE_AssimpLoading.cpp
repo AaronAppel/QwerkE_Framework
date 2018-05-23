@@ -121,7 +121,7 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 				if (resMan->TextureExists(str.C_Str()) == false)
 				{
 					// no texture with that name is loaded
-					handle = Load2DTexture(StringAppend(directory.c_str(), str.C_Str())); // new texture
+					handle = Load2DTexture(TextureFolderPath(str.C_Str())); // new texture
 					if (handle != 0)
 					{
 						resMan->AddTexture(str.C_Str(), handle);

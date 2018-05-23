@@ -21,7 +21,8 @@ namespace QwerkE
 {
 	namespace FileLoader
 	{
-		Model* LoadModelFileToMeshes(const char* path)
+		// TODO: API should only ask for fileName, then prepend directory
+		bool LoadModelFileToMeshes(const char* path)
 		{
 			// check if a model with the same name already exists
 			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
@@ -51,7 +52,7 @@ namespace QwerkE
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
 				std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-				return nullptr;
+				return false; // failure
 			}
 
 			// NOTE: aiScene is an object hierarchy so it might almost require GameObject creation here.
@@ -70,8 +71,11 @@ namespace QwerkE
 			}
 			for (size_t i = 0; i < matNames.size(); i++)
 			{
-				resMan->GetTexture(DispStrCombine(directory.c_str(), matNames[i].c_str()).c_str());
+				// TODO: Do something with the .mtl file loaded material names?
+				// resMan->GetTexture(DispStrCombine(directory.c_str(), matNames[i].c_str()).c_str());
 			}
+
+			return true; // success
 		}
 	}
 }

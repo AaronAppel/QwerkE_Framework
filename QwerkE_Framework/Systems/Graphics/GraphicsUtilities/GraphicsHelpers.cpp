@@ -6,6 +6,7 @@
 #include "../../ResourceManager/ResourceManager.h"
 #include "../../ServiceLocator.h"
 #include "../Gfx_Classes/MaterialData.h"
+#include "../Gfx_Classes/ShaderProgramData.h"
 
 #include "../Shared_Engine/Engine_Defines.h"
 
@@ -227,6 +228,7 @@ MaterialData* LoadMaterialSchematic(const char* schematicPath)
 	// load texture handles from ResourceManager
 	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
+	// TODO: Stop trying to load "Empty" files
 	mat->s_AmbientHandle = resMan->GetTexture(mat->s_AmbientName.c_str());
 	mat->s_DiffuseHandle = resMan->GetTexture(mat->s_DiffuseName.c_str());
 	mat->s_SpecularHandle = resMan->GetTexture(mat->s_SpecularName.c_str());
@@ -240,6 +242,58 @@ MaterialData* LoadMaterialSchematic(const char* schematicPath)
 	mat->s_ReflectionHandle = resMan->GetTexture(mat->s_ReflectionName.c_str());
 
 	return mat;
+}
+
+void SaveShaderSchematic(ShaderProgramData* shader)
+{
+	const char* filePath = StringAppend(AssetDir, "Shaders/LitMaterial", shader_schematic_ext);
+
+	// if file does not exist, create one,otherwise overwrite data
+	if (!FileExists(filePath))
+	{
+		CreateEmptycJSONFile(filePath);
+	}
+	else
+	{
+		EmptycJSONFile(filePath);
+	}
+
+	cJSON* root = OpencJSONStream(filePath);
+
+	if (root)
+	{
+		AddItemToRoot(root, CreateString("Name", shader->s_Name.c_str()));
+
+		AddItemToRoot(root, CreateString("vert", shader->s_vertName.c_str()));
+		AddItemToRoot(root, CreateString("frag", shader->s_fragName.c_str()));
+		AddItemToRoot(root, CreateString("geo", shader->s_geoName.c_str()));
+
+		PrintRootObjectToFile(filePath, root);
+	}
+	ClosecJSONStream(root);
+}
+
+ShaderProgramData* LoadShaderSchematic(const char* schematicPath)
+{
+	ShaderProgramData* shader = new ShaderProgramData();
+	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+
+	cJSON* root = OpencJSONStream(schematicPath);
+
+	if (root)
+	{
+		shader->s_Name = GetItemFromRootByKey(root, "Name")->valuestring;
+
+		shader->s_vertName = GetItemFromRootByKey(root, "vert")->valuestring;
+		shader->s_fragName = GetItemFromRootByKey(root, "frag")->valuestring;
+		shader->s_geoName = GetItemFromRootByKey(root, "geo")->valuestring;
+	}
+
+	// shader->s_vertHandle = resMan->GetShader(shader->s_vertName.c_str());
+
+	ClosecJSONStream(root);
+
+	return shader;
 }
 
 // Shader variable prefixes

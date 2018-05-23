@@ -1,10 +1,10 @@
 {
-	"Name":	"nanosuit_arms.msch",
+	"Name":	"nanosuit_arm.msch",
 	"OtherData":	[{
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"Empty",
+			"AmbientName":	"arm_dif.png",
 			"DiffuseName":	"arm_dif.png",
 			"SpecularName":	"arm_showroom_spec.png",
 			"EmissiveName":	"Empty",
