@@ -70,16 +70,8 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 	t_pCamComp->Setup();
 	t_pCamComp->SetTargetPosition(vec3(0,0,0));
 
-	// AddModelComponent(t_pCamera, "ObjectRecipe1");
-	RenderComponent* mComp = new RenderComponent();
-	mComp->AppendEmptyRenderables(1);
-
-	QwerkE::FileLoader::LoadModelFileToMeshes(ModelFolderPath("Camera.obj"));
-
-	Renderable ren(m_pResources->GetShaderProgramData("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Camera"));
-
-	mComp->AddRenderable(ren);
-	t_pCamera->AddComponent((Component*)mComp);
+	QwerkE::FileLoader::LoadModelFileToMeshes(MeshFolderPath("Camera.obj"));
+	AddModelComponentFromSchematic(t_pCamera, "camera.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_pCamera->AddRoutine((Routine*)renderRoutine);

@@ -1,0 +1,6 @@
+{
+	"Name":	"Basic3D.ssch",
+	"vert":	"Basic3D.vert",
+	"frag":	"Basic3D.frag",
+	"geo":	"null"
+}

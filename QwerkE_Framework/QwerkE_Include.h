@@ -55,7 +55,7 @@
 #include "Systems/Factory/LevelLoader.h"
 
 // Graphics //
-#include "Systems/Graphics/Graphics_Header.h"
+#include "Graphics/Graphics_Header.h"
 
 // Rendering //
 #include "Systems/Renderer/Renderer.h"

@@ -5,9 +5,8 @@
 #include "../Entities/GameObject.h"
 #include "../QwerkE_Enums.h"
 #include "../Systems/Factory/Factory.h"
-#include "../Systems/Graphics/Mesh/Mesh.h"
-#include "../Systems/Graphics/Mesh/MeshFactory.h"
-#include "../Systems/Graphics/ShaderProgram/ShaderProgram.h"
+#include "../Graphics/Mesh/Mesh.h"
+#include "../Graphics/Mesh/MeshFactory.h"
 #include "../Systems/ServiceLocator.h"
 #include "../Systems/ResourceManager/ResourceManager.h"
 #include "../Components/Time.h"
@@ -38,6 +37,7 @@ void TestScene::Initialize()
 		// Create scene cameras
 		const int t_CamMax = 1;
 		t_pFactory->CreateFreeCamera(this, vec3(0, 0, 5));
+		t_pFactory->CreateFreeCamera(this, vec3(0, 0, 15));
 		// setup view/projection matrices
 		Scene::SetupCameras();
 	}

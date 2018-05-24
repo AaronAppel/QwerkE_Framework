@@ -2,7 +2,7 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
 #include "../../Entities/Components/RenderComponent.h"
-#include "../Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 
 Factory::Factory()
@@ -27,7 +27,7 @@ GameObject* Factory::CreateGameObject(Scene* scene, vec3 position)
 	return new GameObject(scene, position);
 }
 
-RenderComponent* Factory::AddModelComponent(GameObject* entity, const char* objectRecipeName)
+RenderComponent* Factory::AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName)
 {
 	RenderComponent* mComp = LoadObjectSchematic(SchematicFolderPath(objectRecipeName));
 	entity->AddComponent((Component*)mComp);

@@ -1,4 +1,0 @@
-// Test_QShader.qshader
-vert = "null_shader.vert";
-farg = "null_shader.frag";
-geo = "null_shader.geo";

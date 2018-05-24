@@ -1,17 +1,18 @@
+#include "RenderRoutine.h"
 #include "../GameObject.h"
 #include "../Routines/Routine.h"
-#include "RenderRoutine.h"
-#include "../../QwerkE_Enums.h"
-#include "../../Systems/Graphics/Mesh/Mesh.h"
-#include "../../Systems/Graphics/Graphics_Header.h"
-#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
-#include "../../Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Renderable.h"
+#include "../../Graphics/Shader/ShaderProgram.h"
+#include "../../Graphics/Mesh/Mesh.h"
+#include "../../Graphics/Graphics_Header.h"
+#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
 #include "../../Entities/Components/RenderComponent.h"
-#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
-#include "../../Systems/Graphics/Gfx_Classes/Renderable.h"
-#include "../../Systems/Graphics/Gfx_Classes/ShaderProgramData.h"
+
+#include "../../QwerkE_Enums.h"
 
 #include <assert.h>
 
@@ -84,23 +85,23 @@ void RenderRoutine::SetDrawFunctions()
 
 	for (int i = 0; i < t_Renderables->size(); i++) // for each renderable
 	{
-		if (t_Renderables->at(i).GetShaderSchematic()->s_Uniforms.size() == 0) t_Renderables->at(i).GetShaderSchematic()->FindAttributesAndUniforms();
-		std::vector<std::string> t_Uniforms = t_Renderables->at(i).GetShaderSchematic()->s_Uniforms; // get shader
+		if (t_Renderables->at(i).GetShaderSchematic()->SeeUniforms()->size() == 0) t_Renderables->at(i).GetShaderSchematic()->FindAttributesAndUniforms();
+		const std::vector<std::string>* t_Uniforms = t_Renderables->at(i).GetShaderSchematic()->SeeUniforms(); // get shader
 		MaterialData* t_Material = t_Renderables->at(i).GetMaterialSchematic();
 
 		/* Add functions to setup shader uniforms */
-		for (size_t j = 0; j < t_Uniforms.size(); j++) // Setup uniforms
+		for (size_t j = 0; j < t_Uniforms->size(); j++) // Setup uniforms
 		{
 			// Color
-			if (t_Uniforms.at(j) == "ObjectColor")
+			if (t_Uniforms->at(j) == "ObjectColor")
 			{
 				m_UniformSetupList[i].push_back(&RenderRoutine::SetupColorUniforms);
 			}
-			else if (t_Uniforms.at(j) == "WorldMat")
+			else if (t_Uniforms->at(j) == "WorldMat")
 			{
 				m_UniformSetupList[i].push_back(&RenderRoutine::Setup3DTransform);
 			}
-			else if (t_Uniforms.at(j) == "2DTransform")
+			else if (t_Uniforms->at(j) == "2DTransform")
 			{
 				m_UniformSetupList[i].push_back(&RenderRoutine::Setup2DTransform);
 			}

@@ -3,6 +3,7 @@
 
 // TODO: Depending on how files are loaded, FileLoader
 // should be a part of Framework instead of Common.
+class Mesh;
 
 namespace QwerkE
 {
@@ -15,7 +16,7 @@ namespace QwerkE
 		unsigned char* LoadImageFile(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically = 0); // LoadImage is a macro somewhere
 
 		// TODO:
-		void LoadMeshInFileByName(const char* filePath, const char* meshName);
+		Mesh* LoadMeshInModelByName(const char* modelFilePath, const char* meshName);
 		bool LoadModelFileToMeshes(const char* path);
 
 		// TODO: Load scene from software like 3DS Max, Blender, etc

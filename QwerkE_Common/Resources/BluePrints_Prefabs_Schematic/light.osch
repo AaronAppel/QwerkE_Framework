@@ -1,0 +1,10 @@
+{
+	"Name":	"light.osch",
+	"Renderables":	[{
+		"Light": [{
+			"Shader":	"Basic3D.ssch",
+			"Material":	"null_material.msch",
+			"Mesh":	"LightBulb.obj"
+		}]
+	}]
+}

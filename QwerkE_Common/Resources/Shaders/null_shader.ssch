@@ -1,0 +1,6 @@
+{
+	"Name":	"null_shader.ssch",
+	"vert":	"null_shader.vert",
+	"frag":	"null_shader.frag",
+	"geo":	"null"
+}

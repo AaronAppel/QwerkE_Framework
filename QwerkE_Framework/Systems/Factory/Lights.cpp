@@ -20,14 +20,9 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 	t_pLightComp->SetColour(vec3(1.0f, 1.0f, 1.0f));
 
 	// Rendering
-	// AddModelComponent(t_pLight, "ObjectRecipe1");
-	RenderComponent* mComp = new RenderComponent();
-	mComp->AppendEmptyRenderables(1);
+	// AddModelComponentFromSchematic(t_pLight, "ObjectRecipe1");
 
-	Renderable ren(m_pResources->GetShaderProgramData("Basic3D"), m_pResources->GetMaterial(null_material), m_pResources->GetMesh("Light_Bulb.obj"));
-
-	mComp->AddRenderable(ren);
-	t_pLight->AddComponent((Component*)mComp);
+	AddModelComponentFromSchematic(t_pLight, "light.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	// Add

@@ -1,0 +1,10 @@
+{
+	"Name":	"ObjectRecipe1.orec",
+	"Renderables":	[{
+			"R1":	[{
+					"Shader":	"null_shader.ssch",
+					"Material":	"null_material.msch",
+					"Mesh":	"null_model.obj"
+				}]
+		}]
+}

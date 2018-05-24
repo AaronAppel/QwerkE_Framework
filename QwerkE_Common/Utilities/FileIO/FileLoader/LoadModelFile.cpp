@@ -1,7 +1,7 @@
 #include "FileLoader.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
-#include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
+#include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
 #include "../../StringHelpers.h"
 
 #include <iostream>
@@ -21,9 +21,28 @@ namespace QwerkE
 {
 	namespace FileLoader
 	{
-		void LoadMeshInFileByName(const char* filePath, const char* meshName)
+		Mesh* LoadMeshInModelByName(const char* modelFilePath, const char* meshName)
 		{
-			// TODO:
+			if (false == ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->MeshExists(meshName))
+			{
+				// TODO: remain assimp agnostic
+				Assimp::Importer importer;
+				const aiScene *scene = importer.ReadFile(modelFilePath, aiProcess_Triangulate | aiProcess_FlipUVs);
+
+				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+				{
+					std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
+					return nullptr; // failure
+				}
+				Mesh* mesh = nullptr;
+				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, meshName);
+				((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddMesh(meshName, mesh);
+				return mesh;
+			}
+			else
+			{
+				return ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh(meshName);
+			}
 		}
 
 		// TODO: API should only ask for fileName, then prepend directory

@@ -1,8 +1,8 @@
 #include "RenderComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
-#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
-#include "../../Systems/Graphics/Gfx_Classes/ShaderProgramData.h"
+#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 
@@ -22,7 +22,7 @@ RenderComponent::RenderComponent(const char* shaderName, const char* materialNam
 
 	t_Renderable.SetMaterial(resMan->GetMaterial(materialName));
 	t_Renderable.SetMesh(resMan->GetMesh(meshName));
-	t_Renderable.SetShader(resMan->GetShaderProgramData(shaderName));
+	t_Renderable.SetShader(resMan->GetShaderProgram(shaderName));
 
 	t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
 
@@ -44,7 +44,7 @@ void RenderComponent::Setup(const char* shaderName, const char* materialName, co
 
 	t_Renderable.SetMaterial(resMan->GetMaterial(materialName));
 	t_Renderable.SetMesh(resMan->GetMesh(meshName));
-	t_Renderable.SetShader(resMan->GetShaderProgramData(shaderName));
+	t_Renderable.SetShader(resMan->GetShaderProgram(shaderName));
 
 	t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
 
@@ -61,7 +61,7 @@ void RenderComponent::AppendEmptyRenderables(int count)
 	{
 		Renderable t_Renderable;
 
-		t_Renderable.SetShader(resMan->GetShaderProgramData(null_shader_schematic));
+		t_Renderable.SetShader(resMan->GetShaderProgram(null_shader_schematic));
 		t_Renderable.SetMaterial(resMan->GetMaterial(null_material));
 		t_Renderable.SetMesh(resMan->GetMesh(null_mesh));
 
@@ -74,23 +74,27 @@ void RenderComponent::AddRenderable(Renderable renderable)
 	m_RenderableList.push_back(renderable);
 }
 
-void RenderComponent::SetShaderAtIndex(int index, ShaderProgramData* shader)
+void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)
 {
 	// TODO: More error handling
-	if (index < m_RenderableList.size())
+	if (index < m_RenderableList.size() && shader != nullptr)
 	{
 		m_RenderableList[index].SetShader(shader);
-		m_RenderableList[index].GetMesh()->SetupShaderAttributes(shader);
 
-		if (m_pParent)
-			((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+		if (m_RenderableList[index].GetMesh())
+		{
+			m_RenderableList[index].GetMesh()->SetupShaderAttributes(shader);
+
+			if (m_pParent)
+				((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+		}
 	}
 }
 
 void RenderComponent::SetMaterialAtIndex(int index, MaterialData* material)
 {
 	// TODO: More error handling
-	if (index < m_RenderableList.size())
+	if (index < m_RenderableList.size() && material != nullptr)
 		m_RenderableList[index].SetMaterial(material);
 	// TODO: Changing material will need to reset render routine in the future
 }
@@ -98,9 +102,15 @@ void RenderComponent::SetMaterialAtIndex(int index, MaterialData* material)
 void RenderComponent::SetMeshAtIndex(int index, Mesh* mesh)
 {
 	// TODO: More error handling
-	if (index < m_RenderableList.size())
+	if (index < m_RenderableList.size() && mesh != nullptr)
 	{
 		m_RenderableList[index].SetMesh(mesh);
-		m_RenderableList[index].GetMesh()->SetupShaderAttributes(m_RenderableList[index].GetShaderSchematic());
+		if (m_RenderableList[index].GetShaderSchematic())
+		{
+			m_RenderableList[index].GetMesh()->SetupShaderAttributes(m_RenderableList[index].GetShaderSchematic());
+
+			if (m_pParent)
+				((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+		}
 	}
 }

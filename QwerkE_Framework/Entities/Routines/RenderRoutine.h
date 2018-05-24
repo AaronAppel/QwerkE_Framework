@@ -3,13 +3,13 @@
 
 #include "Routine.h"
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../../Systems/Graphics/Gfx_Classes/Renderable.h"
+#include "../../Graphics/Renderable.h"
 
 #include <vector>
 
 class GameObject;
 class CameraComponent;
-class ShaderProgramData;
+struct ShaderProgram;
 class Mesh;
 class RenderComponent;
 class MaterialData;
@@ -59,7 +59,7 @@ private:
 	// Camera
 	void SetupCameraUniforms(CameraComponent* a_Camera, Renderable* renderable);
 	/* Other */
-	void SetupTextureUniforms(GLuint textures[], int size, ShaderProgramData* shader);
+	void SetupTextureUniforms(GLuint textures[], int size, ShaderProgram* shader);
 };
 
 #endif //!_RenderRoutine_H_

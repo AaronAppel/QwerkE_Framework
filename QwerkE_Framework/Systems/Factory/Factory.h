@@ -56,7 +56,7 @@ private:
 	GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
 
 	// helpers
-	RenderComponent* AddModelComponent(GameObject* entity, const char* modelName);
+	RenderComponent* AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName);
 };
 
 #endif //!_Factory_H_

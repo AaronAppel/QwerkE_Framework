@@ -2,11 +2,11 @@
 #define _RenderComponent_H_
 
 #include "Component.h"
-#include "../../Systems/Graphics/Gfx_Classes/Renderable.h"
+#include "../../Graphics/Renderable.h"
 
 #include <vector>
 
-class ShaderProgramData;
+class ShaderProgram;
 class MaterialData;
 class Mesh;
 
@@ -27,7 +27,7 @@ public:
 	void AppendEmptyRenderables(int count);
 	void AddRenderable(Renderable renderable);
 
-	void SetShaderAtIndex(int index, ShaderProgramData* shader);
+	void SetShaderAtIndex(int index, ShaderProgram* shader);
 	void SetMaterialAtIndex(int index, MaterialData* material);
 	void SetMeshAtIndex(int index, Mesh* mesh);
 

@@ -1,10 +1,10 @@
 #include "QwerkE_AssimpLoading.h"
-#include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/Mesh.h"
-#include "../../../../QwerkE_Framework/Systems/Graphics/Mesh/VertexData.h"
-#include "../../../../QwerkE_Framework/Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
+#include "../../../../QwerkE_Framework/Graphics/Mesh/VertexData.h"
+#include "../../../../QwerkE_Framework/Graphics/MaterialData.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
-#include "../../../../QwerkE_Framework/Systems/Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../../../../QwerkE_Framework/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../StringHelpers.h"
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
@@ -190,8 +190,29 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 			}
 		}
 
-		resMan->AddMaterial(data->s_Name.c_str(), data); // add initialized material
+		// TODO: Support external material loading
+		// resMan->AddMaterial(data->s_Name.c_str(), data); // add initialized material
 	}
 
 	matNames.push_back(name.C_Str()); // get name for mat loading later
+}
+
+void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mesh, const char* meshName)
+{
+	// process all the node's meshes (if any)
+	for (unsigned int i = 0; i < node->mNumMeshes; i++)
+	{
+		// load VertexData
+		aiMesh *aimesh = scene->mMeshes[node->mMeshes[i]];
+		if (strcmp(aimesh->mName.C_Str(), meshName) == 0)
+		{
+			mesh = QwerkE_assimp_loadVertexData(aimesh, scene);
+			return;
+		}
+	}
+	// then do the same for each of its children
+	for (unsigned int i = 0; i < node->mNumChildren; i++)
+	{
+		QwerkE_assimp_loadMeshByName(node->mChildren[i], scene, mesh, meshName);
+	}
 }

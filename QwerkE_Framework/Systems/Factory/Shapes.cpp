@@ -5,8 +5,8 @@
 #include "../../Entities/Components/Component.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
-#include "../../Systems/Graphics/Mesh/Mesh.h"
-#include "../../Systems/Graphics/Gfx_Classes/MaterialData.h"
+#include "../../Graphics/Mesh/Mesh.h"
+#include "../../Graphics/MaterialData.h"
 
 /* Shapes */
 GameObject* Factory::CreateCube(Scene* scene, vec3 position)
@@ -16,7 +16,7 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	t_Cube->SetTag(eGameObjectTags::GO_Tag_Cube);
 	t_Cube->SetRenderOrder(50);
 
-	AddModelComponent(t_Cube, "Cube.osch");
+	AddModelComponentFromSchematic(t_Cube, "Cube.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Cube->AddRoutine((Routine*)renderRoutine);
@@ -38,7 +38,7 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	t_Plane->SetTag(eGameObjectTags::GO_Tag_Plane);
 	t_Plane->SetRenderOrder(50);
 
-	AddModelComponent(t_Plane, "Cube.osch");
+	AddModelComponentFromSchematic(t_Plane, "Cube.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	t_Plane->AddRoutine((Routine*)renderRoutine);

@@ -7,9 +7,6 @@
     <Filter Include="Systems\Factory">
       <UniqueIdentifier>{b8accbd8-67ba-420b-bcde-a22b0fb5ccc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\Graphics">
-      <UniqueIdentifier>{a423eb3e-4140-4145-900e-91d2ec404ace}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Systems\Input">
       <UniqueIdentifier>{60e62b73-4808-4342-9a45-45a926440efd}</UniqueIdentifier>
     </Filter>
@@ -37,12 +34,6 @@
     <Filter Include="Entities\Routine">
       <UniqueIdentifier>{78a4ba38-6495-4076-81b6-ca125db99757}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\Graphics\GraphicsUtilities">
-      <UniqueIdentifier>{fad3d3df-fd8c-4ae8-bbba-230c2509f2bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Graphics\GraphicsUtilities\OpenGL">
-      <UniqueIdentifier>{f93f3a7c-1e50-44da-98ca-a3b417ae087c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Systems\DataManager">
       <UniqueIdentifier>{a6710462-743c-4b5c-9a24-4434c95d5b0d}</UniqueIdentifier>
     </Filter>
@@ -61,15 +52,6 @@
     <Filter Include="Components">
       <UniqueIdentifier>{ab4d0c41-db31-4dae-8e2b-da4368d372ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\Graphics\Gfx_Classes">
-      <UniqueIdentifier>{344c36f9-e855-4867-aeb9-09635bebfca8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Graphics\ShaderProgram">
-      <UniqueIdentifier>{0ba32418-e052-4dd4-9f2b-e657284bca12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Graphics\Mesh">
-      <UniqueIdentifier>{d6d45997-01f6-4486-8c03-73a2b16b0dea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entities\Components\Extended">
       <UniqueIdentifier>{ab871d17-ed0d-41d1-b6a2-606557d312d6}</UniqueIdentifier>
     </Filter>
@@ -85,6 +67,30 @@
     <Filter Include="Systems\Renderer">
       <UniqueIdentifier>{43839002-bf90-4069-9c07-79a379cd82ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems\ShaderFactory">
+      <UniqueIdentifier>{b413c6f3-8fb5-4030-aec3-cc5756f664a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{49a432d5-332f-464e-bbba-db9ae3f5d8ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Font Rendering">
+      <UniqueIdentifier>{2fcfb1c6-4d3d-4a10-a5e5-b4c57b510eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Graphics Utilities">
+      <UniqueIdentifier>{f7c6f0fe-8a77-49be-8251-769d0e6bd094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Graphics Utilities\OpenGL">
+      <UniqueIdentifier>{f7536dc4-cbfc-4191-bc17-75917dc1dd97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Mesh">
+      <UniqueIdentifier>{d4c51998-f916-4ca6-9fa8-93ed9d8fb61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Shader">
+      <UniqueIdentifier>{00f15661-02d9-4420-b66f-f16c4fc1d4ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\misc_graphics">
+      <UniqueIdentifier>{f69a4142-e757-4b8b-a1ed-15261d662310}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -98,12 +104,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.cpp">
       <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\FontRendering\FontTest.cpp">
-      <Filter>Systems\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.cpp">
-      <Filter>Systems\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Cameras.cpp">
       <Filter>Systems\Factory</Filter>
@@ -185,12 +185,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp">
-      <Filter>Systems\Graphics\GraphicsUtilities\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.cpp">
-      <Filter>Systems\Graphics\GraphicsUtilities</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp">
       <Filter>Systems\DataManager</Filter>
     </ClCompile>
@@ -214,30 +208,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Math.cpp">
       <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.cpp">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Mesh.cpp">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshFactory.cpp">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Basic2DShader.cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Basic3DShader.cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\LitMaterial.cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp">
       <Filter>Systems</Filter>
@@ -284,17 +254,53 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.cpp">
       <Filter>Systems\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent .cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp">
       <Filter>Systems\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderUtilities.cpp">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.cpp">
+      <Filter>Systems\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp">
+      <Filter>Systems\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\LitMaterial.cpp">
+      <Filter>Systems\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp">
+      <Filter>Systems\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\FontRendering\FontTest.cpp">
+      <Filter>Graphics\Font Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\GraphicsHelpers.cpp">
+      <Filter>Graphics\Graphics Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp">
+      <Filter>Graphics\Graphics Utilities\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.cpp">
+      <Filter>Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.cpp">
+      <Filter>Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.cpp">
+      <Filter>Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent .cpp">
+      <Filter>Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.cpp">
+      <Filter>Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\OpenGLManager.cpp">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.cpp">
+      <Filter>Graphics\Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -309,12 +315,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h">
       <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\FontRendering\FontTest.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\OpenGLManager.h">
-      <Filter>Systems\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.h">
       <Filter>Systems\Factory</Filter>
@@ -378,12 +378,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h">
-      <Filter>Systems\Graphics\GraphicsUtilities\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\GraphicsUtilities\GraphicsHelpers.h">
-      <Filter>Systems\Graphics\GraphicsUtilities</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h">
       <Filter>Systems\DataManager</Filter>
     </ClInclude>
@@ -407,45 +401,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Components\Math.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Graphics_Header.h">
-      <Filter>Systems\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\CubeMap.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\FrameBufferObject.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\LightData.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\MaterialData.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshUtilities.h">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\VertexData.h">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\Mesh.h">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Mesh\MeshFactory.h">
-      <Filter>Systems\Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderFactory.h">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderProgram.h">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\Dynamic_ShaderProgram.h">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Texture.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\SceneManager.h">
       <Filter>Systems</Filter>
@@ -489,12 +444,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.h">
       <Filter>Systems\ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderComponent.h">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\Renderable.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Platform.h">
       <Filter>QwerkE_Headers</Filter>
     </ClInclude>
@@ -522,11 +471,65 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\Gfx_Classes\ShaderProgramData.h">
-      <Filter>Systems\Graphics\Gfx_Classes</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h">
+      <Filter>Systems\ShaderFactory</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Graphics\ShaderProgram\ShaderUtilities.h">
-      <Filter>Systems\Graphics\ShaderProgram</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h">
+      <Filter>Systems\ShaderFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Graphics_Header.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\FontRendering\FontTest.h">
+      <Filter>Graphics\Font Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\GraphicsHelpers.h">
+      <Filter>Graphics\Graphics Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h">
+      <Filter>Graphics\Graphics Utilities\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.h">
+      <Filter>Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.h">
+      <Filter>Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.h">
+      <Filter>Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\VertexData.h">
+      <Filter>Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.h">
+      <Filter>Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.h">
+      <Filter>Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\CubeMap.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\FrameBufferObject.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\LightData.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialData.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Renderable.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Texture.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGLManager.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.h">
+      <Filter>Graphics\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

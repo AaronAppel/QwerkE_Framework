@@ -1,8 +1,8 @@
 #include "ResourceManager.h"
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../Graphics/Gfx_Classes/MaterialData.h"
-#include "../Graphics/Mesh/Mesh.h"
-#include "../Graphics/ShaderProgram/ShaderProgram.h"
+#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Mesh/Mesh.h"
+#include "../../Graphics/Shader/ShaderProgram.h"
 
 #include <map>
 
@@ -20,9 +20,6 @@ void ResourceManager::DeleteAllResources()
 	for (auto object : m_Meshes)
 		delete object.second;
 
-	for (auto object : m_Shaders)
-		delete object.second;
-
 	for (auto object : m_Textures)
 		glDeleteTextures(1, &object.second);
 
@@ -32,7 +29,6 @@ void ResourceManager::DeleteAllResources()
 	// TODO: delete fonts
 
 	m_Meshes.clear(); // Empty std::maps
-	m_Shaders.clear();
 	m_Textures.clear();
 	m_Materials.clear();
 	// m_Fonts.clear();
@@ -41,11 +37,6 @@ void ResourceManager::DeleteAllResources()
 bool ResourceManager::MeshExists(const char* name)
 {
 	return m_Meshes.find(name) != m_Meshes.end();
-}
-
-bool ResourceManager::ShaderExists(const char* name)
-{
-	return m_Shaders.find(name) != m_Shaders.end();
 }
 
 bool ResourceManager::TextureExists(const char* name)
@@ -70,7 +61,7 @@ bool ResourceManager::SoundExists(const char* name)
 
 bool ResourceManager::ShaderProgramExists(const char* name)
 {
-	return m_ShaderProgramData.find(name) != m_ShaderProgramData.end();
+	return m_ShaderProgram.find(name) != m_ShaderProgram.end();
 }
 
 bool ResourceManager::ShaderComponentExists(const char* name)
@@ -87,18 +78,6 @@ bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
 		return false;
 
 	m_Meshes[name] = mesh;
-	return true;
-}
-
-bool ResourceManager::AddShader(const char* name, ShaderProgram* shader)
-{
-	if (ShaderExists(name))
-		return false;
-
-	if (shader == nullptr ) // || shader->GetName() == "Uninitialized")
-		return false;
-
-	m_Shaders[name] = shader;
 	return true;
 }
 
@@ -151,19 +130,19 @@ bool ResourceManager::AddSound(const char* name, ALuint sound)
 	return true;
 }
 
-bool ResourceManager::AddShaderProgramData(const char* name, ShaderProgramData* shaderProgramData)
+bool ResourceManager::AddShaderProgram(const char* name, ShaderProgram* ShaderProgram)
 {
 	if (ShaderProgramExists(name))
 		return false;
 
-	if (shaderProgramData == nullptr)
+	if (ShaderProgram == nullptr)
 		return false;
 
-	m_ShaderProgramData[name] = shaderProgramData;
+	m_ShaderProgram[name] = ShaderProgram;
 	return true;
 }
 
-bool ResourceManager::AddShaderComponentData(const char* name, ShaderComponent* shaderComponent)
+bool ResourceManager::AddShaderComponent(const char* name, ShaderComponent* shaderComponent)
 {
 	if (ShaderComponentExists(name))
 		return false;
@@ -183,15 +162,6 @@ Mesh* ResourceManager::GetMesh(const char* name)
 		return m_Meshes[name];
 	}
 	return InstantiateMesh(name);
-}
-
-ShaderProgram* ResourceManager::GetShader(const char* name)
-{
-	if (m_Shaders.find(name) != m_Shaders.end()) // unique name
-	{
-		return m_Shaders[name];
-	}
-	return InstantiateShader(name); // TODO: Should The resource manager create assets?
 }
 
 GLuint ResourceManager::GetTexture(const char* name)
@@ -232,16 +202,16 @@ ALuint ResourceManager::GetSound(const char* name)
 	return 0;
 }
 
-ShaderProgramData* ResourceManager::GetShaderProgramData(const char* name)
+ShaderProgram* ResourceManager::GetShaderProgram(const char* name)
 {
 	if (ShaderProgramExists(name))
 	{
-		return m_ShaderProgramData[name];
+		return m_ShaderProgram[name];
 	}
-	return InstantiateShaderProgramData(name);
+	return InstantiateShaderProgram(name);
 }
 
-ShaderComponent* ResourceManager::GetShaderComponentData(const char* name)
+ShaderComponent* ResourceManager::GetShaderComponent(const char* name)
 {
 	if (ShaderComponentExists(name))
 	{
@@ -256,17 +226,6 @@ bool ResourceManager::isUnique(Mesh* mesh)
 	for (it = m_Meshes.begin(); it != m_Meshes.end(); it++)
 	{
 		if (it->second == mesh) // pointer comparison
-			return false;
-	}
-	return true;
-}
-
-bool ResourceManager::isUnique(ShaderProgram* shader)
-{
-	std::map<std::string, ShaderProgram*>::iterator it;
-	for (it = m_Shaders.begin(); it != m_Shaders.end(); it++)
-	{
-		if (it->second == shader) // pointer comparison
 			return false;
 	}
 	return true;
@@ -316,12 +275,12 @@ bool ResourceManager::isSoundUnique(ALuint sound)
 	return true;
 }
 
-bool ResourceManager::isShaderProgramDataUnique(ShaderProgramData* shaderProgramData)
+bool ResourceManager::isShaderProgramUnique(ShaderProgram* shaderProgram)
 {
-	std::map<std::string, ShaderProgramData*>::iterator it;
-	for (it = m_ShaderProgramData.begin(); it != m_ShaderProgramData.end(); it++)
+	std::map<std::string, ShaderProgram*>::iterator it;
+	for (it = m_ShaderProgram.begin(); it != m_ShaderProgram.end(); it++)
 	{
-		if (it->second == shaderProgramData) // pointer comparison
+		if (it->second == shaderProgram) // pointer comparison
 			return false;
 	}
 	return true;

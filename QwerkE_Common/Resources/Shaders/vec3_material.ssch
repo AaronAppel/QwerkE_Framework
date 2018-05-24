@@ -1,0 +1,6 @@
+{
+	"Name":	"vec3_material.ssch",
+	"vert":	"vec3Material.vert",
+	"frag":	"vec3Material.frag",
+	"geo":	"null"
+}

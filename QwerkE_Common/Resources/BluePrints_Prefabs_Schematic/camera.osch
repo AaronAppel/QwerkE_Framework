@@ -1,0 +1,10 @@
+{
+	"Name":	"camera.osch",
+	"Renderables":	[{
+		"Camera": [{
+			"Shader":	"LitMaterial.ssch",
+			"Material":	"null_material.msch",
+			"Mesh":	"Camera"
+		}]
+	}]
+}

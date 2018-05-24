@@ -9,10 +9,9 @@
 #include <map>
 
 class Mesh;
-class ShaderProgram;
 class ShaderComponent;
 struct MaterialData;
-struct ShaderProgramData;
+struct ShaderProgram;
 
 // For instances where 1 asset may be shared between objects in
 // possibly many scenes, the ResourceManager() may want to count
@@ -35,7 +34,6 @@ public:
 	void Init();
 
 	bool MeshExists(const char* name);
-	bool ShaderExists(const char* name);
 	bool TextureExists(const char* name);
 	bool MaterialExists(const char* name);
 	bool FontExists(const char* name);
@@ -44,13 +42,12 @@ public:
 	bool ShaderComponentExists(const char* name);
 
 	bool AddMesh(const char* name, Mesh* mesh);
-	bool AddShader(const char* name, ShaderProgram* shader);
 	bool AddTexture(const char* name, GLuint texture);
 	bool AddMaterial(const char* name, MaterialData* material);
 	bool AddFont(const char* name, FT_Face font);
 	bool AddSound(const char* name, ALuint sound);
-	bool AddShaderProgramData(const char* name, ShaderProgramData* shaderProgramData);
-	bool AddShaderComponentData(const char* name, ShaderComponent* shaderComponent);
+	bool AddShaderProgram(const char* name, ShaderProgram* ShaderProgram);
+	bool AddShaderComponent(const char* name, ShaderComponent* shaderComponent);
 	// TODO: Other add functions
 
 	// getters
@@ -58,22 +55,20 @@ public:
 	// The following functions guarantee a valid return variable using null or error objects
 	// TODO: Should getters generate objects? What would be a better way?
 	Mesh* GetMesh(const char* name); // specify .ext
-	ShaderProgram* GetShader(const char* name); // specify .ext
 	GLuint GetTexture(const char* name); // specify .ext
 	MaterialData* GetMaterial(const char* name); // specify .ext
 	FT_Face GetFont(const char* name); // specify .ext
 	ALuint GetSound(const char* name); // specify .ext
-	ShaderProgramData* GetShaderProgramData(const char* name); // specify .ext
-	ShaderComponent* GetShaderComponentData(const char* name); // specify .ext
+	ShaderProgram* GetShaderProgram(const char* name); // specify .ext
+	ShaderComponent* GetShaderComponent(const char* name); // specify .ext
 
 	// TEST:
 	const std::map<std::string, Mesh*>* LookAtMeshes() { return &m_Meshes; };
-	const std::map<std::string, ShaderProgram*>* LookAtShaders() { return &m_Shaders; };
 	const std::map<std::string, GLuint>* LookAtTextures() { return &m_Textures; };
 	const std::map<std::string, MaterialData*>* LookAtMaterials() { return &m_Materials; };
 	// const std::map<std::string, >* LookAtFonts() { return &; };
 	const std::map<std::string, ALuint>* LookAtSounds() { return &m_Sounds; };
-	const std::map<std::string, ShaderProgramData*>* LookAtShaderProgramData() { return &m_ShaderProgramData; };
+	const std::map<std::string, ShaderProgram*>* LookAtShaderProgram() { return &m_ShaderProgram; };
 	const std::map<std::string, ShaderComponent*>* LookAtShaderComponents() { return &m_ShaderComponents; };
 
 	// TODO: Handle loading additional resources
@@ -90,44 +85,40 @@ public:
 private:
 	// resource storage
 	std::map<std::string, Mesh*> m_Meshes; // TODO: Rename
-	std::map<std::string, ShaderProgram*> m_Shaders;
 	std::map<std::string, GLuint> m_Textures;
 	std::map<std::string, MaterialData*> m_Materials;
 	std::map<std::string, FT_Face> m_Fonts;
 	std::map<std::string, ALuint> m_Sounds;
-	std::map<std::string, ShaderProgramData*> m_ShaderProgramData;
+	std::map<std::string, ShaderProgram*> m_ShaderProgram;
 	std::map<std::string, ShaderComponent*> m_ShaderComponents;
 
 	// Utilities
 	bool isUnique(Mesh* mesh);
-	bool isUnique(ShaderProgram* shader);
 	bool isUnique(GLuint texturehandle);
 	bool isUnique(MaterialData* material);
 	bool isUnique(FT_Face font);
 	bool isSoundUnique(ALuint sound);
-	bool isShaderProgramDataUnique(ShaderProgramData* shaderProgramData);
+	bool isShaderProgramUnique(ShaderProgram* ShaderProgram);
 	bool isShaderComponentsUnique(ShaderComponent* shaderComponents);
 
 	// Allocations
 	Mesh* InstantiateMesh(const char* name);
-	ShaderProgram* InstantiateShader(const char* name);
 	GLuint InstantiateTexture(const char* name);
 	MaterialData* InstantiateMaterial(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
 	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels);
-	ShaderProgramData* InstantiateShaderProgramData(const char* schematicName);
+	ShaderProgram* InstantiateShaderProgram(const char* schematicName);
 	ShaderComponent* InstantiateShaderComponent(const char* componentName);
 
 	// Deletions
 	// TODO: void* return? Actually write functions.
 	// Remember that smart pointers may be necessary for references.
 	bool DeleteMesh(const char* name) {}
-	bool DeleteShader(const char* name) {}
 	bool DeleteTexture(const char* name) {}
 	bool DeleteMaterial(const char* name) {}
 	bool DeleteFont(const char* name) {}
 	bool DeleteSound(const char* name) {}
-	bool DeleteShaderProgramData(const char* name) {}
+	bool DeleteShaderProgram(const char* name) {}
 	bool DeleteShaderComponent(const char* name) {}
 
 	// Directories
@@ -137,12 +128,11 @@ private:
 	// TODO: Find a better place to store objects. ResourceManager should not "own" objects
 	// TODO: Instantiate null objects
 	Mesh* m_NullMesh = nullptr;
-	ShaderProgram* m_NullShader = nullptr;
 	GLuint m_NullTexture = 0;
 	MaterialData* m_NullMaterial = nullptr;
 	FT_Face m_NullFont;
 	ALuint m_NullSound = 0;
-	ShaderProgramData* m_NullShaderData = nullptr;
+	ShaderProgram* m_NullShader = nullptr;
 	ShaderComponent* m_NullShaderComponent = nullptr; // TODO: Do I need 3 nullComponents?
 };
 
