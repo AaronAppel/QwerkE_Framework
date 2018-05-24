@@ -19,7 +19,7 @@
 void RenderRoutine::Initialize()
 {
 	m_pParent->AddDrawRoutine(this);
-	m_pRenderComp = (RenderComponent*)m_pParent->GetComponent(eComponentTags::Component_Model);
+	m_pRenderComp = (RenderComponent*)m_pParent->GetComponent(eComponentTags::Component_Render);
 	m_Type = eRoutineTypes::Routine_Render;
 	SetDrawFunctions();
 }

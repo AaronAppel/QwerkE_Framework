@@ -18,6 +18,7 @@ namespace QwerkE
 		// TODO:
 		Mesh* LoadMeshInModelByName(const char* modelFilePath, const char* meshName);
 		bool LoadModelFileToMeshes(const char* path);
+		Mesh* LoadModelFileTo1Mesh(const char* path);
 
 		// TODO: Load scene from software like 3DS Max, Blender, etc
 		// load things like lights, cameras and everything from 1 file

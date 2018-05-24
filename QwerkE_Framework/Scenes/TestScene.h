@@ -13,7 +13,7 @@ public:
     void Draw();
 
 private:
-	void p_Update(double TimePassed);
+	void p_Running(double TimePassed);
 };
 
 #endif // !_TestScene_H_

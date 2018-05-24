@@ -13,7 +13,7 @@
 #include <iostream>
 #include <map>
 
-/// Holds all state information relevant to a character as loaded using FreeType
+// Holds all state information relevant to a character as loaded using FreeType
 struct Character {
 	GLuint TextureID;   // ID handle of the glyph texture
 	glm::ivec2 Size;    // Size of glyph
@@ -87,7 +87,6 @@ void LoadFonts()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	// Destroy FreeType once we're finished	FT_Done_Face(face);
 
-
 	// Configure VAO/VBO for texture quads
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -102,6 +101,7 @@ void LoadFonts()
 
 void RenderText(ShaderProgram *shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
 {
+	// https://learnopengl.com/In-Practice/Text-Rendering
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(g_WindowWidth), 0.0f, static_cast<GLfloat>(g_WindowHeight));
 
 	shader->Use();
@@ -139,16 +139,19 @@ void RenderText(ShaderProgram *shader, std::string text, GLfloat x, GLfloat y, G
 		// Render glyph texture over quad
 		glBindTexture(GL_TEXTURE_2D, ch.TextureID);
 		// Update content of VBO memory
-
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
+		CheckGraphicsErrors(__FILE__, __LINE__); // DEBUG:
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices); // Be sure to use glBufferSubData and not glBufferData
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		CheckGraphicsErrors(__FILE__, __LINE__); // DEBUG:
 		// Render quad
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		// Now advance cursors for next glyph (note that advance is number of 1/64 pixels)
 		x += (ch.Advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64 (divide amount of 1/64th pixels by 64 to get amount of pixels))
+
+		CheckGraphicsErrors(__FILE__, __LINE__); // DEBUG:
 	}
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);

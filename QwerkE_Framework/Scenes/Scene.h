@@ -1,13 +1,13 @@
 #ifndef _Scene_H_
 #define _Scene_H_
 
-#include "../../QwerkE_Common/Custom_Classes/MyLinkedList.h"
 #include "../../QwerkE_Common/Math_Includes.h"
 #include "../QwerkE_Enums.h"
 
 #include <map>
+#include <vector>
 
-extern int g_WindowWidth, g_WindowHeight;
+extern int g_WindowWidth, g_WindowHeight; // TODO: Remove
 
 class GameCore;
 class MyMatrix;
@@ -15,9 +15,8 @@ class SceneManager;
 class GameObject;
 
 class Scene; // forward declare for function* typedef
-typedef void (Scene::*UpdateFunc)(double deltatime); // Scene pause
+typedef void (Scene::*StateFunc)(double deltatime); // Scene state function
 
-													 // TODO: Create derived classes for scenes like SplashScreen, GameScene, etc
 class Scene // Abstract class
 {
 public:
@@ -55,33 +54,31 @@ public:
 	GameObject* GetGameObject(const char* name);
 	bool GetIsEnabled() { return m_IsEnabled; };
 	SceneManager* GetSceneManager() { return m_pSceneManager; };
-	Linear2LinkedList<GameObject*> GetCameraList() { return m_CameraList; };
+	std::vector<GameObject*> GetCameraList() { return m_CameraList; };
 	std::map<std::string, GameObject*> GetObjectList() { return m_pGameObjects; };
 	int GetCurrentCamera() { return m_CurrentCamera; };
-	Linear2LinkedList<GameObject*> GetLightList() { return m_LightList; };
-	bool GetIsPaused() { return m_IsPaused; };
+	std::vector<GameObject*> GetLightList() { return m_LightList; };
 	eSceneTypes GetSceneID() { return m_ID; }
+	eSceneState GetState() { return m_State; }
 
 	// setters
 	void SetIsEnabled(bool isEnabled) { m_IsEnabled = isEnabled; };
 	void SetCurrentCamera(int camera) { m_CurrentCamera = camera; }; // TODO:: Better way for ImGUI to change camera
-	void SetIsPaused(bool isPaused);
-	void TogglePauseState() { SetIsPaused(!m_IsPaused); }
-	void SetIsFrozen(bool isFrozen);
+	void SetState(eSceneState newState);
 	// TODO: void ToggleFrozenState() { SetIsFrozen(!m_IsFrozen); }
 
 protected:
-	virtual void p_Update(double deltatime);
+	virtual void p_Running(double deltatime);
 	virtual void p_Frozen(double deltatime); // only update cameras
-	virtual void p_Paused(double deltatime) {}; // Currently empty
-	UpdateFunc m_UpdateFunc = &Scene::p_Update;
+	virtual void p_Paused(double deltatime) {} // Currently empty to avoid updating
+	virtual void p_Animating(double deltatime); // for testing animations
+	StateFunc m_UpdateFunc = &Scene::p_Running;
 
 	void CameraInput(double deltatime);
 
-	bool m_IsFrozen = false;
-	bool m_IsPaused = false;
 	bool m_IsEnabled = false;
-	const char* m_LevelFileDir = "Uninitialized";
+	eSceneState m_State = eSceneState::SceneState_Running;
+	const char* m_LevelFileName = "Uninitialized";
 	void Draw(GameObject* camera);
 	SceneManager* m_pSceneManager = nullptr;
 	MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
@@ -90,17 +87,11 @@ protected:
 	eSceneTypes m_ID = eSceneTypes::Scene_Null;
 
 	int m_CurrentCamera = 0;
-	Linear2LinkedList<GameObject*> m_CameraList;
+	std::vector<GameObject*> m_CameraList;
 
-	Linear2LinkedList<GameObject*> m_LightList;
+	std::vector<GameObject*> m_LightList;
 
-	Linear2LinkedList<GameObject*> m_SceneDrawList; // sorted by render order
-
-	//MenuManager* m_pMenuManager = nullptr;
-
-	// TODO:: Store window size in cameras?
-	vec3 m_ViewWindowPosition = 0; // world pos 3D
-	vec2 m_ViewWindowSize = vec2(g_WindowWidth, g_WindowHeight); // screen size
+	std::vector<GameObject*> m_SceneDrawList; // TODO: sort by render order
 };
 
 #endif //!_Scene_H_

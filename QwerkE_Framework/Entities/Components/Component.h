@@ -18,7 +18,7 @@ public:
 	/* Getters + Setters */
 	// getters
 	GameObject* GetParent() { return m_pParent; };
-	eComponentTags GetTag() { return m_ComponentTag; };
+	eComponentTags GetTag() const { return m_ComponentTag; };
 
 	// setters
 	void SetParent(GameObject* a_Parent) { m_pParent = a_Parent; };

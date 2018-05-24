@@ -14,6 +14,8 @@
 #include "Graphics/Graphics_Header.h"
 #include "CallbackFunctions.h"
 #include "Systems/Physics/PhysicsManager.h"
+#include "Systems/DataManager/DataManager.h"
+#include "Systems/DataManager/LevelLoader.h"
 #include "Systems/Renderer/Renderer.h"
 #include "Systems/MessageManager.h"
 #include "Systems/Audio/AudioManager.h"
@@ -68,6 +70,12 @@ namespace QwerkE
 			InputManager* inputManager = new InputManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Input_Manager, inputManager);
 
+			Renderer* renderer = new Renderer();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Renderer, renderer);
+
+			ShaderFactory* shaderFactory = new ShaderFactory();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
+
 #ifdef _glfw3_h_
 			m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
 #else
@@ -78,11 +86,16 @@ namespace QwerkE
 			WindowManager* windowManager = new WindowManager();
 			windowManager->AddWindow(m_Window);
 
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::WindowManager, windowManager);
-
 			ResourceManager* resourceManager = new ResourceManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Resource_Manager, resourceManager);
-			resourceManager->Init(); // order dependency, init after adding
+			resourceManager->Init(); // self order dependency, init after adding
+
+			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //TEMP: avoid bright white screen while loading
+			renderer->DrawFont("Loading..");
+			m_Window->SwapBuffers();
+
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::WindowManager, windowManager);
 
 			EventManager* eventManager = new EventManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Event_System, eventManager);
@@ -93,17 +106,11 @@ namespace QwerkE
 			Factory* entityFactory = new Factory();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Entity, entityFactory);
 
-			ShaderFactory* shaderFactory = new ShaderFactory();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory);
-
 			PhysicsManager* physicsManager = new PhysicsManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::PhysicsManager, physicsManager);
 
 			MessageManager* messageManager = new MessageManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::MessageManager, messageManager);
-
-			Renderer* renderer = new Renderer();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Renderer, renderer);
 
 			AudioManager* audioManager = new AudioManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Audio_Manager, audioManager);
@@ -114,6 +121,9 @@ namespace QwerkE
 			NetworkManager* network = new NetworkManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::NetworkManager, network);
 
+			DataManager* dataMan = new LevelLoader(entityFactory);
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Data_Manager, dataMan);
+
 			m_SceneManager->Initialize(); // Order Dependency
 
 			return QwerkE::ServiceLocator::ServicesLoaded();
@@ -122,8 +132,6 @@ namespace QwerkE
 		eEngineMessage Framework::TearDown()
 		{
 			delete (ResourceManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Resource_Manager);
-
-			delete (InputManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Input_Manager);
 
 			delete ((WindowManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::WindowManager));
 
@@ -147,9 +155,13 @@ namespace QwerkE
 
 			delete (NetworkManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::NetworkManager);
 
+			delete (DataManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Data_Manager);
+
+			delete (InputManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Input_Manager); // dependency
+
 			Libs_TearDown(); // unload libraries
 
-							 // TODO: Safety checks?
+			// TODO: Safety checks?
 			return eEngineMessage::_QSuccess;
 		}
 
@@ -279,13 +291,29 @@ namespace QwerkE
 
 			if (inputManager->FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
 			{
-				m_SceneManager->GetCurrentScene()->TogglePauseState();
+				static bool paused = false;
+				paused = !paused;
+				if (paused)
+				{
+					m_SceneManager->GetCurrentScene()->SetState(eSceneState::SceneState_Paused);
+				}
+				else
+				{
+					m_SceneManager->GetCurrentScene()->SetState(eSceneState::SceneState_Running);
+				}
 			}
 			if (inputManager->FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
 			{
-				static bool isFrozen = false;
-				isFrozen = !isFrozen; // toggle bool
-				m_SceneManager->GetCurrentScene()->SetIsFrozen(isFrozen);
+				static bool frozen = false;
+				frozen = !frozen;
+				if (frozen)
+				{
+					m_SceneManager->GetCurrentScene()->SetState(eSceneState::SceneState_Frozen);
+				}
+				else
+				{
+					m_SceneManager->GetCurrentScene()->SetState(eSceneState::SceneState_Running);
+				}
 			}
 			if (inputManager->FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{

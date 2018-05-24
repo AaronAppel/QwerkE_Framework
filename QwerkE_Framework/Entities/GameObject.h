@@ -51,6 +51,10 @@ public:
 	void Activate();
 	void Deactivate();
 
+	const std::map<eComponentTags, Component*>* SeeComponents() const { return &m_Components; }
+	const std::vector<Routine*>* SeeUpdateRoutines() { return &m_UpdateList; }
+	const std::vector<Routine*>* SeeDrawRoutines() { return &m_DrawList; }
+
 	/* Getters + Setters */
 	// getters
 	std::string GetName() { return m_Name; };

@@ -12,6 +12,16 @@ enum class eEngineMessage : std::uint8_t
 	_QMax
 };
 
+enum class eSceneState : std::uint8_t
+{
+	SceneState_Running = 0,
+	SceneState_Frozen, // Cameras can move
+	SceneState_Paused, // No updating
+	SceneState_Animating, // Cameras and Animation only
+
+	SceneState_Max
+};
+
 enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
 {
 	Resource_Manager = 0,
@@ -58,7 +68,6 @@ enum eComponentTags
 	Component_SkyBox,
 	Component_Animation,
 	Component_Character,
-	Component_Model,
 	Component_Max,
 	Component_Null
 };

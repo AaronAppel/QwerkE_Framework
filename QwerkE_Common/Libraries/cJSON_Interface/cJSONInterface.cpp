@@ -460,6 +460,13 @@ cJSON* CreateBool(const char* key, bool value)
 	return returnBool;
 }
 
+cJSON* CreateInt(const char* key, double value)
+{
+	cJSON* returnNumber = cJSON_CreateNumber(value);
+	returnNumber->string = _strdup(key);
+	return returnNumber;
+}
+
 cJSON* CreateNumber(const char* key, double value)
 {
 	cJSON* returnNumber = cJSON_CreateNumber(value);
@@ -566,7 +573,6 @@ cJSON* DeepSearchForItemByKey(cJSON* object, const char* key) // returns first i
 	}
 	return nullptr;
 }
-
 
 // utility helpers
 bool FileExists(const char* filename) // TODO:: Move to helpers.h/.cpp

@@ -25,6 +25,7 @@ class JobManager;
 class Window;
 class NetworkManager;
 class ShaderFactory;
+class DataManager;
 
 namespace QwerkE
 {
@@ -88,6 +89,7 @@ namespace QwerkE
 		static JobManager* m_JobManager;
 		static Window* m_Window;
         static NetworkManager* m_NetworkManager;
+		static DataManager* m_DataManager;
 	};
 }
 

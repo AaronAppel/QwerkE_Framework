@@ -1,0 +1,201 @@
+{
+	"ObjectList":	[{
+			"Cube3":	[{
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	50
+						}],
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	50
+						}],
+					"Scale":	[{
+							"ScaleX":	1,
+							"ScaleY":	1,
+							"ScaleZ":	1
+						}],
+					"ObjectTag":	3,
+					"ComponentList":	[{
+							"Render":	[{
+									"SchematicName":	"Cube.osch",
+									"Renderables":	[{
+											"Cube":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"null_material.msch",
+													"MeshFile":	"Cube.obj",
+													"MeshName":	"Cube"
+												}]
+										}]
+								}]
+						}]
+				}],
+			"Object2":	[{
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	-5,
+							"PositionZ":	30
+						}],
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	-5,
+							"PositionZ":	30
+						}],
+					"Scale":	[{
+							"ScaleX":	1,
+							"ScaleY":	1,
+							"ScaleZ":	1
+						}],
+					"ObjectTag":	6,
+					"ComponentList":	[{
+							"Render":	[{
+									"SchematicName":	"nanosuit.osch",
+									"Renderables":	[{
+											"Visor":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_glass.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Visor"
+												}],
+											"Legs":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_leg.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Legs"
+												}],
+											"Hands":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_hand.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Hands"
+												}],
+											"Lights":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_glass.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Lights"
+												}],
+											"Arms":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_arm.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Arms"
+												}],
+											"Helmet":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_helmet.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Helmet"
+												}],
+											"Body":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"nanosuit_body.msch",
+													"MeshFile":	"nanosuit.obj",
+													"MeshName":	"Body"
+												}]
+										}]
+								}]
+						}]
+				}]
+		}],
+	"CameraList":	[{
+			"Camera0":	[{
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	5
+						}],
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	5
+						}],
+					"Scale":	[{
+							"ScaleX":	1,
+							"ScaleY":	1,
+							"ScaleZ":	1
+						}],
+					"ObjectTag":	1,
+					"ComponentList":	[{
+							"Render":	[{
+									"SchematicName":	"camera.osch",
+									"Renderables":	[{
+											"Camera":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"null_material.msch",
+													"MeshFile":	"Camera.obj",
+													"MeshName":	"Camera"
+												}]
+										}]
+								}]
+						}],
+					"CamType":	0
+				}],
+			"Camera1":	[{
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	15
+						}],
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	0,
+							"PositionZ":	15
+						}],
+					"Scale":	[{
+							"ScaleX":	1,
+							"ScaleY":	1,
+							"ScaleZ":	1
+						}],
+					"ObjectTag":	1,
+					"ComponentList":	[{
+							"Render":	[{
+									"SchematicName":	"camera.osch",
+									"Renderables":	[{
+											"Camera":	[{
+													"Shader":	"LitMaterial.ssch",
+													"Material":	"null_material.msch",
+													"MeshFile":	"Camera.obj",
+													"MeshName":	"Camera"
+												}]
+										}]
+								}]
+						}],
+					"CamType":	0
+				}]
+		}],
+	"LightList":	[{
+			"Light4":	[{
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	5,
+							"PositionZ":	-10
+						}],
+					"Position":	[{
+							"PositionX":	0,
+							"PositionY":	5,
+							"PositionZ":	-10
+						}],
+					"Scale":	[{
+							"ScaleX":	1,
+							"ScaleY":	1,
+							"ScaleZ":	1
+						}],
+					"ObjectTag":	2,
+					"ComponentList":	[{
+							"Render":	[{
+									"SchematicName":	"light.osch",
+									"Renderables":	[{
+											"Light":	[{
+													"Shader":	"Basic3D.ssch",
+													"Material":	"null_material.msch",
+													"MeshFile":	"LightBulb.obj",
+													"MeshName":	"LightBulb"
+												}]
+										}]
+								}]
+						}]
+				}]
+		}]
+}

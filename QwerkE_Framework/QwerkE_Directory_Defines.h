@@ -30,6 +30,7 @@
 #define null_material "null_material.msch"
 #define null_font "null_font.ttf"
 #define null_sound "null_sound.wav"
+#define null_scene "null_scene.qscene"
 // Null schematics
 #define null_object_schematic "null_object.osch"
 #define null_material_schematic "null_material.msch"
@@ -40,6 +41,7 @@
 #define object_schematic_ext ".osch"
 #define material_schematic_ext ".msch"
 #define shader_schematic_ext ".ssch"
+#define scene_ext ".qscene"
 
 // Define paths to resource folders that can change easily from project
 // to project using a preprocessor define. Paths can also change or be
@@ -50,6 +52,7 @@
 #define FontFolderPath(a) StringAppend(AssetDir, "Fonts/", a)
 #define SoundFolderPath(a) StringAppend(AssetDir, "Sounds/", a)
 #define SchematicFolderPath(a) StringAppend(AssetDir, "BluePrints_Prefabs_Schematic/", a)
+#define SceneFolderPath(a) StringAppend(AssetDir, "Scenes/", a)
 // TODO: Change MaterialFolderPath to use a new material system
 
 

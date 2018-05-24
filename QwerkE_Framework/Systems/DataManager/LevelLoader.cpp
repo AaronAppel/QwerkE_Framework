@@ -1,11 +1,12 @@
 #include "LevelLoader.h"
-#include "Factory.h"
+#include "../Factory/Factory.h"
 #include "../../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../QwerkE_Enums.h"
 
 #include <string>
+#include <vector>
 #include <map>
 
 LevelLoader::LevelLoader(Factory* factory) : DataManager(factory)
@@ -33,23 +34,23 @@ void LevelLoader::SaveScene(Scene* scene, const char* fileDir)
 	}
 
 	// ADD CAMERAS
-	Linear2LinkedList<GameObject*> t_CameraObjectList = scene->GetCameraList(); // Cameras only
+	std::vector<GameObject*> t_CameraObjectList = scene->GetCameraList(); // Cameras only
 
 	cJSON* t_CameraList = CreateArray("CameraList");
 	AddItemToObject(root, t_CameraList);
-	for (int i = 0; i < t_CameraObjectList.Size(); i++)
+	for (int i = 0; i < t_CameraObjectList.size(); i++)
 	{
-		AddItemToArray(t_CameraList, ConvertGameObjectToJSON(t_CameraObjectList.At(i)));
+		AddItemToArray(t_CameraList, ConvertGameObjectToJSON(t_CameraObjectList.at(i)));
 	}
 
 	// ADD LIGHTS
-	Linear2LinkedList<GameObject*> t_LightObjectList = scene->GetLightList(); // Cameras only
+	std::vector<GameObject*> t_LightObjectList = scene->GetLightList(); // Cameras only
 
 	cJSON* t_LightList = CreateArray("LightList");
 	AddItemToObject(root, t_LightList);
-	for (int i = 0; i < t_LightObjectList.Size(); i++)
+	for (int i = 0; i < t_LightObjectList.size(); i++)
 	{
-		AddItemToArray(t_LightList, ConvertGameObjectToJSON(t_LightObjectList.At(i)));
+		AddItemToArray(t_LightList, ConvertGameObjectToJSON(t_LightObjectList.at(i)));
 	}
 
 	// WRITE TO FILE

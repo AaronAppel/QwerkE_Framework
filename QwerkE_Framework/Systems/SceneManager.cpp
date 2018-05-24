@@ -112,7 +112,6 @@ void SceneManager::Update(double deltatime) // update SceneTypes from bottom up 
 
 void SceneManager::Draw() // draw SceneTypes from top down (0+)
 {
-	// TODO:: might want to only draw specific scenes
 	if (m_CurrentScene)
 	{
 		if (m_CurrentScene->GetIsEnabled())

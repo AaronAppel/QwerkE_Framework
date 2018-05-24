@@ -17,7 +17,7 @@ void Renderer::DrawFont(const char* text)
 {
     // TODO: Improve font rendering
 	ResourceManager* resourceManager = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
-	RenderText(resourceManager->GetShaderProgram("text"),
+	RenderText(resourceManager->GetShaderProgram("font_shader.ssch"),
 		std::string(text),
 		100, 100, // x, y
 		1.0f, // scale

@@ -15,7 +15,7 @@ class RenderComponent : public Component
 {
 public:
 	RenderComponent();
-	RenderComponent(const char* objectRecipe) {}
+	RenderComponent(const char* objectRecipe);
 	RenderComponent(const char* shaderName, const char* materialName, const char* meshName);
 	~RenderComponent();
 

@@ -9,6 +9,7 @@
 #include "../../StringHelpers.h"
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
+// TODO: Split functions into smaller pieces. Ex. LoadMeshFromAI() can call functions to GetVertsFromAIMesh, GetUVs, GetMats... etc
 
 // private functions
 Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const char* modelFilePath);
@@ -217,4 +218,10 @@ void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mes
 	{
 		QwerkE_assimp_loadMeshByName(node->mChildren[i], scene, mesh, modeFilePath, meshName);
 	}
+}
+
+void QwerkE_assimp_loadModelAs1Mesh(aiNode *node, const aiScene *scene, Mesh*& mesh, const char* modelFilePath)
+{
+	// TODO: write function. probably a good idea to cleanup above functions and split them up to use here.
+	mesh = nullptr;
 }

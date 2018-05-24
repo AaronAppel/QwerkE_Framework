@@ -14,12 +14,12 @@
 TestScene::TestScene() : Scene()
 {
 	m_ID = eSceneTypes::Scene_TestScene;
-	m_LevelFileDir = "Resources/LevelData/TestScene.json";
+	m_LevelFileName = "TestScene.qscene";
 }
 
 TestScene::~TestScene()
 {
-	m_CameraList.Clear();
+	m_CameraList.clear();
 }
 
 GameObject* obj;
@@ -67,7 +67,7 @@ void TestScene::Initialize()
 	}
 }
 
-void TestScene::p_Update(double deltatime)
+void TestScene::p_Running(double deltatime)
 {
     obj->SetRotation(vec3(obj->GetRotation().x,
         obj->GetRotation().y + 0.002f / QwerkE::Time::GetDeltaTime(),
@@ -76,14 +76,14 @@ void TestScene::p_Update(double deltatime)
 	if (obj->GetRotation().y >= 360.0f)
 		obj->SetRotation(vec3(obj->GetRotation().x, obj->GetRotation().y - 360.0f, obj->GetRotation().z));
 
-	Scene::p_Update(deltatime);
+	Scene::p_Running(deltatime);
 }
 
 void TestScene::Draw()
 {
 	//g_Shader2->Use();
 	//g_Shader2->SetUniformFloat4("ObjectColour", 1.0f, 0.5f, 1.0f, 1.0f);
-	Scene::Draw(m_CameraList.At(m_CurrentCamera));
+	Scene::Draw(m_CameraList.at(m_CurrentCamera));
 
 	//g_Shader2->Use();
 	//g_Shader2->SetUniformFloat4("ObjectColour", 1.0f, 0.5f, 1.0f, 1.0f);

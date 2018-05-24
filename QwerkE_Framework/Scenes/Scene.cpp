@@ -6,6 +6,9 @@
 #include "../Systems/Input/Controller.h"
 #include "../Systems/DataManager/DataManager.h"
 #include "../Systems/ServiceLocator.h"
+#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+
+#include <algorithm>
 
 extern int g_WindowWidth;
 extern int g_WindowHeight;
@@ -17,23 +20,27 @@ Scene::Scene()
 
 Scene::~Scene()
 {
-	int size = m_LightList.Size();
+	int size = m_LightList.size();
 	for (int i = size - 1; i > -1; i--)
 	{
-		m_SceneDrawList.Remove(i); // Lights are drawn
-		m_pGameObjects.erase(m_LightList.At(i)->GetName().c_str()); // delete
-		delete m_LightList.At(i);
-		m_LightList.Remove(i);
-	}
-	m_LightList.Clear();
+		std::vector<GameObject*>::iterator it = m_SceneDrawList.begin();
+		m_SceneDrawList.erase(std::remove(m_SceneDrawList.begin(), m_SceneDrawList.end(), m_LightList.at(i)), m_SceneDrawList.end());
 
-	size = m_CameraList.Size();
+		m_pGameObjects.erase(m_LightList.at(i)->GetName().c_str()); // delete
+		delete m_LightList.at(i);
+
+		it = m_LightList.begin();
+		m_LightList.erase(std::remove(m_LightList.begin(), m_LightList.end(), m_LightList.at(i)), m_LightList.end());
+	}
+	m_LightList.clear();
+
+	size = m_CameraList.size();
 	for (int i = size - 1; i > -1; i--)
 	{
-		delete m_CameraList.At(i);
-		m_CameraList.Remove(i);
+		delete m_CameraList.at(i);
+		m_CameraList.erase(m_SceneDrawList.end());
 	}
-	m_CameraList.Clear();
+	m_CameraList.clear();
 
 	for (auto object : m_pGameObjects)
 	{
@@ -45,10 +52,10 @@ Scene::~Scene()
 void Scene::OnWindowResize(unsigned int width, unsigned int height)
 {
 	// update camera view and projection matrices
-	for (int i = 0; i < m_CameraList.Size(); i++)
+	for (int i = 0; i < m_CameraList.size(); i++)
 	{
 		// ((CameraComponent*)m_CameraList.At(i)->GetComponent(Component_Camera))->Setup();
-		((CameraComponent*)m_CameraList.At(i)->GetComponent(Component_Camera))->SetViewportSize(vec2((float)width, (float)height));
+		((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetViewportSize(vec2((float)width, (float)height));
 	}
 }
 
@@ -61,11 +68,11 @@ void Scene::ResetScene()
 {
 }
 
-void Scene::p_Update(double deltatime)
+void Scene::p_Running(double deltatime)
 {
 	InputManager* inputmanager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
 
-	CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.At(m_CurrentCamera)->GetComponent(Component_Camera));
+	CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.at(m_CurrentCamera)->GetComponent(Component_Camera));
 	// temporary active camera control
 	// mouse
 	{
@@ -90,10 +97,23 @@ void Scene::p_Frozen(double deltatime)
 	CameraInput(deltatime);
 }
 
+void Scene::p_Animating(double deltatime)
+{
+	CameraInput(deltatime);
+
+	// TODO: Create animation functionality
+	// for (auto object : m_pGameObjects)
+	{
+		// AnimationComponent* aComp (()object.second->GetComponent(Component_Animation));
+		// if (aComp)
+			// aComp->Animate();
+	}
+}
+
 void Scene::CameraInput(double deltatime) // camera control
 {
 	InputManager* inputmanager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
-	CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.At(m_CurrentCamera)->GetComponent(Component_Camera));
+	CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.at(m_CurrentCamera)->GetComponent(Component_Camera));
 
 	if (inputmanager->GetIsKeyDown(eKeys::eKeys_W))
 	{
@@ -124,9 +144,9 @@ void Scene::CameraInput(double deltatime) // camera control
 void Scene::Draw(GameObject* camera)
 {
 	// TODO:: Define draw behaviour (Highest first vs lowest first)
-	for (int i = m_SceneDrawList.Size() - 1; i >= 0; i--)
+	for (int i = m_SceneDrawList.size() - 1; i >= 0; i--)
 	{
-		m_SceneDrawList.At(i)->Draw(camera); // TODO:: Control render order
+		m_SceneDrawList.at(i)->Draw(camera); // TODO:: Control render order
 	}
 }
 
@@ -134,7 +154,7 @@ bool Scene::AddCamera(GameObject* camera)
 {
 	if (true) // TODO: What conditions would prevent camera insertion?
 	{
-		m_CameraList.PushBack(camera);
+		m_CameraList.push_back(camera);
 		return true;
 	}
 	return false;
@@ -142,12 +162,12 @@ bool Scene::AddCamera(GameObject* camera)
 
 void Scene::RemoveCamera(GameObject* camera)
 {
-	if (m_CameraList.Size() < 2) { return; } // Need 1 camera
-	for (int i = 0; i < m_CameraList.Size(); i++)
+	if (m_CameraList.size() < 2) { return; } // Need 1 camera
+	for (int i = 0; i < m_CameraList.size(); i++)
 	{
-		if (m_CameraList.At(i) == camera) // Pointer comparison
+		if (m_CameraList.at(i) == camera) // Pointer comparison
 		{
-			m_CameraList.Remove(i);
+			m_CameraList.erase(m_CameraList.begin() + i);
 			// Delete
 			return;
 		}
@@ -156,10 +176,10 @@ void Scene::RemoveCamera(GameObject* camera)
 
 void Scene::SetupCameras()
 {
-	for (int i = 0; i < m_CameraList.Size(); i++)
+	for (int i = 0; i < m_CameraList.size(); i++)
 	{
-		((CameraComponent*)m_CameraList.At(i)->GetComponent(Component_Camera))->Setup();
-		((CameraComponent*)m_CameraList.At(i)->GetComponent(Component_Camera))->SetTargetPosition(vec3(0, 0, 0)); // Give initial target location
+		((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->Setup();
+		((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetTargetPosition(vec3(0, 0, 0)); // Give initial target location
 	}
 }
 
@@ -167,21 +187,21 @@ bool Scene::AddLight(GameObject* light)
 {
 	if (true) // TODO: What conditions would prevent light insertion?
 	{
-		m_LightList.PushBack(light);
-		m_SceneDrawList.PushBack(light);
+		m_LightList.push_back(light);
+		m_SceneDrawList.push_back(light);
 		return true;
 	}
 	return false;
 }
 void Scene::RemoveLight(GameObject* light)
 {
-	if (m_LightList.Size() < 2) { return; }
-	for (int i = 0; i < m_LightList.Size(); i++)
+	if (m_LightList.size() < 2) { return; }
+	for (int i = 0; i < m_LightList.size(); i++)
 	{
-		if (m_LightList.At(i) == light) // Pointer comparison
+		if (m_LightList.at(i) == light) // Pointer comparison
 		{
-			m_LightList.Remove(i);
-			m_SceneDrawList.Remove(i); // Lights are drawn
+			m_LightList.erase(m_LightList.begin() + i);
+			m_SceneDrawList.erase(m_SceneDrawList.begin() + i); // Lights are drawn
 			// TODO: Deallocate memory
 			return;
 		}
@@ -190,8 +210,9 @@ void Scene::RemoveLight(GameObject* light)
 
 void Scene::SetupLights()
 {
-	for (int i = 0; i < m_LightList.Size(); i++)
+	for (int i = 0; i < m_LightList.size(); i++)
 	{
+		// TODO:
 	}
 }
 
@@ -202,7 +223,7 @@ bool Scene::AddObjectToScene(GameObject* object)
 	{
 		m_pGameObjects[object->GetName()] = object;
 		// TODO: Sort by draw order
-		m_SceneDrawList.PushBack(object);
+		m_SceneDrawList.push_back(object);
 		return true; // Success
 	}
 	return false; // Failure
@@ -219,57 +240,58 @@ void Scene::RemoveObjectFromScene(GameObject* object)
 		{
 			// Player specific
 		}
-		m_SceneDrawList.Remove(object);
+		m_SceneDrawList._Make_iterator(&object);
+
+		std::vector<GameObject*>::iterator it = m_SceneDrawList.begin();
+		m_SceneDrawList.erase(std::remove(m_SceneDrawList.begin(), m_SceneDrawList.end(), object), m_SceneDrawList.end());
+
 		m_pGameObjects.erase(object->GetName());
+		// TODO: Push object into a pool to be deleted at an appropriate time.
+		// Object may be owned externally and should not always be deleted by the scene.
 		delete object; // TODO:: Should deletion be handled differently?
 	}
 }
 
 void Scene::RemoveAllObjectsFromScene()
 {
-	m_LightList.Clear();
-	m_CameraList.Clear();
+	m_LightList.clear();
+	m_CameraList.clear();
 	m_pGameObjects.clear();
 }
 // Setters
-void Scene::SetIsPaused(bool isPaused)
+void Scene::SetState(eSceneState newState)
 {
-	m_IsPaused = isPaused;
-	if (m_IsPaused)
-		m_UpdateFunc = &Scene::p_Paused;
-	else
-		m_UpdateFunc = &Scene::p_Update;
-}
-
-void Scene::SetIsFrozen(bool isFrozen)
-{
-	m_IsFrozen = isFrozen;
-	if (m_IsFrozen)
+	switch (newState)
+	{
+	case eSceneState::SceneState_Running:
+		m_UpdateFunc = &Scene::p_Running;
+		break;
+	case eSceneState::SceneState_Frozen:
 		m_UpdateFunc = &Scene::p_Frozen;
-	else
-		m_UpdateFunc = &Scene::p_Update;
+		break;
+	case eSceneState::SceneState_Paused:
+		m_UpdateFunc = &Scene::p_Paused;
+		break;
+	}
 }
 
 void Scene::SaveScene()
 {
-    // TODO: Resolve feature
-	//DataManager* t_pDataManager = m_pGameCore->GetDataManager();
-	//t_pDataManager->SaveScene(this, m_LevelFileDir);
+	DataManager* t_pDataManager = (DataManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Data_Manager);
+	t_pDataManager->SaveScene(this, SceneFolderPath(m_LevelFileName));
 }
 
 void Scene::LoadScene()
 {
-    // TODO: Resolve feature
-	//DataManager* t_pDataManager = m_pGameCore->GetDataManager();
-	//t_pDataManager->LoadScene(this, m_LevelFileDir);
+	DataManager* t_pDataManager = (DataManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Data_Manager);
+	t_pDataManager->LoadScene(this, SceneFolderPath(m_LevelFileName));
 	SetupCameras();
 }
 
 GameObject* Scene::GetGameObject(const char* name)
 {
     if (m_pGameObjects.find(name) != m_pGameObjects.end())
-    {
         return m_pGameObjects[name];
-    }
+
     return nullptr;
 }

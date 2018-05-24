@@ -9,15 +9,18 @@
 
 RenderComponent::RenderComponent()
 {
-	m_ComponentTag = eComponentTags::Component_Model;
+	m_ComponentTag = eComponentTags::Component_Render;
 }
 
-RenderComponent::~RenderComponent()
+RenderComponent::RenderComponent(const char* objectRecipe)
 {
+	m_ComponentTag = eComponentTags::Component_Render;
+	// TODO:
 }
 
 RenderComponent::RenderComponent(const char* shaderName, const char* materialName, const char* meshName)
 {
+	m_ComponentTag = eComponentTags::Component_Render;
 	Renderable t_Renderable;
 	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
@@ -31,6 +34,10 @@ RenderComponent::RenderComponent(const char* shaderName, const char* materialNam
 
 	if (m_pParent)
 		((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+}
+
+RenderComponent::~RenderComponent()
+{
 }
 
 void RenderComponent::GenerateSchematic()

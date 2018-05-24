@@ -2,8 +2,8 @@
 #define _DataManager_H_
 
 /*
-	The DataManager() class is meant to be used to load/save and store
-	information from external save files at run time.
+	The DataManager() class is meant to be used to load/save
+	information from/to external save files at run time.
 
 	It is designed to be inherited by a custom user class that can load/save
 	scenes/collections for a specific game or application.
@@ -21,6 +21,7 @@
 class Scene;
 class GameObject;
 class Factory;
+class Component;
 struct cJSON;
 
 class DataManager
@@ -41,8 +42,14 @@ protected:
 	vec3 GetPositionFromcJSONItem(cJSON* item);
 	Factory* m_Factory = nullptr;
 
-	// Adders
+	// Transform
 	void AddPositionTocJSONItem(cJSON* item, GameObject* object);
+	void AddRotationTocJSONItem(cJSON* item, GameObject* object);
+	void AddScaleTocJSONItem(cJSON* item, GameObject* object);
+
+	// Components
+	void AddComponentTocJSONItem(cJSON* item, const Component* component) const;
+	void AddComponentsTocJSONItem(cJSON* item, GameObject* object);
 };
 
 #endif //!_DataManager_H_

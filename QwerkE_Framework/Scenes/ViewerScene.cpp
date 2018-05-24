@@ -6,11 +6,12 @@
 ViewerScene::ViewerScene()
 {
 	m_ID = eSceneTypes::Scene_ViewerScene;
+	m_LevelFileName = "ViewerScene.qscene";
 }
 
 ViewerScene::~ViewerScene()
 {
-	m_CameraList.Clear();
+	m_CameraList.clear();
 }
 
 void ViewerScene::Initialize()
@@ -31,10 +32,10 @@ void ViewerScene::Initialize()
 
 void ViewerScene::p_Update(double TimePassed)
 {
-	Scene::p_Update(TimePassed);
+	Scene::p_Running(TimePassed);
 }
 
 void ViewerScene::Draw()
 {
-	Scene::Draw(m_CameraList.At(m_CurrentCamera));
+	Scene::Draw(m_CameraList.at(m_CurrentCamera));
 }

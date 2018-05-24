@@ -2,6 +2,8 @@
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
+#include "../FileUtilities.h"
+
 #include "../../StringHelpers.h"
 
 #include <iostream>
@@ -23,9 +25,11 @@ namespace QwerkE
 	{
 		Mesh* LoadMeshInModelByName(const char* modelFilePath, const char* meshName)
 		{
-			if (false == ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->MeshExists(meshName))
+			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+			if (false == resMan->MeshExists(meshName))
 			{
-				// TODO: remain assimp agnostic
+				Mesh* mesh = nullptr;
+#ifdef AI_CONFIG_H_INC // assimp
 				Assimp::Importer importer;
 				const aiScene *scene = importer.ReadFile(modelFilePath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
@@ -34,18 +38,20 @@ namespace QwerkE
 					std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
 					return nullptr; // failure
 				}
-				Mesh* mesh = nullptr;
 				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, modelFilePath, meshName);
-				((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddMesh(meshName, mesh);
-				return mesh;
+#else
+				// separate model loading library
+#pragma error "Define model loading library!"
+#endif // AI_CONFIG_H_INC
+				resMan->AddMesh(meshName, mesh);
+				return resMan->GetMesh(meshName);
 			}
 			else
 			{
-				return ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh(meshName);
+				return resMan->GetMesh(meshName);
 			}
 		}
 
-		// TODO: API should only ask for fileName, then prepend directory
 		bool LoadModelFileToMeshes(const char* path)
 		{
 			// check if a model with the same name already exists
@@ -95,6 +101,44 @@ namespace QwerkE
 			}
 
 			return true; // success
+		}
+
+		Mesh* LoadModelFileTo1Mesh(const char* modelFilePath)
+		{
+			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+			if (false == resMan->MeshExists(GetFileNameNoExt(modelFilePath).c_str()))
+			{
+				Mesh* mesh = nullptr;
+
+#ifdef AI_CONFIG_H_INC // assimp
+				Assimp::Importer importer;
+				const aiScene *scene = importer.ReadFile(modelFilePath, aiProcess_Triangulate | aiProcess_FlipUVs);
+
+				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+				{
+					std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
+					return nullptr; // failure
+				}
+				QwerkE_assimp_loadModelAs1Mesh(scene->mRootNode, scene, mesh, modelFilePath);
+#else
+				// separate model loading library
+#pragma error "Define model loading library!"
+#endif // AI_CONFIG_H_INC
+
+				if (mesh)
+				{
+					resMan->AddMesh(GetFileNameNoExt(modelFilePath).c_str(), mesh);
+					return resMan->GetMesh(GetFileNameNoExt(modelFilePath).c_str());
+				}
+				else
+				{
+					return resMan->GetMesh(null_mesh);
+				}
+			}
+			else
+			{
+				return resMan->GetMesh(GetFileNameNoExt(modelFilePath).c_str());
+			}
 		}
 	}
 }
