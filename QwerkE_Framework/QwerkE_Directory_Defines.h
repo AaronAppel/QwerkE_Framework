@@ -23,7 +23,8 @@
 // Any external files should have matching names for the same reasons.
 // TODO: should macros express the file extension? Need to if the loader is looking for that file
 // TODO: Procedurally generate null object to guarantee instantiation
-#define null_mesh "null_mesh.obj"
+#define null_mesh_filename "null_mesh.obj"
+#define null_mesh "null_mesh"
 #define null_shader "null_shader"
 #define null_texture "null_texture.png"
 #define null_material "null_material.msch"

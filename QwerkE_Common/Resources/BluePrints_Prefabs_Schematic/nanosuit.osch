@@ -4,37 +4,44 @@
 		"Visor": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_glass.msch",
-			"Mesh":	"Visor"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Visor"
 			}],
 		"Legs": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_leg.msch",
-			"Mesh":	"Legs"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Legs"
 			}],
 		"Hands": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_hand.msch",
-			"Mesh":	"Hands"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Hands"
 			}],
 		"Lights": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_glass.msch",
-			"Mesh":	"Lights"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Lights"
 			}],
 		"Arms": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_arm.msch",
-			"Mesh":	"Arms"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Arms"
 			}],
 		"Helmet": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_helmet.msch",
-			"Mesh":	"Helmet"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Helmet"
 			}],
 		"Body": [{
 			"Shader":	"LitMaterial",
 			"Material":	"nanosuit_body.msch",
-			"Mesh":	"Body"
+			"MeshFile":	"nanosuit.obj",
+			"MeshName":	"Body"
 			}]
 		}]
 }

@@ -17,7 +17,7 @@
 // Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
 void ResourceManager::Init()
 {
-	m_NullMesh = InstantiateMesh(null_mesh);
+	m_NullMesh = GetMeshFromFile(null_mesh_filename, null_mesh);
 	m_NullTexture = InstantiateTexture(null_texture); // TODO: Create a Texture class
 	m_NullMaterial = InstantiateMaterial(null_material_schematic);
 	m_NullFont = InstantiateFont(null_font); // TODO: Create a valid null font

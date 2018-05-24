@@ -4,7 +4,8 @@
 		"Cube": [{
 			"Shader":	"LitMaterial",
 			"Material":	"null_material.mat",
-			"Mesh":	"Cube.obj"
+			"MeshFile":	"Cube.obj",
+			"MeshName": "Cube"
 			}]
 		}]
 }

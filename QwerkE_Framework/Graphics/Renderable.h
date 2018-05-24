@@ -22,11 +22,13 @@ public:
 
 	// Getters + Setters
 	// Getters
+	std::string GetRenderableName() const { return m_RenderableName; }
 	ShaderProgram* GetShaderSchematic() { return m_Shader; }
 	MaterialData* GetMaterialSchematic() { return m_Material; }
 	Mesh* GetMesh() { return m_Mesh; }
 
 	// Setters
+	void SetRenderableName(std::string name) { m_RenderableName = name; }
 	void SetShader(ShaderProgram* shader)
 	{
 		if (shader)
@@ -50,6 +52,7 @@ public:
 	}
 
 private:
+	std::string m_RenderableName = "Uninitialized";
 	ShaderProgram* m_Shader = nullptr;
 	MaterialData* m_Material = nullptr;
 	Mesh* m_Mesh = nullptr;

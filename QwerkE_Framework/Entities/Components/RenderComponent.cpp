@@ -5,6 +5,7 @@
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"
+#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 
 RenderComponent::RenderComponent()
 {
@@ -32,9 +33,12 @@ RenderComponent::RenderComponent(const char* shaderName, const char* materialNam
 		((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
 }
 
-void RenderComponent::GenerateRecipe()
+void RenderComponent::GenerateSchematic()
 {
-	// TODO: Define recipes
+	if (strcmp(m_SchematicName.c_str(), "None") == 0)
+		if (m_pParent)
+		m_SchematicName = m_pParent->GetName();
+	SaveObjectSchematic(this);
 }
 
 void RenderComponent::Setup(const char* shaderName, const char* materialName, const char* meshName)
@@ -72,6 +76,15 @@ void RenderComponent::AppendEmptyRenderables(int count)
 void RenderComponent::AddRenderable(Renderable renderable)
 {
 	m_RenderableList.push_back(renderable);
+}
+
+void RenderComponent::SetNameAtIndex(int index, std::string name)
+{
+	// TODO: More error handling
+	if (index < m_RenderableList.size())
+	{
+		m_RenderableList[index].SetRenderableName(name);
+	}
 }
 
 void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)

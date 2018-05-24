@@ -8,6 +8,7 @@
 #include "../MaterialData.h"
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderComponent.h"
+#include "../Renderable.h"
 
 #include "../Shared_Engine/Engine_Defines.h"
 
@@ -86,9 +87,9 @@ GLuint CopyFBOToTexture(FrameBufferObject& fbo, int w, int h, int x, int y)
 
 void SaveObjectSchematic(RenderComponent* rComp) // save to file
 {
-	const char* filePath = StringAppend(AssetDir, "BluePrints_Prefabs_Schematic/ObjectRecipe1", object_schematic_ext);
+	const char* filePath = SchematicFolderPath(StringAppend(rComp->GetSchematicName().c_str(), object_schematic_ext));
 
-	// if file does not exist, create one,otherwise overwrite data
+	// if file does not exist, create one, otherwise overwrite data
 	if (!FileExists(filePath))
 	{
 		CreateEmptycJSONFile(filePath);
@@ -100,17 +101,30 @@ void SaveObjectSchematic(RenderComponent* rComp) // save to file
 
 	cJSON* root = OpencJSONStream(filePath);
 
-	AddItemToRoot(root, CreateString("Name", "ObjectRecipe1.orec"));
+	if (root)
+	{
+		AddItemToRoot(root, CreateString("Name", rComp->GetSchematicName().c_str()));
 
-	cJSON* renderables = CreateArray("Renderables");
-	cJSON* r1 = CreateArray("R1");
+		cJSON* renderables = CreateArray("Renderables");
 
-	AddItemToArray(r1, CreateString("Shader", "null_shader"));
-	AddItemToArray(r1, CreateString("Material", "null_material.mat"));
-	AddItemToArray(r1, CreateString("Mesh", "null_model.obj"));
+		// TODO: Better way to get access to renderable values?
+		std::vector<Renderable>* renderablesList = (std::vector<Renderable>*)rComp->LookAtRenderableList();
 
-	AddItemToArray(renderables, r1);
-	AddItemToRoot(root, renderables);
+		for (size_t i = 0; i < renderablesList->size(); i++)
+		{
+			// TODO: Set the renderable names
+			cJSON* renderable = CreateArray(StringAppend("R", std::to_string(i).c_str()));
+
+			AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
+			AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->s_Name.c_str()));
+			AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
+			AddItemToArray(renderable, CreateString("MeshName", renderablesList->at(i).GetMesh()->GetName().c_str()));
+
+			AddItemToArray(renderables, renderable);
+		}
+
+		AddItemToRoot(root, renderables);
+	}
 
 	PrintRootObjectToFile(filePath, root);
 	ClosecJSONStream(root);
@@ -119,6 +133,7 @@ void SaveObjectSchematic(RenderComponent* rComp) // save to file
 RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from file
 {
 	RenderComponent* rComp = new RenderComponent();
+	rComp->SetSchematicName(GetFileNameWithExt(schematicPath));
 
 	cJSON* root = OpencJSONStream(schematicPath);
 
@@ -137,9 +152,10 @@ RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from fil
 		{
 			cJSON* currRenderable = GetItemFromArrayByIndex(renderables, i);
 
+			rComp->SetNameAtIndex(i, currRenderable->string);
 			rComp->SetShaderAtIndex(i, resMan->GetShaderProgram(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
 			rComp->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
-			rComp->SetMeshAtIndex(i, resMan->GetMesh(GetItemFromArrayByKey(currRenderable, "Mesh")->valuestring));
+			rComp->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
 		}
 	}
 

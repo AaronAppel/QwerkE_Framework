@@ -5,35 +5,36 @@
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../../../QwerkE_Framework/Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../FileUtilities.h"
 #include "../../StringHelpers.h"
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
 
 // private functions
-Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene);
-void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, std::vector<std::string>& matNames);
+Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const char* modelFilePath);
+void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, const std::string& filePath, std::vector<std::string>& matNames);
 
-void QwerkE_assimp_loadSceneNodeData(aiNode *node, const aiScene *scene, std::vector<Mesh*>& meshes, std::string directory, std::vector<std::string>& matNames)
+void QwerkE_assimp_loadSceneNodeData(aiNode *node, const aiScene *scene, std::vector<Mesh*>& meshes, const std::string& filePath, std::vector<std::string>& matNames)
 {
 	// process all the node's meshes (if any)
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
 	{
 		// load VertexData
 		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-		meshes.push_back(QwerkE_assimp_loadVertexData(mesh, scene));
+		meshes.push_back(QwerkE_assimp_loadVertexData(mesh, scene, filePath.c_str()));
 
 		// load Textures + materials
 		if (mesh->mMaterialIndex >= 0) // has material?
-			QwerkE_assimp_loadMaterialTextures(scene->mMaterials[mesh->mMaterialIndex], directory, matNames);
+			QwerkE_assimp_loadMaterialTextures(scene->mMaterials[mesh->mMaterialIndex], filePath, matNames);
 	}
 	// then do the same for each of its children
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
 	{
-		QwerkE_assimp_loadSceneNodeData(node->mChildren[i], scene, meshes, directory, matNames);
+		QwerkE_assimp_loadSceneNodeData(node->mChildren[i], scene, meshes, filePath, matNames);
 	}
 }
 
-Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene)
+Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const char* modelFilePath)
 {
 	// process vertex positions, normals and texture coordinates
 	unsigned int totalVerts = mesh->mNumVertices;
@@ -79,14 +80,15 @@ Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene)
 		rMesh = new Mesh();
 		rMesh->BufferMeshData(totalVerts, &vertices[0], totalFaces * 3, &indices[0]);
 		rMesh->SetName(mesh->mName.C_Str());
+		rMesh->SetFileName(GetFileNameWithExt(modelFilePath));
 	}
 	else
-		rMesh = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh("null_mesh");
+		rMesh = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh(null_mesh);
 
 	return rMesh;
 }
 
-void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, std::vector<std::string>& matNames)
+void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, const std::string& filePath, std::vector<std::string>& matNames)
 {
 	// check if material is already loaded
 	aiString name;
@@ -197,7 +199,7 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, std::string directory, 
 	matNames.push_back(name.C_Str()); // get name for mat loading later
 }
 
-void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mesh, const char* meshName)
+void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mesh, const char* modeFilePath, const char* meshName)
 {
 	// process all the node's meshes (if any)
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -206,13 +208,13 @@ void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mes
 		aiMesh *aimesh = scene->mMeshes[node->mMeshes[i]];
 		if (strcmp(aimesh->mName.C_Str(), meshName) == 0)
 		{
-			mesh = QwerkE_assimp_loadVertexData(aimesh, scene);
+			mesh = QwerkE_assimp_loadVertexData(aimesh, scene, modeFilePath);
 			return;
 		}
 	}
 	// then do the same for each of its children
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
 	{
-		QwerkE_assimp_loadMeshByName(node->mChildren[i], scene, mesh, meshName);
+		QwerkE_assimp_loadMeshByName(node->mChildren[i], scene, mesh, modeFilePath, meshName);
 	}
 }

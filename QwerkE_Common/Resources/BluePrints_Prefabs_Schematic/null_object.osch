@@ -4,7 +4,8 @@
 			"R1":	[{
 					"Shader":	"null_shader.ssch",
 					"Material":	"null_material.msch",
-					"Mesh":	"null_model.obj"
+					"MeshFile":	"null_mesh.obj",
+					"MeshName":	"null_mesh"
 				}]
 		}]
 }

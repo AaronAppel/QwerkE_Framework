@@ -24,7 +24,7 @@ GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 	t_SkyBox->SetName("SkyBox" + std::to_string(helpers_GetUniqueID()));
 
 	// Rendering
-	AddModelComponentFromSchematic(t_SkyBox, "ObjectRecipe1");
+	AddModelComponentFromSchematic(t_SkyBox, null_object_schematic);
 
 	RenderRoutine* renderRoutine = new RenderRoutine();
 	// Add
@@ -49,9 +49,6 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 	t_Model->SetTag(GO_Tag_TestModel);
 
 	// Rendering //
-	QwerkE::FileLoader::LoadModelFileToMeshes(MeshFolderPath("nanosuit.obj"));
-	QwerkE::FileLoader::LoadMeshInModelByName(MeshFolderPath("nanosuit.obj"), "Arms");
-
 	AddModelComponentFromSchematic(t_Model, "nanosuit.osch");
 
 	// render routine

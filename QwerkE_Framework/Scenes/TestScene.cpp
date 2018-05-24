@@ -48,24 +48,23 @@ void TestScene::Initialize()
 		// t_pFactory->CreateCube(this, vec3(2, 2, 30));
 		// t_pFactory->CreateCube(this, vec3(-2, 1, 40));
 
-		obj = t_pFactory->CreateCube(this, vec3(0,0, 150));
-		obj->SetRotation(vec3(45,45,45));
+		// TEST:
+		obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 30));
+		obj->SetRotation(vec3(0, 0, 0));
+
+		t_pFactory->CreateCube(this, vec3(0,0, 50));
 		// plane
 		// t_pFactory->CreatePlane(this, vec3(0, -1, 0));
 	}
 
 	{	// Create scene lighting
-		int lights = 0;
+		int lights = 3;
 		for (int i = 0; i < lights; i++)
 		{
-			t_pFactory->CreateLight(this, vec3((i + 1) * -3.0f, (i + 1) * -1.0f, (i + 1) * -3.0f));
+			// t_pFactory->CreateLight(this, vec3((i + 1) * -3.0f, (i + 1) * -1.0f, (i + 1) * -3.0f));
 		}
 		t_pFactory->CreateLight(this, vec3(0, 5, -10));
 	}
-	//TEST:
-	obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 100));
-	// obj = t_pFactory->CreateCube(this, vec3(0, 0, 10));
-	obj->SetRotation(vec3(0,0,0));
 }
 
 void TestScene::p_Update(double deltatime)

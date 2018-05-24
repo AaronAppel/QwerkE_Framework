@@ -2,7 +2,7 @@
 # File Created: 23.05.2018 23:22:32
 
 #
-# object null_mesh.obj
+# object null_mesh
 #
 
 v  0.1905 0.1325 0.0000
@@ -1357,8 +1357,8 @@ vt 0.3750 0.9500 0.0000
 vt 0.3750 0.9750 0.0000
 # 287 texture coords
 
-o null_mesh.obj
-g null_mesh.obj
+o null_mesh
+g null_mesh
 f 1/1/1 2/2/2 3/3/3 
 f 3/3/3 4/4/4 1/1/1 
 f 4/4/4 3/3/3 5/5/5 

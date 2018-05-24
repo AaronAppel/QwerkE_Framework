@@ -4,7 +4,8 @@
 		"Light": [{
 			"Shader":	"Basic3D.ssch",
 			"Material":	"null_material.msch",
-			"Mesh":	"LightBulb.obj"
+			"MeshFile":	"LightBulb.obj",
+			"MeshName":	"LightBulb"
 		}]
 	}]
 }

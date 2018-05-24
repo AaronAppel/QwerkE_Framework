@@ -35,7 +35,7 @@ namespace QwerkE
 					return nullptr; // failure
 				}
 				Mesh* mesh = nullptr;
-				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, meshName);
+				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, modelFilePath, meshName);
 				((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddMesh(meshName, mesh);
 				return mesh;
 			}
@@ -50,13 +50,8 @@ namespace QwerkE
 		{
 			// check if a model with the same name already exists
 			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
-			std::string fileName = path;
-			fileName = fileName.substr(fileName.find_last_of('/') + 1, fileName.size()); // get name + ext
 
 			// TODO: Prevent the same model from being loaded
-
-			std::string directory = path;
-			directory = directory.substr(0, directory.find_last_of('/') + 1); // folder absolute path
 
 			// create temporary mesh and material buffers to load.
 			// external library only cares about copying the data, not initializing it.
@@ -80,7 +75,7 @@ namespace QwerkE
 			}
 
 			// NOTE: aiScene is an object hierarchy so it might almost require GameObject creation here.
-			QwerkE_assimp_loadSceneNodeData(scene->mRootNode, scene, meshes, directory, matNames);
+			QwerkE_assimp_loadSceneNodeData(scene->mRootNode, scene, meshes, path, matNames);
 
 			// TODO: De-allocate RAM created by assimp
 #else

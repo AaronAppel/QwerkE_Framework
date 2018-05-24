@@ -55,6 +55,7 @@ public:
 	// The following functions guarantee a valid return variable using null or error objects
 	// TODO: Should getters generate objects? What would be a better way?
 	Mesh* GetMesh(const char* name); // specify .ext
+	Mesh* GetMeshFromFile(const char* filePath, const char* meshName); // specify .ext
 	GLuint GetTexture(const char* name); // specify .ext
 	MaterialData* GetMaterial(const char* name); // specify .ext
 	FT_Face GetFont(const char* name); // specify .ext

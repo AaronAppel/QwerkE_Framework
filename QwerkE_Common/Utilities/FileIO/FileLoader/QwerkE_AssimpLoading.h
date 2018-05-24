@@ -19,7 +19,7 @@ class aiScene;
 class Mesh;
 
 // TODO: Load model as 1 mesh
-void QwerkE_assimp_loadSceneNodeData(aiNode *node, const aiScene *scene, std::vector<Mesh*>& meshes, std::string directory, std::vector<std::string>& matNames);
-void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mesh, const char* meshName);
+void QwerkE_assimp_loadSceneNodeData(aiNode *node, const aiScene *scene, std::vector<Mesh*>& meshes, const std::string& filePath, std::vector<std::string>& matNames);
+void QwerkE_assimp_loadMeshByName(aiNode *node, const aiScene *scene, Mesh*& mesh, const char* modelFilePath, const char* meshName);
 
 #endif // !_QwerkE_AssimpLoading_H_

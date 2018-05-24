@@ -3,6 +3,7 @@
 #include "../../Graphics/MaterialData.h"
 #include "../../Graphics/Mesh/Mesh.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
 
 #include <map>
 
@@ -162,6 +163,21 @@ Mesh* ResourceManager::GetMesh(const char* name)
 		return m_Meshes[name];
 	}
 	return InstantiateMesh(name);
+}
+
+Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshName)
+{
+	if (MeshExists(meshName))
+		return m_Meshes[meshName];
+
+	Mesh* result = QwerkE::FileLoader::LoadMeshInModelByName(MeshFolderPath(fileName), meshName);
+	if (result)
+	{
+		m_Meshes[meshName] = result;
+		return result;
+	}
+	else
+		return m_NullMesh;
 }
 
 GLuint ResourceManager::GetTexture(const char* name)

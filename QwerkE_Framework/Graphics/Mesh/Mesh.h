@@ -27,10 +27,12 @@ public:
 
 	/* Getters + Setters */
 	// Getters
-	std::string GetName() { return m_Name; };
+	std::string GetName() const { return m_Name; };
+	std::string GetFileName() const { return m_FileName; };
 
 	// Setters
 	void SetName(std::string name) { m_Name = name; }
+	void SetFileName(std::string file) { m_FileName = file; }
 	void SetPrimitiveType(GLenum type) { m_PrimitiveType = type; };
 	void ToggleWireframe(); // TODO: Improve
 
@@ -48,6 +50,7 @@ private:
 	GLuint m_IndexCount = 0;
 	GLenum m_PrimitiveType = GL_TRIANGLES;
 	std::string m_Name = "Uninitialized";
+	std::string m_FileName = "Uninitialized";
 
 	/* Draw functionality */
 	MeshFunction m_DrawFunc = &Mesh::NullDraw;
