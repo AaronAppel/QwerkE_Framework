@@ -127,16 +127,16 @@ void LevelLoader::LoadScene(Scene* scene, const char* fileDir)
 	{
 		cJSON* tempObject = GetItemFromArrayByKey(t_LightObjects.at(i), "Position");
 		vec3 position = GetPositionFromcJSONItem(tempObject);
-		switch (GetItemFromArrayByKey(t_LightObjects.at(i), "LightType")->valueint)
-		{
-		case LightType_Point:
-			m_Factory->CreateLight(scene, position);
-			break;
-		case LightType_Area: // TODO: Change for new light types
-			break;
-		case LightType_Spot:
-			break;
-		}
+		//switch (GetItemFromArrayByKey(t_LightObjects.at(i), "LightType")->valueint)
+		//{
+		//case LightType_Point:
+		//	m_Factory->CreateLight(scene, position);
+		//	break;
+		//case LightType_Area: // TODO: Change for new light types
+		//	break;
+		//case LightType_Spot:
+		//	break;
+		//}
 	}
 
 	// END

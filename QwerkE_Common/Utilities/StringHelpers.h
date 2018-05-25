@@ -10,7 +10,7 @@
 const char* StringAppend(const char* a, const char* b);
 const char* StringAppend(const char* a, const char* b, const char* c);
 
-const char* DeepCopyString(const char* string);
+char* DeepCopyString(const char* string);
 
 const char* CombineStrings(const char* a, const char* b);
 const char* CombineStrings(std::string a, std::string b);

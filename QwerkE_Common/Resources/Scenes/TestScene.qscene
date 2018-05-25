@@ -184,6 +184,8 @@
 						}],
 					"ObjectTag":	2,
 					"ComponentList":	[{
+							"Light":	[{
+							}],
 							"Render":	[{
 									"SchematicName":	"light.osch",
 									"Renderables":	[{

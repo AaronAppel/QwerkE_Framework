@@ -21,6 +21,17 @@ DataManager::~DataManager()
 {
 }
 // Utility
+void DataManager::AddVec3ToItem(cJSON* item, const char* arrayName, const char* name1, float value1, const char* name2, float value2, const char* name3, float value3) const
+{
+	cJSON* vec3Array = CreateObject();
+	vec3Array->string = DeepCopyString(arrayName);
+	AddItemToArray(vec3Array, CreateNumber(name1, value1));
+	AddItemToArray(vec3Array, CreateNumber(name2, value2));
+	AddItemToArray(vec3Array, CreateNumber(name3, value3));
+
+	AddItemToArray(item, vec3Array);
+}
+
 cJSON* DataManager::ConvertGameObjectToJSON(GameObject* item)
 {
 	if (item == nullptr) { nullptr; }
@@ -136,6 +147,23 @@ void DataManager::AddComponentTocJSONItem(cJSON* item, const Component* componen
 	case Component_Physics:
 		break;
 	case Component_Light:
+	{
+		cJSON * t_LightComp = CreateArray("Light");
+		switch (((LightComponent*)component)->GetType())
+		{
+		case LightType_Point:
+			AddItemToArray(t_LightComp, CreateNumber("LightType", (int)LightType_Point));
+			AddVec3ToItem(t_LightComp, "LightColour", "Red", ((LightComponent*)component)->GetColour().x, "Green", ((LightComponent*)component)->GetColour().y,
+				"Blue", ((LightComponent*)component)->GetColour().z);
+			// AddItemToArray(t_LightComp, CreateNumber("LightType", (int)LightType_Point));
+			break;
+		case LightType_Area: // TODO: Implement other light types.
+			break;
+		case LightType_Spot:
+			break;
+		}
+		AddItemToArray(item, t_LightComp);
+	}
 		break;
 	case Component_Controller:
 		break;
@@ -169,10 +197,6 @@ void DataManager::AddComponentTocJSONItem(cJSON* item, const Component* componen
 	case Component_Print:
 		break;
 	case Component_SkyBox:
-		break;
-	case Component_Animation:
-		break;
-	case Component_Character:
 		break;
 	}
 }

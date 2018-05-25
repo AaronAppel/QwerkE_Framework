@@ -26,7 +26,7 @@ const char* StringAppend(const char* a, const char* b, const char* c)
 	return newString;
 }
 
-const char* DeepCopyString(const char* string)
+char* DeepCopyString(const char* string)
 {
 	if (string == 0) return nullptr;
 

@@ -66,8 +66,8 @@ enum eComponentTags
 	Component_Render,
 	Component_Print,
 	Component_SkyBox,
-	Component_Animation,
-	Component_Character,
+	Component_SoundPlayer,
+	Component_SoundListener,
 	Component_Max,
 	Component_Null
 };
