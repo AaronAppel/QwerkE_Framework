@@ -8,7 +8,7 @@
 // RenderComponent
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Graphics/Renderable.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderComponent.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 
@@ -183,7 +183,7 @@ void DataManager::AddComponentTocJSONItem(cJSON* item, const Component* componen
 			cJSON* renderable = CreateArray(renderablesList->at(i).GetRenderableName().c_str());
 
 			AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
-			AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->s_Name.c_str()));
+			AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->GetMaterialName().c_str()));
 			AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
 			AddItemToArray(renderable, CreateString("MeshName", renderablesList->at(i).GetMesh()->GetName().c_str()));
 

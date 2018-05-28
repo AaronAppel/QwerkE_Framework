@@ -5,12 +5,18 @@
 #include "../../../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
-#include "../MaterialData.h"
+#include "../Material.h"
+#include "../MaterialComponent.h"
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderComponent.h"
 #include "../Renderable.h"
+#include "../Texture.h"
+#include "../QwerkE_Framework/QwerkE_Framework/QwerkE_Enums.h"
 
 #include "../Shared_Engine/Engine_Defines.h"
+
+#include <map>
+#include <string>
 
 void CheckAllGraphicsErrors()
 {
@@ -116,7 +122,7 @@ void SaveObjectSchematic(RenderComponent* rComp) // save to file
 			cJSON* renderable = CreateArray(StringAppend("R", std::to_string(i).c_str()));
 
 			AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
-			AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->s_Name.c_str()));
+			AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->GetMaterialName().c_str()));
 			AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
 			AddItemToArray(renderable, CreateString("MeshName", renderablesList->at(i).GetMesh()->GetName().c_str()));
 
@@ -133,12 +139,16 @@ void SaveObjectSchematic(RenderComponent* rComp) // save to file
 RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from file
 {
 	RenderComponent* rComp = new RenderComponent();
-	rComp->SetSchematicName(GetFileNameWithExt(schematicPath));
-
+	LoadObjectSchematic(schematicPath, rComp);
+	return rComp;
+}
+void LoadObjectSchematic(const char* schematicPath, RenderComponent* renderComponent) // load from file
+{
 	cJSON* root = OpencJSONStream(schematicPath);
 
 	if (root)
 	{
+		renderComponent->SetSchematicName(GetFileNameWithExt(schematicPath));
 		ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
 		cJSON* name = GetItemFromRootByKey(root, "Name");
@@ -146,27 +156,25 @@ RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from fil
 		cJSON* renderables = GetItemFromRootByKey(root, "Renderables");
 		int size = GetArraySize(renderables);
 
-		rComp->AppendEmptyRenderables(size);
+		renderComponent->AppendEmptyRenderables(size);
 
 		for (int i = 0; i < size; i++) // per renderable
 		{
 			cJSON* currRenderable = GetItemFromArrayByIndex(renderables, i);
 
-			rComp->SetNameAtIndex(i, currRenderable->string);
-			rComp->SetShaderAtIndex(i, resMan->GetShaderProgram(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
-			rComp->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
-			rComp->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
+			renderComponent->SetNameAtIndex(i, currRenderable->string);
+			renderComponent->SetShaderAtIndex(i, resMan->GetShaderProgram(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
+			renderComponent->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
+			renderComponent->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
 		}
 	}
 
 	ClosecJSONStream(root);
-
-	return rComp;
 }
 
-void SaveMaterialSchematic(MaterialData* mat)
+void SaveMaterialSchematic(Material* mat)
 {
-	const char* filePath = TextureFolderPath(StringAppend(mat->s_Name.c_str(), material_schematic_ext));
+	const char* filePath = TextureFolderPath(StringAppend(mat->GetMaterialName().c_str(), material_schematic_ext));
 
 	// if file does not exist, create one,otherwise overwrite data
 	if (!FileExists(filePath))
@@ -185,59 +193,85 @@ void SaveMaterialSchematic(MaterialData* mat)
 
 	AddItemToRoot(root, CreateString("Name", "MaterialSchematic1.msch"));
 
-	cJSON* OtherData = CreateArray("OtherData");
-	AddItemToArray(OtherData, CreateNumber("Shine", mat->s_Shine));
+	//cJSON* OtherData = CreateArray("OtherData");
+	//AddItemToArray(OtherData, CreateNumber("Shine", mat->s_Shine));
 	// TODO: LightData AddItemToArray(OtherData, CreateNumber("LightData", mat->s_Shine)); {r,g,b,a}
+	// AddItemToRoot(root, OtherData);
 
-	cJSON* Names = CreateArray("TextureNames");
-	AddItemToArray(Names, CreateString("AmbientName", mat->s_AmbientName.c_str()));
-	AddItemToArray(Names, CreateString("DiffuseName", mat->s_DiffuseName.c_str()));
-	AddItemToArray(Names, CreateString("SpecularName", mat->s_SpecularName.c_str()));
-	AddItemToArray(Names, CreateString("EmissiveName", mat->s_EmissiveName.c_str()));
-	AddItemToArray(Names, CreateString("HeightName", mat->s_HeightName.c_str()));
-	AddItemToArray(Names, CreateString("NormalName", mat->s_NormalsName.c_str()));
-	AddItemToArray(Names, CreateString("ShininessName", mat->s_ShininessName.c_str()));
-	AddItemToArray(Names, CreateString("OpacityName", mat->s_OpacityName.c_str()));
-	AddItemToArray(Names, CreateString("DisplacementName", mat->s_DisplacementName.c_str()));
-	AddItemToArray(Names, CreateString("LightMapName", mat->s_LightMapName.c_str()));
-	AddItemToArray(Names, CreateString("ReflectionName", mat->s_ReflectionName.c_str()));
+	cJSON* Names = CreateArray("MaterialComponents");
 
-	AddItemToRoot(root, OtherData);
+	const std::map<eMaterialMaps, Texture*>* matComponents = mat->SeeMaterials();
+
+	for (auto p : *matComponents)
+	{
+		Texture* texture = p.second;
+		AddItemToArray(Names, CreateString(std::to_string((int)p.first).c_str(), texture->s_Name.c_str()));
+	}
+
+	// AddItemToArray(Names, CreateString("AmbientName", mat->s_AmbientName.c_str()));
+	// AddItemToArray(Names, CreateString("DiffuseName", mat->s_DiffuseName.c_str()));
+	// AddItemToArray(Names, CreateString("SpecularName", mat->s_SpecularName.c_str()));
+	// AddItemToArray(Names, CreateString("EmissiveName", mat->s_EmissiveName.c_str()));
+	// AddItemToArray(Names, CreateString("HeightName", mat->s_HeightName.c_str()));
+	// AddItemToArray(Names, CreateString("NormalName", mat->s_NormalsName.c_str()));
+	// AddItemToArray(Names, CreateString("ShininessName", mat->s_ShininessName.c_str()));
+	// AddItemToArray(Names, CreateString("OpacityName", mat->s_OpacityName.c_str()));
+	// AddItemToArray(Names, CreateString("DisplacementName", mat->s_DisplacementName.c_str()));
+	// AddItemToArray(Names, CreateString("LightMapName", mat->s_LightMapName.c_str()));
+	// AddItemToArray(Names, CreateString("ReflectionName", mat->s_ReflectionName.c_str()));
+
 	AddItemToRoot(root, Names);
 
 	PrintRootObjectToFile(filePath, root);
 	ClosecJSONStream(root);
 }
 
-MaterialData* LoadMaterialSchematic(const char* schematicPath)
+Material* LoadMaterialSchematic(const char* schematicPath)
 {
-	MaterialData* mat = new MaterialData();
+	Material* mat = new Material();
+	LoadMaterialSchematic(schematicPath, mat);
+	return mat;
+}
 
+void LoadMaterialSchematic(const char* schematicPath, Material* material)
+{
 	cJSON* root = OpencJSONStream(schematicPath);
-
 	if (root)
 	{
+		ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+
 		// load mat data from file
-		mat->s_Name = GetItemFromRootByKey(root, "Name")->valuestring;
+		material->SetMaterialName(GetItemFromRootByKey(root, "Name")->valuestring);
 
 		// load "other" data
-		cJSON* otherData = GetItemFromRootByKey(root, "OtherData");
-		mat->s_Shine = GetItemFromArrayByKey(otherData, "Shine")->valuedouble;
+		//cJSON* otherData = GetItemFromRootByKey(root, "OtherData");
+		//mat->s_Shine = GetItemFromArrayByKey(otherData, "Shine")->valuedouble;
 		// TODO: mat->s_LightValue = GetItemFromArrayByKey(otherData, "LightData")->valuedouble;
 
 		// set texture names
 		cJSON* textureNames = GetItemFromRootByKey(root, "TextureNames");
-		mat->s_AmbientName = GetItemFromArrayByKey(textureNames, "AmbientName")->valuestring;
-		mat->s_DiffuseName = GetItemFromArrayByKey(textureNames, "DiffuseName")->valuestring;
-		mat->s_SpecularName = GetItemFromArrayByKey(textureNames, "SpecularName")->valuestring;
-		mat->s_EmissiveName = GetItemFromArrayByKey(textureNames, "EmissiveName")->valuestring;
-		mat->s_HeightName = GetItemFromArrayByKey(textureNames, "HeightName")->valuestring;
-		mat->s_NormalsName = GetItemFromArrayByKey(textureNames, "NormalName")->valuestring;
-		mat->s_ShininessName = GetItemFromArrayByKey(textureNames, "ShininessName")->valuestring;
-		mat->s_OpacityName = GetItemFromArrayByKey(textureNames, "OpacityName")->valuestring;
-		mat->s_DisplacementName = GetItemFromArrayByKey(textureNames, "DisplacementName")->valuestring;
-		mat->s_LightMapName = GetItemFromArrayByKey(textureNames, "LightMapName")->valuestring;
-		mat->s_ReflectionName = GetItemFromArrayByKey(textureNames, "ReflectionName")->valuestring;
+
+		for (int i = 0; i < GetArraySize(textureNames); i++)
+		{
+			cJSON* value = GetItemFromArrayByIndex(textureNames, i);
+			if (value)
+			{
+				// ask for texture from resource manager, making sure the texture gets created
+				// then add it to the material in its proper map "slot"
+				material->AddTexture(resMan->GetTexture(value->valuestring), (eMaterialMaps)(value->string[0] - 48));
+			}
+		}
+		// mat->s_AmbientName = GetItemFromArrayByKey(textureNames, "AmbientName")->valuestring;
+		// mat->s_DiffuseName = GetItemFromArrayByKey(textureNames, "DiffuseName")->valuestring;
+		// mat->s_SpecularName = GetItemFromArrayByKey(textureNames, "SpecularName")->valuestring;
+		// mat->s_EmissiveName = GetItemFromArrayByKey(textureNames, "EmissiveName")->valuestring;
+		// mat->s_HeightName = GetItemFromArrayByKey(textureNames, "HeightName")->valuestring;
+		// mat->s_NormalsName = GetItemFromArrayByKey(textureNames, "NormalName")->valuestring;
+		// mat->s_ShininessName = GetItemFromArrayByKey(textureNames, "ShininessName")->valuestring;
+		// mat->s_OpacityName = GetItemFromArrayByKey(textureNames, "OpacityName")->valuestring;
+		// mat->s_DisplacementName = GetItemFromArrayByKey(textureNames, "DisplacementName")->valuestring;
+		// mat->s_LightMapName = GetItemFromArrayByKey(textureNames, "LightMapName")->valuestring;
+		// mat->s_ReflectionName = GetItemFromArrayByKey(textureNames, "ReflectionName")->valuestring;
 	}
 
 	ClosecJSONStream(root);
@@ -246,19 +280,17 @@ MaterialData* LoadMaterialSchematic(const char* schematicPath)
 	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
 	// TODO: Stop trying to load "Empty" files
-	mat->s_AmbientHandle = resMan->GetTexture(mat->s_AmbientName.c_str());
-	mat->s_DiffuseHandle = resMan->GetTexture(mat->s_DiffuseName.c_str());
-	mat->s_SpecularHandle = resMan->GetTexture(mat->s_SpecularName.c_str());
-	mat->s_EmissiveHandle = resMan->GetTexture(mat->s_EmissiveName.c_str());
-	mat->s_HeightHandle = resMan->GetTexture(mat->s_HeightName.c_str());
-	mat->s_NormalsHandle = resMan->GetTexture(mat->s_NormalsName.c_str());
-	mat->s_ShininessHandle = resMan->GetTexture(mat->s_ShininessName.c_str());
-	mat->s_OpacityHandle = resMan->GetTexture(mat->s_OpacityName.c_str());
-	mat->s_DisplacementHandle = resMan->GetTexture(mat->s_DisplacementName.c_str());
-	mat->s_LightMapHandle = resMan->GetTexture(mat->s_LightMapName.c_str());
-	mat->s_ReflectionHandle = resMan->GetTexture(mat->s_ReflectionName.c_str());
-
-	return mat;
+	// material->s_AmbientHandle = resMan->GetTexture(mat->s_AmbientName.c_str());
+	// material->s_DiffuseHandle = resMan->GetTexture(mat->s_DiffuseName.c_str());
+	// material->s_SpecularHandle = resMan->GetTexture(mat->s_SpecularName.c_str());
+	// material->s_EmissiveHandle = resMan->GetTexture(mat->s_EmissiveName.c_str());
+	// material->s_HeightHandle = resMan->GetTexture(mat->s_HeightName.c_str());
+	// material->s_NormalsHandle = resMan->GetTexture(mat->s_NormalsName.c_str());
+	// material->s_ShininessHandle = resMan->GetTexture(mat->s_ShininessName.c_str());
+	// material->s_OpacityHandle = resMan->GetTexture(mat->s_OpacityName.c_str());
+	// material->s_DisplacementHandle = resMan->GetTexture(mat->s_DisplacementName.c_str());
+	// material->s_LightMapHandle = resMan->GetTexture(mat->s_LightMapName.c_str());
+	// material->s_ReflectionHandle = resMan->GetTexture(mat->s_ReflectionName.c_str());
 }
 
 void SaveShaderSchematic(ShaderProgram* shader)

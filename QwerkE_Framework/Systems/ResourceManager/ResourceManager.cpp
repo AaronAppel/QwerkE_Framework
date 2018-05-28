@@ -1,9 +1,11 @@
 #include "ResourceManager.h"
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
+#include "../../Graphics/Texture.h"
 #include "../../Graphics/Mesh/Mesh.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
+#include "../FileSystem/FileSystem.h"
+#include "../ServiceLocator.h"
 
 #include <map>
 
@@ -22,7 +24,7 @@ void ResourceManager::DeleteAllResources()
 		delete object.second;
 
 	for (auto object : m_Textures)
-		glDeleteTextures(1, &object.second);
+		glDeleteTextures(1, &object.second->s_Handle);
 
 	for (auto object : m_Materials)
 		delete object.second;
@@ -82,24 +84,30 @@ bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
 	return true;
 }
 
-bool ResourceManager::AddTexture(const char* name, GLuint texture)
+bool ResourceManager::AddTexture(const char* name, Texture* texture)
 {
+	if (!texture)
+		return false;
+
 	if (TextureExists(name))
 		return false;
 
-	if (texture == 0) // || texture->name == "Uninitialized") // TODO: What should a null texture value be cross platform?
+	if (texture->s_Handle == 0) // || texture->name == "Uninitialized") // TODO: What should a null texture value be cross platform?
 		return false;
 
 	m_Textures[name] = texture;
 	return true;
 }
 
-bool ResourceManager::AddMaterial(const char* name, MaterialData* material)
+bool ResourceManager::AddMaterial(const char* name, Material* material)
 {
+	if (!material)
+		return false;
+
 	if (MaterialExists(name))
 		return false;
 
-	if (material == nullptr || material->s_Name == "Uninitialized")
+	if (material == nullptr || material->GetMaterialName() == "Uninitialized")
 		return false;
 
 	m_Materials[name] = material;
@@ -170,7 +178,8 @@ Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshNam
 	if (MeshExists(meshName))
 		return m_Meshes[meshName];
 
-	Mesh* result = QwerkE::FileLoader::LoadMeshInModelByName(MeshFolderPath(fileName), meshName);
+	Mesh* result = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadMeshInModelByName(
+		MeshFolderPath(fileName), meshName);
 	if (result)
 	{
 		m_Meshes[meshName] = result;
@@ -180,7 +189,7 @@ Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshNam
 		return m_NullMesh;
 }
 
-GLuint ResourceManager::GetTexture(const char* name)
+Texture* ResourceManager::GetTexture(const char* name)
 {
 	if (m_Textures.find(name) != m_Textures.end())
 	{
@@ -189,7 +198,7 @@ GLuint ResourceManager::GetTexture(const char* name)
 	return InstantiateTexture(name);
 }
 
-MaterialData* ResourceManager::GetMaterial(const char* name)
+Material* ResourceManager::GetMaterial(const char* name)
 {
 	if (m_Materials.find(name) != m_Materials.end())
 	{
@@ -247,20 +256,20 @@ bool ResourceManager::isUnique(Mesh* mesh)
 	return true;
 }
 
-bool ResourceManager::isUnique(GLuint texturehandle)
+bool ResourceManager::isUnique(Texture* texturehandle)
 {
-	std::map<std::string, GLuint>::iterator it;
+	std::map<std::string, Texture*>::iterator it;
 	for (it = m_Textures.begin(); it != m_Textures.end(); it++)
 	{
-		if (it->second == texturehandle) // pointer comparison
+		if (it->second == texturehandle)
 			return false;
 	}
 	return true;
 }
 
-bool ResourceManager::isUnique(MaterialData* material)
+bool ResourceManager::isUnique(Material* material)
 {
-	std::map<std::string, MaterialData*>::iterator it;
+	std::map<std::string, Material*>::iterator it;
 	for (it = m_Materials.begin(); it != m_Materials.end(); it++)
 	{
 		if (it->second == material) // pointer comparison

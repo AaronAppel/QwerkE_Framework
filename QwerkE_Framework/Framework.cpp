@@ -12,7 +12,7 @@
 #include "Systems/SceneManager.h"
 #include "Systems/Factory/Factory.h"
 #include "Graphics/Graphics_Header.h"
-#include "CallbackFunctions.h"
+#include "Systems/Window/CallbackFunctions.h"
 #include "Systems/Physics/PhysicsManager.h"
 #include "Systems/DataManager/DataManager.h"
 #include "Systems/DataManager/LevelLoader.h"
@@ -28,13 +28,14 @@
 #include "Systems/Window/Window.h"
 #include "Systems/Window/WindowManager.h"
 #include "Systems/Window/glfw_Window.h"
+#include "Systems/FileSystem/FileSystem.h"
 
 // TODO: No Globals!
 extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
 extern const char* g_WindowTitle = "QwerkE";
 
 extern GameCore* g_GameCore = nullptr;
-extern const int g_NumPlayers; // Defined in InputManager.h
+extern int g_NumPlayers; // Defined in InputManager.h
 extern InputManager* g_InputManager = nullptr;
 extern Controller* g_Player1Controller = nullptr;
 extern bool g_Debugging = false;
@@ -66,6 +67,9 @@ namespace QwerkE
 			// Audio, Networking, Graphics (Renderer, GUI), Utilities (Conversion, FileIO, Printing),
 			// Physics, Event, Debug, Memory, Window, Application, Input, Resources
 			QwerkE::ServiceLocator::LockServices(false);
+
+			FileSystem* fileSystem = new FileSystem();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::FileSystem, fileSystem);
 
 			InputManager* inputManager = new InputManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Input_Manager, inputManager);
@@ -158,6 +162,8 @@ namespace QwerkE
 			delete (DataManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Data_Manager);
 
 			delete (InputManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Input_Manager); // dependency
+
+			delete (FileSystem*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::FileSystem); // first in, last out
 
 			Libs_TearDown(); // unload libraries
 
@@ -273,7 +279,22 @@ namespace QwerkE
 		{
 			/* Reset */
 			// TODO: Reset things...
-			ImGui_ImplGlfwGL3_NewFrame();
+			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
+			inputManager->NewFrame();
+			ImGui_ImplGlfwGL3_NewFrame(); // after InputManager gets reset
+
+
+
+			vec2 result = inputManager->GetMouseDragDelta();
+			if (result.x > 0.00f)
+			{
+				int bp = 1;
+			}
+			if (ImGui::Begin("Input"))
+			{
+				ImGui::InputFloat2("MouseDragDelta", &result.x);
+				ImGui::End();
+			}
 		}
 
 		void Framework::Input()

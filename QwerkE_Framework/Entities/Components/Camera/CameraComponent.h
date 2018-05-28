@@ -7,14 +7,12 @@
 #include "../../../QwerkE_Enums.h"
 #include "../../Components/Component.h"
 
-const vec3 g_WORLDUP = vec3(0, -1, 0); // TODO: Fix inverted world Y-axis
+const vec3 g_WORLDUP = vec3(0, 1, 0); // TODO: Fix inverted world Y-axis
 
-class CameraComponent : public Component
+class CameraComponent : public Component // abstract
 {
 public:
-	CameraComponent(vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 up = g_WORLDUP, float yaw = g_YAW, float pitch = g_PITCH);
-	CameraComponent(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
-	~CameraComponent();
+	virtual ~CameraComponent();
 
 	void Setup();
 
@@ -34,7 +32,7 @@ public:
 	void ZoomCamera(float yOffset) { ProcessMouseScroll(yOffset); };
 
 	// Calculates the front vector from the Camera's (updated) Eular Angles
-	void UpdateCameraVectors();
+	virtual void UpdateCameraVectors(); // TODO: Think of making this pure virtual to create an abstract class
 
 	/* Getters + Setters*/
 	// Getters
@@ -46,13 +44,16 @@ public:
 	void SetViewportSize(vec2 size) { m_ViewportSize = size; UpdateCameraVectors(); };
 
 protected:
+	// private constructors
+	CameraComponent(vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 up = g_WORLDUP, float yaw = g_YAW, float pitch = g_PITCH);
+	CameraComponent(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
+
 	// Camera Attributes
 	eCamType m_Type = CamType_NULL;
 
 	vec3 m_Position = vec3(0, 0, 0);
-	vec3 m_Front = vec3(0.0f, 0.0f, 1.0f);
-	vec3 m_WorldUp = g_WORLDUP;
-	vec3 m_CamUp = m_WorldUp;
+	vec3 m_Forward = vec3(0.0f, 0.0f, 1.0f);
+	vec3 m_CamUp = g_WORLDUP;
 	vec3 m_Right = vec3(1, 0, 0);
 
 	float m_CAMNEAR = 0.01f; // Near and far frustum values
@@ -62,11 +63,12 @@ protected:
 	float m_Yaw = g_YAW;
 	float m_Pitch = g_PITCH;
 	// Camera options
+	float m_ForwardSpeed = g_SPEED;
 	float m_MovementSpeed = g_SPEED;
 	float m_MouseSensitivity = g_SENSITIVTY;
 	float m_Zoom = g_ZOOM;
 
-	vec3 m_TargetPosition = m_Position + m_Front * 1.5f;
+	vec3 m_TargetPosition = m_Position + m_Forward * 1.5f;
 
 	// Camera Control Behaviour
 	bool m_LookAt = false;

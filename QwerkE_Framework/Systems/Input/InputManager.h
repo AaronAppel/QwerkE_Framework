@@ -8,7 +8,7 @@
 
 class Controller;
 
-const int g_NumPlayers = 1;
+static int g_NumPlayers = 1;
 const char QWERKE_ONE_FRAME_MAX_INPUT = 12; // no more than QWERKE_ONE_FRAME_MAX_INPUT key events per frame. Is that enough?
 
 // TODO: Create GLFW callback functions to link for GLFW projects
@@ -26,17 +26,30 @@ public:
 
 	void NewFrame(); // reset frame input buffer
 
+	// TODO: ProcessMouseScroll
+	void ProcessMouseMove(vec2 position);
+	void ProcessMouseMove(float x, float y);
+	void ProcessMouseClick(eKeys key, eKeyState state);
+
 	void ProcessKeyEvent(eKeys key, eKeyState state);
 
 	eKeys GetKeyCode(int key); // TOOD: Better way for public access to m_KeyCode?
 
 	// check if keyIsDown
+	vec2 GetMouseDragDelta();
 	bool GetIsKeyDown(eKeys key) { return m_KeyStates[key];	}
 
 	// check if keyIsDown this frame
 	bool FrameKeyAction(eKeys key, eKeyState state);
 
 private:
+	// mouse
+	vec2 m_MousePos = vec2(0,0); // position change from last frame
+	vec2 m_MouseDelta = vec2(0,0);
+	vec2 m_MouseDragStart = vec2(0,0);
+	bool m_DragReset = false;
+
+	// keyboard
 	unsigned short* m_KeyCodex; // [eKeys_MAX] = { 0 }; // initialize to 0
 	bool m_KeyStates[eKeys_MAX] = { false }; // initialize to false
 

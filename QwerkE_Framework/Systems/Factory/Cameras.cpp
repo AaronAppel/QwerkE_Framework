@@ -10,7 +10,8 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/GameObject.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
+#include "../FileSystem/FileSystem.h"
+#include "../ServiceLocator.h"
 
 #include <string>
 
@@ -70,7 +71,7 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 	t_pCamComp->Setup();
 	t_pCamComp->SetTargetPosition(vec3(0,0,0));
 
-	QwerkE::FileLoader::LoadModelFileToMeshes(MeshFolderPath("Camera.obj"));
+	((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshFolderPath("Camera.obj"));
 	AddModelComponentFromSchematic(t_pCamera, "camera.osch");
 
 	RenderRoutine* renderRoutine = new RenderRoutine();

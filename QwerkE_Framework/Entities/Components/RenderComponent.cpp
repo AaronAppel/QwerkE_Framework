@@ -1,7 +1,7 @@
 #include "RenderComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"
@@ -15,15 +15,21 @@ RenderComponent::RenderComponent()
 RenderComponent::RenderComponent(const char* objectRecipe)
 {
 	m_ComponentTag = eComponentTags::Component_Render;
-	// TODO:
+
+	if (m_pParent)
+	{
+		RenderRoutine* rRoutine = (RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render);
+		if (rRoutine)
+			rRoutine->ResetUniformList();
+	}
 }
 
 RenderComponent::RenderComponent(const char* shaderName, const char* materialName, const char* meshName)
 {
 	m_ComponentTag = eComponentTags::Component_Render;
-	Renderable t_Renderable;
 	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
+	Renderable t_Renderable;
 	t_Renderable.SetMaterial(resMan->GetMaterial(materialName));
 	t_Renderable.SetMesh(resMan->GetMesh(meshName));
 	t_Renderable.SetShader(resMan->GetShaderProgram(shaderName));
@@ -33,7 +39,11 @@ RenderComponent::RenderComponent(const char* shaderName, const char* materialNam
 	m_RenderableList.push_back(t_Renderable);
 
 	if (m_pParent)
-		((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+	{
+		RenderRoutine* rRoutine= (RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render);
+		if (rRoutine)
+			rRoutine->ResetUniformList();
+	}
 }
 
 RenderComponent::~RenderComponent()
@@ -111,7 +121,7 @@ void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)
 	}
 }
 
-void RenderComponent::SetMaterialAtIndex(int index, MaterialData* material)
+void RenderComponent::SetMaterialAtIndex(int index, Material* material)
 {
 	// TODO: More error handling
 	if (index < m_RenderableList.size() && material != nullptr)

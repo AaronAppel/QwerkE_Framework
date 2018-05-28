@@ -12,7 +12,7 @@ ShaderProgram* ShaderFactory::CreateShader(eShaderTypes type)
 	shader->GetFragShader()->SetStringData(CreateFragmentShader(type));
 	shader->GetGeoShader()->SetStringData(CreateGeometryShader(type));
 
-	if (BuildShaderProgram(shader))
+	if (LinkCreatedShaderProgram(shader))
 		return shader;
 	else
 	{
@@ -28,7 +28,7 @@ ShaderProgram* ShaderFactory::CreateShader(const char* vertFileDir, const char* 
 	if (fragFileDir) CreateShaderComponent(GL_VERTEX_SHADER, fragFileDir);
 	if (geoFileDir) CreateShaderComponent(GL_VERTEX_SHADER, geoFileDir);
 
-	if(BuildShaderProgram(shader))
+	if(LinkCreatedShaderProgram(shader))
 		return shader;
 	else
 	{
@@ -93,9 +93,9 @@ GLuint ShaderFactory::CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo)
 	return LinkShaders(vert, frag, geo);
 }
 
-bool ShaderFactory::BuildShaderProgram(ShaderProgram* shader)
+bool ShaderFactory::LinkCreatedShaderProgram(ShaderProgram* shader)
 {
-	// TODO: Add in geometry shader supprt
+	// TODO: Add in geometry shader support
     GLuint result = LinkShaders(shader->GetVertShader()->GetHandle(), shader->GetFragShader()->GetHandle(), NULL);
 	shader->SetProgram(result);
 	return result != 0;

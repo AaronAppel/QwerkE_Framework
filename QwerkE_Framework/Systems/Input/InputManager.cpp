@@ -27,20 +27,55 @@ InputManager::~InputManager()
 
 void InputManager::NewFrame()
 {
+	// every frame variables
+	m_MouseDelta = 0.0f;
+
+	if (m_DragReset)
+	{
+		m_MouseDragStart = 0.0f;
+		m_DragReset = false;
+	}
+
 	// reset 1 frame buffers
-	unsigned int test = eKeys_NULL_KEY;
 	if (m_OneFrameBuffersAreDirty)
 	{
+		// m_MouseDragStart = 0.0f;
 		memset(m_OneFrameKeyBuffer, eKeys_NULL_KEY, QWERKE_ONE_FRAME_MAX_INPUT * sizeof(short));
 		memset(m_OneFrameValueBuffer, 0, QWERKE_ONE_FRAME_MAX_INPUT); // TODO: Do I want a 3rd key state?
 		m_OneFrameBuffersAreDirty = false;
 	}
 }
 
+void InputManager::ProcessMouseMove(vec2 position)
+{
+	m_MouseDelta = m_MousePos - position;
+	m_MousePos = position;
+}
+void InputManager::ProcessMouseMove(float x, float y)
+{
+	m_MouseDelta = m_MousePos - vec2(x, y);
+	m_MousePos = vec2(x, y);
+}
+
+void InputManager::ProcessMouseClick(eKeys key, eKeyState state) // handle mouse clicks
+{
+	// TODO:: Handle mouse drag for eKeys_RightClick and eKeys_MiddleClick
+	if (key == eKeys_LeftClick && state == eKeyState::eKeyState_Press)
+	{
+		m_MouseDragStart = m_MousePos; // start drag
+	}
+	else if (key == eKeys_LeftClick && state == eKeyState::eKeyState_Release)
+	{
+		m_DragReset = true; // drag ended, reset value next frame so it can be used this frame
+	}
+	m_KeyStates[key] = state; // TODO: Is setting bool to key state an issue?
+}
+
 void InputManager::ProcessKeyEvent(eKeys key, eKeyState state)
 {
-	m_OneFrameBuffersAreDirty = true;
 	// TODO: improve logic
+	m_OneFrameBuffersAreDirty = true;
+
 	if (state == eKeyState::eKeyState_Release)
 	{
 		m_KeyStates[key] = false; // TODO: Test
@@ -72,6 +107,15 @@ void InputManager::ProcessKeyEvent(eKeys key, eKeyState state)
 eKeys InputManager::GetKeyCode(int key)
 {
 	return (eKeys)m_KeyCodex[key]; // TODO: Make sure this works is cross platform
+}
+
+vec2 InputManager::GetMouseDragDelta()
+{
+	if (m_KeyStates[eKeys::eKeys_LeftClick])
+	{
+		return m_MousePos - m_MouseDragStart;
+	}
+	return vec2(0.0f, 0.0f);
 }
 
 bool InputManager::FrameKeyAction(eKeys key, eKeyState state)

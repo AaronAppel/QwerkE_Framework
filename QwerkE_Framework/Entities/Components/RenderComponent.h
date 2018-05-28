@@ -8,7 +8,7 @@
 #include <string>
 
 class ShaderProgram;
-class MaterialData;
+class Material;
 class Mesh;
 
 class RenderComponent : public Component
@@ -29,13 +29,15 @@ public:
 
 	// Getters + Setters //
 	// Getters
-	std::string GetSchematicName() { return m_SchematicName; }
-	void SetSchematicName(std::string name) { m_SchematicName = name; }
+	std::string GetSchematicName() const { return m_SchematicName; }
+	std::vector<Renderable>* GetRenderableList() { return &m_RenderableList; }
+	const std::vector<Renderable>* SeeRenderableList() const { return &m_RenderableList; }
 
 	// Setters
+	void SetSchematicName(std::string name) { m_SchematicName = name; }
 	void SetNameAtIndex(int index, std::string name);
 	void SetShaderAtIndex(int index, ShaderProgram* shader);
-	void SetMaterialAtIndex(int index, MaterialData* material);
+	void SetMaterialAtIndex(int index, Material* material);
 	void SetMeshAtIndex(int index, Mesh* mesh);
 
 	const std::vector<Renderable>* LookAtRenderableList() { return &m_RenderableList; }

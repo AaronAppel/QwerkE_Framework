@@ -4,16 +4,9 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"glass_dif.png",
-			"DiffuseName":	"glass_dif.png",
-			"SpecularName":	"glass_dif.png",
-			"EmissiveName":	"Empty",
-			"HeightName":	"Empty",
-			"NormalName":	"glass_ddn.png",
-			"ShininessName":	"Empty",
-			"OpacityName":	"Empty",
-			"DisplacementName":	"Empty",
-			"LightMapName":	"Empty",
-			"ReflectionName":	"Empty"
+			"0":	"glass_dif.png",
+			"1":	"glass_dif.png",
+			"2":	"glass_dif.png",
+			"5":	"glass_ddn.png"
 		}]
 }

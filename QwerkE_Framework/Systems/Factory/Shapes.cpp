@@ -6,7 +6,7 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Graphics/Mesh/Mesh.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
 
 /* Shapes */
 GameObject* Factory::CreateCube(Scene* scene, vec3 position)

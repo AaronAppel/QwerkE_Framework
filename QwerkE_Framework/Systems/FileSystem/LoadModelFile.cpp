@@ -1,10 +1,10 @@
-#include "FileLoader.h"
+#include "FileSystem.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
-#include "../FileUtilities.h"
 
-#include "../../StringHelpers.h"
+#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 
 #include <iostream>
 #include <vector>

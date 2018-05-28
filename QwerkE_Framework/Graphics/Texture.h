@@ -8,16 +8,15 @@
 struct Texture
 {
 #ifdef OpenGL
-	GLuint handle = 0;
+	GLuint s_Handle = 0;
 #else
 	unsigned int handle = 0;
 #endif // OpenGL
 
-	std::string name = "Uninitialized";
-	std::string path = "Uninitialized"; // TODO: Useful?
+	std::string s_Name = "Uninitialized";
 
-	Texture();
-	~Texture();
+	Texture() {}
+	~Texture() {}
 };
 
 #endif // !_Texture_H_

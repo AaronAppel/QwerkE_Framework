@@ -15,7 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\QwerkE.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Components\Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Components\Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h" />
@@ -41,7 +40,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Graphics_Header.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\LightData.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Material.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.h" />
@@ -51,6 +51,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariable_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
@@ -69,6 +70,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\EventManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\InputEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.h" />
@@ -88,12 +93,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Window.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Math.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Components\Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.cpp" />
@@ -139,6 +144,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Lights.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Shapes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Testing.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadModelFile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadSoundFile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.cpp" />
@@ -161,6 +172,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\LitMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Window.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.cpp" />

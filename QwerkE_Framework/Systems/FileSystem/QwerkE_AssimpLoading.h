@@ -8,7 +8,6 @@
 #include "../../../Libraries/assimp/postprocess.h"
 #include "../../../Libraries/assimp/config.h"
 #include "../../../Libraries/assimp/material.h"
-#include "../../../../QwerkE_Framework/Graphics/MaterialData.h"
 
 #include <iostream>
 #include <vector>

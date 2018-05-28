@@ -4,16 +4,9 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"helmet_diff.png",
-			"DiffuseName":	"helmet_diff.png",
-			"SpecularName":	"helmet_showroom_spec.png",
-			"EmissiveName":	"Empty",
-			"HeightName":	"Empty",
-			"NormalName":	"helmet_showroom_ddn.png",
-			"ShininessName":	"Empty",
-			"OpacityName":	"Empty",
-			"DisplacementName":	"Empty",
-			"LightMapName":	"Empty",
-			"ReflectionName":	"Empty"
+			"0":	"helmet_diff.png",
+			"1":	"helmet_diff.png",
+			"2":	"helmet_showroom_spec.png",
+			"5":	"helmet_showroom_ddn.png"
 		}]
 }

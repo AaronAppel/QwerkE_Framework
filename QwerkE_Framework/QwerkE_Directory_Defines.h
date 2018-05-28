@@ -35,7 +35,9 @@
 #define null_object_schematic "null_object.osch"
 #define null_material_schematic "null_material.msch"
 #define null_shader_schematic "LitMaterial.ssch"
-#define null_shader_component "LitMaterial.vert"
+#define null_vert_component "LitMaterial.vert"
+#define null_frag_component "LitMaterial.frag"
+#define null_geo_component "LitMaterial.geo"
 
 // Schematic file extensions
 #define object_schematic_ext ".osch"

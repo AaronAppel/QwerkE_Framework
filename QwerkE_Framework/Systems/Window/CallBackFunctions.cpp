@@ -1,7 +1,13 @@
 #include "CallbackFunctions.h"
-#include "Systems/ServiceLocator.h"
-#include "../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
-#include "../QwerkE_Common/Libraries/imgui/imgui.h"
+#include "../ServiceLocator.h"
+#include "../ResourceManager/ResourceManager.h"
+#include "../FileSystem/FileSystem.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../../Graphics/Texture.h"
+
+#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 
 // TODO: No Globals!
 extern int g_WindowWidth, g_WindowHeight;
@@ -17,6 +23,8 @@ void SetupCallbacks(GLFWwindow* window)
 	glfwSetCharModsCallback(window, char_mods_callback);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
+	// TODO: glfwSetJoystickCallback()
+
 	// window
 	glfwSetWindowPosCallback(window, window_position_callback);
 	glfwSetWindowSizeCallback(window, window_resize_callback);
@@ -25,8 +33,12 @@ void SetupCallbacks(GLFWwindow* window)
 	glfwSetWindowFocusCallback(window, window_focus_callback);
 	glfwSetWindowIconifyCallback(window, window_iconify_callback);
 	glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);
+
 	// error
 	glfwSetErrorCallback(error_callback);
+
+	// other
+	glfwSetDropCallback(window, file_drop_callback);
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
@@ -76,8 +88,8 @@ void char_mods_callback(GLFWwindow* window, unsigned int codepoint, int mods)
 }
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	// TODO: Tell InputManager that the mouse moved
-	// l_InputManager->ProcessMouse();
+	l_InputManager->ProcessMouseMove(xpos, -ypos);
+
 	ypos = (double)g_WindowHeight - ypos; // invert y
 }
 void cursor_enter_callback(GLFWwindow* window, int entered)
@@ -95,26 +107,13 @@ void cursor_enter_callback(GLFWwindow* window, int entered)
 }
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-	// TODO: Tell InputManager that the mouse changed
-	// l_InputManager->ProcessMouse();
-
-	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) // Right
+	if (action == GLFW_PRESS)
 	{
+		l_InputManager->ProcessMouseClick(l_InputManager->GetKeyCode(button), eKeyState::eKeyState_Press);
 	}
-	else if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
+	else if (action == GLFW_RELEASE)
 	{
-	}
-	else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) // Left
-	{
-	}
-	else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
-	{
-	}
-	else if (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS) // Middle
-	{
-	}
-	else if (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_RELEASE)
-	{
+		l_InputManager->ProcessMouseClick(l_InputManager->GetKeyCode(button), eKeyState::eKeyState_Release);
 	}
 
 	// imgui
@@ -194,4 +193,21 @@ void error_callback(int error, const char* description)
 void file_drop_callback(GLFWwindow* window, int count, const char** paths)
 {
 	// path of file drag and dropped onto this window
+	// TODO: Handle file drop correctly. This is hacked in for testing purposes at the moment.
+	for (int i = 0; i < count; i++)
+	{
+		FileSystem* fileSystem = (FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem);
+		if (strcmp(GetFileExtension(*paths).c_str(), "png") == 0 || strcmp(GetFileExtension(*paths).c_str(), "jpg") == 0)
+		{
+			GLuint result = Load2DTexture(*paths, 0);
+			if (result != 0)
+			{
+				Texture* texture = new Texture();
+				texture->s_Handle = result;
+				texture->s_Name = GetFileNameWithExt(*paths);
+				((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddTexture(
+					GetFileNameNoExt(*paths).c_str(), texture);
+			}
+		}
+	}
 }

@@ -4,6 +4,24 @@
 
 #include <cstdint>
 
+enum class eMaterialMaps : std::uint8_t
+{
+	MatMap_Ambient = 0,
+	MatMap_Diffuse,
+	MatMap_Specular,
+	MatMap_Emissive,
+	MatMap_Height,
+	MatMap_Normals,
+	MatMap_Shininess,
+	MatMap_Opacity,
+	MatMap_Displacement,
+	MatMap_LightMap,
+	MatMap_Reflection,
+	MatMap_Vec3Colour,
+
+	MatMap_Null
+};
+
 enum class eEngineMessage : std::uint8_t
 {
 	_QSuccess = 0,
@@ -17,6 +35,7 @@ enum class eSceneState : std::uint8_t
 	SceneState_Running = 0,
 	SceneState_Frozen, // Cameras can move
 	SceneState_Paused, // No updating
+	SceneState_SlowMo, // Smaller deltatime
 	SceneState_Animating, // Cameras and Animation only
 
 	SceneState_Max
@@ -40,6 +59,7 @@ enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
 	JobManager,
 	WindowManager,
 	NetworkManager,
+	FileSystem,
 
 	Service_Max
 };
@@ -52,7 +72,9 @@ enum eCamera_Movement
 	LEFT,
 	RIGHT,
 	UP,
-	DOWN
+	DOWN,
+	RROTATE,
+	LROTATE
 };
 
 /* Component Tagging */

@@ -20,7 +20,7 @@ GameObject::GameObject(Scene* scene)
 
 GameObject::GameObject(Scene* scene, vec3 position)
 {
-	m_Position = position;
+	m_Transform.s_Position = position;
 	m_pScene = scene;
 	for (int i = 0; i < m_BaseUpdateListSize; i++)
 	{
@@ -202,7 +202,7 @@ Routine* GameObject::GetFirstDrawRoutineOfType(eRoutineTypes type)
 
 void GameObject::SetPosition(vec3 position)
 {
-	m_Position = position;
+	m_Transform.s_Position = position;
 	// TODO: Update direction vectors
 	if (m_Components.find(Component_Physics) != m_Components.end())
 	{
@@ -213,6 +213,6 @@ void GameObject::SetPosition(vec3 position)
 
 void GameObject::SetRotation(vec3 rotation)
 {
-	m_Rotation = rotation;
+	m_Transform.s_Rotation = rotation;
 	// TODO: Update direction vectors
 }

@@ -4,16 +4,8 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"null_texture.png",
-			"DiffuseName":	"null_texture.png",
-			"SpecularName":	"null_texture.png",
-			"EmissiveName":	"null_texture.png",
-			"HeightName":	"null_texture.png",
-			"NormalName":	"null_texture.png",
-			"ShininessName":	"null_texture.png",
-			"OpacityName":	"null_texture.png",
-			"DisplacementName":	"null_texture.png",
-			"LightMapName":	"null_texture.png",
-			"ReflectionName":	"null_texture.png"
+			"0":	"null_texture.png",
+			"1":	"null_texture.png",
+			"2":	"null_texture.png"
 		}]
 }

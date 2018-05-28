@@ -1,6 +1,7 @@
 #include "AudioManager.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/LoadWavFile.h"
+#include "../ServiceLocator.h"
+#include "../FileSystem/FileSystem.h"
 #include "../../QwerkE_Directory_Defines.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../ServiceLocator.h"
@@ -77,8 +78,9 @@ AudioManager::AudioManager()
 	ALuint handle = 0;
 	DWORD size;
 	unsigned short channels;
-	ALsizei frequency;
-	unsigned char* data = QwerkE_wav_loadSound(SoundFolderPath("bounce.wav"), size, channels, frequency);
+	ALsizei frequency = 44100;
+	unsigned char* data = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadSoundFile(
+		SoundFolderPath("bounce.wav"), size, channels, frequency);
 	// TODO: read format type and handle loading various sound formats
 	if (channels == 1)
 		alBufferData(handle, AL_FORMAT_MONO16, data, size, frequency);

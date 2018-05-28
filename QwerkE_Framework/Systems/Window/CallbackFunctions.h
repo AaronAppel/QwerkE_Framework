@@ -1,8 +1,7 @@
 #ifndef _CallBackFunctions_H_
 #define _CallBackFunctions_H_
 
-#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+struct GLFWwindow;
 
 // setup
 // void SetCursor(); TODO:

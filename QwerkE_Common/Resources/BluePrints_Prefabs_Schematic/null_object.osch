@@ -1,5 +1,5 @@
 {
-	"Name":	"ObjectRecipe1.orec",
+	"Name":	"null_object.osch",
 	"Renderables":	[{
 			"R1":	[{
 					"Shader":	"null_shader.ssch",

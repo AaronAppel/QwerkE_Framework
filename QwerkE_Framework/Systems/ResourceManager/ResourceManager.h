@@ -10,8 +10,9 @@
 
 class Mesh;
 class ShaderComponent;
-struct MaterialData;
-struct ShaderProgram;
+class Texture;
+struct Material;
+class ShaderProgram;
 
 // For instances where 1 asset may be shared between objects in
 // possibly many scenes, the ResourceManager() may want to count
@@ -42,8 +43,8 @@ public:
 	bool ShaderComponentExists(const char* name);
 
 	bool AddMesh(const char* name, Mesh* mesh);
-	bool AddTexture(const char* name, GLuint texture);
-	bool AddMaterial(const char* name, MaterialData* material);
+	bool AddTexture(const char* name, Texture* texture);
+	bool AddMaterial(const char* name, Material* material);
 	bool AddFont(const char* name, FT_Face font);
 	bool AddSound(const char* name, ALuint sound);
 	bool AddShaderProgram(const char* name, ShaderProgram* ShaderProgram);
@@ -56,8 +57,8 @@ public:
 	// TODO: Should getters generate objects? What would be a better way?
 	Mesh* GetMesh(const char* name); // specify .ext
 	Mesh* GetMeshFromFile(const char* filePath, const char* meshName); // specify .ext
-	GLuint GetTexture(const char* name); // specify .ext
-	MaterialData* GetMaterial(const char* name); // specify .ext
+	Texture* GetTexture(const char* name); // specify .ext
+	Material* GetMaterial(const char* name); // specify .ext
 	FT_Face GetFont(const char* name); // specify .ext
 	ALuint GetSound(const char* name); // specify .ext
 	ShaderProgram* GetShaderProgram(const char* name); // specify .ext
@@ -65,8 +66,8 @@ public:
 
 	// TEST:
 	const std::map<std::string, Mesh*>* LookAtMeshes() { return &m_Meshes; };
-	const std::map<std::string, GLuint>* LookAtTextures() { return &m_Textures; };
-	const std::map<std::string, MaterialData*>* LookAtMaterials() { return &m_Materials; };
+	const std::map<std::string, Texture*>* LookAtTextures() { return &m_Textures; };
+	const std::map<std::string, Material*>* LookAtMaterials() { return &m_Materials; };
 	// const std::map<std::string, >* LookAtFonts() { return &; };
 	const std::map<std::string, ALuint>* LookAtSounds() { return &m_Sounds; };
 	const std::map<std::string, ShaderProgram*>* LookAtShaderProgram() { return &m_ShaderProgram; };
@@ -86,8 +87,8 @@ public:
 private:
 	// resource storage
 	std::map<std::string, Mesh*> m_Meshes; // TODO: Rename
-	std::map<std::string, GLuint> m_Textures;
-	std::map<std::string, MaterialData*> m_Materials;
+	std::map<std::string, Texture*> m_Textures;
+	std::map<std::string, Material*> m_Materials;
 	std::map<std::string, FT_Face> m_Fonts;
 	std::map<std::string, ALuint> m_Sounds;
 	std::map<std::string, ShaderProgram*> m_ShaderProgram;
@@ -95,8 +96,8 @@ private:
 
 	// Utilities
 	bool isUnique(Mesh* mesh);
-	bool isUnique(GLuint texturehandle);
-	bool isUnique(MaterialData* material);
+	bool isUnique(Texture* texturehandle);
+	bool isUnique(Material* material);
 	bool isUnique(FT_Face font);
 	bool isSoundUnique(ALuint sound);
 	bool isShaderProgramUnique(ShaderProgram* ShaderProgram);
@@ -104,8 +105,8 @@ private:
 
 	// Allocations
 	Mesh* InstantiateMesh(const char* name);
-	GLuint InstantiateTexture(const char* name);
-	MaterialData* InstantiateMaterial(const char* name);
+	Texture* InstantiateTexture(const char* name);
+	Material* InstantiateMaterial(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
 	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels);
 	ShaderProgram* InstantiateShaderProgram(const char* schematicName);
@@ -129,12 +130,15 @@ private:
 	// TODO: Find a better place to store objects. ResourceManager should not "own" objects
 	// TODO: Instantiate null objects
 	Mesh* m_NullMesh = nullptr;
-	GLuint m_NullTexture = 0;
-	MaterialData* m_NullMaterial = nullptr;
+	Texture* m_NullTexture = nullptr;
+	Material* m_NullMaterial = nullptr;
 	FT_Face m_NullFont;
 	ALuint m_NullSound = 0;
+
 	ShaderProgram* m_NullShader = nullptr;
-	ShaderComponent* m_NullShaderComponent = nullptr; // TODO: Do I need 3 nullComponents?
+	ShaderComponent* m_NullVertComponent = nullptr;
+	ShaderComponent* m_NullFragComponent = nullptr;
+	ShaderComponent* m_NullGeoComponent = nullptr;
 };
 
 #endif //!_ResourceManager_H_

@@ -1,12 +1,12 @@
 #include "RenderRoutine.h"
 #include "../GameObject.h"
 #include "../Routines/Routine.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
 #include "../../Graphics/Renderable.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Graphics/Mesh/Mesh.h"
 #include "../../Graphics/Graphics_Header.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
@@ -87,7 +87,7 @@ void RenderRoutine::SetDrawFunctions()
 	{
 		if (t_Renderables->at(i).GetShaderSchematic()->SeeUniforms()->size() == 0) t_Renderables->at(i).GetShaderSchematic()->FindAttributesAndUniforms();
 		const std::vector<std::string>* t_Uniforms = t_Renderables->at(i).GetShaderSchematic()->SeeUniforms(); // get shader
-		MaterialData* t_Material = t_Renderables->at(i).GetMaterialSchematic();
+		Material* t_Material = t_Renderables->at(i).GetMaterialSchematic();
 
 		/* Add functions to setup shader uniforms */
 		for (size_t j = 0; j < t_Uniforms->size(); j++) // Setup uniforms

@@ -91,6 +91,9 @@
     <Filter Include="Graphics\misc_graphics">
       <UniqueIdentifier>{f69a4142-e757-4b8b-a1ed-15261d662310}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems\FileSystem">
+      <UniqueIdentifier>{d90c99d8-4954-4733-ab75-8535d20c7e08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
@@ -177,7 +180,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Framework.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp">
       <Filter>Entities\Components</Filter>
@@ -302,6 +304,27 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.cpp">
       <Filter>Systems\DataManager</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\CallBackFunctions.cpp">
+      <Filter>Systems\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadModelFile.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadSoundFile.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
@@ -370,7 +393,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
       <Filter>Entities\Components</Filter>
@@ -513,9 +535,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\LightData.h">
       <Filter>Graphics\misc_graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialData.h">
-      <Filter>Graphics\misc_graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Renderable.h">
       <Filter>Graphics\misc_graphics</Filter>
     </ClInclude>
@@ -530,6 +549,30 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.h">
       <Filter>Systems\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h">
+      <Filter>Systems\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialComponent.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Material.h">
+      <Filter>Graphics\misc_graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariable_Defines.h">
+      <Filter>Graphics\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,7 +3,8 @@
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
 #include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
-#include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
+#include "../../../Systems/FileSystem/FileSystem.h"
+#include "../../../Systems/ServiceLocator.h"
 
 // TODO: Find a better spot for st_image init
 #define STB_IMAGE_IMPLEMENTATION
@@ -52,7 +53,7 @@ GLuint GLLoad2DTexture(const char* filePath, bool flipVertically)
 
 	GLenum channels = 4;
 	unsigned int width = 0, height = 0;
-	unsigned char* imageData = QwerkE::FileLoader::LoadImageFile(filePath, &width, &height, channels, flipVertically);
+	unsigned char* imageData = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadImageFile(filePath, &width, &height, channels, flipVertically);
 
 	if (!imageData)
 	{

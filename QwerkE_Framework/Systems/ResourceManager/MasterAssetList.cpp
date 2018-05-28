@@ -1,16 +1,18 @@
 #include "../../Systems/ResourceManager/ResourceManager.h"
-#include "../../Graphics/MaterialData.h"
+#include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Graphics/Shader/ShaderComponent.h"
 #include "../../Systems/ShaderFactory/ShaderFactory.h"
 #include "../../Systems/ServiceLocator.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "../../../QwerkE_Common/Utilities/FileIO/FileLoader/FileLoader.h"
+#include "../FileSystem/FileSystem.h"
+#include "../FileSystem/FileSystem.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../Math_Includes.h"
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../QwerkE_Framework/QwerkE_Directory_Defines.h"
+#include "../../Graphics/Texture.h"
 
 // TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 // TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
@@ -21,8 +23,10 @@ void ResourceManager::Init()
 	m_NullTexture = InstantiateTexture(null_texture); // TODO: Create a Texture class
 	m_NullMaterial = InstantiateMaterial(null_material_schematic);
 	m_NullFont = InstantiateFont(null_font); // TODO: Create a valid null font
+	m_NullVertComponent = InstantiateShaderComponent(null_vert_component);
+	m_NullFragComponent = InstantiateShaderComponent(null_frag_component);
+	// TODO: m_NullGeoComponent = InstantiateShaderComponent(null_geo_component);
 	m_NullShader = InstantiateShaderProgram(null_shader_schematic);
-	m_NullShaderComponent = InstantiateShaderComponent("LitMateial.vert"); // TODO: Handle frag and geo shaders
 	// m_NullSound = InstantiateSound(null_sound); // TODO: Create a sound object class
 }
 
@@ -35,7 +39,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 
 	if (FileExists(MeshFolderPath(meshName)))
 	{
-		QwerkE::FileLoader::LoadModelFileToMeshes(MeshFolderPath(meshName));
+		((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshFolderPath(meshName));
 		if (MeshExists(meshName))
 			return m_Meshes[meshName];
 		else
@@ -96,28 +100,36 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 	}
 }
 
-GLuint ResourceManager::InstantiateTexture(const char* textureName)
+Texture* ResourceManager::InstantiateTexture(const char* textureName)
 {
-	GLuint textureHandle = 0;
 	if (FileExists(TextureFolderPath(textureName)))
 	{
-		textureHandle = Load2DTexture(TextureFolderPath(textureName));
-	}
+		Texture* texture = nullptr;
+		texture = new Texture(); //RAM:
+		texture->s_Handle = Load2DTexture(TextureFolderPath(textureName));
+		texture->s_Name = textureName;
 
-	if (textureHandle != 0)
-		m_Textures[textureName] = textureHandle;
+		if (texture->s_Handle != 0)
+		{
+			m_Textures[textureName] = texture;
+			return texture;
+		}
+		else
+		{
+			delete texture; //FREE:
+			return m_NullTexture;
+		}
+	}
 	else
 	{
 		ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
-		textureHandle = m_NullTexture;
+		return m_NullTexture;
 	}
-
-	return textureHandle;
 }
 
-MaterialData* ResourceManager::InstantiateMaterial(const char* matName)
+Material* ResourceManager::InstantiateMaterial(const char* matName)
 {
-	MaterialData* material = nullptr;
+	Material* material = nullptr;
 
 	// TODO: Set null data for handles and names like "Empty"
 	if (strcmp(GetFileExtension(matName).c_str(), "msch") == 0)
@@ -176,7 +188,7 @@ ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicNa
 			result->SetFragShader(GetShaderComponent(result->GetFragName().c_str()));
 			// result->s_geoShader = GetShaderComponentData(result->s_geoName.c_str());
 
-			if (((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->BuildShaderProgram(result))
+			if (((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(result))
 			{
 				m_ShaderProgram[schematicName] = result;
 				return result;
@@ -206,30 +218,49 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 		{
 			 result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
 				GL_VERTEX_SHADER, ShaderFolderPath(componentName));
+
+			 if (result)
+			 {
+				 m_ShaderComponents[componentName] = result;
+				 return result;
+			 }
+			 else
+			 {
+				 return m_NullVertComponent;
+			 }
 		}
 		else if (strcmp(GetFileExtension(componentName).c_str(), "frag") == 0)
 		{
 			result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
 				GL_FRAGMENT_SHADER, ShaderFolderPath(componentName));
+
+			if (result)
+			{
+				m_ShaderComponents[componentName] = result;
+				return result;
+			}
+			else
+			{
+				return m_NullFragComponent;
+			}
 		}
 		else if (strcmp(GetFileExtension(componentName).c_str(), "geo") == 0)
 		{
 			result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
 				GL_GEOMETRY_SHADER, ShaderFolderPath(componentName));
-		}
 
-		if (result)
-		{
-			m_ShaderComponents[componentName] = result;
-			return result;
-		}
-		else
-		{
-			return m_NullShaderComponent;
+			if (result)
+			{
+				m_ShaderComponents[componentName] = result;
+				return result;
+			}
+			else
+			{
+				return m_NullGeoComponent;
+			}
 		}
 	}
-	else
-	{
-		return m_NullShaderComponent;
-	}
+
+	// TODO: Find a nice way to return a valid value
+	return nullptr;
 }

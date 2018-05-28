@@ -97,6 +97,19 @@ void Scene::p_Frozen(double deltatime)
 	CameraInput(deltatime);
 }
 
+void Scene::p_SlowMotion(double deltatime)
+{
+	p_Running(deltatime * 0.10);
+
+	// TODO: Create animation functionality
+	// for (auto object : m_pGameObjects)
+	{
+		// AnimationComponent* aComp (()object.second->GetComponent(Component_Animation));
+		// if (aComp)
+		// aComp->Animate();
+	}
+}
+
 void Scene::p_Animating(double deltatime)
 {
 	CameraInput(deltatime);
@@ -133,11 +146,19 @@ void Scene::CameraInput(double deltatime) // camera control
 	}
 	if (inputmanager->GetIsKeyDown(eKeys::eKeys_Q))
 	{
-		t_activecamera->ProcessKeyboard(eCamera_Movement::UP, (float)deltatime);
+		t_activecamera->ProcessKeyboard(eCamera_Movement::DOWN, (float)deltatime);
 	}
 	if (inputmanager->GetIsKeyDown(eKeys::eKeys_E))
 	{
-		t_activecamera->ProcessKeyboard(eCamera_Movement::DOWN, (float)deltatime);
+		t_activecamera->ProcessKeyboard(eCamera_Movement::UP, (float)deltatime);
+	}
+	if (inputmanager->GetIsKeyDown(eKeys::eKeys_R))
+	{
+		t_activecamera->ProcessKeyboard(eCamera_Movement::RROTATE, (float)deltatime);
+	}
+	if (inputmanager->GetIsKeyDown(eKeys::eKeys_T))
+	{
+		t_activecamera->ProcessKeyboard(eCamera_Movement::LROTATE, (float)deltatime);
 	}
 }
 
@@ -265,12 +286,23 @@ void Scene::SetState(eSceneState newState)
 	{
 	case eSceneState::SceneState_Running:
 		m_UpdateFunc = &Scene::p_Running;
+		m_State = eSceneState::SceneState_Running;
 		break;
 	case eSceneState::SceneState_Frozen:
 		m_UpdateFunc = &Scene::p_Frozen;
+		m_State = eSceneState::SceneState_Frozen;
 		break;
 	case eSceneState::SceneState_Paused:
 		m_UpdateFunc = &Scene::p_Paused;
+		m_State = eSceneState::SceneState_Paused;
+		break;
+	case eSceneState::SceneState_SlowMo:
+		m_UpdateFunc = &Scene::p_SlowMotion;
+		m_State = eSceneState::SceneState_SlowMo;
+		break;
+	case eSceneState::SceneState_Animating:
+		m_UpdateFunc = &Scene::p_Animating;
+		m_State = eSceneState::SceneState_Animating;
 		break;
 	}
 }

@@ -2071,9 +2071,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alutInternal.h">
       <Filter>Libraries\OpenAL</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.h">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\cimport.h">
       <Filter>Libraries\assimp</Filter>
     </ClInclude>
@@ -2296,15 +2293,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\config.h">
       <Filter>Libraries\assimp</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.h">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.h">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.h">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSON.cpp">
@@ -2376,24 +2364,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp">
       <Filter>Utilities\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadModelFile.cpp">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.cpp">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.cpp">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadSoundFile.cpp">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.cpp">
-      <Filter>Utilities\FileIO\FileLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,13 @@
 #include "QwerkE_AssimpLoading.h"
 #include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
 #include "../../../../QwerkE_Framework/Graphics/Mesh/VertexData.h"
-#include "../../../../QwerkE_Framework/Graphics/MaterialData.h"
+#include "../../../../QwerkE_Framework/Graphics/Material.h"
+#include "../../../../QwerkE_Framework/Graphics/Texture.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
 #include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../../../QwerkE_Framework/Graphics/GraphicsUtilities/GraphicsHelpers.h"
-#include "../FileUtilities.h"
-#include "../../StringHelpers.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../QwerkE_Common/Utilities/StringHelpers.h"
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
 // TODO: Split functions into smaller pieces. Ex. LoadMeshFromAI() can call functions to GetVertsFromAIMesh, GetUVs, GetMats... etc
@@ -103,8 +104,8 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, const std::string& file
 	else
 	{
 		//create new material
-		MaterialData* data = new MaterialData(); // TODO: delete if null
-		data->s_Name = name.C_Str();
+		Material* material = new Material(); // TODO: delete if null
+		material->SetMaterialName(name.C_Str());
 		// load each map/texture into a new material
 
 		// iterate through all known texture types, then load the textures
@@ -114,81 +115,47 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, const std::string& file
 		for (int i = aiTextureType_NONE + 1; i < num; i++)
 		{
 			aiString str;
-			GLuint handle = 0;
+			Texture* texture = nullptr;
 
 			mat->GetTexture((aiTextureType)i, 0, &str);
 
-			if (strcmp(str.C_Str(), "") != 0)
-			{
-				// null name == no map/texture
-				if (resMan->TextureExists(str.C_Str()) == false)
-				{
-					// no texture with that name is loaded
-					handle = Load2DTexture(TextureFolderPath(str.C_Str())); // new texture
-					if (handle != 0)
-					{
-						resMan->AddTexture(str.C_Str(), handle);
-					}
-					else
-					{
-						handle = resMan->GetTexture("null_texture.png");
-						str.Set("No-Load"); // handle = resMan->GetTexture("glass_dif.png");
-					}
-				}
-				else
-					handle = resMan->GetTexture(str.C_Str()); // grab existing texture with same name
-			}
-			else
-			{
-				handle = resMan->GetTexture("null_texture.png");
-				str.Set("Empty"); // handle = resMan->GetTexture("glass_dif.png");
-			}
+			texture = resMan->GetTexture(str.C_Str());
+
 			//handle = 1;
 			switch (i)
 			{
 			case aiTextureType_DIFFUSE:
-				data->s_DiffuseHandle = handle;
-				data->s_DiffuseName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Diffuse);
 				break;
 			case aiTextureType_SPECULAR:
-				data->s_SpecularHandle = handle;
-				data->s_SpecularName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Specular);
 				break;
 			case aiTextureType_AMBIENT:
-				data->s_AmbientHandle = handle;
-				data->s_AmbientName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Ambient);
 				break;
 			case aiTextureType_EMISSIVE:
-				data->s_EmissiveHandle = handle;
-				data->s_EmissiveName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Emissive);
 				break;
 			case aiTextureType_HEIGHT:
-				data->s_HeightHandle = handle;
-				data->s_HeightName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Height);
 				break;
 			case aiTextureType_NORMALS:
-				data->s_NormalsHandle = handle;
-				data->s_NormalsName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Normals);
 				break;
 			case aiTextureType_SHININESS:
-				data->s_ShininessHandle = handle;
-				data->s_ShininessName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Shininess);
 				break;
 			case aiTextureType_OPACITY:
-				data->s_OpacityHandle = handle;
-				data->s_OpacityName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Opacity);
 				break;
 			case aiTextureType_DISPLACEMENT:
-				data->s_DisplacementHandle = handle;
-				data->s_DisplacementName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Displacement);
 				break;
 			case aiTextureType_LIGHTMAP:
-				data->s_LightMapHandle = handle;
-				data->s_LightMapName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_LightMap);
 				break;
 			case aiTextureType_REFLECTION:
-				data->s_ReflectionHandle = handle;
-				data->s_ReflectionName = str.C_Str();
+				material->AddTexture(texture, eMaterialMaps::MatMap_Reflection);
 				break;
 			}
 		}

@@ -4,16 +4,9 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"arm_dif.png",
-			"DiffuseName":	"arm_dif.png",
-			"SpecularName":	"arm_showroom_spec.png",
-			"EmissiveName":	"Empty",
-			"HeightName":	"Empty",
-			"NormalName":	"arm_showroom_ddn.png",
-			"ShininessName":	"Empty",
-			"OpacityName":	"Empty",
-			"DisplacementName":	"Empty",
-			"LightMapName":	"Empty",
-			"ReflectionName":	"Empty"
+			"0":	"arm_dif.png",
+			"1":	"arm_dif.png",
+			"2":	"arm_showroom_spec.png",
+			"5":	"arm_showroom_ddn.png"
 		}]
 }

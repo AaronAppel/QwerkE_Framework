@@ -15,6 +15,16 @@ public:
 	void SwapBuffers() { glfwSwapBuffers(m_Window); };
 
 private:
+	// TODO: glfwSetClipboardString();
+	// TODO: glfwSetGamma()
+	// TODO: glfwSetInputMode()
+	// TODO: glfwSetWindowAspectRatio()
+	// TODO: glfwSetWindowIcon()
+	// TODO: glfwSetWindowMonitor()
+	// TODO: glfwSetMonitorCallback()
+	// TODO: glfwSetWindowTitle()
+	// TODO: glfwSetWindowSizeLimits()
+	// TODO: glfwSetWindowUserPointer()
 	GLFWwindow * m_Window = nullptr;
 };
 

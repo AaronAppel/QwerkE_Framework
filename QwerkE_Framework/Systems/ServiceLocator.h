@@ -26,6 +26,7 @@ class Window;
 class NetworkManager;
 class ShaderFactory;
 class DataManager;
+class FileSystem;
 
 namespace QwerkE
 {
@@ -90,6 +91,7 @@ namespace QwerkE
 		static Window* m_Window;
         static NetworkManager* m_NetworkManager;
 		static DataManager* m_DataManager;
+		static FileSystem* m_FileSystem;
 	};
 }
 

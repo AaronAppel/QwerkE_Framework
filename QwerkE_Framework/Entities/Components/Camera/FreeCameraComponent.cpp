@@ -8,85 +8,60 @@
 FreeCameraComponent::FreeCameraComponent(vec3 position, vec3 up, float yaw, float pitch) :
 	CameraComponent(position, up, yaw, pitch)
 {
-
 }
 
 FreeCameraComponent::~FreeCameraComponent()
 {
-
 }
 
 void FreeCameraComponent::ProcessKeyboard(eCamera_Movement direction, float deltaTime)
 {
-	this->GetParent()->GetPosition(); // Parent GameObject().position
+	// https://learnopengl.com/Getting-started/Camera
+	float velocity = m_MovementSpeed * deltaTime;
+	float forwardVel = m_MovementSpeed * deltaTime;
+	float angularVel = 0.35f * deltaTime;
 
-	if (m_LookAt)
+	if (direction == eCamera_Movement::FORWARD)
 	{
-		float velocity = m_MovementSpeed * deltaTime;
-		if (direction == FORWARD)
-			m_Position += m_Front * velocity;
-		if (direction == BACKWARD)
-			m_Position -= m_Front * velocity;
-		if (direction == LEFT)
-			m_Position -= m_Right * velocity;
-		if (direction == RIGHT)
-			m_Position += m_Right * velocity;
-		if (direction == UP)
-			m_Position += m_CamUp * velocity;
-		if (direction == DOWN)
-			m_Position -= m_CamUp * velocity;
+		m_Position += m_Forward * forwardVel;
 	}
-	else
+	else if(direction == eCamera_Movement::BACKWARD)
 	{
-		float velocity = m_MovementSpeed * deltaTime;
-		if (direction == FORWARD)
-		{
-			m_TargetPosition += m_Front * velocity;
-			m_Position += m_Front * velocity;
-		}
-		if (direction == BACKWARD)
-		{
-			m_TargetPosition -= m_Front * velocity;
-			m_Position -= m_Front * velocity;
-		}
-		if (direction == LEFT)
-		{
-			m_TargetPosition -= m_Right * velocity; // Strafe
-			m_Position -= m_Right * velocity;
-
-			/*
-			mat4 temp;
-			temp.CreateSRT(vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 90.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f));
-			m_Right = m_Right * glm::vec3(temp.GetAt().x, temp.GetAt().y, temp.GetAt().z);
-			m_TargetPosition -=  m_Right * velocity;
-			*/
-		}
-		if (direction == RIGHT)
-		{
-			m_TargetPosition += m_Right * velocity; // Strafe
-			m_Position += m_Right * velocity;
-
-			/*
-			mat4 temp; // Rotate
-			temp.CreateSRT(vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 90.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f));
-			glm::vec3 pos = glm::vec3(temp.GetAt().x, temp.GetAt().y, temp.GetAt().z);
-			m_TargetPosition += pos * m_Right * velocity;
-			*/
-		}
-		if (direction == UP)
-		{
-			m_TargetPosition += m_CamUp * velocity;
-			m_Position += m_CamUp * velocity;
-		}
-		if (direction == DOWN)
-		{
-			m_TargetPosition -= m_CamUp * velocity;
-			m_Position -= m_CamUp * velocity;
-		}
+		m_Position -= m_Forward * forwardVel;
 	}
+	else if (direction == eCamera_Movement::RIGHT)
+	{
+		m_Position += m_Right * velocity;
+	}
+	else if (direction == eCamera_Movement::LEFT)
+	{
+		m_Position -= m_Right * velocity;
+	}
+	else if (direction == eCamera_Movement::UP)
+	{
+		m_Position += m_CamUp * velocity;
+	}
+	else if (direction == eCamera_Movement::DOWN)
+	{
+		m_Position -= m_CamUp * velocity;
+	}
+	else if (direction == eCamera_Movement::RROTATE)
+	{
+		m_Forward += vec3(angularVel, 0, angularVel);
+		m_Right = g_WORLDUP.Cross(m_Forward).GetNormalized() * m_MovementSpeed;
+	}
+	else if (direction == eCamera_Movement::LROTATE)
+	{
+		m_Forward -= vec3(angularVel, 0, angularVel);
+		m_Right = g_WORLDUP.Cross(m_Forward).GetNormalized() * m_MovementSpeed;
+	}
+
 	// update parent position
 	UpdateParentPosition(m_Position);
-	UpdateCameraVectors();
+	// TODO: Update parent rotation
+
+	m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_Position - m_Forward); // view
+	m_ProjMatrix->CreatePerspectiveHFoV(m_Zoom * 0.5f, m_ViewportSize.x / m_ViewportSize.y, m_CAMNEAR, m_CAMFAR); // projection
 }
 
 void FreeCameraComponent::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
@@ -106,7 +81,7 @@ void FreeCameraComponent::ProcessMouseMovement(float xoffset, float yoffset, GLb
 			m_Pitch = -89.0f;
 	}
 
-	// Update m_Front, m_Right and Up Vectors using the updated Eular angles
+	// Update m_Forward, m_Right and Up Vectors using the updated Eular angles
 	UpdateCameraVectors();
 }
 

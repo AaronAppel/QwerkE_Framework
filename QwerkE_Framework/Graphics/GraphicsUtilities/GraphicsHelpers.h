@@ -24,14 +24,16 @@ GLuint CopyFBOToTexture(FrameBufferObject& handle, int w, int h, int x = 0, int 
 class RenderComponent;
 void SaveObjectSchematic(RenderComponent* rComp);
 RenderComponent* LoadObjectSchematic(const char* schematicPath);
+void LoadObjectSchematic(const char* schematicPath, RenderComponent* renderComponent);
 
-class MaterialData;
-void SaveMaterialSchematic(MaterialData* material);
-MaterialData* LoadMaterialSchematic(const char* schematicPath);
+class Material;
+void SaveMaterialSchematic(Material* material);
+void LoadMaterialSchematic(const char* schematicPath, Material* material);
+Material* LoadMaterialSchematic(const char* schematicPath);
 
 class Model;
-void SaveMaterialSchematic(MaterialData* material);
-MaterialData* LoadMaterialSchematic(const char* schematicPath);
+void SaveMaterialSchematic(Material* material);
+Material* LoadMaterialSchematic(const char* schematicPath);
 
 class ShaderProgram;
 void SaveShaderSchematic(ShaderProgram* shader);

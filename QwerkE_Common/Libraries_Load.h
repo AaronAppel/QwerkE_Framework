@@ -63,8 +63,9 @@
 #else // Engine or other project
 #ifdef DEBUG
 // OpenGL
-#define OpenGL
+#ifdef OpenGL
 #pragma comment( lib, "opengl32.lib" ) // load
+#endif
 // assimp
 #pragma comment( lib, "../QwerkE_Framework/QwerkE_Common/Libraries/assimp/Release/x86/assimp-vc140-mt.lib" )
 // freetype2

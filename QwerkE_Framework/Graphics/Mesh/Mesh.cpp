@@ -52,6 +52,10 @@ void Mesh::BufferMeshData(int numVerts, VertexData* vertices, int numIndices, un
 
 void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 {
+	// Tell the shader where to look for the mesh data.
+	// This needs to be called on shader changes but does not
+	// affect the mesh at all.
+
 	CheckGraphicsErrors(__FILE__, __LINE__);
 
 	if (shader == nullptr) { return; } // null ShaderProgram*

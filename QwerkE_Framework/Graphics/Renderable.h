@@ -7,13 +7,13 @@
 
 class Mesh;
 class ShaderProgram;
-class MaterialData;
+class Material;
 
 class Renderable
 {
 public:
 	Renderable() {}
-	Renderable(ShaderProgram* shader, MaterialData* material, Mesh* mesh)
+	Renderable(ShaderProgram* shader, Material* material, Mesh* mesh)
 	{
 		m_Shader = shader;
 		m_Material = material;
@@ -24,7 +24,7 @@ public:
 	// Getters
 	std::string GetRenderableName() const { return m_RenderableName; }
 	ShaderProgram* GetShaderSchematic() { return m_Shader; }
-	MaterialData* GetMaterialSchematic() { return m_Material; }
+	Material* GetMaterialSchematic() { return m_Material; }
 	Mesh* GetMesh() { return m_Mesh; }
 
 	// Setters
@@ -39,7 +39,7 @@ public:
 		}
 	}
 
-	void SetMaterial(MaterialData* material)
+	void SetMaterial(Material* material)
 	{
 		if (material)
 			m_Material = material;
@@ -54,7 +54,7 @@ public:
 private:
 	std::string m_RenderableName = "Uninitialized";
 	ShaderProgram* m_Shader = nullptr;
-	MaterialData* m_Material = nullptr;
+	Material* m_Material = nullptr;
 	Mesh* m_Mesh = nullptr;
 };
 

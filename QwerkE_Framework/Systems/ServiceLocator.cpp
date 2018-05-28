@@ -23,6 +23,7 @@ namespace QwerkE
 	Window* QwerkE::ServiceLocator::m_Window = nullptr;
 	NetworkManager* QwerkE::ServiceLocator::m_NetworkManager = nullptr;
 	DataManager* QwerkE::ServiceLocator::m_DataManager = nullptr;
+	FileSystem* QwerkE::ServiceLocator::m_FileSystem = nullptr;
 
 	void ServiceLocator::RegisterService(eEngineServices serviceType, void* service)
 	{
@@ -71,6 +72,9 @@ namespace QwerkE
 			break;
 		case eEngineServices::Data_Manager:
 			ServiceLocator::m_DataManager = (DataManager*)service;
+			break;
+		case eEngineServices::FileSystem:
+			ServiceLocator::m_FileSystem = (FileSystem*)service;
 			break;
 		default:
 			ConsolePrint("ServiceLocator::RegisterService(): Invalid service!");
@@ -154,6 +158,11 @@ namespace QwerkE
 			ServiceLocator::m_DataManager = nullptr;
 			return temp;
 			break;
+		case eEngineServices::FileSystem:
+			temp = ServiceLocator::m_FileSystem;
+			ServiceLocator::m_FileSystem = nullptr;
+			return temp;
+			break;
 		default:
 			ConsolePrint("ServiceLocator::UnregisterService(): Invalid service!");
 			return nullptr;
@@ -206,6 +215,9 @@ namespace QwerkE
 			break;
 		case eEngineServices::Data_Manager:
 			return ServiceLocator::m_DataManager;
+			break;
+		case eEngineServices::FileSystem:
+			return ServiceLocator::m_FileSystem;
 			break;
 		default:
 			ConsolePrint("ServiceLocator::GetService(): Invalid service!");
@@ -274,6 +286,10 @@ namespace QwerkE
 				break;
 			case eEngineServices::Data_Manager:
 				if (ServiceLocator::m_DataManager == nullptr)
+					return eEngineMessage::_QFail; // not loaded
+				break;
+			case eEngineServices::FileSystem:
+				if (ServiceLocator::m_FileSystem == nullptr)
 					return eEngineMessage::_QFail; // not loaded
 				break;
 			}

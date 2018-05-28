@@ -743,10 +743,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Math_Includes.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\GUID.h" />
@@ -776,12 +772,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\FileLoader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadImageFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadModelFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadSoundFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\LoadWavFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileLoader\QwerkE_AssimpLoading.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp" />

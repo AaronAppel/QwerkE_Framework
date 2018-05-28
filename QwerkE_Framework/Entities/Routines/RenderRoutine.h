@@ -12,7 +12,7 @@ class CameraComponent;
 struct ShaderProgram;
 class Mesh;
 class RenderComponent;
-class MaterialData;
+class Material;
 class RenderRoutine;
 
 typedef void (RenderRoutine::*DrawFunc)(GameObject* a_Camera); // draw mesh or model

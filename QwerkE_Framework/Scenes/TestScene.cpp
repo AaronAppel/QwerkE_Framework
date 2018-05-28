@@ -49,10 +49,13 @@ void TestScene::Initialize()
 		// t_pFactory->CreateCube(this, vec3(-2, 1, 40));
 
 		// TEST:
-		obj = t_pFactory->CreateTestModel(this, vec3(0, -5, 30));
+		obj = t_pFactory->CreateTestModel(this, vec3(0, -2, 30));
 		obj->SetRotation(vec3(0, 0, 0));
 
-		t_pFactory->CreateCube(this, vec3(0,0, 50));
+		for (int i = 0; i < 10; i++)
+		{
+			t_pFactory->CreateCube(this, vec3(0, i - 5, 50));
+		}
 		// plane
 		// t_pFactory->CreatePlane(this, vec3(0, -1, 0));
 	}
@@ -70,7 +73,7 @@ void TestScene::Initialize()
 void TestScene::p_Running(double deltatime)
 {
     obj->SetRotation(vec3(obj->GetRotation().x,
-        obj->GetRotation().y + 0.002f / QwerkE::Time::GetDeltaTime(),
+        obj->GetRotation().y + 90.0f * deltatime,
 		obj->GetRotation().z));
 
 	if (obj->GetRotation().y >= 360.0f)

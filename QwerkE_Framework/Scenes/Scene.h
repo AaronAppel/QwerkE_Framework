@@ -72,6 +72,7 @@ protected:
 	virtual void p_Frozen(double deltatime); // only update cameras
 	virtual void p_Paused(double deltatime) {} // Currently empty to avoid updating
 	virtual void p_Animating(double deltatime); // for testing animations
+	virtual void p_SlowMotion(double deltatime);
 	StateFunc m_UpdateFunc = &Scene::p_Running;
 
 	void CameraInput(double deltatime);

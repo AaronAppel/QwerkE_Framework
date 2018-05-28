@@ -18,6 +18,8 @@
 // better way to define the architecture?
 #ifdef Win32Bit
 #define _Q32Bit
+// define libraries and systems to build
+#define OpenGL
 #elif defined(Win64Bit)
 #define _Q64Bit
 #else
