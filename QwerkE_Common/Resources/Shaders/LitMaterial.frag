@@ -11,7 +11,7 @@ in vec2 t_UV;
 uniform vec3 u_LightPos;
 uniform vec3 u_CamPos;
 
-uniform vec3 u_LightColour;
+uniform vec3 u_LightColor;
 
 uniform sampler2D u_AmbientTexture; // ambient Handle
 uniform sampler2D u_DiffuseTexture; // diffuse Handle
@@ -33,7 +33,7 @@ void main()
 	
 	float diff = max(dot(norm, lightDir), 0.0);
 	
-	vec3 diffuse = u_LightColour * diff * texture(u_DiffuseTexture, t_UV).rgb;
+	vec3 diffuse = u_LightColor * diff * texture(u_DiffuseTexture, t_UV).rgb;
 	
     // specular
     vec3 viewDir = normalize(u_CamPos - t_FragPos);

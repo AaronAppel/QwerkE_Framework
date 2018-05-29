@@ -26,6 +26,8 @@ public:
 	// Shapes
 	GameObject* CreateCube(Scene* scene, vec3 position);
 	GameObject* CreatePlane(Scene* scene, vec3 position);
+	GameObject* CreateSphere(Scene* scene, vec3 position);
+	GameObject* CreateObjectFromSchematic(const char* schematicName, Scene* scene, vec3 position);
 
 	// Systems
 	GameObject* CreateFreeCamera(Scene* scene, vec3 position);

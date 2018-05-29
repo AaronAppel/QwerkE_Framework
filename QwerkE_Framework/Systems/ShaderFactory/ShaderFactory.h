@@ -23,6 +23,7 @@ public:
 	ShaderProgram* CreateShader(eShaderTypes type);
 	ShaderProgram* CreateShader(const char* vertFileDir, const char* fragFileDir, const char* geoFileDir);
 	ShaderComponent* CreateShaderComponent(GLenum type, const char* filePath);
+	ShaderComponent* GenerateShaderFromData(GLenum type, const char* shaderData);
 	GLuint CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo);
 	// TODO: ShaderProgram* CreateShaderProgram(GLuint vert, GLuint frag, GLuint geo);
 

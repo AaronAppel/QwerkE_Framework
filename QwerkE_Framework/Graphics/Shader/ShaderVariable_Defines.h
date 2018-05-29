@@ -45,7 +45,7 @@
 #define cameraPosition "CamPos"
 
 // Lighting
-#define lightColor "LightColour"
+#define lightColor "LightColor"
 #define lightPosition "LightPos"
 
 // Other

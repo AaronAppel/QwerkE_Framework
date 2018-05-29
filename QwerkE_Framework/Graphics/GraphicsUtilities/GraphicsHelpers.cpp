@@ -136,20 +136,20 @@ void SaveObjectSchematic(RenderComponent* rComp) // save to file
 	ClosecJSONStream(root);
 }
 
-RenderComponent* LoadObjectSchematic(const char* schematicPath) // load from file
+RenderComponent* LoadRenderComponentFromSchematic(const char* schematicPath) // load from file
 {
 	RenderComponent* rComp = new RenderComponent();
-	LoadObjectSchematic(schematicPath, rComp);
+	LoadRenderComponentFromSchematic(schematicPath, rComp);
 	return rComp;
 }
-void LoadObjectSchematic(const char* schematicPath, RenderComponent* renderComponent) // load from file
+void LoadRenderComponentFromSchematic(const char* schematicPath, RenderComponent* renderComponent) // load from file
 {
 	cJSON* root = OpencJSONStream(schematicPath);
 
+	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 	if (root)
 	{
 		renderComponent->SetSchematicName(GetFileNameWithExt(schematicPath));
-		ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
 
 		cJSON* name = GetItemFromRootByKey(root, "Name");
 		// rComp.name = name->valuestring;
@@ -167,6 +167,14 @@ void LoadObjectSchematic(const char* schematicPath, RenderComponent* renderCompo
 			renderComponent->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
 			renderComponent->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
 		}
+	}
+	if (renderComponent->SeeRenderableList()->size() < 1)
+	{
+		renderComponent->AppendEmptyRenderables(1);
+		renderComponent->SetNameAtIndex(0, "null_renderable");
+		renderComponent->SetShaderAtIndex(0, resMan->GetShaderProgram(null_shader));
+		renderComponent->SetMaterialAtIndex(0, resMan->GetMaterial(null_material));
+		renderComponent->SetMeshAtIndex(0, resMan->GetMesh(null_mesh));
 	}
 
 	ClosecJSONStream(root);

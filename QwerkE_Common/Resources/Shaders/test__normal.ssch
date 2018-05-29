@@ -1,0 +1,6 @@
+{
+	"Name":	"test_normal.ssch",
+	"vert":	"test_normal.vert",
+	"frag":	"test_normal.frag",
+	"geo":	"null"
+}

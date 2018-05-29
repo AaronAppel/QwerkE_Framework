@@ -16,10 +16,9 @@ GameObject* Factory::CreateCube(Scene* scene, vec3 position)
 	t_Cube->SetTag(eGameObjectTags::GO_Tag_Cube);
 	t_Cube->SetRenderOrder(50);
 
-	AddModelComponentFromSchematic(t_Cube, "Cube.osch");
+	AddModelComponentFromSchematic(t_Cube, "Cube_UVd.osch");
 
-	RenderRoutine* renderRoutine = new RenderRoutine();
-	t_Cube->AddRoutine((Routine*)renderRoutine);
+	t_Cube->AddRoutine((Routine*)new RenderRoutine());
 
 	if (scene->AddObjectToScene(t_Cube))
 	{
@@ -38,10 +37,9 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	t_Plane->SetTag(eGameObjectTags::GO_Tag_Plane);
 	t_Plane->SetRenderOrder(50);
 
-	AddModelComponentFromSchematic(t_Plane, "Cube.osch");
+	AddModelComponentFromSchematic(t_Plane, "Plane.osch");
 
-	RenderRoutine* renderRoutine = new RenderRoutine();
-	t_Plane->AddRoutine((Routine*)renderRoutine);
+	t_Plane->AddRoutine((Routine*)new RenderRoutine());
 
 	if (scene->AddObjectToScene(t_Plane))
 	{
@@ -50,5 +48,26 @@ GameObject* Factory::CreatePlane(Scene* scene, vec3 position)
 	}
 
 	delete t_Plane;
+	return nullptr;
+}
+
+GameObject* Factory::CreateSphere(Scene* scene, vec3 position)
+{
+	GameObject* t_Sphere = new GameObject(scene, position);
+	t_Sphere->SetName("Sphere" + std::to_string(helpers_GetUniqueID()));
+	t_Sphere->SetTag(eGameObjectTags::GO_Tag_Sphere);
+	t_Sphere->SetRenderOrder(50);
+
+	AddModelComponentFromSchematic(t_Sphere, "Sphere.osch");
+
+	t_Sphere->AddRoutine((Routine*)new RenderRoutine());
+
+	if (scene->AddObjectToScene(t_Sphere))
+	{
+		m_Created++;
+		return t_Sphere;
+	}
+
+	delete t_Sphere;
 	return nullptr;
 }

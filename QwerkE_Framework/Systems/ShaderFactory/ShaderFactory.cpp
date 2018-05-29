@@ -39,10 +39,21 @@ ShaderProgram* ShaderFactory::CreateShader(const char* vertFileDir, const char* 
 // Returns new shader handle is successful, else 0
 ShaderComponent* ShaderFactory::CreateShaderComponent(GLenum shaderType, const char* shaderPath)
 {
+	const char* shaderString = LoadCompleteFile(shaderPath, 0);
+	ShaderComponent* result = GenerateShaderFromData(shaderType, shaderString);
+	if (result)
+	{
+		result->SetType(DeepCopyString(GetFileExtension(shaderPath).c_str()));
+		result->SetName(GetFileNameWithExt(shaderPath));
+	}
+	return result;
+}
+
+ShaderComponent* ShaderFactory::GenerateShaderFromData(GLenum shaderType, const char* shaderData)
+{
 	GLuint shaderHandle = glCreateShader(shaderType); // fails if context is not current for GLFW
 
-	const char* shaderString = LoadCompleteFile(shaderPath, 0);
-	glShaderSource(shaderHandle, 1, &shaderString, NULL);
+	glShaderSource(shaderHandle, 1, &shaderData, NULL);
 	glCompileShader(shaderHandle);
 
 	GLint success = 0;
@@ -62,24 +73,21 @@ ShaderComponent* ShaderFactory::CreateShaderComponent(GLenum shaderType, const c
 			shaderTypeString = "GL_GEOMETRY_SHADER";
 
 		char* next_token = 0;
-		char* ShaderName = strtok_s((char*)shaderString, "\n", &next_token);
+		char* ShaderName = strtok_s((char*)shaderData, "\n", &next_token);
 		// TODO: error reads as garbage characters.
 		OutputPrint("\n%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, shaderTypeString);
 		OutputPrint(infoLog); // OpenGL message
 
-		// cleanup
+							  // cleanup
 		glDeleteShader(shaderHandle);
 		shaderHandle = 0;
-		delete[] shaderString;
 		return nullptr;
 	}
 	else
 	{
 		ShaderComponent* comp = new ShaderComponent();
-		comp->SetName(GetFileNameWithExt(shaderPath));
-		comp->SetStringData(shaderString);
+		comp->SetStringData(shaderData);
 		comp->SetHandle(shaderHandle);
-		comp->SetType(DeepCopyString(GetFileExtension(shaderPath).c_str()));
 		return comp;
 	}
 }
@@ -97,7 +105,9 @@ bool ShaderFactory::LinkCreatedShaderProgram(ShaderProgram* shader)
 {
 	// TODO: Add in geometry shader support
     GLuint result = LinkShaders(shader->GetVertShader()->GetHandle(), shader->GetFragShader()->GetHandle(), NULL);
-	shader->SetProgram(result);
+	if (result != 0)
+		shader->SetProgram(result);
+
 	return result != 0;
 }
 

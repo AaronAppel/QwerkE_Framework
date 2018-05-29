@@ -1,6 +1,36 @@
 #include "ShaderProgram.h"
+#include "../../Systems/ShaderFactory/ShaderFactory.h"
+#include "../../Systems/ServiceLocator.h"
+#include "ShaderComponent.h"
 
-/* Uniform value assignment */
+void ShaderProgram::RecompileShaderType(GLenum type, const char* shaderData)
+{
+	ShaderComponent* result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->GenerateShaderFromData(type, shaderData);
+
+	if (result)
+	{
+		// TODO: Handle old shader value
+		switch (type)
+		{
+		case GL_VERTEX_SHADER:
+			result->SetName(m_VertShader->GetName());
+			m_VertShader = result;
+			break;
+		case GL_FRAGMENT_SHADER:
+			result->SetName(m_FragShader->GetName());
+			m_FragShader = result;
+			break;
+		case GL_GEOMETRY_SHADER:
+			result->SetName(m_GeoShader->GetName());
+			m_GeoShader = result;
+			break;
+		}
+		// link new shader and re
+		((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(this);
+	}
+}
+
+/* Attribute value assignment */
 // void SetAttributeData() {} good idea?
 
 /* Uniform value assignment */

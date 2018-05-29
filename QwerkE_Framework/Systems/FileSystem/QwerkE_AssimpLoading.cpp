@@ -38,6 +38,10 @@ void QwerkE_assimp_loadSceneNodeData(aiNode *node, const aiScene *scene, std::ve
 
 Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const char* modelFilePath)
 {
+	if (((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->MeshExists(GetFileNameWithExt(modelFilePath).c_str()))
+	{
+		return ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh(GetFileNameWithExt(modelFilePath).c_str());
+	}
 	// process vertex positions, normals and texture coordinates
 	unsigned int totalVerts = mesh->mNumVertices;
 	std::vector<VertexData> vertices(totalVerts); // TODO: Swap to array? // PERF: really good use of a 1 frame stack allocation
@@ -83,6 +87,7 @@ Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const cha
 		rMesh->BufferMeshData(totalVerts, &vertices[0], totalFaces * 3, &indices[0]);
 		rMesh->SetName(mesh->mName.C_Str());
 		rMesh->SetFileName(GetFileNameWithExt(modelFilePath));
+		((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddMesh(rMesh->GetName().c_str(), rMesh);
 	}
 	else
 		rMesh = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh(null_mesh);

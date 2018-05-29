@@ -209,5 +209,21 @@ void file_drop_callback(GLFWwindow* window, int count, const char** paths)
 					GetFileNameNoExt(*paths).c_str(), texture);
 			}
 		}
+		else if (strcmp(GetFileExtension(*paths).c_str(), "fbx") == 0 || strcmp(GetFileExtension(*paths).c_str(), "obj") == 0)
+		{
+			fileSystem->LoadModelFileToMeshes(*paths);
+		}
+		else if (strcmp(GetFileExtension(*paths).c_str(), "msch") == 0)
+		{
+			// TODO:
+		}
+		else if (strcmp(GetFileExtension(*paths).c_str(), "ssch") == 0)
+		{
+			// TODO:
+		}
+		else if (strcmp(GetFileExtension(*paths).c_str(), "osch") == 0)
+		{
+			// TODO:
+		}
 	}
 }

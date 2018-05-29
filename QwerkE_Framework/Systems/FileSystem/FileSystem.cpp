@@ -51,7 +51,8 @@ unsigned char* FileSystem::LoadImageFile(const char* path, unsigned int* imageWi
 #if QwerkE_Image_Library == 1 // stb
 	// stb has shown to be faster than lodepng, however it is not reliable for loading all image formats.
 	// use both for now...
-	//returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
+	// TODO: Fix stb_image
+	// returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
 
 	// #elif QwerkE_Image_Library == 2 // lodepng
 	// if (returnBuffer == nullptr || strcmp((const char*)returnBuffer, "") == 0)

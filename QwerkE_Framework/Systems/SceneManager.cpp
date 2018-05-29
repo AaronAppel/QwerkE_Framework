@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "../Scenes/TestScene.h"
 #include "../Scenes/ViewerScene.h"
+#include "../Scenes/PBR_Test1.h"
 #include "../QwerkE_Enums.h"
 #include "../Scenes/Scene.h"
 
@@ -32,6 +33,12 @@ void SceneManager::Initialize()
 	// instantiate and LoadScene() (splash, main menu, game etc...)
 	// test screen
 	Scene* temp = new TestScene();
+	temp->Initialize();
+	temp->SetIsEnabled(true);
+	m_CurrentScene = temp; // Set current
+	m_Scenes[temp->GetSceneID()] = temp;
+
+	temp = new PBR_Test1();
 	temp->Initialize();
 	temp->SetIsEnabled(true);
 	m_CurrentScene = temp; // Set current

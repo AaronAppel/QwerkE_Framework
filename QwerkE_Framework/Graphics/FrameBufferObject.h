@@ -40,6 +40,7 @@ public:
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 			int bp = 1;// cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << endl;
 		glBindFramebuffer(GL_FRAMEBUFFER, 0); // unbind
+		// TODO: Unbind texture?
 	}
 
 	void Bind()

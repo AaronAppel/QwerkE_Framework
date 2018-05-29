@@ -70,7 +70,7 @@ public:
 	const std::map<std::string, Material*>* LookAtMaterials() { return &m_Materials; };
 	// const std::map<std::string, >* LookAtFonts() { return &; };
 	const std::map<std::string, ALuint>* LookAtSounds() { return &m_Sounds; };
-	const std::map<std::string, ShaderProgram*>* LookAtShaderProgram() { return &m_ShaderProgram; };
+	const std::map<std::string, ShaderProgram*>* LookAtShaderPrograms() { return &m_ShaderProgram; };
 	const std::map<std::string, ShaderComponent*>* LookAtShaderComponents() { return &m_ShaderComponents; };
 
 	// TODO: Handle loading additional resources

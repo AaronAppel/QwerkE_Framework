@@ -22,6 +22,9 @@ public:
 
 	void FindAttributesAndUniforms() { FindShaderUniformsAndAttributesInString(this, m_Attributes, m_Uniforms); };
 
+	// TODO: void RecompileShaderType(GLenum type);
+	void RecompileShaderType(GLenum type, const char* shaderData);
+
 	const std::vector<std::string>* SeeAttributes() const { return &m_Attributes; }
 	const std::vector<std::string>* SeeUniforms() const { return &m_Uniforms; }
 

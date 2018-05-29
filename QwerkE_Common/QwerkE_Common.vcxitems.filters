@@ -79,9 +79,6 @@
     <Filter Include="Libraries\assimp">
       <UniqueIdentifier>{377b4338-8fd9-4f4a-aba9-338c89a84490}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utilities\FileIO\FileLoader">
-      <UniqueIdentifier>{c0d4ca4a-fa43-42d3-a3a0-6f2b503fdb95}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\CPPList.h">

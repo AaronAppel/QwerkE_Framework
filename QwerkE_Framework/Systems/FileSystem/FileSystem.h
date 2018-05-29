@@ -10,6 +10,7 @@ public:
 	FileSystem();
 	~FileSystem();
 
+	// TODO: LoadHDRImage // https://learnopengl.com/PBR/IBL/Diffuse-irradiance
 	unsigned char* LoadSoundFile(const char* path, DWORD& bufferSize, unsigned short& channels, ALsizei frequency);
 
 	// TODO: Allow flags for loading images a certain way

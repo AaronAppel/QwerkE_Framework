@@ -1,0 +1,11 @@
+{
+	"Name":	"sphere.osch",
+	"Renderables":	[{
+		"Sphere": [{
+			"Shader":	"LitMaterial.ssch",
+			"Material":	"rusted_iron.msch",
+			"MeshFile":	"Sphere.obj",
+			"MeshName": "Sphere"
+			}]
+		}]
+}

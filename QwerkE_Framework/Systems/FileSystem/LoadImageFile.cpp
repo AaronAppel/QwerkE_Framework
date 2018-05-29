@@ -12,6 +12,7 @@ unsigned char* QwerkE_stb_image_loadImage(const char* path, unsigned int* imageW
 
 	// Note: must cast values to signed ints. Could lead to errors.
 	// buffer file data
+	stbi_set_flip_vertically_on_load(flipVertically);
 	pngbuffer = stbi_load(path, (signed int*)&imageWidth, (signed int*)&imageHeight, &nrChannels, channels); // can set 0 to desired comp (rgba == 4)
 	// if (pngbuffer == nullptr || strcmp((const char*)pngbuffer, "") == 0)
 	if(!pngbuffer)

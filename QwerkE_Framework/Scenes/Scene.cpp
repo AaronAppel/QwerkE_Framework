@@ -152,11 +152,11 @@ void Scene::CameraInput(double deltatime) // camera control
 	{
 		t_activecamera->ProcessKeyboard(eCamera_Movement::UP, (float)deltatime);
 	}
-	if (inputmanager->GetIsKeyDown(eKeys::eKeys_R))
+	if (inputmanager->GetIsKeyDown(eKeys::eKeys_T))
 	{
 		t_activecamera->ProcessKeyboard(eCamera_Movement::RROTATE, (float)deltatime);
 	}
-	if (inputmanager->GetIsKeyDown(eKeys::eKeys_T))
+	if (inputmanager->GetIsKeyDown(eKeys::eKeys_R))
 	{
 		t_activecamera->ProcessKeyboard(eCamera_Movement::LROTATE, (float)deltatime);
 	}

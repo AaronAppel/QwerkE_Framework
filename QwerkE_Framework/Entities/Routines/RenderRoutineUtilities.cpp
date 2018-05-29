@@ -56,16 +56,6 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 
 	/* Assign material texture values */
 	int counter = 0;
-
-	std::vector<GLuint> textures;
-
-	for (auto p : *materialList)
-	{
-		textures.push_back(p.second->s_Handle);
-	}
-
-	//RenderRoutine::SetupTextureUniforms(textures.data(), textures.size(), renderable->GetShaderSchematic());
-
 	for (auto p : *materialList)
 	{
 		glActiveTexture(GL_TEXTURE0 + counter);

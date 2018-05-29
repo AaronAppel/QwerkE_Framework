@@ -4,6 +4,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 
 Factory::Factory()
 {
@@ -27,9 +28,17 @@ GameObject* Factory::CreateGameObject(Scene* scene, vec3 position)
 	return new GameObject(scene, position);
 }
 
+GameObject* Factory::CreateObjectFromSchematic(const char* schematicName, Scene* scene, vec3 position)
+{
+	GameObject* object = CreateGameObject(scene, position);
+	object->SetName(GetFileNameWithExt(schematicName));
+	object->AddComponent(LoadRenderComponentFromSchematic(SchematicFolderPath(schematicName)));
+	return object;
+}
+
 RenderComponent* Factory::AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName)
 {
-	RenderComponent* mComp = LoadObjectSchematic(SchematicFolderPath(objectRecipeName));
+	RenderComponent* mComp = LoadRenderComponentFromSchematic(SchematicFolderPath(objectRecipeName));
 	entity->AddComponent((Component*)mComp);
 	return mComp;
 }

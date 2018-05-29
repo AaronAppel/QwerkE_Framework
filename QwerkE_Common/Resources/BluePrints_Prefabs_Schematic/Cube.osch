@@ -1,9 +1,9 @@
 {
-	"Name":	"nanosuit.osch",
+	"Name":	"Cube.osch",
 	"Renderables":	[{
 		"Cube": [{
 			"Shader":	"LitMaterial",
-			"Material":	"null_material.mat",
+			"Material":	"rusted_iron.msch",
 			"MeshFile":	"Cube.obj",
 			"MeshName": "Cube"
 			}]

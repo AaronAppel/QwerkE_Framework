@@ -17,6 +17,11 @@ enum class eMaterialMaps : std::uint8_t
 	MatMap_Displacement,
 	MatMap_LightMap,
 	MatMap_Reflection,
+	MatMap_Albedo,
+	MatMap_Metallic,
+	MatMap_AbientOcclusion,
+	MatMap_Roughness,
+
 	MatMap_Vec3Colour,
 
 	MatMap_Null
@@ -153,6 +158,7 @@ enum eSceneTypes
 
 	// "special" scenes
 	Scene_ViewerScene,
+	Scene_PBR_Test1,
 
 	Scene_Null
 };
@@ -205,6 +211,7 @@ enum eLightType // TODO: Hide from program?
 	LightType_NULL
 };
 
+// TODO: Adding object tags ruins object saving and loading. Fix!
 enum eGameObjectTags
 {
 	GO_Tag_Player = 0,
@@ -215,6 +222,7 @@ enum eGameObjectTags
 	// Shapes
 	GO_Tag_Cube,
 	GO_Tag_Plane,
+	GO_Tag_Sphere,
 	// Scenery
 	GO_Tag_SkyBox,
 	// Test

@@ -5,6 +5,8 @@
 #include "../../../QwerkE_Enums.h"
 #include "../../GameObject.h"
 
+// https://msdn.microsoft.com/en-us/library/bb203907(v=xnagamestudio.10).aspx
+
 FreeCameraComponent::FreeCameraComponent(vec3 position, vec3 up, float yaw, float pitch) :
 	CameraComponent(position, up, yaw, pitch)
 {
@@ -48,12 +50,16 @@ void FreeCameraComponent::ProcessKeyboard(eCamera_Movement direction, float delt
 	else if (direction == eCamera_Movement::RROTATE)
 	{
 		m_Forward += vec3(angularVel, 0, angularVel);
+		m_Forward.Normalize();
 		m_Right = g_WORLDUP.Cross(m_Forward).GetNormalized() * m_MovementSpeed;
+		m_Right.Normalize();
 	}
 	else if (direction == eCamera_Movement::LROTATE)
 	{
 		m_Forward -= vec3(angularVel, 0, angularVel);
+		m_Forward.Normalize();
 		m_Right = g_WORLDUP.Cross(m_Forward).GetNormalized() * m_MovementSpeed;
+		m_Right.Normalize();
 	}
 
 	// update parent position
@@ -81,7 +87,7 @@ void FreeCameraComponent::ProcessMouseMovement(float xoffset, float yoffset, GLb
 			m_Pitch = -89.0f;
 	}
 
-	// Update m_Forward, m_Right and Up Vectors using the updated Eular angles
+	// Update m_Forward, m_Right and Up Vectors using the updated Euler angles
 	UpdateCameraVectors();
 }
 
