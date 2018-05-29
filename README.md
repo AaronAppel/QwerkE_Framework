@@ -1,5 +1,5 @@
 # QwerkE_Framework
-*This project is a work in progess*  
+*This project is a work in progess and is continually in an unstable state*  
 Qwerk Engine is a simple framework that developers can use to build games.
 
 There are simple systems like rendering, audio, input, etc, that can be utilized or replaced with custom systems as you wish.
