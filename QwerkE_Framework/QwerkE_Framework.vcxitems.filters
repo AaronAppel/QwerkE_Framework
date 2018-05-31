@@ -316,17 +316,17 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadModelFile.cpp">
       <Filter>Systems\FileSystem</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadSoundFile.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.cpp">
       <Filter>Systems\FileSystem</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.cpp">
       <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.cpp">
+      <Filter>Systems\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp">
+      <Filter>Systems\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -562,9 +562,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h">
       <Filter>Systems\FileSystem</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h">
       <Filter>Systems\FileSystem</Filter>
     </ClInclude>
@@ -579,6 +576,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.h">
+      <Filter>Systems\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h">
+      <Filter>Systems\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

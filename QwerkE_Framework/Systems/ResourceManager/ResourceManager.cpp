@@ -222,9 +222,7 @@ ALuint ResourceManager::GetSound(const char* name)
 	{
 		return m_Sounds[name];
 	}
-	// TODO:
-	// return InstantiateSound(name);
-	return 0;
+	return InstantiateSound(name);
 }
 
 ShaderProgram* ResourceManager::GetShaderProgram(const char* name)

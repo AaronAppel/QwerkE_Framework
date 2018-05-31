@@ -3,6 +3,7 @@
 #include "../../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Scenes/Scene.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Enums.h"
 
 #include <string>

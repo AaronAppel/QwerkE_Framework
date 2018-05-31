@@ -30,6 +30,7 @@ void PBR_Test1::Initialize()
 
 	// load shaders to make them available at launch
 	t_pResourceManager->GetShaderProgram("PBR1.ssch");
+	t_pResourceManager->GetSound("bounce.wav");
 	// t_pResourceManager->GetShaderProgram("test_normal.ssch");
 
 	{

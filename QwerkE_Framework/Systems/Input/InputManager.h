@@ -22,9 +22,7 @@ public:
 	InputManager();
 	~InputManager();
 
-	// Controller* GetController(int controllerIndex) { return m_Controllers[controllerIndex]; };
-
-	void NewFrame(); // reset frame input buffer
+	void NewFrame(); // Call before other libraries! Resets frame input buffer
 
 	// TODO: ProcessMouseScroll
 	void ProcessMouseMove(vec2 position);

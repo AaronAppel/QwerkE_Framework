@@ -64,14 +64,13 @@ public:
 	ShaderProgram* GetShaderProgram(const char* name); // specify .ext
 	ShaderComponent* GetShaderComponent(const char* name); // specify .ext
 
-	// TEST:
-	const std::map<std::string, Mesh*>* LookAtMeshes() { return &m_Meshes; };
-	const std::map<std::string, Texture*>* LookAtTextures() { return &m_Textures; };
-	const std::map<std::string, Material*>* LookAtMaterials() { return &m_Materials; };
+	const std::map<std::string, Mesh*>* SeeMeshes() { return &m_Meshes; };
+	const std::map<std::string, Texture*>* SeeTextures() { return &m_Textures; };
+	const std::map<std::string, Material*>* SeeMaterials() { return &m_Materials; };
 	// const std::map<std::string, >* LookAtFonts() { return &; };
-	const std::map<std::string, ALuint>* LookAtSounds() { return &m_Sounds; };
-	const std::map<std::string, ShaderProgram*>* LookAtShaderPrograms() { return &m_ShaderProgram; };
-	const std::map<std::string, ShaderComponent*>* LookAtShaderComponents() { return &m_ShaderComponents; };
+	const std::map<std::string, ALuint>* SeeSounds() { return &m_Sounds; };
+	const std::map<std::string, ShaderProgram*>* SeeShaderPrograms() { return &m_ShaderProgram; };
+	const std::map<std::string, ShaderComponent*>* SeeShaderComponents() { return &m_ShaderComponents; };
 
 	// TODO: Handle loading additional resources
 	// CubeMap* GetCubeMap(const char* name); // specify .ext
@@ -86,11 +85,11 @@ public:
 
 private:
 	// resource storage
-	std::map<std::string, Mesh*> m_Meshes; // TODO: Rename
+	std::map<std::string, Mesh*> m_Meshes;
 	std::map<std::string, Texture*> m_Textures;
 	std::map<std::string, Material*> m_Materials;
 	std::map<std::string, FT_Face> m_Fonts;
-	std::map<std::string, ALuint> m_Sounds;
+	std::map<std::string, ALuint> m_Sounds; // TODO: Abstract OpenAL
 	std::map<std::string, ShaderProgram*> m_ShaderProgram;
 	std::map<std::string, ShaderComponent*> m_ShaderComponents;
 
@@ -108,7 +107,7 @@ private:
 	Texture* InstantiateTexture(const char* name);
 	Material* InstantiateMaterial(const char* name);
 	FT_Face InstantiateFont(const char* fontName);
-	ALuint InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels);
+	ALuint InstantiateSound(const char* soundName);
 	ShaderProgram* InstantiateShaderProgram(const char* schematicName);
 	ShaderComponent* InstantiateShaderComponent(const char* componentName);
 

@@ -64,6 +64,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\TestScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h" />
@@ -73,7 +75,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h" />
@@ -134,6 +135,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\TestScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp" />
@@ -149,8 +152,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadModelFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadSoundFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadWavFile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp" />

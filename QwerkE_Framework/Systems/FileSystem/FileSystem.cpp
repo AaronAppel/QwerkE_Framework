@@ -8,13 +8,16 @@
 #include "../../QwerkE_Common/Libraries/assimp/config.h"
 #include "../../QwerkE_Common/Libraries/assimp/material.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../ResourceManager/ResourceManager.h"
 #include "QwerkE_AssimpLoading.h"
 #include "../ServiceLocator.h"
-#include "LoadWavFile.h"
 #include "../../Graphics/Mesh/Mesh.h"
+#include "../Audio/OpenAL_Helpers.h"
 
-#define QwerkE_Image_Library 1
+#define QwerkE_Image_Library_stb 1
+#define QwerkE_Image_Library_lodepng 1
+#define QwerkE_Image_Library_soil 0
 
 #include <string>
 #include <iostream>
@@ -28,41 +31,68 @@ FileSystem::~FileSystem()
 {
 }
 
-unsigned char* FileSystem::LoadSoundFile(const char* path, DWORD& bufferSize, unsigned short& channels, ALsizei frequency)
+void FileSystem::LoadSoundFileData(const char* soundName, QSoundFile& soundFile)
 {
-	// get extension
-	if (strcmp(GetFileExtension(path).c_str(), "wav") == 0)
+	// this function is meant to abstract file type from external code
+
+	soundFile.s_Name = GetFileNameWithExt(soundName);
+
+	const char* filePath = nullptr;
+	if (FileExists(SoundFolderPath(soundName)))
 	{
-		return QwerkE_wav_loadSound(path, bufferSize, channels, frequency);
-		// QwerkE_wav_loadSound(path);
+		filePath = SoundFolderPath(soundName);
 	}
+	else if(FileExists(soundName))
+	{
+		filePath = soundName;
+	}
+	else
+	{
+		filePath = nullptr;
+		return;
+	}
+
+	// read file data
+	if (strcmp(GetFileExtension(filePath).c_str(), "wav") == 0)
+	{
+		soundFile.s_Type = "wav";
+		soundFile.s_Data = (char*)LoadWaveFileData(filePath, soundFile.s_Size, soundFile.s_Channels, soundFile.s_Frequency, soundFile.s_BitsPerSample);
+	}
+	else if (strcmp(GetFileExtension(filePath).c_str(), "mp3") == 0)
+	{
+		// soundFile.s_Type = "mp3";
+		// TODO: soundFile.s_Data = LoadMP3FileData(...);
+	}
+
+	if (soundFile.s_Data == nullptr)
+		ConsolePrint("\nOpenAL error buffering sound data!\n");
 }
 
 
 // determine image type and use proper library
 // lodepng, stb_image, SOIL, etc
-unsigned char* FileSystem::LoadImageFile(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically)
+unsigned char* FileSystem::LoadImageFileData(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically)
 {
 	unsigned char* returnBuffer = nullptr;
 
 	// TODO: Determine which tool/library to use depending on image type and format
 	// png, jpg, 8bit vs 32bit, etc
 
-#if QwerkE_Image_Library == 1 // stb
+#if QwerkE_Image_Library_stb == 1 // stb
 	// stb has shown to be faster than lodepng, however it is not reliable for loading all image formats.
-	// use both for now...
-	// TODO: Fix stb_image
+	// use both for now... // TODO: Fix stb_image
 	// returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
-
-	// #elif QwerkE_Image_Library == 2 // lodepng
+#endif
+#if QwerkE_Image_Library_lodepng == 1 // lodepng
 	// if (returnBuffer == nullptr || strcmp((const char*)returnBuffer, "") == 0)
 	if (!returnBuffer)
 		returnBuffer = QwerkE_lodepng_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
-	else
-#elif QwerkE_Image_Library == 3 // SOIL
-	// TODO:
-	returnBuffer = QwerkE_soil_loadImage(path);
-#else
+#endif
+#if QwerkE_Image_Library_soil == 1 // SOIL
+	returnBuffer = QwerkE_soil_loadImage(path); // TODO:
+#endif
+
+#if !QwerkE_Image_Library_stb && !QwerkE_Image_Library_lodepng && !QwerkE_Image_Library_soil
 #pragma error "Define image loading library!"
 #endif
 
@@ -74,6 +104,28 @@ unsigned char* FileSystem::LoadImageFile(const char* path, unsigned int* imageWi
 
 	OutputPrint("LoadImageFile(): Loaded: %s\n", path);
 	return returnBuffer;
+}
+
+ALuint FileSystem::LoadSound(const char* soundName)
+{
+	// this function is meant to abstract audio libraries from external code
+
+	ALuint retValue = 0;
+
+	// get sound data
+	QSoundFile soundFile;
+	LoadSoundFileData(soundName, soundFile);
+
+	// create sound file
+#ifdef OpenAL
+	retValue = OpenAL_LoadSound(soundFile);
+#elif defined(XAudio)
+	retValue = 0;
+#else
+#pragma error "Define audio library!"
+#endif // AudioLibrary
+
+	return retValue;
 }
 
 Mesh* FileSystem::LoadModelFileTo1Mesh(const char* modelFilePath)

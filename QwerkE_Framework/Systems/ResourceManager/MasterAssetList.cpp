@@ -27,7 +27,7 @@ void ResourceManager::Init()
 	m_NullFragComponent = InstantiateShaderComponent(null_frag_component);
 	// TODO: m_NullGeoComponent = InstantiateShaderComponent(null_geo_component);
 	m_NullShader = InstantiateShaderProgram(null_shader_schematic);
-	// m_NullSound = InstantiateSound(null_sound); // TODO: Create a sound object class
+	m_NullSound = InstantiateSound(null_sound);
 }
 
 // Instantiation Functions
@@ -122,7 +122,7 @@ Texture* ResourceManager::InstantiateTexture(const char* textureName)
 	}
 	else
 	{
-		ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
+		// ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
 		return m_NullTexture;
 	}
 }
@@ -171,10 +171,19 @@ FT_Face ResourceManager::InstantiateFont(const char* fontName)
 	return font;
 }
 
-ALuint ResourceManager::InstantiateSound(const char* soundName, DWORD& bufferSize, unsigned short& channels)
+ALuint ResourceManager::InstantiateSound(const char* soundName)
 {
-	// TODO: QwerkE::FileLoader::LoadSoundFile(SoundFolderPath(soundName), bufferSize, channels, frequency);
-	return 0;
+	ALuint handle = 0;
+	handle = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadSound(soundName);
+
+	if (handle != 0)
+	{
+		m_Sounds[soundName] = handle;
+	}
+	else
+	{
+		return m_NullSound;
+	}
 }
 
 ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicName)

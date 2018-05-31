@@ -3,7 +3,23 @@
 
 #include <fstream>
 #include <iostream>
-#include <string>
+
+bool FileExists(const char* filePath) // TODO:: Move to helpers.h/.cpp
+{
+	FILE* filehandle;
+	fopen_s(&filehandle, filePath, "r"); // returns error if no file to read
+	//errno_t error = fopen_s(&filehandle, filePath, "r");
+	if (filehandle)
+	{
+		fclose(filehandle); // close file stream
+		return true; // file exists already
+	}
+	else
+	{
+		// OutputPrint("\nFileExists(): Could not find file. Ensure %s exists!\n\n", filePath);
+		return false; // could not find file
+	}
+}
 
 #define _Win32 // TODO: Fix multi platform
 
@@ -86,10 +102,20 @@ std::vector<std::string> ReadDir(const char* directory)
 // Android
 #endif // _Win32
 
-
-int CharToInt(char num)
+void CreateUniqueFile(const char* filePath)
 {
-	return num - 49;
+	FILE* filehandle;
+
+	if (FileExists(filePath))
+	{
+		// OutputPrint("\nCreateNewFile(): %s already exists\n\n", filePath);
+		return; // already a file with that path
+	}
+	else
+	{
+		errno_t error = fopen_s(&filehandle, filePath, "w+");
+		fclose(filehandle);
+	}
 }
 
 void WriteRawBytesToFile(const char* filename, const char* data, int numBytes)
@@ -123,8 +149,6 @@ char* ReadRawBytesFromFile(const char* filename)
 
 	return nullptr; // pass bytes back
 }
-
-
 // FileUtilities.cpp
 char* LoadFile(const char* filename)
 {
@@ -148,7 +172,7 @@ char* LoadFile(const char* filename)
 		return NULL;
 	}
 }
-
+// TODO: Deprecate?
 char* LoadCompleteFile(const char* filename, long* length)
 {
 	char* filecontents = 0;
@@ -184,6 +208,101 @@ char* LoadCompleteFile(const char* filename, long* length)
 	return filecontents;
 }
 
+// wav loading: https://blog.csdn.net/u011417605/article/details/49662535
+// https://ffainelli.github.io/openal-example/
+// https://stackoverflow.com/questions/13660777/c-reading-the-data-part-of-a-wav-file/13661263
+// https://stackoverflow.com/questions/38022123/openal-not-playing-sound/50429578#50429578
+// http://soundfile.sapp.org/doc/WaveFormat/
+unsigned char* LoadWaveFileData(const char* filePath, unsigned long& bufferSize, unsigned short& channels, unsigned int& frequency, unsigned short& bitsPerSample)
+{
+	// TODO: Cleaner error handling
+	// NOTE: I explicitly hard coded the fread() values to work cross platform
+
+	FILE* f;
+	fopen_s(&f, filePath, "rb"); // "rb" instead of "r"
+
+	if (!f)
+	{
+		OutputPrint("LoadWaveFileData(): Error opening file: %s", filePath);
+		return nullptr;
+	}
+
+	unsigned int size, chunkSize;
+	unsigned short formatType;
+	unsigned int sampleRate, byteRate;
+	unsigned short blockAlign;
+
+	char type[4];
+	char subChunk1ID[4], subChunk2ID[4];
+
+	DWORD subChunk1Size, subChunk2Size;
+
+	// read first chunk
+	fread(type, 4, 1, f); // ChunkID "RIFF"
+	if (!strcmp(type, "RIFF"))
+	{
+		OutputPrint("LoadWaveFileData(): Not a \"RIFF\" file: %s", filePath);
+		fclose(f);
+		return nullptr;
+	}
+
+	fread(&chunkSize, sizeof(DWORD), 1, f); // ChunkSize == "fmt "(4) + (8 + SubChunk1Size) + (8 + SubChunk2Size)
+
+	fread(type, 4, 1, f);
+	if (!strcmp(type, "WAVE"))
+	{
+		OutputPrint("LoadWaveFileData(): Not a \"WAVE\" file: %s", filePath);
+		fclose(f);
+		return nullptr;
+	}
+
+	// read "fmt " chunk
+	fread(&subChunk1ID, 4, 1, f); // "fmt "
+	if (!strcmp(type, "fmt "))
+	{
+		OutputPrint("LoadWaveFileData(): No format found in file: %s", filePath);
+		fclose(f);
+		return nullptr;
+	}
+
+	fread(&subChunk1Size, 4, 1, f);
+
+	fread(&formatType, 2, 1, f); // not 1 == compression
+	fread(&channels, 2, 1, f);
+	fread(&sampleRate, 4, 1, f);
+	fread(&byteRate, 4, 1, f);
+	fread(&blockAlign, 2, 1, f);
+	fread(&bitsPerSample, 2, 1, f);
+
+	frequency = sampleRate;
+
+	// read "data" chunk
+	fread(type, 4, 1, f);
+	if (!strcmp(type, "data"))
+	{
+		OutputPrint("LoadWaveFileData(): No data in file: %s", filePath);
+		fclose(f);
+		return nullptr;
+	}
+
+	fread(&bufferSize, 4, 1, f);
+
+	unsigned char* buffer = new unsigned char[bufferSize]; //RAM: new
+
+	int result = fread(buffer, 1, bufferSize, f);
+
+	if (result != bufferSize || ferror(f) != 0)
+	{
+		OutputPrint("LoadWaveFileData(): Error reading data in file: %s", filePath);
+		fclose(f);
+		return nullptr;
+	}
+
+	fclose(f);
+
+	return buffer;
+}
+
 void WriteStringToFile(const char* filename, const char* string)
 {
 	FILE* filehandle;
@@ -194,9 +313,9 @@ void WriteStringToFile(const char* filename, const char* string)
 		fclose(filehandle); // close file stream
 	}
 	/*
-	fopen_S(&filehandle, "filename", "mode")
+	fopen_S(&filehandle, "filePath", "mode")
 	FILE* filehandle;
-	char* filename;
+	char* filePath;
 
 	Modes:
 	"r"
@@ -230,11 +349,13 @@ std::string GetFileNameWithExt(const char* filePath)
 {
 	std::string test = filePath;
 
-	size_t size = test.find_last_of('/') != test.npos;
-
-	if (size)
+	if (test.find_last_of('/') != test.npos)
 	{
 		test = test.substr(test.find_last_of('/') + 1, test.size() - test.find_last_of('/') + 1);
+	}
+	else if (test.find_last_of('\\') != test.npos)
+	{
+		test = test.substr(test.find_last_of('\\') + 1, test.size() - test.find_last_of('\\') + 1);
 	}
 
 	return test;
@@ -244,19 +365,18 @@ std::string GetFileNameNoExt(const char* filePath)
 {
 	std::string test = filePath;
 
-	size_t size = test.find_last_of('/') != test.npos;
-
-	if (size)
+	if (test.find_last_of('/') != test.npos)
 	{
 		test = test.substr(test.find_last_of('/') + 1, test.find_last_of('.') - 1 - test.find_last_of('/'));
-
+	}
+	else if (test.find_last_of('\\') != test.npos)
+	{
+		test = test.substr(test.find_last_of('\\') + 1, test.find_last_of('.') - 1 - test.find_last_of('\\'));
 	}
 	else
 	{
 		test = test.substr(0, test.find_last_of('.') - 1);
 	}
-
-
 
 	return test;
 }

@@ -7,7 +7,7 @@
 
 cJSON* OpencJSONStream(const char* fileDirectory)
 {
-	if (FileExists(fileDirectory))
+	if (json_FileExists(fileDirectory))
 	{
 		char* str = LoadFile(fileDirectory);
 		cJSON* root = cJSON_Parse(str);
@@ -575,7 +575,7 @@ cJSON* DeepSearchForItemByKey(cJSON* object, const char* key) // returns first i
 }
 
 // utility helpers
-bool FileExists(const char* filename) // TODO:: Move to helpers.h/.cpp
+bool json_FileExists(const char* filename) // TODO:: Move to helpers.h/.cpp
 {
 	FILE* filehandle;
 	fopen_s(&filehandle, filename, "r"); // returns error if no file to read
@@ -587,11 +587,11 @@ bool FileExists(const char* filename) // TODO:: Move to helpers.h/.cpp
 	}
 	else
 	{
-		OutputPrint("\nFileExists(): Could not find file. Ensure %s exists!\n\n", filename);
+		// OutputPrint("\nFileExists(): Could not find file. Ensure %s exists!\n\n", filename);
 		return false; // could not find file
 	}
 }
-void CreateNewFile(const char* filename) // checks if file already exists
+void json_CreateNewFile(const char* filename) // checks if file already exists
 {
 	FILE* filehandle;
 	errno_t error = fopen_s(&filehandle, filename, "r");

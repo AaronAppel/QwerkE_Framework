@@ -6,6 +6,8 @@
 
 #include <vector>
 
+class AudioSource;
+
 class AudioManager
 {
 public:
@@ -19,13 +21,14 @@ public:
 
 private:
 
-	ALCdevice * Device;
+	ALCdevice* Device;
 	ALCcontext* Context;
 
-	ALboolean g_bEAX; // Why?
+	// ALboolean g_bEAX; // Why?
 
 	// buffer data
 	ALboolean loop = AL_FALSE;
+	AudioSource* m_Source = nullptr;
 };
 
 #endif // !_AudioManager_H_

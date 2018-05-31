@@ -90,6 +90,9 @@ namespace QwerkE
 			WindowManager* windowManager = new WindowManager();
 			windowManager->AddWindow(m_Window);
 
+			AudioManager* audioManager = new AudioManager();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Audio_Manager, audioManager); // resource managers needs this
+
 			ResourceManager* resourceManager = new ResourceManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Resource_Manager, resourceManager);
 			resourceManager->Init(); // self order dependency, init after adding
@@ -115,9 +118,6 @@ namespace QwerkE
 
 			MessageManager* messageManager = new MessageManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::MessageManager, messageManager);
-
-			AudioManager* audioManager = new AudioManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Audio_Manager, audioManager);
 
 			JobManager* jobManager = new JobManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::JobManager, jobManager);
@@ -282,19 +282,6 @@ namespace QwerkE
 			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
 			inputManager->NewFrame();
 			ImGui_ImplGlfwGL3_NewFrame(); // after InputManager gets reset
-
-
-
-			vec2 result = inputManager->GetMouseDragDelta();
-			if (result.x > 0.00f)
-			{
-				int bp = 1;
-			}
-			if (ImGui::Begin("Input"))
-			{
-				ImGui::InputFloat2("MouseDragDelta", &result.x);
-				ImGui::End();
-			}
 		}
 
 		void Framework::Input()

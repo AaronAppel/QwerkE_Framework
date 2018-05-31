@@ -30,6 +30,11 @@ void helpers_Toggle(bool* value)
 	*value = !value; // flip from on/off
 }
 
+int CharToInt(char num)
+{
+	return num - 49; // or is it 48?
+}
+
 void* VoidCheck(void* check)
 {
 	assert(check == nullptr);

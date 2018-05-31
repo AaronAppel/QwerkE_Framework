@@ -20,6 +20,7 @@
 #define _Q32Bit
 // define libraries and systems to build
 #define OpenGL
+#define OpenAL
 #elif defined(Win64Bit)
 #define _Q64Bit
 #else

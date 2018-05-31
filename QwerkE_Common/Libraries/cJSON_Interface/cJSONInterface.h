@@ -124,8 +124,8 @@ void AddNumberToArray();
 cJSON* CopyRootObject(cJSON* root);
 
 //// Heplers ////
-bool FileExists(const char* filename);
-void CreateNewFile(const char* filename);
+bool json_FileExists(const char* filename);
+void json_CreateNewFile(const char* filename);
 #define EmptycJSONFile(a) CreateEmptycJSONFile(a)
 void CreateEmptycJSONFile(const char* filePath);
 

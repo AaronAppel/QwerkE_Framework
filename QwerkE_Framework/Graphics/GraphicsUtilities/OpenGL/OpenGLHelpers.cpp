@@ -53,7 +53,7 @@ GLuint GLLoad2DTexture(const char* filePath, bool flipVertically)
 
 	GLenum channels = 4;
 	unsigned int width = 0, height = 0;
-	unsigned char* imageData = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadImageFile(filePath, &width, &height, channels, flipVertically);
+	unsigned char* imageData = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadImageFileData(filePath, &width, &height, channels, flipVertically);
 
 	if (!imageData)
 	{

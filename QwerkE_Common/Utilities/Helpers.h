@@ -33,6 +33,8 @@ public:
 
 void helpers_Toggle(bool* value);
 
+int CharToInt(char num);
+
 /* If Else helpers*/
 // void IfElse(comparisonValue, condition, trueValue, falseValue);
 // void ElseIf(comparisonValue, condition1, true1, false1, condition2, true2, false2...); // Variable arguments
