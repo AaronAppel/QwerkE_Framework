@@ -32,13 +32,9 @@
 
 // TODO: No Globals!
 extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
-extern const char* g_WindowTitle = "QwerkE";
+extern const char* g_WindowTitle = "QwerkEngine";
 
-extern GameCore* g_GameCore = nullptr;
-extern int g_NumPlayers; // Defined in InputManager.h
 extern InputManager* g_InputManager = nullptr;
-extern Controller* g_Player1Controller = nullptr;
-extern bool g_Debugging = false;
 
 // private framework variables
 static Window* m_Window = nullptr;

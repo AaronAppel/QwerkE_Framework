@@ -4,16 +4,8 @@
 			"Shine":	0.500000
 		}],
 	"TextureNames":	[{
-			"AmbientName":	"container.png",
-			"DiffuseName":	"container.png",
-			"SpecularName":	"container_specular.png",
-			"EmissiveName":	"Empty",
-			"HeightName":	"Empty",
-			"NormalName":	"Empty",
-			"ShininessName":	"Empty",
-			"OpacityName":	"Empty",
-			"DisplacementName":	"Empty",
-			"LightMapName":	"Empty",
-			"ReflectionName":	"Empty"
+			"0":	"container.png",
+			"1":	"container.png",
+			"2":	"container_specular.png"
 		}]
 }
