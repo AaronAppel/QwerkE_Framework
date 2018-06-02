@@ -1,7 +1,7 @@
 #ifndef _PhysicsWorld_H_
 #define _PhysicsWorld_H_
 
-#include "../../../Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
+#include "../../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
 
 class btDiscreteDynamicsWorld;
 class btCollisionShape;

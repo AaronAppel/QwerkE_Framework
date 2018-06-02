@@ -1,8 +1,8 @@
 #include "GraphicsHelpers.h"
 #include "../../Entities/Components/RenderComponent.h"
-#include "../../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
-#include "../../../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
+#include "../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
 #include "../../Systems/ServiceLocator.h"
 #include "../Material.h"
@@ -11,9 +11,7 @@
 #include "../Shader/ShaderComponent.h"
 #include "../Renderable.h"
 #include "../Texture.h"
-#include "../QwerkE_Framework/QwerkE_Framework/QwerkE_Enums.h"
-
-#include "../Shared_Engine/Engine_Defines.h"
+#include "../../QwerkE_Enums.h"
 
 #include <map>
 #include <string>

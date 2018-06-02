@@ -1,7 +1,8 @@
 #ifndef _AudioSource_H_
 #define _AudioSource_H_
 
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../QwerkE_Common/Libraries/Math/Vector.h"
 
 class AudioSource
 {

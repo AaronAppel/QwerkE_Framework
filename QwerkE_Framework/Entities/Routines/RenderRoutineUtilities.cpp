@@ -6,6 +6,7 @@
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Graphics/Material.h"
+#include "../../Graphics/Texture.h"
 #include "../../Graphics/Shader/ShaderVariable_Defines.h"
 #include "../../Graphics/Renderable.h"
 #include "../../Scenes/Scene.h"

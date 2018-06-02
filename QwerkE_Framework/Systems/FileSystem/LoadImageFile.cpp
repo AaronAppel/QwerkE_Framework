@@ -1,9 +1,10 @@
 #include "LoadImageFile.h"
-#include "../Utilities/FileIO/FileUtilities.h"
-#include "../Utilities/PrintFunctions.h"
-#include "../Libraries/stb_image.h"
-#include "../Libraries/lodepng/lodepng.h"
-#include "../Utilities/ImageHelpers.h"
+#include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Libraries/stb_image.h"
+#include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
 
 unsigned char* QwerkE_stb_image_loadImage(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically)
 {

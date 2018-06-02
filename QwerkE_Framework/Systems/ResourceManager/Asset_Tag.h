@@ -5,6 +5,8 @@
 
 #include <string>
 
+typedef unsigned int GLuint;
+
 // Might want to limit how tags are created.
 // They should probably just be created by the resource manager.
 class Asset_Tag

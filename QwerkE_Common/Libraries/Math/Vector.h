@@ -279,4 +279,9 @@ public:
     inline Vector2T<MyType> operator -=(const Vector2T<MyType>& o) { this->x -= o.x; this->y -= o.y; return *this; }
 };
 
+// EDIT: Aaron Appel June 1sy 2018
+typedef Vector2 vec2;
+typedef Vector3 vec3;
+typedef Vector4 vec4;
+
 #endif //__Vector_H__

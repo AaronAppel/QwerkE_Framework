@@ -1,7 +1,7 @@
 #ifndef _Mesh_H_
 #define _Mesh_H_
 
-#include "../../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include <string>
 
 struct VertexData;

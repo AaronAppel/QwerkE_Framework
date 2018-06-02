@@ -3,6 +3,7 @@
 
 #include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 #include "../../../QwerkE_Common/Libraries/OpenAL/include/alc.h"
+#include "../../../QwerkE_Common/Libraries/Math/Vector.h"
 
 #include <vector>
 

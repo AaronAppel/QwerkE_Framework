@@ -2,7 +2,7 @@
 #include "../../Graphics/Graphics_Header.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../Shader/ShaderProgram.h"
-#include "../freetype2/ft2build.h"
+#include "../../../QwerkE_Common/Libraries/freetype2/ft2build.h"
 #include "freetype/freetype.h"
 #include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "../../../QwerkE_Common/Libraries/glm/glm/common.hpp"
@@ -37,7 +37,7 @@ void LoadFonts()
 	FT_Face face;
 	// TODO:Fix freetype font loading to use ResourceManager().
 	// FT_Face face = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetFont("finurlig-demo.regular.otf");
-	if (FT_New_Face(ft, "../QwerkE_Framework/QwerkE_Common/Resources/Fonts/finurlig-demo.regular.otf", 0, &face))
+	if (FT_New_Face(ft, FontFolderPath(null_font), 0, &face))
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
 	// Set size to load glyphs as

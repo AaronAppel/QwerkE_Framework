@@ -7,16 +7,9 @@
 // throughout the framework and across projects.
 //////////////////////////////
 
-#ifdef QwerkE_Framework
-#define AssetDir "../QwerkE_Common/Resources/"
-#define FrameworkDataFolderPath(a) StringAppend("../QwerkE_Framework/Data/", a)
-#elif defined(Qwerk_Engine)
-#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/" // 1 directory down
-#define FrameworkDataFolderPath(a) StringAppend("../QwerkE_Framework/QwerkE_Framework/Data/", a)
-#else
+#define FrameworkDataFolderPath(a) StringAppend(FrameworkDir, "QwerkE_Framework/Data/", a)
 //USER: Set the offset from your project working directory
-#define AssetDir "../QwerkE_FrameWork/QwerkE_Common/Resources/"
-#endif // QwerkE_Engine
+// You must #define AssetDir "Resources/" (path to assets)
 
 // Define "hardcoded" file names for null objects for ease of use
 // but also to ensure consistency and prevent unintended changes.

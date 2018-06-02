@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
 
 struct CubeMapData
 {

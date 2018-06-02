@@ -3,11 +3,11 @@
 
 // Assimp specific loading function definitions and helpers
 
-#include "../../../Libraries/assimp/Importer.hpp"
-#include "../../../Libraries/assimp/scene.h"
-#include "../../../Libraries/assimp/postprocess.h"
-#include "../../../Libraries/assimp/config.h"
-#include "../../../Libraries/assimp/material.h"
+#include "../../../QwerkE_Common/Libraries/assimp/Importer.hpp"
+#include "../../../QwerkE_Common/Libraries/assimp/scene.h"
+#include "../../../QwerkE_Common/Libraries/assimp/postprocess.h"
+#include "../../../QwerkE_Common/Libraries/assimp/config.h"
+#include "../../../QwerkE_Common/Libraries/assimp/material.h"
 
 #include <iostream>
 #include <vector>

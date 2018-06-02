@@ -8,6 +8,12 @@
 // precompiled headers.
 //////////////////////////////
 
+#ifndef FrameworkDir
+#pragma error "Define FrameworkDir!"
+// string pointing to the QwerkE_Framework folder from your project working directory
+#endif // !FrameworkDir
+
+
 #include "QwerkE_Defines.h" // platform, architecture,
 #include "QwerkE_Platform.h" // platform libraries
 

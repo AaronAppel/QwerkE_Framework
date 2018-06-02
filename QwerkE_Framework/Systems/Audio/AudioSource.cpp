@@ -1,8 +1,9 @@
 #include "AudioSource.h"
 
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../QwerkE_Common/Libraries/Math/Vector.h"
 
-void AudioSource::AudioSource::SetOrientation(vec3 pos, vec3 rot, vec3 vel)
+void AudioSource::SetOrientation(vec3 pos, vec3 rot, vec3 vel)
  {
 	alSourcef(m_SourceID, AL_GAIN, 1.0f);
 	alSourcef(m_SourceID, AL_PITCH, 1.0f);
@@ -10,7 +11,7 @@ void AudioSource::AudioSource::SetOrientation(vec3 pos, vec3 rot, vec3 vel)
 	alSource3f(m_SourceID, AL_POSITION, 0.0f, 0.0f, 0.0f);
 }
 
-void AudioSource::AudioSource::Play(ALuint buffer)
+void AudioSource::Play(ALuint buffer)
  {
 	alSourcei(m_SourceID, AL_LOOPING, AL_FALSE);
 	alSourcei(m_SourceID, AL_BUFFER, buffer);

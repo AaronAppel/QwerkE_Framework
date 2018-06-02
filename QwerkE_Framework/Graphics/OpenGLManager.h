@@ -3,7 +3,7 @@
 
 // graphics
 // #define Wind_CCW 1 // For invert faces
-#include "../../../QwerkE_Common/Math_Includes.h"
+#include "../../QwerkE_Common/Math_Includes.h"
 
 // TODO: Rip these functions out and put them in a new opengl_window class that extends the Window class
 class OpenGLManager

@@ -1,6 +1,8 @@
 #ifndef _ShaderComponent_H_
 #define _ShaderComponent_H_
 
+typedef unsigned int GLuint;
+
 #include <string>
 
 class ShaderComponent

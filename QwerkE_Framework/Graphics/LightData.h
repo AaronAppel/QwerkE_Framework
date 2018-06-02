@@ -1,7 +1,7 @@
 #ifndef _LightData_H_
 #define _LightData_H_
 
-#include "../../Math_Includes.h"
+#include "../../QwerkE_Common/Math_Includes.h"
 
 struct LightData
 {

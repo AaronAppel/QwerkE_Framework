@@ -1,5 +1,5 @@
 #include "Debugger.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 #ifdef _QDebug
 namespace QwerkE

@@ -5,7 +5,7 @@
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "GraphicsUtilities/GraphicsHelpers.h"
-#include "../QwerkE_Framework/QwerkE_Framework/QwerkE_Enums.h"
+#include "../../QwerkE_Framework/QwerkE_Framework/QwerkE_Enums.h"
 #include "Texture.h"
 
 #include <string>

@@ -2,6 +2,7 @@
 #define __FileUtilities_H_
 
 #include <string>
+#include <vector>
 
 // reading
 char* LoadFile(const char* filename);

@@ -1,4 +1,4 @@
-#include "../../../Graphics/Graphics_Header.h"
+#include "../../Graphics_Header.h"
 #include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"

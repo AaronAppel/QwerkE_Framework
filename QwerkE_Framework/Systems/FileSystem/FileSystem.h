@@ -1,8 +1,9 @@
 #ifndef _FileSystem_H_
 #define _FileSystem_H_
 
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include <string>
 
 class Mesh;

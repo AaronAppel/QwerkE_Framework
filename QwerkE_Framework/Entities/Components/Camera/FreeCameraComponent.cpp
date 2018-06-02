@@ -1,6 +1,6 @@
 #include "../Component.h"
 #include "FreeCameraComponent.h"
-#include "../../../QwerkE_Common/Math_Includes.h"
+#include "../../../../QwerkE_Common/Math_Includes.h"
 #include "CameraComponent.h"
 #include "../../../QwerkE_Enums.h"
 #include "../../GameObject.h"

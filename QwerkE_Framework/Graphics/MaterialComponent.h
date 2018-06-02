@@ -2,7 +2,7 @@
 #define _MaterialComponent_H_
 
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../QwerkE_Framework/QwerkE_Framework/QwerkE_Enums.h"
+#include "../QwerkE_Enums.h"
 
 #include <string>
 

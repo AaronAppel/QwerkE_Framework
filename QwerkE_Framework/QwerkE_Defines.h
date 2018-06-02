@@ -1,7 +1,7 @@
 #ifndef _QwerkE_Defines_H_
 #define _QwerkE_Defines_H_
 
-/* Defines values to be used in other ares of code.*/
+/* Defines values to be used in other ares of the framework.*/
 
 // defines
 // #define IncludeDir "../Shared_Common/Utilities/FileIO/FileUtilities.h"
@@ -9,6 +9,10 @@
 // type definitions
 // TODO: Is there an easy way of reducing typing without coupling files like typedef does
 // typedef unsigned int uint; // less typing and easier to read
+
+#define AssetDir FrameworkDir "QwerkE_Common/Resources/"
+#define LibraryDir FrameworkDir "QwerkE_Common/Libraries/"
+#define RuntimeDirectory MakeDir
 
 // Define platform macro
 #define _QWindows

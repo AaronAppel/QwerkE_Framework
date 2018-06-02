@@ -2,8 +2,8 @@
 #define _CameraComponent_H_
 
 #include "../../../QwerkE_Global_Constants.h"
-#include "../../Math_Includes.h"
-#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../../QwerkE_Common/Math_Includes.h"
+#include "../../../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "../../../QwerkE_Enums.h"
 #include "../../Components/Component.h"
 

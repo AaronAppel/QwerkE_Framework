@@ -1,9 +1,9 @@
 #ifndef _ResourceManager_H_
 #define _ResourceManager_H_
 
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../../QwerkE_Common/Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../QwerkE_Common/Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
+#include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 
 #include <string>
 #include <map>
