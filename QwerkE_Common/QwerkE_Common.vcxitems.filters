@@ -10,9 +10,6 @@
     <Filter Include="Utilities">
       <UniqueIdentifier>{b0ce6020-b3dc-422f-9c02-4ebb0390afe1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Custom_Classes">
-      <UniqueIdentifier>{beb0d2e5-bc87-4299-9b91-8032f65d3a03}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Libraries\Bullet3">
       <UniqueIdentifier>{21e5befc-c546-447f-a397-a038d1799298}</UniqueIdentifier>
     </Filter>
@@ -79,20 +76,11 @@
     <Filter Include="Libraries\assimp">
       <UniqueIdentifier>{377b4338-8fd9-4f4a-aba9-338c89a84490}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataTypes">
+      <UniqueIdentifier>{beb0d2e5-bc87-4299-9b91-8032f65d3a03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\CPPList.h">
-      <Filter>Custom_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\MyLinkedList.h">
-      <Filter>Custom_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\ObjectPool.h">
-      <Filter>Custom_Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\Timer.h">
-      <Filter>Custom_Classes</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3.h">
       <Filter>Libraries\Bullet3\BulletCollision</Filter>
     </ClInclude>
@@ -1530,9 +1518,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.h">
       <Filter>Libraries\Math</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.h">
-      <Filter>Libraries\Math</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.h">
       <Filter>Libraries\Math</Filter>
     </ClInclude>
@@ -2290,6 +2275,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\config.h">
       <Filter>Libraries\assimp</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\RangedValue.h">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\CPPList.h">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\MyLinkedList.h">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\ObjectPool.h">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\Timer.h">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\Vector.h">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\cJSON_Interface\cJSON.cpp">
@@ -2332,9 +2335,6 @@
       <Filter>Libraries\Math</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.cpp">
-      <Filter>Libraries\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.cpp">
       <Filter>Libraries\Math</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp">

@@ -1,7 +1,7 @@
 #ifndef _Window_H_
 #define _Window_H_
 
-#include "../../../QwerkE_Common/Libraries/Math/Vector.h"
+#include "../../../QwerkE_Common/DataTypes/Vector.h"
 #include "../../../QwerkE_Common/Math_Includes.h"
 
 struct GLFWwindow;

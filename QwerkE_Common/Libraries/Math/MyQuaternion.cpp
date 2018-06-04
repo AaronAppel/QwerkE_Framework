@@ -8,7 +8,7 @@
 // 3. This notice may not be removed or altered from any source distribution.
 
 #include "MathHelpers.h"
-#include "Vector.h"
+#include "../DataTypes/Vector.h"
 #include "MyQuaternion.h"
 
 // From gmtl - http://ggt.sourceforge.net/html/QuatOps_8h-source.html

@@ -11,17 +11,6 @@
 #include "Libraries/Math/MathFunctions.h"
 #include "Libraries/Math/MathHelpers.h"
 #include "Libraries/Math/MathStuff.h"
-#include "Libraries/Math/Vector.h"
-
-/* Defines and typedefs */
-// vector
-typedef Vector2 vec2; // TODO: Put inside a file?
-typedef Vector3 vec3;
-typedef Vector4 vec4;
-
-typedef Vector2Int ivec2;
-typedef Vector3Int ivec3;
-typedef Vector4Int ivec4;
 
 #include "Libraries/Math/VectorMathHelpers.h"
 #include "Libraries/Math/ValueChecking.h"

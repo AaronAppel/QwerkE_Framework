@@ -23,7 +23,7 @@ void SetupCallbacks(GLFWwindow* window)
 	glfwSetCharModsCallback(window, char_mods_callback);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
-	// TODO: glfwSetJoystickCallback()
+	glfwSetJoystickCallback(joystick_callback);
 
 	// window
 	glfwSetWindowPosCallback(window, window_position_callback);
@@ -128,13 +128,13 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	ImGuiIO& io = ImGui::GetIO();
 	io.MouseWheelH += (float)xoffset;
 	io.MouseWheel += (float)yoffset;
-	// ImGui::SetScrollY(yoffset);
 }
 void joystick_callback(int joy, int event)
 {
 	// TODO: Tell InputManager that a joystick changed
 	// l_InputManager->ProcessGamePad/Joystick();
 	// joystick button pressed
+	// http://www.glfw.org/docs/latest/input_guide.html#joystick
 	int bp = 1;
 }
 // window callbacks

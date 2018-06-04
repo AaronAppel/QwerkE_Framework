@@ -1,7 +1,7 @@
 #include "AudioSource.h"
 
 #include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
-#include "../../../QwerkE_Common/Libraries/Math/Vector.h"
+#include "../../../QwerkE_Common/DataTypes/Vector.h"
 
 void AudioSource::SetOrientation(vec3 pos, vec3 rot, vec3 vel)
  {

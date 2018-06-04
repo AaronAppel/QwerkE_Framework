@@ -73,7 +73,6 @@
 #endif
 
 // assimp
-// #pragma comment( lib, combineLibPath(QwerkE_Libraries_Path, "assimp/Release/x86/assimp-vc140-mt.lib") )
 #pragma comment( lib, LibraryDir "assimp/Release/x86/assimp-vc140-mt.lib" )
 
 // freetype2

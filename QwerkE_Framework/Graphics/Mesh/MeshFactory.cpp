@@ -257,10 +257,10 @@ Mesh* MeshFactory::CreateBox(vec2 size)
 {
 	VertexData verts[4];
 
-	verts[0] = VertexData(vec3(-size.x / 2, -size.y / 2, 0), vec4(255, 255, 255, 255), vec2(0, 0), vec3(1, 0, 0));
-	verts[1] = VertexData(vec3(-size.x / 2, size.y / 2, 0), vec4(255, 255, 255, 255), vec2(0, 1), vec3(1, 1, 0));
-	verts[2] = VertexData(vec3(size.x / 2, size.y / 2, 0), vec4(255, 255, 255, 255), vec2(1, 1), vec3(0, 1, 0));
-	verts[3] = VertexData(vec3(size.x / 2, -size.y / 2, 0), vec4(255, 255, 255, 255), vec2(1, 0), vec3(0, 0, 0));
+	verts[0] = VertexData(vec3(-size.x / 2, -size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(0, 0), vec3(1, 0, 0));
+	verts[1] = VertexData(vec3(-size.x / 2, size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(0, 1), vec3(1, 1, 0));
+	verts[2] = VertexData(vec3(size.x / 2, size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(1, 1), vec3(0, 1, 0));
+	verts[3] = VertexData(vec3(size.x / 2, -size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(1, 0), vec3(0, 0, 0));
 
 	unsigned int indices[6] = { 0,1,2, 2,3,0 };
 
@@ -429,7 +429,7 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 	{
 		for (int j = 0; j < numVertsY; j++)
 		{
-			verts[indexCounter] = VertexData(vec3(xIncrement, 0, zIncrement), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, 0));
+			verts[indexCounter] = VertexData(vec3(xIncrement, 0.0f, zIncrement), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, 0));
 			indexCounter++;
 			xIncrement += xSpacing;
 		}

@@ -115,7 +115,10 @@ bool Libs_Setup()
     else
     {
 		ConsolePrint("imgui Loaded,\n");
-        ImGuiIO& io = ImGui::GetIO(); (void)io;
+        ImGuiIO& io = ImGui::GetIO();
+		(void)io;
+		//ImGui::CaptureMouseFromApp(true);
+		//ImGui::CaptureKeyboardFromApp(true);
     }
     //////////////////////////////
 

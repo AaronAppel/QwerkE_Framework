@@ -14,10 +14,12 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\CPPList.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\MyLinkedList.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\ObjectPool.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Custom_Classes\Timer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\CPPList.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\MyLinkedList.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\ObjectPool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\RangedValue.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\Timer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DataTypes\Vector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\ai_assert.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\anim.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\assimp\BaseImporter.h" />
@@ -571,7 +573,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MyMatrix.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\MyQuaternion.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\al.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alc.h" />
@@ -769,7 +770,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MyMatrix.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MyQuaternion.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\Vector.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp" />

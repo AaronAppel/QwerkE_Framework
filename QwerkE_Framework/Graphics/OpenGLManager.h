@@ -22,7 +22,7 @@ public:
 	void SetClearColor(vec4 color) { m_ClearColor = color; };
 
 private:
-	vec4 m_ClearColor = vec4(0.2f, 0.3f, 0.4f, 1);
+	vec4 m_ClearColor = vec4(0.2f, 0.3f, 0.4f, 1.0f);
 
 	bool m_DepthTestingOn = true;
 	bool m_BackfaceCullingOn = true;

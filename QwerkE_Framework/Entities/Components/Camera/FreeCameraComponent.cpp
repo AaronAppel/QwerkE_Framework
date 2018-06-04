@@ -49,14 +49,14 @@ void FreeCameraComponent::ProcessKeyboard(eCamera_Movement direction, float delt
 	}
 	else if (direction == eCamera_Movement::RROTATE)
 	{
-		m_Forward += vec3(angularVel, 0, angularVel);
+		m_Forward += vec3(angularVel, 0.0f, angularVel);
 		m_Forward.Normalize();
 		m_Right = g_WORLDUP.Cross(m_Forward).GetNormalized() * m_MovementSpeed;
 		m_Right.Normalize();
 	}
 	else if (direction == eCamera_Movement::LROTATE)
 	{
-		m_Forward -= vec3(angularVel, 0, angularVel);
+		m_Forward -= vec3(angularVel, 0.0f, angularVel);
 		m_Forward.Normalize();
 		m_Right = g_WORLDUP.Cross(m_Forward).GetNormalized() * m_MovementSpeed;
 		m_Right.Normalize();
