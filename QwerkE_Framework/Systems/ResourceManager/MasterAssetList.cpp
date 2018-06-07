@@ -212,10 +212,7 @@ ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicNa
 			return m_NullShader;
 		}
 	}
-	else
-	{
-		return m_NullShader;
-	}
+	return m_NullShader;
 }
 
 ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* componentName)

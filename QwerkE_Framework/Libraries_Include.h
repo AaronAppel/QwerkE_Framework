@@ -45,11 +45,11 @@
 //////////////////////////////
 // JSON //
 // cJSON
-#include "Libraries/cJSON_Interface/cJSONInterface.h"
+#include "../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
 
 // images //
 // lodepng
-#include "Libraries/lodepng/lodepng.h"
+#include "../QwerkE_Common/Libraries/lodepng/lodepng.h"
 // stb_image
 // TODO: stb_image needs to be loaded later on, after some other ???? library
 // #define STB_IMAGE_IMPLEMENTATION
@@ -59,12 +59,12 @@
 
 // models //
 // assimp
-#include "Libraries/assimp/config.h"
+#include "../QwerkE_Common/Libraries/assimp/config.h"
 
 // font loading/rendering
 // freetype2
-#include "Libraries/freetype2/ft2build.h"
-#include "Libraries/freetype2/freetype/freetype.h"
+#include "../QwerkE_Common/Libraries/freetype2/ft2build.h"
+#include "../QwerkE_Common/Libraries/freetype2/freetype/freetype.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -72,7 +72,9 @@
 //////////////////////////////
 // XBOX Controller //
 // xinput
-#include "Libraries/EasyXinput/EasyXinput.h"
+#include "../QwerkE_Common/Libraries/EasyXinput/EasyXinput.h"
+// lib usb
+// #include "../QwerkE_Common/Libraries/libusb/libusb.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -80,10 +82,10 @@
 //////////////////////////////
 // openGL extensions wrangler //
 // GLEW
-#include "Libraries/glew/GL/glew.h"
+#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
 // window creation //
 // GLFW
-#include "Libraries/glfw/GLFW/glfw3.h"
+#include "../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -108,8 +110,8 @@
 //////////////////////////////
 // immediate mode //
 // imgui
-#include "Libraries/imgui/imgui.h"
-#include "Libraries/imgui/imgui_impl_glfw_gl3.h"
+#include "../QwerkE_Common/Libraries/imgui/imgui.h"
+#include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -121,7 +123,7 @@
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
-#include "Libraries/pThreads/pthread.h"
+#include "../QwerkE_Common/Libraries/pThreads/pthread.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -136,14 +138,16 @@
 // math
 //////////////////////////////
 // glm and other math related includes
-#include "Math_Includes.h"
+#include "../QwerkE_Common/Libraries/glm/glm/glm.hpp"
+#include "../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
+#include "../QwerkE_Common/Libraries/glm/glm//gtc/type_ptr.hpp"
 /////////////////////////////
 
 //////////////////////////////
 // physics
 //////////////////////////////
-#include "Utilities/Tween/Tween.h"
-#include "Utilities/Tween/TweenFuncs.h"
+#include "../QwerkE_Common/Utilities/Tween/Tween.h"
+#include "../QwerkE_Common/Utilities/Tween/TweenFuncs.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -151,14 +155,14 @@
 //////////////////////////////
 // Bullet3
 // Consider creating a library for bullet projects.
-#include "Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
-#include "Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
-#include "Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
-#include "Libraries/Bullet3/LinearMath/btAabbUtil2.h"
-#include "Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
-#include "Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
-#include "Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
-#include "Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#include "../QwerkE_Common/Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
+#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
+#include "../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
+#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
+#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
 /////////////////////////////
 
 // TODO: Add necessary headers.

@@ -35,7 +35,7 @@ void PBR_Test1::Initialize()
 
 	{
 		// Create scene cameras
-		t_pFactory->CreateFreeCamera(this, vec3(2, 0, -2))->SetRotation(vec3(0,45,0));
+		t_pFactory->CreateFreeCamera(this, vec3(2, 0, -15))->SetRotation(vec3(0,45,0));
 		Scene::SetupCameras();
 	}
 

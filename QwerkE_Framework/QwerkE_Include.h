@@ -4,15 +4,14 @@
 //////////////////////////////
 // QwerkE_Include.h
 // #includes crucial files for building like defines for platform.
-// Also includes some files for easier access or build time using
-// precompiled headers.
+// Also includes some files for easier access or faster build time
+// using precompiled headers.
 //////////////////////////////
 
 #ifndef FrameworkDir
 #pragma error "Define FrameworkDir!"
 // string pointing to the QwerkE_Framework folder from your project working directory
 #endif // !FrameworkDir
-
 
 #include "QwerkE_Defines.h" // platform, architecture,
 #include "QwerkE_Platform.h" // platform libraries
@@ -24,7 +23,7 @@
 //////////////////////////////
 // Libraries //
 //////////////////////////////
-#include "../QwerkE_Common/Libraries_Include.h" // openGL, Bullet, GLFW, etc
+#include "Libraries_Include.h" // openGL, Bullet, GLFW, etc
 //////////////////////////////
 
 //////////////////////////////
@@ -69,7 +68,9 @@
 // Input //
 #include "Systems/Input/Input.h"
 #include "Systems/Input/InputManager.h"
-#include "Systems/Input/Controller.h"
+#include "Systems/Input/InputDevice.h"
+#include "Systems/Input/Mouse.h"
+#include "Systems/Input/Keyboard.h"
 #include "Systems/Input/QwerKE_eKeys.h"
 
 #include "Systems/JobManager/JobManager.h"

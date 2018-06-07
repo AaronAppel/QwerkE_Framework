@@ -72,17 +72,24 @@
 #pragma error "Define graphics library!"
 #endif
 
+// libusb
+// #pragma comment( lib, LibraryDir "libusb/Debug/libusb-1.0.lib" )
+
 // assimp
 #pragma comment( lib, LibraryDir "assimp/Release/x86/assimp-vc140-mt.lib" )
 
 // freetype2
 #pragma comment( lib, LibraryDir "freetype2/x86/freetype.lib" )
 
+#ifdef GLEW
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, LibraryDir "glew/glew32d.lib" )
+#endif // GLEW
 
+#ifdef GLFW3
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, LibraryDir "glfw/glfw3.lib" )
+#endif // GLFW3
 
 #ifdef OpenAL
 // OpenAL

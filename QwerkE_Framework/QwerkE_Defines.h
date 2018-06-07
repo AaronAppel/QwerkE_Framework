@@ -23,8 +23,12 @@
 #ifdef Win32Bit
 #define _Q32Bit
 // define libraries and systems to build
+#define GLFW3 // TODO: Think of more explicit defines like Qdef_GLEW or w/e
+#define GLEW
 #define OpenGL
 #define OpenAL
+#define dearimgui
+// #define LibUSB
 #elif defined(Win64Bit)
 #define _Q64Bit
 #else

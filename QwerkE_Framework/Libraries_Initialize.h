@@ -3,7 +3,7 @@
 
 //////////////////////////////
 // Setup any libraries that have program wide states
-// that need to be initialized before used
+// and need to be initialized before use.
 //////////////////////////////
 
 // TODO: Use _QFail and other error messages?

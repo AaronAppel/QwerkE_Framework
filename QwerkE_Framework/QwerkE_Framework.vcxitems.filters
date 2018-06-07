@@ -102,9 +102,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
@@ -304,9 +301,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.cpp">
       <Filter>Systems\DataManager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\CallBackFunctions.cpp">
-      <Filter>Systems\Window</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.cpp">
       <Filter>Systems\FileSystem</Filter>
     </ClCompile>
@@ -328,11 +322,29 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp">
       <Filter>Systems\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp">
+      <Filter>QwerkE_Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\glfw_InputCallBacks.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\CallBackFunctions.cpp">
+      <Filter>Systems\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\KeyBoardExtAPI.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h">
       <Filter>Systems\Input</Filter>
     </ClInclude>
@@ -553,9 +565,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.h">
       <Filter>Systems\DataManager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h">
-      <Filter>Systems\Window</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h">
       <Filter>Systems\FileSystem</Filter>
     </ClInclude>
@@ -582,6 +591,30 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h">
       <Filter>Systems\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h">
+      <Filter>QwerkE_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h">
+      <Filter>Systems\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\KeyBoardExtAPI.h">
+      <Filter>Systems\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

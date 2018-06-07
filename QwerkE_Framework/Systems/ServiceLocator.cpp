@@ -234,63 +234,63 @@ namespace QwerkE
 			{
 			case eEngineServices::Resource_Manager:
 				if (ServiceLocator::m_ResourceManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Input_Manager:
 				if (ServiceLocator::m_InputManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Event_System:
 				if (ServiceLocator::m_EventManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Scene_Manager:
 				if (ServiceLocator::m_SceneManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Factory_Entity:
 				if (ServiceLocator::m_Factory == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Factory_Shader:
 				if (ServiceLocator::m_ShaderFactory == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::PhysicsManager:
 				if (ServiceLocator::m_PhysicsManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::MessageManager:
 				if (ServiceLocator::m_MessageManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Renderer:
 				if (ServiceLocator::m_Renderer == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Audio_Manager:
 				if (ServiceLocator::m_AudioManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::JobManager:
 				if (ServiceLocator::m_JobManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::WindowManager:
 				if (ServiceLocator::m_Window == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::NetworkManager:
 				if (ServiceLocator::m_NetworkManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Data_Manager:
 				if (ServiceLocator::m_DataManager == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::FileSystem:
 				if (ServiceLocator::m_FileSystem == nullptr)
-					return eEngineMessage::_QFail; // not loaded
+					return eEngineMessage::_QFailure; // not loaded
 				break;
 			}
 

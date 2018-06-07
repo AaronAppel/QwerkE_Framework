@@ -4,9 +4,6 @@
     <Filter Include="Libraries">
       <UniqueIdentifier>{15b1654c-d345-434e-86e1-ecd0df372f3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{d235f16c-a74d-4c76-94b9-4a69370431a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utilities">
       <UniqueIdentifier>{b0ce6020-b3dc-422f-9c02-4ebb0390afe1}</UniqueIdentifier>
     </Filter>
@@ -61,12 +58,6 @@
     <Filter Include="Libraries\pThreads">
       <UniqueIdentifier>{84bc33a0-971c-4dc5-93e8-4bbc33471ac4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Shaders">
-      <UniqueIdentifier>{202a3a09-6140-4aa3-badf-642265a9b2d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\LevelData">
-      <UniqueIdentifier>{5dceebcc-a4f7-47d7-978a-a89330492668}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utilities\FileIO">
       <UniqueIdentifier>{3c6df7ea-0ce0-44eb-9d2e-101fdd989d25}</UniqueIdentifier>
     </Filter>
@@ -78,6 +69,9 @@
     </Filter>
     <Filter Include="DataTypes">
       <UniqueIdentifier>{beb0d2e5-bc87-4299-9b91-8032f65d3a03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\libsub">
+      <UniqueIdentifier>{6c207e02-00cc-4987-bfcb-12993c70ee17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2013,9 +2007,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\pThreads\semaphore.h">
       <Filter>Libraries\pThreads</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Math_Includes.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\GUID.h">
       <Filter>Utilities</Filter>
     </ClInclude>
@@ -2046,7 +2038,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h">
       <Filter>Utilities\FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\OpenAL\include\alut.h">
       <Filter>Libraries\OpenAL</Filter>
     </ClInclude>
@@ -2340,7 +2331,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp">
       <Filter>Libraries\Math</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
@@ -2696,93 +2686,6 @@
     </None>
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\wrap.inl">
       <Filter>Libraries\glm</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenu.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenu.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenuText.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenuText.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2D.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2D.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTex.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTex.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTransform.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTransform.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\BasicLighting.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\BasicLighting.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\EmptyShader.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\EmptyShader.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\GlitchedEffect.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\LitMaterial.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\LitMaterial.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\NullShader.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\NullShader.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Sprite2D.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Sprite2D.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\TestShader.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\TestShader.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\text.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\text.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\vec3Material.frag">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\vec3Material.vert">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\TestScene.json">
-      <Filter>Resources\LevelData</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\Backup.json">
-      <Filter>Resources\LevelData</Filter>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Libraries\assimp\color4.inl">
       <Filter>Libraries\assimp</Filter>

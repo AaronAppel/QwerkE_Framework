@@ -9,9 +9,9 @@
 //////////////////////////////
 
 #include "Libraries_Include.h"
-#include "Utilities/PrintFunctions.h"
+#include "../QwerkE_Common/Utilities/PrintFunctions.h"
 
-// TODO: Use _QFail and other error messages?
+// TODO: Use _QFailure and other error messages?
 bool Libs_Setup()
 {
     bool errorFree = true; // Return value. If error occurs set to false
@@ -155,4 +155,5 @@ void Libs_TearDown()
     ImGui_ImplGlfwGL3_Shutdown(); // shutdown imgui
     ImGui::DestroyContext(); // destroy imgui
     glfwTerminate(); // shutdown glfw
+	// TODO: OpenAL, Bullet, freetype2, GLEW?, RakNet
 }

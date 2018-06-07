@@ -1,5 +1,5 @@
-#ifndef __Controller_H_
-#define __Controller_H_
+#ifndef _Controller_H_
+#define _Controller_H_
 
 // TODO: Create child/sub classes for different types of controllers (mouse/keyboard, gamepad, joysticks etc).
 // TODO: Add multiple device functionality (XBOX controller, Joystick etc..)
@@ -49,4 +49,4 @@ protected:
 	bool m_KeyStates[Button_Max];
 };
 
-#endif //__Controller_H_
+#endif //!_Controller_H_

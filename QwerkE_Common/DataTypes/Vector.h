@@ -13,6 +13,7 @@
 // TODO: Look at operator== for float value comparison
 // TODO: inline?
 // TODO: fequal
+#include "Math/MathHelpers.h"
 
 #include <cmath> // sqrt
 
@@ -24,43 +25,43 @@ struct Vector2
 
 	// constructors + destructors
 	Vector2() {}
-	Vector2(float value) { x = value; y = value; }
-	Vector2(float valueX, float valueY) { x = valueX; y = valueY; }
-	Vector2(int value) { x = (float)value; y = (float)value; }
-	Vector2(int valueX, int valueY) { x = (float)valueX; y = (float)valueY; }
+	Vector2(const float value) { x = value; y = value; }
+	Vector2(const float valueX, const float valueY) { x = valueX; y = valueY; }
+	Vector2(const int value) { x = (float)value; y = (float)value; }
+	Vector2(const int valueX, const int valueY) { x = (float)valueX; y = (float)valueY; }
 
 	~Vector2() {}
 
 	// operator overloads
-	Vector2 operator+(const float value) const { return Vector2(x + value, y + value); }
-	Vector2 operator+(const Vector2& value) const { return Vector2(x + value.x, y + value.y); }
+	Vector2 operator +(const float value) const { return Vector2(x + value, y + value); }
+	Vector2 operator +(const Vector2& value) const { return Vector2(x + value.x, y + value.y); }
 
-	Vector2 operator-(const float value) const { return Vector2(x - value, y - value); }
-	Vector2 operator-(const Vector2& value) const { return Vector2(x - value.x, y - value.y); }
+	Vector2 operator -(const float value) const { return Vector2(x - value, y - value); }
+	Vector2 operator -(const Vector2& value) const { return Vector2(x - value.x, y - value.y); }
 
-	Vector2 operator*(const float value) const { return Vector2(x * value, y * value); }
-	Vector2 operator*(const Vector2& value) const { return Vector2(x * value.x, y * value.y); }
+	Vector2 operator *(const float value) const { return Vector2(x * value, y * value); }
+	Vector2 operator *(const Vector2& value) const { return Vector2(x * value.x, y * value.y); }
 
-	Vector2 operator/(const float value) const { return Vector2(x / value, y / value); }
-	Vector2 operator/(const Vector2& value) const { return Vector2(x / value.x, y / value.y); }
+	Vector2 operator /(const float value) const { return Vector2(x / value, y / value); }
+	Vector2 operator /(const Vector2& value) const { return Vector2(x / value.x, y / value.y); }
 
-	Vector2 operator+=(const float value) { x = x + value; y = y + value; return *this; }
-	Vector2 operator+=(const Vector2& value) { x = x + value.x; y = y + value.y; return *this; }
+	void operator +=(const float value) { x = x + value; y = y + value; }
+	void operator +=(const Vector2& value) { x = x + value.x; y = y + value.y; }
 
-	Vector2 operator-=(const float value) { x = x - value; y = y - value; return *this; }
-	Vector2 operator-=(const Vector2& value) { x = x - value.x; y = y - value.y; return *this; }
+	void operator -=(const float value) { x = x - value; y = y - value; }
+	void operator -=(const Vector2& value) { x = x - value.x; y = y - value.y; }
 
-	Vector2 operator*=(const float value) { x = x * value; y = y * value; return *this; }
-	Vector2 operator*=(const Vector2& value) { x = x * value.x; y = y * value.y; return *this; }
+	void operator *=(const float value) { x = x * value; y = y * value; }
+	void operator *=(const Vector2& value) { x = x * value.x; y = y * value.y; }
 
-	Vector2 operator/=(const float value) { x = x / value; y = y / value; return *this; }
-	Vector2 operator/=(const Vector2& value) { x = x / value.x; y = y / value.y; return *this; }
+	void operator /=(const float value) { x = x / value; y = y / value; }
+	void operator /=(const Vector2& value) { x = x / value.x; y = y / value.y; }
 
-	bool operator==(const float value) { return x == value && y == value; }
-	bool operator==(const Vector2& value) { return x == value.x && y == value.y; }
+	bool operator ==(const float value) { return x == value && y == value; }
+	bool operator ==(const Vector2& value) { return x == value.x && y == value.y; }
 
-	bool operator!=(const float value) { return x != value || y != value; }
-	bool operator!=(const Vector2& value) { return x != value.x || y != value.y; }
+	bool operator !=(const float value) { return x != value || y != value; }
+	bool operator !=(const Vector2& value) { return x != value.x || y != value.y; }
 
 	// helper + utility functions
 	// TODO: Rewrite
@@ -68,7 +69,7 @@ struct Vector2
 	float Length() const { return sqrtf(x*x + y * y); }
 	Vector2 GetNormalized() const { float len = Length(); if (fequal(len, 0)) return Vector2(x, y); len = 1.0f / len; return Vector2(x*len, y*len); }
 	Vector2 Normalize() { float len = Length(); if (!fequal(len, 0)) { x /= len; y /= len; } return *this; }
-	// add, set, scale, cross, dot
+	// TODO: write... add, set, scale, cross, dot methods
 };
 
 struct Vector3
@@ -80,43 +81,43 @@ struct Vector3
 
 	// constructors + destructors
 	Vector3() {}
-	Vector3(float value) { x = value; y = value; z = value; }
-	Vector3(float valueX, float valueY, float valueZ) { x = valueX; y = valueY; z = valueZ; }
-	Vector3(int value) { x = (float)value; y = (float)value; z = (float)value; }
-	Vector3(int valueX, int valueY, int valueZ) { x = (float)valueX; y = (float)valueY; z = valueZ; }
+	Vector3(const float value) { x = value; y = value; z = value; }
+	Vector3(const float valueX, float valueY, float valueZ) { x = valueX; y = valueY; z = valueZ; }
+	Vector3(const int value) { x = (float)value; y = (float)value; z = (float)value; }
+	Vector3(const int valueX, int valueY, int valueZ) { x = (float)valueX; y = (float)valueY; z = valueZ; }
 
 	~Vector3() {}
 
 	// operator overloads
-	Vector3 operator+(float value) const { x = x + value; y = y + value; z = z + value; return *this; }
-	Vector3 operator+(const Vector3& value) const { x = x + value.x; y = y + value.y; z = z + value.z; return Vector3(x, y, z); }
+	Vector3 operator +(const float value) const { return Vector3(x - value, y - value, z - value); }
+	Vector3 operator +(const Vector3& value) const { return Vector3(x + value.x, y + value.y, z + value.z); }
 
-	Vector3 operator-(const float value) const { return Vector3(x - value, y - value, z - value); }
-	Vector3 operator-(const Vector3& value) const { return Vector3(x - value.x, y - value.y, z - value.z); }
+	Vector3 operator -(const float value) const { return Vector3(x - value, y - value, z - value); }
+	Vector3 operator -(const Vector3& value) const { return Vector3(x - value.x, y - value.y, z - value.z); }
 
-	Vector3 operator*(float value) const  { x = x * value; y = y * value; z = z * value; return Vector3(x, y, z); }
-	Vector3 operator*(const Vector3& value) const  { x = x * value.x; y = y * value.y; z = z * value.z; return Vector3(x, y, z); }
+	Vector3 operator *(const float value) const  { return Vector3(x * value, y * value, z * value); }
+	Vector3 operator *(const Vector3& value) const { return Vector3(x * value.x, y * value.y, z * value.z); }
 
-	Vector3 operator/(float value) const  { x = x / value; y = y / value; z = z / value; return Vector3(x, y, z); }
-	Vector3 operator/(const Vector3& value) const  { x = x / value.x; y = y / value.y; z = z / value.z; return Vector3(x, y, z); }
+	Vector3 operator /(const float value) const  { return Vector3(x / value, y / value, z / value); }
+	Vector3 operator /(const Vector3& value) const  { return Vector3(x / value.x, y / value.y, z / value.z); }
 
-	Vector3 operator+=(float value) { x = x + value; y = y + value; z = z + value; return *this; }
-	Vector3 operator+=(const Vector3& value) { x = x + value.x; y = y + value.y; z = z + value.z; return *this; }
+	void operator +=(const float value) { x = x + value; y = y + value; z = z + value; }
+	void operator +=(const Vector3& value) { x = x + value.x; y = y + value.y; z = z + value.z; }
 
-	Vector3 operator-=(float value) { x = x - value; y = y - value; z = z - value; return *this; }
-	Vector3 operator-=(const Vector3& value) { x = x - value.x; y = y - value.y; z = z - value.z; return *this; }
+	void operator -=(const float value) { x = x - value; y = y - value; z = z - value; }
+	void operator -=(const Vector3& value) { x = x - value.x; y = y - value.y; z = z - value.z; }
 
-	Vector3 operator*=(float value) { x = x * value; y = y * value; z = z * value; return *this; }
-	Vector3 operator*=(const Vector3& value) { x = x * value.x; y = y * value.y; z = z * value.z; return *this; }
+	void operator *=(const float value) { x = x * value; y = y * value; z = z * value; }
+	void operator *=(const Vector3& value) { x = x * value.x; y = y * value.y; z = z * value.z;}
 
-	Vector3 operator/=(float value) { x = x / value; y = y / value; z = z / value; return *this; }
-	Vector3 operator/=(const Vector3& value) { x = x / value.x; y = y / value.y; z = z / value.z; return *this; }
+	void operator /=(const float value) { x = x / value; y = y / value; z = z / value; }
+	void operator /=(const Vector3& value) { x = x / value.x; y = y / value.y; z = z / value.z; }
 
-	bool operator==(float value) { return x == value && y == value && z == value; }
-	bool operator==(const Vector3& value) { return x == value.x && y == value.y && z == value.z; }
+	bool operator ==(const float value) { return x == value && y == value && z == value; }
+	bool operator ==(const Vector3& value) { return x == value.x && y == value.y && z == value.z; }
 
-	bool operator!=(float value) { return x != value || y != value || z != value; }
-	bool operator!=(const Vector3& value) { return x != value.x || y != value.y || z != value.z; }
+	bool operator !=(const float value) { return x != value || y != value || z != value; }
+	bool operator !=(const Vector3& value) { return x != value.x || y != value.y || z != value.z; }
 
 	// helper + utility functions
 	// TODO: Rewrite
@@ -126,7 +127,6 @@ struct Vector3
 	Vector3 Normalize() { float len = Length(); if (!fequal(len, 0)) { x /= len; y /= len; z /= len; } return *this; }
 	Vector3 Cross(const Vector3& o) const { return Vector3((y*o.z - z * o.y), (z*o.x - x * o.z), (x*o.y - y * o.x)); }
 	float Dot(const Vector3 &o) const { return x * o.x + y * o.y + z * o.z; }
-	// add, set, scale, cross, dot
 };
 
 struct Vector4
@@ -139,10 +139,10 @@ struct Vector4
 
 	// constructors + destructors
 	Vector4() {}
-	Vector4(float value) { x = value; y = value; }
-	Vector4(float valueX, float valueY, float valueZ, float valueW) { x = valueX; y = valueY; z = valueZ; w = valueW; }
-	Vector4(int value) { x = (float)value; y = (float)value; z = (float)value; w = (float)value; }
-	Vector4(int valueX, int valueY, int valueZ, int valueW) { x = (float)valueX; y = (float)valueY; z = (float)valueZ; w = valueW; }
+	Vector4(const float value) { x = value; y = value; }
+	Vector4(const float valueX, const float valueY, float valueZ, float valueW) { x = valueX; y = valueY; z = valueZ; w = valueW; }
+	Vector4(const int value) { x = (float)value; y = (float)value; z = (float)value; w = (float)value; }
+	Vector4(const int valueX, const int valueY, const int valueZ, const int valueW) { x = (float)valueX; y = (float)valueY; z = (float)valueZ; w = valueW; }
 
 	~Vector4() {}
 

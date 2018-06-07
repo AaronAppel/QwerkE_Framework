@@ -1,7 +1,7 @@
 #ifndef _QwerkE_H_
 #define _QwerkE_H_
 
-// ORIGINAL SOURCE LINK: https://github.com/AaronAppel/QwerkE
+// ORIGINAL SOURCE LINK: https://github.com/AaronAppel/QwerkE_Framework
 
 // LEGAL:
     // Qwerk Engine is currently licensed under the...

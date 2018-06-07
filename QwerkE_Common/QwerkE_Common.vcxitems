@@ -740,9 +740,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\XBox360Includes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\RakNet\Source\_FindFirst.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\stb_image.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Math_Includes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.h" />
@@ -771,7 +768,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\MyQuaternion.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\ValueChecking.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Math\VectorMathHelpers.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\FileUtilities.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\FileIO\MyFileWriter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp" />
@@ -902,34 +898,5 @@
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\vector_angle.inl" />
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\vector_query.inl" />
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\gtx\wrap.inl" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\Backup.json" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\LevelData\TestScene.json" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenu.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenu.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenuText.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\2DMenuText.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2D.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2D.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTex.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTex.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTransform.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Basic2DTransform.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\BasicLighting.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\BasicLighting.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\EmptyShader.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\EmptyShader.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\GlitchedEffect.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\LitMaterial.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\LitMaterial.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\NullShader.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\NullShader.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Sprite2D.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\Sprite2D.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\TestShader.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\TestShader.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\text.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\text.vert" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\vec3Material.frag" />
-    <None Include="$(MSBuildThisFileDirectory)Resources\Shaders\vec3Material.vert" />
   </ItemGroup>
 </Project>

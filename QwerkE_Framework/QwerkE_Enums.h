@@ -4,6 +4,36 @@
 
 #include <cstdint>
 
+enum class eInputDeviceTypes : std::uint8_t
+{
+	Keyboard_Min = 0,
+	Keyboard_Device0,
+	Keyboard_Device1,
+	Keyboard_Device2,
+	Keyboard_Device3,
+	Keyboard_Max,
+
+	Mouse_Min,
+	Mouse_Device0,
+	Mouse_Device1,
+	Mouse_Device2,
+	Mouse_Device3,
+	Mouse_Max,
+
+	GamePad_Min,
+	GamePad_Device0,
+	GamePad_Device1,
+	GamePad_Device2,
+	GamePad_Device3,
+	GamePad_Device4,
+	GamePad_Device5,
+	GamePad_Device6,
+	GamePad_Device7,
+	GamePad_Max,
+
+	Max_Device
+};
+
 enum class eMaterialMaps : std::uint8_t
 {
 	MatMap_Ambient = 0,
@@ -29,8 +59,8 @@ enum class eMaterialMaps : std::uint8_t
 
 enum class eEngineMessage : std::uint8_t
 {
-	_QSuccess = 0,
-	_QFail,
+	_QFailure = 0,
+	_QSuccess,
 
 	_QMax
 };
@@ -70,7 +100,7 @@ enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
 };
 
 // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
-enum eCamera_Movement
+enum eCamera_Movement : std::uint8_t
 {
 	FORWARD = 0,
 	BACKWARD,
@@ -83,7 +113,7 @@ enum eCamera_Movement
 };
 
 /* Component Tagging */
-enum eComponentTags
+enum eComponentTags : std::uint8_t
 {
 	/* General */
 	Component_Camera = 0,
@@ -99,7 +129,7 @@ enum eComponentTags
 	Component_Null
 };
 /* Routines */
-enum eRoutineTypes
+enum eRoutineTypes : std::uint8_t
 {
 	Routine_Render = 0,
 	Routine_Print,
@@ -108,7 +138,7 @@ enum eRoutineTypes
 };
 
 /* Input */
-enum eGameButtons
+enum eGameButtons : std::uint8_t
 {
 	// Application functionality
 	Button_ModifierCntrl,
@@ -142,7 +172,7 @@ enum eGameButtons
 };
 
 /* Scenes */
-enum eSceneTypes
+enum eSceneTypes : std::uint8_t
 {
 	//// list in order of opening if possible
 	// fullscreen
@@ -164,7 +194,7 @@ enum eSceneTypes
 };
 
 /* Menu Windows Types */
-enum eMenuTypes // Example game windows
+enum eMenuTypes : std::uint8_t // Example game windows
 {
 	Menu_Landing = 0,
 	Menu_DropDown,
@@ -178,7 +208,7 @@ enum eMenuTypes // Example game windows
 };
 
 /* Menu States */
-enum eStates
+enum eStates : std::uint8_t
 {
 	State_Min = 0,
 	State_Disabled,
@@ -190,7 +220,7 @@ enum eStates
 /* Menu Item Types */
 
 // Camera Types
-enum eCamType // TODO: Hide from program?
+enum eCamType : std::uint8_t // TODO: Hide from program?
 {
 	CamType_FreeCam = 0,
 	CamType_FirstPerson,
@@ -201,7 +231,7 @@ enum eCamType // TODO: Hide from program?
 	CamType_NULL
 };
 // Light Types
-enum eLightType // TODO: Hide from program?
+enum eLightType : std::uint8_t // TODO: Hide from program?
 {
 	LightType_Point = 0,
 	LightType_Area,
@@ -212,7 +242,7 @@ enum eLightType // TODO: Hide from program?
 };
 
 // TODO: Adding object tags ruins object saving and loading. Fix!
-enum eGameObjectTags
+enum eGameObjectTags : std::uint8_t
 {
 	GO_Tag_Player = 0,
 	// Cameras

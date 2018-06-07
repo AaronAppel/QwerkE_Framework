@@ -50,7 +50,7 @@ namespace QwerkE
 			if (Libs_Setup() == false) // setup libraries
 			{
 				ConsolePrint("\nStartup(): Error loading libraries!\n");
-				return eEngineMessage::_QFail; // failure
+				return eEngineMessage::_QFailure; // failure
 			}
 
 			// TODO: Try to reduce or avoid order dependency in system creation.
@@ -76,15 +76,16 @@ namespace QwerkE
 			ShaderFactory* shaderFactory = new ShaderFactory();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
 
-#ifdef _glfw3_h_
+#ifdef GLFW3
 			m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
 #else
 			// win32 window or something
 			Window* window = new Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
-#endif // !_glfw3_h_
+#endif // !GLFW3
 
 			WindowManager* windowManager = new WindowManager();
 			windowManager->AddWindow(m_Window);
+			inputManager->SetupCallbacks((GLFWwindow*)m_Window->GetContext());
 
 			AudioManager* audioManager = new AudioManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Audio_Manager, audioManager); // resource managers needs this

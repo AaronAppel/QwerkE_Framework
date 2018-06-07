@@ -53,6 +53,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariable_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Texture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Include.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Initialize.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries_Load.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Directory_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE_Enums.h" />
@@ -76,9 +79,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\KeyBoardExtAPI.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.h" />
@@ -130,6 +136,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent .cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries_Initialize.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\TestScene.cpp" />
@@ -155,8 +162,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Controller.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\glfw_InputCallBacks.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\KeyBoardExtAPI.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp" />
