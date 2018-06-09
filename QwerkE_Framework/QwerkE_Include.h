@@ -66,12 +66,9 @@
 #include "Systems/Renderer/Renderer.h"
 
 // Input //
+#include "Systems/Input/QwerKE_eKeys.h"
 #include "Systems/Input/Input.h"
 #include "Systems/Input/InputManager.h"
-#include "Systems/Input/InputDevice.h"
-#include "Systems/Input/Mouse.h"
-#include "Systems/Input/Keyboard.h"
-#include "Systems/Input/QwerKE_eKeys.h"
 
 #include "Systems/JobManager/JobManager.h"
 

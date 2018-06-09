@@ -10,6 +10,7 @@ const char* StringAppend(const char* a, const char* b)
 	strcpy_s(newString, strlen(a) + 1, a);
 	strcat_s(newString, size + 1, b);
 
+	// TODO: Delete memory. Maybe use a smart pointer.
 	return newString;
 }
 
@@ -23,6 +24,7 @@ const char* StringAppend(const char* a, const char* b, const char* c)
 	strcat_s((char*)newString, size + 1, b);
 	strcat_s((char*)newString, size + 1, c);
 
+	// TODO: Delete memory. Maybe use a smart pointer.
 	return newString;
 }
 
@@ -43,6 +45,7 @@ char* DeepCopyString(const char* string)
 
 	// return _strdup(string); // Careful of malloc, free()
 
+	// TODO: Delete memory. Maybe use a smart pointer.
 	return returnString;
 }
 

@@ -1,16 +1,12 @@
 #include "InputManager.h"
 #include "../../QwerkE_Enums.h"
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "Keyboard.h"
-#include "Mouse.h"
-#include "KeyBoardExtAPI.h"
 
 InputManager::InputManager()
 {
 	// Create input devices
-	Keyboard* keyboard = new Keyboard(eInputDeviceTypes::Keyboard_Device0);
-	Mouse* mouse = new Mouse(eInputDeviceTypes::Mouse_Device0);
-
+	Keyboard* keyboard = new InputManager::Keyboard(eInputDeviceTypes::Keyboard_Device0);
+	Mouse* mouse = new InputManager::Mouse(eInputDeviceTypes::Mouse_Device0);
 	AddDevice(keyboard);
 	AddDevice(mouse);
 
@@ -77,6 +73,8 @@ void InputManager::ProcessMouseClick(eKeys key, eKeyState state) // handle mouse
 		mouse->s_DragReset = true; // drag ended, reset value next frame so it can be used this frame
 	}
 	mouse->s_KeyStates[key] = state; // TODO: Is setting bool to key state an issue?
+
+	RaiseInputEvent(key, state);
 }
 
 void InputManager::ProcessKeyEvent(eKeys key, eKeyState state)
@@ -102,11 +100,6 @@ vec2 InputManager::GetMouseDragDelta() const
 bool InputManager::GetIsKeyDown(eKeys key) const
 {
 	return m_Devices.find(m_DefaultKeyboard)->second->s_KeyStates[key];
-}
-
-const KeyboardExtAPI* InputManager::GetDeviceAPI() const
-{
-	return m_KeyboardAPI;
 }
 
 bool InputManager::FrameKeyAction(eKeys key, eKeyState state) const

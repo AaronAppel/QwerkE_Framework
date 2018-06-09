@@ -1,6 +1,4 @@
 #include "InputManager.h"
-#include "Keyboard.h"
-#include "Mouse.h"
 
 #ifdef dearimgui
 #include "../../QwerkE_Common/Libraries/imgui/imgui.h"
@@ -12,8 +10,8 @@ InputManager* l_InputManager = nullptr;
 InputManager::InputManager(GLFWwindow* window)
 {
 	// Create input devices
-	Keyboard* keyboard = new Keyboard(eInputDeviceTypes::Keyboard_Device0);
-	Mouse* mouse = new Mouse(eInputDeviceTypes::Mouse_Device0);
+	Keyboard* keyboard = new InputManager::Keyboard(eInputDeviceTypes::Keyboard_Device0);
+	Mouse* mouse = new InputManager::Mouse(eInputDeviceTypes::Mouse_Device0);
 
 	AddDevice(keyboard);
 	AddDevice(mouse);
@@ -104,11 +102,11 @@ void InputManager::mouse_button_callback(GLFWwindow* window, int button, int act
 {
 	if (action == GLFW_PRESS)
 	{
-		//ProcessMouseClick(GLFWToQwerkEKey(button), eKeyState::eKeyState_Press);
+		l_InputManager->ProcessMouseClick(l_InputManager->GLFWToQwerkEKey(button), eKeyState::eKeyState_Press);
 	}
 	else if (action == GLFW_RELEASE)
 	{
-		//ProcessMouseClick(GLFWToQwerkEKey(button), eKeyState::eKeyState_Release);
+		l_InputManager->ProcessMouseClick(l_InputManager->GLFWToQwerkEKey(button), eKeyState::eKeyState_Release);
 	}
 
 	// imgui

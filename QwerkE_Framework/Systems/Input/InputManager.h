@@ -3,18 +3,19 @@
 
 // Reference: https://www.gamedev.net/blogs/entry/2250186-designing-a-robust-input-handling-system-for-games/
 
+#include "../../QwerkE_Enums.h"
 #include "QwerKE_eKeys.h"
 #include "../../QwerkE_Defines.h"
 #include "../../QwerkE_Platform.h"
 #include "../../Libraries_Include.h"
 #include "../../QwerkE_Common/DataTypes/Vector.h"
-#include "InputDevice.h"
 
 #ifdef GLFW3
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h" // TODO: Need?
 #include "../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 #endif // GLFW3
 
+#include <string>
 #include <map>
 
 class KeyboardExtAPI;
@@ -31,6 +32,143 @@ const char QWERKE_ONE_FRAME_MAX_INPUT = 12; // no more than QWERKE_ONE_FRAME_MAX
 // TODO: Fix GLFW callbacks to avoid "static" everywhere
 class InputManager
 {
+private:
+	// Private data types
+	struct InputDevice // abstract
+	{
+		eInputDeviceTypes GetType() const { return m_DeviceType; }
+
+		void SetType(eInputDeviceTypes type) { m_DeviceType = type; }
+
+		unsigned short* s_KeyCodex; // [eKeys_MAX] = { 0 }; // initialize to 0
+		bool s_KeyStates[eKeys_MAX] = { false }; // initialize to false
+
+		// frame by frame input tracking
+		bool s_OneFrameBuffersAreDirty = true; // wipe at init
+		unsigned short s_OneFrameKeyBuffer[12]; // TODO: Use QWERKE_ONE_FRAME_MAX_INPUT
+		bool s_OneFrameValueBuffer[12] = { false };
+
+		virtual void RaiseInputEvent(eKeys key, eKeyState state)
+		{
+			s_OneFrameBuffersAreDirty = true;
+
+			for (int i = 0; i < 12; i++)
+			{
+				if (s_OneFrameKeyBuffer[i] == eKeys_NULL_KEY)
+				{
+					s_OneFrameKeyBuffer[i] = key;
+					s_OneFrameValueBuffer[i] = state;
+					return;
+				}
+			}
+		}
+
+		virtual void NewFrame()
+		{
+			// reset 1 frame buffers
+			if (s_OneFrameBuffersAreDirty)
+			{
+				// m_MouseDragStart = 0.0f;
+				memset(s_OneFrameKeyBuffer, eKeys_NULL_KEY, 12 * sizeof(short));
+				memset(s_OneFrameValueBuffer, 0, 12); // TODO: Do I want a 3rd key state?
+				s_OneFrameBuffersAreDirty = false;
+			}
+		}
+
+		virtual ~InputDevice() {}
+
+	protected:
+		InputDevice(eInputDeviceTypes type) { m_DeviceType = type; }
+
+		eInputDeviceTypes m_DeviceType = eInputDeviceTypes::Max_Device;
+	};
+
+	struct Mouse : public InputDevice
+	{
+		vec2 s_MousePos = vec2(0, 0); // position change from last frame
+		vec2 s_MouseDelta = vec2(0, 0);
+		vec2 s_MouseDragStart = vec2(0, 0);
+		bool s_DragReset = false;
+
+		void NewFrame()
+		{
+			if (s_DragReset)
+			{
+				s_MouseDragStart = 0.0f;
+				s_DragReset = false;
+			}
+
+			// reset 1 frame buffers
+			if (s_OneFrameBuffersAreDirty)
+			{
+				memset(s_OneFrameKeyBuffer, eKeys_NULL_KEY, QWERKE_ONE_FRAME_MAX_INPUT * sizeof(short));
+				memset(s_OneFrameValueBuffer, 0, QWERKE_ONE_FRAME_MAX_INPUT); // TODO: Do I want a 3rd key state?
+				s_OneFrameBuffersAreDirty = false;
+			}
+		}
+
+		Mouse(eInputDeviceTypes type) : InputDevice(type) {}
+		~Mouse() {}
+	};
+
+	struct Keyboard : public InputDevice
+	{
+		Keyboard(eInputDeviceTypes type) : InputDevice(type) {}
+		~Keyboard() {}
+	};
+
+public:
+	class MouseExtAPI
+	{
+	public:
+		MouseExtAPI(Mouse* mouse) { m_Mouse = mouse; }
+		~MouseExtAPI() {}
+
+		bool GetIsKeyDown(eKeys key) const
+		{
+			return m_Mouse->s_KeyStates[key];
+		}
+
+		bool FrameAction(eKeys key, eKeyState state) const
+		{
+			if (m_Mouse->s_OneFrameKeyBuffer[0] != eKeys::eKeys_NULL_KEY) // was a key even pressed?
+				for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
+				{
+					if (m_Mouse->s_OneFrameKeyBuffer[i] == key)
+						return m_Mouse->s_OneFrameValueBuffer[i] == state;
+				}
+			return 0;
+		}
+
+	private:
+		Mouse * m_Mouse = nullptr;
+	};
+
+	class KeyboardExtAPI
+	{
+	public:
+		KeyboardExtAPI(Keyboard* keyboard) { m_Keyboard = keyboard; }
+		~KeyboardExtAPI() {}
+
+		bool GetIsKeyDown(eKeys key) const
+		{
+			return m_Keyboard->s_KeyStates[key];
+		}
+
+		bool FrameAction(eKeys key, eKeyState state) const
+		{
+			if (m_Keyboard->s_OneFrameKeyBuffer[0] != eKeys::eKeys_NULL_KEY) // was a key even pressed?
+				for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
+				{
+					if (m_Keyboard->s_OneFrameKeyBuffer[i] == key)
+						return m_Keyboard->s_OneFrameValueBuffer[i] == state;
+				}
+			return 0;
+		}
+
+	private:
+		Keyboard * m_Keyboard = nullptr;
+	};
 public:
 	InputManager();
 	~InputManager();
@@ -45,7 +183,7 @@ public:
 	vec2 GetMouseDragDelta() const; // get distance from mouse down
 	bool GetIsKeyDown(eKeys key) const; // check if keyIsDown
 
-	const KeyboardExtAPI* GetDeviceAPI() const;
+	const KeyboardExtAPI* GetDeviceAPI() const { return m_KeyboardAPI; }
 
 	bool FrameKeyAction(eKeys key, eKeyState state) const; // check if key was pressed or released this frame
 
