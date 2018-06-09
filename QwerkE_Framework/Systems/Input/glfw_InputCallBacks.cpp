@@ -21,8 +21,6 @@ InputManager::InputManager(GLFWwindow* window)
 	AssignSystemKeys(keyboard);
 	AssignSystemKeys(mouse);
 
-	SetupControllers(); // TODO: Remove?
-
 	m_KeyCodex = new unsigned short[GLFW_KEY_LAST];
 	memset(m_KeyCodex, 0, GLFW_KEY_LAST); // set values to 0
 	SetupGLFWKeyCodex(); // TODO: Remove
