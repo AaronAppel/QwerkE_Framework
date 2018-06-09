@@ -10,7 +10,7 @@ Look for examples and documentation to see intended implementation examples as w
 QwerkE is currently only built for windows 32bit. Hopefully it can expand to as many platforms as possible.
 
 ### Note
-There is also a runtime application that has engine features such as scene editing, scripting, debugging, nice GUIS, and more!
+There is also a runtime application that has engine features such as scene editing, scripting, debugging, nice GUIs, and more!
 That project lives here: www.github.com/AaronAppel/Qwerk_Engine
 
 ## Getting Started
