@@ -1,6 +1,0 @@
-{
-	"Name":	"LitMaterial.ssch",
-	"vert":	"LitMaterial.vert",
-	"frag":	"LitMaterial.frag",
-	"geo":	"null"
-}

@@ -1,6 +1,0 @@
-{
-	"Name":	"font_shader.ssch",
-	"vert":	"text.vert",
-	"frag":	"text.frag",
-	"geo":	"null"
-}

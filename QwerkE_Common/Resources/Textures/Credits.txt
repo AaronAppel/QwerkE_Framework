@@ -1,7 +1,0 @@
-container.png
-https://learnopengl.com/img/textures/container.jpg
-container_specular.png
-https://learnopengl.com/img/textures/container2.png
-
-wood_floor.png
-https://learnopengl.com/Advanced-Lighting/Parallax-Mapping
