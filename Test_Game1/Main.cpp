@@ -6,7 +6,7 @@
 #ifdef _QEasy // Beginner API
 int main()
 {
-	if (QwerkE::Framework::Startup() == eEngineMessage::_QFail)
+	if (QwerkE::Framework::Startup() == eEngineMessage::_QFailure)
 	{
 		OutputPrint("\nMain(): Error loading services!\n");
 		assert(false);
@@ -34,7 +34,7 @@ int main()
 }
 
 #else
-// _QUltra // Full control
+// _QUltra/_QExpert/_QHardCore // Full control
 int main()
 {
 

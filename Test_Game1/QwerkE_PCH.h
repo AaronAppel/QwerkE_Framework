@@ -5,6 +5,9 @@
 // include STATIC code that does not change often
 /////////////////////////////////////////////////
 
+#define FrameworkDir "../"
+#include "QwerkE_Include.h"
+
 #include "../QwerkE_Framework/QwerkE_Defines.h"
 #include "../QwerkE_Framework/QwerkE_Platform.h"
 
@@ -24,13 +27,13 @@
 #include <vector>
 
 // constants, enums
-#include "../QwerkE_Framework/Global_Constants.h"
+#include "QwerkE_Global_Constants.h"
 #include "../QwerkE_Framework/QwerkE_Enums.h"
 
 // containers
 
 // libraries
-#include "../QwerkE_Common/Libraries_Include.h"
+#include "Libraries_Include.h"
 
 /////////////////////////////////////////////////
 // include ENGINE code temporarily for faster build times

@@ -31,34 +31,19 @@ FileSystem::~FileSystem()
 {
 }
 
-void FileSystem::LoadSoundFileData(const char* soundName, QSoundFile& soundFile)
+void FileSystem::LoadSoundFileData(const char* filePath, QSoundFile& soundFile)
 {
 	// this function is meant to abstract file type from external code
 
-	soundFile.s_Name = GetFileNameWithExt(soundName);
-
-	const char* filePath = nullptr;
-	if (FileExists(SoundFolderPath(soundName)))
-	{
-		filePath = SoundFolderPath(soundName);
-	}
-	else if(FileExists(soundName))
-	{
-		filePath = soundName;
-	}
-	else
-	{
-		filePath = nullptr;
-		return;
-	}
+	soundFile.s_Name = GetFileNameWithExt(filePath);
+	soundFile.s_Type = GetFileExtension(filePath);
 
 	// read file data
-	if (strcmp(GetFileExtension(filePath).c_str(), "wav") == 0)
+	if (strcmp(soundFile.s_Type.c_str(), "wav") == 0)
 	{
-		soundFile.s_Type = "wav";
 		soundFile.s_Data = (char*)LoadWaveFileData(filePath, soundFile.s_Size, soundFile.s_Channels, soundFile.s_Frequency, soundFile.s_BitsPerSample);
 	}
-	else if (strcmp(GetFileExtension(filePath).c_str(), "mp3") == 0)
+	else if (strcmp(soundFile.s_Type.c_str(), "mp3") == 0)
 	{
 		// soundFile.s_Type = "mp3";
 		// TODO: soundFile.s_Data = LoadMP3FileData(...);
@@ -106,7 +91,7 @@ unsigned char* FileSystem::LoadImageFileData(const char* path, unsigned int* ima
 	return returnBuffer;
 }
 
-ALuint FileSystem::LoadSound(const char* soundName)
+ALuint FileSystem::LoadSound(const char* soundPath)
 {
 	// this function is meant to abstract audio libraries from external code
 
@@ -114,7 +99,7 @@ ALuint FileSystem::LoadSound(const char* soundName)
 
 	// get sound data
 	QSoundFile soundFile;
-	LoadSoundFileData(soundName, soundFile);
+	LoadSoundFileData(soundPath, soundFile);
 
 	// create sound file
 #ifdef OpenAL

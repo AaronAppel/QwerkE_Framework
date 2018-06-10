@@ -9,6 +9,8 @@
 #include "../../../QwerkE_Common/Libraries/glm/glm/gtc/type_ptr.hpp"
 #include "../../../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
 #include "../../Systems/ServiceLocator.h"
+#include "QwerkE_Directory_Defines.h"
+#include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 
 #include <iostream>
 #include <map>
@@ -36,8 +38,7 @@ void LoadFonts()
 	// Load font as face
 	FT_Face face;
 	// TODO:Fix freetype font loading to use ResourceManager().
-	// FT_Face face = ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetFont("finurlig-demo.regular.otf");
-	if (FT_New_Face(ft, FontFolderPath(null_font), 0, &face))
+	if (FT_New_Face(ft, NullFolderPath(null_font), 0, &face))
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
 	// Set size to load glyphs as
@@ -97,6 +98,8 @@ void LoadFonts()
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+
+	((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddFont(null_font, face);
 }
 
 void RenderText(ShaderProgram *shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)

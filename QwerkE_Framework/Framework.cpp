@@ -70,9 +70,6 @@ namespace QwerkE
 			InputManager* inputManager = new InputManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Input_Manager, inputManager);
 
-			Renderer* renderer = new Renderer();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Renderer, renderer);
-
 			ShaderFactory* shaderFactory = new ShaderFactory();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
 
@@ -96,6 +93,9 @@ namespace QwerkE
 
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //TEMP: avoid bright white screen while loading
+
+			Renderer* renderer = new Renderer();
+			QwerkE::ServiceLocator::RegisterService(eEngineServices::Renderer, renderer);
 			renderer->DrawFont("Loading..");
 			m_Window->SwapBuffers();
 

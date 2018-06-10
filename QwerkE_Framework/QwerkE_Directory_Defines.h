@@ -7,7 +7,6 @@
 // throughout the framework and across projects.
 //////////////////////////////
 
-#define FrameworkDataFolderPath(a) StringAppend(FrameworkDir, "QwerkE_Framework/Data/", a)
 //USER: Set the offset from your project working directory
 // You must #define AssetDir "Resources/" (path to assets)
 
@@ -16,6 +15,7 @@
 // Any external files should have matching names for the same reasons.
 // TODO: should macros express the file extension? Need to if the loader is looking for that file
 // TODO: Procedurally generate null object to guarantee instantiation
+#define NullFolderPath(a) StringAppend(FrameworkDir, "Resources/", a)
 #define null_mesh_filename "null_mesh.obj"
 #define null_mesh "null_mesh"
 #define null_shader "null_shader"
@@ -32,11 +32,14 @@
 #define null_frag_component "null_shader.frag"
 #define null_geo_component "null_shader.geo"
 
-// Schematic file extensions
+// standardized file extensions
+#define vertex_shader_ext "vert"
+#define fragment_shader_ext "frag"
+#define geometry_shader_ext "geo"
 #define object_schematic_ext ".osch"
-#define material_schematic_ext ".msch"
-#define shader_schematic_ext ".ssch"
-#define scene_ext ".qscene"
+#define material_schematic_ext "msch"
+#define shader_schematic_ext "ssch"
+#define scene_ext "qscene"
 
 // Define paths to resource folders that can change easily from project
 // to project using a preprocessor define. Paths can also change or be

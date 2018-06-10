@@ -170,7 +170,7 @@ Mesh* ResourceManager::GetMesh(const char* name)
 	{
 		return m_Meshes[name];
 	}
-	return InstantiateMesh(name);
+	return InstantiateMesh(MeshFolderPath(name));
 }
 
 Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshName)
@@ -192,56 +192,99 @@ Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshNam
 Texture* ResourceManager::GetTexture(const char* name)
 {
 	if (m_Textures.find(name) != m_Textures.end())
-	{
 		return m_Textures[name];
-	}
-	return InstantiateTexture(name);
+
+	return InstantiateTexture(TextureFolderPath(name));
+}
+
+Texture* ResourceManager::GetTextureFromPath(const char* filePath)
+{
+	if (TextureExists(GetFileNameWithExt(filePath).c_str()))
+		return m_Textures[GetFileNameWithExt(filePath).c_str()];
+
+	InstantiateTexture(filePath);
 }
 
 Material* ResourceManager::GetMaterial(const char* name)
 {
 	if (m_Materials.find(name) != m_Materials.end())
-	{
 		return m_Materials[name];
-	}
-	return InstantiateMaterial(name);
+
+	return InstantiateMaterial(TextureFolderPath(name));
+}
+
+Material* ResourceManager::GetMaterialFromPath(const char* filePath)
+{
+	if (m_Materials.find(GetFileNameWithExt(filePath).c_str()) != m_Materials.end())
+		return m_Materials[GetFileNameWithExt(filePath).c_str()];
+
+	return InstantiateMaterial(filePath);
 }
 
 FT_Face ResourceManager::GetFont(const char* name)
 {
 	if (m_Fonts.find(name) != m_Fonts.end())
-	{
 		return m_Fonts[name];
-	}
-	return InstantiateFont(name);
+
+	return InstantiateFont(FontFolderPath(name));
+}
+
+FT_Face ResourceManager::GetFontFromPath(const char* filePath)
+{
+	if (m_Fonts.find(GetFileNameWithExt(filePath).c_str()) != m_Fonts.end())
+		return m_Fonts[GetFileNameWithExt(filePath).c_str()];
+
+	return InstantiateFont(filePath);
 }
 
 ALuint ResourceManager::GetSound(const char* name)
 {
 	if (SoundExists(name))
-	{
 		return m_Sounds[name];
-	}
-	return InstantiateSound(name);
+
+	return InstantiateSound(SoundFolderPath(name));
+}
+
+ALuint ResourceManager::GetSoundFromPath(const char* filePath)
+{
+	if (SoundExists(GetFileNameWithExt(filePath).c_str()))
+		return m_Sounds[GetFileNameWithExt(filePath).c_str()];
+
+	return InstantiateSound(filePath);
 }
 
 ShaderProgram* ResourceManager::GetShaderProgram(const char* name)
 {
 	if (ShaderProgramExists(name))
-	{
 		return m_ShaderProgram[name];
-	}
-	return InstantiateShaderProgram(name);
+
+	return InstantiateShaderProgram(ShaderFolderPath(name));
+}
+
+ShaderProgram* ResourceManager::GetShaderProgramFromPath(const char* filePath)
+{
+	if (ShaderProgramExists(GetFileNameWithExt(filePath).c_str()))
+		return m_ShaderProgram[GetFileNameWithExt(filePath).c_str()];
+
+	return InstantiateShaderProgram(filePath);
 }
 
 ShaderComponent* ResourceManager::GetShaderComponent(const char* name)
 {
 	if (ShaderComponentExists(name))
-	{
 		return m_ShaderComponents[name];
-	}
-	return InstantiateShaderComponent(name);
+
+	return InstantiateShaderComponent(ShaderFolderPath(name));
 }
+
+ShaderComponent* ResourceManager::GetShaderComponentFromPath(const char* filePath)
+{
+	if (ShaderComponentExists(GetFileNameWithExt(filePath).c_str()))
+		return m_ShaderComponents[GetFileNameWithExt(filePath).c_str()];
+
+	return InstantiateShaderComponent(filePath);
+}
+
 // Utilities
 bool ResourceManager::isUnique(Mesh* mesh)
 {

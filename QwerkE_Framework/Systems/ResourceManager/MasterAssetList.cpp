@@ -37,9 +37,9 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 	MeshFactory t_MeshFactory;
 	Mesh* mesh = nullptr;
 
-	if (FileExists(MeshFolderPath(meshName)))
+	if (FileExists(meshName))
 	{
-		((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshFolderPath(meshName));
+		((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(meshName);
 		if (MeshExists(meshName))
 			return m_Meshes[meshName];
 		else
@@ -55,7 +55,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 		}
 		else if (meshName == null_mesh)
 		{
-			mesh = t_MeshFactory.ImportOBJMesh(MeshFolderPath(null_mesh), vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
+			mesh = t_MeshFactory.ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
 		}
 		else if (meshName == "Circle")
 		{
@@ -102,11 +102,11 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 
 Texture* ResourceManager::InstantiateTexture(const char* textureName)
 {
-	if (FileExists(TextureFolderPath(textureName)))
+	if (FileExists(textureName))
 	{
 		Texture* texture = nullptr;
 		texture = new Texture(); //RAM:
-		texture->s_Handle = Load2DTexture(TextureFolderPath(textureName));
+		texture->s_Handle = Load2DTexture(textureName);
 		texture->s_Name = textureName;
 
 		if (texture->s_Handle != 0)
@@ -132,10 +132,10 @@ Material* ResourceManager::InstantiateMaterial(const char* matName)
 	Material* material = nullptr;
 
 	// TODO: Set null data for handles and names like "Empty"
-	if (strcmp(GetFileExtension(matName).c_str(), "msch") == 0)
+	if (strcmp(GetFileExtension(matName).c_str(), material_schematic_ext) == 0)
 	{
 		// TODO: Handle null or corrupt data
-		material = LoadMaterialSchematic(TextureFolderPath(matName));
+		material = LoadMaterialSchematic(matName);
 	}
 	else
 	{
@@ -155,15 +155,21 @@ Material* ResourceManager::InstantiateMaterial(const char* matName)
 FT_Face ResourceManager::InstantiateFont(const char* fontName)
 {
 	FT_Face font;
-	FT_Library ft; // TODO: No need to reload ft library
+	FT_Library ft = NULL; // TODO: No need to reload ft library
 
-	if (FT_Init_FreeType(&ft))
-		ConsolePrint("ERROR::FREETYPE: Could not init FreeType Library");
+	static bool triedInit = false; // TODO: Improve logic
+	if (triedInit == false)
+	{
+		triedInit = true;
 
-	if (FT_New_Face(ft, FontFolderPath(fontName), 0, &font))
+		if (FT_Init_FreeType(&ft))
+			ConsolePrint("ERROR::FREETYPE: Could not init FreeType Library");
+	}
+
+	if (FT_New_Face(ft, fontName, 0, &font))
 	{
 		ConsolePrint("ERROR::FREETYPE: Failed to load font");
-		return NULL;
+		return m_Fonts[null_font];
 	}
 	m_Fonts[fontName] = font;
 	FT_Done_FreeType(ft);
@@ -171,14 +177,14 @@ FT_Face ResourceManager::InstantiateFont(const char* fontName)
 	return font;
 }
 
-ALuint ResourceManager::InstantiateSound(const char* soundName)
+ALuint ResourceManager::InstantiateSound(const char* soundPath)
 {
 	ALuint handle = 0;
-	handle = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadSound(soundName);
+	handle = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadSound(soundPath);
 
 	if (handle != 0)
 	{
-		m_Sounds[soundName] = handle;
+		m_Sounds[GetFileNameWithExt(soundPath)] = handle;
 	}
 	else
 	{
@@ -188,9 +194,9 @@ ALuint ResourceManager::InstantiateSound(const char* soundName)
 
 ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicName)
 {
-	if (FileExists(ShaderFolderPath(schematicName)))
+	if (FileExists(schematicName))
 	{
-		ShaderProgram* result = LoadShaderSchematic(ShaderFolderPath(schematicName));
+		ShaderProgram* result = LoadShaderSchematic(schematicName);
 		if (result)
 		{
 			result->SetVertShader(GetShaderComponent(result->GetVertName().c_str()));
@@ -217,13 +223,13 @@ ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicNa
 
 ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* componentName)
 {
-	if (FileExists(ShaderFolderPath(componentName)))
+	if (FileExists(componentName))
 	{
 		ShaderComponent* result = nullptr;
-		if (strcmp(GetFileExtension(componentName).c_str(), "vert") == 0)
+		if (strcmp(GetFileExtension(componentName).c_str(), vertex_shader_ext) == 0)
 		{
 			 result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-				GL_VERTEX_SHADER, ShaderFolderPath(componentName));
+				GL_VERTEX_SHADER, componentName);
 
 			 if (result)
 			 {
@@ -235,10 +241,10 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 				 return m_NullVertComponent;
 			 }
 		}
-		else if (strcmp(GetFileExtension(componentName).c_str(), "frag") == 0)
+		else if (strcmp(GetFileExtension(componentName).c_str(), fragment_shader_ext) == 0)
 		{
 			result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-				GL_FRAGMENT_SHADER, ShaderFolderPath(componentName));
+				GL_FRAGMENT_SHADER, componentName);
 
 			if (result)
 			{
@@ -250,10 +256,10 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 				return m_NullFragComponent;
 			}
 		}
-		else if (strcmp(GetFileExtension(componentName).c_str(), "geo") == 0)
+		else if (strcmp(GetFileExtension(componentName).c_str(), geometry_shader_ext) == 0)
 		{
 			result = ((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-				GL_GEOMETRY_SHADER, ShaderFolderPath(componentName));
+				GL_GEOMETRY_SHADER, componentName);
 
 			if (result)
 			{

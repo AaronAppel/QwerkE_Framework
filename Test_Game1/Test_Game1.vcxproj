@@ -82,7 +82,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>QwerkE_PCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>QwerkE_PCH.h</ForcedIncludeFiles>
-      <PreprocessorDefinitions>DEBUG;Win32Bit;QwerkE_Framework;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;Win32Bit;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

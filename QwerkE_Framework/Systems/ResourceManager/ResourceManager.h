@@ -58,11 +58,17 @@ public:
 	Mesh* GetMesh(const char* name); // specify .ext
 	Mesh* GetMeshFromFile(const char* filePath, const char* meshName); // specify .ext
 	Texture* GetTexture(const char* name); // specify .ext
+	Texture* GetTextureFromPath(const char* filePath);
 	Material* GetMaterial(const char* name); // specify .ext
+	Material* GetMaterialFromPath(const char* filePath);
 	FT_Face GetFont(const char* name); // specify .ext
+	FT_Face GetFontFromPath(const char* filePath);
 	ALuint GetSound(const char* name); // specify .ext
+	ALuint GetSoundFromPath(const char* filePath);
 	ShaderProgram* GetShaderProgram(const char* name); // specify .ext
+	ShaderProgram* GetShaderProgramFromPath(const char* filePath);
 	ShaderComponent* GetShaderComponent(const char* name); // specify .ext
+	ShaderComponent* GetShaderComponentFromPath(const char* filePath);
 
 	const std::map<std::string, Mesh*>* SeeMeshes() { return &m_Meshes; };
 	const std::map<std::string, Texture*>* SeeTextures() { return &m_Textures; };
