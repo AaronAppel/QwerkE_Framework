@@ -51,6 +51,7 @@ Libraries I utilize to deliver features.
 - pthreads: www.github.com/coapp-packages/pthreads  
 - assimp: www.github.com/assimp/assimp  
 - OpenAL: www.openal.org  
+- libusb: www.github.com/libusb/libusb  
 // - vlc: www.github.com/videolan/vlc  
 
 ## License
