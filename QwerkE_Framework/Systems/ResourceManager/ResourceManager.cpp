@@ -193,8 +193,8 @@ Texture* ResourceManager::GetTexture(const char* name)
 {
 	if (m_Textures.find(name) != m_Textures.end())
 		return m_Textures[name];
-	}
-	/* <-- toggle double slash
+	
+	//* <-- toggle double slash
 	else
 	{
 		if (FileExists(TextureFolderPath(name)))
