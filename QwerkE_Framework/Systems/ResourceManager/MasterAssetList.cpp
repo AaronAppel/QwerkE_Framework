@@ -13,6 +13,7 @@
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../QwerkE_Framework/QwerkE_Directory_Defines.h"
 #include "../../Graphics/Texture.h"
+#include "../JobManager/JobManager.h"
 
 // TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 // TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
@@ -135,7 +136,10 @@ Material* ResourceManager::InstantiateMaterial(const char* matName)
 	if (strcmp(GetFileExtension(matName).c_str(), material_schematic_ext) == 0)
 	{
 		// TODO: Handle null or corrupt data
-		material = LoadMaterialSchematic(matName);
+		if (FileExists(matName))
+			material = LoadMaterialSchematic(matName);
+		else
+			material = LoadMaterialSchematic(TextureFolderPath(matName));
 	}
 	else
 	{

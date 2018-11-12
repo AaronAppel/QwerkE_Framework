@@ -193,8 +193,20 @@ Texture* ResourceManager::GetTexture(const char* name)
 {
 	if (m_Textures.find(name) != m_Textures.end())
 		return m_Textures[name];
-
-	return InstantiateTexture(TextureFolderPath(name));
+	}
+	/* <-- toggle double slash
+	else
+	{
+		if (FileExists(TextureFolderPath(name)))
+		{
+			JobManager* jMan = (JobManager*)QwerkE::ServiceLocator::GetService(eEngineServices::JobManager);
+			jMan->ScheduleTask(new QLoadAsset(name));
+		}
+		return m_Textures[null_texture]; // return temp asset to use
+	}
+	/*/
+	return InstantiateTexture(name);
+	// */
 }
 
 Texture* ResourceManager::GetTextureFromPath(const char* filePath)
