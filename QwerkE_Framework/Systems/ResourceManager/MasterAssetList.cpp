@@ -20,15 +20,15 @@
 // Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
 void ResourceManager::Init()
 {
-	m_NullMesh = GetMeshFromFile(null_mesh_filename, null_mesh);
-	m_NullTexture = InstantiateTexture(null_texture); // TODO: Create a Texture class
-	m_NullMaterial = InstantiateMaterial(null_material_schematic);
-	m_NullFont = InstantiateFont(null_font); // TODO: Create a valid null font
-	m_NullVertComponent = InstantiateShaderComponent(null_vert_component);
-	m_NullFragComponent = InstantiateShaderComponent(null_frag_component);
+	m_NullMesh = GetMeshFromFile(NullFolderPath(null_mesh_filename), null_mesh);
+	m_NullTexture = InstantiateTexture(NullFolderPath(null_texture)); // TODO: Create a Texture class
+	m_NullMaterial = InstantiateMaterial(NullFolderPath(null_material_schematic));
+	m_NullFont = InstantiateFont(NullFolderPath(null_font)); // TODO: Create a valid null font
+	m_NullVertComponent = InstantiateShaderComponent(NullFolderPath(null_vert_component));
+	m_NullFragComponent = InstantiateShaderComponent(NullFolderPath(null_frag_component));
 	// TODO: m_NullGeoComponent = InstantiateShaderComponent(null_geo_component);
-	m_NullShader = InstantiateShaderProgram(null_shader_schematic);
-	m_NullSound = InstantiateSound(null_sound);
+	m_NullShader = InstantiateShaderProgram(NullFolderPath(null_shader_schematic));
+	m_NullSound = InstantiateSound(NullFolderPath(null_sound));
 }
 
 // Instantiation Functions
