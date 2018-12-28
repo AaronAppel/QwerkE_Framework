@@ -9,7 +9,7 @@
 #include "../../../QwerkE_Common/Libraries/glm/glm/gtc/type_ptr.hpp"
 #include "../../../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
 #include "../../Systems/ServiceLocator.h"
-#include "QwerkE_Directory_Defines.h"
+#include "../QwerkE_Framework/QwerkE_Framework/QwerkE_Directory_Defines.h"
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 
 #include <iostream>
