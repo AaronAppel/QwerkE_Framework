@@ -28,7 +28,7 @@ WIP: www.github.com/AaronAppel/QwerkE_Documentation
 ### Usage
 Simple example usage of QwerkE.
 
-WIP: wwwgithub.com/AaronAppel/QwerkE_Documentation
+WIP: www.github.com/AaronAppel/QwerkE_Documentation
 ~~~cpp  
 int main()
 {
