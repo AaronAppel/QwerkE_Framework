@@ -205,7 +205,7 @@ Texture* ResourceManager::GetTexture(const char* name)
 		return m_Textures[null_texture]; // return temp asset to use
 	}
 	/*/
-	return InstantiateTexture(name);
+	return InstantiateTexture(TextureFolderPath(name)); // files need to be in the assets directory
 	// */
 }
 

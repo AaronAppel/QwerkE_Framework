@@ -95,24 +95,24 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 			ConsolePrint("\nInstantiateMesh(): Mesh not found!\n");
 			return m_NullMesh;
 		}
-		m_Meshes[meshName] = mesh; // Add to active list
+		m_Meshes[GetFileNameWithExt(meshName)] = mesh; // Add to active list
 		mesh->SetName(meshName);
 		return mesh;
 	}
 }
 
-Texture* ResourceManager::InstantiateTexture(const char* textureName)
+Texture* ResourceManager::InstantiateTexture(const char* texturePath)
 {
-	if (FileExists(textureName))
+	if (FileExists(texturePath))
 	{
 		Texture* texture = nullptr;
 		texture = new Texture(); //RAM:
-		texture->s_Handle = Load2DTexture(textureName);
-		texture->s_Name = textureName;
+		texture->s_Handle = Load2DTexture(texturePath);
+		texture->s_Name = GetFileNameWithExt(texturePath);
 
 		if (texture->s_Handle != 0)
 		{
-			m_Textures[textureName] = texture;
+			m_Textures[texture->s_Name] = texture;
 			return texture;
 		}
 		else
@@ -152,7 +152,7 @@ Material* ResourceManager::InstantiateMaterial(const char* matName)
 		return m_NullMaterial; // do not add another material
 	}
 
-	m_Materials[matName] = material;
+	m_Materials[GetFileNameWithExt(matName)] = material;
 	return material;
 }
 
@@ -175,7 +175,7 @@ FT_Face ResourceManager::InstantiateFont(const char* fontName)
 		ConsolePrint("ERROR::FREETYPE: Failed to load font");
 		return m_Fonts[null_font];
 	}
-	m_Fonts[fontName] = font;
+	m_Fonts[GetFileNameWithExt(fontName)] = font;
 	FT_Done_FreeType(ft);
 	assert(font != NULL);
 	return font;
@@ -209,7 +209,7 @@ ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicNa
 
 			if (((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(result))
 			{
-				m_ShaderProgram[schematicName] = result;
+				m_ShaderProgram[GetFileNameWithExt(schematicName)] = result;
 				return result;
 			}
 			else
@@ -237,7 +237,7 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 
 			 if (result)
 			 {
-				 m_ShaderComponents[componentName] = result;
+				 m_ShaderComponents[GetFileNameWithExt(componentName)] = result;
 				 return result;
 			 }
 			 else
@@ -252,7 +252,7 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 
 			if (result)
 			{
-				m_ShaderComponents[componentName] = result;
+				m_ShaderComponents[GetFileNameWithExt(componentName)] = result;
 				return result;
 			}
 			else
@@ -267,7 +267,7 @@ ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* compone
 
 			if (result)
 			{
-				m_ShaderComponents[componentName] = result;
+				m_ShaderComponents[GetFileNameWithExt(componentName)] = result;
 				return result;
 			}
 			else
