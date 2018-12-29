@@ -20,7 +20,7 @@
 // Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
 void ResourceManager::Init()
 {
-	m_NullMesh = GetMeshFromFile(NullFolderPath(null_mesh_filename), null_mesh);
+	m_NullMesh = InstantiateMesh(NullFolderPath(null_mesh_filename));
 	m_NullTexture = InstantiateTexture(NullFolderPath(null_texture)); // TODO: Create a Texture class
 	m_NullMaterial = InstantiateMaterial(NullFolderPath(null_material_schematic));
 	m_NullFont = InstantiateFont(NullFolderPath(null_font)); // TODO: Create a valid null font
@@ -41,8 +41,8 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshName)
 	if (FileExists(meshName))
 	{
 		((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(meshName);
-		if (MeshExists(meshName))
-			return m_Meshes[meshName];
+		if (MeshExists(GetFileNameNoExt(meshName).c_str()))
+			return m_Meshes[GetFileNameNoExt(meshName)];
 		else
 			return m_NullMesh;
 	}
