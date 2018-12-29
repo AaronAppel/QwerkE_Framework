@@ -16,7 +16,7 @@ That project lives here: www.github.com/AaronAppel/Qwerk_Engine
 ## Getting Started
 An introduction to QwerkE.
 
-WIP: wwwgithub.com/AaronAppel/QwerkE_Documentation
+WIP: www.github.com/AaronAppel/QwerkE_Documentation
 
 ## Examples
 ### Installing
