@@ -3,17 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Framework", "QwerkE_Framework\QwerkE_Framework.vcxitems", "{1632D713-EA31-4C99-A364-447C70E7A758}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Common", "QwerkE_Common\QwerkE_Common.vcxitems", "{E86D5770-08C5-4BC8-A65D-36F233233AEB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_Game1", "Test_Game1\Test_Game1.vcxproj", "{41C9E154-B482-4A7D-A173-77BED0FB233A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QwerkE_Framework", "QwerkE_Framework.vcxitems", "{B16D0585-C919-45A1-ABC8-E743E68A8F72}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		QwerkE_Framework\QwerkE_Framework.vcxitems*{1632d713-ea31-4c99-a364-447c70e7a758}*SharedItemsImports = 9
 		QwerkE_Common\QwerkE_Common.vcxitems*{41c9e154-b482-4a7d-a173-77bed0fb233a}*SharedItemsImports = 4
-		QwerkE_Framework\QwerkE_Framework.vcxitems*{41c9e154-b482-4a7d-a173-77bed0fb233a}*SharedItemsImports = 4
+		QwerkE_Framework.vcxitems*{b16d0585-c919-45a1-abc8-e743e68a8f72}*SharedItemsImports = 9
 		QwerkE_Common\QwerkE_Common.vcxitems*{e86d5770-08c5-4bc8-a65d-36f233233aeb}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

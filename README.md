@@ -16,7 +16,7 @@ That project lives here: www.github.com/AaronAppel/Qwerk_Engine
 ## Getting Started
 An introduction to QwerkE.
 
-WIP: www.github.com/AaronAppel/QwerkE_Documentation
+WIP: wwwgithub.com/AaronAppel/QwerkE_Documentation
 
 ## Examples
 ### Installing
@@ -28,7 +28,7 @@ WIP: www.github.com/AaronAppel/QwerkE_Documentation
 ### Usage
 Simple example usage of QwerkE.
 
-WIP: www.github.com/AaronAppel/QwerkE_Documentation
+WIP: wwwgithub.com/AaronAppel/QwerkE_Documentation
 ~~~cpp  
 int main()
 {
