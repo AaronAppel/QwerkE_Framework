@@ -52,9 +52,10 @@ RenderComponent::~RenderComponent()
 
 void RenderComponent::GenerateSchematic()
 {
+    // TODO: Test
 	if (strcmp(m_SchematicName.c_str(), "None") == 0)
 		if (m_pParent)
-		m_SchematicName = m_pParent->GetName();
+		    m_SchematicName = m_pParent->GetName();
 	SaveObjectSchematic(this);
 }
 

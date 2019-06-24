@@ -84,8 +84,22 @@ GameObject* DataManager::ConvertJSONToGameObject(cJSON* item, Scene* scene)
 
     GameObject* object = new GameObject(scene);
 
+    // Misc
     object->SetName(item->string);
+    object->SetTag((eGameObjectTags)GetItemFromArrayByKey(item, "ObjectTag")->valueint);
 
+    // Transform
+    cJSON* tempObject = GetItemFromArrayByKey(item, "Position");
+    vec3 position = GetPositionFromcJSONItem(tempObject);
+    object->SetPosition(position);
+    tempObject = GetItemFromArrayByKey(item, "Rotation");
+    vec3 rotation = GetRotationFromcJSONItem(tempObject);
+    object->SetRotation(rotation);
+    tempObject = GetItemFromArrayByKey(item, "Scale");
+    vec3 scale = GetScaleFromcJSONItem(tempObject);
+    object->SetScale(scale);
+
+    // Components
     AddComponentsToGameObject(object, item);
 
     return object; // TODO: Finish
@@ -314,7 +328,7 @@ void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
 
                 renderable.SetShader(resMan->GetShaderProgram(shader->valuestring));
                 renderable.SetMaterial(resMan->GetMaterial(material->valuestring));
-                renderable.SetMesh(resMan->GetMeshFromFile(MeshFolderPath(meshFile->valuestring), meshName->valuestring)); // TODO: How to handle mesh name vs meshFileName
+                renderable.SetMesh(resMan->GetMeshFromFile(meshFile->valuestring, meshName->valuestring));
 
                 rComp->AddRenderable(renderable);
             }
@@ -341,7 +355,6 @@ void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
     default:
         break;
     }
-
 }
 void DataManager::AddComponentsToGameObject(GameObject* object, cJSON* item)
 {

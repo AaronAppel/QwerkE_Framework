@@ -18,11 +18,11 @@
 #endif // !FrameworkDir
 
 // TODO: Move to directory defines file
-#if !defined(AssetsDir)
+#ifndef AssetsDir
 #define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // Default uses QwerkE_Common Assets
-#endif // AssetsDir
+#endif // !AssetsDir
 
-#if !defined(LibrariesDir)
+#ifndef LibrariesDir
 #define LibrariesDir FrameworkDir "QwerkE_Common/Libraries/" // Default uses QwerkE_Common Libraries
 #endif // LibrariesDir
 

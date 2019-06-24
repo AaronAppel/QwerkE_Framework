@@ -23,7 +23,12 @@ void LevelLoader::SaveScene(Scene* scene, const char* fileDir)
 	// TODO: Error checking
 	cJSON* root = CreateObject();
 
-	// ADD OBJECTS
+    // Scene settings
+    cJSON* t_Settings = CreateArray("Settings");
+    AddItemToArray(t_Settings, CreateNumber("State", (int)scene->GetState()));
+    AddItemToArray(t_Settings, CreateNumber("Enabled", scene->GetIsEnabled()));
+
+	// Scene entities
 	std::map<std::string, GameObject*> t_GameObjectList = scene->GetObjectList(); // GameObjects, Lights (Not cameras)
 
 	cJSON* t_ObjectList = CreateArray("ObjectList");
@@ -56,20 +61,20 @@ void LevelLoader::SaveScene(Scene* scene, const char* fileDir)
 
 	// WRITE TO FILE
 	PrintRootObjectToFile(fileDir, root);
-	OutputPrint("\nDataManager: Scene saved!\n");
+	OutputPrint("\nDataManager: Scene file %s saved\n", fileDir);
 	// delete root
 }
 
 void LevelLoader::LoadScene(Scene* scene, const char* fileDir)
 {
-	if (scene == nullptr) { return; } // null scene
+	if (scene == nullptr) { return; } // TODO: Load a null scene
 	if (FileExists(fileDir) == false)
 	{
 		OutputPrint("\nDataManager: LoadScene() could not open file for reading.\n");
 		return;
 	}
 
-	// START
+	// Read scene json file
 	cJSON* root = OpencJSONStream(fileDir);
 	if (root == nullptr) // Compile error
 	{
@@ -81,6 +86,15 @@ void LevelLoader::LoadScene(Scene* scene, const char* fileDir)
 
     // TODO: Improve below loops. A lot of copied code
 
+    // Scene settings
+    cJSON* t_Settings = GetItemFromRootByKey(root, "Settings");
+
+    if (t_Settings != nullptr)
+    {
+        scene->SetState((eSceneState)((int)(GetItemFromArrayByKey(t_Settings, "State")->valuedouble)));
+        scene->SetIsEnabled((bool)GetItemFromArrayByKey(t_Settings, "Enabled")->valuedouble);
+    }
+
 	// CREATE OBJECTS
     {
         cJSON* t_JSONObjectList = GetItemFromObjectByKey(root, "ObjectList");
@@ -89,11 +103,6 @@ void LevelLoader::LoadScene(Scene* scene, const char* fileDir)
         for (unsigned int i = 0; i < t_GameObjects.size(); i++)
         {
             GameObject* t_TempObject = ConvertJSONToGameObject(t_GameObjects.at(i), scene);
-
-            cJSON* tempObject = GetItemFromArrayByKey(t_GameObjects.at(i), "Position");
-            vec3 position = GetPositionFromcJSONItem(tempObject);
-            t_TempObject->SetPosition(position);
-
             scene->AddObjectToScene(t_TempObject);
         }
     }
@@ -106,13 +115,6 @@ void LevelLoader::LoadScene(Scene* scene, const char* fileDir)
         for (unsigned int i = 0; i < t_CameraObjects.size(); i++)
         {
             GameObject* t_TempObject = ConvertJSONToGameObject(t_CameraObjects.at(i), scene);
-
-            cJSON* tempObject = GetItemFromArrayByKey(t_CameraObjects.at(i), "Position");
-            vec3 position = GetPositionFromcJSONItem(tempObject);
-
-            t_TempObject->SetTag((eGameObjectTags)GetItemFromArrayByKey(t_CameraObjects.at(i), "ObjectTag")->valueint);
-            t_TempObject->SetPosition(position);
-
             scene->AddCamera(t_TempObject);
         }
     }
@@ -125,18 +127,11 @@ void LevelLoader::LoadScene(Scene* scene, const char* fileDir)
         for (unsigned int i = 0; i < t_LightObjects.size(); i++)
         {
             GameObject* t_TempObject = ConvertJSONToGameObject(t_LightObjects.at(i), scene);
-
-            cJSON* tempObject = GetItemFromArrayByKey(t_LightObjects.at(i), "Position");
-            vec3 position = GetPositionFromcJSONItem(tempObject);
-
-            t_TempObject->SetTag((eGameObjectTags)GetItemFromArrayByKey(t_LightObjects.at(i), "ObjectTag")->valueint);
-            t_TempObject->SetPosition(position);
-
             scene->AddLight(t_TempObject);
         }
     }
 
 	// END
 	ClosecJSONStream(root);
-	OutputPrint("\nDataManager: Scene loaded!\n");
+	OutputPrint("\nDataManager: Scene file %s loaded\n", fileDir);
 }

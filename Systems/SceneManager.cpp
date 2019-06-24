@@ -46,19 +46,24 @@ void SceneManager::Initialize()
         for (unsigned int i = 0; i < size; i++)
         {
             cJSON* scene = GetItemFromArrayByIndex(scenes, i);
-            Scene* temp = new Scene(scene->string); // TODO: Improve how scene file name is assigned
 
-            temp->LoadScene(scene->string);
-            temp->SetIsEnabled((bool)GetItemFromArrayByKey(scene, "enabled")->valueint);
-            temp->SetState((eSceneState)GetItemFromArrayByKey(scene, "state")->valueint);
+            const char* sceneFileName = scene->valuestring;
 
-            // TODO: Save scene settings in scene files. Only save default scenes to load
+            if (FileExists(SceneFolderPath(sceneFileName)) == false)
+            {
+                QwerkE::LogWarning(__FILE__, __LINE__, "Null scene loaded because scene file not found: %s", sceneFileName);
+                continue;
+            }
 
-            // TODO: Save scenes like "0": "main.qscene" to be used as "hotkey": "sceneName.qscene"
+            Scene* temp = new Scene(sceneFileName); // TODO: Improve how scene file names are assigned
+
+            // TODO: this->SetSceneHotkey(scene->string, temp)); // "1": Scene*
+            temp->LoadScene(sceneFileName);
 
             if (i == 0)
-                m_CurrentScene = temp;
+                m_CurrentScene = temp; // TODO: Improve default starting scene selection/specification
 
+            // TODO: m_Scenes[sceneFileName] = temp;
             m_Scenes[(eSceneTypes)i] = temp; // TODO: Deprecate enum type
         }
     }

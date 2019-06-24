@@ -23,9 +23,9 @@ void RenderRoutine::Initialize()
 	m_Type = eRoutineTypes::Routine_Render;
 	SetDrawFunctions();
 
-    if (!m_pRenderComp)
+    if (m_pRenderComp)
     {
-        // Setup mesh, shader, material
+        // Setup mesh, shader, material render time values for each renderable
         std::vector<Renderable>* renderables = m_pRenderComp->GetRenderableList();
 
         for (int i = 0; i < renderables->size(); i++)
@@ -39,13 +39,16 @@ void RenderRoutine::Initialize()
         if (m_pParent)
             ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
     }
+    else
+        QwerkE::LogWarning(__FILE__, __LINE__, "m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
 }
 //// Private functions
 void RenderRoutine::DrawMeshData(GameObject* a_Camera)
 {
 	if (!m_pRenderComp)
-	{
-		m_DrawFunc = &RenderRoutine::NullDraw;
+    {
+        QwerkE::LogWarning(__FILE__, __LINE__, "m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+        m_DrawFunc = &RenderRoutine::NullDraw;
 		return;
 	}
 
@@ -83,7 +86,8 @@ void RenderRoutine::NullDraw(GameObject* a_Camera)
 void RenderRoutine::SetDrawFunctions()
 {
 	if (!m_pRenderComp)
-	{
+    {
+        QwerkE::LogWarning(__FILE__, __LINE__, "m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
 		m_DrawFunc = &RenderRoutine::NullDraw;
 		return;
 	}
