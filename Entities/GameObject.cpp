@@ -98,6 +98,8 @@ void GameObject::AddRoutine(Routine* routine)
 
 void GameObject::AddUpdateRoutine(Routine* routine)
 {
+    if (!routine) { return; }
+
 	for (unsigned int i = 0; i < m_UpdateList.size(); i++)
 	{
 		if (m_UpdateList.at(i) == nullptr)
@@ -111,6 +113,8 @@ void GameObject::AddUpdateRoutine(Routine* routine)
 
 void GameObject::AddDrawRoutine(Routine* routine)
 {
+    if (!routine) { return; }
+
 	for (unsigned int i = 0; i < m_DrawList.size(); i++)
 	{
 		if (m_DrawList.at(i) == nullptr)

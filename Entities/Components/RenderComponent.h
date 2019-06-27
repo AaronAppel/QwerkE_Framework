@@ -30,7 +30,7 @@ public:
 	// Getters + Setters //
 	// Getters
 	std::string GetSchematicName() const { return m_SchematicName; }
-	std::vector<Renderable>* GetRenderableList() { return &m_RenderableList; }
+	std::vector<Renderable>* GetRenderableList() { return &m_RenderableList; } // Change to SeeRenderablesList()
 	const std::vector<Renderable>* SeeRenderableList() const { return &m_RenderableList; }
 
 	// Setters

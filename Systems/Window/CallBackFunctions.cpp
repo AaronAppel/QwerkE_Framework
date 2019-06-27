@@ -81,6 +81,7 @@ void framebuffer_resize_callback(GLFWwindow* window, int x, int y)
 void error_callback(int error, const char* description)
 {
 	// fprintf(stderr, "Error %d: %s\n", error, description);
+    ConsolePrint(description);
 }
 // file
 void file_drop_callback(GLFWwindow* window, int count, const char** paths)

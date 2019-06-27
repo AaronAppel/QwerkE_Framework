@@ -39,7 +39,8 @@
 
 #ifdef GLFW3
 // TODO: Check for architecture and debug/release
-#pragma comment( lib, LibrariesDir "glfw/glfw3.lib" )
+// #pragma comment( lib, LibrariesDir "glfw/glfw3.lib" )
+#pragma comment( lib, LibrariesDir "glfw/glfw3dll.lib" )
 #endif // GLFW3
 
 #ifdef OpenAL

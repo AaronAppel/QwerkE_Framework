@@ -22,6 +22,7 @@ class Scene;
 class GameObject;
 class Factory;
 class Component;
+class Routine;
 struct cJSON;
 
 class DataManager
@@ -53,11 +54,18 @@ protected:
 	void AddScaleTocJSONItem(cJSON* item, GameObject* object);
 
 	// Components
-	void AddComponentTocJSONItem(cJSON* item, const Component* component) const;
+	void AddComponentTocJSONItem(cJSON* componentList, const Component* component) const;
     void AddComponentsTocJSONItem(cJSON* item, GameObject* object);
 
     void AddComponentToGameObject(GameObject* object, cJSON* item);
-    void AddComponentsToGameObject(GameObject* object, cJSON* item); // TODO: Finish
+    void AddComponentsToGameObject(GameObject* object, cJSON* item);
+
+    // Routines
+    void AddRoutineTocJSONItem(cJSON* routineList, Routine* routine);
+    void AddRoutinesTocJSONItem(cJSON* item, GameObject* object);
+
+    void AddRoutineToGameObject(GameObject* object, cJSON* item);
+    void AddRoutinesToGameObject(GameObject* object, cJSON* item);
 };
 
 #endif //!_DataManager_H_

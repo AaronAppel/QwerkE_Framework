@@ -8,6 +8,7 @@
 #include "../../Entities/Components/Camera/StaticCameraComponent.h"
 #include "../../Entities/Components/Camera/ThirdPersonCameraComponent.h"
 #include "../../Entities/Components/LightComponent.h"
+#include "../../Entities/Routines/Routine.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 
 // RenderComponent
@@ -43,13 +44,18 @@ cJSON* DataManager::ConvertGameObjectToJSON(GameObject* object)
 
 	cJSON* t_ReturnJSON = CreateArray(object->GetName().c_str());
 
+    // Transform
 	AddPositionTocJSONItem(t_ReturnJSON, object); // Can put this in a SaveTransform() function
 	AddRotationTocJSONItem(t_ReturnJSON, object);
 	AddScaleTocJSONItem(t_ReturnJSON, object);
 
 	AddItemToArray(t_ReturnJSON, CreateNumber((char*)"ObjectTag", (int)object->GetTag()));
 
+    // Components
 	AddComponentsTocJSONItem(t_ReturnJSON, object);
+
+    // Routines
+    AddRoutinesTocJSONItem(t_ReturnJSON, object);
 
     // Handle special cases for certain components
 	switch (object->GetTag())
@@ -101,6 +107,9 @@ GameObject* DataManager::ConvertJSONToGameObject(cJSON* item, Scene* scene)
 
     // Components
     AddComponentsToGameObject(object, item);
+
+    // Routines
+    AddRoutinesToGameObject(object, item);
 
     return object; // TODO: Finish
 }
@@ -164,7 +173,6 @@ void DataManager::AddScaleTocJSONItem(cJSON* item, GameObject* object)
 	AddItemToArray(item, t_Scale);
 }
 /* Components */
-// Add
 void DataManager::AddComponentTocJSONItem(cJSON* componentList, const Component* component) const
 {
 	if (!component) return;
@@ -179,19 +187,6 @@ void DataManager::AddComponentTocJSONItem(cJSON* componentList, const Component*
             eCamType camType = ((CameraComponent*)component)->GetType();
             AddItemToArray(t_Component, CreateNumber("CamType", (int)camType));
         }
-        //{
-        //case eCamType::CamType_FreeCam:
-        //    AddItemToArray(t_Component, CreateNumber("CamType", (int)CamType_FreeCam));
-        //    // AddVec3ToItem(t_Component, "LightColour", "Red", ((LightComponent*)component)->GetColour().x, "Green", ((LightComponent*)component)->GetColour().y,
-        //       // "Blue", ((LightComponent*)component)->GetColour().z);
-        //    break;
-        //case eCamType::CamType_FirstPerson: // TODO: Implement other camera types
-        //    break;
-        //case eCamType::CamType_Static: // TODO: Implement other camera types
-        //    break;
-        //case eCamType::CamType_ThirdPerson: // TODO: Implement other camera types
-        //    break;
-        //}
 		break;
 	case Component_Physics:
 		break;
@@ -248,6 +243,7 @@ void DataManager::AddComponentTocJSONItem(cJSON* componentList, const Component*
     }
     AddItemToArray(componentList, t_Component);
 }
+
 void DataManager::AddComponentsTocJSONItem(cJSON* item, GameObject* object)
 {
 	const std::map<eComponentTags, Component*>* t_ComponentList = object->SeeComponents();
@@ -260,7 +256,7 @@ void DataManager::AddComponentsTocJSONItem(cJSON* item, GameObject* object)
 	}
 	AddItemToArray(item, t_Components);
 }
-// Get
+
 void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
 {
     if (!item) { return; }
@@ -334,10 +330,6 @@ void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
             }
 
             object->AddComponent(rComp);
-
-            RenderRoutine* renderRoutine = new RenderRoutine(); // TEMP: Add a routine
-            object->AddRoutine((Routine*)renderRoutine);
-            // TODO: Add Renderables
         }
         break;
     case Component_Print:
@@ -356,6 +348,7 @@ void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
         break;
     }
 }
+
 void DataManager::AddComponentsToGameObject(GameObject* object, cJSON* item)
 {
     cJSON* t_ComponentsList = GetItemFromArrayByKey(item, "ComponentList");
@@ -365,5 +358,85 @@ void DataManager::AddComponentsToGameObject(GameObject* object, cJSON* item)
     {
         AddComponentToGameObject(object, t_Components[i]);
     }
-    int bp = 1;
+}
+
+// Routines
+void DataManager::AddRoutineTocJSONItem(cJSON* routineList, Routine* routine)
+{
+    if (!routine) return;
+
+    cJSON * t_Routine = CreateArray(std::to_string(routine->GetRoutineType()).c_str());
+
+    switch (routine->GetRoutineType())
+    {
+    case eRoutineTypes::Routine_Render:
+        AddItemToArray(t_Routine, CreateString("RoutineName", "Render"));
+        break;
+    case eRoutineTypes::Routine_Print:
+        AddItemToArray(t_Routine, CreateString("RoutineName", "Print"));
+        break;
+    }
+    AddItemToArray(routineList, t_Routine);
+}
+
+void DataManager::AddRoutinesTocJSONItem(cJSON* item, GameObject* object)
+{
+    const std::vector<Routine*>* t_UpdateList = object->SeeUpdateRoutines();
+    const std::vector<Routine*>* t_DrawList = object->SeeDrawRoutines();
+
+    cJSON* t_Routines = CreateArray("RoutineList");
+
+    cJSON* t_UpdateRoutines = CreateArray("UpdateRoutines");
+    for (Routine* p : *t_UpdateList)
+    {
+        AddRoutineTocJSONItem(t_UpdateRoutines, p);
+    }
+    AddItemToArray(t_Routines, t_UpdateRoutines);
+
+    cJSON* t_DrawRoutines = CreateArray("DrawRoutines");
+    for (Routine* p : *t_DrawList)
+    {
+        AddRoutineTocJSONItem(t_DrawRoutines, p);
+    }
+    AddItemToArray(t_Routines, t_DrawRoutines);
+
+    AddItemToArray(item, t_Routines);
+}
+
+void DataManager::AddRoutineToGameObject(GameObject* object, cJSON* item)
+{
+    if (!item) { return; }
+
+    eRoutineTypes type = (eRoutineTypes)std::stoi(item->string);
+
+    ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+    Factory* fact = (Factory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Entity);
+
+    switch (type)
+    {
+    case Routine_Render:
+        object->AddRoutine((Routine*)new RenderRoutine());
+    case Routine_Print:
+        // object->AddDrawRoutine((Routine*)new PrintRoutine());
+        break;
+    }
+}
+
+void DataManager::AddRoutinesToGameObject(GameObject* object, cJSON* item)
+{
+    cJSON* t_RoutineList = GetItemFromArrayByKey(item, "RoutineList");
+
+    cJSON* t_UpdateRoutines = GetItemFromArrayByKey(t_RoutineList, "UpdateRoutines");
+    std::vector<cJSON*> t_Routines = GetAllItemsFromArray(t_UpdateRoutines);
+    for (size_t i = 0; i < t_Routines.size(); i++)
+    {
+        AddRoutineToGameObject(object, t_Routines[i]);
+    }
+
+    cJSON* t_DrawRoutines = GetItemFromArrayByKey(t_RoutineList, "DrawRoutines");
+    t_Routines = GetAllItemsFromArray(t_DrawRoutines);
+    for (size_t i = 0; i < t_Routines.size(); i++)
+    {
+        AddRoutineToGameObject(object, t_Routines[i]);
+    }
 }

@@ -74,12 +74,67 @@ bool Libs_Setup()
     else
     {
 		ConsolePrint("GLFW Loaded,\n");
+
+        // TODO: Setup proper window hints
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); //using OpenGL 4.3
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
+        glfwWindowHint(GLFW_SAMPLES, 8);
+
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+
+        glfwWindowHint(GLFW_RED_BITS, 8);
+        glfwWindowHint(GLFW_GREEN_BITS, 8);
+        glfwWindowHint(GLFW_BLUE_BITS, 8);
+        glfwWindowHint(GLFW_ALPHA_BITS, 8);
+        glfwWindowHint(GLFW_DEPTH_BITS, 0);
+        glfwWindowHint(GLFW_STENCIL_BITS, 8);
+
         GLFWwindow* window;
         window = glfwCreateWindow(100, 100, "Test", NULL, NULL);
         if (!window)
         {
             ConsolePrint("\nError loading GLFW step 2!\n");
             errorFree = false;
+
+            int code = glfwGetError(NULL);
+
+            switch (code)
+            {
+            case GLFW_NOT_INITIALIZED:
+                ConsolePrint("\nGLFW error GLFW_NOT_INITIALIZED!\n");
+                break;
+            case GLFW_NO_CURRENT_CONTEXT:
+                ConsolePrint("\nGLFW error GLFW_NO_CURRENT_CONTEXT!\n");
+                break;
+            case GLFW_INVALID_ENUM:
+                ConsolePrint("\nGLFW error GLFW_INVALID_ENUM!\n");
+                break;
+            case GLFW_INVALID_VALUE:
+                ConsolePrint("\nGLFW error GLFW_INVALID_VALUE!\n");
+                break;
+            case GLFW_OUT_OF_MEMORY:
+                ConsolePrint("\nGLFW error GLFW_OUT_OF_MEMORY!\n");
+                break;
+            case GLFW_API_UNAVAILABLE:
+                ConsolePrint("\nGLFW error GLFW_API_UNAVAILABLE!\n");
+                break;
+            case GLFW_VERSION_UNAVAILABLE:
+                ConsolePrint("\nGLFW error GLFW_VERSION_UNAVAILABLE!\n");
+                break;
+            case GLFW_PLATFORM_ERROR:
+                ConsolePrint("\nGLFW error GLFW_PLATFORM_ERROR!\n");
+                break;
+            case GLFW_FORMAT_UNAVAILABLE:
+                ConsolePrint("\nGLFW error GLFW_FORMAT_UNAVAILABLE!\n");
+                break;
+            case GLFW_NO_WINDOW_CONTEXT:
+                ConsolePrint("\nGLFW error GLFW_NO_WINDOW_CONTEXT!\n");
+                break;
+            case GLFW_NO_ERROR:
+                ConsolePrint("\nNo error was detected, but GLFW was not able to create a window object!\n");
+                break;
+            }
         }
         else
         {
@@ -92,10 +147,9 @@ bool Libs_Setup()
                 errorFree = false;
             }
 			else
-			{
 				ConsolePrint("GLEW Loaded,\n");
-			}
-            glfwDestroyWindow(window);
+
+            glfwDestroyWindow(window); // Clean up
         }
     }
     //////////////////////////////
@@ -146,7 +200,11 @@ bool Libs_Setup()
 
     //////////////////////////////
 
-	ConsolePrint("Libs_Setup(): Libraries Initialized successfully\n\n");
+    if (errorFree)
+        ConsolePrint("Libs_Setup(): Libraries Initialized successfully\n\n");
+    else
+        ConsolePrint("Libs_Setup(): Error loading libraries\n\n");
+
     return errorFree;
 }
 

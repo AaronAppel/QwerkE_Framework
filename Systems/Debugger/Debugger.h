@@ -37,7 +37,7 @@ namespace QwerkE
         // buffer[MAX_MESSAGE - 1] = 0; // vsnprintf_s might do this, but docs are unclear
 
         OutputPrint("\n%s(%i): Q warning: %s", filePath, line, message);
-        // ConsolePrint(message);
+        ConsolePrint(message);
     }
 
     class Debugger
