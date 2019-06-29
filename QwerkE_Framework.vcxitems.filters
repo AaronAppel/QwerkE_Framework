@@ -103,9 +103,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\GameObject.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
@@ -186,9 +183,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp">
       <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioManager.cpp">
-      <Filter>Systems\Audio</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp">
       <Filter>Systems\Audio</Filter>
@@ -333,6 +327,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Headers\Libraries_Initialize.cpp">
       <Filter>Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenALAudioManager.cpp">
+      <Filter>Systems\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.cpp">
+      <Filter>Systems\DataManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -584,12 +584,31 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Platform.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenALAudioManager.h">
+      <Filter>Systems\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\NullAudioManager.h">
+      <Filter>Systems\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
+      <Filter>Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.h">
+      <Filter>Systems\DataManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\Direct3D\TODO.txt">

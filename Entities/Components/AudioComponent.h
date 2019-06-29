@@ -8,12 +8,9 @@ class AudioSource;
 class AudioComponent : public Component // abstract
 {
 public:
-	virtual ~AudioComponent();
+    virtual ~AudioComponent() {};
 
 	virtual int Play() = 0;
-
-protected:
-	AudioComponent();
 };
 
 #endif //!_AudioComponent_H_

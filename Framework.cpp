@@ -19,6 +19,8 @@
 #include "Systems/Renderer/Renderer.h"
 #include "Systems/MessageManager.h"
 #include "Systems/Audio/AudioManager.h"
+#include "Systems/Audio/OpenALAudioManager.h"
+#include "Systems/Audio/NullAudioManager.h"
 #include "Systems/Debugger/Debugger.h"
 #include "Systems/ShaderFactory/ShaderFactory.h"
 #include "Systems/JobManager/JobManager.h"
@@ -27,6 +29,7 @@
 #include "Systems/Window/WindowManager.h"
 #include "Systems/Window/glfw_Window.h"
 #include "Systems/FileSystem/FileSystem.h"
+#include "Systems/DataManager/ConfigHelper.h"
 #include "Modules/Time.h"
 #include "Graphics/Mesh/MeshFactory.h"
 
@@ -47,11 +50,21 @@ namespace QwerkE
 	{
 		eEngineMessage Framework::Startup()
 		{
+            cJSON* root = OpencJSONStream(ConfigsFolderPath("preferences.qpref"));
+            cJSON* systems = GetItemFromRootByKey(root, "Systems");
+
+            ConfigHelper::LoadConfigData(); // Init config data
+            ConfigData config = ConfigHelper::GetConfigData();
+
+            // TODO: Load libraries dynamically. Need functions to load .dlls
+
 			if (Libs_Setup() == false) // setup libraries
 			{
 				ConsolePrint("\nStartup(): Error loading libraries!\n");
 				return eEngineMessage::_QFailure; // failure
 			}
+
+            // TODO: Cleanup switch or if/elseif statements below. Find a nice way to detect which library objects to load
 
 			// TODO: Try to reduce or avoid order dependency in system creation.
 			// current dependencies..
@@ -73,18 +86,35 @@ namespace QwerkE
 			ShaderFactory* shaderFactory = new ShaderFactory();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
 
-#ifdef GLFW3
-			m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
-#else
-			// win32 window or something
-			Window* window = new Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
-#endif // !GLFW3
+            if (config.libraries.Window == "GLFW3")
+                m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
+            else
+            {
+                QwerkE::LogError(__FILE__, __LINE__, "No window library detected! Check config libraries value.");
+                assert(false);
+            }
 
 			WindowManager* windowManager = new WindowManager();
 			windowManager->AddWindow(m_Window);
 			inputManager->SetupCallbacks((GLFWwindow*)m_Window->GetContext());
 
-			AudioManager* audioManager = new AudioManager();
+            AudioManager* audioManager = nullptr;
+            cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
+            bool enabled = audioEnabled != nullptr ? (bool)audioEnabled->valuedouble : false; // TODO: Improve value handling
+
+            if (config.systems.AudioEnabled)
+            {
+                if (config.libraries.Audio == "OpenAL")
+                {
+                    audioManager = (AudioManager*) new OpenALAudioManager();
+                }
+            }
+
+            if (audioManager == nullptr)
+            {
+                ConsolePrint("No audio library define detected! Loading NullAudioManager.");
+                audioManager = (AudioManager*) new NullAudioManager();
+            }
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Audio_Manager, audioManager); // resource managers needs this
 
 			ResourceManager* resourceManager = new ResourceManager();
@@ -96,7 +126,7 @@ namespace QwerkE
 
 			Renderer* renderer = new Renderer();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Renderer, renderer);
-			renderer->DrawFont("Loading...");
+			renderer->DrawFont("Loading..."); // Message for user while loading
 			m_Window->SwapBuffers();
 
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::WindowManager, windowManager);
@@ -110,7 +140,22 @@ namespace QwerkE
 			Factory* entityFactory = new Factory();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Entity, entityFactory);
 
-			PhysicsManager* physicsManager = new PhysicsManager();
+            PhysicsManager* physicsManager = nullptr;
+            if (config.systems.PhysicsEnabled)
+            {
+                if (config.libraries.Physics == "Bullet3D")
+                {
+                    // TODO: Create Bullet3DPhyicsManager class
+                    physicsManager = new PhysicsManager();
+                }
+            }
+
+            if (physicsManager == nullptr)
+            {
+                // TODO: Create null physics manager class
+                ConsolePrint("No physics library define detected! Loading NullPhysicsManager.");
+                physicsManager = new PhysicsManager();
+            }
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::PhysicsManager, physicsManager);
 
 			MessageManager* messageManager = new MessageManager();

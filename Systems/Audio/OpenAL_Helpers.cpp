@@ -8,7 +8,7 @@ void CheckForOpenALErrors(const char* file, int line)
 		// case AL_INVALID_DEVICE:
 		// case AL_INVALID_CONTEXT:
 	case AL_INVALID_NAME:
-		OutputPrint("AL_INVALID_ENUM");
+		OutputPrint("AL_INVALID_NAME");
 		break;
 	case AL_INVALID_ENUM:
 		OutputPrint("AL_INVALID_ENUM");

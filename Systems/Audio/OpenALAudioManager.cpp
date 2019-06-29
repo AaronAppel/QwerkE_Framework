@@ -1,4 +1,4 @@
-#include "AudioManager.h"
+#include "OpenALAudioManager.h"
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../ServiceLocator.h"
 #include "../FileSystem/FileSystem.h"
@@ -11,7 +11,7 @@
 
 // OpenAL Reference: https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 
-AudioManager::AudioManager()
+OpenALAudioManager::OpenALAudioManager()
 {
 	ALuint error;
 
@@ -36,7 +36,7 @@ AudioManager::AudioManager()
 	ConsolePrint("\nOpenAL loaded successfully\n\n");
 }
 
-AudioManager::~AudioManager()
+OpenALAudioManager::~OpenALAudioManager()
 {
 	delete m_Source;
 	// TODO: cleanup openal
@@ -50,13 +50,13 @@ AudioManager::~AudioManager()
 	*/
 }
 
-void AudioManager::PlaySound(const char* name)
+void OpenALAudioManager::PlaySound(const char* name)
 {
 	m_Source->Play(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetSound(name));
 }
 
 
-void AudioManager::SetListenerOrientation(vec3 position, vec3 velocity)
+void OpenALAudioManager::SetListenerOrientation(vec3 position, vec3 velocity)
 {
 	// TODO: Create an AudioListener() object or component/routine pair
 	// that will remember and manipulate listener data.

@@ -35,12 +35,12 @@ void SceneManager::Initialize()
     // TODO: Load scenes from the Resources/Scenes/... folder to use persistent data
 
     const char* prefPath = ConfigsFolderPath("preferences.qpref");
+    // TODO: does this free memory correctly? std::string pref = ConfigsFolderPath("preferences.qpref");
 
     if (FileExists(prefPath))
     {
         cJSON* root = OpencJSONStream(prefPath);
-        cJSON* scenes = GetItemFromRootByKey(root, "Preferences");
-        scenes = GetItemFromArrayByKey(scenes, "Scenes");
+        cJSON* scenes = GetItemFromRootByKey(root, "Scenes");
 
         int size = GetArraySize(scenes);
         for (unsigned int i = 0; i < size; i++)
@@ -66,6 +66,7 @@ void SceneManager::Initialize()
             // TODO: m_Scenes[sceneFileName] = temp;
             m_Scenes[(eSceneTypes)i] = temp; // TODO: Deprecate enum type
         }
+        ClosecJSONStream(root);
     }
     else
     {
@@ -83,6 +84,7 @@ void SceneManager::Initialize()
         // m_CurrentScene = temp; // Set current
         // m_Scenes[temp->GetSceneID()] = temp;
     }
+    // TODO: free prefPath memory
 }
 
 void SceneManager::ResetScene(eSceneTypes type)

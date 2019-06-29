@@ -95,6 +95,8 @@ ALuint FileSystem::LoadSound(const char* soundPath)
 {
 	// this function is meant to abstract audio libraries from external code
 
+    // TODO: Load sounds from libraries dynamically using preference.qpref. No #defines
+
 	ALuint retValue = 0;
 
 	// get sound data

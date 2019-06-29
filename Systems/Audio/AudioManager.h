@@ -1,35 +1,14 @@
 #ifndef _AudioManager_H_
 #define _AudioManager_H_
 
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
-#include "../../QwerkE_Common/Libraries/OpenAL/include/alc.h"
-#include "../../QwerkE_Common/DataTypes/Vector.h"
-
-#include <vector>
-
-class AudioSource;
-
 class AudioManager
 {
 public:
-	AudioManager();
-	~AudioManager();
+    virtual ~AudioManager() {};
 
-	void PlaySound(const char* name);
-	// music, effect, dialogue
+	virtual void PlaySound(const char* name) = 0; // music, effects, dialogue
 
-	void SetListenerOrientation(vec3 position, vec3 velocity);
-
-private:
-
-	ALCdevice* Device;
-	ALCcontext* Context;
-
-	// ALboolean g_bEAX; // Why?
-
-	// buffer data
-	ALboolean loop = AL_FALSE;
-	AudioSource* m_Source = nullptr;
+	virtual void SetListenerOrientation(vec3 position, vec3 velocity) = 0;
 };
 
 #endif // !_AudioManager_H_

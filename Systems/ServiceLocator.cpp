@@ -26,7 +26,8 @@ namespace QwerkE
 	FileSystem* QwerkE::ServiceLocator::m_FileSystem = nullptr;
 
 	void ServiceLocator::RegisterService(eEngineServices serviceType, void* service)
-	{
+    {
+        assert(service != nullptr);
 		assert(m_IsLocked == false); // Services are locked
 
 		switch (serviceType)

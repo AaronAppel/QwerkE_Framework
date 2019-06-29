@@ -45,7 +45,10 @@
 
 // Data management //
 #include "../Systems/DataManager/DataManager.h"
+#include "../Systems/DataManager/LevelLoader.h"
+#include "../Systems/DataManager/ConfigHelper.h"
 
+// Debugger //
 #include "../Systems/Debugger/Debugger.h"
 
 // Events //

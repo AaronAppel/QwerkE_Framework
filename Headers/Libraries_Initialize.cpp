@@ -14,6 +14,7 @@
 // TODO: Use _QFailure and other error messages?
 bool Libs_Setup()
 {
+    ConfigData config = ConfigHelper::GetConfigData(); // TODO: Add #include
     bool errorFree = true; // Return value. If error occurs set to false
 
 	ConsolePrint("Libs_Setup(): Initializing libraries...\n");
