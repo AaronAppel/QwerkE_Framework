@@ -92,7 +92,7 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshFilePath)
 		*/
 		else
 		{
-			ConsolePrint("\nInstantiateMesh(): Mesh not found!\n");
+			OutputPrint("\nInstantiateMesh(): Mesh not found! %s\n", meshFilePath);
 			return m_NullMesh;
 		}
 		m_Meshes[GetFileNameWithExt(meshFilePath).c_str()] = mesh; // Add to active list

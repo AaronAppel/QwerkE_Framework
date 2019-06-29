@@ -32,6 +32,7 @@ void RenderRoutine::Initialize()
         {
             if (renderables->at(i).GetShaderSchematic())
             {
+				// TODO: Handle null mesh, material, shader
                 renderables->at(i).GetMesh()->SetupShaderAttributes(renderables->at(i).GetShaderSchematic());
             }
         }

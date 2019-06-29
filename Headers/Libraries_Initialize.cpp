@@ -98,7 +98,7 @@ bool Libs_Setup()
             ConsolePrint("\nError loading GLFW step 2!\n");
             errorFree = false;
 
-            int code = glfwGetError(NULL);
+            /*int code = glfwGetError(NULL);
 
             switch (code)
             {
@@ -135,7 +135,7 @@ bool Libs_Setup()
             case GLFW_NO_ERROR:
                 ConsolePrint("\nNo error was detected, but GLFW was not able to create a window object!\n");
                 break;
-            }
+            }*/
         }
         else
         {

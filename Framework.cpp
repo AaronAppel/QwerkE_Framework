@@ -153,7 +153,7 @@ namespace QwerkE
             if (physicsManager == nullptr)
             {
                 // TODO: Create null physics manager class
-                ConsolePrint("No physics library define detected! Loading NullPhysicsManager.");
+                ConsolePrint("No physics library defined or enabled! Loading NullPhysicsManager.");
                 physicsManager = new PhysicsManager();
             }
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::PhysicsManager, physicsManager);
