@@ -63,7 +63,7 @@ void FreeCameraComponent::ProcessKeyboard(eCamera_Movement direction, float delt
 	}
 
 	// update parent position
-	UpdateParentPosition(m_Position);
+    UpdateParentPosition(m_Position);
 	// TODO: Update parent rotation
 
 	m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_Position - m_Forward); // view

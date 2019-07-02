@@ -79,7 +79,7 @@ void CameraComponent::SetTargetPosition(vec3 position)
 
 void CameraComponent::UpdateParentPosition(vec3 m_Position)
 {
-	m_pParent->SetPosition(vec3(m_Position.x, m_Position.y, m_Position.z));
+	m_pParent->SetPosition(m_Position);
 }
 
 void CameraComponent::ProcessMouseScroll(float yoffset)

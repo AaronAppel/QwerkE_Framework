@@ -56,7 +56,7 @@ GameObject* Factory::CreateTestCube(Scene* scene, vec3 position)
 
 	Renderable renderable;
 	renderable.SetMaterial(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("brickwall.msch"));
-	renderable.SetShader(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetShaderProgram("LitMaterial.ssch"));
+	renderable.SetShader(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetShaderProgram("LitMaterialNormal.ssch"));
 
 	Mesh* mesh = new Mesh();
 	mesh = MeshFactory::CreateCube(vec3(10, 10, 10), vec2(1, 1), false);

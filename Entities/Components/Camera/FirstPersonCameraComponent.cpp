@@ -58,7 +58,7 @@ void FirstPersonCameraComponent::ProcessKeyboard(eCamera_Movement direction, flo
 
 	// Update m_Forward, m_Right and Up Vectors using the updated Eular angles
 	FirstPersonCameraComponent::UpdateCameraVectors();
-	CameraComponent::UpdateParentPosition(m_Position);
+    CameraComponent::UpdateParentPosition(m_Position);
 }
 
 void FirstPersonCameraComponent::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)

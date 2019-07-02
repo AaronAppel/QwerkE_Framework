@@ -74,8 +74,8 @@ GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType 
 	// ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshFolderPath("Camera.obj"));
 	AddModelComponentFromSchematic(t_pCamera, "camera.osch");
 
-	// RenderRoutine* renderRoutine = new RenderRoutine();
-	// t_pCamera->AddRoutine((Routine*)renderRoutine);
+	RenderRoutine* renderRoutine = new RenderRoutine();
+	t_pCamera->AddRoutine((Routine*)renderRoutine);
 
 	if (scene->AddCamera(t_pCamera)) // add to scene
 	{

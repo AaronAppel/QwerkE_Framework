@@ -49,9 +49,9 @@ protected:
 	CameraComponent(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
 
 	// Camera Attributes
-	eCamType m_Type = CamType_NULL;
+    eCamType m_Type = CamType_NULL;
 
-	vec3 m_Position = vec3(0, 0, 0);
+    vec3 m_Position = vec3(0, 0, 0);
 	vec3 m_Forward = vec3(0.0f, 0.0f, 1.0f);
 	vec3 m_CamUp = g_WORLDUP;
 	vec3 m_Right = vec3(1, 0, 0);
@@ -79,7 +79,7 @@ protected:
 	mat4* m_ViewMatrix = new mat4();
 	mat4* m_ProjMatrix = new mat4();
 
-	void UpdateParentPosition(vec3 m_Position);
+    void UpdateParentPosition(vec3 m_Position);
 };
 
 #endif //!_CameraComponent_H_

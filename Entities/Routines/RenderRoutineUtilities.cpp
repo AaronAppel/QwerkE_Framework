@@ -72,7 +72,11 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 			break;
 		case eMaterialMaps::MatMap_Specular:
 			renderable->GetShaderSchematic()->SetUniformInt1(SpecularName, counter);
-			break;
+            break;
+        case eMaterialMaps::MatMap_Normals:
+            renderable->GetShaderSchematic()->SetUniformInt1(NormalsName, counter);
+            break;
+            // TODO: Add the remaining MatMap_* and maybe a default with a log output
 		}
 		counter++;
 	}
