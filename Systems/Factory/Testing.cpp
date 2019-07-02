@@ -41,6 +41,47 @@ GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 	return nullptr;
 }
 // Testing
+GameObject* Factory::CreateTestCube(Scene* scene, vec3 position)
+{
+	GameObject* t_Cube = new GameObject(scene, position);
+	// info //
+	t_Cube->SetName("Object" + std::to_string(helpers_GetUniqueID()));
+	t_Cube->SetRenderOrder(50);
+	t_Cube->SetTag(GO_Tag_TestModel);
+
+	// Rendering //
+	// AddModelComponentFromSchematic(t_Cube, "nanosuit.osch");
+
+	RenderComponent* rComp = new RenderComponent();
+
+	Renderable renderable;
+	renderable.SetMaterial(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMaterial("brickwall.msch"));
+	renderable.SetShader(((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetShaderProgram("LitMaterial.ssch"));
+
+	Mesh* mesh = new Mesh();
+	mesh = MeshFactory::CreateCube(vec3(10, 10, 10), vec2(1, 1), false);
+	mesh->SetName("Cube");
+	mesh->SetFileName("None");
+	((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddMesh("Cube", mesh);
+	renderable.SetMesh(mesh);
+
+	rComp->AddRenderable(renderable);
+
+	t_Cube->AddComponent(rComp);
+
+	// render routine
+	t_Cube->AddRoutine((Routine*)new RenderRoutine());
+
+	if (scene->AddObjectToScene(t_Cube))
+	{
+		m_Created++;
+		return t_Cube;
+	}
+
+	delete t_Cube;
+	return nullptr;
+}
+
 GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 {
 	GameObject* t_Model = new GameObject(scene, position);

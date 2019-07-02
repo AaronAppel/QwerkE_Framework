@@ -17,6 +17,9 @@ void OpenGLManager::Init()
 
 void OpenGLManager::ResetGLState()
 {
+	// TODO: Improve
+	return;
+
 	// turn on depth buffer testing
 	if (m_DepthTestingOn)
 	{

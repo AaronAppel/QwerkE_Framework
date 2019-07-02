@@ -37,7 +37,7 @@ void SceneManager::Initialize()
     const char* prefPath = ConfigsFolderPath("preferences.qpref");
     // TODO: does this free memory correctly? std::string pref = ConfigsFolderPath("preferences.qpref");
 
-    if (FileExists(prefPath))
+    if (FileExists(prefPath) && 0)
     {
         cJSON* root = OpencJSONStream(prefPath);
         cJSON* scenes = GetItemFromRootByKey(root, "Scenes");
@@ -68,7 +68,8 @@ void SceneManager::Initialize()
         }
         ClosecJSONStream(root);
     }
-    else
+
+    if (m_Scenes.empty())
     {
         // instantiate and LoadScene() (splash, main menu, game etc...)
         // test screen

@@ -33,7 +33,7 @@ enum eShaderTypes
 #include "Shader/ShaderProgram.h"
 #include "../Systems/ShaderFactory/ShaderFactory.h"
 
-#include "Mesh/VertexData.h"
+#include "Mesh/MeshData.h"
 #include "Mesh/Mesh.h"
 #include "Mesh/MeshFactory.h"
 #include "Mesh/MeshUtilities.h"

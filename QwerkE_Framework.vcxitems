@@ -122,9 +122,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\material.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\VertexData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGLManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Renderable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.h" />

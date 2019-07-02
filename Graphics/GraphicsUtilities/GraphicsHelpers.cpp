@@ -163,7 +163,8 @@ void LoadRenderComponentFromSchematic(const char* schematicPath, RenderComponent
 			renderComponent->SetNameAtIndex(i, currRenderable->string);
 			renderComponent->SetShaderAtIndex(i, resMan->GetShaderProgram(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
 			renderComponent->SetMaterialAtIndex(i, resMan->GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
-			renderComponent->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
+			// renderComponent->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
+			renderComponent->SetMeshAtIndex(i, resMan->GetMesh(null_mesh));
 
             std::vector<Renderable>* renderables = renderComponent->GetRenderableList();
             for (int i = 0; i < renderables->size(); i++)

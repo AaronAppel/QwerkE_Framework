@@ -1,6 +1,6 @@
 #include "QwerkE_AssimpLoading.h"
 #include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
-#include "../../../../QwerkE_Framework/Graphics/Mesh/VertexData.h"
+#include "../../../../QwerkE_Framework/Graphics/Mesh/MeshData.h"
 #include "../../../../QwerkE_Framework/Graphics/Material.h"
 #include "../../../../QwerkE_Framework/Graphics/Texture.h"
 #include "../../../../QwerkE_Framework/Systems/ServiceLocator.h"
@@ -43,48 +43,61 @@ Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const cha
 		return ((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->GetMesh(GetFileNameWithExt(modelFilePath).c_str());
 	}
 	// process vertex positions, normals and texture coordinates
-	unsigned int totalVerts = mesh->mNumVertices;
-	std::vector<VertexData> vertices(totalVerts); // TODO: Swap to array? // PERF: really good use of a 1 frame stack allocation
-	VertexData vertex; // create outside? not a major improvement but still...
-	for (unsigned int i = 0; i < totalVerts; i++)
+	// std::vector<VertexData> vertices(totalVerts); // TODO: Swap to array? // PERF: really good use of a 1 frame stack allocation
+	// VertexData vertex; // create outside? not a major improvement but still...
+	MeshData data;
+	data.positions.resize(mesh->mNumVertices);
+	data.UVs.resize(mesh->mNumVertices);
+	data.normals.resize(mesh->mNumVertices);
+
+	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		// vertex positions
-		// vertex.position = vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
-		vertex.position.x = mesh->mVertices[i].x;
-		vertex.position.y = mesh->mVertices[i].y;
-		vertex.position.z = mesh->mVertices[i].z;
+		vec3 pos;
+		pos.x = mesh->mVertices[i].x;
+		pos.y = mesh->mVertices[i].y;
+		pos.z = mesh->mVertices[i].z;
 
-		if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
-			vertex.UV = vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y);
-		// normals
-		vertex.normal = vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
+		data.positions[i] = pos;
 
 		// color
+		// TODO: mesh->HasVertexColors()
 		// vertex.color = vec4(mesh->mColors[i]->r, mesh->mColors[i]->g, mesh->mColors[i]->b, mesh->mColors[i]->a);
 
-		vertices[i] = vertex;
+		// UVs
+		// TODO: if (mesh->HasTextureCoords(?)) // does the mesh contain texture coordinates?
+		data.UVs[i] = vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y);
+
+		// normals
+		if (mesh->HasNormals()) // TODO: Separate loop to handle no normals and avoid if check
+		{
+			data.normals[i] = vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
+		}
+
+		// Tangents and Bitangents
+		// TODO: mesh->HasTangentsAndBitangents();
 	}
 
 	// process indices
-	unsigned int totalFaces = mesh->mNumFaces;
-	std::vector<unsigned int> indices(totalFaces * 3); // TODO: Swap to array? // PERF: really good use of a 1 frame stack allocation
+	std::vector<unsigned int> indices(mesh->mNumFaces * 3); // TODO: Swap to array? // PERF: really good use of a 1 frame stack allocation
 	aiFace face;
 	int counter = 0;
-	for (unsigned int i = 0; i < totalFaces; i++)
+	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 	{
 		face = mesh->mFaces[i];
 		for (unsigned int j = 0; j < face.mNumIndices; j++)
-			indices[counter++] = face.mIndices[j];
+			indices[counter++] = face.mIndices[j]; // For each vertex in face
 	}
 
+	data.indices = indices;
 	Mesh* rMesh = nullptr;
 
 	// TODO: More error checking + handling
-	if (totalVerts > 0)
+	if (data.positions.size() > 0)
 	{
 		// init mesh and return it
 		rMesh = new Mesh();
-		rMesh->BufferMeshData(totalVerts, &vertices[0], totalFaces * 3, &indices[0]);
+		rMesh->BufferMeshData(&data);
 		rMesh->SetName(mesh->mName.C_Str());
 		rMesh->SetFileName(GetFileNameWithExt(modelFilePath));
 		((ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager))->AddMesh(rMesh->GetName().c_str(), rMesh);

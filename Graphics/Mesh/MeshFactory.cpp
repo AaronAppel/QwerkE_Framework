@@ -1,6 +1,7 @@
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../Graphics/Graphics_Header.h"
+#include "../../Graphics/Mesh/MeshData.h"
 #include "../../QwerkE_Common/Math_Includes.h"
 
 #include <vector>
@@ -30,11 +31,13 @@ Mesh* MeshFactory::ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 
 		line = strtok_s(0, "\n", &next_token);
 	}
 	// parse file for data
-	std::vector<VertexData> verts; // VertexData data
-	std::vector<unsigned int> indices; // IBO data
+	// std::vector<VertexData> verts; // VertexData data
+	// std::vector<unsigned int> indices; // IBO data
 
-	unsigned int textureCounter = 0;
-	unsigned int normalCounter = 0;
+	/*unsigned int textureCounter = 0;
+	unsigned int normalCounter = 0;*/
+
+	MeshData data;
 
 	for (unsigned int i = 0; i < stringList.size(); i++) // stringList.size() = number of lines in file
 	{
@@ -49,7 +52,10 @@ Mesh* MeshFactory::ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 
 
 				sscanf_s(loopString.data(), "%*s %f %f %f", &vertexPosition.x, &vertexPosition.y, &vertexPosition.z);// tempString.data(), tempString.length(), &tempInteger);
 
-				verts.push_back(VertexData(vec3(vertexPosition.x, vertexPosition.y, vertexPosition.z), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, 0)));
+				data.positions.push_back(vec3(vertexPosition.x, vertexPosition.y, vertexPosition.z));
+				data.colors.push_back(vec4(255, 255, 255, 255));
+
+				// verts.push_back(VertexData(vec3(vertexPosition.x, vertexPosition.y, vertexPosition.z), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, 0)));
 			}
 			else if (loopString.at(1) == 't')
 			{
@@ -57,7 +63,8 @@ Mesh* MeshFactory::ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 
 				vec2 vertexUV = vec2(0, 0);
 				sscanf_s(loopString.data(), "%*s %f %f", &vertexUV.x, &vertexUV.y);
 				//verts.at(textureCounter).uv = vertexUV;
-				textureCounter++;
+				data.UVs.push_back(vertexUV);
+				// textureCounter++;
 			}
 			else if (loopString.at(1) == 'n')
 			{
@@ -65,7 +72,8 @@ Mesh* MeshFactory::ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 
 				vec3 vertexNormal = vec3(0, 0, 0);
 				sscanf_s(loopString.data(), "%*s %f %f %f", &vertexNormal.x, &vertexNormal.y, &vertexNormal.z);
 				//verts.at(normalCounter).normal = vertexNormal;
-				normalCounter++;
+				data.normals.push_back(vertexNormal);
+				// normalCounter++;
 			}
 
 		}
@@ -74,9 +82,14 @@ Mesh* MeshFactory::ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 
 			// read faces, create IBO
 			int tempVariable[] = { 0,0,0 };
 			sscanf_s(loopString.data(), "%*s %i %*s %i %*s %i", &tempVariable[0], &tempVariable[1], &tempVariable[2]);
-			indices.push_back(tempVariable[0] - 1); // OBJ exporter thinks first index is 1
-			indices.push_back(tempVariable[1] - 1);
-			indices.push_back(tempVariable[2] - 1);
+
+			data.indices.push_back(tempVariable[0] - 1);
+			data.indices.push_back(tempVariable[1] - 1);
+			data.indices.push_back(tempVariable[2] - 1);
+
+			//indices.push_back(tempVariable[0] - 1); // OBJ exporter thinks first index is 1
+			//indices.push_back(tempVariable[1] - 1);
+			//indices.push_back(tempVariable[2] - 1);
 		}
 	}
 
@@ -86,26 +99,27 @@ Mesh* MeshFactory::ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 
 	// scale vertices
 	if (objScale != vec3(1.0f, 1.0f, 1.0f))
 	{
-		ScaleVertices(verts.data(), verts.size(), objScale);
+		ScaleVertices(data.positions, objScale);
 	}
 
 	// generate UVCOORDS
-	CalculateUVCoords(verts); // default scale 1,1
+	CalculateUVCoords(data.UVs); // default scale 1,1
 
 	// scale UVCOORDS
 	if (UVScale != vec2(1.0f, 1.0f))
 	{
-		ScaleUVCOORDS(verts.data(), verts.size(), UVScale);
+		ScaleUVCOORDS(data.UVs, UVScale);
 	}
 
 	// invert faces
 	if (invertFaces)
 	{
-		InvertFaces(indices.data(), indices.size());
+		InvertFaces(data.indices.data(), data.indices.size());
 	}
 
 	// initialize mesh
-	t_pNewMesh->BufferMeshData(verts.size(), verts.data(), indices.size(), indices.data()); // GL_STATIC_DRAW
+	// t_pNewMesh->BufferMeshData(verts.size(), verts.data(), indices.size(), indices.data()); // GL_STATIC_DRAW
+	t_pNewMesh->BufferMeshData(&data); // GL_STATIC_DRAW
 	t_pNewMesh->SetPrimitiveType(GL_TRIANGLES);
 
 	// cleanup
@@ -162,6 +176,8 @@ Mesh* MeshFactory::CreateTestModel()
 	std::vector<unsigned int> UVIndices;
 	std::vector<unsigned int> NormalIndices;
 
+	MeshData data;
+
 	/* Read data */
 	for (unsigned int i = 0; i < stringList.size(); i++)
 	{
@@ -173,7 +189,7 @@ Mesh* MeshFactory::CreateTestModel()
 			{
 				vec3 vertexPosition = vec3(0, 0, 0);
 				sscanf_s(loopString.data(), "%*s %f %f %f", &vertexPosition.x, &vertexPosition.y, &vertexPosition.z);
-				verts.push_back(vec3(vertexPosition.x, vertexPosition.y, vertexPosition.z));
+				data.positions.push_back(vec3(vertexPosition.x, vertexPosition.y, vertexPosition.z));
 			}
 			else if (loopString.at(1) == 't') // uv coords
 			{
@@ -223,56 +239,59 @@ Mesh* MeshFactory::CreateTestModel()
 	}
 
 	/* Create VertexData list */
-	std::vector<VertexData> t_VertexData;
+	std::vector<MeshData> t_VertexData;
 	for (unsigned int i = 0; i < verts.size(); i++)
 	{
 		// First vertex
-		VertexData t_Vertex;
-		t_Vertex.position = verts[i];
-		t_Vertex.color = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-		t_Vertex.UV = vec2(-1.0f, -1.0f); // invalidate
-		t_Vertex.normal = vec3(-1.0f, -1.0f, -1.0f); // invalidate
+		MeshData t_Vertex;
+		t_Vertex.positions.push_back(verts[i]);
+		t_Vertex.colors.push_back(vec4(1.0f, 1.0f, 1.0f, 1.0f));
+		t_Vertex.UVs.push_back(vec2(-1.0f, -1.0f)); // invalidate
+		t_Vertex.normals.push_back(vec3(-1.0f, -1.0f, -1.0f)); // invalidate
 
-													 // push_back
+		// push_back
 		t_VertexData.push_back(t_Vertex);
 	}
 
 	/* Setup UVs and Normals */
 	for (unsigned int i = 0; i < VertexIndices.size(); i++)
 	{
-		t_VertexData.at(VertexIndices[i]).UV = uvs[UVIndices[i]];
-		t_VertexData.at(VertexIndices[i]).normal = normals.at(NormalIndices[NormalIndices[i]]);
+		t_VertexData.at(VertexIndices[i]).UVs.push_back(uvs[UVIndices[i]]);
+		t_VertexData.at(VertexIndices[i]).normals.push_back(normals.at(NormalIndices[NormalIndices[i]]));
 	}
 
 	Mesh* pMesh = new Mesh();
 	InvertFaces(VertexIndices.data(), VertexIndices.size()); // invert
 	// pMesh->CalculateUVCoords(t_VertexData);
-	pMesh->BufferMeshData(t_VertexData.size(), t_VertexData.data(), VertexIndices.size(), VertexIndices.data()); // GL_STATIC_DRAW
+	// pMesh->BufferMeshData(t_VertexData.size(), t_VertexData.data(), VertexIndices.size(), VertexIndices.data()); // GL_STATIC_DRAW
+	pMesh->BufferMeshData(&data); // GL_STATIC_DRAW
 	pMesh->SetPrimitiveType(GL_TRIANGLES);
 
 	return pMesh;
 };
 
-Mesh* MeshFactory::CreateBox(vec2 size)
+Mesh* MeshFactory::CreateQuad(vec2 size)
 {
-	VertexData verts[4];
+	std::vector<vec3> pos = std::vector<vec3> { vec3(-size.x / 2, -size.y / 2, 0.0f), vec3(-size.x / 2, size.y / 2, 0.0f), vec3(size.x / 2, size.y / 2, 0.0f), vec3(size.x / 2, -size.y / 2, 0.0f) };
+	std::vector<vec4> col = std::vector<vec4>();
+	std::vector<vec2> uv = std::vector<vec2>{ vec2(0,0), vec2(0, 1), vec2(1, 1), vec2(1, 0) };
+	std::vector<vec3> nor = std::vector<vec3>{ vec3(1, 0, 0), vec3(1, 1, 0), vec3(0, 1, 0), vec3(0, 0, 0) };
+	std::vector<vec3> tang = std::vector<vec3>();
+	std::vector<vec3> bit = std::vector<vec3>();
 
-	verts[0] = VertexData(vec3(-size.x / 2, -size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(0, 0), vec3(1, 0, 0));
-	verts[1] = VertexData(vec3(-size.x / 2, size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(0, 1), vec3(1, 1, 0));
-	verts[2] = VertexData(vec3(size.x / 2, size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(1, 1), vec3(0, 1, 0));
-	verts[3] = VertexData(vec3(size.x / 2, -size.y / 2, 0.0f), vec4(255, 255, 255, 255), vec2(1, 0), vec3(0, 0, 0));
-
-	unsigned int indices[6] = { 0,1,2, 2,3,0 };
+	MeshData data = MeshData(pos, col, uv, nor, tang, bit);
+	data.indices = std::vector<unsigned int> { 0,1,2, 2,3,0 };
 
 	Mesh* pMesh = new Mesh();
-	pMesh->BufferMeshData(4, verts, 6, indices); // GL_STATIC_DRAW
+	pMesh->BufferMeshData(&data);
 	return pMesh;
 };
+
 Mesh* MeshFactory::CreateCircle(float radius, unsigned int points, vec2 UVScale)
 {
 	// TODO: Ability to draw XZ OR XY axis
-	std::vector<VertexData> verts;
-	verts.push_back(VertexData(vec3(0, 0, 0), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, 0))); // center
+	MeshData data;
+	data.positions.push_back(vec3(0, 0, 0)); // center
 
 	float t_AngleBetweenPoints = 360.0f / points; // degrees
 
@@ -285,7 +304,8 @@ Mesh* MeshFactory::CreateCircle(float radius, unsigned int points, vec2 UVScale)
 		Position.y = sinf(t_IncrementAngle * DEG_TO_RAD) * radius;// 0;
 		Position.z = 0;// sinf(t_IncrementAngle * DEG_TO_RAD) * radius;
 
-		verts.push_back(VertexData(vec3(Position.x, Position.y, Position.z), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, 0)));
+		// verts.push_back(VertexData(vec3(Position.x, Position.y, Position.z), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, 0)));
+		data.positions.push_back(vec3(Position.x, Position.y, Position.z));
 
 		t_IncrementAngle -= t_AngleBetweenPoints; // clockwise
 	}
@@ -298,26 +318,30 @@ Mesh* MeshFactory::CreateCircle(float radius, unsigned int points, vec2 UVScale)
 		indices.push_back(i + 2);
 	}
 
-	Mesh* t_pNewMesh = new Mesh();
 
 	// generate UVCOORDS
-	CalculateXZUVCoords(verts.data(), verts.size()); // default scale 1,1
-																 // scale UVCOORDS
+	// TODO: Fix CalculateXZUVCoords(verts.data(), verts.size()); // default scale 1,1
+	// scale UVCOORDS
 	if (UVScale != vec2(1.0f, 1.0f))
 	{
-		ScaleUVCOORDS(verts.data(), verts.size(), UVScale);
+		// TODO: Fix ScaleUVCOORDS(verts.data(), verts.size(), UVScale);
 	}
 
 	if (Wind_CCW) { InvertFaces(indices.data(), indices.size()); } // Reverse winding order
 
-	// initialize mesh
-	t_pNewMesh->BufferMeshData(verts.size(), verts.data(), indices.size(), indices.data()); // GL_STATIC_DRAW
-	t_pNewMesh->SetPrimitiveType(GL_TRIANGLES);
+	// Create mesh
+	Mesh* t_pNewMesh = new Mesh();
+	t_pNewMesh->BufferMeshData(&data);
+
 	return t_pNewMesh;
 }
+
 Mesh* MeshFactory::CreateCube(vec3 size, vec2 UVScale, bool invertFaces)
 {
-	// TODO:: Fix UV values
+	// TODO: Fix UV values
+	// TODO: Change winding order of faces and improve invert faces logic
+	// TODO: Only use 8 vertices for cube
+
 	// image
 	int imageWidth = 500; // pixels
 	int imageHeight = 500; // 0.1666666666666667
@@ -331,46 +355,115 @@ Mesh* MeshFactory::CreateCube(vec3 size, vec2 UVScale, bool invertFaces)
 	float UVOffsetY = imageHeight / frameHeight;
 
 	// mesh
-	VertexData verts[24];
+	MeshData data;
+	data.positions.resize(24); // TODO: Update to only 8
+	data.UVs.resize(24); // TODO: Update to only 8
+	data.normals.resize(24); // TODO: Update to only 8
 
 	// cube with 6 sides, 2 triangles per side
 	// face 1 - front
-	verts[0] = VertexData(vec3(-size.x / 2, size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, -1)); //top-left
-	verts[1] = VertexData(vec3(-size.x / 2, -size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, -1)); // bottom-left
-	verts[2] = VertexData(vec3(size.x / 2, -size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX, 0.0f), vec3(0, 0, -1)); // bottom-right
-	verts[3] = VertexData(vec3(size.x / 2, size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX, 1.0f), vec3(0, 0, -1)); // top-right
+	data.positions[0] = vec3(-size.x / 2, size.y / 2, -size.z / 2); // top-left
+	data.UVs[0] = vec2(0, 1);
+	data.normals[0] = vec3(0, 0, -1);
+
+	data.positions[1] = vec3(-size.x / 2, -size.y / 2, -size.z / 2); // bottom-left
+	data.UVs[1] = vec2(0, 0);
+	data.normals[1] = vec3(0, 0, -1);
+
+	data.positions[2] = vec3(size.x / 2, -size.y / 2, -size.z / 2); // bottom-right
+	data.UVs[2] = vec2(UVOffsetX, 0.0f);
+	data.normals[2] = vec3(0, 0, -1);
+
+	data.positions[3] = vec3(size.x / 2, size.y / 2, -size.z / 2); // top-right
+	data.UVs[3] = vec2(UVOffsetX, 1.0f);
+	data.normals[3] = vec3(0, 0, -1);
 
 	// face 2 - left
-	verts[4] = VertexData(vec3(-size.x / 2, size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX, 1.0f), vec3(-1, 0, 0));
-	verts[5] = VertexData(vec3(-size.x / 2, -size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX, 0.0f), vec3(-1, 0, 0));
-	verts[6] = VertexData(vec3(-size.x / 2, -size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 2, 0.0f), vec3(-1, 0, 0));
-	verts[7] = VertexData(vec3(-size.x / 2, size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 2, 1.0f), vec3(-1, 0, 0));
+	data.positions[4] = vec3(-size.x / 2, size.y / 2, -size.z / 2);
+	data.UVs[4] = vec2(UVOffsetX, 1.0f);
+	data.normals[4] = vec3(-1, 0, 0);
+
+	data.positions[5] = vec3(-size.x / 2, -size.y / 2, -size.z / 2);
+	data.UVs[5] = vec2(UVOffsetX, 0.0f);
+	data.normals[5] = vec3(-1, 0, 0);
+
+	data.positions[6] = vec3(-size.x / 2, -size.y / 2, size.z / 2);
+	data.UVs[6] = vec2(UVOffsetX * 2, 0.0f);
+	data.normals[6] = vec3(-1, 0, 0);
+
+	data.positions[7] = vec3(-size.x / 2, size.y / 2, size.z / 2);
+	data.UVs[7] = vec2(UVOffsetX * 2, 1.0f);
+	data.normals[7] = vec3(-1, 0, 0);
 
 	// face 3 - back
-	verts[8] = VertexData(vec3(size.x / 2, size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 2, 1.0f), vec3(0, 0, 1));
-	verts[9] = VertexData(vec3(size.x / 2, -size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 2, 0.0f), vec3(0, 0, 1));
-	verts[10] = VertexData(vec3(-size.x / 2, -size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 3, 0.0f), vec3(0, 0, 1));
-	verts[11] = VertexData(vec3(-size.x / 2, size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 3, 1.0f), vec3(0, 0, 1));
+	data.positions[8] = vec3(size.x / 2, size.y / 2, size.z / 2);
+	data.UVs[8] = vec2(UVOffsetX * 2, 1.0f);
+	data.normals[8] = vec3(0, 0, 1);
+
+	data.positions[9] = vec3(size.x / 2, -size.y / 2, size.z / 2);
+	data.UVs[9] = vec2(UVOffsetX * 2, 0.0f);
+	data.normals[9] = vec3(0, 0, 1);
+
+	data.positions[10] = vec3(-size.x / 2, -size.y / 2, size.z / 2);
+	data.UVs[10] = vec2(UVOffsetX * 3, 0.0f);
+	data.normals[10] = vec3(0, 0, 1);
+
+	data.positions[11] = vec3(-size.x / 2, size.y / 2, size.z / 2);
+	data.UVs[11] = vec2(UVOffsetX * 3, 1.0f);
+	data.normals[11] = vec3(0, 0, 1);
 
 	// face 4 - right
-	verts[12] = VertexData(vec3(size.x / 2, size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 3, 1.0f), vec3(1, 0, 0));
-	verts[13] = VertexData(vec3(size.x / 2, -size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 3, 0.0f), vec3(1, 0, 0));
-	verts[14] = VertexData(vec3(size.x / 2, -size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 4, 0.0f), vec3(1, 0, 0));
-	verts[15] = VertexData(vec3(size.x / 2, size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 4, 1.0f), vec3(1, 0, 0));
+	data.positions[12] = vec3(size.x / 2, size.y / 2, -size.z / 2);
+	data.UVs[12] = vec2(UVOffsetX * 3, 1.0f);
+	data.normals[12] = vec3(0, 0, 1);
+
+	data.positions[13] = vec3(size.x / 2, -size.y / 2, -size.z / 2);
+	data.UVs[13] = vec2(UVOffsetX * 3, 0.0f);
+	data.normals[13] = vec3(0, 0, 1);
+
+	data.positions[14] = vec3(size.x / 2, -size.y / 2, size.z / 2);
+	data.UVs[14] = vec2(UVOffsetX * 4, 0.0f);
+	data.normals[14] = vec3(0, 0, 1);
+
+	data.positions[15] = vec3(size.x / 2, size.y / 2, size.z / 2);
+	data.UVs[15] = vec2(UVOffsetX * 4, 1.0f);
+	data.normals[15] = vec3(0, 0, 1);
 
 	// face 5 - top - z axis becomes vertical + reference
-	verts[16] = VertexData(vec3(-size.x / 2, size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 4, 1.0f), vec3(0, 1, 0));
-	verts[17] = VertexData(vec3(-size.x / 2, size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 4, 0.0f), vec3(0, 1, 0));
-	verts[18] = VertexData(vec3(size.x / 2, size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 5, 0.0f), vec3(0, 1, 0));
-	verts[19] = VertexData(vec3(size.x / 2, size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 5, 1.0f), vec3(0, 1, 0));
+	data.positions[16] = vec3(-size.x / 2, size.y / 2, size.z / 2);
+	data.UVs[16] = vec2(UVOffsetX * 4, 1.0f);
+	data.normals[16] = vec3(0, 0, 1);
+
+	data.positions[17] = vec3(-size.x / 2, size.y / 2, -size.z / 2);
+	data.UVs[17] = vec2(UVOffsetX * 4, 0.0f);
+	data.normals[17] = vec3(0, 0, 1);
+
+	data.positions[18] = vec3(size.x / 2, size.y / 2, -size.z / 2);
+	data.UVs[18] = vec2(UVOffsetX * 5, 0.0f);
+	data.normals[18] = vec3(0, 0, 1);
+
+	data.positions[19] = vec3(size.x / 2, size.y / 2, size.z / 2);
+	data.UVs[19] = vec2(UVOffsetX * 5, 1.0f);
+	data.normals[19] = vec3(0, 0, 1);
 
 	// face 6 - bottom
-	verts[20] = VertexData(vec3(-size.x / 2, -size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 5, 1.0f), vec3(0, -1, 0));
-	verts[21] = VertexData(vec3(-size.x / 2, -size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 5, 0.0f), vec3(0, -1, 0));
-	verts[22] = VertexData(vec3(size.x / 2, -size.y / 2, -size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 6, 0.0f), vec3(0, -1, 0));
-	verts[23] = VertexData(vec3(size.x / 2, -size.y / 2, size.z / 2), vec4(255, 255, 255, 255), vec2(UVOffsetX * 6, 1.0f), vec3(0, -1, 0));
+	data.positions[20] = vec3(-size.x / 2, -size.y / 2, size.z / 2);
+	data.UVs[20] = vec2(UVOffsetX * 5, 0.0f);
+	data.normals[20] = vec3(0, 0, 1);
 
-	unsigned int indices[36] = {
+	data.positions[21] = vec3(-size.x / 2, -size.y / 2, -size.z / 2);
+	data.UVs[21] = vec2(UVOffsetX * 2, 0.0f);
+	data.normals[21] = vec3(0, 0, 1);
+
+	data.positions[22] = vec3(size.x / 2, -size.y / 2, -size.z / 2);
+	data.UVs[22] = vec2(UVOffsetX * 6, 0.0f);
+	data.normals[22] = vec3(0, 0, 1);
+
+	data.positions[23] = vec3(size.x / 2, -size.y / 2, size.z / 2);
+	data.UVs[23] = vec2(UVOffsetX * 6, 1.0f);
+	data.normals[23] = vec3(0, 0, 1);
+
+	data.indices = std::vector<unsigned int> {
 		0,3,2, 2,1,0, // front - brown
 		6,7,4, 4,5,6, // left - pink
 		10,9,8, 8,11,10, // back - blue
@@ -384,18 +477,17 @@ Mesh* MeshFactory::CreateCube(vec3 size, vec2 UVScale, bool invertFaces)
 	// scale UVCOORDS
 	if (UVScale != vec2(1.0f, 1.0f))
 	{
-		ScaleUVCOORDS(verts, 24, UVScale);
+		ScaleUVCOORDS(data.UVs, UVScale);
 	}
 
 	if (invertFaces) // invert faces
 	{
-		InvertFaces(indices, 36);
+		InvertFaces(data.indices.data(), data.indices.size());
 	}
 
-	if (Wind_CCW) { InvertFaces(indices, 36); } // Reverse winding order
+	if (Wind_CCW) { InvertFaces(data.indices.data(), data.indices.size()); }
 
-	t_pNewMesh->BufferMeshData(24, verts, 36, indices); // GL_STATIC_DRAW
-	t_pNewMesh->SetPrimitiveType(GL_TRIANGLES);
+	t_pNewMesh->BufferMeshData(&data);
 
 	return t_pNewMesh;
 }
@@ -409,7 +501,8 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 	int numVerts = numVertsX * numVertsY;
 
 	// create array
-	VertexData *verts = new VertexData[numVerts]; //  (vertexCount.x-1)*(vertexCount-1)*2 triangles per square*3 indices per triangle;
+	// VertexData *verts = new VertexData[numVerts]; //  (vertexCount.x-1)*(vertexCount-1)*2 triangles per square*3 indices per triangle;
+	MeshData data;
 
 	float width = size.x;
 	float height = size.y;
@@ -429,7 +522,8 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 	{
 		for (int j = 0; j < numVertsY; j++)
 		{
-			verts[indexCounter] = VertexData(vec3(xIncrement, 0.0f, zIncrement), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, 0));
+			data.positions.push_back(vec3(xIncrement, 0.0f, zIncrement));
+			// verts[indexCounter] = VertexData(vec3(xIncrement, 0.0f, zIncrement), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, 0));
 			indexCounter++;
 			xIncrement += xSpacing;
 		}
@@ -439,6 +533,7 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 
 	const int numOfIndices = 6 * (numVertsX - 1) * (numVertsY - 1); // 6 points per rectangle * number of rectangles
 	unsigned int* indices = new unsigned int[numOfIndices]; // 6 * numOfRectangles
+	data.indices.reserve(numOfIndices);
 	indexCounter = 0;
 	int vertex = 0;
 
@@ -451,14 +546,14 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 		{
 			//x
 			// top right triangle
-			indices[indexCounter] = vertex + numVertsX;
-			indices[indexCounter + 1] = vertex + numVertsX + 1;
-			indices[indexCounter + 2] = vertex + 1;
+			data.indices[indexCounter] = vertex + numVertsX;
+			data.indices[indexCounter + 1] = vertex + numVertsX + 1;
+			data.indices[indexCounter + 2] = vertex + 1;
 
 			// bottom left triangle
-			indices[indexCounter + 3] = vertex + 1;
-			indices[indexCounter + 4] = vertex;
-			indices[indexCounter + 5] = vertex + numVertsX;
+			data.indices[indexCounter + 3] = vertex + 1;
+			data.indices[indexCounter + 4] = vertex;
+			data.indices[indexCounter + 5] = vertex + numVertsX;
 			indexCounter += 6; // next triangle
 			vertex++; // next point
 		}
@@ -468,15 +563,16 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 	Mesh* pMesh = new Mesh();
 
 	// generate UVCOORDS
-	CalculateXZUVCoords(verts, numVerts);
+	// CalculateXZUVCoords(verts, numVerts);
 
 	// scale UVCOORDS
-	ScaleUVCOORDS(verts, numVerts, UVScale);
+	// ScaleUVCOORDS(verts, numVerts, UVScale);
 
-	pMesh->BufferMeshData(numVerts, verts, numOfIndices, indices); // GL_STATIC_DRAW
+	// pMesh->BufferMeshData(numVerts, verts, numOfIndices, indices); // GL_STATIC_DRAW
+	pMesh->BufferMeshData(&data);
 	pMesh->SetPrimitiveType(GL_TRIANGLES);
 
-	delete[] verts;
+	// delete[] verts;
 	delete[] indices;
 
 	return pMesh;
@@ -484,35 +580,58 @@ Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivo
 /* Mesh data assignment*/
 void MeshFactory::GenerateBox(Mesh* mesh, vec2 size, bool invertFaces)
 {
-	std::vector<VertexData> tempList;
-	tempList.push_back(VertexData(vec3(0.5f * size.x, 0.5f * size.y, 0.0f), vec4(1, 1, 1, 1), vec2(1, 1), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(0.5f * size.x, -0.5f * size.y, 0.0f), vec4(1, 1, 1, 1), vec2(1, 0), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(-0.5f * size.x, -0.5f * size.y, 0.0f), vec4(1, 1, 1, 1), vec2(0, 0), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(-0.5f * size.x, 0.5f * size.y, 0.0f), vec4(1, 1, 1, 1), vec2(0, 1), vec3(0, 0, 0)));
+	MeshData data;
+	data.positions.push_back(vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
+	data.UVs.push_back(vec2(1, 1));
 
-	unsigned int indices[] = {
+	data.positions.push_back(vec3(0.5f * size.x, -0.5f * size.y, 0.0f));
+	data.UVs.push_back(vec2(1, 0));
+
+	data.positions.push_back(vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
+	data.UVs.push_back(vec2(0, 0));
+
+	data.positions.push_back(vec3(-0.5f * size.x, 0.5f * size.y, 0.0f));
+	data.UVs.push_back(vec2(0, 1));
+
+	data.indices = std::vector<unsigned int> {
 		0, 1, 3, // First Triangle
 		1, 2, 3  // Second Triangle
 	};
-	if (Wind_CCW) { InvertFaces(indices, 6); } // Reverse winding order
-	mesh->BufferMeshData(4, tempList.data(), 6, indices);
+	if (Wind_CCW) { InvertFaces(data.indices.data(), data.indices.size()); } // Reverse winding order
+	mesh->BufferMeshData(&data);
 }
 
 void MeshFactory::GenerateCube(Mesh* mesh, vec3 size, bool invertFaces)
 {
-	std::vector<VertexData> tempList;
+	// std::vector<VertexData> tempList;
+	MeshData data;
 	// front
-	tempList.push_back(VertexData(vec3(-0.5f * size.x, -0.5f * size.y, 0.5f * size.z), vec4(1, 1, 1, 1), vec2(0, 0), vec3(0, 0, 0))); // 0
-	tempList.push_back(VertexData(vec3(-0.5f * size.x, 0.5f * size.y, 0.5f * size.z), vec4(1, 1, 1, 1), vec2(0, 1), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(0.5f * size.x, 0.5f * size.y, 0.5f * size.z), vec4(1, 1, 1, 1), vec2(1, 1), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(0.5f * size.x, -0.5f * size.y, 0.5f * size.z), vec4(1, 1, 1, 1), vec2(1, 0), vec3(0, 0, 0)));
-	// back
-	tempList.push_back(VertexData(vec3(-0.5f * size.x, -0.5f * size.y, -0.5f * size.z), vec4(1, 1, 1, 1), vec2(0, 0), vec3(0, 0, 0))); // 4
-	tempList.push_back(VertexData(vec3(-0.5f * size.x, 0.5f * size.y, -0.5f * size.z), vec4(1, 1, 1, 1), vec2(0, 1), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(0.5f * size.x, 0.5f * size.y, -0.5f * size.z), vec4(1, 1, 1, 1), vec2(1, 1), vec3(0, 0, 0)));
-	tempList.push_back(VertexData(vec3(0.5f * size.x, -0.5f * size.y, -0.5f * size.z), vec4(1, 1, 1, 1), vec2(1, 0), vec3(0, 0, 0)));
+	data.positions.push_back(vec3(-0.5f * size.x, -0.5f * size.y, 0.5f * size.z)); // 0
+	data.UVs.push_back(vec2(0,0));
 
-	unsigned int indices[] = {
+	data.positions.push_back(vec3(-0.5f * size.x, 0.5f * size.y, 0.5f * size.z));
+	data.UVs.push_back(vec2(0, 1));
+
+	data.positions.push_back(vec3(0.5f * size.x, 0.5f * size.y, 0.5f * size.z));
+	data.UVs.push_back(vec2(1, 1));
+
+	data.positions.push_back(vec3(0.5f * size.x, -0.5f * size.y, 0.5f * size.z));
+	data.UVs.push_back(vec2(1, 0));
+
+	// back
+	data.positions.push_back(vec3(-0.5f * size.x, -0.5f * size.y, -0.5f * size.z)); // 0
+	data.UVs.push_back(vec2(0, 0));
+
+	data.positions.push_back(vec3(-0.5f * size.x, 0.5f * size.y, -0.5f * size.z));
+	data.UVs.push_back(vec2(0, 1));
+
+	data.positions.push_back(vec3(0.5f * size.x, 0.5f * size.y, -0.5f * size.z));
+	data.UVs.push_back(vec2(1, 1));
+
+	data.positions.push_back(vec3(0.5f * size.x, -0.5f * size.y, -0.5f * size.z));
+	data.UVs.push_back(vec2(1, 0));
+
+	data.indices = std::vector<unsigned int> {
 		// front
 		0,1,2,
 		2,3,0,
@@ -532,62 +651,171 @@ void MeshFactory::GenerateCube(Mesh* mesh, vec3 size, bool invertFaces)
 		4,0,3,
 		3,7,4
 	};
-	if (Wind_CCW) { InvertFaces(indices, 36); } // Reverse winding order
-	mesh->BufferMeshData(8, tempList.data(), 36, indices);
+	if (Wind_CCW) { InvertFaces(data.indices.data(), data.indices.size()); } // Reverse winding order
+	mesh->BufferMeshData(&data);
 }
 
 Mesh* MeshFactory::TutorialCube(vec3 size, vec2 UVScale, bool invertFaces)
 {
-	Mesh* mesh = new Mesh();
+	// std::vector<VertexData> t_Verts;
+	MeshData data;
 
-	std::vector<VertexData> t_Verts;
+	//// Create vertices
+	// Front
+	data.positions.push_back(vec3(0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, -1.0f));
 
-	// Create vertices
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(0.0f, 0.0f, -1.0f))); // front
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(0.0f, 0.0f, -1.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(0.0f, 0.0f, -1.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(0.0f, 0.0f, -1.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(0.0f, 0.0f, -1.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(0.0f, 0.0f, -1.0f)));
+	data.positions.push_back(vec3(0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, -1.0f));
 
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(0.0f, 0.0f, 1.0f))); // back
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(0.0f, 0.0f, 1.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(0.0f, 0.0f, 1.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(0.0f, 0.0f, 1.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(0.0f, 0.0f, 1.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(0.0f, 0.0f, 1.0f)));
+	data.positions.push_back(vec3(-0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, -1.0f));
 
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(-1.0f, 0.0f, 0.0f))); // left
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(-1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(-1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(-1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(-1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(-1.0f, 0.0f, 0.0f)));
+	data.positions.push_back(vec3(-0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, -1.0f));
 
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(1.0f, 0.0f, 0.0f))); // right
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(1.0f, 0.0f, 0.0f)));
+	data.positions.push_back(vec3(-0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, -1.0f));
 
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(0.0f, -1.0f, 0.0f))); // bottom
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(0.0f, -1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(0.0f, -1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(0.0f, -1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(0.0f, -1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, -0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(0.0f, -1.0f, 0.0f)));
+	data.positions.push_back(vec3(0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, -1.0f));
 
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f))); // top
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 1.0f), vec3(0.0f, 1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(0.0f, 1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, -0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 1.0f), vec3(0.0f, 1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(-0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
-	t_Verts.push_back(VertexData(vec3(0.5f, 0.5f, 0.5f), vec4(1, 1, 1, 1), vec2(1.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+	// Back
+	data.positions.push_back(vec3(-0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, 1.0f));
+
+	data.positions.push_back(vec3(0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, 1.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, 1.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, 1.0f));
+
+	data.positions.push_back(vec3(-0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, 1.0f));
+
+	data.positions.push_back(vec3(-0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 0.0f, 1.0f));
+
+	// Left
+	data.positions.push_back(vec3(-0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(-1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(-1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(-1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(-1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(-1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(-1.0f, 0.0f, 0.0f));
+
+	// Right
+	data.positions.push_back(vec3(0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(1.0f, 0.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(1.0f, 0.0f, 0.0f));
+
+	// Bottom
+	data.positions.push_back(vec3(-0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, -1.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, -1.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, -1.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, -1.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, -0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, -1.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, -0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, -1.0f, 0.0f));
+
+	// Top
+	data.positions.push_back(vec3(0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 1.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(1.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 1.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 1.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, 0.5f, -0.5f));
+	data.UVs.push_back(vec2(0.0f, 1.0f));
+	data.normals.push_back(vec3(0.0f, 1.0f, 0.0f));
+
+	data.positions.push_back(vec3(-0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(0.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 1.0f, 0.0f));
+
+	data.positions.push_back(vec3(0.5f, 0.5f, 0.5f));
+	data.UVs.push_back(vec2(1.0f, 0.0f));
+	data.normals.push_back(vec3(0.0f, 1.0f, 0.0f));
 
 	// if (Wind_CCW) { InvertFaces(indices, 36); } // Reverse winding order
 
-	mesh->BufferMeshData(36, t_Verts.data(), 0, 0);
+	Mesh* mesh = new Mesh();
+	// mesh->BufferMeshData(36, t_Verts.data(), 0, 0);
+	mesh->BufferMeshData(&data);
 
 	return mesh;
 }

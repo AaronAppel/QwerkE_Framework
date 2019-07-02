@@ -25,10 +25,10 @@ GameObject* Factory::CreateLight(Scene* scene, vec3 position)
 
 	AddModelComponentFromSchematic(t_pLight, "light.osch");
 
-	RenderRoutine* renderRoutine = new RenderRoutine();
+	// RenderRoutine* renderRoutine = new RenderRoutine();
 	// Add
 	t_pLight->AddComponent(t_pLightComp);
-	t_pLight->AddRoutine((Routine*)renderRoutine);
+	// t_pLight->AddRoutine((Routine*)renderRoutine);
 
 	if (scene->AddLight(t_pLight))
 	{

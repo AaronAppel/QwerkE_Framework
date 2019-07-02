@@ -28,6 +28,8 @@ void ShaderProgram::RecompileShaderType(GLenum type, const char* shaderData)
 		// link new shader
 		((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(this);
 	}
+
+	FindAttributesAndUniforms();
 }
 
 /* Attribute value assignment */

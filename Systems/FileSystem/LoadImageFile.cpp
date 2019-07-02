@@ -9,12 +9,12 @@
 unsigned char* QwerkE_stb_image_loadImage(const char* path, unsigned int* imageWidth, unsigned int* imageHeight, GLenum& channels, bool flipVertically)
 {
 	unsigned char* pngbuffer = 0;
-	int nrChannels = 4;
+	int nrChannels = 0;
 
 	// Note: must cast values to signed ints. Could lead to errors.
 	// buffer file data
 	stbi_set_flip_vertically_on_load(flipVertically);
-	pngbuffer = stbi_load(path, (signed int*)&imageWidth, (signed int*)&imageHeight, &nrChannels, channels); // can set 0 to desired comp (rgba == 4)
+	pngbuffer = stbi_load(path, (int*)&imageWidth, (int*)&imageHeight, &nrChannels, channels); // can set 0 to desired comp (rgba == 4)
 	// if (pngbuffer == nullptr || strcmp((const char*)pngbuffer, "") == 0)
 	if(!pngbuffer)
 	{

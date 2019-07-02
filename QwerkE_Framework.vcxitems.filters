@@ -407,9 +407,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.h">
       <Filter>Graphics\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\VertexData.h">
-      <Filter>Graphics\Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.h">
       <Filter>Graphics\Shader</Filter>
     </ClInclude>
@@ -608,6 +605,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.h">
       <Filter>Systems\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshData.h">
+      <Filter>Graphics\Mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

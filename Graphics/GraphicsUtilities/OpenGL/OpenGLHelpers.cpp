@@ -69,7 +69,8 @@ GLuint GLLoad2DTexture(const char* filePath, bool flipVertically)
 		glBindTexture(GL_TEXTURE_2D, texhandle);
 		CheckGraphicsErrors(__FILE__, __LINE__);
 		// https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
-		glTexImage2D(GL_TEXTURE_2D, 0, channels, width, height, 0, channels, GL_UNSIGNED_BYTE, imageData);
+		channels = GL_RGBA;
+		glTexImage2D(GL_TEXTURE_2D, 0, channels, width, height, 0, channels, GL_UNSIGNED_BYTE, imageData); // GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid * data)
 
 		CheckGraphicsErrors(__FILE__, __LINE__);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

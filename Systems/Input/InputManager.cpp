@@ -84,6 +84,7 @@ void InputManager::ProcessKeyEvent(eKeys key, eKeyState state)
 
 	RaiseInputEvent(key, state);
 	keyboard->RaiseInputEvent(key, state);
+	// TODO: Convert key into eKeys range
 	keyboard->s_KeyStates[key] = state;
 }
 

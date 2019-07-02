@@ -24,7 +24,7 @@ public:
 	/* Mesh creation */
 	// defined in MeshShapes.cpp
 	static Mesh* CreateTestModel();
-	static Mesh* CreateBox(vec2 size);
+	static Mesh* CreateQuad(vec2 size);
 	static Mesh* CreateCircle(float radius, unsigned int points, vec2 UVScale);
 	static Mesh* CreateCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
 	static Mesh* CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale);

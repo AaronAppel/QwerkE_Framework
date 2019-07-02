@@ -63,23 +63,37 @@ unsigned char* FileSystem::LoadImageFileData(const char* path, unsigned int* ima
 	// TODO: Determine which tool/library to use depending on image type and format
 	// png, jpg, 8bit vs 32bit, etc
 
+	std::string extention = GetFileExtension(path);
+
+	if (strcmp(extention.c_str(), "jpg") == 0)
+	{
+		// returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
+		OutputPrint("LoadImageFile(): .jpg image not loaded. No working jpg load function currently: %s\n", path);
+	}
+	else if (strcmp(extention.c_str(), "png") == 0)
+	{
 #if QwerkE_Image_Library_stb == 1 // stb
-	// stb has shown to be faster than lodepng, however it is not reliable for loading all image formats.
-	// use both for now... // TODO: Fix stb_image
-	// returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
+		// stb has shown to be faster than lodepng, however it is not reliable for loading all image formats.
+		// use both for now... // TODO: Fix stb_image
+		// returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
 #endif
 #if QwerkE_Image_Library_lodepng == 1 // lodepng
-	// if (returnBuffer == nullptr || strcmp((const char*)returnBuffer, "") == 0)
-	if (!returnBuffer)
-		returnBuffer = QwerkE_lodepng_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
+		// if (returnBuffer == nullptr || strcmp((const char*)returnBuffer, "") == 0)
+		if (!returnBuffer)
+			returnBuffer = QwerkE_lodepng_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
 #endif
 #if QwerkE_Image_Library_soil == 1 // SOIL
-	returnBuffer = QwerkE_soil_loadImage(path); // TODO:
+		returnBuffer = QwerkE_soil_loadImage(path); // TODO:
 #endif
 
 #if !QwerkE_Image_Library_stb && !QwerkE_Image_Library_lodepng && !QwerkE_Image_Library_soil
 #pragma error "Define image loading library!"
 #endif
+	}
+	else
+	{
+		OutputPrint("LoadImageFile(): Image type unsupported for file: %s\n", path);
+	}
 
 	if (!returnBuffer)// (returnBuffer == nullptr || strcmp((const char*)returnBuffer, "") == 0)
 	{

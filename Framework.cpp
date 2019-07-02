@@ -64,6 +64,24 @@ namespace QwerkE
 				return eEngineMessage::_QFailure; // failure
 			}
 
+			// Testing //
+			/*Mesh mesh;
+
+			int verts = 2;
+			int numIndices = 2;
+
+			CollectedData data;
+
+			data.positions = std::vector<vec3>{ vec3(0,0,0), vec3(0,0,1) };
+			data.UVs = std::vector<vec2>{ vec2(0,0), vec2(0,1) };
+			data.normals = std::vector<vec3>{ vec3(0,0,0), vec3(0,0,1) };
+
+			unsigned int* indices = new unsigned int[2]{ 0, 1 };
+
+			mesh.BufferMeshData(verts, &data, numIndices, indices);*/
+
+			// Testing //
+
             // TODO: Cleanup switch or if/elseif statements below. Find a nice way to detect which library objects to load
 
 			// TODO: Try to reduce or avoid order dependency in system creation.
@@ -237,6 +255,7 @@ namespace QwerkE
 
 			// depth cull for efficiency
 			glEnable(GL_CULL_FACE);
+			// glDisable(GL_CULL_FACE);
 			glCullFace(GL_BACK);
 			if(Wind_CCW) glFrontFace(GL_CCW);
 			else glFrontFace(GL_CW);

@@ -2,23 +2,27 @@
 #define _MeshUtilities_H_
 
 #include "../QwerkE_Common/Math_Includes.h"
-#include "VertexData.h"
+#include "MeshData.h"
 #include <vector>
 
 /* Mesh modifications */
-// scale
-void ScaleUVCOORDS(VertexData verts[], int numVerts, vec2 UVScale);
-void ScaleVertices(VertexData verts[], int numVerts, vec3 scale);
+// Scaling
+void ScaleUVCOORDS(std::vector<vec2>& verts, vec2 UVScale);
+void ScaleVertices(std::vector<vec3>& verts, vec3 scale);
 
-// Auto UVs
-void CalculateXZUVCoords(VertexData vertArray[], int numVertices);
-void CalculateUVCoords(std::vector<VertexData> &verts);
-void CalculateUVCoords(VertexData verts[], int numVertices);
+// Auto UV helpers
+void CalculateXZUVCoords(MeshData& data);
+void CalculateUVCoords(std::vector<vec2> &UVs);
+void CalculateUVCoords(std::vector<vec3>& vertArray, int numVertices);
 
 // Color
-void PaintObject(std::vector<VertexData> &verts, vec4 color); // vertex color
+void PaintObject(MeshData &colors, vec4 color); // vertex color
 
 // Edit IBO
 void InvertFaces(unsigned int oldIBO[], unsigned int arraySize); // reverse winding order
+
+// Tangents and bitangents
+void GenerateTangents();
+void GenerateBitangents();
 
 #endif //!_MeshUtilities_H_

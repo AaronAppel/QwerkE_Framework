@@ -35,7 +35,7 @@ void TestScene::Initialize()
 		// Create scene cameras
 		const int t_CamMax = 1;
 		t_pFactory->CreateFreeCamera(this, vec3(0, 0, 5));
-		t_pFactory->CreateFreeCamera(this, vec3(0, 0, 15));
+		// t_pFactory->CreateFreeCamera(this, vec3(0, 0, 15));
 		// setup view/projection matrices
 		Scene::SetupCameras();
 	}
@@ -43,16 +43,17 @@ void TestScene::Initialize()
 	{	// Create scene objects
 		// cubes
 		int cubes = 2;
+		t_pFactory->CreateTestCube(this, vec3(0, 0, 50));
 		// t_pFactory->CreateCube(this, vec3(2, 2, 30));
 		// t_pFactory->CreateCube(this, vec3(-2, 1, 40));
 
 		// TEST:
-		obj = t_pFactory->CreateTestModel(this, vec3(0, -2, 30));
-		obj->SetRotation(vec3(0, 0, 0));
+		// obj = t_pFactory->CreateTestModel(this, vec3(0, -2, 30));
+		// obj->SetRotation(vec3(0, 0, 0));
 
 		for (int i = 0; i < 10; i++)
 		{
-			t_pFactory->CreateCube(this, vec3(0, i - 5, 50));
+			// t_pFactory->CreateCube(this, vec3(0, i - 5, 50));
 		}
 		// plane
 		// t_pFactory->CreatePlane(this, vec3(0, -1, 0));
@@ -70,12 +71,12 @@ void TestScene::Initialize()
 
 void TestScene::p_Running(double deltatime)
 {
-    obj->SetRotation(vec3(obj->GetRotation().x,
+    /*obj->SetRotation(vec3(obj->GetRotation().x,
         obj->GetRotation().y + 90.0f * deltatime,
 		obj->GetRotation().z));
 
 	if (obj->GetRotation().y >= 360.0f)
-		obj->SetRotation(vec3(obj->GetRotation().x, obj->GetRotation().y - 360.0f, obj->GetRotation().z));
+		obj->SetRotation(vec3(obj->GetRotation().x, obj->GetRotation().y - 360.0f, obj->GetRotation().z));*/
 
 	Scene::p_Running(deltatime);
 }

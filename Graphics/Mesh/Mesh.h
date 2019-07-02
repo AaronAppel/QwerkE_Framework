@@ -21,7 +21,7 @@ public:
 	~Mesh();
 
 	// Setup
-	void BufferMeshData(int numVerts, VertexData* verts, int numIndices, unsigned int* indices); // TODO: add const to arguments
+	void BufferMeshData(MeshData* data);
 	void SetupShaderAttributes(ShaderProgram* shader);
 
 	// Drawing
@@ -38,6 +38,7 @@ public:
 	void ToggleWireframe(); // TODO: Improve
 
     // Cleanup
+	// TODO: Maybe EmptyMesh() instead of DestroyMesh()
 	void DestroyMesh(); // Used for assigning new data to an already initialize mesh
 
 private:
@@ -47,11 +48,12 @@ private:
 	GLuint m_VAO = 0; // TODO: Do meshes need a shader list to support VAOs for many shaders
 
 	// Variables
-	GLuint m_VertCount = 0; // TODO: Is storing this necessary?
-	GLuint m_IndexCount = 0;
 	GLenum m_PrimitiveType = GL_TRIANGLES;
 	std::string m_Name = gc_DefaultStringValue;
 	std::string m_FileName = gc_DefaultStringValue;
+
+	MeshBufferInfo m_BufferData;
+	char* PackModelData(MeshData* data);
 
 	/* Draw functionality */
 	MeshFunction m_DrawFunc = &Mesh::NullDraw;

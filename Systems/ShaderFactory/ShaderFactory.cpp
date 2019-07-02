@@ -13,7 +13,10 @@ ShaderProgram* ShaderFactory::CreateShader(eShaderTypes type)
 	shader->GetGeoShader()->SetStringData(CreateGeometryShader(type));
 
 	if (LinkCreatedShaderProgram(shader))
+	{
+		shader->FindAttributesAndUniforms();
 		return shader;
+	}
 	else
 	{
 		delete shader;
@@ -28,8 +31,11 @@ ShaderProgram* ShaderFactory::CreateShader(const char* vertFileDir, const char* 
 	if (fragFileDir) CreateShaderComponent(GL_VERTEX_SHADER, fragFileDir);
 	if (geoFileDir) CreateShaderComponent(GL_VERTEX_SHADER, geoFileDir);
 
-	if(LinkCreatedShaderProgram(shader))
+	if (LinkCreatedShaderProgram(shader))
+	{
+		shader->FindAttributesAndUniforms();
 		return shader;
+	}
 	else
 	{
 		delete shader;

@@ -69,7 +69,8 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshFilePath)
 		}
 		else if (meshFilePath == "CreBox")
 		{
-			mesh = t_MeshFactory.CreateBox(vec2(1, 1));
+			// mesh = t_MeshFactory.CreateBox(vec2(1, 1));
+			int bp = 1;
 		}
 		else if (meshFilePath == "CreCube")
 		{
@@ -210,6 +211,7 @@ ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicNa
 			if (((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(result))
 			{
 				m_ShaderProgram[schematicName] = result;
+				result->FindAttributesAndUniforms();
 				return result;
 			}
 			else

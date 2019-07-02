@@ -8,6 +8,14 @@ void close_callback(GLFWwindow* window);
 
 glfw_Window::glfw_Window(int windowWidth, int windowHeight, const char* windowTitle) : Window(windowWidth, windowHeight, windowTitle)
 {
+	// glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	// glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	// glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+// #ifdef __APPLE__
+	// glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
+// #endif
+
 	m_Window = glfwCreateWindow(windowWidth, windowHeight, windowTitle, NULL, NULL);
 	assert(m_Window);
 	glfwSwapInterval(0); // TODO: Add VSynch control and toggling
