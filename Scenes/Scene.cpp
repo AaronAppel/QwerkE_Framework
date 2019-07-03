@@ -22,14 +22,7 @@ Scene::~Scene()
 	int size = m_LightList.size();
 	for (int i = size - 1; i > -1; i--)
 	{
-		std::vector<GameObject*>::iterator it = m_SceneDrawList.begin();
-		m_SceneDrawList.erase(std::remove(m_SceneDrawList.begin(), m_SceneDrawList.end(), m_LightList.at(i)), m_SceneDrawList.end());
-
-		m_pGameObjects.erase(m_LightList.at(i)->GetName().c_str()); // delete
 		delete m_LightList.at(i);
-
-		it = m_LightList.begin();
-		m_LightList.erase(std::remove(m_LightList.begin(), m_LightList.end(), m_LightList.at(i)), m_LightList.end());
 	}
 	m_LightList.clear();
 
@@ -37,7 +30,6 @@ Scene::~Scene()
 	for (int i = size - 1; i > -1; i--)
 	{
 		delete m_CameraList.at(i);
-		m_CameraList.erase(m_SceneDrawList.end());
 	}
 	m_CameraList.clear();
 
@@ -316,7 +308,7 @@ void Scene::SaveScene()
     }
 
 	DataManager* t_pDataManager = (DataManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Data_Manager);
-	t_pDataManager->SaveScene(this, SceneFolderPath(m_LevelFileName));
+	t_pDataManager->SaveScene(this, SceneFolderPath(m_LevelFileName.c_str()));
 }
 
 void Scene::LoadScene(const char* sceneFileName)
@@ -326,9 +318,10 @@ void Scene::LoadScene(const char* sceneFileName)
         QwerkE::LogError(__FILE__, __LINE__, "Unable to Save scene! sceneFileName is \"%s\"", gc_DefaultCharPtrValue);
         return;
     }
+    m_LevelFileName = sceneFileName;
 
     DataManager* t_pDataManager = (DataManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Data_Manager);
-    t_pDataManager->LoadScene(this, SceneFolderPath(sceneFileName));
+    t_pDataManager->LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
     SetupCameras();
 }
 
@@ -341,7 +334,7 @@ void Scene::ReloadScene()
     }
 
 	DataManager* t_pDataManager = (DataManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Data_Manager);
-	t_pDataManager->LoadScene(this, SceneFolderPath(m_LevelFileName));
+	t_pDataManager->LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
 	SetupCameras();
 }
 

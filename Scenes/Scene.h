@@ -82,7 +82,7 @@ protected:
 
 	bool m_IsEnabled = false;
 	eSceneState m_State = eSceneState::SceneState_Running;
-    const char* m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
+    std::string m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
 	SceneManager* m_pSceneManager = nullptr;
 	MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
 
