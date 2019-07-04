@@ -27,6 +27,7 @@ CameraComponent::CameraComponent(vec3 position, vec3 up, float yaw, float pitch)
 	Window* window = (Window*)windowManager->GetWindow(0);
 	m_ViewportSize = window->GetResolution();
 
+    SetTargetPosition(m_Position + m_Forward);
 	UpdateCameraVectors();
 }
 // Constructor with scalar values
@@ -42,6 +43,7 @@ CameraComponent::CameraComponent(float posX, float posY, float posZ, float upX, 
     Window* window = (Window*)windowManager->GetWindow(0);
     m_ViewportSize = window->GetResolution();
 
+    SetTargetPosition(m_Position + m_Forward);
 	UpdateCameraVectors();
 }
 
@@ -107,8 +109,9 @@ void CameraComponent::UpdateCameraVectors()
 	//m_Right = glm::normalize(glm::cross(m_Forward, m_WorldUp));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
 	//m_CamUp = glm::normalize(glm::cross(m_Right, m_Forward));
 
-	// view
-	m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_TargetPosition);
+    // view
+    m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_Position - m_Forward); // view
+	// m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_TargetPosition);
 	// *m_ViewMatrix = glm::lookAt(m_Position, m_TargetPosition + m_Forward, m_CamUp);
 
 	// projection

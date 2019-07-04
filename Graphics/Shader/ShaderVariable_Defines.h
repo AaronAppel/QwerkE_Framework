@@ -40,6 +40,10 @@
 #define DisplacementName "DisplacementTexture"
 #define LightMapName "LightMapTexture"
 #define ReflectionName "ReflectionTexture"
+#define AlbedoName "AlbedoTexture"
+#define MetallicName "MetallicTexture"
+#define AmbientOcclusionName "AmbientOcclusionTexture"
+#define RougnessName "RougnessTexture"
 
 // Camera
 #define cameraPosition "CamPos"

@@ -73,10 +73,42 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 		case eMaterialMaps::MatMap_Specular:
 			renderable->GetShaderSchematic()->SetUniformInt1(SpecularName, counter);
             break;
+        case eMaterialMaps::MatMap_Emissive:
+            renderable->GetShaderSchematic()->SetUniformInt1(EmissiveName, counter);
+            break;
+        case eMaterialMaps::MatMap_Height:
+            renderable->GetShaderSchematic()->SetUniformInt1(HeightName, counter);
+            break;
         case eMaterialMaps::MatMap_Normals:
             renderable->GetShaderSchematic()->SetUniformInt1(NormalsName, counter);
             break;
-            // TODO: Add the remaining MatMap_* and maybe a default with a log output
+        case eMaterialMaps::MatMap_Shininess:
+            renderable->GetShaderSchematic()->SetUniformInt1(ShininessName, counter);
+            break;
+        case eMaterialMaps::MatMap_Opacity:
+            renderable->GetShaderSchematic()->SetUniformInt1(OpacityName, counter);
+            break;
+        case eMaterialMaps::MatMap_Displacement:
+            renderable->GetShaderSchematic()->SetUniformInt1(DisplacementName, counter);
+            break;
+        case eMaterialMaps::MatMap_LightMap:
+            renderable->GetShaderSchematic()->SetUniformInt1(LightMapName, counter);
+            break;
+        case eMaterialMaps::MatMap_Reflection:
+            renderable->GetShaderSchematic()->SetUniformInt1(ReflectionName, counter);
+            break;
+        case eMaterialMaps::MatMap_Albedo:
+            renderable->GetShaderSchematic()->SetUniformInt1(AlbedoName, counter);
+            break;
+        case eMaterialMaps::MatMap_Metallic:
+            renderable->GetShaderSchematic()->SetUniformInt1(MetallicName, counter);
+            break;
+        case eMaterialMaps::MatMap_AmbientOcclusion:
+            renderable->GetShaderSchematic()->SetUniformInt1(AmbientOcclusionName, counter);
+            break;
+        case eMaterialMaps::MatMap_Roughness:
+            renderable->GetShaderSchematic()->SetUniformInt1(RougnessName, counter);
+            break;
 		}
 		counter++;
 	}

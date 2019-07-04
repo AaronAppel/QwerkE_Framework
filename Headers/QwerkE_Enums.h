@@ -49,7 +49,7 @@ enum class eMaterialMaps : std::uint8_t
 	MatMap_Reflection,
 	MatMap_Albedo,
 	MatMap_Metallic,
-	MatMap_AbientOcclusion,
+	MatMap_AmbientOcclusion,
 	MatMap_Roughness,
 
     MatMap_Vec3Colour,

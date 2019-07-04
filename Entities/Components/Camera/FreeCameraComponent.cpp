@@ -66,8 +66,9 @@ void FreeCameraComponent::ProcessKeyboard(eCamera_Movement direction, float delt
     UpdateParentPosition(m_Position);
 	// TODO: Update parent rotation
 
-	m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_Position - m_Forward); // view
-	m_ProjMatrix->CreatePerspectiveHFoV(m_Zoom * 0.5f, m_ViewportSize.x / m_ViewportSize.y, m_CAMNEAR, m_CAMFAR); // projection
+    UpdateCameraVectors();
+	// m_ViewMatrix->CreateLookAtView(m_Position, m_CamUp, m_Position - m_Forward); // view
+	// m_ProjMatrix->CreatePerspectiveHFoV(m_Zoom * 0.5f, m_ViewportSize.x / m_ViewportSize.y, m_CAMNEAR, m_CAMFAR); // projection
 }
 
 void FreeCameraComponent::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
