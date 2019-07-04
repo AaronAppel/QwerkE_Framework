@@ -334,6 +334,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.cpp">
       <Filter>Systems\DataManager</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.cpp">
+      <Filter>Entities\Routines</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
@@ -608,6 +611,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshData.h">
       <Filter>Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.h">
+      <Filter>Entities\Routines</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

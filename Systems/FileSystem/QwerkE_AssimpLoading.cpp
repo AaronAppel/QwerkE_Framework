@@ -49,6 +49,8 @@ Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const cha
 	data.positions.resize(mesh->mNumVertices);
 	data.UVs.resize(mesh->mNumVertices);
 	data.normals.resize(mesh->mNumVertices);
+	data.tangents.resize(mesh->mNumVertices);
+	data.bitangents.resize(mesh->mNumVertices);
 
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
@@ -75,7 +77,11 @@ Mesh* QwerkE_assimp_loadVertexData(aiMesh *mesh, const aiScene *scene, const cha
 		}
 
 		// Tangents and Bitangents
-		// TODO: mesh->HasTangentsAndBitangents();
+		if (mesh->HasTangentsAndBitangents()) // Separate loop
+		{
+			data.tangents[i] = vec3(mesh->mTangents->x, mesh->mTangents->y, mesh->mTangents->z);
+			data.bitangents[i] = vec3(mesh->mBitangents->x, mesh->mBitangents->y, mesh->mBitangents->z);
+		}
 	}
 
 	// process indices

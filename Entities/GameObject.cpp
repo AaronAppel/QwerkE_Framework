@@ -217,6 +217,6 @@ void GameObject::SetPosition(vec3 position)
 
 void GameObject::SetRotation(vec3 rotation)
 {
-	m_Transform.s_Rotation = rotation;
+	m_Transform.s_Rotation = rotation; // TODO: Cap rotation degrees to 360
 	// TODO: Update direction vectors
 }

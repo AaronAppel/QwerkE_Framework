@@ -5,7 +5,7 @@
 
 class GameObject;
 
-class Routine
+class Routine // Abstract
 {
 public:
 	virtual ~Routine();

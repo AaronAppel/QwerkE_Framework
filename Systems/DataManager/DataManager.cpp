@@ -10,6 +10,7 @@
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Entities/Routines/Routine.h"
 #include "../../Entities/Routines/RenderRoutine.h"
+#include "../../Entities/Routines/TransformRoutine.h"
 
 // RenderComponent
 #include "../../Entities/Components/RenderComponent.h"
@@ -375,6 +376,42 @@ void DataManager::AddRoutineTocJSONItem(cJSON* routineList, Routine* routine)
     case eRoutineTypes::Routine_Print:
         AddItemToArray(t_Routine, CreateString("RoutineName", "Print"));
         break;
+	case eRoutineTypes::Routine_Transform:
+		AddItemToArray(t_Routine, CreateString("RoutineName", "Transform"));
+
+		TransformRoutine* tRoutine = (TransformRoutine*)routine;
+		AddItemToArray(t_Routine, CreateNumber("Speed", tRoutine->GetSpeed()));
+
+		cJSON* transform = CreateArray("TransformValues");
+
+		vec3 pos = tRoutine->GetPositionOff();
+		cJSON* position = CreateArray("Position");
+		AddItemToArray(position, CreateString("PositionX", std::to_string(pos.x).c_str()));
+		AddItemToArray(position, CreateString("PositionY", std::to_string(pos.y).c_str()));
+		AddItemToArray(position, CreateString("PositionZ", std::to_string(pos.z).c_str()));
+
+		AddItemToArray(transform, position);
+
+		vec3 rot = tRoutine->GetRotationOff();
+		cJSON* rotation = CreateArray("Rotation");
+		AddItemToArray(rotation, CreateString("RotationX", std::to_string(rot.x).c_str()));
+		AddItemToArray(rotation, CreateString("RotationY", std::to_string(rot.y).c_str()));
+		AddItemToArray(rotation, CreateString("RotationZ", std::to_string(rot.z).c_str()));
+
+		AddItemToArray(transform, rotation);
+
+		vec3 sca = tRoutine->GetScaleOff();
+		cJSON* scale = CreateArray("Scale");
+		AddItemToArray(scale, CreateString("ScaleX", std::to_string(sca.x).c_str()));
+		AddItemToArray(scale, CreateString("ScaleY", std::to_string(sca.y).c_str()));
+		AddItemToArray(scale, CreateString("ScaleZ", std::to_string(sca.z).c_str()));
+
+		AddItemToArray(transform, scale);
+
+		// TODO: Save routine values... or create a component
+
+		AddItemToArray(t_Routine, transform);
+		break;
     }
     AddItemToArray(routineList, t_Routine);
 }
@@ -414,11 +451,34 @@ void DataManager::AddRoutineToGameObject(GameObject* object, cJSON* item)
 
     switch (type)
     {
-    case Routine_Render:
+    case eRoutineTypes::Routine_Render:
         object->AddRoutine((Routine*)new RenderRoutine());
-    case Routine_Print:
+    case eRoutineTypes::Routine_Print:
         // object->AddDrawRoutine((Routine*)new PrintRoutine());
         break;
+	case eRoutineTypes::Routine_Transform:
+		cJSON* transformValues = GetItemFromArrayByKey(item, "TransformValues");
+		cJSON* pos = GetItemFromArrayByKey(transformValues, "Position");
+		vec3 position = vec3((float)GetItemFromArrayByIndex(pos, 0)->valuedouble,
+			(float)GetItemFromArrayByIndex(pos, 1)->valuedouble,
+			(float)GetItemFromArrayByIndex(pos, 2)->valuedouble);
+		cJSON* rot = GetItemFromArrayByKey(transformValues, "Rotation");
+		vec3 rotation = vec3((float)GetItemFromArrayByIndex(rot, 0)->valuedouble,
+			(float)GetItemFromArrayByIndex(rot, 1)->valuedouble,
+			(float)GetItemFromArrayByIndex(rot, 2)->valuedouble);
+		cJSON* sca = GetItemFromArrayByKey(transformValues, "Scale");
+		vec3 scale = vec3((float)GetItemFromArrayByIndex(sca, 0)->valuedouble,
+			(float)GetItemFromArrayByIndex(sca, 1)->valuedouble,
+			(float)GetItemFromArrayByIndex(sca, 2)->valuedouble);
+
+		TransformRoutine* transform = new TransformRoutine();
+		transform->SetSpeed(GetItemFromArrayByKey(item, "Speed")->valuedouble);
+		transform->SetPositionOff(position);
+		transform->SetRotationOff(rotation);
+		transform->SetScaleOff(scale);
+
+		object->AddRoutine((Routine*) transform);
+		break;
     }
 }
 
