@@ -27,6 +27,7 @@ Mesh::~Mesh()
 
 void Mesh::BufferMeshData(MeshData* data)
 {
+	// TODO: Return true or false to communicate successful buffering?
 	if (!data)
 	{
 		QwerkE::LogError(__FILE__, __LINE__, "MeshData is null!");

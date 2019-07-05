@@ -270,6 +270,110 @@ Mesh* MeshFactory::CreateTestModel()
 	return pMesh;
 };
 
+Mesh* MeshFactory::CreateTestPlane()
+{
+	MeshData data = MeshData();
+
+	// positions
+	vec3 pos1(-1.0f, 1.0f, 0.0f);
+	vec3 pos2(-1.0f, -1.0f, 0.0f);
+	vec3 pos3(1.0f, -1.0f, 0.0f);
+	vec3 pos4(1.0f, 1.0f, 0.0f);
+
+	// texture coordinates
+	vec2 uv1(0.0f, 1.0f);
+	vec2 uv2(0.0f, 0.0f);
+	vec2 uv3(1.0f, 0.0f);
+	vec2 uv4(1.0f, 1.0f);
+
+	// normal vector
+	vec3 nm(0.0f, 0.0f, 1.0f);
+
+	// calculate tangent/bitangent vectors of both triangles
+	vec3 tangent1, bitangent1;
+	vec3 tangent2, bitangent2;
+
+	// triangle 1
+	// ----------
+	vec3 edge1 = pos2 - pos1;
+	vec3 edge2 = pos3 - pos1;
+	vec2 deltaUV1 = uv2 - uv1;
+	vec2 deltaUV2 = uv3 - uv1;
+
+	GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
+
+	tangent1.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
+	tangent1.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
+	tangent1.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+	glm::vec3 tan1 = glm::normalize(glm::vec3(tangent1.x, tangent1.y, tangent1.z));
+	tangent1 = vec3(tan1.x, tan1.y, tan1.z);
+
+	bitangent1.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
+	bitangent1.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
+	bitangent1.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+	glm::vec3 bitan1 = glm::normalize(glm::vec3(bitangent1.x, bitangent1.y, bitangent1.z));
+	bitangent1 = vec3(bitan1.x, bitan1.y, bitan1.z);
+
+	// triangle 2
+	// ----------
+	edge1 = pos3 - pos1;
+	edge2 = pos4 - pos1;
+	deltaUV1 = uv3 - uv1;
+	deltaUV2 = uv4 - uv1;
+
+	f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
+
+	tangent2.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
+	tangent2.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
+	tangent2.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+	glm::vec3 tan2 = glm::normalize(glm::vec3(tangent2.x, tangent2.y, tangent2.z));
+	tangent2 = vec3(tan2.x, tan2.y, tan2.z);
+
+	bitangent2.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
+	bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
+	bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+	glm::vec3 bitan2 = glm::normalize(glm::vec3(bitangent2.x, bitangent2.y, bitangent2.z));
+	bitangent2 = vec3(bitan2.x, bitan2.y, bitan2.z);
+
+	// Positions
+	data.positions.push_back(pos1);
+	data.positions.push_back(pos2);
+	data.positions.push_back(pos3);
+	data.positions.push_back(pos4);
+
+	// UVs
+	data.UVs.push_back(uv1);
+	data.UVs.push_back(uv2);
+	data.UVs.push_back(uv3);
+	data.UVs.push_back(uv4);
+
+	// Normals
+	data.positions.push_back(nm);
+	data.positions.push_back(nm);
+	data.positions.push_back(nm);
+	data.positions.push_back(nm);
+
+	// Tangents
+	data.positions.push_back(tangent1);
+	data.positions.push_back(tangent1);
+	data.positions.push_back(tangent1);
+	data.positions.push_back(tangent2);
+
+	// Bitangents
+	data.positions.push_back(bitangent1);
+	data.positions.push_back(bitangent1);
+	data.positions.push_back(bitangent1);
+	data.positions.push_back(bitangent2);
+
+	// Indices
+	data.indices = std::vector<unsigned int>{ 0,1,2, 0,2,3 };
+
+	Mesh* mesh =new Mesh();
+	mesh->BufferMeshData(&data);
+
+	return mesh;
+}
+
 Mesh* MeshFactory::CreateQuad(vec2 size)
 {
 	std::vector<vec3> pos = std::vector<vec3> { vec3(-size.x / 2, -size.y / 2, 0.0f), vec3(-size.x / 2, size.y / 2, 0.0f), vec3(size.x / 2, size.y / 2, 0.0f), vec3(size.x / 2, -size.y / 2, 0.0f) };
@@ -492,91 +596,91 @@ Mesh* MeshFactory::CreateCube(vec3 size, vec2 UVScale, bool invertFaces)
 	return t_pNewMesh;
 }
 // worldSize, number of vertices, UVPos,
-Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivot, size, UVStart, UVOffset
-{
-	// TODO: Ability to create XY plane
-	//// variables
-	int numVertsX = (int)NumOfVerts.x;
-	int numVertsY = (int)NumOfVerts.y;
-	int numVerts = numVertsX * numVertsY;
-
-	// create array
-	// VertexData *verts = new VertexData[numVerts]; //  (vertexCount.x-1)*(vertexCount-1)*2 triangles per square*3 indices per triangle;
-	MeshData data;
-
-	float width = size.x;
-	float height = size.y;
-
-	// spacing
-	float xSpacing = width / (numVertsX - 1);
-	float ySpacing = height / (numVertsY - 1);
-
-	// for-loop variables
-	// increment
-	float xIncrement = -width * 0.5f;
-	float zIncrement = -height * 0.5f;
-
-	int indexCounter = 0;
-
-	for (int i = 0; i < numVertsX; i++)
-	{
-		for (int j = 0; j < numVertsY; j++)
-		{
-			data.positions.push_back(vec3(xIncrement, 0.0f, zIncrement));
-			// verts[indexCounter] = VertexData(vec3(xIncrement, 0.0f, zIncrement), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, 0));
-			indexCounter++;
-			xIncrement += xSpacing;
-		}
-		xIncrement = -width * 0.5f;
-		zIncrement += ySpacing;
-	}
-
-	const int numOfIndices = 6 * (numVertsX - 1) * (numVertsY - 1); // 6 points per rectangle * number of rectangles
-	unsigned int* indices = new unsigned int[numOfIndices]; // 6 * numOfRectangles
-	data.indices.reserve(numOfIndices);
-	indexCounter = 0;
-	int vertex = 0;
-
-	// start at bottom left corner, create left most box by taking y point from above, then current y points (clockwise)
-	// then move right, at end of x row, increment y and continue
-	for (int i = 0; i < numVertsY - 1; i++) // numVertsY - 1 = number of spaces between points on that axis, which tell how many rectangles
-	{
-		// y
-		for (int j = 0; j < numVertsX - 1; j++)
-		{
-			//x
-			// top right triangle
-			data.indices[indexCounter] = vertex + numVertsX;
-			data.indices[indexCounter + 1] = vertex + numVertsX + 1;
-			data.indices[indexCounter + 2] = vertex + 1;
-
-			// bottom left triangle
-			data.indices[indexCounter + 3] = vertex + 1;
-			data.indices[indexCounter + 4] = vertex;
-			data.indices[indexCounter + 5] = vertex + numVertsX;
-			indexCounter += 6; // next triangle
-			vertex++; // next point
-		}
-		vertex++;
-	}
-
-	Mesh* pMesh = new Mesh();
-
-	// generate UVCOORDS
-	// CalculateXZUVCoords(verts, numVerts);
-
-	// scale UVCOORDS
-	// ScaleUVCOORDS(verts, numVerts, UVScale);
-
-	// pMesh->BufferMeshData(numVerts, verts, numOfIndices, indices); // GL_STATIC_DRAW
-	pMesh->BufferMeshData(&data);
-	pMesh->SetPrimitiveType(GL_TRIANGLES);
-
-	// delete[] verts;
-	delete[] indices;
-
-	return pMesh;
-}
+//Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivot, size, UVStart, UVOffset
+//{
+//	// TODO: Ability to create XY plane
+//	//// variables
+//	int numVertsX = (int)NumOfVerts.x;
+//	int numVertsY = (int)NumOfVerts.y;
+//	int numVerts = numVertsX * numVertsY;
+//
+//	// create array
+//	// VertexData *verts = new VertexData[numVerts]; //  (vertexCount.x-1)*(vertexCount-1)*2 triangles per square*3 indices per triangle;
+//	MeshData data;
+//
+//	float width = size.x;
+//	float height = size.y;
+//
+//	// spacing
+//	float xSpacing = width / (numVertsX - 1);
+//	float ySpacing = height / (numVertsY - 1);
+//
+//	// for-loop variables
+//	// increment
+//	float xIncrement = -width * 0.5f;
+//	float zIncrement = -height * 0.5f;
+//
+//	int indexCounter = 0;
+//
+//	for (int i = 0; i < numVertsX; i++)
+//	{
+//		for (int j = 0; j < numVertsY; j++)
+//		{
+//			data.positions.push_back(vec3(xIncrement, 0.0f, zIncrement));
+//			// verts[indexCounter] = VertexData(vec3(xIncrement, 0.0f, zIncrement), vec4(255, 255, 255, 255), vec2(0, 0), vec3(0, 0, 0));
+//			indexCounter++;
+//			xIncrement += xSpacing;
+//		}
+//		xIncrement = -width * 0.5f;
+//		zIncrement += ySpacing;
+//	}
+//
+//	const int numOfIndices = 6 * (numVertsX - 1) * (numVertsY - 1); // 6 points per rectangle * number of rectangles
+//	unsigned int* indices = new unsigned int[numOfIndices]; // 6 * numOfRectangles
+//	data.indices.reserve(numOfIndices);
+//	indexCounter = 0;
+//	int vertex = 0;
+//
+//	// start at bottom left corner, create left most box by taking y point from above, then current y points (clockwise)
+//	// then move right, at end of x row, increment y and continue
+//	for (int i = 0; i < numVertsY - 1; i++) // numVertsY - 1 = number of spaces between points on that axis, which tell how many rectangles
+//	{
+//		// y
+//		for (int j = 0; j < numVertsX - 1; j++)
+//		{
+//			//x
+//			// top right triangle
+//			data.indices[indexCounter] = vertex + numVertsX;
+//			data.indices[indexCounter + 1] = vertex + numVertsX + 1;
+//			data.indices[indexCounter + 2] = vertex + 1;
+//
+//			// bottom left triangle
+//			data.indices[indexCounter + 3] = vertex + 1;
+//			data.indices[indexCounter + 4] = vertex;
+//			data.indices[indexCounter + 5] = vertex + numVertsX;
+//			indexCounter += 6; // next triangle
+//			vertex++; // next point
+//		}
+//		vertex++;
+//	}
+//
+//	Mesh* pMesh = new Mesh();
+//
+//	// generate UVCOORDS
+//	// CalculateXZUVCoords(verts, numVerts);
+//
+//	// scale UVCOORDS
+//	// ScaleUVCOORDS(verts, numVerts, UVScale);
+//
+//	// pMesh->BufferMeshData(numVerts, verts, numOfIndices, indices); // GL_STATIC_DRAW
+//	pMesh->BufferMeshData(&data);
+//	pMesh->SetPrimitiveType(GL_TRIANGLES);
+//
+//	// delete[] verts;
+//	delete[] indices;
+//
+//	return pMesh;
+//}
 /* Mesh data assignment*/
 void MeshFactory::GenerateBox(Mesh* mesh, vec2 size, bool invertFaces)
 {

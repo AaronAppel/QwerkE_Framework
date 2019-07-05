@@ -49,40 +49,29 @@ Mesh* ResourceManager::InstantiateMesh(const char* meshFilePath)
 	else
 	{
 		// TODO: Dereference *s?
-		if (meshFilePath == "Box") // Asset name
+		if (strcmp(meshFilePath, MeshFolderPath("Create_Quad")) == 0) // Asset name
 		{
-			mesh = new Mesh();
-			t_MeshFactory.GenerateBox(mesh, vec2(1, 1));
+			mesh = t_MeshFactory.CreateQuad(vec2(10, 10));
 		}
-		else if (meshFilePath == null_mesh)
+		else if (strcmp(meshFilePath, null_mesh) == 0)
 		{
 			mesh = t_MeshFactory.ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
 		}
-		else if (meshFilePath == "Circle")
+		else if (strcmp(meshFilePath, MeshFolderPath("Create_Circle")) == 0)
 		{
 			mesh = MeshFactory::CreateCircle(1.0f, 20, vec2(1, 1));
 		}
-		else if (meshFilePath == "Cube")
-		{
-			mesh = new Mesh();
-			t_MeshFactory.GenerateCube(mesh, vec3(1, 1, 1)); // TODO: Has UV issues
-		}
-		else if (meshFilePath == "CreBox")
-		{
-			// mesh = t_MeshFactory.CreateBox(vec2(1, 1));
-			int bp = 1;
-		}
-		else if (meshFilePath == "CreCube")
+		else if (strcmp(meshFilePath, MeshFolderPath("Create_Cube")) == 0)
 		{
 			mesh = t_MeshFactory.CreateCube(vec3(1, 1, 1), vec2(1, 1), true);
 		}
-		else if (meshFilePath == "Plane")
-		{
-			mesh = t_MeshFactory.CreatePlane(vec2(10, 10), vec2(2, 2), vec2(1, 1));
-		}
-		else if (meshFilePath == "TutorialCube")
+		else if (strcmp(meshFilePath, MeshFolderPath("Tutorial_Cube")) == 0)
 		{
 			mesh = t_MeshFactory.TutorialCube(vec3(1, 1, 1));
+		}
+		else if (strcmp(meshFilePath, MeshFolderPath("Test_Plane")) == 0)
+		{
+			mesh = t_MeshFactory.CreateTestPlane();
 		}
 		// update to use new model loading capabilities
 		/*

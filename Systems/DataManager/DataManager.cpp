@@ -325,7 +325,12 @@ void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
 
                 renderable.SetShader(resMan->GetShaderProgram(shader->valuestring));
                 renderable.SetMaterial(resMan->GetMaterial(material->valuestring));
-                renderable.SetMesh(resMan->GetMeshFromFile(meshFile->valuestring, meshName->valuestring));
+
+				// Load Mesh
+				if (strcmp(meshFile->valuestring, "None") == 0)
+					renderable.SetMesh(resMan->GetMesh(meshName->valuestring));
+				else
+					renderable.SetMesh(resMan->GetMeshFromFile(meshFile->valuestring, meshName->valuestring));
 
                 rComp->AddRenderable(renderable);
             }
