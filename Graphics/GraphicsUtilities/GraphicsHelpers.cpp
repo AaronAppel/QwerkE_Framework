@@ -363,6 +363,7 @@ ShaderProgram* LoadShaderSchematic(const char* schematicPath)
 }
 
 // Shader variable prefixes
+// TODO: Store this somewhere else. Maybe as data.
 char* Helper_GetAttributePrefix()
 {
 	return (char*)"a_"; // for attributes or i_ for inputs

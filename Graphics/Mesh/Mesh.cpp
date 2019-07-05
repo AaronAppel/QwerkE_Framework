@@ -3,6 +3,7 @@
 #include "../Shader/ShaderProgram.h"
 #include "../GraphicsUtilities/GraphicsHelpers.h"
 #include "../Shader/ShaderProgram.h"
+#include "../Shader/ShaderVariable_Defines.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
 
@@ -13,13 +14,13 @@
 Mesh::Mesh()
 {
  	glGenBuffers(1, &m_VBO);
-	glGenBuffers(1, &m_EBO);
+	glGenBuffers(1, &m_EBO); // TODO: Always generate an EBO? What if a mesh does not use indices (silly, but still)?
 	glGenVertexArrays(1, &m_VAO);
 }
 
 Mesh::~Mesh()
 {
-	// Move code to a function to be used for unloading mesh data
+	// TODO: Move code to a function (Destroy() or something) to be used for unloading mesh data and rebuffering
 	glDeleteBuffers(1, &m_VBO);
 	glDeleteBuffers(1, &m_EBO);
 	glDeleteVertexArrays(1, &m_VAO);
@@ -35,7 +36,8 @@ void Mesh::BufferMeshData(MeshData* data)
 	}
 
 	// TODO: If VBO has data in it, handle deletion and re-assignment of new data
-	if (m_BufferData.numPositions != 0) { // Empty mesh
+	if (m_BufferData.numPositions != 0) // Empty mesh?
+    {
 		QwerkE::LogError(__FILE__, __LINE__, "Mesh already has vertex data!");
 		assert(false);
 	}
@@ -43,7 +45,7 @@ void Mesh::BufferMeshData(MeshData* data)
 	// Save buffer info for later use
 	m_BufferData = data->BufferInfo();
 
-	if (m_BufferData.BufferSize() == 0)
+	if (m_BufferData.BufferSize() < 1)
 	{
 		QwerkE::LogError(__FILE__, __LINE__, "Error buffering mesh vertex data!");
 		assert(false);
@@ -98,16 +100,16 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 {
 	// Tell the shader where to look for the mesh data.
 	// This needs to be called on shader changes but does not
-	// affect the mesh at all.
+	// affect the mesh buffered data at all.
 
 	CheckGraphicsErrors(__FILE__, __LINE__);
 
-	if (shader == nullptr) { return; } // null ShaderProgram*
+	if (shader == nullptr) { return; } // Null ShaderProgram*?
 
-	// Set draw function
-	if (m_BufferData.numIndices > 0) { m_DrawFunc = &Mesh::DrawElements; } // draw using elements
-	else if (m_BufferData.numPositions > 0) { m_DrawFunc = &Mesh::DrawArrays; } // no IBOs
-	else { // not initialized
+	// Set mesh draw function
+	if (m_BufferData.numIndices > 0) { m_DrawFunc = &Mesh::DrawElements; } // Draw using elements
+	else if (m_BufferData.numPositions > 0) { m_DrawFunc = &Mesh::DrawArrays; } // No IBO or indices
+	else { // Data not initialized/invalid
 		QwerkE::LogWarning(__FILE__, __LINE__, "Mesh assigned null draw method");
 		m_DrawFunc = &Mesh::NullDraw;
 	}
@@ -119,66 +121,38 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 
 	CheckGraphicsErrors(__FILE__, __LINE__);
 
-	// Assign ShaderProgram() attribute data
+	// Assign ShaderProgram() attribute data by initializing m_VAO attribute values
 	const std::vector<std::string>* attributes = shader->SeeAttributes();
-	int vertexDataStride = 0; // m_DataSizes.Stride();
+	int vertexDataStride = 0; // NOTE: Currently values are packed contiguously. No values are skipped when reading.
 
 	for (unsigned int i = 0; i < attributes->size(); i++)
 	{
-		if (StringCompare(attributes->at(i), "Position"))
-		{
-			GLuint aPos = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Position").c_str());
-			if (aPos != -1)
-			{
-				glVertexAttribPointer(aPos, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.PositionOff()); // GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid * pointer)
-				glEnableVertexAttribArray(aPos);
-			}
-		}
-		else if (StringCompare(attributes->at(i), "Color"))
-		{
-			GLuint aColor = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Color").c_str());
-			if (aColor != -1)
-			{
-				glVertexAttribPointer(aColor, 4, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.ColorOff());
-				glEnableVertexAttribArray(aColor);
-			}
-		}
-		else if (StringCompare(attributes->at(i), "UV"))
-		{
-			GLuint aUV = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "UV").c_str());
-			if (aUV != -1)
-			{
-				glVertexAttribPointer(aUV, 2, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.UVOff());
-				glEnableVertexAttribArray(aUV);
-			}
-		}
-		else if (StringCompare(attributes->at(i), "Normal"))
-		{
-			GLuint aNormal = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Normal").c_str());
-			if (aNormal != -1)
-			{
-				glVertexAttribPointer(aNormal, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.NormalOff());
-				glEnableVertexAttribArray(aNormal);
-			}
-		}
-		else if (StringCompare(attributes->at(i), "Tangent"))
-		{
-			GLuint aTangent = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Tangent").c_str());
-			if (aTangent != -1)
-			{
-				glVertexAttribPointer(aTangent, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.TangentsOff());
-				glEnableVertexAttribArray(aTangent);
-			}
-		}
-		else if (StringCompare(attributes->at(i), "Bitangent"))
-		{
-			GLuint aBitangent = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), "Bitangent").c_str());
-			if (aBitangent != -1)
-			{
-				glVertexAttribPointer(aBitangent, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.BitangentsOff());
-				glEnableVertexAttribArray(aBitangent);
-			}
-		}
+        GLuint attributeLoc = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), attributes->at(i).c_str()).c_str());
+        if (attributeLoc != -1)
+        {
+            if (StringCompare(attributes->at(i), vertexPosition))
+                // glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid * pointer)
+                glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.PositionOffset());
+
+            else if (StringCompare(attributes->at(i), vertexColour))
+                glVertexAttribPointer(attributeLoc, 4, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.ColorOffset());
+
+            else if (StringCompare(attributes->at(i), vertexUV))
+                glVertexAttribPointer(attributeLoc, 2, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.UVOffset());
+
+            else if (StringCompare(attributes->at(i), vertexNormal))
+                glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.NormalOffset());
+
+            else if (StringCompare(attributes->at(i), vertexTangent))
+                glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.TangentsOffset());
+
+            else if (StringCompare(attributes->at(i), vertexBitangent))
+                glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.BitangentsOffset());
+
+            glEnableVertexAttribArray(attributeLoc); // Enable
+        }
+        else
+            QwerkE::LogWarning(__FILE__, __LINE__, "Attribute name not found/supported: %s", attributes->at(i));
 	}
 	// TODO: Check if vertex arrays should to be disabled after drawing
 	glBindVertexArray(0); // Unbind
@@ -188,7 +162,7 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 void Mesh::DrawElements()
 {
 	glBindVertexArray(m_VAO); // Enable attribute arrays
-	// if read access violation it is because SetupAttributes was not called
+	// KNOWN ISSUE: If there is a read access violation, it is because SetupAttributes was not called
 	glDrawElements(m_PrimitiveType, m_BufferData.numIndices, GL_UNSIGNED_INT, 0); // (drawMode, numIndices, EBOType, dataOffset)
 	glBindVertexArray(0); // unbind
 }
@@ -202,7 +176,7 @@ void Mesh::DrawArrays()
 
 void Mesh::NullDraw()
 {
-	// TODO:
+	// TODO: Should there be code here?
 	// SetupShaderAttributes();
 	// if (m_IndexCount > 0) { DrawElements(); }
 	// else if (m_VertCount > 0) { DrawArrays(); }

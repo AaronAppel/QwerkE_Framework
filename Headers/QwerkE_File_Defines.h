@@ -28,7 +28,7 @@
 #define null_frag_component "null_shader.frag"
 #define null_geo_component "null_shader.geo"
 
-// standardized file extensions
+// Standardized file extensions
 #define vertex_shader_ext "vert"
 #define fragment_shader_ext "frag"
 #define geometry_shader_ext "geo"
@@ -37,5 +37,8 @@
 #define shader_schematic_ext "ssch"
 #define scene_ext "qscene"
 #define configs_ext "qpref"
+
+// Standardized file names
+#define no_file "None"
 
 #endif // !_QwerkE_File_Defines_H_

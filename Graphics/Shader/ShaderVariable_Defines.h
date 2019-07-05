@@ -14,11 +14,16 @@
 // List all shader variable strings to read and change them
 // easily and maintain consistency.
 
+// NOTE: Do not include prefixes. There will be added to the front to variable
+// name at run time. The value used is in GraphicsHelpers.cpp
+
 /* Attributes */
 #define vertexPosition "Position"
-#define vertexNormal "Normal"
-#define vertexUV "UV"
 #define vertexColour "Color"
+#define vertexUV "UV"
+#define vertexNormal "Normal"
+#define vertexTangent "Tangent"
+#define vertexBitangent "Bitangent"
 
 /* Uniforms */
 // Transforms

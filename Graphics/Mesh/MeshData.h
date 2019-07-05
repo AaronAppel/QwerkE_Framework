@@ -5,15 +5,15 @@
 
 struct MeshBufferInfo
 {
-	int numPositions = 0;
-	int numIndices = 0;
-	int numColors = 0;
-	int numUVs = 0;
-	int numNormals = 0;
-	int numTangents = 0;
-	int numBitangents = 0;
+	unsigned int numPositions = 0;
+	unsigned int numIndices = 0;
+	unsigned int numColors = 0;
+	unsigned int numUVs = 0;
+	unsigned int numNormals = 0;
+	unsigned int numTangents = 0;
+	unsigned int numBitangents = 0;
 
-	int SingleVertexByteSize() // Size in bytes of each value * 1 summed
+	unsigned int SingleVertexByteSize() // Size in bytes of each value * 1 summed
 	{
 		return sizeof(numPositions) +
 			sizeof(numColors) +
@@ -23,14 +23,14 @@ struct MeshBufferInfo
 			sizeof(numBitangents);
 	}
 
-	int BufferSize() { return BitangentsOff() + sizeof(vec3) * numBitangents; }
+	unsigned int BufferSize() { return BitangentsOffset() + sizeof(vec3) * numBitangents; }
 
-	int PositionOff() { return 0; } // Point to start of data (index 0)
-	int ColorOff() { return sizeof(vec3) * numPositions; } // Number of bytes positions take
-	int UVOff() { return ColorOff() + (sizeof(vec4) * numColors); } // Number of bytes positions take + Offset of colors and positions
-	int NormalOff() { return UVOff() + (sizeof(vec2) * numUVs); }
-	int TangentsOff() { return NormalOff() + (sizeof(vec3) * numNormals); }
-	int BitangentsOff() { return TangentsOff() + (sizeof(vec3) * numTangents); }
+	unsigned int PositionOffset() { return 0; } // Point to start of data (index 0)
+	unsigned int ColorOffset() { return sizeof(vec3) * numPositions; } // Number of bytes positions take
+	unsigned int UVOffset() { return ColorOffset() + (sizeof(vec4) * numColors); } // Number of bytes positions take + Offset of colors and positions
+	unsigned int NormalOffset() { return UVOffset() + (sizeof(vec2) * numUVs); }
+	unsigned int TangentsOffset() { return NormalOffset() + (sizeof(vec3) * numNormals); }
+	unsigned int BitangentsOffset() { return TangentsOffset() + (sizeof(vec3) * numTangents); }
 };
 
 struct MeshData

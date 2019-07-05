@@ -228,7 +228,12 @@ void DataManager::AddComponentTocJSONItem(cJSON* componentList, const Component*
 
 			AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
 			AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->GetMaterialName().c_str()));
-			AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
+
+			if (strcmp(renderablesList->at(i).GetMesh()->GetFileName().c_str(), gc_DefaultCharPtrValue) != 0)
+                AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
+            else
+                AddItemToArray(renderable, CreateString("MeshFile", no_file));
+
 			AddItemToArray(renderable, CreateString("MeshName", renderablesList->at(i).GetMesh()->GetName().c_str()));
 
 			AddItemToArray(t_Renderables, renderable);
@@ -327,7 +332,7 @@ void DataManager::AddComponentToGameObject(GameObject* object, cJSON* item)
                 renderable.SetMaterial(resMan->GetMaterial(material->valuestring));
 
 				// Load Mesh
-				if (strcmp(meshFile->valuestring, "None") == 0)
+				if (strcmp(meshFile->valuestring, no_file) == 0)
 					renderable.SetMesh(resMan->GetMesh(meshName->valuestring));
 				else
 					renderable.SetMesh(resMan->GetMeshFromFile(meshFile->valuestring, meshName->valuestring));
@@ -391,25 +396,25 @@ void DataManager::AddRoutineTocJSONItem(cJSON* routineList, Routine* routine)
 
 		vec3 pos = tRoutine->GetPositionOff();
 		cJSON* position = CreateArray("Position");
-		AddItemToArray(position, CreateString("PositionX", std::to_string(pos.x).c_str()));
-		AddItemToArray(position, CreateString("PositionY", std::to_string(pos.y).c_str()));
-		AddItemToArray(position, CreateString("PositionZ", std::to_string(pos.z).c_str()));
+		AddItemToArray(position, CreateNumber("PositionX", pos.x));
+        AddItemToArray(position, CreateNumber("PositionY", pos.y));
+        AddItemToArray(position, CreateNumber("PositionZ", pos.z));
 
 		AddItemToArray(transform, position);
 
 		vec3 rot = tRoutine->GetRotationOff();
 		cJSON* rotation = CreateArray("Rotation");
-		AddItemToArray(rotation, CreateString("RotationX", std::to_string(rot.x).c_str()));
-		AddItemToArray(rotation, CreateString("RotationY", std::to_string(rot.y).c_str()));
-		AddItemToArray(rotation, CreateString("RotationZ", std::to_string(rot.z).c_str()));
+		AddItemToArray(rotation, CreateNumber("RotationX", rot.x));
+		AddItemToArray(rotation, CreateNumber("RotationY", rot.y));
+		AddItemToArray(rotation, CreateNumber("RotationZ", rot.z));
 
 		AddItemToArray(transform, rotation);
 
 		vec3 sca = tRoutine->GetScaleOff();
 		cJSON* scale = CreateArray("Scale");
-		AddItemToArray(scale, CreateString("ScaleX", std::to_string(sca.x).c_str()));
-		AddItemToArray(scale, CreateString("ScaleY", std::to_string(sca.y).c_str()));
-		AddItemToArray(scale, CreateString("ScaleZ", std::to_string(sca.z).c_str()));
+		AddItemToArray(scale, CreateNumber("ScaleX", sca.x));
+		AddItemToArray(scale, CreateNumber("ScaleY", sca.y));
+		AddItemToArray(scale, CreateNumber("ScaleZ", sca.z));
 
 		AddItemToArray(transform, scale);
 
