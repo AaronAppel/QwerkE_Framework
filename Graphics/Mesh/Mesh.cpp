@@ -73,13 +73,12 @@ void Mesh::BufferMeshData(MeshData* data)
 	delete[] buffer;
 }
 
-// TODO: Could create a reusable packer function. Maybe with variables arguments
 char* Mesh::PackModelData(MeshData* data)
 {
 	char* buffer = new char[m_BufferData.BufferSize()];
 	int currentIndex = 0;
 
-	// Write raw data into a buffer, but only if it was loaded into MeshData
+	// Write raw data into a buffer, but only if it was loaded into the MeshData object
 	memcpy(&buffer[currentIndex], data->positions.data(), data->positions.size() * sizeof(vec3));
 	currentIndex += data->positions.size() * sizeof(vec3);
 	memcpy(&buffer[currentIndex], data->colors.data(), data->colors.size() * sizeof(vec4));
@@ -148,6 +147,11 @@ void Mesh::SetupShaderAttributes(ShaderProgram* shader)
 
             else if (StringCompare(attributes->at(i), vertexBitangent))
                 glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.BitangentsOffset());
+			else
+			{
+				QwerkE::LogWarning(__FILE__, __LINE__, "Attribute name not found/supported: %s", attributes->at(i));
+				continue;
+			}
 
             glEnableVertexAttribArray(attributeLoc); // Enable
         }

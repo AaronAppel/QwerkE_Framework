@@ -22,6 +22,8 @@ public:
 	void SetHandle(GLuint handle) { m_ShaderHandle = handle; }
 	void SetStringData(const char* shaderData) { m_ShaderData = shaderData; }
 
+	void DestroyShaderData() { delete m_ShaderData; }
+
 private:
 	std::string m_Name = gc_DefaultStringValue;
 	std::string m_Type = gc_DefaultStringValue; // TODO: Think of making an enum for shader component type, or use GLenum

@@ -114,7 +114,7 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 	}
 
 	/* Assign other values */
-	renderable->GetShaderSchematic()->SetUniformFloat1("Shine", 0.5f); // TODO: Improve
+	// renderable->GetShaderSchematic()->SetUniformFloat1("Shine", 0.5f); // TODO: Improve
 
 }
 // Lighting
