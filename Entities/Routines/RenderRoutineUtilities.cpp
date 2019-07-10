@@ -38,13 +38,12 @@ void RenderRoutine::Setup2DTransform(CameraComponent* camera, Renderable* render
 
 	worldMat.CreateSRT(m_pParent->GetScale(), m_pParent->GetRotation(), m_pParent->GetPosition());
 
-	t_pShader->SetUniformMat4(transform2D, &worldMat.m11); // TODO: Set 2DTransform
+	t_pShader->SetUniformMat4(transform2D, &worldMat.m11); // TODO: Review 2DTransform setup
 }
 /* Fragment uniform value assignment */
 void RenderRoutine::SetupColorUniforms(CameraComponent* cameraObject, Renderable* renderable)
 {
 	ShaderProgram* t_pShader = renderable->GetShaderSchematic();
-	// TODO: Still using colour?
 	vec4 t_Colour = vec4(0,1,0,1); // m_pRenderComp->GetColour();
 
 	t_pShader->SetUniformFloat4(objectColor, t_Colour.x, t_Colour.y, t_Colour.z, t_Colour.w);
@@ -54,6 +53,8 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 {
 	Material* material = renderable->GetMaterialSchematic();
 	const std::map<eMaterialMaps, Texture*>* materialList = material->SeeMaterials();
+    ShaderProgram* shader = renderable->GetShaderSchematic();
+    // TODO: Check uniforms from : const std::vector<std::string>* uniforms = shader->SeeUniforms();
 
 	/* Assign material texture values */
 	int counter = 0;
@@ -62,59 +63,59 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 		glActiveTexture(GL_TEXTURE0 + counter);
 		glBindTexture(GL_TEXTURE_2D, p.second->s_Handle);
 
-		switch (p.first)
+		switch (p.first) // TODO: Stop activating textures the shader does not use
 		{
 		case eMaterialMaps::MatMap_Ambient:
-			renderable->GetShaderSchematic()->SetUniformInt1(AmbientName, counter);
+            shader->SetUniformInt1(AmbientName, counter);
 			break;
 		case eMaterialMaps::MatMap_Diffuse:
-			renderable->GetShaderSchematic()->SetUniformInt1(DiffuseName, counter);
+            shader->SetUniformInt1(DiffuseName, counter);
 			break;
 		case eMaterialMaps::MatMap_Specular:
-			renderable->GetShaderSchematic()->SetUniformInt1(SpecularName, counter);
+			shader->SetUniformInt1(SpecularName, counter);
             break;
         case eMaterialMaps::MatMap_Emissive:
-            renderable->GetShaderSchematic()->SetUniformInt1(EmissiveName, counter);
+            shader->SetUniformInt1(EmissiveName, counter);
             break;
         case eMaterialMaps::MatMap_Height:
-            renderable->GetShaderSchematic()->SetUniformInt1(HeightName, counter);
+            shader->SetUniformInt1(HeightName, counter);
             break;
         case eMaterialMaps::MatMap_Normals:
-            renderable->GetShaderSchematic()->SetUniformInt1(NormalsName, counter);
+            shader->SetUniformInt1(NormalsName, counter);
             break;
         case eMaterialMaps::MatMap_Shininess:
-            renderable->GetShaderSchematic()->SetUniformInt1(ShininessName, counter);
+            shader->SetUniformInt1(ShininessName, counter);
             break;
         case eMaterialMaps::MatMap_Opacity:
-            renderable->GetShaderSchematic()->SetUniformInt1(OpacityName, counter);
+            shader->SetUniformInt1(OpacityName, counter);
             break;
         case eMaterialMaps::MatMap_Displacement:
-            renderable->GetShaderSchematic()->SetUniformInt1(DisplacementName, counter);
+            shader->SetUniformInt1(DisplacementName, counter);
             break;
         case eMaterialMaps::MatMap_LightMap:
-            renderable->GetShaderSchematic()->SetUniformInt1(LightMapName, counter);
+            shader->SetUniformInt1(LightMapName, counter);
             break;
         case eMaterialMaps::MatMap_Reflection:
-            renderable->GetShaderSchematic()->SetUniformInt1(ReflectionName, counter);
+            shader->SetUniformInt1(ReflectionName, counter);
             break;
         case eMaterialMaps::MatMap_Albedo:
-            renderable->GetShaderSchematic()->SetUniformInt1(AlbedoName, counter);
+            shader->SetUniformInt1(AlbedoName, counter);
             break;
         case eMaterialMaps::MatMap_Metallic:
-            renderable->GetShaderSchematic()->SetUniformInt1(MetallicName, counter);
+            shader->SetUniformInt1(MetallicName, counter);
             break;
         case eMaterialMaps::MatMap_AmbientOcclusion:
-            renderable->GetShaderSchematic()->SetUniformInt1(AmbientOcclusionName, counter);
+            shader->SetUniformInt1(AmbientOcclusionName, counter);
             break;
         case eMaterialMaps::MatMap_Roughness:
-            renderable->GetShaderSchematic()->SetUniformInt1(RougnessName, counter);
+            shader->SetUniformInt1(RougnessName, counter);
             break;
 		}
 		counter++;
 	}
 
 	/* Assign other values */
-	// renderable->GetShaderSchematic()->SetUniformFloat1("Shine", 0.5f); // TODO: Improve
+	shader->SetUniformFloat1("Shine", 0.5f); // TODO: Improve
 
 }
 // Lighting

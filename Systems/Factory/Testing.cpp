@@ -18,6 +18,8 @@
 // Scenery + Props
 GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 {
+    if (!scene) return nullptr;
+
 	GameObject* t_SkyBox = this->CreateGameObject(scene);
 	t_SkyBox->SetPosition(position);
 	t_SkyBox->SetTag(GO_Tag_SkyBox);
@@ -43,6 +45,8 @@ GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
 // Testing
 GameObject* Factory::CreateTestCube(Scene* scene, vec3 position)
 {
+    if (!scene) return nullptr;
+
 	GameObject* t_Cube = new GameObject(scene, position);
 	// info //
 	t_Cube->SetName("Object" + std::to_string(helpers_GetUniqueID()));
@@ -84,6 +88,8 @@ GameObject* Factory::CreateTestCube(Scene* scene, vec3 position)
 
 GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 {
+    if (!scene) return nullptr;
+
 	GameObject* t_Model = new GameObject(scene, position);
 	// info //
 	t_Model->SetName("Object" + std::to_string(helpers_GetUniqueID()));
@@ -104,4 +110,23 @@ GameObject* Factory::CreateTestModel(Scene* scene, vec3 position)
 
 	delete t_Model;
 	return nullptr;
+}
+
+GameObject* Factory::CreateEmptyGameObject(Scene* scene, vec3 position)
+{
+    if (!scene) return nullptr;
+
+    GameObject* t_Object = new GameObject(scene, position);
+
+    if (scene)
+    {
+        if (scene->AddObjectToScene(t_Object))
+        {
+            m_Created++;
+            return t_Object;
+        }
+    }
+
+    delete t_Object;
+    return nullptr;
 }

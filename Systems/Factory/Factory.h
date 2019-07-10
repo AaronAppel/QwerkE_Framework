@@ -45,7 +45,8 @@ public:
 
 	// Testing
 	GameObject* CreateTestModel(Scene* scene, vec3 position); // Model
-	GameObject* CreateTestCube(Scene* scene, vec3 position);
+    GameObject* CreateTestCube(Scene* scene, vec3 position);
+    GameObject* CreateEmptyGameObject(Scene* scene, vec3 position);
 
 private:
 	// Variables
