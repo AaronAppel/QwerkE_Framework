@@ -290,7 +290,7 @@ namespace QwerkE
 				deltaTime = currentFrame - lastFrame; // time since last frame
 				lastFrame = currentFrame; // save last frame
 
-										  // FPS display + tracking
+				// FPS display + tracking
 				if (timeSincePrint >= printPeriod) // print period
 				{
 					frameRate = 1.0f / timeSincePrint * framesSincePrint;
@@ -322,10 +322,7 @@ namespace QwerkE
 					framesSincePrint++; // Framerate tracking
 					timeSinceLastFrame = 0.0; // FPS_Max
 				}
-				else
-				{
-					// skip frame
-				}
+				// else : skip frame
 			}
 
 			// unlock services for clean up
@@ -344,12 +341,12 @@ namespace QwerkE
 			// TODO: Reset things...
 			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
 			inputManager->NewFrame();
-			ImGui_ImplGlfwGL3_NewFrame(); // after InputManager gets reset
 		}
 
 		void Framework::Input()
 		{
 			glfwPollEvents(); // TODO: Better GLFW interface?
+			ImGui_ImplGlfwGL3_NewFrame(); // after InputManager gets reset, and after glfw input polling is done
 			// TODO: Tell input manager it is a new frame and it should update key states
 		}
 
@@ -402,6 +399,11 @@ namespace QwerkE
 			ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 
 			m_Window->SwapBuffers(); // Change frame buffers
+		}
+
+		void Framework::EndFrame()
+		{
+			// Post frame cleanup? Maybe tell memory manager to clean up 1 frame stacks?
 		}
 
 		bool Framework::StillRunning()

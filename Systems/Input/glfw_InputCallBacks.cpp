@@ -2,6 +2,7 @@
 
 #ifdef dearimgui
 #include "../../QwerkE_Common/Libraries/imgui/imgui.h"
+#include "../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
 #endif // dearimgui
 
 #ifdef GLFW3
@@ -51,7 +52,7 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
 			eKeyState::eKeyState_Release);
 	}
 
-#ifdef dearimgui
+#ifdef dearimgui // TODO: Checkout how to call imgui properly
 	ImGuiIO& io = ImGui::GetIO();
 	if (action == GLFW_PRESS)
 		io.KeysDown[key] = true;
@@ -70,7 +71,7 @@ void InputManager::char_callback(GLFWwindow* window, unsigned int codePoint)
 	// l_InputManager->ProcessKeyEvent(l_InputManager->GLFWToQwerkEKey(key), eKeyState::eKeyState_Down);
 	int bp = 1;
 
-#ifdef dearimgui
+#ifdef dearimgui // TODO: Checkout how to call imgui properly
 	ImGuiIO& io = ImGui::GetIO();
 	if (codePoint > 0 && codePoint < 0x10000)
 		io.AddInputCharacter((unsigned short)codePoint);
@@ -117,9 +118,7 @@ void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yo
 	// ProcessMouse();
 
 #ifdef dearimgui
-	ImGuiIO& io = ImGui::GetIO();
-	io.MouseWheelH += (float)xoffset;
-	io.MouseWheel += (float)yoffset;
+	ImGui_ImplGlfwGL3_ScrollCallback(window, xoffset, yoffset);
 #endif // dearimgui
 }
 void InputManager::joystick_callback(int joy, int event)
