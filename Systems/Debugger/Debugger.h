@@ -39,6 +39,11 @@ namespace QwerkE
         OutputPrint("\n%s(%i): Q warning: %s", filePath, line, message);
         ConsolePrint(message);
     }
+    static void LogOutput(const char* filePath, int line, const char* message, ...)
+    {
+        OutputPrint("\n%s(%i): Q output: %s", filePath, line, message);
+        ConsolePrint(message);
+    }
 
     class Debugger
     {

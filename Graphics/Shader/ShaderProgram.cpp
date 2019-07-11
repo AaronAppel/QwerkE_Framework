@@ -32,6 +32,8 @@ void ShaderProgram::RecompileShaderType(GLenum type, const char* shaderData)
 		((ShaderFactory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(this);
 
 		FindAttributesAndUniforms();
+
+        QwerkE::LogOutput(__FILE__, __LINE__, "Recompiled shader %s");
 	}
 }
 

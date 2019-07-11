@@ -5,10 +5,7 @@
 	An interface for multi threaded tasks
 	https://computing.llnl.gov/tutorials/pthreads/
 */
-// TODO: Remove have struct order dependency
-#ifndef HAVE_STRUCT_TIMESPEC
-#define HAVE_STRUCT_TIMESPEC
-#endif
+
 #include "../../QwerkE_Common/Libraries/pThreads/pthread.h"
 
 class QJob
