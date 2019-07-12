@@ -5,6 +5,7 @@ void GLCheckforErrors();
 void GLCheckforErrors(char* file, int line);
 void GLCheckforErrors(const char* file, int line);
 
+GLuint LoadTextureDataToOpenGL(QImageFile& fileData);
 GLuint GLLoad2DTexture(const char* filePath, bool flipVertically = 0);
 GLuint GLLoadCubeMapTexture(const char* filePath);
 

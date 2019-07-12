@@ -46,6 +46,38 @@ void GLCheckforErrors(const char* file, int line)
 		OutputPrint("Invalid operation.");
 }
 
+GLuint LoadTextureDataToOpenGL(QImageFile& fileData)
+{
+	// buffer data in GPU RAM
+	GLuint texhandle = 0;
+	glGenTextures(1, &texhandle);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texhandle);
+	CheckGraphicsErrors(__FILE__, __LINE__);
+	// https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
+	glTexImage2D(GL_TEXTURE_2D, 0, fileData.s_Channels, fileData.s_Width, fileData.s_Height, 0, fileData.s_Channels, GL_UNSIGNED_BYTE, fileData.s_Data);
+
+	CheckGraphicsErrors(__FILE__, __LINE__);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // TODO: Handle texture parameters better
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	// glGenerateMipmap(GL_TEXTURE_2D); // Create mipmap
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	CheckGraphicsErrors(__FILE__, __LINE__);
+
+	// TODO: need to free() allocations from lodepng
+	// delete[] imageData; // clean up
+
+	return texhandle;
+}
+
 GLuint GLLoad2DTexture(const char* filePath, bool flipVertically)
 {
 	// TODO: If this fails should I return a null texture?

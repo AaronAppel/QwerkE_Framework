@@ -55,9 +55,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\Event.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\EventManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\InputEvent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Cameras.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Characters.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.cpp" />
@@ -161,9 +163,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\Event.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\EventManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\InputEvent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h" />

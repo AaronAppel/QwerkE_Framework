@@ -341,6 +341,9 @@ namespace QwerkE
 			// TODO: Reset things...
 			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
 			inputManager->NewFrame();
+
+			// TODO: Process events every frame
+			((EventManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Event_System))->ProcessEvents();
 		}
 
 		void Framework::Input()

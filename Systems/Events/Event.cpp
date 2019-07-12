@@ -10,12 +10,12 @@ Event::~Event()
 
 void Event::SetID(int id)
 {
-    m_EventID = id;
+	m_EventID = id;
 }
 
 int Event::GetID()
 {
-    return m_EventID;
+	return m_EventID;
 }
 
 eEventTypes Event::GetType()
@@ -25,10 +25,10 @@ eEventTypes Event::GetType()
 
 void Event::SetValue(int value)
 {
-    m_Value = value;
+	m_Value = value;
 }
 
 int Event::GetValue()
 {
-    return m_Value;
+	return m_Value;
 }
