@@ -33,9 +33,16 @@ void EventManager::ProcessEvents()
 	for (int i = 0; i < size; i++)
 	{
 		Event* _event = m_EventList.front();
+		_event->Process();
 
 		switch (_event->GetType())
 		{
+		case eEventTypes::eEvent_AssetLoaded:
+			break;
+		case eEventTypes::eEvent_JobQueued:
+			break;
+		case eEventTypes::eEvent_InputEvent:
+			break;
 		case eEventTypes::eEvent_Invalid:
 			OutputPrint("\nEvent had invalid type!\n");
 			break;
@@ -44,6 +51,6 @@ void EventManager::ProcessEvents()
 			break;
 		}
 
-		m_EventList.pop();
+		m_EventList.pop(); // Remove event from queue
 	}
 }
