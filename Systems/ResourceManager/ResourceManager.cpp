@@ -8,6 +8,7 @@
 #include "../ServiceLocator.h"
 
 #include <map>
+#include <memory>
 
 ResourceManager::ResourceManager()
 {
@@ -189,20 +190,39 @@ Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshNam
 		return m_NullMesh;
 }
 
+void ResourceManager::UpdateTexture(const char* name, int handle)
+{
+	m_Textures[name]->s_Handle = (GLuint)handle;
+}
+
 Texture* ResourceManager::GetTexture(const char* name)
 {
 	if (m_Textures.find(name) != m_Textures.end())
 		return m_Textures[name];
 
+	// TODO: After a texture has been requested, create an entry in the map with null data.
+	// When the data is loaded, replace the null data.
+	// This is too avoid multiple loading of the same assets.
+
 	//* <-- toggle double slash
 	else
-	{
+    {
+		// NOTE: Auto loading should be avoided. Callers expecting to load a file should check if it exists already.
 		if (FileExists(TextureFolderPath(name)))
 		{
+            Texture* tex = new Texture();
+            tex->s_Handle = m_Textures[null_texture]->s_Handle;
+            tex->s_Name = GetFileNameWithExt(name);
+			m_Textures[tex->s_Name] = tex;
+
 			JobManager* jMan = (JobManager*)QwerkE::ServiceLocator::GetService(eEngineServices::JobManager);
 			jMan->ScheduleTask(new QLoadAsset(name));
+			return m_Textures[tex->s_Name];
 		}
-		return m_Textures[null_texture]; // return temp asset to use
+		else
+		{
+			return m_Textures[null_texture];
+		}
 	}
 	/*/
 	return InstantiateTexture(TextureFolderPath(name));
@@ -214,7 +234,7 @@ Texture* ResourceManager::GetTextureFromPath(const char* filePath)
 	if (TextureExists(GetFileNameWithExt(filePath).c_str()))
 		return m_Textures[GetFileNameWithExt(filePath).c_str()];
 
-	InstantiateTexture(filePath);
+	return InstantiateTexture(filePath);
 }
 
 Material* ResourceManager::GetMaterial(const char* name)

@@ -253,7 +253,6 @@ void Scene::RemoveObjectFromScene(GameObject* object)
 		{
 			// Player specific
 		}
-		m_SceneDrawList._Make_iterator(&object);
 
 		std::vector<GameObject*>::iterator it = m_SceneDrawList.begin();
 		m_SceneDrawList.erase(std::remove(m_SceneDrawList.begin(), m_SceneDrawList.end(), object), m_SceneDrawList.end());

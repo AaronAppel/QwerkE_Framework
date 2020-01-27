@@ -144,6 +144,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Directory_Defines.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Enums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_File_Defines.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Flags.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Global_Constants.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Platform.h" />

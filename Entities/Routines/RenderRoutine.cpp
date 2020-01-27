@@ -53,7 +53,6 @@ void RenderRoutine::DrawMeshData(GameObject* a_Camera)
 		return;
 	}
 
-	/* Variables */
 	CameraComponent* t_pCamera = (CameraComponent*)a_Camera->GetComponent(Component_Camera);
 
 	std::vector<Renderable> t_Renderables = *m_pRenderComp->LookAtRenderableList();

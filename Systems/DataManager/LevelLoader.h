@@ -7,6 +7,9 @@
 */
 #include "../../Systems/DataManager/DataManager.h"
 
+// TODO: Rename to SceneLoader or something less level/game specific.
+// This functionality should be reusable for non level scenes like menus
+
 class Scene;
 class Factory;
 

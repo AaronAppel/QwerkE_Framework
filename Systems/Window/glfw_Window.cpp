@@ -2,7 +2,7 @@
 #include "CallbackFunctions.h"
 #include "WindowManager.h"
 #include "../ServiceLocator.h"
-#include "../../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
+#include "../../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
 
 void close_callback(GLFWwindow* window);
 
@@ -21,10 +21,11 @@ glfw_Window::glfw_Window(int windowWidth, int windowHeight, const char* windowTi
 	glfwSwapInterval(0); // TODO: Add VSynch control and toggling
 	glfwMakeContextCurrent(m_Window);
 	glfwFocusWindow(m_Window);
-	ImGui_ImplGlfwGL3_Init(m_Window, false);
 	m_IsFocused = true;
 	SetupCallbacks(m_Window); // TODO: Window won't respond to clicking corner 'x'... sometimes?
-	glfwSetWindowCloseCallback(m_Window, close_callback);
+    glfwSetWindowCloseCallback(m_Window, close_callback);
+
+    ImGui_ImplGlfw_InitForOpenGL(m_Window, false);
 }
 
 glfw_Window::~glfw_Window()

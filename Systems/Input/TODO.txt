@@ -1,0 +1,4 @@
+These files need to be organized and abstracted from libraries and platforms.
+There could be folders for GLFW, Windows, etc.
+The higher level independance layer could reside in the root, although
+it might benefit from some organizational folders to avoid future cluttering.

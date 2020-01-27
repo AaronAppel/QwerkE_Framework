@@ -57,7 +57,8 @@ struct ConfigData
 static class ConfigHelper
 {
 public:
-    static void LoadConfigData();
+    static void LoadConfigData(); // TODO: Load from file path. Do not rely on default paths, but instead generate the default path
+    static void LoadConfigData(std::string configFilePath); // TODO: Write and chain with above overloaded method
     static void SaveConfigData();
     static void SaveConfigData(ConfigData config);
 

@@ -5,7 +5,6 @@
 
 PhysicsManager::PhysicsManager()
 {
-	ConsolePrint("\nPhysicsManager loaded successfully\n\n");
 }
 
 PhysicsManager::~PhysicsManager()

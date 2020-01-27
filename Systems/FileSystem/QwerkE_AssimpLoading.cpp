@@ -148,7 +148,7 @@ void QwerkE_assimp_loadMaterialTextures(aiMaterial *mat, const std::string& file
                 texture = resMan->GetTexture(str.C_Str());
             }
 
-			//handle = 1;
+			// handle = 1;
 			switch (i)
 			{
 			case aiTextureType_DIFFUSE:

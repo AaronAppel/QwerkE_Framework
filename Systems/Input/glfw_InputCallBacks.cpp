@@ -2,7 +2,7 @@
 
 #ifdef dearimgui
 #include "../../QwerkE_Common/Libraries/imgui/imgui.h"
-#include "../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
+// #include "../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
 #endif // dearimgui
 
 #ifdef GLFW3
@@ -118,7 +118,11 @@ void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yo
 	// ProcessMouse();
 
 #ifdef dearimgui
-	ImGui_ImplGlfwGL3_ScrollCallback(window, xoffset, yoffset);
+	// ImGui_ImplGlfwGL3_ScrollCallback(window, xoffset, yoffset);
+	ImGuiIO& io = ImGui::GetIO();
+	io.MouseWheelH += xoffset;
+	io.MouseWheel += yoffset;
+
 #endif // dearimgui
 }
 void InputManager::joystick_callback(int joy, int event)

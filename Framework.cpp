@@ -2,7 +2,8 @@
 #include "QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 #include "QwerkE_Common/Libraries/imgui/imgui.h"
-#include "QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
+#include "QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
+#include "QwerkE_Common/Libraries/imgui/imgui_impl_opengl3.h"
 #include "Headers/QwerkE_Enums.h"
 #include "QwerkE_Common/Utilities/Helpers.h"
 #include "Headers/Libraries_Initialize.h"
@@ -50,13 +51,19 @@ namespace QwerkE
 	{
 		eEngineMessage Framework::Startup()
 		{
-            cJSON* root = OpencJSONStream(ConfigsFolderPath("preferences.qpref"));
-            cJSON* systems = GetItemFromRootByKey(root, "Systems");
+			return Startup(0); // Default flag settings
+		}
+
+		eEngineMessage Framework::Startup(std::uint_fast8_t flags)
+		{
+            cJSON* root = OpencJSONStream(ConfigsFolderPath("preferences.qpref")); // TODO: Remove engine behaviour
+            cJSON* systems = GetItemFromRootByKey(root, "Systems"); // TODO: Use flags to see if systems are enabled/disabled
 
             ConfigHelper::LoadConfigData(); // Init config data
             ConfigData config = ConfigHelper::GetConfigData();
 
             // TODO: Load libraries dynamically. Need functions to load .dlls
+			// TODO: Avoid loading unused libraries. React to system flags
 
 			if (Libs_Setup() == false) // setup libraries
 			{
@@ -179,7 +186,18 @@ namespace QwerkE
 			MessageManager* messageManager = new MessageManager();
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::MessageManager, messageManager);
 
-			JobManager* jobManager = new JobManager();
+			JobManager* jobManager = nullptr;
+			cJSON* jobManagerMultiThreaded = GetItemFromArrayByKey(systems, "JobManagerMultiThreadedEnabled");
+
+			if (jobManagerMultiThreaded != nullptr && jobManagerMultiThreaded->valueint == 1)
+			{
+				jobManager = new JobManager();
+			}
+			else
+			{
+				// TODO: Setup single threaded job manager
+				jobManager = new JobManager();
+			}
 			QwerkE::ServiceLocator::RegisterService(eEngineServices::JobManager, jobManager);
 
 			NetworkManager* network = new NetworkManager();
@@ -288,7 +306,7 @@ namespace QwerkE
 				// Calculate deltatime of current frame
 				double currentFrame = helpers_Time();
 				deltaTime = currentFrame - lastFrame; // time since last frame
-				lastFrame = currentFrame; // save last frame
+				lastFrame = currentFrame; // save last frame time
 
 				// FPS display + tracking
 				if (timeSincePrint >= printPeriod) // print period
@@ -303,9 +321,9 @@ namespace QwerkE
 				timeSincePrint += (float)deltaTime;
 				timeSinceLastFrame += deltaTime;
 
-				if (timeSinceLastFrame >= FPS_MAX_DELTA) // Run frame?
+				/* Game Loop */
+				if (timeSinceLastFrame >= FPS_MAX_DELTA)
 				{
-					/* Game Loop */
 					/* New Frame */
 					Framework::NewFrame();
 
@@ -322,7 +340,10 @@ namespace QwerkE
 					framesSincePrint++; // Framerate tracking
 					timeSinceLastFrame = 0.0; // FPS_Max
 				}
-				// else : skip frame
+				else
+				{
+					Yield();
+				}
 			}
 
 			// unlock services for clean up
@@ -348,8 +369,10 @@ namespace QwerkE
 
 		void Framework::Input()
 		{
-			glfwPollEvents(); // TODO: Better GLFW interface?
-			ImGui_ImplGlfwGL3_NewFrame(); // after InputManager gets reset, and after glfw input polling is done
+            glfwPollEvents(); // TODO: Better GLFW interface?
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame(); // after InputManager gets reset, and after glfw input polling is done
+            ImGui::NewFrame();
 			// TODO: Tell input manager it is a new frame and it should update key states
 		}
 
@@ -399,7 +422,16 @@ namespace QwerkE
 			m_SceneManager->Draw();
 
 			ImGui::Render();
-			ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+            ImGuiIO io = ImGui::GetIO();
+            if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+            {
+                GLFWwindow* backup_current_context = glfwGetCurrentContext();
+                ImGui::UpdatePlatformWindows();
+                ImGui::RenderPlatformWindowsDefault();
+                glfwMakeContextCurrent(backup_current_context);
+            }
 
 			m_Window->SwapBuffers(); // Change frame buffers
 		}

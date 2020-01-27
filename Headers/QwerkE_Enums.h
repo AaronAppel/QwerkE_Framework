@@ -1,8 +1,9 @@
-// QwerkE enums for things like GameObject tagging, Components, etc
 #ifndef _QwerkE_Enums_H_
 #define _QwerkE_Enums_H_
 
 #include <cstdint>
+
+// QwerkE enums for things like GameObject tagging, Components, etc
 
 enum class eInputDeviceTypes : std::uint8_t
 {

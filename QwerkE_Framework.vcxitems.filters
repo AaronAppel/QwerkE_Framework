@@ -337,12 +337,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.cpp">
       <Filter>Entities\Routines</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
@@ -621,11 +617,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.h">
       <Filter>Entities\Routines</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.h">
-      <Filter>Systems\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.h">
-      <Filter>Systems\Events</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Flags.h">
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

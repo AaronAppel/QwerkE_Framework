@@ -111,7 +111,8 @@
 // immediate mode //
 // imgui
 #include "../QwerkE_Common/Libraries/imgui/imgui.h"
-#include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
+#include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
+#include "../QwerkE_Common/Libraries/imgui/imgui_impl_opengl3.h"
 //////////////////////////////
 
 //////////////////////////////

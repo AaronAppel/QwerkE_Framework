@@ -22,6 +22,7 @@ namespace QwerkE
 	namespace Framework
 	{
 		eEngineMessage Startup();
+		eEngineMessage Startup(std::uint_fast8_t flags);
 		eEngineMessage TearDown();
 
 		void Run();

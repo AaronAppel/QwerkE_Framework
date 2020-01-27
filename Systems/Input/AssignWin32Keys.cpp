@@ -5,7 +5,7 @@
 void InputManager::AssignWin32Keys()
 {
 	// TODO: Invert key codes ie. m_KeyCodex[VK_LBUTTON] = eKeys_LeftClick;
-	/* Generic */
+
 	// Mouse
 	m_KeyCodex[eKeys_LeftClick] = VK_LBUTTON;
 	m_KeyCodex[eKeys_RightClick] = VK_RBUTTON;
@@ -14,7 +14,7 @@ void InputManager::AssignWin32Keys()
 	m_KeyCodex[eKeys_MouseButton1] = VK_XBUTTON1;
 	m_KeyCodex[eKeys_MouseButton2] = VK_XBUTTON2;
 
-	// Modifiers
+	//// Modifiers
 	// Either
 	m_KeyCodex[eKeys_CTRL] = VK_CONTROL;
 	m_KeyCodex[eKeys_SHIFT] = VK_SHIFT;
@@ -39,11 +39,11 @@ void InputManager::AssignWin32Keys()
 	m_KeyCodex[eKeys_Tab] = VK_TAB;
 	m_KeyCodex[eKeys_Escape] = VK_ESCAPE;
 
-	m_KeyCodex[eKeys_Backspace] = VK_ESCAPE;
-	m_KeyCodex[eKeys_PrintScreen] = VK_ESCAPE;
-	m_KeyCodex[eKeys_Pause] = VK_ESCAPE;
-	m_KeyCodex[eKeys_Menu] = VK_ESCAPE;
-	m_KeyCodex[eKeys_FN] = VK_ESCAPE;
+	m_KeyCodex[eKeys_Backspace] = VK_BACK;
+	m_KeyCodex[eKeys_PrintScreen] = VK_PRINT;
+	m_KeyCodex[eKeys_Pause] = VK_PAUSE;
+	m_KeyCodex[eKeys_Menu] = VK_MENU;
+	// m_KeyCodex[eKeys_FN] = 0; // May not be exposed by laptop os'
 
 	// Alphabet
 	m_KeyCodex[eKeys_A] = 0x41; // ASCII "A" == 65 == 0x41
@@ -120,4 +120,7 @@ void InputManager::AssignWin32Keys()
 
 	// System Keys
 	m_KeyCodex[eKeys_System] = VK_LWIN; // TODO: Also handle VK_RWIN
+
+	// TODO: Game Pad
+	// m_KeyCodex[eKeys_System] = VK_GAMEPAD_A;
 }

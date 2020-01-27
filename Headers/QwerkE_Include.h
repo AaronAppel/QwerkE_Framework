@@ -14,6 +14,7 @@
 
 // Enums, constants
 #include "QwerkE_Enums.h"
+#include "QwerkE_Flags.h"
 #include "QwerkE_Global_Constants.h"
 
 //////////////////////////////
@@ -56,6 +57,7 @@
 #include "../Systems/Events/EventManager.h"
 #include "../Systems/Events/InputEvent.h"
 
+// Factory //
 #include "../Systems/Factory/Factory.h"
 #include "../Systems/DataManager/LevelLoader.h"
 

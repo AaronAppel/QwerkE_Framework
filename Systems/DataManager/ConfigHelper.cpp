@@ -1,17 +1,26 @@
 #include "ConfigHelper.h"
+#include "QwerkE_Common/Utilities/ReflectionMacros.h"
 
 ConfigData ConfigHelper::m_ConfigData = ConfigData();
 
+#include <iostream>
+#include <limits.h>
+#include <stdlib.h>
+
 void ConfigHelper::LoadConfigData()
 {
-    std::string path = ConfigsFolderPath("preferences.qpref"); // TODO: How to handle file names?
+	std::string configFilePath = ConfigsFolderPath("preferences.qpref"); // TODO: How to handle file names?
+    LoadConfigData(configFilePath);
+}
 
-    cJSON* root = OpencJSONStream(path.c_str());
+void ConfigHelper::LoadConfigData(std::string configFilePath)
+{
+    cJSON* root = OpencJSONStream(configFilePath.c_str());
     if (root == nullptr)
     {
-        QwerkE::LogWarning(__FILE__, __LINE__, "Unable to load json for file %s", path.c_str());
+        QwerkE::LogWarning(__FILE__, __LINE__, "Unable to load json for file %s", configFilePath.c_str());
         return;
-    }
+	}
 
     // Framework
     cJSON* framework = GetItemFromRootByKey(root, "Framework");

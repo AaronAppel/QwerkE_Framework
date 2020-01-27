@@ -10,6 +10,7 @@
 
 #include "Libraries_Include.h"
 #include "../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
 
 // TODO: Use _QFailure and other error messages?
 bool Libs_Setup()
@@ -160,8 +161,7 @@ bool Libs_Setup()
     //////////////////////////////
     // immediate mode //
     // imgui
-    ImGuiContext* context = nullptr;
-    context = ImGui::CreateContext();
+    ImGuiContext* context = ImGui::CreateContext();
     if (context == nullptr)
     {
         ConsolePrint("\nError loading imgui!\n");
@@ -171,9 +171,27 @@ bool Libs_Setup()
     {
 		ConsolePrint("imgui Loaded,\n");
         ImGuiIO& io = ImGui::GetIO();
-		(void)io;
+
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+        //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+        //io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcons;
+        //io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
+
 		//ImGui::CaptureMouseFromApp(true);
 		//ImGui::CaptureKeyboardFromApp(true);
+
+        ImGui::StyleColorsDark();
+
+        ImGuiStyle& style = ImGui::GetStyle();
+        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+        {
+            style.WindowRounding = 0.0f;
+            style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+        }
+
+        ImGui_ImplOpenGL3_Init("#version 410");
     }
     //////////////////////////////
 
@@ -211,7 +229,7 @@ bool Libs_Setup()
 
 void Libs_TearDown()
 {
-    ImGui_ImplGlfwGL3_Shutdown(); // shutdown imgui
+    ImGui_ImplGlfw_Shutdown(); // shutdown imgui
     ImGui::DestroyContext(); // destroy imgui
     glfwTerminate(); // shutdown glfw
 	// TODO: OpenAL, Bullet, freetype2, GLEW?, RakNet

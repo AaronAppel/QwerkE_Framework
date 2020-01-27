@@ -60,10 +60,16 @@ void RenderRoutine::SetupMaterialUniforms(CameraComponent* a_Camera, Renderable*
 	int counter = 0;
 	for (auto p : *materialList)
 	{
+		// TODO: Do not assign values the material does not use
+        // if (p.second == nullptr)
+        // 	continue;
+
 		glActiveTexture(GL_TEXTURE0 + counter);
 		glBindTexture(GL_TEXTURE_2D, p.second->s_Handle);
 
-		switch (p.first) // TODO: Stop activating textures the shader does not use
+        // TODO: Stop activating textures the shader does not use
+		// if (shader->SeeUniforms().contains(counter) == true)
+		switch (p.first)
 		{
 		case eMaterialMaps::MatMap_Ambient:
             shader->SetUniformInt1(AmbientName, counter);
