@@ -6,12 +6,13 @@
 #include "../../QwerkE_Common/Libraries/EasyXinput/EasyXinput.h" // XBOX controller input
 #include "InputManager.h"
 
-namespace QwerkE
-{
-	namespace Input
+namespace QwerkE {
+
+	namespace Input // TODO: Use global class?
 	{
 		// void InputCall() {}
 	}
+
 }
 
 #endif //!_InputManager_H_

@@ -3,34 +3,37 @@
 
 #include "Routine.h"
 
-class TransformRoutine : Routine
-{
-public:
-	TransformRoutine() {};
-	~TransformRoutine() {};
+namespace QwerkE {
 
-	void Initialize();
+    class TransformRoutine : Routine
+    {
+    public:
+        TransformRoutine() {};
+        ~TransformRoutine() {};
 
-	void Update(double a_Deltatime);
+        void Initialize();
 
-	// Setters
-	float GetSpeed() { return m_Speed; }
-	vec3 GetPositionOff() { return m_PositionOffset; }
-	vec3 GetRotationOff() { return m_RotationOffset; }
-	vec3 GetScaleOff() { return m_ScaleOffset; }
+        void Update(double a_Deltatime);
 
-	// Gettters
-	void SetSpeed(float speed) { m_Speed = speed; }
-	void SetPositionOff(vec3 pos) { m_PositionOffset = pos; }
-	void SetRotationOff(vec3 rot) { m_RotationOffset = rot; }
-	void SetScaleOff(vec3 scale) { m_ScaleOffset = scale; }
+        // Setters
+        float GetSpeed() { return m_Speed; }
+        vec3 GetPositionOff() { return m_PositionOffset; }
+        vec3 GetRotationOff() { return m_RotationOffset; }
+        vec3 GetScaleOff() { return m_ScaleOffset; }
 
-private:
-	float m_Speed = 1.0f;
+        // Gettters
+        void SetSpeed(float speed) { m_Speed = speed; }
+        void SetPositionOff(vec3 pos) { m_PositionOffset = pos; }
+        void SetRotationOff(vec3 rot) { m_RotationOffset = rot; }
+        void SetScaleOff(vec3 scale) { m_ScaleOffset = scale; }
 
-	vec3 m_PositionOffset = vec3(0, 0, 0);
-	vec3 m_RotationOffset = vec3(0, 0, 0);
-	vec3 m_ScaleOffset = vec3(0, 0, 0);
-};
+    private:
+        float m_Speed = 1.0f;
 
+        vec3 m_PositionOffset = vec3(0, 0, 0);
+        vec3 m_RotationOffset = vec3(0, 0, 0);
+        vec3 m_ScaleOffset = vec3(0, 0, 0);
+    };
+
+}
 #endif //!_Transform_Routine_H_

@@ -14,8 +14,8 @@
 // Error stack like OpenGL and OpenAL for pushing errors.
 // User can manipulate stack to get errors.
 
-namespace QwerkE
-{
+namespace QwerkE {
+
     // TODO: How should these functions be made static and global, but in the debug namespace/class
     // TODO: These functions inject dependencies into files. Look at a good way of minimizing coupling
     // TODO: Move the functionality to a Logger class
@@ -59,7 +59,7 @@ namespace QwerkE
     };
 }
 #else
-namespace QwerkE // If _QDebug is undefined, this prevents missing symbol errors
+namespace QwerkE { // If _QDebug is undefined, this prevents missing symbol errors
 {
     static void LogError(const char* filePath, int line, const char* message, ...)
     {

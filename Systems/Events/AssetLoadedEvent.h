@@ -4,19 +4,22 @@
 #include "Event.h"
 #include "../FileSystem/FileSystem.h"
 
-class AssetLoadedEvent: public Event
-{
-public:
-	// TODO: Change from texture to ambiguous asset event
-	AssetLoadedEvent(QImageFile asset);
-    ~AssetLoadedEvent();
+namespace QwerkE {
 
-	QImageFile GetAsset() {	return m_Asset; }
+    class AssetLoadedEvent : public Event
+    {
+    public:
+        // TODO: Change from texture to ambiguous asset event
+        AssetLoadedEvent(QImageFile asset);
+        ~AssetLoadedEvent();
 
-	void Process();
+        QImageFile GetAsset() { return m_Asset; }
 
-private:
-	QImageFile m_Asset;
-};
+        void Process();
 
+    private:
+        QImageFile m_Asset;
+    };
+
+}
 #endif // !_AssetLoadedEvent_H_

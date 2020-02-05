@@ -3,18 +3,21 @@
 
 #include "../../Entities/Components/Component.h"
 
-class PhysicsComponent : public Component // abstract
-{
-public:
-	PhysicsComponent();
-	~PhysicsComponent();
+namespace QwerkE {
 
-	/* Getters + Setters */
-	// getters
+    class PhysicsComponent : public Component // abstract
+    {
+    public:
+        PhysicsComponent();
+        ~PhysicsComponent();
 
-	// setters
+        /* Getters + Setters */
+        // getters
 
-private:
-};
+        // setters
 
+    private:
+    };
+
+}
 #endif //!_PhysicsComponent_H_

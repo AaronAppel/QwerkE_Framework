@@ -3,11 +3,15 @@
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
 
-PhysicsManager::PhysicsManager()
-{
-	ConsolePrint("\nPhysicsManager loaded successfully\n\n");
-}
+namespace QwerkE {
 
-PhysicsManager::~PhysicsManager()
-{
+    PhysicsManager::PhysicsManager()
+    {
+        ConsolePrint("\nPhysicsManager loaded successfully\n\n");
+    }
+
+    PhysicsManager::~PhysicsManager()
+    {
+    }
+
 }

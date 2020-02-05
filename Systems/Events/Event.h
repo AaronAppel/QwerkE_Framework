@@ -2,38 +2,42 @@
 #define _Event_H_
 
 #include <cstdint>
-enum class eEventTypes : std::uint8_t
-{
-	eEvent_Invalid = 0,
-	eEvent_InputEvent,
-	eEvent_AssetLoaded,
-	eEvent_JobQueued,
-	eEvent_System_Message,
-	eEvent_Max
-};
 
-// TODO: Design Event system
+namespace QwerkE {
 
-class Event // abstract
-{
-public:
-	Event();
-	~Event();
+    enum class eEventTypes : std::uint8_t
+    {
+        eEvent_Invalid = 0,
+        eEvent_InputEvent,
+        eEvent_AssetLoaded,
+        eEvent_JobQueued,
+        eEvent_System_Message,
+        eEvent_Max
+    };
 
-	void SetID(int id);
-	int GetID();
+    // TODO: Design Event system
 
-	void SetValue(int value);
-	int GetValue();
+    class Event // abstract
+    {
+    public:
+        Event();
+        ~Event();
 
-	eEventTypes GetType();
+        void SetID(int id);
+        int GetID();
 
-	virtual void Process() {}
+        void SetValue(int value);
+        int GetValue();
 
-protected:
-	signed int m_EventID = -1;
-	eEventTypes m_EventType = eEventTypes::eEvent_Invalid;
-	int m_Value = -1;
-};
+        eEventTypes GetType();
 
+        virtual void Process() {}
+
+    protected:
+        signed int m_EventID;
+        eEventTypes m_EventType;
+        int m_Value;
+    };
+
+}
 #endif // !_Event_H_

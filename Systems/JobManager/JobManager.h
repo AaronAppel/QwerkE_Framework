@@ -20,51 +20,54 @@
 
 #include <queue>
 
-void* LoadAssetData(void* value); // TODO: Improve logic
+namespace QwerkE {
 
-class QJob
-{
-public:
-	virtual void Process() = 0;
-};
+    void* LoadAssetData(void* value); // TODO: Improve logic
 
-class QPathfind : QJob
-{
-public:
-	void Process() {};
-};
+    class QJob
+    {
+    public:
+        virtual void Process() = 0;
+    };
 
-class QLoadAsset : public QJob
-{
-public:
-	QLoadAsset(const char* assetName)
-	{
-		m_AssetName = DeepCopyString(assetName);
-	}
+    class QPathfind : QJob
+    {
+    public:
+        void Process() {};
+    };
 
-	void Process()
-	{
-		// TODO: check duplicate asset
-		pthread_t threadID;
-		pthread_create(&threadID, NULL, LoadAssetData, (void*)m_AssetName);
-	};
-private:
-	const char* m_AssetName;
-};
+    class QLoadAsset : public QJob
+    {
+    public:
+        QLoadAsset(const char* assetName)
+        {
+            m_AssetName = DeepCopyString(assetName);
+        }
 
-class JobManager
-{
-public:
-	JobManager();
-	~JobManager();
+        void Process()
+        {
+            // TODO: check duplicate asset
+            pthread_t threadID;
+            pthread_create(&threadID, NULL, LoadAssetData, (void*)m_AssetName);
+        };
+    private:
+        const char* m_AssetName;
+    };
 
-	void ScheduleTask(QJob* job);
+    class JobManager
+    {
+    public:
+        JobManager();
+        ~JobManager();
 
-	void ProcessTasks();
+        void ScheduleTask(QJob* job);
 
-private:
-	std::queue<QJob*> m_JobList;
-	void ProcessNextTask();
-};
+        void ProcessTasks();
 
+    private:
+        std::queue<QJob*> m_JobList;
+        void ProcessNextTask();
+    };
+
+}
 #endif // !_JobManager_H_

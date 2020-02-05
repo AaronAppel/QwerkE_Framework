@@ -8,93 +8,97 @@
 #include <map>
 #include <vector>
 
-extern int g_WindowWidth, g_WindowHeight; // TODO: Remove
+namespace QwerkE {
 
-class GameCore;
-class MyMatrix;
-class SceneManager;
-class GameObject;
+    extern int g_WindowWidth, g_WindowHeight; // TODO: Remove
 
-class Scene; // forward declare for function* typedef
-typedef void (Scene::*StateFunc)(double deltatime); // Scene state function
+    class GameCore;
+    class MyMatrix;
+    class SceneManager;
+    class GameObject;
 
-class Scene // Abstract class
-{
-public:
-	Scene();
-    Scene(const char* sceneFileName) { m_LevelFileName = sceneFileName; }
-	virtual ~Scene();
+    class Scene; // forward declare for function* typedef
 
-	virtual void OnWindowResize(unsigned int width, unsigned int height);
-	virtual void Initialize();
-	virtual void ResetScene();
+    typedef void (Scene::* StateFunc)(double deltatime); // Scene state function
 
-    virtual void Update(double deltatime) { (this->*m_UpdateFunc)(deltatime); }
-    virtual void Draw();
+    class Scene // Abstract class
+    {
+    public:
+        Scene();
+        Scene(const char* sceneFileName) { m_LevelFileName = sceneFileName; }
+        virtual ~Scene();
 
-	// cameras
-	virtual bool AddCamera(GameObject* camera);
-	virtual void RemoveCamera(GameObject* camera);
-	virtual void SetupCameras();
+        virtual void OnWindowResize(unsigned int width, unsigned int height);
+        virtual void Initialize();
+        virtual void ResetScene();
 
-	// lights
-	virtual bool AddLight(GameObject* light);
-	virtual void RemoveLight(GameObject* light);
-	virtual void SetupLights();
+        virtual void Update(double deltatime) { (this->*m_UpdateFunc)(deltatime); }
+        virtual void Draw();
 
-	virtual bool AddObjectToScene(GameObject* object);
-	virtual void RemoveObjectFromScene(GameObject* object);
+        // cameras
+        virtual bool AddCamera(GameObject* camera);
+        virtual void RemoveCamera(GameObject* camera);
+        virtual void SetupCameras();
 
-	virtual void RemoveAllObjectsFromScene(); // Possibly a scene reset
+        // lights
+        virtual bool AddLight(GameObject* light);
+        virtual void RemoveLight(GameObject* light);
+        virtual void SetupLights();
 
-	// Save/Load
-	virtual void SaveScene();
-    virtual void LoadScene(const char* sceneFileName);
-    virtual void ReloadScene();
+        virtual bool AddObjectToScene(GameObject* object);
+        virtual void RemoveObjectFromScene(GameObject* object);
 
-	/* Getters + Setters */
-	// getters
-	GameObject* GetGameObject(const char* name);
-	bool GetIsEnabled() { return m_IsEnabled; };
-	SceneManager* GetSceneManager() { return m_pSceneManager; };
-	std::vector<GameObject*> GetCameraList() { return m_CameraList; };
-	std::map<std::string, GameObject*> GetObjectList() { return m_pGameObjects; };
-	int GetCurrentCamera() { return m_CurrentCamera; };
-	std::vector<GameObject*> GetLightList() { return m_LightList; };
-	eSceneTypes GetSceneID() { return m_ID; }
-	eSceneState GetState() { return m_State; }
+        virtual void RemoveAllObjectsFromScene(); // Possibly a scene reset
 
-	// setters
-	void SetIsEnabled(bool isEnabled) { m_IsEnabled = isEnabled; };
-	void SetCurrentCamera(int camera) { m_CurrentCamera = camera; }; // TODO:: Better way for ImGUI to change camera
-	void SetState(eSceneState newState);
-	// TODO: void ToggleFrozenState() { SetIsFrozen(!m_IsFrozen); }
+        // Save/Load
+        virtual void SaveScene();
+        virtual void LoadScene(const char* sceneFileName);
+        virtual void ReloadScene();
 
-protected:
-	virtual void p_Running(double deltatime);
-	virtual void p_Frozen(double deltatime); // only update cameras
-	virtual void p_Paused(double deltatime) {} // Currently empty to avoid updating
-	virtual void p_Animating(double deltatime); // for testing animations
-	virtual void p_SlowMotion(double deltatime);
-	StateFunc m_UpdateFunc = &Scene::p_Running;
+        /* Getters + Setters */
+        // getters
+        GameObject* GetGameObject(const char* name);
+        bool GetIsEnabled() { return m_IsEnabled; };
+        SceneManager* GetSceneManager() { return m_pSceneManager; };
+        std::vector<GameObject*> GetCameraList() { return m_CameraList; };
+        std::map<std::string, GameObject*> GetObjectList() { return m_pGameObjects; };
+        int GetCurrentCamera() { return m_CurrentCamera; };
+        std::vector<GameObject*> GetLightList() { return m_LightList; };
+        eSceneTypes GetSceneID() { return m_ID; }
+        eSceneState GetState() { return m_State; }
 
-	void CameraInput(double deltatime);
+        // setters
+        void SetIsEnabled(bool isEnabled) { m_IsEnabled = isEnabled; };
+        void SetCurrentCamera(int camera) { m_CurrentCamera = camera; }; // TODO:: Better way for ImGUI to change camera
+        void SetState(eSceneState newState);
+        // TODO: void ToggleFrozenState() { SetIsFrozen(!m_IsFrozen); }
 
-	bool m_IsEnabled = false;
-	eSceneState m_State = eSceneState::SceneState_Running;
-    std::string m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
-	SceneManager* m_pSceneManager = nullptr;
-	MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
+    protected:
+        virtual void p_Running(double deltatime);
+        virtual void p_Frozen(double deltatime); // only update cameras
+        virtual void p_Paused(double deltatime) {} // Currently empty to avoid updating
+        virtual void p_Animating(double deltatime); // for testing animations
+        virtual void p_SlowMotion(double deltatime);
+        StateFunc m_UpdateFunc = &Scene::p_Running;
 
-	std::map<std::string, GameObject*> m_pGameObjects;
-	eSceneTypes m_ID = eSceneTypes::Scene_Null;
+        void CameraInput(double deltatime);
 
-	int m_CurrentCamera = 0;
-	std::vector<GameObject*> m_CameraList;
+        bool m_IsEnabled = false;
+        eSceneState m_State = eSceneState::SceneState_Running;
+        std::string m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
+        SceneManager* m_pSceneManager = nullptr;
+        MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
 
-	std::vector<GameObject*> m_LightList;
+        std::map<std::string, GameObject*> m_pGameObjects;
+        eSceneTypes m_ID = eSceneTypes::Scene_Null;
 
-	std::vector<GameObject*> m_SceneDrawList; // TODO: sort by render order
-};
+        int m_CurrentCamera = 0;
+        std::vector<GameObject*> m_CameraList;
 
+        std::vector<GameObject*> m_LightList;
+
+        std::vector<GameObject*> m_SceneDrawList; // TODO: sort by render order
+    };
+
+}
 #endif //!_Scene_H_

@@ -33,7 +33,7 @@
 //////////////////////////////
 // Infrastructure/Systems //
 //////////////////////////////
-#include "../Systems/ServiceLocator.h" // Access point for all QwerkE services
+#include "../Systems/Services.h" // Access point for all QwerkE services
 
 // Input //
 #include "../Systems/Input/Input.h"

@@ -11,8 +11,10 @@
 
 class ShaderProgram;
 
-// TODO: Better name
-void FindShaderUniformsAndAttributesInComponentStrings(ShaderProgram* shader, std::vector<std::string>& attributes, std::vector<std::string>& uniforms);
+namespace QwerkE {
 
+    // TODO: Better name
+    void FindShaderUniformsAndAttributesInComponentStrings(ShaderProgram* shader, std::vector<std::string>& attributes, std::vector<std::string>& uniforms);
 
+}
 #endif //!_ShaderUtilities_H_

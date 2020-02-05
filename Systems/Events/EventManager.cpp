@@ -3,54 +3,59 @@
 #include "../../QwerkE_Common/Utilities/Helpers.h"
 #include "Event.h"
 
-EventManager::EventManager()
-{
-}
+namespace QwerkE {
 
-EventManager::~EventManager()
-{
-	m_EventList; // TODO: Delete events
-}
+    EventManager::EventManager()
+    {
+    }
 
-void EventManager::QueueEvent(Event* _event)
-{
-	if (m_EventList.size() < m_EventMax)
-	{
-		_event->SetID(helpers_GetUniqueID());
-		m_EventList.push(_event);
-		OutputPrint("Event %i Queued!", _event->GetID());
-	}
-	else
-	{
-		OutputPrint("Event list is full!");
-	}
-}
+    EventManager::~EventManager()
+    {
+        m_EventList; // TODO: Delete events
+    }
 
-void EventManager::ProcessEvents()
-{
-	int size = m_EventList.size();
+    void EventManager::QueueEvent(Event* _event)
+    {
+        // TODO: Implement thread safe API for multi threaded event queuing
+        if (m_EventList.size() < m_EventMax)
+        {
+            _event->SetID(helpers_GetUniqueID());
+            m_EventList.push(_event);
+            OutputPrint("Event %i Queued!", _event->GetID());
+        }
+        else
+        {
+            OutputPrint("Event list is full!");
+        }
+    }
 
-	for (int i = 0; i < size; i++)
-	{
-		Event* _event = m_EventList.front();
-		_event->Process();
+    void EventManager::ProcessEvents()
+    {
+        int size = m_EventList.size();
 
-		switch (_event->GetType())
-		{
-		case eEventTypes::eEvent_AssetLoaded:
-			break;
-		case eEventTypes::eEvent_JobQueued:
-			break;
-		case eEventTypes::eEvent_InputEvent:
-			break;
-		case eEventTypes::eEvent_Invalid:
-			OutputPrint("\nEvent had invalid type!\n");
-			break;
-		default:
-			OutputPrint("\nError reading event type!\nMake sure all types are handled.\n");
-			break;
-		}
+        for (int i = 0; i < size; i++)
+        {
+            Event* _event = m_EventList.front();
+            _event->Process();
 
-		m_EventList.pop(); // Remove event from queue
-	}
+            switch (_event->GetType())
+            {
+            case eEventTypes::eEvent_AssetLoaded:
+                break;
+            case eEventTypes::eEvent_JobQueued:
+                break;
+            case eEventTypes::eEvent_InputEvent:
+                break;
+            case eEventTypes::eEvent_Invalid:
+                OutputPrint("\nEvent had invalid type!\n");
+                break;
+            default:
+                OutputPrint("\nError reading event type!\nMake sure all types are handled.\n");
+                break;
+            }
+
+            m_EventList.pop(); // Remove event from queue
+        }
+    }
+
 }

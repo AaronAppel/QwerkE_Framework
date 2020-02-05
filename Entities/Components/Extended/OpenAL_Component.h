@@ -5,16 +5,19 @@
 
 #include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 
-class OpenAL_AudioComponent : public AudioComponent
-{
-public:
-	OpenAL_AudioComponent();
-	~OpenAL_AudioComponent();
+namespace QwerkE {
 
-	int Play();
+    class OpenAL_AudioComponent : public AudioComponent
+    {
+    public:
+        OpenAL_AudioComponent();
+        ~OpenAL_AudioComponent();
 
-private:
-	ALuint m_Buffer = 0;
-};
+        int Play();
 
+    private:
+        ALuint m_Buffer = 0;
+    };
+
+}
 #endif //!_OpenAL_Component_H_

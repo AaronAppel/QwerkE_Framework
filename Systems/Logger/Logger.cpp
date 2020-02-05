@@ -1,9 +1,13 @@
 #include "Logger.h"
 
-Logger::Logger()
-{
-}
+namespace QwerkE {
 
-Logger::~Logger()
-{
+    Logger::Logger()
+    {
+    }
+
+    Logger::~Logger()
+    {
+    }
+
 }

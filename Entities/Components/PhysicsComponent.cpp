@@ -2,11 +2,15 @@
 #include "../../Headers/QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
 
-PhysicsComponent::PhysicsComponent()
-{
-	m_ComponentTag = Component_Physics;
-}
+namespace QwerkE {
 
-PhysicsComponent::~PhysicsComponent()
-{
+    PhysicsComponent::PhysicsComponent()
+    {
+        m_ComponentTag = Component_Physics;
+    }
+
+    PhysicsComponent::~PhysicsComponent()
+    {
+    }
+
 }

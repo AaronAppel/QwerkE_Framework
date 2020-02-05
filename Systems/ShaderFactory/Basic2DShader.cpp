@@ -1,41 +1,45 @@
 #include "ShaderFactory.h"
 
-std::string ShaderFactory::Basic2DShaderVert(std::string vertString)
-{
-	/* Header */
-	vertString.append("// Basic2D.vert");
-	// SetVersion(vertString);
+namespace QwerkE {
 
-	// input
-	AddInputVec3("Position", vertString);
+    std::string ShaderFactory::Basic2DShaderVert(std::string vertString)
+    {
+        /* Header */
+        vertString.append("// Basic2D.vert");
+        // SetVersion(vertString);
 
-	// output
+        // input
+        AddInputVec3("Position", vertString);
 
-	/* Body */
-	OpenMain(vertString);
+        // output
 
-	vertString.append("\ngl_Position = vec4(t_Position, 1.0);");
+        /* Body */
+        OpenMain(vertString);
 
-	CloseMain(vertString);
+        vertString.append("\ngl_Position = vec4(t_Position, 1.0);");
 
-	return vertString;
-}
+        CloseMain(vertString);
 
-std::string ShaderFactory::Basic2DShaderFrag(std::string fragString)
-{
-	/* Header */
-	fragString.append("// Basic2D.frag");
-	// SetVersion(fragString);
+        return vertString;
+    }
 
-	//input
+    std::string ShaderFactory::Basic2DShaderFrag(std::string fragString)
+    {
+        /* Header */
+        fragString.append("// Basic2D.frag");
+        // SetVersion(fragString);
 
-	// output
+        //input
 
-	/* Body */
-	OpenMain(fragString); // end header / begin body
-	fragString.append("\ngl_FragColor = vec4(1,1,1,1);"); // TODO: Add color?
+        // output
 
-	CloseMain(fragString);
+        /* Body */
+        OpenMain(fragString); // end header / begin body
+        fragString.append("\ngl_FragColor = vec4(1,1,1,1);"); // TODO: Add color?
 
-	return fragString;
+        CloseMain(fragString);
+
+        return fragString;
+    }
+
 }

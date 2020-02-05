@@ -4,13 +4,16 @@
 #include "Event.h"
 #include "../../Graphics/Texture.h"
 
-class JobQueuedEvent: public Event
-{
-public:
-	JobQueuedEvent();
-    ~JobQueuedEvent();
+namespace QwerkE {
 
-	void Process();
-};
+    class JobQueuedEvent : public Event
+    {
+    public:
+        JobQueuedEvent();
+        ~JobQueuedEvent();
 
+        void Process();
+    };
+
+}
 #endif // !_AssetLoadedEvent_H_

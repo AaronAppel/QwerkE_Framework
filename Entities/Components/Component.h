@@ -5,29 +5,32 @@
 
 class GameObject;
 
-class Component
-{
-public:
-	virtual ~Component();
+namespace QwerkE {
 
-	virtual void Reset() {};
-	virtual void Activate() {};
-	virtual void Deactivate() {};
-	//virtual void CleanUp() {};
+    class Component
+    {
+    public:
+        virtual ~Component();
 
-	/* Getters + Setters */
-	// getters
-	GameObject* GetParent() { return m_pParent; };
-	eComponentTags GetTag() const { return m_ComponentTag; };
+        virtual void Reset() {};
+        virtual void Activate() {};
+        virtual void Deactivate() {};
+        //virtual void CleanUp() {};
 
-	// setters
-	void SetParent(GameObject* a_Parent) { m_pParent = a_Parent; };
-	void SetComponentTag(eComponentTags a_Tag) { m_ComponentTag = a_Tag; };
+        /* Getters + Setters */
+        // getters
+        GameObject* GetParent() { return m_pParent; };
+        eComponentTags GetTag() const { return m_ComponentTag; };
 
-protected:
-	Component(); // cannot instantiate a Component()
-	GameObject* m_pParent = nullptr;
-	eComponentTags m_ComponentTag = Component_Null;
-};
+        // setters
+        void SetParent(GameObject* a_Parent) { m_pParent = a_Parent; };
+        void SetComponentTag(eComponentTags a_Tag) { m_ComponentTag = a_Tag; };
 
+    protected:
+        Component(); // cannot instantiate a Component()
+        GameObject* m_pParent = nullptr;
+        eComponentTags m_ComponentTag = Component_Null;
+    };
+
+}
 #endif //!_Component_H_

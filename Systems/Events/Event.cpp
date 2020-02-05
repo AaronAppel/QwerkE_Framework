@@ -1,34 +1,39 @@
 #include "Event.h"
 
-Event::Event()
-{
-}
+namespace QwerkE {
 
-Event::~Event()
-{
-}
+    Event::Event()
+        : m_EventID(-1), m_EventType(eEventTypes::eEvent_Invalid), m_Value(-1)
+    {
+    }
 
-void Event::SetID(int id)
-{
-	m_EventID = id;
-}
+    Event::~Event()
+    {
+    }
 
-int Event::GetID()
-{
-	return m_EventID;
-}
+    void Event::SetID(int id)
+    {
+        m_EventID = id;
+    }
 
-eEventTypes Event::GetType()
-{
-	return m_EventType;
-}
+    int Event::GetID()
+    {
+        return m_EventID;
+    }
 
-void Event::SetValue(int value)
-{
-	m_Value = value;
-}
+    eEventTypes Event::GetType()
+    {
+        return m_EventType;
+    }
 
-int Event::GetValue()
-{
-	return m_Value;
+    void Event::SetValue(int value)
+    {
+        m_Value = value;
+    }
+
+    int Event::GetValue()
+    {
+        return m_Value;
+    }
+
 }

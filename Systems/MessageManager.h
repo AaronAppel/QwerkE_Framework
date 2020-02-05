@@ -6,14 +6,19 @@
 // Works with logger.
 
 // provides global API for sending and receiving messages
-class MessageManager
-{
-public:
-	MessageManager();
-	~MessageManager();
 
-private:
+namespace QwerkE {
 
-};
+    class MessageManager
+    {
+    public:
+        MessageManager();
+        ~MessageManager();
+
+    private:
+
+    };
+
+}
 
 #endif // !_MessageManager_H_

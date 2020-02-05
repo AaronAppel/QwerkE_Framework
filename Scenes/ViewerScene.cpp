@@ -1,35 +1,38 @@
 #include "ViewerScene.h"
-#include "../Systems/ServiceLocator.h"
+#include "../Systems/Services.h"
 #include "../Systems/ResourceManager/ResourceManager.h"
 #include "../Systems/Factory/Factory.h"
 
-ViewerScene::ViewerScene()
-{
-	m_ID = eSceneTypes::Scene_ViewerScene;
-	m_LevelFileName = "ViewerScene.qscene";
-}
+namespace QwerkE {
 
-ViewerScene::~ViewerScene()
-{
-}
+    ViewerScene::ViewerScene()
+    {
+        m_ID = eSceneTypes::Scene_ViewerScene;
+        m_LevelFileName = "ViewerScene.qscene";
+    }
 
-void ViewerScene::Initialize()
-{
-	Factory* t_pFactory = (Factory*)QwerkE::ServiceLocator::GetService(eEngineServices::Factory_Entity);
-	ResourceManager* t_pResourceManager = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+    ViewerScene::~ViewerScene()
+    {
+    }
 
-	// Cameras
-	t_pFactory->CreateFreeCamera(this, vec3(0, 0, 5));
-	Scene::SetupCameras();
+    void ViewerScene::Initialize()
+    {
+        Factory* t_pFactory = (Factory*)Services::GetService(eEngineServices::Factory_Entity);
 
-	// Lights
-	t_pFactory->CreateLight(this, vec3(0, 5, -10));
+        // Cameras
+        t_pFactory->CreateFreeCamera(this, vec3(0, 0, 5));
+        Scene::SetupCameras();
 
-	// Actors
-	// none. Add one and use it to take thumbnail pictures for assets
-}
+        // Lights
+        t_pFactory->CreateLight(this, vec3(0, 5, -10));
 
-void ViewerScene::p_Update(double TimePassed)
-{
-	Scene::p_Running(TimePassed);
+        // Actors
+        // none. Add one and use it to take thumbnail pictures for assets
+    }
+
+    void ViewerScene::p_Update(double TimePassed)
+    {
+        Scene::p_Running(TimePassed);
+    }
+
 }

@@ -3,14 +3,17 @@
 
 #include "Event.h"
 
-class InputEvent : public Event
-{
-public:
-    InputEvent(int value);
-    ~InputEvent();
+namespace QwerkE {
 
-private:
+    class InputEvent : public Event
+    {
+    public:
+        InputEvent(int value);
+        ~InputEvent();
 
-};
+    private:
 
+    };
+
+}
 #endif // !_InputEvent_H_

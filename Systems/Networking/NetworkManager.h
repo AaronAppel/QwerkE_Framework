@@ -3,16 +3,19 @@
 
 #include <string>
 
-class NetworkManager
-{
-public:
-	NetworkManager();
-	~NetworkManager();
+namespace QwerkE {
 
-	int test();
+    class NetworkManager
+    {
+    public:
+        NetworkManager();
+        ~NetworkManager();
 
-private:
-	std::string m_IP = "172.18.38.65";
-};
+        int test();
 
+    private:
+        std::string m_IP = "127.0.0.1";
+    };
+
+}
 #endif // !_NetworkManager_H_

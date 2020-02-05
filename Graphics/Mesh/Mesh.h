@@ -6,61 +6,65 @@
 
 #include <string>
 
-struct VertexData;
-class ShaderProgram;
-class Mesh;
+namespace QwerkE {
 
-typedef void (Mesh::*MeshFunction)(); // Draw function
+    struct VertexData;
+    class ShaderProgram;
+    class Mesh;
+    class MeshData;
 
-// TODO: Use macro functions to replace OpenGL specific functions.
-// The idea is to abstract library functionality without losing performance.
-class Mesh
-{
-public:
-	Mesh();
-	~Mesh();
+    typedef void (QwerkE::Mesh::* MeshFunction)(); // Draw function
 
-	// Setup
-	void BufferMeshData(MeshData* data);
-	void SetupShaderAttributes(ShaderProgram* shader);
+    // TODO: Use macro functions to replace OpenGL specific functions.
+    // The idea is to abstract library functionality without losing performance.
+    class Mesh
+    {
+    public:
+        Mesh();
+        ~Mesh();
 
-	// Drawing
-	void Draw() { (this->*m_DrawFunc)(); }; // Call appropriate Draw() function
+        // Setup
+        void BufferMeshData(MeshData* data);
+        void SetupShaderAttributes(ShaderProgram* shader);
 
-	// Getters
-	std::string GetName() const { return m_Name; };
-	std::string GetFileName() const { return m_FileName; };
+        // Drawing
+        void Draw() { (this->*m_DrawFunc)(); }; // Call appropriate Draw() function
 
-	// Setters
-	void SetName(std::string name) { m_Name = name; }
-	void SetFileName(std::string file) { m_FileName = file; }
-	void SetPrimitiveType(GLenum type) { m_PrimitiveType = type; };
-	void ToggleWireframe(); // TODO: Improve
+        // Getters
+        std::string GetName() const { return m_Name; };
+        std::string GetFileName() const { return m_FileName; };
 
-    // Cleanup
-	// TODO: Maybe EmptyMesh() instead of DestroyMesh()
-	void DestroyMesh(); // Used for assigning new data to an already initialize mesh
+        // Setters
+        void SetName(std::string name) { m_Name = name; }
+        void SetFileName(std::string file) { m_FileName = file; }
+        void SetPrimitiveType(GLenum type) { m_PrimitiveType = type; };
+        void ToggleWireframe(); // TODO: Improve
 
-private:
-	// Handles
-	GLuint m_VBO = 0;
-	GLuint m_EBO = 0;
-	GLuint m_VAO = 0; // TODO: Do meshes need a shader list to support VAOs for many shaders
+        // Cleanup
+        // TODO: Maybe EmptyMesh() instead of DestroyMesh()
+        void DestroyMesh(); // Used for assigning new data to an already initialize mesh
 
-	// Variables
-	GLenum m_PrimitiveType = GL_TRIANGLES;
-	std::string m_Name = gc_DefaultStringValue;
-	std::string m_FileName = gc_DefaultStringValue;
+    private:
+        // Handles
+        GLuint m_VBO = 0;
+        GLuint m_EBO = 0;
+        GLuint m_VAO = 0; // TODO: Do meshes need a shader list to support VAOs for many shaders
 
-	MeshBufferInfo m_BufferData;
-	char* PackModelData(MeshData* data);
+        // Variables
+        GLenum m_PrimitiveType = GL_TRIANGLES;
+        std::string m_Name = gc_DefaultStringValue;
+        std::string m_FileName = gc_DefaultStringValue;
 
-	/* Draw functionality */
-	MeshFunction m_DrawFunc = &Mesh::NullDraw;
+        MeshBufferInfo m_BufferData;
+        char* PackModelData(MeshData* data);
 
-	void DrawElements(); // Use IBO
-	void DrawArrays(); // Draw raw vertex data
-	void NullDraw(); // Not setup or invalid data
-};
+        /* Draw functionality */
+        MeshFunction m_DrawFunc = &Mesh::NullDraw;
 
+        void DrawElements(); // Use IBO
+        void DrawArrays(); // Draw raw vertex data
+        void NullDraw(); // Not setup or invalid data
+    };
+
+}
 #endif //!_Mesh_H_

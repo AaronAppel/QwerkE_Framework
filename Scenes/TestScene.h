@@ -3,16 +3,19 @@
 
 #include "Scene.h"
 
-class TestScene: public Scene
-{
-public:
-	TestScene();
-    virtual ~TestScene();
+namespace QwerkE {
 
-    void Initialize();
+    class TestScene : public Scene
+    {
+    public:
+        TestScene();
+        virtual ~TestScene();
 
-private:
-	void p_Running(double TimePassed);
-};
+        void Initialize();
 
+    private:
+        void p_Running(double TimePassed);
+    };
+
+}
 #endif // !_TestScene_H_

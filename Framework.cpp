@@ -11,8 +11,7 @@
 #include "Systems/SceneManager.h"
 #include "Systems/Factory/Factory.h"
 #include "Graphics/Graphics_Header.h"
-#include "Systems/ResourceManager/ResourceManager.h"
-#include "Systems/ServiceLocator.h"
+#include "Systems/Services.h"
 #include "Systems/Window/CallbackFunctions.h"
 #include "Systems/Physics/PhysicsManager.h"
 #include "Systems/DataManager/DataManager.h"
@@ -34,32 +33,30 @@
 #include "Modules/Time.h"
 #include "Graphics/Mesh/MeshFactory.h"
 
-// TODO: No Globals!
-extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
-extern const char* g_WindowTitle = "QwerkEngine";
+namespace QwerkE {
 
-extern InputManager* g_InputManager = nullptr;
+    // TODO: No Globals!
+    extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
+    extern const char* g_WindowTitle = "QwerkEngine";
+    extern InputManager* g_InputManager = nullptr;
 
-// private framework variables
-static Window* m_Window = nullptr;
-static bool m_IsRunning = false;
-static SceneManager* m_SceneManager = nullptr;
+    static Window* m_Window = nullptr;
+    static bool m_IsRunning = false;
+    static SceneManager* m_SceneManager = nullptr;
 
-namespace QwerkE
-{
 	namespace Framework
 	{
 		eEngineMessage Framework::Startup()
 		{
-			return Startup(0); // Default flag settings
+			return Startup(ConfigsFolderPath("preferences.qpref"), 0); // Default flag settings
 		}
 
-		eEngineMessage Framework::Startup(std::uint_fast8_t flags)
+		eEngineMessage Framework::Startup(std::string configFilePath, std::uint_fast8_t flags)
 		{
-            cJSON* root = OpencJSONStream(ConfigsFolderPath("preferences.qpref")); // TODO: Remove engine behaviour
-            cJSON* systems = GetItemFromRootByKey(root, "Systems"); // TODO: Use flags to see if systems are enabled/disabled
+			cJSON* root = OpencJSONStream(configFilePath.c_str()); // TODO: Remove engine behaviour
+			cJSON* systems = GetItemFromRootByKey(root, "Systems"); // TODO: Use flags to see if systems are enabled/disabled
 
-            ConfigHelper::LoadConfigData(); // Init config data
+            ConfigHelper::LoadConfigData(configFilePath); // Init config data
             ConfigData config = ConfigHelper::GetConfigData();
 
             // TODO: Load libraries dynamically. Need functions to load .dlls
@@ -71,24 +68,6 @@ namespace QwerkE
 				return eEngineMessage::_QFailure; // failure
 			}
 
-			// Testing //
-			/*Mesh mesh;
-
-			int verts = 2;
-			int numIndices = 2;
-
-			CollectedData data;
-
-			data.positions = std::vector<vec3>{ vec3(0,0,0), vec3(0,0,1) };
-			data.UVs = std::vector<vec2>{ vec2(0,0), vec2(0,1) };
-			data.normals = std::vector<vec3>{ vec3(0,0,0), vec3(0,0,1) };
-
-			unsigned int* indices = new unsigned int[2]{ 0, 1 };
-
-			mesh.BufferMeshData(verts, &data, numIndices, indices);*/
-
-			// Testing //
-
             // TODO: Cleanup switch or if/elseif statements below. Find a nice way to detect which library objects to load
 
 			// TODO: Try to reduce or avoid order dependency in system creation.
@@ -99,17 +78,18 @@ namespace QwerkE
 
 			// load and register systems
 			// Audio, Networking, Graphics (Renderer, GUI), Utilities (Conversion, FileIO, Printing),
-			// Physics, Event, Debug, Memory, Window, Application, Input, Resources
-			QwerkE::ServiceLocator::LockServices(false);
+            // Physics, Event, Debug, Memory, Window, Application, Input, ResourceManager
+
+			QwerkE::Services::LockServices(false);
 
 			FileSystem* fileSystem = new FileSystem();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::FileSystem, fileSystem);
+			QwerkE::Services::RegisterService(eEngineServices::FileSystem, fileSystem);
 
 			InputManager* inputManager = new InputManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Input_Manager, inputManager);
+			QwerkE::Services::RegisterService(eEngineServices::Input_Manager, inputManager);
 
 			ShaderFactory* shaderFactory = new ShaderFactory();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
+			QwerkE::Services::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
 
             if (config.libraries.Window == "GLFW3")
                 m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
@@ -123,8 +103,10 @@ namespace QwerkE
 			windowManager->AddWindow(m_Window);
 			inputManager->SetupCallbacks((GLFWwindow*)m_Window->GetContext());
 
+            Services::Resources.Init(); // self order dependency, init after adding
+
             AudioManager* audioManager = nullptr;
-            cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
+			cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
             bool enabled = audioEnabled != nullptr ? (bool)audioEnabled->valuedouble : false; // TODO: Improve value handling
 
             if (config.systems.AudioEnabled)
@@ -140,30 +122,26 @@ namespace QwerkE
                 ConsolePrint("No audio library define detected! Loading NullAudioManager.");
                 audioManager = (AudioManager*) new NullAudioManager();
             }
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Audio_Manager, audioManager); // resource managers needs this
-
-			ResourceManager* resourceManager = new ResourceManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Resource_Manager, resourceManager);
-			resourceManager->Init(); // self order dependency, init after adding
+			QwerkE::Services::RegisterService(eEngineServices::Audio_Manager, audioManager); // ResourceManager needs this
 
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //TEMP: avoid bright white screen while loading
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TEMP: avoid bright white screen while loading
 
 			Renderer* renderer = new Renderer();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Renderer, renderer);
+			QwerkE::Services::RegisterService(eEngineServices::Renderer, renderer);
 			renderer->DrawFont("Loading..."); // Message for user while loading
 			m_Window->SwapBuffers();
 
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::WindowManager, windowManager);
+			QwerkE::Services::RegisterService(eEngineServices::WindowManager, windowManager);
 
 			EventManager* eventManager = new EventManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Event_System, eventManager);
+			QwerkE::Services::RegisterService(eEngineServices::Event_System, eventManager);
 
 			m_SceneManager = new SceneManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Scene_Manager, m_SceneManager);
+			QwerkE::Services::RegisterService(eEngineServices::Scene_Manager, m_SceneManager);
 
 			Factory* entityFactory = new Factory();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Factory_Entity, entityFactory);
+			QwerkE::Services::RegisterService(eEngineServices::Factory_Entity, entityFactory);
 
             PhysicsManager* physicsManager = nullptr;
             if (config.systems.PhysicsEnabled)
@@ -181,10 +159,10 @@ namespace QwerkE
                 ConsolePrint("No physics library defined or enabled! Loading NullPhysicsManager.");
                 physicsManager = new PhysicsManager();
             }
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::PhysicsManager, physicsManager);
+			QwerkE::Services::RegisterService(eEngineServices::PhysicsManager, physicsManager);
 
 			MessageManager* messageManager = new MessageManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::MessageManager, messageManager);
+			QwerkE::Services::RegisterService(eEngineServices::MessageManager, messageManager);
 
 			JobManager* jobManager = nullptr;
 			cJSON* jobManagerMultiThreaded = GetItemFromArrayByKey(systems, "JobManagerMultiThreadedEnabled");
@@ -198,50 +176,48 @@ namespace QwerkE
 				// TODO: Setup single threaded job manager
 				jobManager = new JobManager();
 			}
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::JobManager, jobManager);
+			QwerkE::Services::RegisterService(eEngineServices::JobManager, jobManager);
 
 			NetworkManager* network = new NetworkManager();
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::NetworkManager, network);
+			QwerkE::Services::RegisterService(eEngineServices::NetworkManager, network);
 
 			DataManager* dataMan = new LevelLoader(entityFactory);
-			QwerkE::ServiceLocator::RegisterService(eEngineServices::Data_Manager, dataMan);
+			QwerkE::Services::RegisterService(eEngineServices::Data_Manager, dataMan);
 
 			m_SceneManager->Initialize(); // Order Dependency
 
-			return QwerkE::ServiceLocator::ServicesLoaded();
+			return QwerkE::Services::ServicesLoaded();
 		}
 
 		eEngineMessage Framework::TearDown()
-		{
-			delete (ResourceManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Resource_Manager);
+        {
+			delete ((WindowManager*)QwerkE::Services::UnregisterService(eEngineServices::WindowManager));
 
-			delete ((WindowManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::WindowManager));
-
-			delete (EventManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Event_System);
+			delete (EventManager*)QwerkE::Services::UnregisterService(eEngineServices::Event_System);
 
 			delete m_SceneManager;
 
-			delete (Factory*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Factory_Entity);
+			delete (Factory*)QwerkE::Services::UnregisterService(eEngineServices::Factory_Entity);
 
-			delete (ShaderFactory*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Factory_Shader);
+			delete (ShaderFactory*)QwerkE::Services::UnregisterService(eEngineServices::Factory_Shader);
 
-			delete (PhysicsManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::PhysicsManager);
+			delete (PhysicsManager*)QwerkE::Services::UnregisterService(eEngineServices::PhysicsManager);
 
-			delete (MessageManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::MessageManager);
+			delete (MessageManager*)QwerkE::Services::UnregisterService(eEngineServices::MessageManager);
 
-			delete (Renderer*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Renderer);
+			delete (Renderer*)QwerkE::Services::UnregisterService(eEngineServices::Renderer);
 
-			delete (AudioManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Audio_Manager);
+			delete (AudioManager*)QwerkE::Services::UnregisterService(eEngineServices::Audio_Manager);
 
-			delete (JobManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::JobManager);
+			delete (JobManager*)QwerkE::Services::UnregisterService(eEngineServices::JobManager);
 
-			delete (NetworkManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::NetworkManager);
+			delete (NetworkManager*)QwerkE::Services::UnregisterService(eEngineServices::NetworkManager);
 
-			delete (DataManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Data_Manager);
+			delete (DataManager*)QwerkE::Services::UnregisterService(eEngineServices::Data_Manager);
 
-			delete (InputManager*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::Input_Manager); // dependency
+			delete (InputManager*)QwerkE::Services::UnregisterService(eEngineServices::Input_Manager); // dependency
 
-			delete (FileSystem*)QwerkE::ServiceLocator::UnregisterService(eEngineServices::FileSystem); // first in, last out
+			delete (FileSystem*)QwerkE::Services::UnregisterService(eEngineServices::FileSystem); // first in, last out
 
 			Libs_TearDown(); // unload libraries
 
@@ -284,7 +260,7 @@ namespace QwerkE
 
 			glViewport(0, 0, g_WindowWidth, g_WindowHeight);
 
-			QwerkE::ServiceLocator::LockServices(true); // prevent service changes
+			QwerkE::Services::LockServices(true); // prevent service changes
 
 			// Deltatime + FPS Tracking //
 			// deltatime
@@ -347,7 +323,7 @@ namespace QwerkE
 			}
 
 			// unlock services for clean up
-			QwerkE::ServiceLocator::LockServices(false);
+			QwerkE::Services::LockServices(false);
 		}
 
 		void Framework::Stop()
@@ -360,11 +336,11 @@ namespace QwerkE
 		{
 			/* Reset */
 			// TODO: Reset things...
-			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
+			InputManager* inputManager = (InputManager*)QwerkE::Services::GetService(eEngineServices::Input_Manager);
 			inputManager->NewFrame();
 
 			// TODO: Process events every frame
-			((EventManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Event_System))->ProcessEvents();
+			((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->ProcessEvents();
 		}
 
 		void Framework::Input()
@@ -381,7 +357,7 @@ namespace QwerkE
 			m_SceneManager->Update(deltatime);
 
 			//if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE)) // DEBUG: A simple way to close the window while testing
-			InputManager* inputManager = (InputManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Input_Manager);
+			InputManager* inputManager = (InputManager*)QwerkE::Services::GetService(eEngineServices::Input_Manager);
 
 			if (inputManager->FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
 			{
@@ -411,7 +387,7 @@ namespace QwerkE
 			}
 			if (inputManager->FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{
-				WindowManager* windowManager = (WindowManager*)QwerkE::ServiceLocator::GetService(eEngineServices::WindowManager);
+				WindowManager* windowManager = (WindowManager*)QwerkE::Services::GetService(eEngineServices::WindowManager);
 				windowManager->GetWindow(0)->SetClosing(true);
 			}
 		}

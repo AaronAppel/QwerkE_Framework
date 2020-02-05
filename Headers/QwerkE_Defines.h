@@ -17,6 +17,11 @@
 // string pointing to the QwerkE_Framework folder from your project working directory
 #endif // !FrameworkDir
 
+// TODO: Move to Engine folder (not a part of framework)
+#ifndef ProjectsDir
+#define ProjectsDir FrameworkDir "Projects/"
+#endif // !ProjectsDir
+
 // TODO: Move to directory defines file
 #ifndef AssetsDir
 #define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // Default uses QwerkE_Common Assets

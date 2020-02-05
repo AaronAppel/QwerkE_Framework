@@ -1,7 +1,7 @@
 #include "Math.h"
 
-namespace QwerkE
-{
+namespace QwerkE {
+
     Math::Math()
     {
     }
@@ -14,4 +14,5 @@ namespace QwerkE
     {
         return a + b;
     }
+
 }

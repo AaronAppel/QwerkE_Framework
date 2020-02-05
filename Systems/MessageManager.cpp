@@ -1,9 +1,13 @@
 #include "MessageManager.h"
 
-MessageManager::MessageManager()
-{
-}
+namespace QwerkE {
 
-MessageManager::~MessageManager()
-{
+    MessageManager::MessageManager()
+    {
+    }
+
+    MessageManager::~MessageManager()
+    {
+    }
+
 }

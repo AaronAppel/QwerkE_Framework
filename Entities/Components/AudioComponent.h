@@ -5,12 +5,15 @@
 
 class AudioSource;
 
-class AudioComponent : public Component // abstract
-{
-public:
-    virtual ~AudioComponent() {};
+namespace QwerkE {
 
-	virtual int Play() = 0;
-};
+    class AudioComponent : public Component // abstract
+    {
+    public:
+        virtual ~AudioComponent() {};
 
+        virtual int Play() = 0;
+    };
+
+}
 #endif //!_AudioComponent_H_

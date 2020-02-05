@@ -7,49 +7,52 @@
 class GameCore;
 class Scene;
 
-class SceneManager
-{
-public:
-	SceneManager();
-	~SceneManager();
+namespace QwerkE {
 
-	void Initialize();
+    class SceneManager
+    {
+    public:
+        SceneManager();
+        ~SceneManager();
 
-	void ResetScene(eSceneTypes type);
-	void ResetAll();
+        void Initialize();
 
-	void EnableScene(eSceneTypes type);
-    void SetCurrentScene(eSceneTypes type);
-	void DisableScene(eSceneTypes type);
-	void DisableAll();
+        void ResetScene(eSceneTypes type);
+        void ResetAll();
 
-    void AddScene(Scene* scene);
-    Scene* RemoveScene(Scene* scene);
+        void EnableScene(eSceneTypes type);
+        void SetCurrentScene(eSceneTypes type);
+        void DisableScene(eSceneTypes type);
+        void DisableAll();
 
-	//void QueueEvent(Event* pEvent);
+        void AddScene(Scene* scene);
+        Scene* RemoveScene(Scene* scene);
 
-	void Update(double deltatime);
-	void Draw();
-	void DrawScene(eSceneTypes scene);
+        //void QueueEvent(Event* pEvent);
 
-	/* Getters + Setters */
-	// getters
-	Scene* GetScene(eSceneTypes a_SceneType) { return m_Scenes[a_SceneType]; };
-	Scene* GetCurrentScene() { return m_CurrentScene; };
-	int SceneCount() { return m_Scenes.size(); };
-	const std::map<eSceneTypes, Scene*>* LookAtScenes() { return &m_Scenes; };
+        void Update(double deltatime);
+        void Draw();
+        void DrawScene(eSceneTypes scene);
 
-private:
-	// functions
-	//void ProcessEvents();
-	//void OnEvent(Event* pEvent);
+        /* Getters + Setters */
+        // getters
+        Scene* GetScene(eSceneTypes a_SceneType) { return m_Scenes[a_SceneType]; };
+        Scene* GetCurrentScene() { return m_CurrentScene; };
+        int SceneCount() { return m_Scenes.size(); };
+        const std::map<eSceneTypes, Scene*>* LookAtScenes() { return &m_Scenes; };
 
-	// variables
-	bool m_IsRunning = true; // Add step-through and pause/play button functionality in debug mode
-	Scene* m_CurrentScene = nullptr;
-	//std::queue<Event*> m_EventQueue;
-	std::map<eSceneTypes, Scene*> m_Scenes;
-	//PlayerController* m_pController = nullptr;
-};
+    private:
+        // functions
+        //void ProcessEvents();
+        //void OnEvent(Event* pEvent);
 
+        // variables
+        bool m_IsRunning = true; // Add step-through and pause/play button functionality in debug mode
+        Scene* m_CurrentScene = nullptr;
+        //std::queue<Event*> m_EventQueue;
+        std::map<eSceneTypes, Scene*> m_Scenes;
+        //PlayerController* m_pController = nullptr;
+    };
+
+}
 #endif //_SceneManager_H_

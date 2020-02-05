@@ -3,25 +3,28 @@
 
 #include "AudioManager.h"
 
-class NullAudioManager : public AudioManager
-{
-public:
-    NullAudioManager()
+namespace QwerkE {
+
+    class NullAudioManager : public AudioManager
     {
-        ConsolePrint("\nNullAudioManager loaded successfully\n\n");
-    }
+    public:
+        NullAudioManager()
+        {
+            ConsolePrint("\nNullAudioManager loaded successfully\n\n");
+        }
 
-    ~NullAudioManager() {};
+        ~NullAudioManager() {};
 
-    void PlaySound(const char* name)
-    {
-        ConsolePrint("\nNullAudioManager.PlaySound()\n");
-    }
+        void PlaySound(const char* name)
+        {
+            ConsolePrint("\nNullAudioManager.PlaySound()\n");
+        }
 
-    void SetListenerOrientation(vec3 position, vec3 velocity)
-    {
-        ConsolePrint("\SetListenerOrientation.PlaySound()\n");
-    }
-};
+        void SetListenerOrientation(vec3 position, vec3 velocity)
+        {
+            ConsolePrint("\SetListenerOrientation.PlaySound()\n");
+        }
+    };
 
+}
 #endif // _Null_Audio_Manager_H_

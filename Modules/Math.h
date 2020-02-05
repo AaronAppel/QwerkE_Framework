@@ -15,8 +15,8 @@
 // divide without division
 // https://www.geeksforgeeks.org/divide-two-integers-without-using-multiplication-division-mod-operator/
 
-namespace QwerkE
-{
+namespace QwerkE {
+
     class Math
     {
     public:
@@ -27,6 +27,6 @@ namespace QwerkE
 
     private:
     };
-}
 
+}
 #endif // !_Time_H_

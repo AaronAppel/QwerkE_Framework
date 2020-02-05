@@ -1,9 +1,13 @@
 #include "Asset.h"
 
-Asset::Asset()
-{
-}
+namespace QwerkE {
 
-Asset::~Asset()
-{
+    Asset::Asset()
+    {
+    }
+
+    Asset::~Asset()
+    {
+    }
+
 }

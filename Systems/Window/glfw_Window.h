@@ -10,28 +10,31 @@
 // TODO: Look at handling raw input for multiple mice as below
 // https://hannespfeiffer.net/2016/07/07/how-to-use-multiple-mice-with-glfw/
 
-class glfw_Window : public Window
-{
-public:
-	glfw_Window(int windowWidth, int windowHeight, const char* windowTitle);
-	~glfw_Window();
+namespace QwerkE {
 
-	void* GetContext() { return m_Window; }; // TODO: Remove
+    class glfw_Window : public Window
+    {
+    public:
+        glfw_Window(int windowWidth, int windowHeight, const char* windowTitle);
+        ~glfw_Window();
 
-	void SwapBuffers() { glfwSwapBuffers(m_Window); };
+        void* GetContext() { return m_Window; }; // TODO: Remove
 
-private:
-	// TODO: glfwSetClipboardString();
-	// TODO: glfwSetGamma()
-	// TODO: glfwSetInputMode()
-	// TODO: glfwSetWindowAspectRatio()
-	// TODO: glfwSetWindowIcon()
-	// TODO: glfwSetWindowMonitor()
-	// TODO: glfwSetMonitorCallback()
-	// TODO: glfwSetWindowTitle()
-	// TODO: glfwSetWindowSizeLimits()
-	// TODO: glfwSetWindowUserPointer()
-	GLFWwindow * m_Window = nullptr;
-};
+        void SwapBuffers() { glfwSwapBuffers(m_Window); };
 
+    private:
+        // TODO: glfwSetClipboardString();
+        // TODO: glfwSetGamma()
+        // TODO: glfwSetInputMode()
+        // TODO: glfwSetWindowAspectRatio()
+        // TODO: glfwSetWindowIcon()
+        // TODO: glfwSetWindowMonitor()
+        // TODO: glfwSetMonitorCallback()
+        // TODO: glfwSetWindowTitle()
+        // TODO: glfwSetWindowSizeLimits()
+        // TODO: glfwSetWindowUserPointer()
+        GLFWwindow* m_Window = nullptr;
+    };
+
+}
 #endif // !_glfw_Window_H_

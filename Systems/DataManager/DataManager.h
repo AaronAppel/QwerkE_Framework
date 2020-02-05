@@ -18,54 +18,58 @@
 */
 #include "../../QwerkE_Common/Math_Includes.h"
 
-class Scene;
-class GameObject;
-class Factory;
-class Component;
-class Routine;
 struct cJSON;
 
-class DataManager
-{
-public:
-	DataManager(Factory* factory);
-    virtual ~DataManager();
+namespace QwerkE {
 
-	virtual void SaveScene(Scene* scene, const char* fileDir) = 0;
-	virtual void LoadScene(Scene* scene, const char* fileDir) = 0;
+    class Scene;
+    class GameObject;
+    class Factory;
+    class Component;
+    class Routine;
 
-protected:
-    Factory* m_Factory = nullptr;
+    class DataManager
+    {
+    public:
+        DataManager(Factory* factory);
+        virtual ~DataManager();
 
-	// Utility
-	void AddVec3ToItem(cJSON* item, const char* arrayName, const char* name1, float value1, const char* name2, float value2, const char* name3, float value3) const;
-	cJSON* ConvertGameObjectToJSON(GameObject* item);
-	void UpdateJSONArrayInFile(cJSON* array, const char* fileDir);
-    GameObject* ConvertJSONToGameObject(cJSON* item, Scene* scene);
+        virtual void SaveScene(Scene* scene, const char* fileDir) = 0;
+        virtual void LoadScene(Scene* scene, const char* fileDir) = 0;
 
-	// Getters
-	vec3 GetPositionFromcJSONItem(cJSON* item);
-    vec3 GetRotationFromcJSONItem(cJSON* item);
-    vec3 GetScaleFromcJSONItem(cJSON* item);
+    protected:
+        Factory* m_Factory = nullptr;
 
-	// Transform
-	void AddPositionTocJSONItem(cJSON* item, GameObject* object);
-	void AddRotationTocJSONItem(cJSON* item, GameObject* object);
-	void AddScaleTocJSONItem(cJSON* item, GameObject* object);
+        // Utility
+        void AddVec3ToItem(cJSON* item, const char* arrayName, const char* name1, float value1, const char* name2, float value2, const char* name3, float value3) const;
+        cJSON* ConvertGameObjectToJSON(GameObject* item);
+        void UpdateJSONArrayInFile(cJSON* array, const char* fileDir);
+        GameObject* ConvertJSONToGameObject(cJSON* item, Scene* scene);
 
-	// Components
-	void AddComponentTocJSONItem(cJSON* componentList, const Component* component) const;
-    void AddComponentsTocJSONItem(cJSON* item, GameObject* object);
+        // Getters
+        vec3 GetPositionFromcJSONItem(cJSON* item);
+        vec3 GetRotationFromcJSONItem(cJSON* item);
+        vec3 GetScaleFromcJSONItem(cJSON* item);
 
-    void AddComponentToGameObject(GameObject* object, cJSON* item);
-    void AddComponentsToGameObject(GameObject* object, cJSON* item);
+        // Transform
+        void AddPositionTocJSONItem(cJSON* item, GameObject* object);
+        void AddRotationTocJSONItem(cJSON* item, GameObject* object);
+        void AddScaleTocJSONItem(cJSON* item, GameObject* object);
 
-    // Routines
-    void AddRoutineTocJSONItem(cJSON* routineList, Routine* routine);
-    void AddRoutinesTocJSONItem(cJSON* item, GameObject* object);
+        // Components
+        void AddComponentTocJSONItem(cJSON* componentList, const Component* component) const;
+        void AddComponentsTocJSONItem(cJSON* item, GameObject* object);
 
-    void AddRoutineToGameObject(GameObject* object, cJSON* item);
-    void AddRoutinesToGameObject(GameObject* object, cJSON* item);
-};
+        void AddComponentToGameObject(GameObject* object, cJSON* item);
+        void AddComponentsToGameObject(GameObject* object, cJSON* item);
 
+        // Routines
+        void AddRoutineTocJSONItem(cJSON* routineList, Routine* routine);
+        void AddRoutinesTocJSONItem(cJSON* item, GameObject* object);
+
+        void AddRoutineToGameObject(GameObject* object, cJSON* item);
+        void AddRoutinesToGameObject(GameObject* object, cJSON* item);
+    };
+
+}
 #endif //!_DataManager_H_

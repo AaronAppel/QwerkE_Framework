@@ -1,17 +1,21 @@
 #include "JobQueuedEvent.h"
 #include "../ResourceManager/ResourceManager.h"
-#include "../ServiceLocator.h"
+#include "../Services.h"
 
-JobQueuedEvent::JobQueuedEvent()
-{
-    m_EventType = eEventTypes::eEvent_JobQueued;
-}
+namespace QwerkE {
 
-JobQueuedEvent::~JobQueuedEvent()
-{
-}
+    JobQueuedEvent::JobQueuedEvent()
+    {
+        m_EventType = eEventTypes::eEvent_JobQueued;
+    }
 
-void JobQueuedEvent::Process()
-{
-	((JobManager*)QwerkE::ServiceLocator::GetService(eEngineServices::JobManager))->ProcessTasks();
+    JobQueuedEvent::~JobQueuedEvent()
+    {
+    }
+
+    void JobQueuedEvent::Process()
+    {
+        ((JobManager*)QwerkE::Services::GetService(eEngineServices::JobManager))->ProcessTasks();
+    }
+
 }

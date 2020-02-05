@@ -9,29 +9,32 @@
 
 #include <vector>
 
-class AudioSource;
+namespace QwerkE {
 
-class OpenALAudioManager : public AudioManager
-{
-public:
-    OpenALAudioManager();
-    ~OpenALAudioManager();
+    class AudioSource;
 
-    void PlaySound(const char* name);
-    // music, effect, dialogue
+    class OpenALAudioManager : public AudioManager
+    {
+    public:
+        OpenALAudioManager();
+        ~OpenALAudioManager();
 
-    void SetListenerOrientation(vec3 position, vec3 velocity);
+        void PlaySound(const char* name);
+        // music, effect, dialogue
 
-private:
+        void SetListenerOrientation(vec3 position, vec3 velocity);
 
-    ALCdevice* Device = nullptr;
-    ALCcontext* Context = nullptr;
+    private:
 
-    // ALboolean g_bEAX; // Why?
+        ALCdevice* Device = nullptr;
+        ALCcontext* Context = nullptr;
 
-    // buffer data
-    ALboolean loop = AL_FALSE;
-    AudioSource* m_Source = nullptr;
-};
+        // ALboolean g_bEAX; // Why?
 
+        // buffer data
+        ALboolean loop = AL_FALSE;
+        AudioSource* m_Source = nullptr;
+    };
+
+}
 #endif // _OpenAL_Audio_Manager_H_

@@ -87,7 +87,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Services.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\LitMaterial.cpp" />
@@ -188,7 +188,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\SceneManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Services.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h" />

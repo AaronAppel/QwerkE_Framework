@@ -6,24 +6,27 @@
 #include "../../Entities/GameObject.h"
 #include "../../../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/LinearMath/btMotionState.h"
 
-class Bullet3Component : public PhysicsComponent, public btMotionState
-{
-public:
-	Bullet3Component();
-	~Bullet3Component();
+namespace QwerkE {
 
-	// btMotionState interface
-	void getWorldTransform(btTransform& worldTrans) const;
+    class Bullet3Component : public PhysicsComponent, public btMotionState
+    {
+    public:
+        Bullet3Component();
+        ~Bullet3Component();
 
-	//Bullet only calls the update of worldtransform for active objects
-	void setWorldTransform(const btTransform& worldTrans);
+        // btMotionState interface
+        void getWorldTransform(btTransform& worldTrans) const;
 
-	/* Getters + Setters */
-	// getters
+        //Bullet only calls the update of worldtransform for active objects
+        void setWorldTransform(const btTransform& worldTrans);
 
-	// setters
+        /* Getters + Setters */
+        // getters
 
-private:
-};
+        // setters
 
+    private:
+    };
+
+}
 #endif //!_Bullet3Component_H_

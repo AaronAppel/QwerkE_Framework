@@ -1,9 +1,13 @@
 #include "Routine.h"
 
-Routine::Routine()
-{
-}
+namespace QwerkE {
 
-Routine::~Routine()
-{
+    Routine::Routine()
+    {
+    }
+
+    Routine::~Routine()
+    {
+    }
+
 }

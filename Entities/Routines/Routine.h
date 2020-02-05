@@ -5,37 +5,40 @@
 
 class GameObject;
 
-class Routine // Abstract
-{
-public:
-	virtual ~Routine();
+namespace QwerkE {
 
-	virtual void Update(double a_Deltatime) {};
+    class Routine // Abstract
+    {
+    public:
+        virtual ~Routine();
 
-	virtual void Draw(GameObject* a_Camera) {};
+        virtual void Update(double a_Deltatime) {};
 
-	virtual void Initialize() = 0;
+        virtual void Draw(GameObject* a_Camera) {};
 
-	/* CleanUp */
-	// used to prevent deletion errors.
-	// routines are to be deleted by their creators exclusively
-	// CleanUp() is used to detach routines
-	virtual void CleanUp() {};
+        virtual void Initialize() = 0;
 
-	/* Getters + Setters */
-	int GetPriority() { return m_Priority; };
-	eRoutineTypes GetRoutineType() { return m_Type; };
-	GameObject* GetParent() { return m_pParent; };
+        /* CleanUp */
+        // used to prevent deletion errors.
+        // routines are to be deleted by their creators exclusively
+        // CleanUp() is used to detach routines
+        virtual void CleanUp() {};
 
-	void SetPriority(int priority) { m_Priority = priority; };
-	void SetParent(GameObject* a_Parent) { m_pParent = a_Parent; };
-	void SetRoutineType(eRoutineTypes type) { m_Type = type; };
+        /* Getters + Setters */
+        int GetPriority() { return m_Priority; };
+        eRoutineTypes GetRoutineType() { return m_Type; };
+        GameObject* GetParent() { return m_pParent; };
 
-protected:
-	Routine();
-	int m_Priority = 0; // render order / update order
-	GameObject* m_pParent = nullptr;
-	eRoutineTypes m_Type = eRoutineTypes::Routine_NULL;
-};
+        void SetPriority(int priority) { m_Priority = priority; };
+        void SetParent(GameObject* a_Parent) { m_pParent = a_Parent; };
+        void SetRoutineType(eRoutineTypes type) { m_Type = type; };
 
+    protected:
+        Routine();
+        int m_Priority = 0; // render order / update order
+        GameObject* m_pParent = nullptr;
+        eRoutineTypes m_Type = eRoutineTypes::Routine_NULL;
+    };
+
+}
 #endif //!_Routine_H_

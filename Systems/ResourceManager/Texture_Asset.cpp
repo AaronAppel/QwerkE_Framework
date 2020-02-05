@@ -1,9 +1,13 @@
 #include "Texture_Asset.h"
 
-//Texture::Texture()
-//{
-//}
-//
-//Texture::~Texture()
-//{
-//}
+namespace QwerkE {
+
+    //Texture::Texture()
+    //{
+    //}
+    //
+    //Texture::~Texture()
+    //{
+    //}
+
+}

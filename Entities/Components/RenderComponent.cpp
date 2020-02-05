@@ -1,148 +1,149 @@
 #include "RenderComponent.h"
 #include "../../Systems/ResourceManager/ResourceManager.h"
-#include "../../Systems/ServiceLocator.h"
+#include "../../Systems/Services.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 
-RenderComponent::RenderComponent()
-{
-	m_ComponentTag = eComponentTags::Component_Render;
-}
+namespace QwerkE {
 
-RenderComponent::RenderComponent(const char* objectRecipe)
-{
-	m_ComponentTag = eComponentTags::Component_Render;
+    RenderComponent::RenderComponent()
+    {
+        m_ComponentTag = eComponentTags::Component_Render;
+    }
 
-	if (m_pParent)
-	{
-		RenderRoutine* rRoutine = (RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render);
-		if (rRoutine)
-			rRoutine->ResetUniformList();
-	}
-}
+    RenderComponent::RenderComponent(const char* objectRecipe)
+    {
+        m_ComponentTag = eComponentTags::Component_Render;
 
-RenderComponent::RenderComponent(const char* shaderName, const char* materialName, const char* meshName)
-{
-	m_ComponentTag = eComponentTags::Component_Render;
-	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+        if (m_pParent)
+        {
+            RenderRoutine* rRoutine = (RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render);
+            if (rRoutine)
+                rRoutine->ResetUniformList();
+        }
+    }
 
-	Renderable t_Renderable;
-	t_Renderable.SetMaterial(resMan->GetMaterial(materialName));
-	t_Renderable.SetMesh(resMan->GetMesh(meshName));
-	t_Renderable.SetShader(resMan->GetShaderProgram(shaderName));
+    RenderComponent::RenderComponent(const char* shaderName, const char* materialName, const char* meshName)
+    {
+        m_ComponentTag = eComponentTags::Component_Render;
 
-	t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
+        Renderable t_Renderable;
+        t_Renderable.SetMaterial(Services::Resources.GetMaterial(materialName));
+        t_Renderable.SetMesh(Services::Resources.GetMesh(meshName));
+        t_Renderable.SetShader(Services::Resources.GetShaderProgram(shaderName));
 
-	m_RenderableList.push_back(t_Renderable);
+        t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
 
-	if (m_pParent)
-	{
-		RenderRoutine* rRoutine= (RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render);
-		if (rRoutine)
-			rRoutine->ResetUniformList();
-	}
-}
+        m_RenderableList.push_back(t_Renderable);
 
-RenderComponent::~RenderComponent()
-{
-}
+        if (m_pParent)
+        {
+            RenderRoutine* rRoutine = (RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render);
+            if (rRoutine)
+                rRoutine->ResetUniformList();
+        }
+    }
 
-void RenderComponent::GenerateSchematic()
-{
-    // TODO: Test
-	if (strcmp(m_SchematicName.c_str(), "None") == 0)
-		if (m_pParent)
-		    m_SchematicName = m_pParent->GetName();
-	SaveObjectSchematic(this);
-}
+    RenderComponent::~RenderComponent()
+    {
+    }
 
-void RenderComponent::Setup(const char* shaderName, const char* materialName, const char* meshName)
-{
-	Renderable t_Renderable;
-	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+    void RenderComponent::GenerateSchematic()
+    {
+        // TODO: Test
+        if (strcmp(m_SchematicName.c_str(), "None") == 0)
+            if (m_pParent)
+                m_SchematicName = m_pParent->GetName();
+        SaveObjectSchematic(this);
+    }
 
-	t_Renderable.SetMaterial(resMan->GetMaterial(materialName));
-	t_Renderable.SetMesh(resMan->GetMesh(meshName));
-	t_Renderable.SetShader(resMan->GetShaderProgram(shaderName));
+    void RenderComponent::Setup(const char* shaderName, const char* materialName, const char* meshName)
+    {
+        Renderable t_Renderable;
 
-	t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
+        t_Renderable.SetMaterial(Services::Resources.GetMaterial(materialName));
+        t_Renderable.SetMesh(Services::Resources.GetMesh(meshName));
+        t_Renderable.SetShader(Services::Resources.GetShaderProgram(shaderName));
 
-	m_RenderableList.push_back(t_Renderable);
+        t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
 
-	if (m_pParent)
-		((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
-}
+        m_RenderableList.push_back(t_Renderable);
 
-void RenderComponent::AppendEmptyRenderables(int count)
-{
-	ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
-	for (int i = 0; i < count; i++)
-	{
-		Renderable t_Renderable;
+        if (m_pParent)
+            ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+    }
 
-		t_Renderable.SetShader(resMan->GetShaderProgram(null_shader_schematic));
-		t_Renderable.SetMaterial(resMan->GetMaterial(null_material));
-		t_Renderable.SetMesh(resMan->GetMesh(null_mesh));
+    void RenderComponent::AppendEmptyRenderables(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Renderable t_Renderable;
 
-		m_RenderableList.push_back(t_Renderable);
-	}
-}
+            t_Renderable.SetShader(Services::Resources.GetShaderProgram(null_shader_schematic));
+            t_Renderable.SetMaterial(Services::Resources.GetMaterial(null_material));
+            t_Renderable.SetMesh(Services::Resources.GetMesh(null_mesh));
 
-void RenderComponent::AddRenderable(Renderable renderable)
-{
-	m_RenderableList.push_back(renderable);
-}
+            m_RenderableList.push_back(t_Renderable);
+        }
+    }
 
-void RenderComponent::SetNameAtIndex(int index, std::string name)
-{
-	// TODO: More error handling
-	if (index < m_RenderableList.size())
-	{
-		m_RenderableList[index].SetRenderableName(name);
-	}
-}
+    void RenderComponent::AddRenderable(Renderable renderable)
+    {
+        m_RenderableList.push_back(renderable);
+    }
 
-void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)
-{
-	// TODO: More error handling
-	if (index < m_RenderableList.size() && shader != nullptr)
-	{
-		m_RenderableList[index].SetShader(shader);
+    void RenderComponent::SetNameAtIndex(int index, std::string name)
+    {
+        // TODO: More error handling
+        if (index < m_RenderableList.size())
+        {
+            m_RenderableList[index].SetRenderableName(name);
+        }
+    }
 
-		if (m_RenderableList[index].GetMesh())
-		{
-			m_RenderableList[index].GetMesh()->SetupShaderAttributes(shader);
+    void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)
+    {
+        // TODO: More error handling
+        if (index < m_RenderableList.size() && shader != nullptr)
+        {
+            m_RenderableList[index].SetShader(shader);
 
-			if (m_pParent)
-				((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
-		}
-	}
-}
+            if (m_RenderableList[index].GetMesh())
+            {
+                m_RenderableList[index].GetMesh()->SetupShaderAttributes(shader);
 
-void RenderComponent::SetMaterialAtIndex(int index, Material* material)
-{
-	// TODO: More error handling
-	if (index < m_RenderableList.size() && material != nullptr)
-		m_RenderableList[index].SetMaterial(material);
-	// TODO: Changing material will need to reset render routine in the future
-}
+                if (m_pParent)
+                    ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+            }
+        }
+    }
 
-void RenderComponent::SetMeshAtIndex(int index, Mesh* mesh)
-{
-	// TODO: More error handling
-	if (index < m_RenderableList.size() && mesh != nullptr)
-	{
-		m_RenderableList[index].SetMesh(mesh);
+    void RenderComponent::SetMaterialAtIndex(int index, Material* material)
+    {
+        // TODO: More error handling
+        if (index < m_RenderableList.size() && material != nullptr)
+            m_RenderableList[index].SetMaterial(material);
+        // TODO: Changing material will need to reset render routine in the future
+    }
 
-		if (m_RenderableList[index].GetShaderSchematic())
-		{
-			m_RenderableList[index].GetMesh()->SetupShaderAttributes(m_RenderableList[index].GetShaderSchematic());
+    void RenderComponent::SetMeshAtIndex(int index, Mesh* mesh)
+    {
+        // TODO: More error handling
+        if (index < m_RenderableList.size() && mesh != nullptr)
+        {
+            m_RenderableList[index].SetMesh(mesh);
 
-			if (m_pParent)
-				((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
-		}
-	}
+            if (m_RenderableList[index].GetShaderSchematic())
+            {
+                m_RenderableList[index].GetMesh()->SetupShaderAttributes(m_RenderableList[index].GetShaderSchematic());
+
+                if (m_pParent)
+                    ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
+            }
+        }
+    }
+
 }

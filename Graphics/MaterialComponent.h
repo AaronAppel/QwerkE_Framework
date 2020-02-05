@@ -6,20 +6,23 @@
 
 #include <string>
 
-struct MaterialComponent
-{
-	eMaterialMaps s_Type = eMaterialMaps::MatMap_Null;
+namespace QwerkE {
 
-	std::string s_TextureName = gc_DefaultStringValue;
+    struct MaterialComponent
+    {
+        eMaterialMaps s_Type = eMaterialMaps::MatMap_Null;
 
-	GLuint s_Handle = 0;
+        std::string s_TextureName = gc_DefaultStringValue;
 
-	// constructors/destructors
-	MaterialComponent();
-	MaterialComponent(std::string name, GLuint handle) :
-		s_TextureName(name),
-		s_Handle(handle){}
-	~MaterialComponent();
-};
+        GLuint s_Handle = 0;
 
+        // constructors/destructors
+        MaterialComponent();
+        MaterialComponent(std::string name, GLuint handle) :
+            s_TextureName(name),
+            s_Handle(handle) {}
+        ~MaterialComponent();
+    };
+
+}
 #endif // !_MaterialComponent_H_

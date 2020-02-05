@@ -5,263 +5,266 @@
 
 // QwerkE enums for things like GameObject tagging, Components, etc
 
-enum class eInputDeviceTypes : std::uint8_t
-{
-	Keyboard_Min = 0,
-	Keyboard_Device0,
-	Keyboard_Device1,
-	Keyboard_Device2,
-	Keyboard_Device3,
-	Keyboard_Max,
+namespace QwerkE {
 
-	Mouse_Min,
-	Mouse_Device0,
-	Mouse_Device1,
-	Mouse_Device2,
-	Mouse_Device3,
-	Mouse_Max,
+    enum class eInputDeviceTypes : std::uint8_t
+    {
+        Keyboard_Min = 0,
+        Keyboard_Device0,
+        Keyboard_Device1,
+        Keyboard_Device2,
+        Keyboard_Device3,
+        Keyboard_Max,
 
-	GamePad_Min,
-	GamePad_Device0,
-	GamePad_Device1,
-	GamePad_Device2,
-	GamePad_Device3,
-	GamePad_Device4,
-	GamePad_Device5,
-	GamePad_Device6,
-	GamePad_Device7,
-	GamePad_Max,
+        Mouse_Min,
+        Mouse_Device0,
+        Mouse_Device1,
+        Mouse_Device2,
+        Mouse_Device3,
+        Mouse_Max,
 
-	Max_Device
-};
+        GamePad_Min,
+        GamePad_Device0,
+        GamePad_Device1,
+        GamePad_Device2,
+        GamePad_Device3,
+        GamePad_Device4,
+        GamePad_Device5,
+        GamePad_Device6,
+        GamePad_Device7,
+        GamePad_Max,
 
-enum class eMaterialMaps : std::uint8_t
-{
-	MatMap_Ambient = 0,
-	MatMap_Diffuse,
-	MatMap_Specular,
-	MatMap_Emissive,
-	MatMap_Height,
-	MatMap_Normals,
-	MatMap_Shininess,
-	MatMap_Opacity,
-	MatMap_Displacement,
-	MatMap_LightMap,
-	MatMap_Reflection,
-	MatMap_Albedo,
-	MatMap_Metallic,
-	MatMap_AmbientOcclusion,
-	MatMap_Roughness,
+        Max_Device
+    };
 
-    MatMap_Vec3Colour,
-    MatMap_Max,
-	MatMap_Null
-};
+    enum class eMaterialMaps : std::uint8_t
+    {
+        MatMap_Ambient = 0,
+        MatMap_Diffuse,
+        MatMap_Specular,
+        MatMap_Emissive,
+        MatMap_Height,
+        MatMap_Normals,
+        MatMap_Shininess,
+        MatMap_Opacity,
+        MatMap_Displacement,
+        MatMap_LightMap,
+        MatMap_Reflection,
+        MatMap_Albedo,
+        MatMap_Metallic,
+        MatMap_AmbientOcclusion,
+        MatMap_Roughness,
 
-enum class eEngineMessage : std::uint8_t
-{
-	_QFailure = 0,
-	_QSuccess,
+        MatMap_Vec3Colour,
+        MatMap_Max,
+        MatMap_Null
+    };
 
-	_QMax
-};
+    enum class eEngineMessage : std::uint8_t
+    {
+        _QFailure = 0,
+        _QSuccess,
 
-enum class eSceneState : std::uint8_t
-{
-	SceneState_Running = 0,
-	SceneState_Frozen, // Cameras can move
-	SceneState_Paused, // No updating
-	SceneState_SlowMo, // Smaller deltatime
-	SceneState_Animating, // Cameras and Animation only
+        _QMax
+    };
 
-	SceneState_Max
-};
+    enum class eSceneState : std::uint8_t
+    {
+        SceneState_Running = 0,
+        SceneState_Frozen, // Cameras can move
+        SceneState_Paused, // No updating
+        SceneState_SlowMo, // Smaller deltatime
+        SceneState_Animating, // Cameras and Animation only
 
-enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
-{
-	Resource_Manager = 0,
-	Input_Manager,
-	Audio_Manager,
-	Data_Manager,
-	// Graphics (OpenGLManager)
-	Event_System,
-	Scene_Manager,
-	Factory_Entity,
-	Factory_Mesh,
-	Factory_Shader,
-	PhysicsManager,
-	MessageManager,
-	Renderer,
-	JobManager,
-	WindowManager,
-	NetworkManager,
-	FileSystem,
+        SceneState_Max
+    };
 
-	Service_Max
-};
+    enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
+    {
+        Resource_Manager = 0,
+        Input_Manager,
+        Audio_Manager,
+        Data_Manager,
+        // Graphics (OpenGLManager)
+        Event_System,
+        Scene_Manager,
+        Factory_Entity,
+        Factory_Mesh,
+        Factory_Shader,
+        PhysicsManager,
+        MessageManager,
+        Renderer,
+        JobManager,
+        WindowManager,
+        NetworkManager,
+        FileSystem,
 
-// Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
-enum eCamera_Movement : std::uint8_t
-{
-	FORWARD = 0,
-	BACKWARD,
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN,
-	RROTATE,
-	LROTATE
-};
+        Service_Max
+    };
 
-/* Component Tagging */
-enum eComponentTags : std::uint8_t
-{
-	/* General */
-	Component_Camera = 0,
-	Component_Physics,
-	Component_Light,
-	Component_Controller,
-	Component_Render,
-	Component_Print,
-	Component_SkyBox,
-	Component_SoundPlayer,
-	Component_SoundListener,
-	Component_Max,
-	Component_Null
-};
-/* Routines */
-enum eRoutineTypes : std::uint8_t
-{
-	Routine_Render = 0,
-	Routine_Print,
-	Routine_Transform,
-	Routine_Max,
-	Routine_NULL
-};
+    // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
+    enum eCamera_Movement : std::uint8_t
+    {
+        FORWARD = 0,
+        BACKWARD,
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN,
+        RROTATE,
+        LROTATE
+    };
 
-/* Input */
-enum eGameButtons : std::uint8_t
-{
-	// Application functionality
-	Button_ModifierCntrl,
+    /* Component Tagging */
+    enum eComponentTags : std::uint8_t
+    {
+        /* General */
+        Component_Camera = 0,
+        Component_Physics,
+        Component_Light,
+        Component_Controller,
+        Component_Render,
+        Component_Print,
+        Component_SkyBox,
+        Component_SoundPlayer,
+        Component_SoundListener,
+        Component_Max,
+        Component_Null
+    };
+    /* Routines */
+    enum eRoutineTypes : std::uint8_t
+    {
+        Routine_Render = 0,
+        Routine_Print,
+        Routine_Transform,
+        Routine_Max,
+        Routine_NULL
+    };
 
-	/* Mouse */
-	Button_MouseLeft,
-	Button_MouseRight,
-	Button_MouseMiddle,
+    /* Input */
+    enum eGameButtons : std::uint8_t
+    {
+        // Application functionality
+        Button_ModifierCntrl,
 
-	/* Movement */
-	Button_MoveUp,
-	Button_MoveDown,
-	Button_MoveLeft,
-	Button_MoveRight,
-	Button_MoveForward,
-	Button_MoveBackward,
+        /* Mouse */
+        Button_MouseLeft,
+        Button_MouseRight,
+        Button_MouseMiddle,
 
-	/* Navigation */
-	Button_MenuUp,
-	Button_MenuDown,
-	Button_MenuLeft,
-	Button_MenuRight,
-	Button_MenuOpen,
-	Button_MenuClose,
+        /* Movement */
+        Button_MoveUp,
+        Button_MoveDown,
+        Button_MoveLeft,
+        Button_MoveRight,
+        Button_MoveForward,
+        Button_MoveBackward,
 
-	/* Abilities */
-	Button_Ability1,
+        /* Navigation */
+        Button_MenuUp,
+        Button_MenuDown,
+        Button_MenuLeft,
+        Button_MenuRight,
+        Button_MenuOpen,
+        Button_MenuClose,
 
-	/* Size */
-	Button_Max
-};
+        /* Abilities */
+        Button_Ability1,
 
-/* Scenes */
-enum eSceneTypes : std::uint8_t
-{
-	//// list in order of opening if possible
-	// fullscreen
-	Scene_TestScene = 0,
-	Scene_GameScene,
-	// overlays
-	// Scene_OverLays,
-	// *options
-	// **Sound
-	// **etc
+        /* Size */
+        Button_Max
+    };
 
-	Scene_Max,
+    /* Scenes */
+    enum eSceneTypes : std::uint8_t
+    {
+        //// list in order of opening if possible
+        // fullscreen
+        Scene_TestScene = 0,
+        Scene_GameScene,
+        // overlays
+        // Scene_OverLays,
+        // *options
+        // **Sound
+        // **etc
 
-	// "special" scenes
-	Scene_ViewerScene,
-	Scene_PBR_Test1,
+        Scene_Max,
 
-	Scene_Null
-};
+        // "special" scenes
+        Scene_ViewerScene,
+        Scene_PBR_Test1,
 
-/* Menu Windows Types */
-enum eMenuTypes : std::uint8_t // Example game windows
-{
-	Menu_Landing = 0,
-	Menu_DropDown,
-	Menu_Campaign,
-	Menu_DungeonRaid,
-	Menu_Progression,
-	Menu_Profile,
-	Menu_Character,
-	Menu_Max,
-	Menu_NULL
-};
+        Scene_Null
+    };
 
-/* Menu States */
-enum eStates : std::uint8_t
-{
-	State_Min = 0,
-	State_Disabled,
-	State_Enabled,
-	State_Persistent,
-	State_Max
-};
+    /* Menu Windows Types */
+    enum eMenuTypes : std::uint8_t // Example game windows
+    {
+        Menu_Landing = 0,
+        Menu_DropDown,
+        Menu_Campaign,
+        Menu_DungeonRaid,
+        Menu_Progression,
+        Menu_Profile,
+        Menu_Character,
+        Menu_Max,
+        Menu_NULL
+    };
 
-/* Menu Item Types */
+    /* Menu States */
+    enum eStates : std::uint8_t
+    {
+        State_Min = 0,
+        State_Disabled,
+        State_Enabled,
+        State_Persistent,
+        State_Max
+    };
 
-// Camera Types
-enum eCamType : std::uint8_t // TODO: Hide from program?
-{
-	CamType_FreeCam = 0,
-	CamType_FirstPerson,
-	CamType_ThirdPerson,
-	CamType_Static,
+    /* Menu Item Types */
 
-	CamType_Max,
-	CamType_NULL
-};
-// Light Types
-enum eLightType : std::uint8_t // TODO: Hide from program?
-{
-	LightType_Point = 0,
-	LightType_Area,
-	LightType_Spot,
+    // Camera Types
+    enum eCamType : std::uint8_t // TODO: Hide from program?
+    {
+        CamType_FreeCam = 0,
+        CamType_FirstPerson,
+        CamType_ThirdPerson,
+        CamType_Static,
 
-	LightType_Max,
-	LightType_NULL
-};
+        CamType_Max,
+        CamType_NULL
+    };
+    // Light Types
+    enum eLightType : std::uint8_t // TODO: Hide from program?
+    {
+        LightType_Point = 0,
+        LightType_Area,
+        LightType_Spot,
 
-// TODO: Adding object tags ruins object saving and loading. Fix!
-enum eGameObjectTags : std::uint8_t
-{
-	GO_Tag_Player = 0,
-	// Cameras
-	GO_Tag_Camera,
-	// Lights
-	GO_Tag_Light,
-	// Shapes
-	GO_Tag_Cube,
-	GO_Tag_Plane,
-	GO_Tag_Sphere,
-	// Scenery
-	GO_Tag_SkyBox,
-	// Test
-	GO_Tag_TestModel,
+        LightType_Max,
+        LightType_NULL
+    };
 
-	GO_Tag_Max,
-	GO_Tag_Null,
-};
+    // TODO: Adding object tags ruins object saving and loading. Fix!
+    enum eGameObjectTags : std::uint8_t
+    {
+        GO_Tag_Player = 0,
+        // Cameras
+        GO_Tag_Camera,
+        // Lights
+        GO_Tag_Light,
+        // Shapes
+        GO_Tag_Cube,
+        GO_Tag_Plane,
+        GO_Tag_Sphere,
+        // Scenery
+        GO_Tag_SkyBox,
+        // Test
+        GO_Tag_TestModel,
 
+        GO_Tag_Max,
+        GO_Tag_Null,
+    };
+
+}
 #endif // _QwerkE_Enums_H_

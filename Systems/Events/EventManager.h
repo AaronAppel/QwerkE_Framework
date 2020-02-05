@@ -1,28 +1,29 @@
 #ifndef _EventManager_H_
 #define _EventManager_H_
 
-//
-
 #include <queue>
 
 class Event;
 
-class EventManager
-{
-public:
-    EventManager();
-    ~EventManager();
+namespace QwerkE {
 
-    void QueueEvent(Event* _event);
+    class EventManager
+    {
+    public:
+        EventManager();
+        ~EventManager();
 
-	void ProcessEvents();
+        void QueueEvent(Event* _event);
 
-    // register callbacks/listeners
+        void ProcessEvents();
 
-private:
-	const int m_EventMax = 100;
-    // eventlist
-	std::queue<Event*> m_EventList;
-};
+        // register callbacks/listeners
 
+    private:
+        const int m_EventMax = 100;
+        // eventlist
+        std::queue<Event*> m_EventList;
+    };
+
+}
 #endif //!_EventManager_H_

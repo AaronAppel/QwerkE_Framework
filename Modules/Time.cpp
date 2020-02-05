@@ -1,7 +1,7 @@
 #include "Time.h"
 
-namespace QwerkE
-{
+namespace QwerkE {
+
     const double* Time::m_DeltaTime = nullptr;
 	const float* Time::m_FPS = nullptr;
 
@@ -32,4 +32,5 @@ namespace QwerkE
 	{
 		return *m_FPS;
 	}
+
 }

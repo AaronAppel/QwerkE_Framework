@@ -21,13 +21,17 @@ GLuint gc_NullHandleValue = QNULL; // (or 0) For textures, shaders, etc
 // TODO: Move enum to maybe ShaderFactory or somewhere
 // that does not include a lot of other code. This is
 // to avoid including more that necessary else where.
-enum eShaderTypes
-{
-	eShader_Basic2D = 0,
-	eShader_Basic3D,
-	eShader_LitMaterial
-    // TODO: Add max and null values?
-};
+namespace QwerkE {
+
+    enum eShaderTypes
+    {
+        eShader_Basic2D = 0,
+        eShader_Basic3D,
+        eShader_LitMaterial
+        // TODO: Add max and null values?
+    };
+
+}
 
 // My graphics classes
 #include "Shader/ShaderProgram.h"

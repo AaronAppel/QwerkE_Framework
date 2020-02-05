@@ -4,7 +4,7 @@
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
 #include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
 #include "../../../Systems/FileSystem/FileSystem.h"
-#include "../../../Systems/ServiceLocator.h"
+#include "../../../Systems/Services.h"
 
 // TODO: Find a better spot for st_image init
 #define STB_IMAGE_IMPLEMENTATION
@@ -12,161 +12,165 @@
 
 // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 
-// OpenGLHelpers.cpp
-void GLCheckforErrors()
-{
-	GLenum error = glGetError();
-	if (error != 0)
-		OutputPrint("\nglGetError: %i-> ", error);
-	if (error == GL_INVALID_VALUE)
-		OutputPrint("Invalid value used.", error);
-	if (error == GL_INVALID_OPERATION)
-		OutputPrint("Invalid operation.", error);
-}
+namespace QwerkE {
 
-void GLCheckforErrors(char* file, int line)
-{
-	GLenum error = glGetError();
-	if (error != 0)
-		OutputPrint("\nglGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
-	if (error == GL_INVALID_VALUE)
-		OutputPrint("Invalid value. Can't find value.");
-	if (error == GL_INVALID_OPERATION)
-		OutputPrint("Invalid operation.");
-}
+    // OpenGLHelpers.cpp
+    void GLCheckforErrors()
+    {
+        GLenum error = glGetError();
+        if (error != 0)
+            OutputPrint("\nglGetError: %i-> ", error);
+        if (error == GL_INVALID_VALUE)
+            OutputPrint("Invalid value used.", error);
+        if (error == GL_INVALID_OPERATION)
+            OutputPrint("Invalid operation.", error);
+    }
 
-void GLCheckforErrors(const char* file, int line)
-{
-	GLenum error = glGetError();
-	if (error != 0)
-		OutputPrint("\nglGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
-	if (error == GL_INVALID_VALUE)
-		OutputPrint("Invalid value. Can't find value.");
-	if (error == GL_INVALID_OPERATION)
-		OutputPrint("Invalid operation.");
-}
+    void GLCheckforErrors(char* file, int line)
+    {
+        GLenum error = glGetError();
+        if (error != 0)
+            OutputPrint("\nglGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
+        if (error == GL_INVALID_VALUE)
+            OutputPrint("Invalid value. Can't find value.");
+        if (error == GL_INVALID_OPERATION)
+            OutputPrint("Invalid operation.");
+    }
 
-GLuint LoadTextureDataToOpenGL(QImageFile& fileData)
-{
-	// buffer data in GPU RAM
-	GLuint texhandle = 0;
-	glGenTextures(1, &texhandle);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texhandle);
-	CheckGraphicsErrors(__FILE__, __LINE__);
-	// https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
-	glTexImage2D(GL_TEXTURE_2D, 0, fileData.s_Channels, fileData.s_Width, fileData.s_Height, 0, fileData.s_Channels, GL_UNSIGNED_BYTE, fileData.s_Data);
+    void GLCheckforErrors(const char* file, int line)
+    {
+        GLenum error = glGetError();
+        if (error != 0)
+            OutputPrint("\nglGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
+        if (error == GL_INVALID_VALUE)
+            OutputPrint("Invalid value. Can't find value.");
+        if (error == GL_INVALID_OPERATION)
+            OutputPrint("Invalid operation.");
+    }
 
-	CheckGraphicsErrors(__FILE__, __LINE__);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+    GLuint LoadTextureDataToOpenGL(QImageFile& fileData)
+    {
+        // buffer data in GPU RAM
+        GLuint texhandle = 0;
+        glGenTextures(1, &texhandle);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texhandle);
+        CheckGraphicsErrors(__FILE__, __LINE__);
+        // https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
+        glTexImage2D(GL_TEXTURE_2D, 0, fileData.s_Channels, fileData.s_Width, fileData.s_Height, 0, fileData.s_Channels, GL_UNSIGNED_BYTE, fileData.s_Data);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // TODO: Handle texture parameters better
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        CheckGraphicsErrors(__FILE__, __LINE__);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-	// glGenerateMipmap(GL_TEXTURE_2D); // Create mipmap
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // TODO: Handle texture parameters better
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+        // glGenerateMipmap(GL_TEXTURE_2D); // Create mipmap
 
-	CheckGraphicsErrors(__FILE__, __LINE__);
+        glBindTexture(GL_TEXTURE_2D, 0);
 
-	// TODO: need to free() allocations from lodepng
-	// delete[] imageData; // clean up
+        CheckGraphicsErrors(__FILE__, __LINE__);
 
-	return texhandle;
-}
+        // TODO: need to free() allocations from lodepng
+        // delete[] imageData; // clean up
 
-GLuint GLLoad2DTexture(const char* filePath, bool flipVertically)
-{
-	// TODO: If this fails should I return a null texture?
-	// TODO: Flags for how to setup opengl settings for texture? Save that into the texture object?
+        return texhandle;
+    }
 
-	GLenum channels = 4;
-	unsigned int width = 0, height = 0;
-	unsigned char* imageData = ((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadImageFileData(filePath, &width, &height, channels, flipVertically);
+    GLuint GLLoad2DTexture(const char* filePath, bool flipVertically)
+    {
+        // TODO: If this fails should I return a null texture?
+        // TODO: Flags for how to setup opengl settings for texture? Save that into the texture object?
 
-	if (!imageData)
-	{
-		OutputPrint("GLLoad2DTexture(): Failed to load: \"%s\"\n", filePath);
-		return 0;
-	}
-	else
-	{
-		// buffer data in GPU RAM
-		GLuint texhandle = 0;
-		glGenTextures(1, &texhandle);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texhandle);
-		CheckGraphicsErrors(__FILE__, __LINE__);
-		// https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
-		channels = GL_RGBA;
-		glTexImage2D(GL_TEXTURE_2D, 0, channels, width, height, 0, channels, GL_UNSIGNED_BYTE, imageData); // GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid * data)
+        GLenum channels = 4;
+        unsigned int width = 0, height = 0;
+        unsigned char* imageData = ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadImageFileData(filePath, &width, &height, channels, flipVertically);
 
-		CheckGraphicsErrors(__FILE__, __LINE__);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+        if (!imageData)
+        {
+            OutputPrint("GLLoad2DTexture(): Failed to load: \"%s\"\n", filePath);
+            return 0;
+        }
+        else
+        {
+            // buffer data in GPU RAM
+            GLuint texhandle = 0;
+            glGenTextures(1, &texhandle);
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, texhandle);
+            CheckGraphicsErrors(__FILE__, __LINE__);
+            // https://stackoverflow.com/questions/23150123/loading-png-with-stb-image-for-opengl-texture-gives-wrong-colors
+            channels = GL_RGBA;
+            glTexImage2D(GL_TEXTURE_2D, 0, channels, width, height, 0, channels, GL_UNSIGNED_BYTE, imageData); // GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid * data)
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // TODO: Handle texture parameters better
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            CheckGraphicsErrors(__FILE__, __LINE__);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+            //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-		// glGenerateMipmap(GL_TEXTURE_2D); // Create mipmap
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // TODO: Handle texture parameters better
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-		glBindTexture(GL_TEXTURE_2D, 0);
+            // glGenerateMipmap(GL_TEXTURE_2D); // Create mipmap
 
-		CheckGraphicsErrors(__FILE__, __LINE__);
+            glBindTexture(GL_TEXTURE_2D, 0);
 
-		// TODO: need to free() allocations from lodepng
-		delete[] imageData; // clean up
+            CheckGraphicsErrors(__FILE__, __LINE__);
 
-		return texhandle;
-	}
-}
+            // TODO: need to free() allocations from lodepng
+            delete[] imageData; // clean up
 
-GLuint GLLoadCubeMapTexture(const char* filename)
-{
-	unsigned char* pngbuffer = 0;
-	unsigned int width, height;
-	long filesize;
-	unsigned int result = -1;
+            return texhandle;
+        }
+    }
 
-	// buffer file data
-	unsigned char* filebuffer = (unsigned char*)LoadCompleteFile(filename, &filesize);
+    GLuint GLLoadCubeMapTexture(const char* filename)
+    {
+        unsigned char* pngbuffer = 0;
+        unsigned int width, height;
+        long filesize;
+        unsigned int result = -1;
 
-	if (filebuffer != NULL) // decode file data
-	{
-		result = lodepng_decode32(&pngbuffer, &width, &height, filebuffer, filesize);
-	}
-	if (0) // TODO: Evaluate when to flip image vertically
-	{
-		Flip32BitImageVertically(pngbuffer, width, height);
-	}
+        // buffer file data
+        unsigned char* filebuffer = (unsigned char*)LoadCompleteFile(filename, &filesize);
 
-	if (result != 0) // error decoding image data
-	{
-		OutputPrint("LoadTexture(): Error loading image: %s\n", filename);
-		free(pngbuffer);
-		delete[] filebuffer;
-		return 0; // exit
-	}
+        if (filebuffer != NULL) // decode file data
+        {
+            result = lodepng_decode32(&pngbuffer, &width, &height, filebuffer, filesize);
+        }
+        if (0) // TODO: Evaluate when to flip image vertically
+        {
+            Flip32BitImageVertically(pngbuffer, width, height);
+        }
 
-	GLuint texhandle = 0;
-	glGenTextures(1, &texhandle);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texhandle);
+        if (result != 0) // error decoding image data
+        {
+            OutputPrint("LoadTexture(): Error loading image: %s\n", filename);
+            free(pngbuffer);
+            delete[] filebuffer;
+            return 0; // exit
+        }
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pngbuffer);
+        GLuint texhandle = 0;
+        glGenTextures(1, &texhandle);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texhandle);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pngbuffer);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-	// cleanup
-	free(pngbuffer);
-	delete[] filebuffer;
-	return texhandle;
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+        // cleanup
+        free(pngbuffer);
+        delete[] filebuffer;
+        return texhandle;
+    }
+
 }

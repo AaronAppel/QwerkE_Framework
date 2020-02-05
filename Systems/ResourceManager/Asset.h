@@ -7,22 +7,25 @@
 
 class Asset_Tag;
 
-class Asset
-{
-public:
-	~Asset();
+namespace QwerkE {
 
-	// Getters + Setters //
-	// Getters
-	std::string GetName() { return m_Name; }
-	// Setters
+    class Asset
+    {
+    public:
+        ~Asset();
 
-protected:
-	Asset();
+        // Getters + Setters //
+        // Getters
+        std::string GetName() { return m_Name; }
+        // Setters
 
-	std::string m_Name = gc_DefaultStringValue;
-	Asset_Tag* m_Tag;
+    protected:
+        Asset();
 
-};
+        std::string m_Name = gc_DefaultStringValue;
+        Asset_Tag* m_Tag;
 
+    };
+
+}
 #endif // !_Asset_H_

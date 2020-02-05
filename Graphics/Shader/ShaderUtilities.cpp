@@ -2,148 +2,152 @@
 #include "../Shader/ShaderProgram.h"
 #include "ShaderComponent.h"
 
-void FindShaderUniformsAndAttributesInComponentStrings(ShaderProgram* shader, std::vector<std::string>& attributes, std::vector<std::string>& uniforms)
-{
-	// https://stackoverflow.com/questions/440144/in-opengl-is-there-a-way-to-get-a-list-of-all-uniforms-attribs-used-by-a-shade
+namespace QwerkE {
 
-	// TODO: Improve logic. Each shader may have both attributes and uniforms that may be declared
-	// more than once total. Handle in 2 stages, all attributes then all uniforms.
+    void FindShaderUniformsAndAttributesInComponentStrings(ShaderProgram* shader, std::vector<std::string>& attributes, std::vector<std::string>& uniforms)
+    {
+        // https://stackoverflow.com/questions/440144/in-opengl-is-there-a-way-to-get-a-list-of-all-uniforms-attribs-used-by-a-shade
 
-	if (!shader) return;
+        // TODO: Improve logic. Each shader may have both attributes and uniforms that may be declared
+        // more than once total. Handle in 2 stages, all attributes then all uniforms.
 
-	attributes.clear();
-	uniforms.clear();
+        if (!shader) return;
 
-	if (shader->GetVertShader())
-	{
-		// store string in temp buffer
-		char* buffer = (char*)DeepCopyString(shader->GetVertShader()->GetStringData()); // Delete buffer when done
+        attributes.clear();
+        uniforms.clear();
 
-																					 // store lines in std::vector
-		char* next_token = 0;
-		char* line = strtok_s(buffer, "\n", &next_token);
+        if (shader->GetVertShader())
+        {
+            // store string in temp buffer
+            char* buffer = (char*)DeepCopyString(shader->GetVertShader()->GetStringData()); // Delete buffer when done
 
-		std::vector<std::string> vertStringList;
+                                                                                         // store lines in std::vector
+            char* next_token = 0;
+            char* line = strtok_s(buffer, "\n", &next_token);
 
-		while (line)
-		{
-			//OutputMessage("%s\n", line);
-			vertStringList.push_back(line);
-			line = strtok_s(0, "\n", &next_token);
-		}
-		delete[] buffer; // cleanup
+            std::vector<std::string> vertStringList;
 
-		/* Populate .vert attributes */
-		// vert
-		for (unsigned int i = 0; i < vertStringList.size(); i++) // stringList.size() = number of lines in file
-		{
-			std::string loopString = vertStringList.at(i);
-			if (loopString.at(0) == 'i' && loopString.find("in") != loopString.npos) // starts with 'i' and has "in" in line
-			{
-				unsigned int size = 20;
-				std::string t_Variable;
-				sscanf_s((char*)loopString.c_str(), "%*s %*s %s", (char*)t_Variable.c_str(), size);
-				strtok_s((char*)t_Variable.c_str(), ";", &next_token); // remove ';' from end
+            while (line)
+            {
+                //OutputMessage("%s\n", line);
+                vertStringList.push_back(line);
+                line = strtok_s(0, "\n", &next_token);
+            }
+            delete[] buffer; // cleanup
 
-				std::string loopString;
-				int counter = 2; // remove 'u_' from beginning
-				while (t_Variable[counter] != '\0')
-				{
-					loopString.push_back(t_Variable[counter]);
-					counter++;
-				}
+            /* Populate .vert attributes */
+            // vert
+            for (unsigned int i = 0; i < vertStringList.size(); i++) // stringList.size() = number of lines in file
+            {
+                std::string loopString = vertStringList.at(i);
+                if (loopString.at(0) == 'i' && loopString.find("in") != loopString.npos) // starts with 'i' and has "in" in line
+                {
+                    unsigned int size = 20;
+                    std::string t_Variable;
+                    sscanf_s((char*)loopString.c_str(), "%*s %*s %s", (char*)t_Variable.c_str(), size);
+                    strtok_s((char*)t_Variable.c_str(), ";", &next_token); // remove ';' from end
 
-				attributes.push_back(loopString);
-			}
-			// duplicates caught in .vert by compiler
-		}
-	}
+                    std::string loopString;
+                    int counter = 2; // remove 'u_' from beginning
+                    while (t_Variable[counter] != '\0')
+                    {
+                        loopString.push_back(t_Variable[counter]);
+                        counter++;
+                    }
 
-	if (shader->GetFragShader())
-	{
+                    attributes.push_back(loopString);
+                }
+                // duplicates caught in .vert by compiler
+            }
+        }
 
-		// vert
-		// store string in temp buffer
-		char* buffer = (char*)DeepCopyString(shader->GetVertShader()->GetStringData());
+        if (shader->GetFragShader())
+        {
 
-		// store lines in std::vector
-		char* next_token = 0;
-		char* line = strtok_s(buffer, "\n", &next_token);
+            // vert
+            // store string in temp buffer
+            char* buffer = (char*)DeepCopyString(shader->GetVertShader()->GetStringData());
 
-		std::vector<std::string> vertStringList;
-		std::vector<std::string> fragStringList;
-		// TODO: Geo shader uniforms
+            // store lines in std::vector
+            char* next_token = 0;
+            char* line = strtok_s(buffer, "\n", &next_token);
 
-		while (line)
-		{
-			//OutputMessage("%s\n", line);
-			vertStringList.push_back(line);
-			line = strtok_s(0, "\n", &next_token);
-		}
-		delete[] buffer; // cleanup
+            std::vector<std::string> vertStringList;
+            std::vector<std::string> fragStringList;
+            // TODO: Geo shader uniforms
 
-						 // frag
-		buffer = (char*)DeepCopyString(shader->GetFragShader()->GetStringData());
-		line = strtok_s(buffer, "\n", &next_token);
+            while (line)
+            {
+                //OutputMessage("%s\n", line);
+                vertStringList.push_back(line);
+                line = strtok_s(0, "\n", &next_token);
+            }
+            delete[] buffer; // cleanup
 
-		while (line)
-		{
-			//OutputMessage("%s\n", line);
-			fragStringList.push_back(line);
-			line = strtok_s(0, "\n", &next_token);
-		}
-		delete[] buffer; // cleanup
+                             // frag
+            buffer = (char*)DeepCopyString(shader->GetFragShader()->GetStringData());
+            line = strtok_s(buffer, "\n", &next_token);
 
-		// TODO: Support geo shader
+            while (line)
+            {
+                //OutputMessage("%s\n", line);
+                fragStringList.push_back(line);
+                line = strtok_s(0, "\n", &next_token);
+            }
+            delete[] buffer; // cleanup
 
-		/* Populate .vert uniforms */
-		for (unsigned int i = 0; i < vertStringList.size(); i++) // stringList.size() = number of lines in file
-		{
-			std::string loopString = vertStringList.at(i);
-			if (loopString.at(0) == 'u' && loopString.find("uniform") != loopString.npos) // starts with 'u' and has uniform in line
-			{
-				unsigned int size = 20;
-				std::string t_Variable;
-				sscanf_s((char*)loopString.c_str(), "%*s %*s %s", (char*)t_Variable.c_str(), size);
-				strtok_s((char*)t_Variable.c_str(), ";", &next_token); // remove ';' from end
+            // TODO: Support geo shader
 
-				std::string loopString;
-				int counter = 2; // remove 'u_' from beginning
-				while (t_Variable[counter] != '\0')
-				{
-					loopString.push_back(t_Variable[counter]);
-					counter++;
-				}
-				// TODO: Check for duplicates? Caught by compiler?
-				uniforms.push_back(loopString);
-			}
-		}
-		/* Populate .frag uniforms */
-		for (unsigned int i = 0; i < fragStringList.size(); i++) // stringList.size() = number of lines in file
-		{
-			std::string loopString = fragStringList.at(i);
-			if (loopString.at(0) == 'u' && loopString.find("uniform") != loopString.npos)
-			{
-				unsigned int size = 20;
-				std::string t_Variable;
-				sscanf_s((char*)loopString.c_str(), "%*s %*s %s", (char*)t_Variable.c_str(), size);
-				strtok_s((char*)t_Variable.c_str(), ";", &next_token); // remove ';' from end
+            /* Populate .vert uniforms */
+            for (unsigned int i = 0; i < vertStringList.size(); i++) // stringList.size() = number of lines in file
+            {
+                std::string loopString = vertStringList.at(i);
+                if (loopString.at(0) == 'u' && loopString.find("uniform") != loopString.npos) // starts with 'u' and has uniform in line
+                {
+                    unsigned int size = 20;
+                    std::string t_Variable;
+                    sscanf_s((char*)loopString.c_str(), "%*s %*s %s", (char*)t_Variable.c_str(), size);
+                    strtok_s((char*)t_Variable.c_str(), ";", &next_token); // remove ';' from end
 
-				std::string loopString;
-				int counter = 2; // remove 'u_' from beginning
-				while (t_Variable[counter] != '\0')
-				{
-					loopString.push_back(t_Variable[counter]);
-					counter++;
-				}
-				// TODO: Check for duplicates? Caught by compiler?
-				uniforms.push_back(loopString);
-			}
-		}
-	}
+                    std::string loopString;
+                    int counter = 2; // remove 'u_' from beginning
+                    while (t_Variable[counter] != '\0')
+                    {
+                        loopString.push_back(t_Variable[counter]);
+                        counter++;
+                    }
+                    // TODO: Check for duplicates? Caught by compiler?
+                    uniforms.push_back(loopString);
+                }
+            }
+            /* Populate .frag uniforms */
+            for (unsigned int i = 0; i < fragStringList.size(); i++) // stringList.size() = number of lines in file
+            {
+                std::string loopString = fragStringList.at(i);
+                if (loopString.at(0) == 'u' && loopString.find("uniform") != loopString.npos)
+                {
+                    unsigned int size = 20;
+                    std::string t_Variable;
+                    sscanf_s((char*)loopString.c_str(), "%*s %*s %s", (char*)t_Variable.c_str(), size);
+                    strtok_s((char*)t_Variable.c_str(), ";", &next_token); // remove ';' from end
 
-	// if (shader->GetGeoShader())
-	{
-		// TODO:
-	}
+                    std::string loopString;
+                    int counter = 2; // remove 'u_' from beginning
+                    while (t_Variable[counter] != '\0')
+                    {
+                        loopString.push_back(t_Variable[counter]);
+                        counter++;
+                    }
+                    // TODO: Check for duplicates? Caught by compiler?
+                    uniforms.push_back(loopString);
+                }
+            }
+        }
+
+        // if (shader->GetGeoShader())
+        {
+            // TODO:
+        }
+    }
+
 }

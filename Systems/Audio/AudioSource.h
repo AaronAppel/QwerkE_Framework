@@ -4,18 +4,21 @@
 #include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 #include "../../QwerkE_Common/DataTypes/Vector.h"
 
-class AudioSource
-{
-public:
-	AudioSource() { alGenSources(1, &m_SourceID); }
-	~AudioSource() { alDeleteSources(1, &m_SourceID); }
+namespace QwerkE {
 
-	void SetOrientation(vec3 pos, vec3 rot, vec3 vel);
+    class AudioSource
+    {
+    public:
+        AudioSource() { alGenSources(1, &m_SourceID); }
+        ~AudioSource() { alDeleteSources(1, &m_SourceID); }
 
-	void Play(ALuint buffer);
+        void SetOrientation(vec3 pos, vec3 rot, vec3 vel);
 
-private:
-	ALuint m_SourceID = 0;
-};
+        void Play(ALuint buffer);
 
+    private:
+        ALuint m_SourceID = 0;
+    };
+
+}
 #endif // !_AudioSource_H_

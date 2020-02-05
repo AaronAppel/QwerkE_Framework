@@ -103,9 +103,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\GameObject.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp">
       <Filter>Entities\Components</Filter>
     </ClCompile>
@@ -277,9 +274,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\MasterAssetList.cpp">
       <Filter>Systems\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.cpp">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.cpp">
       <Filter>Systems\ResourceManager</Filter>
     </ClCompile>
@@ -313,9 +307,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.cpp">
       <Filter>Entities\Routines</Filter>
     </ClCompile>
@@ -339,6 +330,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
+      <Filter>Entities\Components\Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.cpp">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Services.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
@@ -514,9 +514,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.h">
       <Filter>Systems\ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.h">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.h">
       <Filter>Systems\ResourceManager</Filter>
     </ClInclude>
@@ -542,9 +539,6 @@
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\SceneManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ServiceLocator.h">
       <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.h">
@@ -596,9 +590,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
@@ -621,6 +612,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Flags.h">
       <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
+      <Filter>Entities\Components\Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.h">
+      <Filter>Systems\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Services.h">
+      <Filter>Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

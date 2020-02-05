@@ -7,44 +7,47 @@
 #include <vector>
 #include <string>
 
-class ShaderProgram;
-class Material;
-class Mesh;
+namespace QwerkE {
 
-class RenderComponent : public Component
-{
-public:
-	RenderComponent();
-	RenderComponent(const char* objectRecipe);
-	RenderComponent(const char* shaderName, const char* materialName, const char* meshName);
-	~RenderComponent();
+    class ShaderProgram;
+    class Material;
+    class Mesh;
 
-	void GenerateSchematic();
+    class RenderComponent : public Component
+    {
+    public:
+        RenderComponent();
+        RenderComponent(const char* objectRecipe);
+        RenderComponent(const char* shaderName, const char* materialName, const char* meshName);
+        ~RenderComponent();
 
-	void Setup(const char* shaderName, const char* materialName, const char* meshName);
-	// void Clear();
+        void GenerateSchematic();
 
-	void AppendEmptyRenderables(int count);
-	void AddRenderable(Renderable renderable);
+        void Setup(const char* shaderName, const char* materialName, const char* meshName);
+        // void Clear();
 
-	// Getters + Setters //
-	// Getters
-	std::string GetSchematicName() const { return m_SchematicName; }
-	std::vector<Renderable>* GetRenderableList() { return &m_RenderableList; } // Change to SeeRenderablesList()
-	const std::vector<Renderable>* SeeRenderableList() const { return &m_RenderableList; }
+        void AppendEmptyRenderables(int count);
+        void AddRenderable(Renderable renderable);
 
-	// Setters
-	void SetSchematicName(std::string name) { m_SchematicName = name; }
-	void SetNameAtIndex(int index, std::string name);
-	void SetShaderAtIndex(int index, ShaderProgram* shader);
-	void SetMaterialAtIndex(int index, Material* material);
-	void SetMeshAtIndex(int index, Mesh* mesh);
+        // Getters + Setters //
+        // Getters
+        std::string GetSchematicName() const { return m_SchematicName; }
+        std::vector<Renderable>* GetRenderableList() { return &m_RenderableList; } // Change to SeeRenderablesList()
+        const std::vector<Renderable>* SeeRenderableList() const { return &m_RenderableList; }
 
-	const std::vector<Renderable>* LookAtRenderableList() { return &m_RenderableList; }
+        // Setters
+        void SetSchematicName(std::string name) { m_SchematicName = name; }
+        void SetNameAtIndex(int index, std::string name);
+        void SetShaderAtIndex(int index, ShaderProgram* shader);
+        void SetMaterialAtIndex(int index, Material* material);
+        void SetMeshAtIndex(int index, Mesh* mesh);
 
-private:
-	std::string m_SchematicName = "None";
-	std::vector<Renderable> m_RenderableList;
-};
+        const std::vector<Renderable>* LookAtRenderableList() { return &m_RenderableList; }
 
+    private:
+        std::string m_SchematicName = "None";
+        std::vector<Renderable> m_RenderableList;
+    };
+
+}
 #endif // !_RenderComponent_H_

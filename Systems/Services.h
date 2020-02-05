@@ -1,40 +1,38 @@
-#ifndef _ServiceLocator_H_
-#define _ServiceLocator_H_
+#ifndef _Services_H_
+#define _Services_H_
 
-// Class ServiceLocator provides global access for systems
+// Class Services provides global access for systems
 // necessary throughout the code such as memory management,
 // audio playback, input, etc.
 // To add a system add it to RegisterService(), UnregisterService,
 // GetService(), and ServicesLoaded().
 
 #include "../Headers/QwerkE_Enums.h"
-#include "../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "ResourceManager/ResourceManager.h"
-#include "Input/InputManager.h"
 
-class ResourceManager;
-class InputManager;
-class EventManager;
-class SceneManager;
-class Factory;
-class PhysicsManager;
-class MessageManager;
-class Renderer;
-class AudioManager;
-class JobManager;
-class Window;
-class NetworkManager;
-class ShaderFactory;
-class DataManager;
-class FileSystem;
+#include "../Systems/ResourceManager/ResourceManager.h"
 
-namespace QwerkE
-{
+namespace QwerkE {
+
+    class InputManager;
+    class EventManager;
+    class SceneManager;
+    class Factory;
+    class PhysicsManager;
+    class MessageManager;
+    class Renderer;
+    class AudioManager;
+    class JobManager;
+    class Window;
+    class NetworkManager;
+    class ShaderFactory;
+    class DataManager;
+    class FileSystem;
+
 	// TODO: Improve service accessing
 	// Think of toggling register/unregister
     // Should code ask for system*s to keep or is this dangerous because
     //  a system could change during runtime?
-    // Consider inline ing service locator sunctions for runtime efficiency
+    // Consider inline ing service locator functions for runtime efficiency
 
     // TODO: To avoid dependencies redesign how services are registered/unregistered
     // for order dependency issues.
@@ -57,9 +55,15 @@ namespace QwerkE
 	// during initialization unless the services really rely on each other, rather than
 	// just storing convenience pointers.
 
-	class ServiceLocator
+	class Services
 	{
 	public:
+
+		Services();
+		~Services();
+
+        static ResourceManager Resources; // TEMP:
+
 		// Services need to be instantiated, then registered
 		// TODO: Services...
 		// Networking, Graphics, Utilities (some type of file managers?),
@@ -77,7 +81,6 @@ namespace QwerkE
 	private:
 		static bool m_IsLocked; // TODO: Improve security/error prevention
 
-		static ResourceManager* m_ResourceManager;
 		static InputManager* m_InputManager;
         static EventManager* m_EventManager;
         static SceneManager* m_SceneManager;
@@ -93,6 +96,6 @@ namespace QwerkE
 		static DataManager* m_DataManager;
 		static FileSystem* m_FileSystem;
 	};
-}
 
-#endif //!_ServiceLocator_H_
+}
+#endif //!_Services_H_

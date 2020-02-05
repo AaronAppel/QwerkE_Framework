@@ -7,59 +7,62 @@
 
 #include <vector>
 
-class GameObject;
-class CameraComponent;
-class ShaderProgram;
-class Mesh;
-class RenderComponent;
-class Material;
-class RenderRoutine;
+namespace QwerkE {
 
-typedef void (RenderRoutine::*DrawFunc)(GameObject* a_Camera); // draw mesh or model
-// TODO: Look at improving arguments
-typedef void (RenderRoutine::*SetupUniformFunction)(CameraComponent* a_Camera, Renderable* renderable); // Setup shader values function
+    class GameObject;
+    class CameraComponent;
+    class ShaderProgram;
+    class Mesh;
+    class RenderComponent;
+    class Material;
 
-class RenderRoutine : Routine
-{
-public:
-	RenderRoutine() {};
-	~RenderRoutine() {};
+    class RenderRoutine : Routine
+    {
+    public:
+        typedef void (RenderRoutine::* DrawFunc)(GameObject* a_Camera); // draw mesh or model
+        // TODO: Look at improving arguments
+        typedef void (RenderRoutine::* SetupUniformFunction)(CameraComponent* a_Camera, Renderable* renderable); // Setup shader values function
 
-	void Initialize();
+    public:
+        RenderRoutine() {};
+        ~RenderRoutine() {};
 
-	void Draw(GameObject* a_Camera) { (this->*m_DrawFunc)(a_Camera); };
+        void Initialize();
 
-	void ResetUniformList() { SetDrawFunctions(); }; // TODO: External use?
+        void Draw(GameObject* a_Camera) { (this->*m_DrawFunc)(a_Camera); };
 
-private:
-	/* Private variables */
-	DrawFunc m_DrawFunc = &RenderRoutine::NullDraw;
-	RenderComponent* m_pRenderComp = nullptr;
-	std::vector<std::vector<SetupUniformFunction>> m_UniformSetupList;
+        void ResetUniformList() { SetDrawFunctions(); }; // TODO: External use?
 
-	bool m_3D = true; // 2D/3D optimization TODO: Remove?
+    private:
+        /* Private variables */
+        DrawFunc m_DrawFunc = &RenderRoutine::NullDraw;
+        RenderComponent* m_pRenderComp = nullptr;
+        std::vector<std::vector<SetupUniformFunction>> m_UniformSetupList;
 
-	////* Private functions *////
-	void DrawMeshData(GameObject* a_Camera);
-	void NullDraw(GameObject* a_Camera); // not setup
+        bool m_3D = true; // 2D/3D optimization TODO: Remove?
 
-	//// Uniform value assignment ////
-	void SetDrawFunctions();
+        ////* Private functions *////
+        void DrawMeshData(GameObject* a_Camera);
+        void NullDraw(GameObject* a_Camera); // not setup
 
-	/* Vertex uniform value assignment */
-	void Setup3DTransform(CameraComponent* a_Camera, Renderable* renderable);
-	void Setup2DTransform(CameraComponent* a_Camera, Renderable* renderable);
+        //// Uniform value assignment ////
+        void SetDrawFunctions();
 
-	/* Fragment uniform value assignment */
-	void SetupColorUniforms(CameraComponent* a_Camera, Renderable* renderable);
-	void SetupMaterialUniforms(CameraComponent* a_Camera, Renderable* renderable);
+        /* Vertex uniform value assignment */
+        void Setup3DTransform(CameraComponent* a_Camera, Renderable* renderable);
+        void Setup2DTransform(CameraComponent* a_Camera, Renderable* renderable);
 
-	// Lighting
-	void SetupLightingUniforms(CameraComponent* a_Camera, Renderable* renderable);
-	// Camera
-	void SetupCameraUniforms(CameraComponent* a_Camera, Renderable* renderable);
-	/* Other */
-	void SetupTextureUniforms(GLuint textures[], int size, ShaderProgram* shader);
-};
+        /* Fragment uniform value assignment */
+        void SetupColorUniforms(CameraComponent* a_Camera, Renderable* renderable);
+        void SetupMaterialUniforms(CameraComponent* a_Camera, Renderable* renderable);
 
+        // Lighting
+        void SetupLightingUniforms(CameraComponent* a_Camera, Renderable* renderable);
+        // Camera
+        void SetupCameraUniforms(CameraComponent* a_Camera, Renderable* renderable);
+        /* Other */
+        void SetupTextureUniforms(GLuint textures[], int size, ShaderProgram* shader);
+    };
+
+}
 #endif //!_RenderRoutine_H_

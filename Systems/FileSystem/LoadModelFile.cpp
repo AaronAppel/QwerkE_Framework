@@ -1,5 +1,5 @@
 #include "FileSystem.h"
-#include "../../../QwerkE_Framework/Systems/ServiceLocator.h"
+#include "../../../QwerkE_Framework/Systems/Services.h"
 #include "../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
 #include "../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
 
@@ -19,14 +19,13 @@
 #pragma error "Define model loading library!"
 #endif
 
-namespace QwerkE
-{
+namespace QwerkE {
+
 	namespace FileLoader
 	{
 		Mesh* LoadMeshInModelByName(const char* modelFilePath, const char* meshName)
 		{
-			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
-			if (false == resMan->MeshExists(meshName))
+			if (false == Services::Resources.MeshExists(meshName))
 			{
 				Mesh* mesh = nullptr;
 #ifdef AI_CONFIG_H_INC // assimp
@@ -36,7 +35,7 @@ namespace QwerkE
 				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 				{
                     std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                    QwerkE::LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
+                    LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
 					return nullptr; // failure
 				}
 				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, modelFilePath, meshName);
@@ -44,19 +43,18 @@ namespace QwerkE
 				// separate model loading library
 #pragma error "Define model loading library!"
 #endif // AI_CONFIG_H_INC
-				resMan->AddMesh(meshName, mesh);
-				return resMan->GetMesh(meshName);
+				Services::Resources.AddMesh(meshName, mesh);
+				return Services::Resources.GetMesh(meshName);
 			}
 			else
 			{
-				return resMan->GetMesh(meshName);
+				return Services::Resources.GetMesh(meshName);
 			}
 		}
 
 		bool LoadModelFileToMeshes(const char* path)
 		{
-			// check if a model with the same name already exists
-			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
+			// TODO: heck if a model with the same name already exists
 
 			// TODO: Prevent the same model from being loaded
 
@@ -78,7 +76,7 @@ namespace QwerkE
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
                 std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                QwerkE::LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
+                LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
 				return false; // failure
 			}
 
@@ -94,7 +92,7 @@ namespace QwerkE
 			// take copied data from external library and init it for QwerkE systems use.
 			for (size_t i = 0; i < meshes.size(); i++)
 			{
-				resMan->AddMesh(meshes[i]->GetName().c_str(), meshes[i]);
+				Services::Resources.AddMesh(meshes[i]->GetName().c_str(), meshes[i]);
 			}
 			for (size_t i = 0; i < matNames.size(); i++)
 			{
@@ -107,8 +105,7 @@ namespace QwerkE
 
 		Mesh* LoadModelFileTo1Mesh(const char* modelFilePath)
 		{
-			ResourceManager* resMan = (ResourceManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Resource_Manager);
-			if (false == resMan->MeshExists(GetFileNameNoExt(modelFilePath).c_str()))
+			if (false == Services::Resources.MeshExists(GetFileNameNoExt(modelFilePath).c_str()))
 			{
 				Mesh* mesh = nullptr;
 
@@ -119,7 +116,7 @@ namespace QwerkE
 				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 				{
                     std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                    QwerkE::LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
+                    LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
 					return nullptr; // failure
 				}
 				QwerkE_assimp_loadModelAs1Mesh(scene->mRootNode, scene, mesh, modelFilePath);
@@ -130,18 +127,19 @@ namespace QwerkE
 
 				if (mesh)
 				{
-					resMan->AddMesh(GetFileNameNoExt(modelFilePath).c_str(), mesh);
-					return resMan->GetMesh(GetFileNameNoExt(modelFilePath).c_str());
+					Services::Resources.AddMesh(GetFileNameNoExt(modelFilePath).c_str(), mesh);
+					return Services::Resources.GetMesh(GetFileNameNoExt(modelFilePath).c_str());
 				}
 				else
 				{
-					return resMan->GetMesh(null_mesh);
+					return Services::Resources.GetMesh(null_mesh);
 				}
 			}
 			else
 			{
-				return resMan->GetMesh(GetFileNameNoExt(modelFilePath).c_str());
+				return Services::Resources.GetMesh(GetFileNameNoExt(modelFilePath).c_str());
 			}
 		}
 	}
+
 }

@@ -6,64 +6,66 @@
 #include "../../Entities/GameObject.h"
 #include "../../Scenes/Scene.h"
 
-// TODO: Change the name to be more appropriate. Other factories exist such as MeshFactory and ShaderFactory.
-// This class could be called EntityFactory and be moved to the System/Entities folder.
+namespace QwerkE {
 
-class ResourceManager;
-class GameObject;
-class Scene;
-class MenuWindow;
-class MenuItem;
-class Menu;
-class RenderComponent;
+    // TODO: Change the name to be more appropriate. Other factories exist such as MeshFactory and ShaderFactory.
+    // This class could be called EntityFactory and be moved to the System/Entities folder.
 
-class Factory
-{
-public:
-	Factory();
-	~Factory();
+    class ResourceManager;
+    class GameObject;
+    class Scene;
+    class MenuWindow;
+    class MenuItem;
+    class Menu;
+    class RenderComponent;
 
-	void ClearResources();
+    class Factory
+    {
+    public:
+        Factory();
+        ~Factory();
 
-	/* Object creation */
-	// Shapes
-	GameObject* CreateCube(Scene* scene, vec3 position);
-	GameObject* CreatePlane(Scene* scene, vec3 position);
-	GameObject* CreateSphere(Scene* scene, vec3 position);
-	GameObject* CreateObjectFromSchematic(const char* schematicName, Scene* scene, vec3 position);
+        void ClearResources();
 
-	// Systems
-	GameObject* CreateFreeCamera(Scene* scene, vec3 position);
-	GameObject* CreateFirstPersonCamera(Scene* scene, vec3 position);
-	GameObject* CreateThirdPersonCamera(Scene* scene, vec3 position);
-	GameObject* CreateStaticCamera(Scene* scene, vec3 position);
+        /* Object creation */
+        // Shapes
+        GameObject* CreateCube(Scene* scene, vec3 position);
+        GameObject* CreatePlane(Scene* scene, vec3 position);
+        GameObject* CreateSphere(Scene* scene, vec3 position);
+        GameObject* CreateObjectFromSchematic(const char* schematicName, Scene* scene, vec3 position);
 
-	// Lighting
-	GameObject* CreateLight(Scene* scene, vec3 position);
+        // Systems
+        GameObject* CreateFreeCamera(Scene* scene, vec3 position);
+        GameObject* CreateFirstPersonCamera(Scene* scene, vec3 position);
+        GameObject* CreateThirdPersonCamera(Scene* scene, vec3 position);
+        GameObject* CreateStaticCamera(Scene* scene, vec3 position);
 
-	// Scenery + Props
-	GameObject* CreateSkyBox(Scene* scene, vec3 position);
+        // Lighting
+        GameObject* CreateLight(Scene* scene, vec3 position);
 
-	// Characters
+        // Scenery + Props
+        GameObject* CreateSkyBox(Scene* scene, vec3 position);
 
-	// Testing
-	GameObject* CreateTestModel(Scene* scene, vec3 position); // Model
-    GameObject* CreateTestCube(Scene* scene, vec3 position);
-    GameObject* CreateEmptyGameObject(Scene* scene, vec3 position);
+        // Characters
 
-private:
-	// Variables
-	int m_Created = 0;
-	ResourceManager* m_pResources = nullptr;
+        // Testing
+        GameObject* CreateTestModel(Scene* scene, vec3 position); // Model
+        GameObject* CreateTestCube(Scene* scene, vec3 position);
+        GameObject* CreateEmptyGameObject(Scene* scene, vec3 position);
 
-	/* Private functions */
-	// GameObjects
-	GameObject* CreateGameObject(Scene* scene); // TODO: Remove?
-	GameObject* CreateGameObject(Scene* scene, vec3 position);
-	GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
+    private:
+        // Variables
+        int m_Created = 0;
 
-	// helpers
-	RenderComponent* AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName);
-};
+        /* Private functions */
+        // GameObjects
+        GameObject* CreateGameObject(Scene* scene); // TODO: Remove?
+        GameObject* CreateGameObject(Scene* scene, vec3 position);
+        GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
 
+        // helpers
+        RenderComponent* AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName);
+    };
+
+}
 #endif //!_Factory_H_

@@ -3,61 +3,65 @@
 #include "../Events/JobQueuedEvent.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 
-JobManager::JobManager()
-{
-}
+namespace QwerkE {
 
-JobManager::~JobManager()
-{
-}
+    JobManager::JobManager()
+    {
+    }
 
-void JobManager::ScheduleTask(QJob* job)
-{
-	// TODO: Think of avoiding duplicate jobs
-	m_JobList.push(job);
-	Event* _event = new JobQueuedEvent();
-	((EventManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Event_System))->QueueEvent(_event);
-}
+    JobManager::~JobManager()
+    {
+    }
 
-void JobManager::ProcessTasks()
-{
-	for (size_t i = 0; i < m_JobList.size(); i++)
-	{
-		QJob* next = m_JobList.front();
-		m_JobList.pop();
+    void JobManager::ScheduleTask(QJob* job)
+    {
+        // TODO: Think of avoiding duplicate jobs
+        m_JobList.push(job);
+        Event* _event = new JobQueuedEvent();
+        ((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->QueueEvent(_event);
+    }
 
-		next->Process(); // get a thread and process job
-	}
-}
-// Private
-void JobManager::ProcessNextTask()
-{
-	QJob* next = m_JobList.front();
-	m_JobList.pop();
+    void JobManager::ProcessTasks()
+    {
+        for (size_t i = 0; i < m_JobList.size(); i++)
+        {
+            QJob* next = m_JobList.front();
+            m_JobList.pop();
 
-	next->Process(); // get a thread and process job
-}
+            next->Process(); // get a thread and process job
+        }
+    }
+    // Private
+    void JobManager::ProcessNextTask()
+    {
+        QJob* next = m_JobList.front();
+        m_JobList.pop();
 
-void* LoadAssetData(void* value)
-{
-	// TODO: Support all types of assets or files
-	QImageFile fileData;
-	fileData.s_Name = (char*)value;
+        next->Process(); // get a thread and process job
+    }
 
-	if (FileExists(TextureFolderPath(fileData.s_Name.c_str())))
-	{
-		fileData.s_Data = (char*)((FileSystem*)QwerkE::ServiceLocator::GetService(eEngineServices::FileSystem))->LoadImageFileData(TextureFolderPath(fileData.s_Name.c_str()),
-			&fileData.s_Width, &fileData.s_Height, (GLenum&)fileData.s_Channels, false);
-	}
+    void* LoadAssetData(void* value)
+    {
+        // TODO: Support all types of assets or files
+        QImageFile fileData;
+        fileData.s_Name = (char*)value;
 
-	if (fileData.s_Data != nullptr)
-	{
-		// raise event
-		AssetLoadedEvent* _event = new AssetLoadedEvent(fileData);
-		((EventManager*)QwerkE::ServiceLocator::GetService(eEngineServices::Event_System))->QueueEvent(_event);
-	}
+        if (FileExists(TextureFolderPath(fileData.s_Name.c_str())))
+        {
+            fileData.s_Data = (char*)((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadImageFileData(TextureFolderPath(fileData.s_Name.c_str()),
+                &fileData.s_Width, &fileData.s_Height, (GLenum&)fileData.s_Channels, false);
+        }
 
-	pthread_exit(NULL);
+        if (fileData.s_Data != nullptr)
+        {
+            // raise event
+            AssetLoadedEvent* _event = new AssetLoadedEvent(fileData);
+            ((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->QueueEvent(_event);
+        }
 
-	return NULL;
+        pthread_exit(NULL);
+
+        return NULL;
+    }
+
 }

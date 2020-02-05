@@ -8,8 +8,12 @@
 
 // TODO: Use _QFail and other error messages?
 // TODO: Hide loading/unloading behind load/splash screen?
-bool Libs_Setup();
 
-void Libs_TearDown();
+namespace QwerkE {
 
+    bool Libs_Setup();
+
+    void Libs_TearDown();
+
+}
 #endif // !_Libraries_Initialize_H_

@@ -2,8 +2,8 @@
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 #ifdef _QDebug
-namespace QwerkE
-{
+namespace QwerkE {
+
     bool Debugger::m_ConsoleIsOpen = false;
 
     Debugger::Debugger()

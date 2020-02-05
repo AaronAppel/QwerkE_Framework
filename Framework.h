@@ -7,22 +7,27 @@
 
 #include "Headers/QwerkE_Enums.h" // eEngineMessage
 
-struct GLFWwindow;
-class Editor;
-class SceneManager;
-class Window;
+#include <string>
 
 // If only 1 engine should exist at a time then it could be wrapped in
 // the QwerkE namespace and have static functions like a singleton or
 // service. Or just find another way to prevent multiple instances
 // while offering a nice interface.
 
-namespace QwerkE
-{
+static int* a;
+
+struct GLFWwindow;
+
+namespace QwerkE {
+    class Editor;
+    class SceneManager;
+    class Window;
+
+	// TODO: What is this namespace useful for besides separating the engine run method
 	namespace Framework
 	{
 		eEngineMessage Startup();
-		eEngineMessage Startup(std::uint_fast8_t flags);
+		eEngineMessage Startup(std::string configFilePath, std::uint_fast8_t flags);
 		eEngineMessage TearDown();
 
 		void Run();

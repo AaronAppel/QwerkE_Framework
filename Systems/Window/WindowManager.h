@@ -5,17 +5,20 @@
 
 class Window;
 
-class WindowManager
-{
-public:
-	WindowManager();
-	~WindowManager();
+namespace QwerkE {
 
-	void AddWindow(Window* window);
-	Window* GetWindow(int windowID);
+    class WindowManager
+    {
+    public:
+        WindowManager();
+        ~WindowManager();
 
-private:
-	std::vector<Window*> m_Windows;
-};
+        void AddWindow(Window* window);
+        Window* GetWindow(int windowID);
 
+    private:
+        std::vector<Window*> m_Windows;
+    };
+
+}
 #endif // !_WindowManager_H_

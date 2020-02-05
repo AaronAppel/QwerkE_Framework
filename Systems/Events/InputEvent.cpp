@@ -1,11 +1,16 @@
 #include "InputEvent.h"
 
-InputEvent::InputEvent(int value)
-{
-    m_EventType = eEventTypes::eEvent_InputEvent;
-    m_Value = value; // key that was pressed
-}
+namespace QwerkE {
 
-InputEvent::~InputEvent()
-{
+    InputEvent::InputEvent(int value)
+    {
+        // TODO: Init list
+        m_Value = value;
+        m_EventType = eEventTypes::eEvent_InputEvent;
+    }
+
+    InputEvent::~InputEvent()
+    {
+    }
+
 }
