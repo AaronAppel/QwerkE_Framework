@@ -2,7 +2,7 @@
 #include "../../Scenes/Scene.h"
 #include "../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../Entities/Components/LightComponent.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Entities/Components/RenderComponent.h"
 

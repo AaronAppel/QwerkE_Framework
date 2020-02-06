@@ -9,7 +9,7 @@
 #include "../Graphics/Mesh/MeshFactory.h"
 #include "../Systems/Services.h"
 #include "../Graphics/Shader/ShaderProgram.h"
-#include "../Systems/ResourceManager/ResourceManager.h"
+#include "../Systems/Resources/Resources.h"
 
 namespace QwerkE {
 
@@ -28,9 +28,9 @@ namespace QwerkE {
         Factory* t_pFactory = (Factory*)QwerkE::Services::GetService(eEngineServices::Factory_Entity);
 
         // load shaders to make them available at launch
-        Services::Resources.GetShaderProgram("PBR1.ssch");
-        Services::Resources.GetSound("bounce.wav");
-        // t_pResourceManager->GetShaderProgram("test_normal.ssch");
+        Resources::GetShaderProgram("PBR1.ssch");
+        Resources::GetSound("bounce.wav");
+        // t_pResources->GetShaderProgram("test_normal.ssch");
 
         {
             // Create scene cameras

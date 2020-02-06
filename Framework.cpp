@@ -32,13 +32,14 @@
 #include "Systems/DataManager/ConfigHelper.h"
 #include "Modules/Time.h"
 #include "Graphics/Mesh/MeshFactory.h"
+#include "Systems/Input/Input.h"
 
 namespace QwerkE {
 
     // TODO: No Globals!
     extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
     extern const char* g_WindowTitle = "QwerkEngine";
-    extern InputManager* g_InputManager = nullptr;
+    extern Input* g_Input = nullptr;
 
     static Window* m_Window = nullptr;
     static bool m_IsRunning = false;
@@ -72,24 +73,21 @@ namespace QwerkE {
 
 			// TODO: Try to reduce or avoid order dependency in system creation.
 			// current dependencies..
-			// ResourceManager depends on itself to init null objects
-			// Window depends on InputManager for input callbacks
+			// Resources depends on itself to init null objects
+			// Window depends on Input for input callbacks
 			// SceneManager needs other systems setup to load a scene
 
 			// load and register systems
 			// Audio, Networking, Graphics (Renderer, GUI), Utilities (Conversion, FileIO, Printing),
-            // Physics, Event, Debug, Memory, Window, Application, Input, ResourceManager
+            // Physics, Event, Debug, Memory, Window, Application, Input, Resources
 
 			QwerkE::Services::LockServices(false);
 
 			FileSystem* fileSystem = new FileSystem();
 			QwerkE::Services::RegisterService(eEngineServices::FileSystem, fileSystem);
 
-			InputManager* inputManager = new InputManager();
-			QwerkE::Services::RegisterService(eEngineServices::Input_Manager, inputManager);
-
 			ShaderFactory* shaderFactory = new ShaderFactory();
-			QwerkE::Services::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // dependency: resource manager
+			QwerkE::Services::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // Dependency: resource manager
 
             if (config.libraries.Window == "GLFW3")
                 m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
@@ -100,10 +98,14 @@ namespace QwerkE {
             }
 
 			WindowManager* windowManager = new WindowManager();
-			windowManager->AddWindow(m_Window);
-			inputManager->SetupCallbacks((GLFWwindow*)m_Window->GetContext());
+            windowManager->AddWindow(m_Window);
 
-            Services::Resources.Init(); // self order dependency, init after adding
+            g_Input = new Input();
+            g_Input->Initialize((GLFWwindow*)windowManager->GetWindow(0)->GetContext());
+            QwerkE::Services::RegisterService(eEngineServices::Input_Manager, g_Input);
+			// g_Input->SetupCallbacks((GLFWwindow*)m_Window->GetContext());
+
+            Resources::Init(); // OpenGL init order dependency (Window?)
 
             AudioManager* audioManager = nullptr;
 			cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
@@ -122,7 +124,7 @@ namespace QwerkE {
                 ConsolePrint("No audio library define detected! Loading NullAudioManager.");
                 audioManager = (AudioManager*) new NullAudioManager();
             }
-			QwerkE::Services::RegisterService(eEngineServices::Audio_Manager, audioManager); // ResourceManager needs this
+			QwerkE::Services::RegisterService(eEngineServices::Audio_Manager, audioManager); // Resources needs this
 
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TEMP: avoid bright white screen while loading
@@ -215,7 +217,7 @@ namespace QwerkE {
 
 			delete (DataManager*)QwerkE::Services::UnregisterService(eEngineServices::Data_Manager);
 
-			delete (InputManager*)QwerkE::Services::UnregisterService(eEngineServices::Input_Manager); // dependency
+			delete (Input*)QwerkE::Services::UnregisterService(eEngineServices::Input_Manager); // dependency
 
 			delete (FileSystem*)QwerkE::Services::UnregisterService(eEngineServices::FileSystem); // first in, last out
 
@@ -304,7 +306,7 @@ namespace QwerkE {
 					Framework::NewFrame();
 
 					/* Input */
-					Framework::Input();
+					Framework::PollInput();
 
 					/* Logic */
 					Framework::Update(timeSinceLastFrame);
@@ -336,18 +338,17 @@ namespace QwerkE {
 		{
 			/* Reset */
 			// TODO: Reset things...
-			InputManager* inputManager = (InputManager*)QwerkE::Services::GetService(eEngineServices::Input_Manager);
-			inputManager->NewFrame();
+			g_Input->NewFrame(); // TODO Replace with static instance call
 
 			// TODO: Process events every frame
 			((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->ProcessEvents();
 		}
 
-		void Framework::Input()
+		void Framework::PollInput()
 		{
             glfwPollEvents(); // TODO: Better GLFW interface?
             ImGui_ImplOpenGL3_NewFrame();
-            ImGui_ImplGlfw_NewFrame(); // after InputManager gets reset, and after glfw input polling is done
+            ImGui_ImplGlfw_NewFrame(); // after Input gets reset, and after glfw input polling is done
             ImGui::NewFrame();
 			// TODO: Tell input manager it is a new frame and it should update key states
 		}
@@ -357,9 +358,8 @@ namespace QwerkE {
 			m_SceneManager->Update(deltatime);
 
 			//if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE)) // DEBUG: A simple way to close the window while testing
-			InputManager* inputManager = (InputManager*)QwerkE::Services::GetService(eEngineServices::Input_Manager);
 
-			if (inputManager->FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
+			if (g_Input->FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
 			{
 				static bool paused = false;
 				paused = !paused;
@@ -372,7 +372,7 @@ namespace QwerkE {
 					m_SceneManager->GetCurrentScene()->SetState(eSceneState::SceneState_Running);
 				}
 			}
-			if (inputManager->FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
+			if (g_Input->FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
 			{
 				static bool frozen = false;
 				frozen = !frozen;
@@ -385,7 +385,7 @@ namespace QwerkE {
 					m_SceneManager->GetCurrentScene()->SetState(eSceneState::SceneState_Running);
 				}
 			}
-			if (inputManager->FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
+			if (g_Input->FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{
 				WindowManager* windowManager = (WindowManager*)QwerkE::Services::GetService(eEngineServices::WindowManager);
 				windowManager->GetWindow(0)->SetClosing(true);

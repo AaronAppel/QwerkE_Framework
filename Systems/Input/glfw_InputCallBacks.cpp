@@ -1,4 +1,6 @@
-#include "InputManager.h"
+#include "Input.h"
+#include "Mouse.h"
+#include "Keyboard.h"
 
 #ifdef dearimgui
 #include "../../QwerkE_Common/Libraries/imgui/imgui.h"
@@ -8,13 +10,13 @@
 namespace QwerkE {
 
 #ifdef GLFW3
-    InputManager* l_InputManager = nullptr;
+    Input* l_Input = nullptr;
 
-    InputManager::InputManager(GLFWwindow* window)
+    Input::Input(GLFWwindow* window)
     {
         // Create input devices
-        Keyboard* keyboard = new InputManager::Keyboard(eInputDeviceTypes::Keyboard_Device0);
-        Mouse* mouse = new InputManager::Mouse(eInputDeviceTypes::Mouse_Device0);
+        Keyboard* keyboard = new Keyboard(eInputDeviceTypes::Keyboard_Device0);
+        Mouse* mouse = new Mouse(eInputDeviceTypes::Mouse_Device0);
 
         AddDevice(keyboard);
         AddDevice(mouse);
@@ -30,9 +32,9 @@ namespace QwerkE {
         NewFrame(); // init buffers
     }
 
-    void InputManager::SetupCallbacks(GLFWwindow* window)
+    void Input::SetupCallbacks(GLFWwindow* window)
     {
-        l_InputManager = this;
+        l_Input = this;
         glfwSetKeyCallback(window, key_callback);
         glfwSetScrollCallback(window, scroll_callback);
         glfwSetCharCallback(window, char_callback);
@@ -41,16 +43,17 @@ namespace QwerkE {
         glfwSetMouseButtonCallback(window, mouse_button_callback);
         glfwSetJoystickCallback(joystick_callback);
     }
-    void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+
+    void Input::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
     {
         if (action == GLFW_PRESS)
         {
-            l_InputManager->ProcessKeyEvent(l_InputManager->GLFWToQwerkEKey(key),
+            l_Input->ProcessKeyEvent(l_Input->GLFWToQwerkEKey(key),
                 eKeyState::eKeyState_Press);
         }
         else if (action == GLFW_RELEASE)
         {
-            l_InputManager->ProcessKeyEvent(l_InputManager->GLFWToQwerkEKey(key),
+            l_Input->ProcessKeyEvent(l_Input->GLFWToQwerkEKey(key),
                 eKeyState::eKeyState_Release);
         }
 
@@ -68,9 +71,10 @@ namespace QwerkE {
         io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
 #endif // dearimgui
     }
-    void InputManager::char_callback(GLFWwindow* window, unsigned int codePoint)
+
+    void Input::char_callback(GLFWwindow* window, unsigned int codePoint)
     {
-        // l_InputManager->ProcessKeyEvent(l_InputManager->GLFWToQwerkEKey(key), eKeyState::eKeyState_Down);
+        // l_Input->ProcessKeyEvent(l_Input->GLFWToQwerkEKey(key), eKeyState::eKeyState_Down);
         int bp = 1;
 
 #ifdef dearimgui // TODO: Checkout how to call imgui properly
@@ -79,17 +83,20 @@ namespace QwerkE {
             io.AddInputCharacter((unsigned short)codePoint);
 #endif // dearimgui
     }
-    void InputManager::char_mods_callback(GLFWwindow* window, unsigned int codepoint, int mods)
+
+    void Input::char_mods_callback(GLFWwindow* window, unsigned int codepoint, int mods)
     {
         // TODO:
     }
-    void InputManager::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+
+    void Input::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
     {
-        l_InputManager->ProcessMouseMove(xpos, -ypos);
+        l_Input->ProcessMouseMove(xpos, -ypos);
 
         ypos = (double)g_WindowHeight - ypos; // invert y
     }
-    void InputManager::cursor_enter_callback(GLFWwindow* window, int entered)
+
+    void Input::cursor_enter_callback(GLFWwindow* window, int entered)
     {
         // ProcessMouse();
         if (entered == GLFW_TRUE)
@@ -101,21 +108,23 @@ namespace QwerkE {
             // mouse left window rectangle
         }
     }
-    void InputManager::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+
+    void Input::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
     {
         if (action == GLFW_PRESS)
         {
-            l_InputManager->ProcessMouseClick(l_InputManager->GLFWToQwerkEKey(button), eKeyState::eKeyState_Press);
+            l_Input->ProcessMouseClick(l_Input->GLFWToQwerkEKey(button), eKeyState::eKeyState_Press);
         }
         else if (action == GLFW_RELEASE)
         {
-            l_InputManager->ProcessMouseClick(l_InputManager->GLFWToQwerkEKey(button), eKeyState::eKeyState_Release);
+            l_Input->ProcessMouseClick(l_Input->GLFWToQwerkEKey(button), eKeyState::eKeyState_Release);
         }
 
         // imgui
         // io.MouseDown[i] = ;
     }
-    void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+
+    void Input::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
     {
         // ProcessMouse();
 
@@ -127,12 +136,14 @@ namespace QwerkE {
 
 #endif // dearimgui
     }
-    void InputManager::joystick_callback(int joy, int event)
+
+    void Input::joystick_callback(int joy, int event)
     {
         // ProcessGamePad/Joystick();
         // joystick button pressed
         // http://www.glfw.org/docs/latest/input_guide.html#joystick
         int bp = 1;
     }
+
 }
 #endif // GLFW3

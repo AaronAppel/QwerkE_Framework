@@ -82,9 +82,6 @@
     <Filter Include="Systems\Renderer">
       <UniqueIdentifier>{e5b5b25e-4f8a-48fa-81e8-a8daff60cb82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\ResourceManager">
-      <UniqueIdentifier>{8001e8f2-a501-4fc9-acd7-1f8eeba20289}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Systems\ShaderFactory">
       <UniqueIdentifier>{9ef09eae-2c77-432a-8b2f-8954807dfab9}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,9 @@
     </Filter>
     <Filter Include="Headers">
       <UniqueIdentifier>{52e3b62b-3e5a-4f8d-915c-075d74a23de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Resources">
+      <UniqueIdentifier>{8001e8f2-a501-4fc9-acd7-1f8eeba20289}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -244,9 +244,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\glfw_InputCallBacks.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.cpp">
       <Filter>Systems\JobManager</Filter>
     </ClCompile>
@@ -264,18 +261,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp">
       <Filter>Systems\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset.cpp">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.cpp">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\MasterAssetList.cpp">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.cpp">
-      <Filter>Systems\ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp">
       <Filter>Systems\ShaderFactory</Filter>
@@ -333,11 +318,41 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
       <Filter>Entities\Components\Extended</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.cpp">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Services.cpp">
       <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.cpp">
+      <Filter>Systems\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset_Tag.cpp">
+      <Filter>Systems\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\MasterAssetList.cpp">
+      <Filter>Systems\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.cpp">
+      <Filter>Systems\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.cpp">
+      <Filter>Systems\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Input.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\MouseExtApi.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\KeyboardExtApi.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.cpp">
+      <Filter>Systems\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -481,12 +496,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h">
       <Filter>Systems\FileSystem</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputManager.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h">
       <Filter>Systems\Input</Filter>
     </ClInclude>
@@ -507,15 +516,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.h">
       <Filter>Systems\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset.h">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Asset_Tag.h">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\Texture_Asset.h">
-      <Filter>Systems\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h">
       <Filter>Systems\ShaderFactory</Filter>
@@ -616,11 +616,38 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
       <Filter>Entities\Components\Extended</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ResourceManager\ResourceManager.h">
-      <Filter>Systems\ResourceManager</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Services.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.h">
+      <Filter>Systems\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset_Tag.h">
+      <Filter>Systems\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.h">
+      <Filter>Systems\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.h">
+      <Filter>Systems\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\MouseExtApi.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\KeyboardExtApi.h">
+      <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.h">
+      <Filter>Systems\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

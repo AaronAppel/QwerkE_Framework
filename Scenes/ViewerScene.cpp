@@ -1,6 +1,6 @@
 #include "ViewerScene.h"
 #include "../Systems/Services.h"
-#include "../Systems/ResourceManager/ResourceManager.h"
+#include "../Systems/Resources/Resources.h"
 #include "../Systems/Factory/Factory.h"
 
 namespace QwerkE {

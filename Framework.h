@@ -14,8 +14,6 @@
 // service. Or just find another way to prevent multiple instances
 // while offering a nice interface.
 
-static int* a;
-
 struct GLFWwindow;
 
 namespace QwerkE {
@@ -34,7 +32,7 @@ namespace QwerkE {
 		void Stop();
 
 		void NewFrame();
-		void Input();
+		void PollInput();
 		void Update(double deltatime);
 		void Draw();
 		void EndFrame();

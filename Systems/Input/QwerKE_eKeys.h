@@ -208,7 +208,7 @@ namespace QwerkE {
         eKeys_F25,
 
         // System Keys
-        eKeys_System, // Window key, Command Key, etc
+        eKeys_System, // Super, Window key, Command Key, etc
 
         // Media Keys?
         // Macro Keys?

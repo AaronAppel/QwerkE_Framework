@@ -8,7 +8,7 @@
 #include "../Graphics/Mesh/Mesh.h"
 #include "../Graphics/Mesh/MeshFactory.h"
 #include "../Systems/Services.h"
-#include "../Systems/ResourceManager/ResourceManager.h"
+#include "../Systems/Resources/Resources.h"
 
 namespace QwerkE {
 

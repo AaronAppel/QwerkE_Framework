@@ -4,8 +4,6 @@
 #include "../../QwerkE_Common/DataTypes/Vector.h"
 #include "../../QwerkE_Common/Math_Includes.h"
 
-struct GLFWwindow;
-
 namespace QwerkE {
 
     // TODO: Create windows for different libraries

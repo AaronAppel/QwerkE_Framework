@@ -1,6 +1,9 @@
 #ifndef _Config_Helper_H_
 #define _Config_Helper_H_
 
+#include <string>
+#include <vector>
+
 namespace QwerkE {
 
     struct FrameworkData
@@ -75,4 +78,4 @@ namespace QwerkE {
     };
 
 }
-#endif //!_Config_Helper_H_
+#endif // !_Config_Helper_H_

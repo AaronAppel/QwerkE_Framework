@@ -9,9 +9,9 @@ namespace QwerkE {
 	// Init variables
     bool QwerkE::Services::m_IsLocked = true; // Must be unlocked to edit
 
-    ResourceManager Services::Resources;
+    // Resources Services::Resources;
 
-    InputManager* Services::m_InputManager = nullptr;
+    Input* Services::m_Input = nullptr;
     EventManager* Services::m_EventManager = nullptr;
     SceneManager* Services::m_SceneManager = nullptr;
 	Factory* Services::m_Factory = nullptr;
@@ -42,7 +42,7 @@ namespace QwerkE {
 		switch (serviceType)
 		{
 		case eEngineServices::Input_Manager:
-			Services::m_InputManager = (InputManager*)service;
+			Services::m_Input = (Input*)service;
 			break;
 		case eEngineServices::Event_System:
 			Services::m_EventManager = (EventManager*)service;
@@ -97,8 +97,8 @@ namespace QwerkE {
 		switch (serviceType)
 		{
 		case eEngineServices::Input_Manager:
-			temp = Services::m_InputManager;
-			Services::m_InputManager = nullptr;
+			temp = Services::m_Input;
+			Services::m_Input = nullptr;
 			return temp;
 			break;
 		case eEngineServices::Event_System:
@@ -177,7 +177,7 @@ namespace QwerkE {
 		switch (serviceType)
 		{
 		case eEngineServices::Input_Manager:
-			return Services::m_InputManager;
+			return Services::m_Input;
 			break;
 		case eEngineServices::Event_System:
 			return Services::m_EventManager;
@@ -232,7 +232,7 @@ namespace QwerkE {
 			switch (i)
 			{
 			case eEngineServices::Input_Manager:
-				if (Services::m_InputManager == nullptr)
+				if (Services::m_Input == nullptr)
 					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Event_System:

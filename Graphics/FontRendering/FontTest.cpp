@@ -41,7 +41,7 @@ namespace QwerkE {
 
         // Load font as face
         FT_Face face;
-        // TODO:Fix freetype font loading to use ResourceManager().
+        // TODO:Fix freetype font loading to use Resources().
         if (FT_New_Face(ft, NullFolderPath(null_font), 0, &face))
             std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 
@@ -103,7 +103,7 @@ namespace QwerkE {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
 
-        Services::Resources.AddFont(null_font, face);
+        Resources::AddFont(null_font, face);
     }
 
     void RenderText(ShaderProgram* shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)

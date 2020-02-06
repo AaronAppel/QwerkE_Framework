@@ -1,5 +1,5 @@
 #include "JobQueuedEvent.h"
-#include "../ResourceManager/ResourceManager.h"
+#include "../Resources/Resources.h"
 #include "../Services.h"
 
 namespace QwerkE {

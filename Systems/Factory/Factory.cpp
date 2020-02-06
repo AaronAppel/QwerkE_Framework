@@ -1,5 +1,5 @@
 #include "Factory.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Systems/Services.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
@@ -18,7 +18,7 @@ namespace QwerkE {
 
     void Factory::ClearResources()
     {
-        Services::Resources.DeleteAllResources(); // TODO: Shouldn't have access to resources through factory
+        Resources::DeleteAllResources(); // TODO: Shouldn't have access to resources through factory
     }
     GameObject* Factory::CreateGameObject(Scene* scene)
     {

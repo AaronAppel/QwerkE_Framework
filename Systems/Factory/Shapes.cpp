@@ -3,7 +3,7 @@
 #include "../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../Headers/QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Graphics/Mesh/Mesh.h"
 #include "../../Graphics/Material.h"

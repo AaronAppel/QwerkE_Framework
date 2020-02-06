@@ -1,10 +1,16 @@
-#include "InputManager.h"
+#include "Mouse.h"
+#include "Keyboard.h"
 #include "../../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 
 namespace QwerkE {
 
+    eKeys Input::GLFWToQwerkEKey(int key) const
+    {
+        return (eKeys)m_KeyCodex[key];
+    }
+
     // Windows 32 bit
-    void InputManager::AssignGLFWKeys(InputDevice* device)
+    void Input::AssignGLFWKeys(InputDevice* device)
     {
         eInputDeviceTypes deviceType = device->GetType();
 
@@ -46,7 +52,7 @@ namespace QwerkE {
 
             // Locks
             keyboard->s_KeyCodex[GLFW_KEY_CAPS_LOCK] = eKeys_CapsLock,
-                keyboard->s_KeyCodex[GLFW_KEY_NUM_LOCK] = eKeys_NumLock;
+            keyboard->s_KeyCodex[GLFW_KEY_NUM_LOCK] = eKeys_NumLock;
             keyboard->s_KeyCodex[GLFW_KEY_SCROLL_LOCK] = eKeys_ScrollLock;
 
             // Key Pad
@@ -160,8 +166,8 @@ namespace QwerkE {
             // System Keys
             // keyboard->s_KeyCodex[eKeys_System] = -1; // Set to Max
         }
-        else if (deviceType > eInputDeviceTypes::Mouse_Min&&
-            deviceType < eInputDeviceTypes::Mouse_Max)
+        else if (deviceType > eInputDeviceTypes::Mouse_Min &&
+                deviceType < eInputDeviceTypes::Mouse_Max)
         {
             // Mouse
             Mouse* mouse = (Mouse*)device;
@@ -187,7 +193,7 @@ namespace QwerkE {
         }
     }
 
-    void InputManager::SetupGLFWKeyCodex()
+    void Input::SetupGLFWKeyCodex()
     {
         /* Generic */
         // Mouse

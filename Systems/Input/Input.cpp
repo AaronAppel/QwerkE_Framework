@@ -1,14 +1,37 @@
-#include "InputManager.h"
+#include "Input.h"
+#include "Mouse.h"
+#include "Keyboard.h"
+#include "MouseExtApi.h"
+#include "KeyboardExtApi.h"
 #include "../../Headers/QwerkE_Enums.h"
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 namespace QwerkE {
 
-    InputManager::InputManager()
+    Input::Input()
+    {
+    }
+
+    Input::~Input()
+    {
+        m_Devices; // TODO: Loop and delete
+        m_KeyboardAPI;
+    }
+
+#ifdef GLFW3
+    void Input::Initialize(GLFWwindow* window)
+    {
+        Initialize();
+        SetupGLFWKeyCodex(); // TODO: Change
+        SetupCallbacks(window);
+    }
+#endif // GLFW3
+
+    void Input::Initialize()
     {
         // Create input devices
-        Keyboard* keyboard = new InputManager::Keyboard(eInputDeviceTypes::Keyboard_Device0);
-        Mouse* mouse = new InputManager::Mouse(eInputDeviceTypes::Mouse_Device0);
+        Keyboard* keyboard = new Keyboard(eInputDeviceTypes::Keyboard_Device0);
+        Mouse* mouse = new Mouse(eInputDeviceTypes::Mouse_Device0);
         AddDevice(keyboard);
         AddDevice(mouse);
 
@@ -17,20 +40,12 @@ namespace QwerkE {
 
         m_KeyCodex = new unsigned short[GLFW_KEY_LAST];
         memset(m_KeyCodex, 0, GLFW_KEY_LAST); // set values to 0
-        SetupGLFWKeyCodex(); // TODO: Change
 
+        NewFrame(); // Init buffers
         m_KeyboardAPI = new KeyboardExtAPI(keyboard);
-
-        NewFrame(); // init buffers
     }
 
-    InputManager::~InputManager()
-    {
-        m_Devices; // TODO: Loop and delete
-        m_KeyboardAPI;
-    }
-
-    void InputManager::NewFrame()
+    void Input::NewFrame()
     {
         // reset state of each input device
         // TODO: Loop through array to reset all devices
@@ -48,21 +63,21 @@ namespace QwerkE {
         }
     }
 
-    void InputManager::ProcessMouseMove(vec2 position)
+    void Input::ProcessMouseMove(vec2 position)
     {
         Mouse* mouse = (Mouse*)m_Devices.find(m_DefaultMouse)->second;
         mouse->s_MouseDelta = mouse->s_MousePos - position;
         mouse->s_MousePos = position;
     }
 
-    void InputManager::ProcessMouseMove(float x, float y)
+    void Input::ProcessMouseMove(float x, float y)
     {
         Mouse* mouse = (Mouse*)m_Devices.find(m_DefaultMouse)->second;
         mouse->s_MouseDelta = mouse->s_MousePos - vec2(x, y);
         mouse->s_MousePos = vec2(x, y);
     }
 
-    void InputManager::ProcessMouseClick(eKeys key, eKeyState state) // handle mouse clicks
+    void Input::ProcessMouseClick(eKeys key, eKeyState state) // handle mouse clicks
     {
         Mouse* mouse = (Mouse*)m_Devices.find(m_DefaultMouse)->second;
         // TODO:: Handle mouse drag for eKeys_RightClick and eKeys_MiddleClick
@@ -79,7 +94,7 @@ namespace QwerkE {
         RaiseInputEvent(key, state);
     }
 
-    void InputManager::ProcessKeyEvent(eKeys key, eKeyState state)
+    void Input::ProcessKeyEvent(eKeys key, eKeyState state)
     {
         Keyboard* keyboard = (Keyboard*)m_Devices.find(m_DefaultKeyboard)->second;
         keyboard->s_OneFrameBuffersAreDirty = true;
@@ -90,7 +105,7 @@ namespace QwerkE {
         keyboard->s_KeyStates[key] = state;
     }
 
-    vec2 InputManager::GetMouseDragDelta() const
+    vec2 Input::GetMouseDragDelta() const
     {
         Mouse* mouse = (Mouse*)m_Devices.find(m_DefaultMouse)->second;
         if (mouse->s_KeyStates[eKeys::eKeys_LeftClick])
@@ -100,12 +115,12 @@ namespace QwerkE {
         return vec2(0.0f, 0.0f);
     }
 
-    bool InputManager::GetIsKeyDown(eKeys key) const
+    bool Input::GetIsKeyDown(eKeys key) const
     {
         return m_Devices.find(m_DefaultKeyboard)->second->s_KeyStates[key];
     }
 
-    bool InputManager::FrameKeyAction(eKeys key, eKeyState state) const
+    bool Input::FrameKeyAction(eKeys key, eKeyState state) const
     {
         if (m_InputEventKeys[0] != eKeys::eKeys_NULL_KEY) // was a key even pressed?
             for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
@@ -115,8 +130,9 @@ namespace QwerkE {
             }
         return 0;
     }
-    // private functions
-    void InputManager::RaiseInputEvent(eKeys key, eKeyState state)
+
+    // Private functions
+    void Input::RaiseInputEvent(eKeys key, eKeyState state)
     {
         m_KeyEventsAreDirty = true;
 
@@ -130,7 +146,8 @@ namespace QwerkE {
             }
         }
     }
-    bool InputManager::AddDevice(InputDevice* device)
+
+    bool Input::AddDevice(InputDevice* device)
     {
         if (device)
         {
@@ -143,6 +160,40 @@ namespace QwerkE {
             }
         }
         return false;
+    }
+
+    void Input::AssignSystemKeys(InputDevice* device)
+    {
+#ifdef GLFW3
+        //void AssignGLFWKeys(InputDevice * device);
+        //void SetupGLFWKeyCodex(); // TODO: Remove
+        //eKeys GLFWToQwerkEKey(int key) const
+        //{
+        //    return (eKeys)m_KeyCodex[key];
+        //}
+#endif
+
+#ifdef GLFW3
+        // TODO: Reduce the size of array
+        device->s_KeyCodex = new unsigned short[GLFW_KEY_LAST]; // number of recognized glfw keys
+        memset(device->s_KeyCodex, 0, GLFW_KEY_LAST); // set values to 0
+        AssignGLFWKeys(device);
+
+#elif _QWin32
+        AssignWin32Keys();
+
+#elif _QMac32 // 64
+        AssignMacKeys();
+
+#elif _QLinux32 // 64
+        AssignLinuxKeys();
+
+#else
+        // Other Platforms or default layout
+        // TODO: Map ascii default layout
+        // https://www.asciitable.com/index/asciifull.gif
+#pragma error "Input(): No platform defined! Cannot assign keys!"
+#endif
     }
 
 }

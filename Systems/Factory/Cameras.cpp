@@ -4,7 +4,7 @@
 #include "../../Entities/Components/Camera/FreeCameraComponent.h"
 #include "../../Entities/Components/Camera/StaticCameraComponent.h"
 #include "../../Entities/Components/Camera/ThirdPersonCameraComponent.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/GameObject.h"

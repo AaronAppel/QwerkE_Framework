@@ -330,14 +330,14 @@ namespace QwerkE {
                 cJSON* meshFile = GetItemFromArrayByKey(renderableArray, "MeshFile");
                 cJSON* meshName = GetItemFromArrayByKey(renderableArray, "MeshName");
 
-                renderable.SetShader(Services::Resources.GetShaderProgram(shader->valuestring));
-                renderable.SetMaterial(Services::Resources.GetMaterial(material->valuestring));
+                renderable.SetShader(Resources::GetShaderProgram(shader->valuestring));
+                renderable.SetMaterial(Resources::GetMaterial(material->valuestring));
 
                 // Load Mesh
                 if (strcmp(meshFile->valuestring, no_file) == 0)
-                    renderable.SetMesh(Services::Resources.GetMesh(meshName->valuestring));
+                    renderable.SetMesh(Resources::GetMesh(meshName->valuestring));
                 else
-                    renderable.SetMesh(Services::Resources.GetMeshFromFile(meshFile->valuestring, meshName->valuestring));
+                    renderable.SetMesh(Resources::GetMeshFromFile(meshFile->valuestring, meshName->valuestring));
 
                 rComp->AddRenderable(renderable);
             }

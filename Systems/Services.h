@@ -7,13 +7,14 @@
 // To add a system add it to RegisterService(), UnregisterService,
 // GetService(), and ServicesLoaded().
 
-#include "../Headers/QwerkE_Enums.h"
-
-#include "../Systems/ResourceManager/ResourceManager.h"
+#include "../Systems/Resources/Resources.h"
 
 namespace QwerkE {
 
-    class InputManager;
+	enum class eEngineMessage : std::uint8_t;
+	enum class eEngineServices : std::uint8_t;
+
+    class Input;
     class EventManager;
     class SceneManager;
     class Factory;
@@ -62,9 +63,9 @@ namespace QwerkE {
 		Services();
 		~Services();
 
-        static ResourceManager Resources; // TEMP:
+        // static Resources Resources; // TEMP:
 
-		// Services need to be instantiated, then registered
+		// Services need to be instantiated else where, then registered
 		// TODO: Services...
 		// Networking, Graphics, Utilities (some type of file managers?),
 		// Debug, Memory, Application
@@ -74,14 +75,14 @@ namespace QwerkE {
 
 		static void* GetService(eEngineServices serviceType);
 		// TODO: Improve logic and code design
-		static eEngineMessage ServicesLoaded(); // determine if all services are loaded
+		static eEngineMessage ServicesLoaded(); // Determine if all services are loaded
 
 		static void LockServices(bool locking) { m_IsLocked = locking; }
 
 	private:
 		static bool m_IsLocked; // TODO: Improve security/error prevention
 
-		static InputManager* m_InputManager;
+		static Input* m_Input;
         static EventManager* m_EventManager;
         static SceneManager* m_SceneManager;
         static Factory* m_Factory;
@@ -98,4 +99,4 @@ namespace QwerkE {
 	};
 
 }
-#endif //!_Services_H_
+#endif // !_Services_H_

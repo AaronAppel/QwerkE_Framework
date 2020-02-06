@@ -1,6 +1,6 @@
 #include "FileSystem.h"
 #include "../../../QwerkE_Framework/Systems/Services.h"
-#include "../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
+#include "../../../QwerkE_Framework/Systems/Resources/Resources.h"
 #include "../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
 
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
@@ -25,7 +25,7 @@ namespace QwerkE {
 	{
 		Mesh* LoadMeshInModelByName(const char* modelFilePath, const char* meshName)
 		{
-			if (false == Services::Resources.MeshExists(meshName))
+			if (false == Resources::MeshExists(meshName))
 			{
 				Mesh* mesh = nullptr;
 #ifdef AI_CONFIG_H_INC // assimp
@@ -43,12 +43,12 @@ namespace QwerkE {
 				// separate model loading library
 #pragma error "Define model loading library!"
 #endif // AI_CONFIG_H_INC
-				Services::Resources.AddMesh(meshName, mesh);
-				return Services::Resources.GetMesh(meshName);
+				Resources::AddMesh(meshName, mesh);
+				return Resources::GetMesh(meshName);
 			}
 			else
 			{
-				return Services::Resources.GetMesh(meshName);
+				return Resources::GetMesh(meshName);
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace QwerkE {
 			// take copied data from external library and init it for QwerkE systems use.
 			for (size_t i = 0; i < meshes.size(); i++)
 			{
-				Services::Resources.AddMesh(meshes[i]->GetName().c_str(), meshes[i]);
+				Resources::AddMesh(meshes[i]->GetName().c_str(), meshes[i]);
 			}
 			for (size_t i = 0; i < matNames.size(); i++)
 			{
@@ -105,7 +105,7 @@ namespace QwerkE {
 
 		Mesh* LoadModelFileTo1Mesh(const char* modelFilePath)
 		{
-			if (false == Services::Resources.MeshExists(GetFileNameNoExt(modelFilePath).c_str()))
+			if (false == Resources::MeshExists(GetFileNameNoExt(modelFilePath).c_str()))
 			{
 				Mesh* mesh = nullptr;
 
@@ -127,17 +127,17 @@ namespace QwerkE {
 
 				if (mesh)
 				{
-					Services::Resources.AddMesh(GetFileNameNoExt(modelFilePath).c_str(), mesh);
-					return Services::Resources.GetMesh(GetFileNameNoExt(modelFilePath).c_str());
+					Resources::AddMesh(GetFileNameNoExt(modelFilePath).c_str(), mesh);
+					return Resources::GetMesh(GetFileNameNoExt(modelFilePath).c_str());
 				}
 				else
 				{
-					return Services::Resources.GetMesh(null_mesh);
+					return Resources::GetMesh(null_mesh);
 				}
 			}
 			else
 			{
-				return Services::Resources.GetMesh(GetFileNameNoExt(modelFilePath).c_str());
+				return Resources::GetMesh(GetFileNameNoExt(modelFilePath).c_str());
 			}
 		}
 	}

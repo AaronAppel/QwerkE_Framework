@@ -4,7 +4,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Systems/Services.h"
 #include "../Material.h"
 #include "../MaterialComponent.h"
@@ -165,10 +165,10 @@ namespace QwerkE {
                 cJSON* currRenderable = GetItemFromArrayByIndex(renderables, i);
 
                 renderComponent->SetNameAtIndex(i, currRenderable->string);
-                renderComponent->SetShaderAtIndex(i, Services::Resources.GetShaderProgram(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
-                renderComponent->SetMaterialAtIndex(i, Services::Resources.GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
+                renderComponent->SetShaderAtIndex(i, Resources::GetShaderProgram(GetItemFromArrayByKey(currRenderable, "Shader")->valuestring));
+                renderComponent->SetMaterialAtIndex(i, Resources::GetMaterial(GetItemFromArrayByKey(currRenderable, "Material")->valuestring));
                 // renderComponent->SetMeshAtIndex(i, resMan->GetMeshFromFile(GetItemFromArrayByKey(currRenderable, "MeshFile")->valuestring, GetItemFromArrayByKey(currRenderable, "MeshName")->valuestring));
-                renderComponent->SetMeshAtIndex(i, Services::Resources.GetMesh(null_mesh));
+                renderComponent->SetMeshAtIndex(i, Resources::GetMesh(null_mesh));
 
                 std::vector<Renderable>* renderables = renderComponent->GetRenderableList();
                 for (int i = 0; i < renderables->size(); i++)
@@ -181,9 +181,9 @@ namespace QwerkE {
         {
             renderComponent->AppendEmptyRenderables(1);
             renderComponent->SetNameAtIndex(0, "null_renderable");
-            renderComponent->SetShaderAtIndex(0, Services::Resources.GetShaderProgram(null_shader));
-            renderComponent->SetMaterialAtIndex(0, Services::Resources.GetMaterial(null_material));
-            renderComponent->SetMeshAtIndex(0, Services::Resources.GetMesh(null_mesh));
+            renderComponent->SetShaderAtIndex(0, Resources::GetShaderProgram(null_shader));
+            renderComponent->SetMaterialAtIndex(0, Resources::GetMaterial(null_material));
+            renderComponent->SetMeshAtIndex(0, Resources::GetMesh(null_mesh));
         }
 
         ClosecJSONStream(root);
@@ -273,7 +273,7 @@ namespace QwerkE {
                 {
                     // ask for texture from resource manager, making sure the texture gets created
                     // then add it to the material in its proper map "slot"
-                    material->AddTexture(Services::Resources.GetTexture(value->valuestring), (eMaterialMaps)(value->string[0] - 48));
+                    material->AddTexture(Resources::GetTexture(value->valuestring), (eMaterialMaps)(value->string[0] - 48));
                 }
             }
             // mat->s_AmbientName = GetItemFromArrayByKey(textureNames, "AmbientName")->valuestring;
@@ -291,20 +291,20 @@ namespace QwerkE {
 
         ClosecJSONStream(root);
 
-        // load texture handles from ResourceManager
+        // load texture handles from Resources
 
         // TODO: Stop trying to load "Empty" files
-        // material->s_AmbientHandle = Services::Resources.GetTexture(mat->s_AmbientName.c_str());
-        // material->s_DiffuseHandle = Services::Resources.GetTexture(mat->s_DiffuseName.c_str());
-        // material->s_SpecularHandle = Services::Resources.GetTexture(mat->s_SpecularName.c_str());
-        // material->s_EmissiveHandle = Services::Resources.GetTexture(mat->s_EmissiveName.c_str());
-        // material->s_HeightHandle = Services::Resources.GetTexture(mat->s_HeightName.c_str());
-        // material->s_NormalsHandle = Services::Resources.GetTexture(mat->s_NormalsName.c_str());
-        // material->s_ShininessHandle = Services::Resources.GetTexture(mat->s_ShininessName.c_str());
-        // material->s_OpacityHandle = Services::Resources.GetTexture(mat->s_OpacityName.c_str());
-        // material->s_DisplacementHandle = Services::Resources.GetTexture(mat->s_DisplacementName.c_str());
-        // material->s_LightMapHandle = Services::Resources.GetTexture(mat->s_LightMapName.c_str());
-        // material->s_ReflectionHandle = Services::Resources.GetTexture(mat->s_ReflectionName.c_str());
+        // material->s_AmbientHandle = Resources::GetTexture(mat->s_AmbientName.c_str());
+        // material->s_DiffuseHandle = Resources::GetTexture(mat->s_DiffuseName.c_str());
+        // material->s_SpecularHandle = Resources::GetTexture(mat->s_SpecularName.c_str());
+        // material->s_EmissiveHandle = Resources::GetTexture(mat->s_EmissiveName.c_str());
+        // material->s_HeightHandle = Resources::GetTexture(mat->s_HeightName.c_str());
+        // material->s_NormalsHandle = Resources::GetTexture(mat->s_NormalsName.c_str());
+        // material->s_ShininessHandle = Resources::GetTexture(mat->s_ShininessName.c_str());
+        // material->s_OpacityHandle = Resources::GetTexture(mat->s_OpacityName.c_str());
+        // material->s_DisplacementHandle = Resources::GetTexture(mat->s_DisplacementName.c_str());
+        // material->s_LightMapHandle = Resources::GetTexture(mat->s_LightMapName.c_str());
+        // material->s_ReflectionHandle = Resources::GetTexture(mat->s_ReflectionName.c_str());
     }
 
     void SaveShaderSchematic(ShaderProgram* shader)
@@ -351,9 +351,9 @@ namespace QwerkE {
             shader->SetGeoName(GetItemFromRootByKey(root, "geo")->valuestring);
         }
 
-        shader->SetVertShader(Services::Resources.GetShaderComponent(shader->GetVertName().c_str()));
-        shader->SetFragShader(Services::Resources.GetShaderComponent(shader->GetFragName().c_str()));
-        shader->SetGeoShader(Services::Resources.GetShaderComponent(shader->GetGeoName().c_str()));
+        shader->SetVertShader(Resources::GetShaderComponent(shader->GetVertName().c_str()));
+        shader->SetFragShader(Resources::GetShaderComponent(shader->GetFragName().c_str()));
+        shader->SetGeoShader(Resources::GetShaderComponent(shader->GetGeoName().c_str()));
 
         // TODO: Compile shader program
 

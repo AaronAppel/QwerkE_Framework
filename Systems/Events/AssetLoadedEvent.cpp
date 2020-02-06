@@ -1,5 +1,5 @@
 #include "AssetLoadedEvent.h"
-#include "../ResourceManager/ResourceManager.h"
+#include "../Resources/Resources.h"
 #include "../Services.h"
 #include "../../Graphics/GraphicsUtilities/OpenGL/OpenGLHelpers.h"
 
@@ -30,7 +30,7 @@ namespace QwerkE {
             if (handle > 0) // if (texture->s_Handle > 0)
             {
                 // Update texture data in resource manager
-                Services::Resources.UpdateTexture(m_Asset.s_Name.c_str(), handle);
+                Resources::UpdateTexture(m_Asset.s_Name.c_str(), handle);
             }
             else
             {

@@ -5,7 +5,7 @@
 #include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../Services.h"
-#include "../ResourceManager/ResourceManager.h"
+#include "../Resources/Resources.h"
 #include "OpenAL_Helpers.h"
 #include "AudioSource.h"
 
@@ -54,7 +54,7 @@ namespace QwerkE {
 
 	void OpenALAudioManager::PlaySound(const char* name)
 	{
-		m_Source->Play(Services::Resources.GetSound(name));
+		m_Source->Play(Resources::GetSound(name));
 	}
 
 

@@ -70,7 +70,7 @@
 // Input //
 #include "../Systems/Input/QwerKE_eKeys.h"
 #include "../Systems/Input/Input.h"
-#include "../Systems/Input/InputManager.h"
+#include "../Systems/Input/Input.h"
 
 #include "../Systems/JobManager/JobManager.h"
 
@@ -84,7 +84,7 @@
 #include "../Systems/Physics/PhysicsWorld.h"
 #include "../Systems/Physics/PhysicsManager.h"
 
-#include "../Systems/ResourceManager/ResourceManager.h"
+#include "../Systems/Resources/Resources.h"
 
 #include "../Systems/SceneManager.h"
 

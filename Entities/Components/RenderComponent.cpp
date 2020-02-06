@@ -1,5 +1,5 @@
 #include "RenderComponent.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Systems/Services.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
@@ -31,9 +31,9 @@ namespace QwerkE {
         m_ComponentTag = eComponentTags::Component_Render;
 
         Renderable t_Renderable;
-        t_Renderable.SetMaterial(Services::Resources.GetMaterial(materialName));
-        t_Renderable.SetMesh(Services::Resources.GetMesh(meshName));
-        t_Renderable.SetShader(Services::Resources.GetShaderProgram(shaderName));
+        t_Renderable.SetMaterial(Resources::GetMaterial(materialName));
+        t_Renderable.SetMesh(Resources::GetMesh(meshName));
+        t_Renderable.SetShader(Resources::GetShaderProgram(shaderName));
 
         t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
 
@@ -64,9 +64,9 @@ namespace QwerkE {
     {
         Renderable t_Renderable;
 
-        t_Renderable.SetMaterial(Services::Resources.GetMaterial(materialName));
-        t_Renderable.SetMesh(Services::Resources.GetMesh(meshName));
-        t_Renderable.SetShader(Services::Resources.GetShaderProgram(shaderName));
+        t_Renderable.SetMaterial(Resources::GetMaterial(materialName));
+        t_Renderable.SetMesh(Resources::GetMesh(meshName));
+        t_Renderable.SetShader(Resources::GetShaderProgram(shaderName));
 
         t_Renderable.GetMesh()->SetupShaderAttributes(t_Renderable.GetShaderSchematic());
 
@@ -82,9 +82,9 @@ namespace QwerkE {
         {
             Renderable t_Renderable;
 
-            t_Renderable.SetShader(Services::Resources.GetShaderProgram(null_shader_schematic));
-            t_Renderable.SetMaterial(Services::Resources.GetMaterial(null_material));
-            t_Renderable.SetMesh(Services::Resources.GetMesh(null_mesh));
+            t_Renderable.SetShader(Resources::GetShaderProgram(null_shader_schematic));
+            t_Renderable.SetMaterial(Resources::GetMaterial(null_material));
+            t_Renderable.SetMesh(Resources::GetMesh(null_mesh));
 
             m_RenderableList.push_back(t_Renderable);
         }

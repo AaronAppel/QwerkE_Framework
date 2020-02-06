@@ -1,6 +1,6 @@
 #include "CallbackFunctions.h"
 #include "../Services.h"
-#include "../ResourceManager/ResourceManager.h"
+#include "../Resources/Resources.h"
 #include "../FileSystem/FileSystem.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
@@ -110,7 +110,7 @@ namespace QwerkE {
                     Texture* texture = new Texture();
                     texture->s_Handle = result;
                     texture->s_Name = GetFileNameWithExt(*paths);
-                    Services::Resources.AddTexture(GetFileNameNoExt(*paths).c_str(), texture);
+                    Resources::AddTexture(GetFileNameNoExt(*paths).c_str(), texture);
                 }
             }
             else if (strcmp(GetFileExtension(*paths).c_str(), "fbx") == 0 || strcmp(GetFileExtension(*paths).c_str(), "obj") == 0)

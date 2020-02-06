@@ -1,4 +1,4 @@
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Graphics/Shader/ShaderComponent.h"
@@ -17,10 +17,18 @@
 
 namespace QwerkE {
 
+    std::map<std::string, Mesh*> Resources::m_Meshes;
+    std::map<std::string, Texture*> Resources::m_Textures;
+    std::map<std::string, Material*> Resources::m_Materials;
+    std::map<std::string, FT_Face> Resources::m_Fonts;
+    std::map<std::string, ALuint> Resources::m_Sounds; // TODO: Abstract OpenAL
+    std::map<std::string, ShaderProgram*> Resources::m_ShaderPrograms;
+    std::map<std::string, ShaderComponent*> Resources::m_ShaderComponents;
+
 	// TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 	// TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
 	// Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
-	void ResourceManager::Init()
+	void Resources::Init()
 	{
 		// TODO: Handle, or consider preventing, multiple Init() calls to avoid duplicated/leaked data issues
 
@@ -37,7 +45,7 @@ namespace QwerkE {
 
 	// Instantiation Functions
 	// TODO: Handle errors and deleting assets before returning nullptr
-	Mesh* ResourceManager::InstantiateMesh(const char* meshFilePath)
+	Mesh* Resources::InstantiateMesh(const char* meshFilePath)
 	{
 		MeshFactory t_MeshFactory;
 		Mesh* mesh = nullptr;
@@ -95,7 +103,7 @@ namespace QwerkE {
 		}
 	}
 
-	Texture* ResourceManager::InstantiateTexture(const char* textureName)
+	Texture* Resources::InstantiateTexture(const char* textureName)
 	{
 		if (FileExists(textureName))
 		{
@@ -122,7 +130,7 @@ namespace QwerkE {
 		}
 	}
 
-	Material* ResourceManager::InstantiateMaterial(const char* matName)
+	Material* Resources::InstantiateMaterial(const char* matName)
 	{
 		Material* material = nullptr;
 
@@ -150,7 +158,7 @@ namespace QwerkE {
 		return material;
 	}
 
-	FT_Face ResourceManager::InstantiateFont(const char* fontName)
+	FT_Face Resources::InstantiateFont(const char* fontName)
 	{
 		FT_Face font;
 		FT_Library ft = NULL; // TODO: No need to reload ft library
@@ -175,7 +183,7 @@ namespace QwerkE {
 		return font;
 	}
 
-	ALuint ResourceManager::InstantiateSound(const char* soundPath)
+	ALuint Resources::InstantiateSound(const char* soundPath)
 	{
 		ALuint handle = 0;
 		handle = ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadSound(soundPath);
@@ -190,7 +198,7 @@ namespace QwerkE {
 		}
 	}
 
-	ShaderProgram* ResourceManager::InstantiateShaderProgram(const char* schematicFile)
+	ShaderProgram* Resources::InstantiateShaderProgram(const char* schematicFile)
 	{
 		if (FileExists(schematicFile))
 		{
@@ -212,7 +220,7 @@ namespace QwerkE {
         return m_ShaderPrograms[null_shader_schematic];
 	}
 
-	ShaderComponent* ResourceManager::InstantiateShaderComponent(const char* componentName)
+	ShaderComponent* Resources::InstantiateShaderComponent(const char* componentName)
 	{
 		// TODO: Add assert for geometry shaders
 		if (FileExists(componentName))

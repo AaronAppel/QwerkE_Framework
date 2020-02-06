@@ -1,4 +1,4 @@
-#include "ResourceManager.h"
+#include "Resources.h"
 #include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Texture.h"
@@ -12,19 +12,16 @@
 
 namespace QwerkE {
 
-    // extern ResourceManager* Resources = new ResourceManager();
-	extern ResourceManager* Resources = nullptr;
-
-	ResourceManager::ResourceManager()
+	Resources::Resources()
 	{
 	}
 
-	ResourceManager::~ResourceManager()
+	Resources::~Resources()
 	{
 		DeleteAllResources();
 	}
 
-	void ResourceManager::DeleteAllResources()
+	void Resources::DeleteAllResources()
     {
 		for (auto object : m_Meshes)
 			delete object.second;
@@ -43,42 +40,42 @@ namespace QwerkE {
 		// m_Fonts.clear();
 	}
 
-	bool ResourceManager::MeshExists(const char* name)
+	bool Resources::MeshExists(const char* name)
 	{
 		return m_Meshes.find(name) != m_Meshes.end();
 	}
 
-	bool ResourceManager::TextureExists(const char* name)
+	bool Resources::TextureExists(const char* name)
 	{
 		return m_Textures.find(name) != m_Textures.end();
 	}
 
-	bool ResourceManager::MaterialExists(const char* name)
+	bool Resources::MaterialExists(const char* name)
 	{
 		return m_Materials.find(name) != m_Materials.end();
 	}
 
-	bool ResourceManager::FontExists(const char* name)
+	bool Resources::FontExists(const char* name)
 	{
 		return m_Fonts.find(name) != m_Fonts.end();
 	}
 
-	bool ResourceManager::SoundExists(const char* name)
+	bool Resources::SoundExists(const char* name)
 	{
 		return m_Sounds.find(name) != m_Sounds.end();
 	}
 
-	bool ResourceManager::ShaderProgramExists(const char* name)
+	bool Resources::ShaderProgramExists(const char* name)
 	{
 		return m_ShaderPrograms.find(name) != m_ShaderPrograms.end();
 	}
 
-	bool ResourceManager::ShaderComponentExists(const char* name)
+	bool Resources::ShaderComponentExists(const char* name)
 	{
 		return m_ShaderComponents.find(name) != m_ShaderComponents.end();
 	}
 
-	bool ResourceManager::AddMesh(const char* name, Mesh* mesh)
+	bool Resources::AddMesh(const char* name, Mesh* mesh)
 	{
 		if (MeshExists(name))
 			return false;
@@ -90,7 +87,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::AddTexture(const char* name, Texture* texture)
+	bool Resources::AddTexture(const char* name, Texture* texture)
 	{
 		if (!texture)
 			return false;
@@ -105,7 +102,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::AddMaterial(const char* name, Material* material)
+	bool Resources::AddMaterial(const char* name, Material* material)
 	{
 		if (!material)
 			return false;
@@ -120,7 +117,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::AddFont(const char* name, FT_Face font)
+	bool Resources::AddFont(const char* name, FT_Face font)
 	{
 		if (FontExists(name))
 			return false;
@@ -133,7 +130,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::AddSound(const char* name, ALuint sound)
+	bool Resources::AddSound(const char* name, ALuint sound)
 	{
 		if (SoundExists(name))
 			return false;
@@ -145,7 +142,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::AddShaderProgram(const char* name, ShaderProgram* ShaderProgram)
+	bool Resources::AddShaderProgram(const char* name, ShaderProgram* ShaderProgram)
 	{
 		if (ShaderProgramExists(name))
 			return false;
@@ -157,7 +154,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::AddShaderComponent(const char* name, ShaderComponent* shaderComponent)
+	bool Resources::AddShaderComponent(const char* name, ShaderComponent* shaderComponent)
 	{
 		if (ShaderComponentExists(name))
 			return false;
@@ -170,7 +167,7 @@ namespace QwerkE {
 	}
 	// getters
 	// TODO: Return null objects
-	Mesh* ResourceManager::GetMesh(const char* meshName)
+	Mesh* Resources::GetMesh(const char* meshName)
 	{
 		if (m_Meshes.find(meshName) != m_Meshes.end())
 		{
@@ -179,7 +176,7 @@ namespace QwerkE {
 		return InstantiateMesh(MeshFolderPath(meshName));
 	}
 
-	Mesh* ResourceManager::GetMeshFromFile(const char* fileName, const char* meshName)
+	Mesh* Resources::GetMeshFromFile(const char* fileName, const char* meshName)
 	{
         if (MeshExists(meshName))
             return m_Meshes[meshName];
@@ -195,12 +192,12 @@ namespace QwerkE {
 			return m_Meshes[null_mesh];
 	}
 
-	void ResourceManager::UpdateTexture(const char* name, int handle)
+	void Resources::UpdateTexture(const char* name, int handle)
 	{
 		m_Textures[name]->s_Handle = (GLuint)handle;
 	}
 
-	Texture* ResourceManager::GetTexture(const char* name)
+	Texture* Resources::GetTexture(const char* name)
 	{
 		if (m_Textures.find(name) != m_Textures.end())
 			return m_Textures[name];
@@ -234,7 +231,7 @@ namespace QwerkE {
 		// */
 	}
 
-	Texture* ResourceManager::GetTextureFromPath(const char* filePath)
+	Texture* Resources::GetTextureFromPath(const char* filePath)
 	{
 		if (TextureExists(GetFileNameWithExt(filePath).c_str()))
 			return m_Textures[GetFileNameWithExt(filePath).c_str()];
@@ -242,7 +239,7 @@ namespace QwerkE {
 		return InstantiateTexture(filePath);
 	}
 
-	Material* ResourceManager::GetMaterial(const char* name)
+	Material* Resources::GetMaterial(const char* name)
 	{
 		if (m_Materials.find(name) != m_Materials.end())
 			return m_Materials[name];
@@ -250,7 +247,7 @@ namespace QwerkE {
 		return InstantiateMaterial(TextureFolderPath(name));
 	}
 
-	Material* ResourceManager::GetMaterialFromPath(const char* filePath)
+	Material* Resources::GetMaterialFromPath(const char* filePath)
 	{
 		if (m_Materials.find(GetFileNameWithExt(filePath).c_str()) != m_Materials.end())
 			return m_Materials[GetFileNameWithExt(filePath).c_str()];
@@ -258,7 +255,7 @@ namespace QwerkE {
 		return InstantiateMaterial(filePath);
 	}
 
-	FT_Face ResourceManager::GetFont(const char* name)
+	FT_Face Resources::GetFont(const char* name)
 	{
 		if (m_Fonts.find(name) != m_Fonts.end())
 			return m_Fonts[name];
@@ -266,7 +263,7 @@ namespace QwerkE {
 		return InstantiateFont(FontFolderPath(name));
 	}
 
-	FT_Face ResourceManager::GetFontFromPath(const char* filePath)
+	FT_Face Resources::GetFontFromPath(const char* filePath)
 	{
 		if (m_Fonts.find(GetFileNameWithExt(filePath).c_str()) != m_Fonts.end())
 			return m_Fonts[GetFileNameWithExt(filePath).c_str()];
@@ -274,7 +271,7 @@ namespace QwerkE {
 		return InstantiateFont(filePath);
 	}
 
-	ALuint ResourceManager::GetSound(const char* name)
+	ALuint Resources::GetSound(const char* name)
 	{
 		if (SoundExists(name))
 			return m_Sounds[name];
@@ -282,7 +279,7 @@ namespace QwerkE {
 		return InstantiateSound(SoundFolderPath(name));
 	}
 
-	ALuint ResourceManager::GetSoundFromPath(const char* filePath)
+	ALuint Resources::GetSoundFromPath(const char* filePath)
 	{
 		if (SoundExists(GetFileNameWithExt(filePath).c_str()))
 			return m_Sounds[GetFileNameWithExt(filePath).c_str()];
@@ -290,7 +287,7 @@ namespace QwerkE {
 		return InstantiateSound(filePath);
 	}
 
-	ShaderProgram* ResourceManager::GetShaderProgram(const char* name)
+	ShaderProgram* Resources::GetShaderProgram(const char* name)
 	{
 		if (ShaderProgramExists(name))
 			return m_ShaderPrograms[name];
@@ -298,7 +295,7 @@ namespace QwerkE {
 		return InstantiateShaderProgram(ShaderFolderPath(name));
 	}
 
-	ShaderProgram* ResourceManager::GetShaderProgramFromPath(const char* filePath)
+	ShaderProgram* Resources::GetShaderProgramFromPath(const char* filePath)
 	{
 		if (ShaderProgramExists(GetFileNameWithExt(filePath).c_str()))
 			return m_ShaderPrograms[GetFileNameWithExt(filePath).c_str()];
@@ -306,7 +303,7 @@ namespace QwerkE {
 		return InstantiateShaderProgram(filePath);
 	}
 
-	ShaderComponent* ResourceManager::GetShaderComponent(const char* name)
+	ShaderComponent* Resources::GetShaderComponent(const char* name)
 	{
 		if (ShaderComponentExists(name))
 			return m_ShaderComponents[name];
@@ -314,7 +311,7 @@ namespace QwerkE {
 		return InstantiateShaderComponent(ShaderFolderPath(name));
 	}
 
-	ShaderComponent* ResourceManager::GetShaderComponentFromPath(const char* filePath)
+	ShaderComponent* Resources::GetShaderComponentFromPath(const char* filePath)
 	{
 		if (ShaderComponentExists(GetFileNameWithExt(filePath).c_str()))
 			return m_ShaderComponents[GetFileNameWithExt(filePath).c_str()];
@@ -323,7 +320,7 @@ namespace QwerkE {
 	}
 
 	// Utilities
-	bool ResourceManager::isUnique(Mesh* mesh)
+	bool Resources::isUnique(Mesh* mesh)
 	{
 		std::map<std::string, Mesh*>::iterator it;
 		for (it = m_Meshes.begin(); it != m_Meshes.end(); it++)
@@ -334,7 +331,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::isUnique(Texture* texturehandle)
+	bool Resources::isUnique(Texture* texturehandle)
 	{
 		std::map<std::string, Texture*>::iterator it;
 		for (it = m_Textures.begin(); it != m_Textures.end(); it++)
@@ -345,7 +342,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::isUnique(Material* material)
+	bool Resources::isUnique(Material* material)
 	{
 		std::map<std::string, Material*>::iterator it;
 		for (it = m_Materials.begin(); it != m_Materials.end(); it++)
@@ -356,7 +353,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::isUnique(FT_Face font)
+	bool Resources::isUnique(FT_Face font)
 	{
 		std::map<std::string, FT_Face>::iterator it;
 		for (it = m_Fonts.begin(); it != m_Fonts.end(); it++)
@@ -367,7 +364,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::isSoundUnique(ALuint sound)
+	bool Resources::isSoundUnique(ALuint sound)
 	{
 		std::map<std::string, ALuint>::iterator it;
 		for (it = m_Sounds.begin(); it != m_Sounds.end(); it++)
@@ -378,7 +375,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::isShaderProgramUnique(ShaderProgram* shaderProgram)
+	bool Resources::isShaderProgramUnique(ShaderProgram* shaderProgram)
 	{
 		std::map<std::string, ShaderProgram*>::iterator it;
 		for (it = m_ShaderPrograms.begin(); it != m_ShaderPrograms.end(); it++)
@@ -389,7 +386,7 @@ namespace QwerkE {
 		return true;
 	}
 
-	bool ResourceManager::isShaderComponentsUnique(ShaderComponent* shaderComponent)
+	bool Resources::isShaderComponentsUnique(ShaderComponent* shaderComponent)
 	{
 		std::map<std::string, ShaderComponent*>::iterator it;
 		for (it = m_ShaderComponents.begin(); it != m_ShaderComponents.end(); it++)

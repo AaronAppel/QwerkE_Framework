@@ -1,7 +1,7 @@
 #include "Factory.h"
 #include "../../Scenes/Scene.h"
 #include "../../QwerkE_Common/Utilities/Helpers.h"
-#include "../../Systems/ResourceManager/ResourceManager.h"
+#include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
@@ -13,7 +13,7 @@
 #include "../../QwerkE_Framework/QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../../QwerkE_Framework/Systems/Services.h"
-#include "../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
+#include "../../../QwerkE_Framework/Systems/Resources/Resources.h"
 
 namespace QwerkE {
 
@@ -61,14 +61,14 @@ namespace QwerkE {
         RenderComponent* rComp = new RenderComponent();
 
         Renderable renderable;
-        renderable.SetMaterial(Services::Resources.GetMaterial("brickwall.msch"));
-        renderable.SetShader(Services::Resources.GetShaderProgram("LitMaterialNormal.ssch"));
+        renderable.SetMaterial(Resources::GetMaterial("brickwall.msch"));
+        renderable.SetShader(Resources::GetShaderProgram("LitMaterialNormal.ssch"));
 
         Mesh* mesh = new Mesh();
         mesh = MeshFactory::CreateCube(vec3(10, 10, 10), vec2(1, 1), false);
         mesh->SetName("Cube");
         mesh->SetFileName("None");
-        Services::Resources.AddMesh("Cube", mesh);
+        Resources::AddMesh("Cube", mesh);
         renderable.SetMesh(mesh);
 
         rComp->AddRenderable(renderable);

@@ -1,11 +1,11 @@
 #include "OpenAL_Component.h"
 #include "../../../Systems/Services.h"
-#include "../../../Systems/ResourceManager/ResourceManager.h"
+#include "../../../Systems/Resources/Resources.h"
 
 namespace QwerkE {
 
     OpenAL_AudioComponent::OpenAL_AudioComponent()
-        : m_Buffer(Services::Resources.GetSound(null_sound))
+        : m_Buffer(Resources::GetSound(null_sound))
     {
     }
 

@@ -34,7 +34,7 @@ namespace QwerkE {
 	void SceneManager::Initialize()
 	{
 		// TODO: Scenes should be added somewhere else
-		// TODO: Load scenes from the ResourceManager/Scenes/... folder to use persistent data
+		// TODO: Load scenes from the Resources/Scenes/... folder to use persistent data
 
 		const char* prefPath = ConfigsFolderPath("preferences.qpref");
 		// TODO: does this free memory correctly? std::string pref = ConfigsFolderPath("preferences.qpref");

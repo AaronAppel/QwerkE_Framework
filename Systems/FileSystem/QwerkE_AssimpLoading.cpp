@@ -4,7 +4,7 @@
 #include "../../../../QwerkE_Framework/Graphics/Material.h"
 #include "../../../../QwerkE_Framework/Graphics/Texture.h"
 #include "../../../../QwerkE_Framework/Systems/Services.h"
-#include "../../../../QwerkE_Framework/Systems/ResourceManager/ResourceManager.h"
+#include "../../../../QwerkE_Framework/Systems/Resources/Resources.h"
 #include "../../../../QwerkE_Framework/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
@@ -40,9 +40,9 @@ namespace QwerkE {
 
     Mesh* QwerkE_assimp_loadVertexData(aiMesh* mesh, const aiScene* scene, const char* modelFilePath)
     {
-        if (Services::Resources.MeshExists(GetFileNameWithExt(modelFilePath).c_str()))
+        if (Resources::MeshExists(GetFileNameWithExt(modelFilePath).c_str()))
         {
-            return Services::Resources.GetMesh(GetFileNameWithExt(modelFilePath).c_str());
+            return Resources::GetMesh(GetFileNameWithExt(modelFilePath).c_str());
         }
         // process vertex positions, normals and texture coordinates
         // std::vector<VertexData> vertices(totalVerts); // TODO: Swap to array? // PERF: really good use of a 1 frame stack allocation
@@ -108,10 +108,10 @@ namespace QwerkE {
             rMesh->BufferMeshData(&data);
             rMesh->SetName(mesh->mName.C_Str());
             rMesh->SetFileName(GetFileNameWithExt(modelFilePath));
-            Services::Resources.AddMesh(rMesh->GetName().c_str(), rMesh);
+            Resources::AddMesh(rMesh->GetName().c_str(), rMesh);
         }
         else
-            rMesh = Services::Resources.GetMesh(null_mesh);
+            rMesh = Resources::GetMesh(null_mesh);
 
         return rMesh;
     }
@@ -122,7 +122,7 @@ namespace QwerkE {
         aiString name;
         mat->Get(AI_MATKEY_NAME, name);
         // TODO: Support "DefaultMaterial"
-        if (Services::Resources.MaterialExists(name.C_Str()))
+        if (Resources::MaterialExists(name.C_Str()))
         {
             // material exists already
         }
@@ -134,7 +134,7 @@ namespace QwerkE {
             // load each map/texture into a new material
 
             // iterate through all known texture types, then load the textures
-            // into the ResourceManager and assign handles to the return material.
+            // into the Resources and assign handles to the return material.
             // mat->GetTextureCount(); // optimization
             int num = aiTextureType_UNKNOWN - 1;
             for (int i = aiTextureType_NONE + 1; i < num; i++)
@@ -146,7 +146,7 @@ namespace QwerkE {
 
                 if (*str.C_Str())
                 {
-                    texture = Services::Resources.GetTexture(str.C_Str());
+                    texture = Resources::GetTexture(str.C_Str());
                 }
 
                 // handle = 1;

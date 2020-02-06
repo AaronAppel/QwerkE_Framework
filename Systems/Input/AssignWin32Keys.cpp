@@ -1,10 +1,12 @@
-#include "InputManager.h"
+#include "Input.h"
 #include <Windows.h>
 
 namespace QwerkE {
 
+#ifndef GLFW3
+
     // Windows 32 bit
-    void InputManager::AssignWin32Keys()
+    void Input::AssignWin32Keys()
     {
         // TODO: Invert key codes ie. m_KeyCodex[VK_LBUTTON] = eKeys_LeftClick;
 
@@ -126,5 +128,5 @@ namespace QwerkE {
         // TODO: Game Pad
         // m_KeyCodex[eKeys_System] = VK_GAMEPAD_A;
     }
-
+#endif // GLFW3
 }

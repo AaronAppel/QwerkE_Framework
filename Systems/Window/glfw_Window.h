@@ -10,6 +10,8 @@
 // TODO: Look at handling raw input for multiple mice as below
 // https://hannespfeiffer.net/2016/07/07/how-to-use-multiple-mice-with-glfw/
 
+// class GLFWwindow;
+
 namespace QwerkE {
 
     class glfw_Window : public Window
