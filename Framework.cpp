@@ -24,7 +24,6 @@
 #include "Systems/Debugger/Debugger.h"
 #include "Systems/ShaderFactory/ShaderFactory.h"
 #include "Systems/JobManager/JobManager.h"
-#include "Systems/Networking/NetworkManager.h"
 #include "Systems/Window/Window.h"
 #include "Systems/Window/WindowManager.h"
 #include "Systems/Window/glfw_Window.h"
@@ -121,9 +120,7 @@ namespace QwerkE {
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TEMP: avoid bright white screen while loading
 
-			Renderer* renderer = new Renderer();
-			Services::RegisterService(eEngineServices::Renderer, renderer);
-			renderer->DrawFont("Loading..."); // Message for user while loading
+			Renderer::DrawFont("Loading..."); // Message for user while loading
 			m_Window->SwapBuffers();
 
 			Services::RegisterService(eEngineServices::WindowManager, windowManager);
@@ -152,22 +149,21 @@ namespace QwerkE {
 			MessageManager* messageManager = new MessageManager();
 			Services::RegisterService(eEngineServices::MessageManager, messageManager);
 
-			JobManager* jobManager = nullptr;
+
 			cJSON* jobManagerMultiThreaded = GetItemFromArrayByKey(systems, "JobManagerMultiThreadedEnabled");
 
 			if (jobManagerMultiThreaded != nullptr && jobManagerMultiThreaded->valueint == 1)
-			{
-				jobManager = new JobManager();
+            {
+                // TODO: Define max thread behaviour
+				// Jobs::MaxThreads(10)  (Enable multi threading)
 			}
 			else
 			{
 				// TODO: Setup single threaded job manager
-				jobManager = new JobManager();
+				// Jobs::MaxThreads(1)
 			}
-			Services::RegisterService(eEngineServices::JobManager, jobManager);
 
-			NetworkManager* network = new NetworkManager();
-			Services::RegisterService(eEngineServices::NetworkManager, network);
+			// Network::Initialize();
 
 			DataManager* dataMan = new LevelLoader();
 			Services::RegisterService(eEngineServices::Data_Manager, dataMan);
@@ -189,13 +185,7 @@ namespace QwerkE {
 
 			delete (MessageManager*)Services::UnregisterService(eEngineServices::MessageManager);
 
-			delete (Renderer*)Services::UnregisterService(eEngineServices::Renderer);
-
 			delete (AudioManager*)Services::UnregisterService(eEngineServices::Audio_Manager);
-
-			delete (JobManager*)Services::UnregisterService(eEngineServices::JobManager);
-
-			delete (NetworkManager*)Services::UnregisterService(eEngineServices::NetworkManager);
 
 			delete (DataManager*)Services::UnregisterService(eEngineServices::Data_Manager);
 

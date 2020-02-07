@@ -6,12 +6,11 @@ namespace QwerkE {
     class Renderer
     {
     public:
+        static void DrawFont(const char* text);
+
+    private:
         Renderer();
         ~Renderer();
-
-        void DrawFont(const char* text);
-    private:
-
     };
 
 }

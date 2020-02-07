@@ -73,9 +73,6 @@
     <Filter Include="Systems\Logger">
       <UniqueIdentifier>{1d3ba439-6b98-4558-989a-d5d32a56d287}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\Networking">
-      <UniqueIdentifier>{b84b8b12-8adf-45ce-a1ce-78e38a1f4c10}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Systems\Physics">
       <UniqueIdentifier>{890f9f4f-4309-4645-8f45-a46e298d91ce}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,9 @@
     </Filter>
     <Filter Include="Systems\Resources">
       <UniqueIdentifier>{8001e8f2-a501-4fc9-acd7-1f8eeba20289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Network">
+      <UniqueIdentifier>{b84b8b12-8adf-45ce-a1ce-78e38a1f4c10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -250,9 +250,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp">
       <Filter>Systems\Logger</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.cpp">
-      <Filter>Systems\Networking</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.cpp">
       <Filter>Systems\Physics</Filter>
     </ClCompile>
@@ -353,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Scenes.cpp">
       <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Network\Network.cpp">
+      <Filter>Systems\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -505,9 +505,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.h">
       <Filter>Systems\Logger</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.h">
-      <Filter>Systems\Networking</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.h">
       <Filter>Systems\Physics</Filter>
     </ClInclude>
@@ -648,6 +645,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Scenes.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Network\Network.h">
+      <Filter>Systems\Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

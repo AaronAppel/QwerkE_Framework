@@ -1,6 +1,7 @@
 #include "JobQueuedEvent.h"
 #include "../Resources/Resources.h"
 #include "../Services.h"
+#include "Headers/QwerkE_Enums.h"
 
 namespace QwerkE {
 
@@ -15,7 +16,7 @@ namespace QwerkE {
 
     void JobQueuedEvent::Process()
     {
-        ((JobManager*)QwerkE::Services::GetService(eEngineServices::JobManager))->ProcessTasks();
+        Jobs::ProcessTasks();
     }
 
 }

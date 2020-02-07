@@ -9,9 +9,9 @@
 #include <string>
 #include <vector>
 
-class ShaderComponent;
-
 namespace QwerkE {
+
+    class ShaderComponent;
 
     class ShaderProgram
     {

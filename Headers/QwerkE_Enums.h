@@ -93,10 +93,10 @@ namespace QwerkE {
         Factory_Shader,
         PhysicsManager,
         MessageManager,
-        Renderer,
-        JobManager,
+        // Renderer,
+        // Jobs,
         WindowManager,
-        NetworkManager,
+        // Network,
         // FileSystem,
 
         Service_Max

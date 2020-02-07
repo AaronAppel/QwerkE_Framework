@@ -5,15 +5,9 @@
 
 namespace QwerkE {
 
-    JobManager::JobManager()
-    {
-    }
+    std::queue<QJob*> Jobs::m_JobList;
 
-    JobManager::~JobManager()
-    {
-    }
-
-    void JobManager::ScheduleTask(QJob* job)
+    void Jobs::ScheduleTask(QJob* job)
     {
         // TODO: Think of avoiding duplicate jobs
         m_JobList.push(job);
@@ -21,7 +15,7 @@ namespace QwerkE {
         ((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->QueueEvent(_event);
     }
 
-    void JobManager::ProcessTasks()
+    void Jobs::ProcessTasks()
     {
         for (size_t i = 0; i < m_JobList.size(); i++)
         {
@@ -32,7 +26,7 @@ namespace QwerkE {
         }
     }
     // Private
-    void JobManager::ProcessNextTask()
+    void Jobs::ProcessNextTask()
     {
         QJob* next = m_JobList.front();
         m_JobList.pop();

@@ -15,8 +15,7 @@
 #include "../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
 #endif // GLFW3
 
-// #include <string>
-// #include <map>
+#include <map>
 
 namespace QwerkE {
 

@@ -7,8 +7,6 @@
 // To add a system add it to RegisterService(), UnregisterService,
 // GetService(), and ServicesLoaded().
 
-#include "../Systems/Resources/Resources.h"
-
 namespace QwerkE {
 
 	enum class eEngineMessage : std::uint8_t;
@@ -19,11 +17,9 @@ namespace QwerkE {
     class Factory;
     class PhysicsManager;
     class MessageManager;
-    class Renderer;
     class AudioManager;
-    class JobManager;
     class Window;
-    class NetworkManager;
+    class Network;
     class ShaderFactory;
     class DataManager;
 
@@ -42,7 +38,7 @@ namespace QwerkE {
     // TODO: Try to avoid if(null) check inside a getter(). Make sure services are
     // initialized at start to null and have null checks inside a register() call.
 
-    // TODO: Consider limiting accessible scope on systems like NetworkManager to only a
+    // TODO: Consider limiting accessible scope on systems like Network to only a
     // few classes. Maybe create a INetwork interface that needs to be implemented
     // by a class to access the network service... or something like that.
 
@@ -57,8 +53,6 @@ namespace QwerkE {
 	class Services
 	{
 	public:
-
-        // static Resources Resources; // TEMP:
 
 		// Services need to be instantiated else where, then registered
 		// TODO: Services...
@@ -85,13 +79,11 @@ namespace QwerkE {
 		static ShaderFactory* m_ShaderFactory;
 		static PhysicsManager* m_PhysicsManager;
 		static MessageManager* m_MessageManager;
-		static Renderer* m_Renderer;
         static AudioManager* m_AudioManager;
-		static JobManager* m_JobManager;
 		static Window* m_Window;
-        static NetworkManager* m_NetworkManager;
+        static Network* m_NetworkManager;
 		static DataManager* m_DataManager;
 	};
 
 }
-#endif // !_Services_H_
+#endif // _Services_H_

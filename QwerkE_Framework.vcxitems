@@ -82,7 +82,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Network\Network.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp" />
@@ -188,7 +188,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\MessageManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Networking\NetworkManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Network\Network.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.h" />

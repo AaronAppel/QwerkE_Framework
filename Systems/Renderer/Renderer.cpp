@@ -1,7 +1,5 @@
 #include "Renderer.h"
 #include "../../Graphics/FontRendering/FontTest.h"
-#include "../Services.h"
-#include "../../Headers/QwerkE_Enums.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 
 namespace QwerkE {

@@ -1,4 +1,4 @@
-#include "NetworkManager.h"
+#include "Network.h"
 
 // https://github.com/facebookarchive/RakNet/tree/master/Samples
 #include <stdio.h>
@@ -15,21 +15,15 @@
 #define SERVER_PORT 60000
 
 namespace QwerkE {
+    
+    std::string Network::m_IP = "127.0.0.1";
 
     enum GameMessages
     {
         ID_GAME_MESSAGE_1 = ID_USER_PACKET_ENUM + 1
     };
 
-    NetworkManager::NetworkManager()
-    {
-    }
-
-    NetworkManager::~NetworkManager()
-    {
-    }
-
-    int NetworkManager::test()
+    int Network::test()
     {
         char str[512];
 

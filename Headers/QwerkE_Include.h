@@ -79,7 +79,7 @@
 #include "../Systems/MessageManager.h"
 
 // networking //
-#include "../Systems/Networking/NetworkManager.h"
+#include "../Systems/Network/Network.h"
 
 #include "../Systems/Physics/PhysicsWorld.h"
 #include "../Systems/Physics/PhysicsManager.h"

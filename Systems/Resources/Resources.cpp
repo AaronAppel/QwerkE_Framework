@@ -216,8 +216,7 @@ namespace QwerkE {
 				tex->s_Name = GetFileNameWithExt(name);
 				m_Textures[tex->s_Name] = tex;
 
-				JobManager* jMan = (JobManager*)QwerkE::Services::GetService(eEngineServices::JobManager);
-				jMan->ScheduleTask(new QLoadAsset(name));
+				Jobs::ScheduleTask(new QLoadAsset(name));
 				return m_Textures[tex->s_Name];
 			}
 			else

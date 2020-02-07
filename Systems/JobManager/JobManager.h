@@ -1,5 +1,5 @@
-#ifndef _JobManager_H_
-#define _JobManager_H_
+#ifndef _Jobs_H_
+#define _Jobs_H_
 
 /*
 	An interface for multi threaded tasks
@@ -12,11 +12,9 @@
 #endif
 #include "../../../QwerkE_Common/Libraries/pThreads/pthread.h"
 
-#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../Events/EventManager.h"
 #include "../Events/Event.h"
 #include "../Events/AssetLoadedEvent.h"
-#include "../FileSystem/FileSystem.h"
 
 #include <queue>
 
@@ -54,20 +52,20 @@ namespace QwerkE {
         const char* m_AssetName;
     };
 
-    class JobManager
+    class Jobs
     {
     public:
-        JobManager();
-        ~JobManager();
+        static void ScheduleTask(QJob* job);
 
-        void ScheduleTask(QJob* job);
-
-        void ProcessTasks();
+        static void ProcessTasks();
 
     private:
-        std::queue<QJob*> m_JobList;
-        void ProcessNextTask();
+        Jobs() {}
+        ~Jobs() {}
+
+        static std::queue<QJob*> m_JobList;
+        static void ProcessNextTask();
     };
 
 }
-#endif // !_JobManager_H_
+#endif // _Jobs_H_
