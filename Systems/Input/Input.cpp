@@ -8,15 +8,18 @@
 
 namespace QwerkE {
 
-    Input::Input()
-    {
-    }
+    std::map<eInputDeviceTypes, InputDevice*> Input::m_Devices;
 
-    Input::~Input()
-    {
-        m_Devices; // TODO: Loop and delete
-        m_KeyboardAPI;
-    }
+    eInputDeviceTypes Input::m_DefaultMouse = eInputDeviceTypes::Mouse_Device0;
+    eInputDeviceTypes Input::m_DefaultKeyboard = eInputDeviceTypes::Keyboard_Device0;
+    KeyboardExtAPI* Input::m_KeyboardAPI = nullptr; // TEST:
+
+    bool Input::m_KeyEventsAreDirty = true; // TODO: Wipe at init?
+    unsigned short Input::m_InputEventKeys[QWERKE_ONE_FRAME_MAX_INPUT];
+    bool Input::m_InputEventValues[QWERKE_ONE_FRAME_MAX_INPUT] = { false };
+
+    // TEMP: Conversion function for GLFW to QwerkE
+    unsigned short* Input::m_KeyCodex = nullptr;
 
 #ifdef GLFW3
     void Input::Initialize(GLFWwindow* window)
@@ -105,7 +108,7 @@ namespace QwerkE {
         keyboard->s_KeyStates[key] = state;
     }
 
-    vec2 Input::GetMouseDragDelta() const
+    vec2 Input::GetMouseDragDelta()
     {
         Mouse* mouse = (Mouse*)m_Devices.find(m_DefaultMouse)->second;
         if (mouse->s_KeyStates[eKeys::eKeys_LeftClick])
@@ -115,12 +118,12 @@ namespace QwerkE {
         return vec2(0.0f, 0.0f);
     }
 
-    bool Input::GetIsKeyDown(eKeys key) const
+    bool Input::GetIsKeyDown(eKeys key)
     {
         return m_Devices.find(m_DefaultKeyboard)->second->s_KeyStates[key];
     }
 
-    bool Input::FrameKeyAction(eKeys key, eKeyState state) const
+    bool Input::FrameKeyAction(eKeys key, eKeyState state)
     {
         if (m_InputEventKeys[0] != eKeys::eKeys_NULL_KEY) // was a key even pressed?
             for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)

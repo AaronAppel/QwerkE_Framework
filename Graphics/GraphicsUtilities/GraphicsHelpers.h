@@ -1,5 +1,5 @@
-#ifndef _GraphicsHelpers_H_
-#define _GraphicsHelpers_H_
+#ifndef _Graphics_Helpers_H_
+#define _Graphics_Helpers_H_
 
 //////////////////////////////
 // GraphicsHelpers.h
@@ -46,4 +46,4 @@ namespace QwerkE {
     char* Helper_GetTransferPrefix();
 
 }
-#endif // !_GraphicsHelpers_H_
+#endif // _Graphics_Helpers_H_

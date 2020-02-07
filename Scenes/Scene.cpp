@@ -62,8 +62,6 @@ namespace QwerkE {
 
     void Scene::p_Running(double deltatime)
     {
-        Input* input = (Input*)Services::GetService(eEngineServices::Input_Manager);
-
         CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.at(m_CurrentCamera)->GetComponent(Component_Camera));
         // temporary active camera control
         // mouse
@@ -117,38 +115,37 @@ namespace QwerkE {
 
     void Scene::CameraInput(double deltatime) // camera control
     {
-        Input* input = (Input*)Services::GetService(eEngineServices::Input_Manager);
         CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.at(m_CurrentCamera)->GetComponent(Component_Camera));
 
-        if (input->GetIsKeyDown(eKeys::eKeys_W))
+        if (Input::GetIsKeyDown(eKeys::eKeys_W))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::FORWARD, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_S))
+        if (Input::GetIsKeyDown(eKeys::eKeys_S))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::BACKWARD, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_A))
+        if (Input::GetIsKeyDown(eKeys::eKeys_A))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::LEFT, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_D))
+        if (Input::GetIsKeyDown(eKeys::eKeys_D))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::RIGHT, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_Q))
+        if (Input::GetIsKeyDown(eKeys::eKeys_Q))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::DOWN, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_E))
+        if (Input::GetIsKeyDown(eKeys::eKeys_E))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::UP, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_T))
+        if (Input::GetIsKeyDown(eKeys::eKeys_T))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::RROTATE, (float)deltatime);
         }
-        if (input->GetIsKeyDown(eKeys::eKeys_R))
+        if (Input::GetIsKeyDown(eKeys::eKeys_R))
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::LROTATE, (float)deltatime);
         }

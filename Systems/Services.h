@@ -14,7 +14,6 @@ namespace QwerkE {
 	enum class eEngineMessage : std::uint8_t;
 	enum class eEngineServices : std::uint8_t;
 
-    class Input;
     class EventManager;
     class Scenes;
     class Factory;
@@ -27,7 +26,6 @@ namespace QwerkE {
     class NetworkManager;
     class ShaderFactory;
     class DataManager;
-    class FileSystem;
 
 	// TODO: Improve service accessing
 	// Think of toggling register/unregister
@@ -83,7 +81,6 @@ namespace QwerkE {
 
 		static bool m_IsLocked; // TODO: Improve security/error prevention
 
-		static Input* m_Input;
         static EventManager* m_EventManager;
 		static ShaderFactory* m_ShaderFactory;
 		static PhysicsManager* m_PhysicsManager;
@@ -94,7 +91,6 @@ namespace QwerkE {
 		static Window* m_Window;
         static NetworkManager* m_NetworkManager;
 		static DataManager* m_DataManager;
-		static FileSystem* m_FileSystem;
 	};
 
 }

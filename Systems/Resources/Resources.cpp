@@ -181,8 +181,7 @@ namespace QwerkE {
         if (MeshExists(meshName))
             return m_Meshes[meshName];
 
-		Mesh* result = ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadMeshInModelByName(
-			MeshFolderPath(fileName), meshName);
+		Mesh* result = FileSystem::LoadMeshInModelByName(MeshFolderPath(fileName), meshName);
 		if (result)
 		{
 			m_Meshes[meshName] = result;

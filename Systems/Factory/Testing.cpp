@@ -20,7 +20,8 @@ namespace QwerkE {
     // Scenery + Props
     GameObject* Factory::CreateSkyBox(Scene* scene, vec3 position)
     {
-        if (!scene) return nullptr;
+        if (!scene)
+            return nullptr;
 
         GameObject* t_SkyBox = CreateGameObject(scene);
         t_SkyBox->SetPosition(position);
@@ -47,7 +48,8 @@ namespace QwerkE {
     // Testing
     GameObject* Factory::CreateTestCube(Scene* scene, vec3 position)
     {
-        if (!scene) return nullptr;
+        if (!scene)
+            return nullptr;
 
         GameObject* t_Cube = new GameObject(scene, position);
         // info //

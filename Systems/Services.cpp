@@ -11,7 +11,6 @@ namespace QwerkE {
 
     // Resources Services::Resources;
 
-    Input* Services::m_Input = nullptr;
     EventManager* Services::m_EventManager = nullptr;
 	ShaderFactory* Services::m_ShaderFactory = nullptr;
 	PhysicsManager* Services::m_PhysicsManager = nullptr;
@@ -22,7 +21,6 @@ namespace QwerkE {
 	Window* Services::m_Window = nullptr;
 	NetworkManager* Services::m_NetworkManager = nullptr;
 	DataManager* Services::m_DataManager = nullptr;
-	FileSystem* Services::m_FileSystem = nullptr;
 
     Services::Services()
     {
@@ -39,9 +37,6 @@ namespace QwerkE {
 
 		switch (serviceType)
 		{
-		case eEngineServices::Input_Manager:
-			Services::m_Input = (Input*)service;
-			break;
 		case eEngineServices::Event_System:
 			Services::m_EventManager = (EventManager*)service;
 			break;
@@ -72,9 +67,6 @@ namespace QwerkE {
 		case eEngineServices::Data_Manager:
 			Services::m_DataManager = (DataManager*)service;
 			break;
-		case eEngineServices::FileSystem:
-			Services::m_FileSystem = (FileSystem*)service;
-			break;
 		default:
 			ConsolePrint("Services::RegisterService(): Invalid service!");
 			break;
@@ -88,11 +80,6 @@ namespace QwerkE {
 		void* temp = nullptr;
 		switch (serviceType)
 		{
-		case eEngineServices::Input_Manager:
-			temp = Services::m_Input;
-			Services::m_Input = nullptr;
-			return temp;
-			break;
 		case eEngineServices::Event_System:
 			temp = Services::m_EventManager;
 			Services::m_EventManager = nullptr;
@@ -142,11 +129,6 @@ namespace QwerkE {
 			Services::m_DataManager = nullptr;
 			return temp;
 			break;
-		case eEngineServices::FileSystem:
-			temp = Services::m_FileSystem;
-			Services::m_FileSystem = nullptr;
-			return temp;
-			break;
 		default:
 			ConsolePrint("Services::UnregisterService(): Invalid service!");
 			return nullptr;
@@ -158,9 +140,6 @@ namespace QwerkE {
 	{
 		switch (serviceType)
 		{
-		case eEngineServices::Input_Manager:
-			return Services::m_Input;
-			break;
 		case eEngineServices::Event_System:
 			return Services::m_EventManager;
 			break;
@@ -191,9 +170,6 @@ namespace QwerkE {
 		case eEngineServices::Data_Manager:
 			return Services::m_DataManager;
 			break;
-		case eEngineServices::FileSystem:
-			return Services::m_FileSystem;
-			break;
 		default:
 			ConsolePrint("Services::GetService(): Invalid service!");
 			return nullptr;
@@ -207,10 +183,6 @@ namespace QwerkE {
 		{
 			switch (i)
 			{
-			case eEngineServices::Input_Manager:
-				if (Services::m_Input == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
 			case eEngineServices::Event_System:
 				if (Services::m_EventManager == nullptr)
 					return eEngineMessage::_QFailure; // not loaded
@@ -249,10 +221,6 @@ namespace QwerkE {
 				break;
 			case eEngineServices::Data_Manager:
 				if (Services::m_DataManager == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::FileSystem:
-				if (Services::m_FileSystem == nullptr)
 					return eEngineMessage::_QFailure; // not loaded
 				break;
 			}

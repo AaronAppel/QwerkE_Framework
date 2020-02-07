@@ -4,7 +4,7 @@
 
 namespace QwerkE {
 
-    eKeys Input::GLFWToQwerkEKey(int key) const
+    eKeys Input::GLFWToQwerkEKey(int key)
     {
         return (eKeys)m_KeyCodex[key];
     }

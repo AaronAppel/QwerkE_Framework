@@ -10,31 +10,9 @@
 namespace QwerkE {
 
 #ifdef GLFW3
-    Input* l_Input = nullptr;
-
-    Input::Input(GLFWwindow* window)
-    {
-        // Create input devices
-        Keyboard* keyboard = new Keyboard(eInputDeviceTypes::Keyboard_Device0);
-        Mouse* mouse = new Mouse(eInputDeviceTypes::Mouse_Device0);
-
-        AddDevice(keyboard);
-        AddDevice(mouse);
-
-        AssignSystemKeys(keyboard);
-        AssignSystemKeys(mouse);
-
-        m_KeyCodex = new unsigned short[GLFW_KEY_LAST];
-        memset(m_KeyCodex, 0, GLFW_KEY_LAST); // set values to 0
-        SetupGLFWKeyCodex(); // TODO: Remove
-
-        SetupCallbacks(window);
-        NewFrame(); // init buffers
-    }
 
     void Input::SetupCallbacks(GLFWwindow* window)
     {
-        l_Input = this;
         glfwSetKeyCallback(window, key_callback);
         glfwSetScrollCallback(window, scroll_callback);
         glfwSetCharCallback(window, char_callback);
@@ -48,12 +26,12 @@ namespace QwerkE {
     {
         if (action == GLFW_PRESS)
         {
-            l_Input->ProcessKeyEvent(l_Input->GLFWToQwerkEKey(key),
+            ProcessKeyEvent(GLFWToQwerkEKey(key),
                 eKeyState::eKeyState_Press);
         }
         else if (action == GLFW_RELEASE)
         {
-            l_Input->ProcessKeyEvent(l_Input->GLFWToQwerkEKey(key),
+            ProcessKeyEvent(GLFWToQwerkEKey(key),
                 eKeyState::eKeyState_Release);
         }
 
@@ -91,7 +69,7 @@ namespace QwerkE {
 
     void Input::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
     {
-        l_Input->ProcessMouseMove(xpos, -ypos);
+        ProcessMouseMove(xpos, -ypos);
 
         ypos = (double)g_WindowHeight - ypos; // invert y
     }
@@ -113,11 +91,11 @@ namespace QwerkE {
     {
         if (action == GLFW_PRESS)
         {
-            l_Input->ProcessMouseClick(l_Input->GLFWToQwerkEKey(button), eKeyState::eKeyState_Press);
+            ProcessMouseClick(GLFWToQwerkEKey(button), eKeyState::eKeyState_Press);
         }
         else if (action == GLFW_RELEASE)
         {
-            l_Input->ProcessMouseClick(l_Input->GLFWToQwerkEKey(button), eKeyState::eKeyState_Release);
+            ProcessMouseClick(GLFWToQwerkEKey(button), eKeyState::eKeyState_Release);
         }
 
         // imgui

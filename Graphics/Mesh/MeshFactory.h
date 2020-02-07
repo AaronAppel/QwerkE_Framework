@@ -3,17 +3,18 @@
 
 #include "../QwerkE_Common/Math_Includes.h"
 
-struct VertexData;
-class Mesh;
-class Model;
-
 // TODO: Class unnecessary
 
 namespace QwerkE {
 
+    struct VertexData;
+    class Mesh;
+    class Model;
+
     class MeshFactory
     {
     public:
+        // TODO: Make static
         MeshFactory() {};
         ~MeshFactory() {};
 
@@ -34,6 +35,7 @@ namespace QwerkE {
 
         static Mesh* TutorialCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
 
+        // TODO: Make static
         /* Mesh data assignment/re-assignment */
         void GenerateBox(Mesh* mesh, vec2 size, bool invertFaces = false);
         void GenerateCube(Mesh* mesh, vec3 size, bool invertFaces = false);

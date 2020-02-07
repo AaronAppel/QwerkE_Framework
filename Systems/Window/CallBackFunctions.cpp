@@ -101,7 +101,6 @@ namespace QwerkE {
         // TODO: Handle file drop correctly. This is hacked in for testing purposes at the moment.
         for (int i = 0; i < count; i++)
         {
-            FileSystem* fileSystem = (FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem);
             if (strcmp(GetFileExtension(*paths).c_str(), "png") == 0 || strcmp(GetFileExtension(*paths).c_str(), "jpg") == 0)
             {
                 GLuint result = Load2DTexture(*paths, 0);
@@ -115,7 +114,7 @@ namespace QwerkE {
             }
             else if (strcmp(GetFileExtension(*paths).c_str(), "fbx") == 0 || strcmp(GetFileExtension(*paths).c_str(), "obj") == 0)
             {
-                fileSystem->LoadModelFileToMeshes(*paths);
+                FileSystem::LoadModelFileToMeshes(*paths);
             }
             else if (strcmp(GetFileExtension(*paths).c_str(), "msch") == 0)
             {

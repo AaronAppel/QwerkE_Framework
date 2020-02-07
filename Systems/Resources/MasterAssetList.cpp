@@ -52,7 +52,7 @@ namespace QwerkE {
 
 		if (FileExists(meshFilePath))
 		{
-			((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(meshFilePath);
+			FileSystem::LoadModelFileToMeshes(meshFilePath);
 			if (MeshExists(GetFileNameNoExt(meshFilePath).c_str())) // TODO: Better way to handle file paths and resource names
 				return m_Meshes[GetFileNameNoExt(meshFilePath).c_str()];
 			else
@@ -186,7 +186,7 @@ namespace QwerkE {
 	ALuint Resources::InstantiateSound(const char* soundPath)
 	{
 		ALuint handle = 0;
-		handle = ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadSound(soundPath);
+		handle = FileSystem::LoadSound(soundPath);
 
 		if (handle != 0)
 		{

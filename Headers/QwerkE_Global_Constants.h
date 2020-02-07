@@ -1,8 +1,6 @@
 #ifndef _QwerkE_Global_Constants_H_
 #define _QwerkE_Global_Constants_H_
 
-#include <string>
-
 // Window settings
 const int gc_DefaultWindowWidth = 1280, gc_DefaultWindowHeight = 720;
 
@@ -14,7 +12,7 @@ const float gc_SENSITIVTY = 0.1f;
 const float gc_ZOOM = 45.0f;
 
 // Default object values
-const std::string gc_DefaultStringValue = "Uninitialized";
+#define gc_DefaultStringValue "null"
 // const char* gc_DefaultCharPtrValue = "Uninitialized";
 #define gc_DefaultCharPtrValue "Uninitialized" // TODO: Move to a better place
 

@@ -23,7 +23,7 @@ namespace QwerkE {
     class KeyboardExtAPI;
 
     static int g_NumPlayers = 1;
-    const char QWERKE_ONE_FRAME_MAX_INPUT = 12; // no more than QWERKE_ONE_FRAME_MAX_INPUT key events per frame. Is that enough?
+    const char QWERKE_ONE_FRAME_MAX_INPUT = 12; // No more than QWERKE_ONE_FRAME_MAX_INPUT key events per frame. Is that enough?
 
     // TODO: Provide cross platform callback API for convenience
     // TODO: Add input functions for non-GLFW projects
@@ -38,35 +38,34 @@ namespace QwerkE {
     class Input
     {
     public:
-        Input();
-        ~Input();
 
 #ifdef GLFW3
-        Input(GLFWwindow* window);
-        void Initialize(GLFWwindow* window);
+        static void Initialize(GLFWwindow* window);
 #else
-        void Initialize();
+        static void Initialize();
 #endif // GLFW3
 
-        void NewFrame(); // Call before other libraries! Resets frame input buffer
+        static void NewFrame(); // Call before other libraries! Resets frame input buffer
 
-        vec2 GetMouseDragDelta() const; // get distance from mouse down
-        bool GetIsKeyDown(eKeys key) const; // check if keyIsDown
+        static vec2 GetMouseDragDelta(); // get distance from mouse down
+        static bool GetIsKeyDown(eKeys key); // check if keyIsDown
 
-        const KeyboardExtAPI* GetDeviceAPI() const { return m_KeyboardAPI; }
+        static const KeyboardExtAPI* GetDeviceAPI() { return m_KeyboardAPI; }
 
-        bool FrameKeyAction(eKeys key, eKeyState state) const; // check if key was pressed or released this frame
+        static bool FrameKeyAction(eKeys key, eKeyState state); // check if key was pressed or released this frame
 
     private:
+        Input() {}
+        ~Input() {}
 
 #ifdef GLFW3
-        void SetupCallbacks(GLFWwindow* window);
+        static void SetupCallbacks(GLFWwindow* window);
 
         // TODO: Clean up assign keys methods
-        void AssignGLFWKeys(InputDevice* device);
-        void SetupGLFWKeyCodex(); // TODO: Remove
-        eKeys GLFWToQwerkEKey(int key) const;
-        void Initialize();
+        static void AssignGLFWKeys(InputDevice* device);
+        static void SetupGLFWKeyCodex(); // TODO: Remove
+        static eKeys GLFWToQwerkEKey(int key);
+        static void Initialize();
 #else
         // TODO:
         // void AssignWin32Keys() {}
@@ -76,22 +75,22 @@ namespace QwerkE {
 
         // Handle input
         // TODO: ProcessMouseScroll
-        void ProcessMouseMove(vec2 position);
-        void ProcessMouseMove(float x, float y);
-        void ProcessMouseClick(eKeys key, eKeyState state);
-        void ProcessKeyEvent(eKeys key, eKeyState state);
+        static void ProcessMouseMove(vec2 position);
+        static void ProcessMouseMove(float x, float y);
+        static void ProcessMouseClick(eKeys key, eKeyState state);
+        static void ProcessKeyEvent(eKeys key, eKeyState state);
 
         // Input devices
-        std::map<eInputDeviceTypes, InputDevice*> m_Devices;
-        void SetupDeviceCustomKeys() {}
-        bool AddDevice(InputDevice* device);
+        static std::map<eInputDeviceTypes, InputDevice*> m_Devices;
+        static void SetupDeviceCustomKeys() {}
+        static bool AddDevice(InputDevice* device);
 
-        eInputDeviceTypes m_DefaultMouse = eInputDeviceTypes::Mouse_Device0;
-        eInputDeviceTypes m_DefaultKeyboard = eInputDeviceTypes::Keyboard_Device0;
-        KeyboardExtAPI* m_KeyboardAPI = nullptr; // TEST:
+        static eInputDeviceTypes m_DefaultMouse;
+        static eInputDeviceTypes m_DefaultKeyboard;
+        static KeyboardExtAPI* m_KeyboardAPI; // TEST:
 
         // Setup system key maps (rename platform?)
-        void AssignSystemKeys(InputDevice* device); // TODO: Change to a max keys buffer that only needs to track 10ish keys at a time
+        static void AssignSystemKeys(InputDevice* device); // TODO: Change to a max keys buffer that only needs to track 10ish keys at a time
 
         // TODO: Fix GLFW callbacks to avoid static functions
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -104,13 +103,14 @@ namespace QwerkE {
         static void joystick_callback(int joy, int event);
 
         // Input events
-        bool m_KeyEventsAreDirty = true; // wipe at init
-        unsigned short m_InputEventKeys[QWERKE_ONE_FRAME_MAX_INPUT];
-        bool m_InputEventValues[QWERKE_ONE_FRAME_MAX_INPUT] = { false };
-        void RaiseInputEvent(eKeys key, eKeyState state);
+        static void RaiseInputEvent(eKeys key, eKeyState state);
+
+        static bool m_KeyEventsAreDirty;
+        static unsigned short m_InputEventKeys[];
+        static bool m_InputEventValues[];
 
         // TEMP: Conversion function for GLFW to QwerkE
-        unsigned short* m_KeyCodex;
+        static unsigned short* m_KeyCodex;
     };
 }
 #endif // !_Input_H_

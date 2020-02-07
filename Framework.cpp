@@ -39,7 +39,6 @@ namespace QwerkE {
     // TODO: No Globals!
     extern int g_WindowWidth = 1600, g_WindowHeight = 900; // (1280x720)(1600x900)(1920x1080)(2560x1440)
     extern const char* g_WindowTitle = "QwerkEngine";
-    extern Input* g_Input = nullptr;
 
     static Window* m_Window = nullptr;
     static bool m_IsRunning = false;
@@ -82,9 +81,6 @@ namespace QwerkE {
 
 			Services::LockServices(false);
 
-			FileSystem* fileSystem = new FileSystem();
-			Services::RegisterService(eEngineServices::FileSystem, fileSystem);
-
 			ShaderFactory* shaderFactory = new ShaderFactory();
 			Services::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // Dependency: resource manager
 
@@ -99,10 +95,7 @@ namespace QwerkE {
 			WindowManager* windowManager = new WindowManager();
             windowManager->AddWindow(m_Window);
 
-            g_Input = new Input();
-            g_Input->Initialize((GLFWwindow*)windowManager->GetWindow(0)->GetContext());
-            Services::RegisterService(eEngineServices::Input_Manager, g_Input);
-			// g_Input->SetupCallbacks((GLFWwindow*)m_Window->GetContext());
+            Input::Initialize((GLFWwindow*)windowManager->GetWindow(0)->GetContext());
 
             Resources::Initialize(); // OpenGL init order dependency (Window?)
 
@@ -205,10 +198,6 @@ namespace QwerkE {
 			delete (NetworkManager*)Services::UnregisterService(eEngineServices::NetworkManager);
 
 			delete (DataManager*)Services::UnregisterService(eEngineServices::Data_Manager);
-
-			delete (Input*)Services::UnregisterService(eEngineServices::Input_Manager); // dependency
-
-			delete (FileSystem*)Services::UnregisterService(eEngineServices::FileSystem); // first in, last out
 
 			Libs_TearDown(); // unload libraries
 
@@ -327,7 +316,7 @@ namespace QwerkE {
 		{
 			/* Reset */
 			// TODO: Reset things...
-			g_Input->NewFrame(); // TODO Replace with static instance call
+			Input::NewFrame(); // TODO Replace with static instance call
 
 			// TODO: Process events every frame
 			((EventManager*)Services::GetService(eEngineServices::Event_System))->ProcessEvents();
@@ -348,7 +337,7 @@ namespace QwerkE {
 
 			//if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE)) // DEBUG: A simple way to close the window while testing
 
-			if (g_Input->FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
+			if (Input::FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
 			{
 				static bool paused = false;
 				paused = !paused;
@@ -361,7 +350,7 @@ namespace QwerkE {
 					Scenes::GetCurrentScene()->SetState(eSceneState::SceneState_Running);
 				}
 			}
-			if (g_Input->FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
+			if (Input::FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
 			{
 				static bool frozen = false;
 				frozen = !frozen;
@@ -374,7 +363,7 @@ namespace QwerkE {
 					Scenes::GetCurrentScene()->SetState(eSceneState::SceneState_Running);
 				}
 			}
-			if (g_Input->FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
+			if (Input::FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{
 				WindowManager* windowManager = (WindowManager*)Services::GetService(eEngineServices::WindowManager);
 				windowManager->GetWindow(0)->SetClosing(true);

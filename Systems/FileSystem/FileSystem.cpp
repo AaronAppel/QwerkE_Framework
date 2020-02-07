@@ -38,14 +38,14 @@ namespace QwerkE {
 		// this function is meant to abstract file type from external code
 
 		soundFile.s_Name = GetFileNameWithExt(filePath);
-		soundFile.s_Type = GetFileExtension(filePath);
+		soundFile.s_Extension = GetFileExtension(filePath);
 
 		// read file data
-		if (strcmp(soundFile.s_Type.c_str(), "wav") == 0)
+		if (strcmp(soundFile.s_Extension.c_str(), "wav") == 0)
 		{
 			soundFile.s_Data = (char*)LoadWaveFileData(filePath, soundFile.s_Size, soundFile.s_Channels, soundFile.s_Frequency, soundFile.s_BitsPerSample);
 		}
-		else if (strcmp(soundFile.s_Type.c_str(), "mp3") == 0)
+		else if (strcmp(soundFile.s_Extension.c_str(), "mp3") == 0)
 		{
 			// soundFile.s_Type = "mp3";
 			// TODO: soundFile.s_Data = LoadMP3FileData(...);
@@ -107,19 +107,19 @@ namespace QwerkE {
 		return returnBuffer;
 	}
 
-	ALuint FileSystem::LoadSound(const char* soundPath)
+	SoundHandle FileSystem::LoadSound(const char* soundPath)
 	{
 		// this function is meant to abstract audio libraries from external code
 
 		// TODO: Load sounds from libraries dynamically using preference.qpref. No #defines
 
-		ALuint retValue = 0;
+		SoundHandle retValue = 0;
 
-		// get sound data
+		// Load sound file
 		QSoundFile soundFile;
 		LoadSoundFileData(soundPath, soundFile);
 
-		// create sound file
+		// Create sound library data
 #ifdef OpenAL
 		retValue = OpenAL_LoadSound(soundFile);
 #elif defined(XAudio)

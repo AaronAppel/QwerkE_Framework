@@ -82,7 +82,7 @@ namespace QwerkE {
     enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
     {
         // Resource_Manager = 0,
-        Input_Manager,
+        // Input_Manager,
         Audio_Manager,
         Data_Manager,
         // Graphics (OpenGLManager)
@@ -97,7 +97,7 @@ namespace QwerkE {
         JobManager,
         WindowManager,
         NetworkManager,
-        FileSystem,
+        // FileSystem,
 
         Service_Max
     };
