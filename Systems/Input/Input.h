@@ -81,12 +81,6 @@ namespace QwerkE {
         void ProcessMouseClick(eKeys key, eKeyState state);
         void ProcessKeyEvent(eKeys key, eKeyState state);
 
-        // Input events
-        bool m_KeyEventsAreDirty = true; // wipe at init
-        unsigned short m_InputEventKeys[QWERKE_ONE_FRAME_MAX_INPUT];
-        bool m_InputEventValues[QWERKE_ONE_FRAME_MAX_INPUT] = { false };
-        void RaiseInputEvent(eKeys key, eKeyState state);
-
         // Input devices
         std::map<eInputDeviceTypes, InputDevice*> m_Devices;
         void SetupDeviceCustomKeys() {}
@@ -108,6 +102,12 @@ namespace QwerkE {
         static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
         static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
         static void joystick_callback(int joy, int event);
+
+        // Input events
+        bool m_KeyEventsAreDirty = true; // wipe at init
+        unsigned short m_InputEventKeys[QWERKE_ONE_FRAME_MAX_INPUT];
+        bool m_InputEventValues[QWERKE_ONE_FRAME_MAX_INPUT] = { false };
+        void RaiseInputEvent(eKeys key, eKeyState state);
 
         // TEMP: Conversion function for GLFW to QwerkE
         unsigned short* m_KeyCodex;

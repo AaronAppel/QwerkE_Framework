@@ -21,9 +21,8 @@
 
 namespace QwerkE {
 
-    DataManager::DataManager(Factory* factory)
+    DataManager::DataManager()
     {
-        m_Factory = factory;
     }
 
     DataManager::~DataManager()
@@ -273,8 +272,6 @@ namespace QwerkE {
         eComponentTags value = (eComponentTags)std::stoi(item->string); // eComponentTags::Component_Render; // GetItemFromArrayByKey(item, "");
         // Reference : https://www.techiedelight.com/convert-string-to-int-cpp/
 
-        Factory* fact = (Factory*)QwerkE::Services::GetService(eEngineServices::Factory_Entity);
-
         switch (value)
         {
         case Component_Camera:
@@ -457,8 +454,6 @@ namespace QwerkE {
         if (!item) { return; }
 
         eRoutineTypes type = (eRoutineTypes)std::stoi(item->string);
-
-        Factory* fact = (Factory*)QwerkE::Services::GetService(eEngineServices::Factory_Entity);
 
         switch (type)
         {

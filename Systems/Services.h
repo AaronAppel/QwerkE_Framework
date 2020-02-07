@@ -16,7 +16,7 @@ namespace QwerkE {
 
     class Input;
     class EventManager;
-    class SceneManager;
+    class Scenes;
     class Factory;
     class PhysicsManager;
     class MessageManager;
@@ -60,9 +60,6 @@ namespace QwerkE {
 	{
 	public:
 
-		Services();
-		~Services();
-
         // static Resources Resources; // TEMP:
 
 		// Services need to be instantiated else where, then registered
@@ -79,13 +76,15 @@ namespace QwerkE {
 
 		static void LockServices(bool locking) { m_IsLocked = locking; }
 
-	private:
+    private:
+
+        Services();
+        ~Services();
+
 		static bool m_IsLocked; // TODO: Improve security/error prevention
 
 		static Input* m_Input;
         static EventManager* m_EventManager;
-        static SceneManager* m_SceneManager;
-        static Factory* m_Factory;
 		static ShaderFactory* m_ShaderFactory;
 		static PhysicsManager* m_PhysicsManager;
 		static MessageManager* m_MessageManager;

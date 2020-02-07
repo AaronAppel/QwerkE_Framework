@@ -16,7 +16,6 @@ namespace QwerkE {
 
     Scene::Scene()
     {
-        m_pSceneManager = (SceneManager*)QwerkE::Services::GetService(eEngineServices::Scene_Manager);
     }
 
     Scene::~Scene()
@@ -42,6 +41,11 @@ namespace QwerkE {
         m_pGameObjects.clear();
     }
 
+    void Scene::Initialize()
+    {
+        //m_pViewMatrix->CreateLookAtViewLeftHanded(vec3(0, 0, 0), vec3(0, 0, 1), vec3(0, 0, 0));
+    }
+
     void Scene::OnWindowResize(unsigned int width, unsigned int height)
     {
         // update camera view and projection matrices
@@ -50,11 +54,6 @@ namespace QwerkE {
             // ((CameraComponent*)m_CameraList.At(i)->GetComponent(Component_Camera))->Setup();
             ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetViewportSize(vec2((float)width, (float)height));
         }
-    }
-
-    void Scene::Initialize()
-    {
-        //m_pViewMatrix->CreateLookAtViewLeftHanded(vec3(0, 0, 0), vec3(0, 0, 1), vec3(0, 0, 0));
     }
 
     void Scene::ResetScene()

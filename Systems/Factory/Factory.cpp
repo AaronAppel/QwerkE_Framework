@@ -8,6 +8,8 @@
 
 namespace QwerkE {
 
+    int Factory::m_Created = 0;
+
     Factory::Factory()
     {
     }
@@ -18,12 +20,13 @@ namespace QwerkE {
 
     void Factory::ClearResources()
     {
-        Resources::DeleteAllResources(); // TODO: Shouldn't have access to resources through factory
     }
+
     GameObject* Factory::CreateGameObject(Scene* scene)
     {
         return new GameObject(scene);
     }
+
     GameObject* Factory::CreateGameObject(Scene* scene, vec3 position)
     {
         return new GameObject(scene, position);

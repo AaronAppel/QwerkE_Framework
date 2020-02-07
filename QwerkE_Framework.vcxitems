@@ -91,7 +91,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\MasterAssetList.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Scenes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Services.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp" />
@@ -196,7 +196,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset_Tag.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\SceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Scenes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Services.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h" />

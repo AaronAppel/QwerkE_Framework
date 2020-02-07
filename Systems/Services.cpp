@@ -13,8 +13,6 @@ namespace QwerkE {
 
     Input* Services::m_Input = nullptr;
     EventManager* Services::m_EventManager = nullptr;
-    SceneManager* Services::m_SceneManager = nullptr;
-	Factory* Services::m_Factory = nullptr;
 	ShaderFactory* Services::m_ShaderFactory = nullptr;
 	PhysicsManager* Services::m_PhysicsManager = nullptr;
 	MessageManager* Services::m_MessageManager = nullptr;
@@ -46,12 +44,6 @@ namespace QwerkE {
 			break;
 		case eEngineServices::Event_System:
 			Services::m_EventManager = (EventManager*)service;
-			break;
-		case eEngineServices::Scene_Manager:
-			Services::m_SceneManager = (SceneManager*)service;
-			break;
-		case eEngineServices::Factory_Entity:
-			Services::m_Factory = (Factory*)service;
 			break;
 		case eEngineServices::Factory_Shader:
 			Services::m_ShaderFactory = (ShaderFactory*)service;
@@ -105,16 +97,6 @@ namespace QwerkE {
 			temp = Services::m_EventManager;
 			Services::m_EventManager = nullptr;
 			return temp;
-		case eEngineServices::Scene_Manager:
-			temp = Services::m_SceneManager;
-			Services::m_SceneManager = nullptr;
-			return temp;
-			break;
-		case eEngineServices::Factory_Entity:
-			temp = Services::m_Factory;
-			Services::m_Factory = nullptr;
-			return temp;
-			break;
 		case eEngineServices::Factory_Shader:
 			temp = Services::m_ShaderFactory;
 			Services::m_ShaderFactory = nullptr;
@@ -182,12 +164,6 @@ namespace QwerkE {
 		case eEngineServices::Event_System:
 			return Services::m_EventManager;
 			break;
-		case eEngineServices::Scene_Manager:
-			return Services::m_SceneManager;
-			break;
-		case eEngineServices::Factory_Entity:
-			return Services::m_Factory;
-			break;
 		case eEngineServices::Factory_Shader:
 			return Services::m_ShaderFactory;
 			break;
@@ -237,14 +213,6 @@ namespace QwerkE {
 				break;
 			case eEngineServices::Event_System:
 				if (Services::m_EventManager == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::Scene_Manager:
-				if (Services::m_SceneManager == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::Factory_Entity:
-				if (Services::m_Factory == nullptr)
 					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::Factory_Shader:

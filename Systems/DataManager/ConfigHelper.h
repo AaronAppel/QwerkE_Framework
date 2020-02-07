@@ -21,7 +21,7 @@ namespace QwerkE {
         std::string Window = "GLFW3";
     };
 
-    struct Scenes
+    struct ScenesData
     {
         std::vector<std::string> fileNames;
     };
@@ -54,7 +54,7 @@ namespace QwerkE {
 
         FrameworkData framework;
         Libraries libraries;
-        Scenes scenes;
+        ScenesData scenes;
         SceneSettings sceneSettings;
         Systems systems;
     };

@@ -289,9 +289,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\SceneManager.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.cpp">
       <Filter>Entities\Routines</Filter>
     </ClCompile>
@@ -353,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.cpp">
       <Filter>Systems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Scenes.cpp">
+      <Filter>Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -538,9 +538,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\MessageManager.h">
       <Filter>Systems</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\SceneManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.h">
       <Filter>Entities\Routines</Filter>
     </ClInclude>
@@ -648,6 +645,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.h">
       <Filter>Systems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Scenes.h">
+      <Filter>Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

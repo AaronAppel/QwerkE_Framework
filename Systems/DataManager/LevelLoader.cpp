@@ -12,7 +12,7 @@
 
 namespace QwerkE {
 
-    LevelLoader::LevelLoader(Factory* factory) : DataManager(factory)
+    LevelLoader::LevelLoader()
     {
     }
 

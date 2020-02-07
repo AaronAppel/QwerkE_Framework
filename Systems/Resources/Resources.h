@@ -35,9 +35,7 @@ namespace QwerkE {
     class Resources
     {
     public:
-        Resources();
-        ~Resources();
-        static void Init();
+        static void Initialize();
 
         static bool MeshExists(const char* name);
         static bool TextureExists(const char* name);
@@ -96,6 +94,9 @@ namespace QwerkE {
         static void DeleteAllResources();
 
     private:
+        Resources();
+        ~Resources();
+
         // TODO: Consider using unordered maps
         // resource storage
         static std::map<std::string, Mesh*> m_Meshes;

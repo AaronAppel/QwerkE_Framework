@@ -14,7 +14,7 @@ namespace QwerkE {
 
     class GameCore;
     class MyMatrix;
-    class SceneManager;
+    class Scenes;
     class GameObject;
 
     class Scene; // forward declare for function* typedef
@@ -28,8 +28,9 @@ namespace QwerkE {
         Scene(const char* sceneFileName) { m_LevelFileName = sceneFileName; }
         virtual ~Scene();
 
-        virtual void OnWindowResize(unsigned int width, unsigned int height);
         virtual void Initialize();
+
+        virtual void OnWindowResize(unsigned int width, unsigned int height);
         virtual void ResetScene();
 
         virtual void Update(double deltatime) { (this->*m_UpdateFunc)(deltatime); }
@@ -59,7 +60,6 @@ namespace QwerkE {
         // getters
         GameObject* GetGameObject(const char* name);
         bool GetIsEnabled() { return m_IsEnabled; };
-        SceneManager* GetSceneManager() { return m_pSceneManager; };
         std::vector<GameObject*> GetCameraList() { return m_CameraList; };
         std::map<std::string, GameObject*> GetObjectList() { return m_pGameObjects; };
         int GetCurrentCamera() { return m_CurrentCamera; };
@@ -86,7 +86,7 @@ namespace QwerkE {
         bool m_IsEnabled = false;
         eSceneState m_State = eSceneState::SceneState_Running;
         std::string m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
-        SceneManager* m_pSceneManager = nullptr;
+        Scenes* m_pScenes = nullptr;
         MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
 
         std::map<std::string, GameObject*> m_pGameObjects;

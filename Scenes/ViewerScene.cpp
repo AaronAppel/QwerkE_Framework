@@ -17,14 +17,12 @@ namespace QwerkE {
 
     void ViewerScene::Initialize()
     {
-        Factory* t_pFactory = (Factory*)Services::GetService(eEngineServices::Factory_Entity);
-
         // Cameras
-        t_pFactory->CreateFreeCamera(this, vec3(0, 0, 5));
+        Factory::CreateFreeCamera(this, vec3(0, 0, 5));
         Scene::SetupCameras();
 
         // Lights
-        t_pFactory->CreateLight(this, vec3(0, 5, -10));
+        Factory::CreateLight(this, vec3(0, 5, -10));
 
         // Actors
         // none. Add one and use it to take thumbnail pictures for assets

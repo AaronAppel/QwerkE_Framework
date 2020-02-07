@@ -14,57 +14,58 @@ namespace QwerkE {
     class Resources;
     class GameObject;
     class Scene;
-    class MenuWindow;
-    class MenuItem;
-    class Menu;
     class RenderComponent;
+
+    // class MenuWindow;
+    // class MenuItem;
+    // class Menu;
 
     class Factory
     {
     public:
-        Factory();
-        ~Factory();
 
-        void ClearResources();
+        static void ClearResources();
 
         /* Object creation */
         // Shapes
-        GameObject* CreateCube(Scene* scene, vec3 position);
-        GameObject* CreatePlane(Scene* scene, vec3 position);
-        GameObject* CreateSphere(Scene* scene, vec3 position);
-        GameObject* CreateObjectFromSchematic(const char* schematicName, Scene* scene, vec3 position);
+        static GameObject* CreateCube(Scene* scene, vec3 position);
+        static GameObject* CreatePlane(Scene* scene, vec3 position);
+        static GameObject* CreateSphere(Scene* scene, vec3 position);
+        static GameObject* CreateObjectFromSchematic(const char* schematicName, Scene* scene, vec3 position);
 
         // Systems
-        GameObject* CreateFreeCamera(Scene* scene, vec3 position);
-        GameObject* CreateFirstPersonCamera(Scene* scene, vec3 position);
-        GameObject* CreateThirdPersonCamera(Scene* scene, vec3 position);
-        GameObject* CreateStaticCamera(Scene* scene, vec3 position);
+        static GameObject* CreateFreeCamera(Scene* scene, vec3 position);
+        static GameObject* CreateFirstPersonCamera(Scene* scene, vec3 position);
+        static GameObject* CreateThirdPersonCamera(Scene* scene, vec3 position);
+        static GameObject* CreateStaticCamera(Scene* scene, vec3 position);
 
         // Lighting
-        GameObject* CreateLight(Scene* scene, vec3 position);
+        static GameObject* CreateLight(Scene* scene, vec3 position);
 
         // Scenery + Props
-        GameObject* CreateSkyBox(Scene* scene, vec3 position);
+        static GameObject* CreateSkyBox(Scene* scene, vec3 position);
 
         // Characters
 
         // Testing
-        GameObject* CreateTestModel(Scene* scene, vec3 position); // Model
-        GameObject* CreateTestCube(Scene* scene, vec3 position);
-        GameObject* CreateEmptyGameObject(Scene* scene, vec3 position);
+        static GameObject* CreateTestModel(Scene* scene, vec3 position); // Model
+        static GameObject* CreateTestCube(Scene* scene, vec3 position);
+        static GameObject* CreateEmptyGameObject(Scene* scene, vec3 position);
 
     private:
-        // Variables
-        int m_Created = 0;
+        Factory();
+        ~Factory();
 
-        /* Private functions */
         // GameObjects
-        GameObject* CreateGameObject(Scene* scene); // TODO: Remove?
-        GameObject* CreateGameObject(Scene* scene, vec3 position);
-        GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
+        static GameObject* CreateGameObject(Scene* scene); // TODO: Remove?
+        static GameObject* CreateGameObject(Scene* scene, vec3 position);
+        static GameObject* InternalCreateCamera(Scene* scene, vec3 position, eCamType camType);
 
-        // helpers
-        RenderComponent* AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName);
+        // Helpers
+        static RenderComponent* AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName);
+
+    private:
+        static int m_Created;
     };
 
 }

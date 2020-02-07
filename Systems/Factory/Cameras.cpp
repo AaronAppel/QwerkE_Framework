@@ -41,7 +41,7 @@ namespace QwerkE {
 
     GameObject* Factory::InternalCreateCamera(Scene* scene, vec3 position, eCamType camType)
     {
-        GameObject* t_pCamera = this->CreateGameObject(scene);
+        GameObject* t_pCamera = CreateGameObject(scene);
         t_pCamera->SetTag(GO_Tag_Camera);
         t_pCamera->SetPosition(position);
         t_pCamera->SetRenderOrder(-1);

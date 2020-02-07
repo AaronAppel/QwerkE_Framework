@@ -61,11 +61,11 @@ namespace QwerkE {
     {
         if (isFocused == GLFW_TRUE)
         {
-            // debug_GetGameCore()->GetSceneManager()->GetCurrentScene()->SetIsPaused(false); // regained focus
+            // debug_GetGameCore()->GetScenes()->GetCurrentScene()->SetIsPaused(false); // regained focus
         }
         else
         {
-            // debug_GetGameCore()->GetSceneManager()->GetCurrentScene()->SetIsPaused(true); // lost focus
+            // debug_GetGameCore()->GetScenes()->GetCurrentScene()->SetIsPaused(true); // lost focus
         }
     }
 

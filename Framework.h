@@ -18,7 +18,7 @@ struct GLFWwindow;
 
 namespace QwerkE {
     class Editor;
-    class SceneManager;
+    class Scenes;
     class Window;
 
 	// TODO: What is this namespace useful for besides separating the engine run method

@@ -12,7 +12,7 @@ namespace QwerkE {
     // Point Light
     GameObject* Factory::CreateLight(Scene* scene, vec3 position)
     {
-        GameObject* t_pLight = this->CreateGameObject(scene);
+        GameObject* t_pLight = CreateGameObject(scene);
         t_pLight->SetTag(eGameObjectTags::GO_Tag_Light);
         t_pLight->SetPosition(position);
         t_pLight->SetRenderOrder(-1);

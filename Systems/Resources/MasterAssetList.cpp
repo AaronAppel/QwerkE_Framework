@@ -28,7 +28,7 @@ namespace QwerkE {
 	// TODO: Look at resource creation again. Should Resource Manager create assets or just store them?
 	// TODO: Load all files in folder. This avoids hard coded assets names and allows easy adding/removal of assets even at runtime.
 	// Objects may need to switch to assets ids. ids would act as unique identifiers in the asset list and would prevent crashing.
-	void Resources::Init()
+	void Resources::Initialize()
 	{
 		// TODO: Handle, or consider preventing, multiple Init() calls to avoid duplicated/leaked data issues
 

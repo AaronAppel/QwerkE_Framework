@@ -4,8 +4,7 @@
 #include "../Headers/QwerkE_Enums.h"
 #include <map>
 
-class GameCore;
-class Scene;
+// class GameCore;
 
 namespace QwerkE {
 
@@ -56,4 +55,4 @@ namespace QwerkE {
     };
 
 }
-#endif //_Scenes_H_
+#endif // _Scenes_H_

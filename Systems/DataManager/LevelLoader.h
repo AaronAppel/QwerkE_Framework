@@ -18,7 +18,7 @@ namespace QwerkE {
     class LevelLoader : public DataManager
     {
     public:
-        LevelLoader(Factory* factory);
+        LevelLoader();
         virtual ~LevelLoader();
 
         void SaveScene(Scene* scene, const char* fileDir);

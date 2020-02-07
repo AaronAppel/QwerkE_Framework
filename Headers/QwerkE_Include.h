@@ -86,7 +86,7 @@
 
 #include "../Systems/Resources/Resources.h"
 
-#include "../Systems/SceneManager.h"
+#include "../Systems/Scenes.h"
 
 #include "../Systems/Window/Window.h"
 #include "../Systems/Window/WindowManager.h"

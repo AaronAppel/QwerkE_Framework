@@ -22,7 +22,7 @@ namespace QwerkE {
     {
         if (!scene) return nullptr;
 
-        GameObject* t_SkyBox = this->CreateGameObject(scene);
+        GameObject* t_SkyBox = CreateGameObject(scene);
         t_SkyBox->SetPosition(position);
         t_SkyBox->SetTag(GO_Tag_SkyBox);
         t_SkyBox->SetRenderOrder(-1);

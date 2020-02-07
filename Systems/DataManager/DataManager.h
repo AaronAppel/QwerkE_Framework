@@ -31,14 +31,13 @@ namespace QwerkE {
     class DataManager
     {
     public:
-        DataManager(Factory* factory);
+        DataManager();
         virtual ~DataManager();
 
         virtual void SaveScene(Scene* scene, const char* fileDir) = 0;
         virtual void LoadScene(Scene* scene, const char* fileDir) = 0;
 
     protected:
-        Factory* m_Factory = nullptr;
 
         // Utility
         void AddVec3ToItem(cJSON* item, const char* arrayName, const char* name1, float value1, const char* name2, float value2, const char* name3, float value3) const;
