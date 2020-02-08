@@ -1,11 +1,10 @@
 #include "../Component.h"
 #include "CameraComponent.h"
-#include "../../../Systems/Services.h"
 #include "../../GameObject.h"
 #include "../../../QwerkE_Common/Math_Includes.h"
 #include "../../../Headers/QwerkE_Enums.h"
 #include "../../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
-#include "../../../Systems/Window/WindowManager.h"
+#include "../../../Systems/Window/Windows.h"
 #include "../../../Systems/Window/Window.h"
 
 namespace QwerkE {
@@ -25,13 +24,12 @@ namespace QwerkE {
 		UpdateCameraVectors();
 		m_ComponentTag = Component_Camera;
 
-		WindowManager* windowManager = (WindowManager*)(QwerkE::Services::GetService(eEngineServices::WindowManager));
-		Window* window = (Window*)windowManager->GetWindow(0);
-		m_ViewportSize = window->GetResolution();
+        m_ViewportSize = Windows::GetWindow(0)->GetResolution();
 
 		SetTargetPosition(m_Position + m_Forward);
 		UpdateCameraVectors();
 	}
+
 	// Constructor with scalar values
 	CameraComponent::CameraComponent(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch)
 	{
@@ -41,9 +39,7 @@ namespace QwerkE {
 		m_Pitch = pitch;
 		UpdateCameraVectors();
 
-		WindowManager* windowManager = (WindowManager*)(QwerkE::Services::GetService(eEngineServices::WindowManager));
-		Window* window = (Window*)windowManager->GetWindow(0);
-		m_ViewportSize = window->GetResolution();
+        m_ViewportSize = Windows::GetWindow(0)->GetResolution();
 
 		SetTargetPosition(m_Position + m_Forward);
 		UpdateCameraVectors();

@@ -5,7 +5,6 @@
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Systems/Resources/Resources.h"
-#include "../../Systems/Services.h"
 #include "../Material.h"
 #include "../MaterialComponent.h"
 #include "../Shader/ShaderProgram.h"

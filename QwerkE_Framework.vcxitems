@@ -54,7 +54,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\Event.cpp" />
@@ -93,7 +92,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Scenes.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Services.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\LitMaterial.cpp" />
@@ -101,7 +99,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\CallBackFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Window.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h" />
@@ -167,7 +165,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\Event.h" />
@@ -197,13 +194,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Scenes.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Services.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Window.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\Direct3D\TODO.txt" />

@@ -3,26 +3,27 @@
 
 #include <queue>
 
-class Event;
-
 namespace QwerkE {
+
+    class Event;
 
     class EventManager
     {
     public:
-        EventManager();
-        ~EventManager();
+        static void Initialize();
 
-        void QueueEvent(Event* _event);
+        static void QueueEvent(Event* _event);
 
-        void ProcessEvents();
+        static void ProcessEvents();
 
-        // register callbacks/listeners
+        // Register callbacks/listeners
 
     private:
-        const int m_EventMax = 100;
-        // eventlist
-        std::queue<Event*> m_EventList;
+        EventManager() {}
+        ~EventManager() {}
+
+        static const int m_EventMax;
+        static std::queue<Event*> m_EventList;
     };
 
 }

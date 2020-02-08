@@ -4,7 +4,6 @@
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
 #include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
 #include "../../../Systems/FileSystem/FileSystem.h"
-#include "../../../Systems/Services.h"
 
 // TODO: Find a better spot for st_image init
 #define STB_IMAGE_IMPLEMENTATION

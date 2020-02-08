@@ -10,10 +10,8 @@
 #include "../../Entities/Components/RenderComponent.h"
 
 #include "../FileSystem/FileSystem.h"
-#include "../Services.h"
 #include "../../QwerkE_Framework/QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
-#include "../../../QwerkE_Framework/Systems/Services.h"
 #include "../../../QwerkE_Framework/Systems/Resources/Resources.h"
 
 namespace QwerkE {

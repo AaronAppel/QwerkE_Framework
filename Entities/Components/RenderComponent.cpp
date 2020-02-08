@@ -1,6 +1,5 @@
 #include "RenderComponent.h"
 #include "../../Systems/Resources/Resources.h"
-#include "../../Systems/Services.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Entities/GameObject.h"

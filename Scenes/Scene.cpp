@@ -4,7 +4,6 @@
 #include "../Entities/Components/Camera/CameraComponent.h"
 #include "../Systems/Input/Input.h"
 #include "../Systems/DataManager/DataManager.h"
-#include "../Systems/Services.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 
 #include <algorithm>
@@ -305,8 +304,7 @@ namespace QwerkE {
             return;
         }
 
-        DataManager* t_pDataManager = (DataManager*)QwerkE::Services::GetService(eEngineServices::Data_Manager);
-        t_pDataManager->SaveScene(this, SceneFolderPath(m_LevelFileName.c_str()));
+        DataManager::SaveScene(this, SceneFolderPath(m_LevelFileName.c_str()));
     }
 
     void Scene::LoadScene(const char* sceneFileName)
@@ -318,8 +316,7 @@ namespace QwerkE {
         }
         m_LevelFileName = sceneFileName;
 
-        DataManager* t_pDataManager = (DataManager*)QwerkE::Services::GetService(eEngineServices::Data_Manager);
-        t_pDataManager->LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
+        DataManager::LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
         SetupCameras();
     }
 
@@ -331,8 +328,7 @@ namespace QwerkE {
             return;
         }
 
-        DataManager* t_pDataManager = (DataManager*)QwerkE::Services::GetService(eEngineServices::Data_Manager);
-        t_pDataManager->LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
+        DataManager::LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
         SetupCameras();
     }
 

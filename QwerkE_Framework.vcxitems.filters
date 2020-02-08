@@ -190,9 +190,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp">
       <Filter>Systems\DataManager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.cpp">
-      <Filter>Systems\DataManager</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp">
       <Filter>Systems\Debugger</Filter>
     </ClCompile>
@@ -274,9 +271,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Window.cpp">
       <Filter>Systems\Window</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.cpp">
-      <Filter>Systems\Window</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
@@ -305,9 +299,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
       <Filter>Entities\Components\Extended</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Services.cpp">
-      <Filter>Systems</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.cpp">
       <Filter>Systems\Resources</Filter>
@@ -356,6 +347,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.cpp">
       <Filter>Systems\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.cpp">
+      <Filter>Systems\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -469,9 +463,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h">
       <Filter>Systems\DataManager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\LevelLoader.h">
-      <Filter>Systems\DataManager</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h">
       <Filter>Systems\Debugger</Filter>
     </ClInclude>
@@ -521,9 +512,6 @@
       <Filter>Systems\Window</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Window.h">
-      <Filter>Systems\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\WindowManager.h">
       <Filter>Systems\Window</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\MessageManager.h">
@@ -601,9 +589,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
       <Filter>Entities\Components\Extended</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Services.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.h">
       <Filter>Systems\Resources</Filter>
     </ClInclude>
@@ -648,6 +633,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.h">
       <Filter>Systems\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.h">
+      <Filter>Systems\Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

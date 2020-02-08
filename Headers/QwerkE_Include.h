@@ -33,7 +33,6 @@
 //////////////////////////////
 // Infrastructure/Systems //
 //////////////////////////////
-#include "../Systems/Services.h" // Access point for all QwerkE services
 
 // Input //
 #include "../Systems/Input/QwerKE_eKeys.h"
@@ -47,7 +46,6 @@
 
 // Data management //
 #include "../Systems/DataManager/DataManager.h"
-#include "../Systems/DataManager/LevelLoader.h"
 #include "../Systems/DataManager/ConfigHelper.h"
 
 // Debugger //
@@ -60,7 +58,6 @@
 
 // Factory //
 #include "../Systems/Factory/Factory.h"
-#include "../Systems/DataManager/LevelLoader.h"
 
 // Graphics //
 #include "../Graphics/Graphics_Header.h"
@@ -74,24 +71,25 @@
 
 #include "../Systems/MessageManager.h"
 
-// networking //
+// Networking //
 #include "../Systems/Network/Network.h"
 
-#include "../Systems/Physics/PhysicsWorld.h"
+// Physics //
 #include "../Systems/Physics/Physics.h"
+#include "../Systems/Physics/PhysicsWorld.h"
 
 #include "../Systems/Resources/Resources.h"
 
 #include "../Systems/Scenes.h"
 
 #include "../Systems/Window/Window.h"
-#include "../Systems/Window/WindowManager.h"
+#include "../Systems/Window/Windows.h"
 //////////////////////////////
 
 //////////////////////////////
 // Entities //
 //////////////////////////////
-// gameobject
+// Gameobject
 #include "../Entities/GameObject.h"
 // TODO: #include components and routines
 

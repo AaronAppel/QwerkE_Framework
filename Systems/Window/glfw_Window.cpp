@@ -1,7 +1,6 @@
 #include "glfw_Window.h"
 #include "CallbackFunctions.h"
-#include "WindowManager.h"
-#include "../Services.h"
+#include "Windows.h"
 #include "../../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
 
 namespace QwerkE {
@@ -38,8 +37,7 @@ namespace QwerkE {
 
     void close_callback(GLFWwindow* window)
     {
-        WindowManager* winMan = (WindowManager*)QwerkE::Services::GetService(eEngineServices::WindowManager);
-        glfw_Window* glfw_window = (glfw_Window*)winMan->GetWindow(0);
+        glfw_Window* glfw_window = (glfw_Window*)Windows::GetWindow(0);
         glfw_window->SetClosing(true);
     }
 

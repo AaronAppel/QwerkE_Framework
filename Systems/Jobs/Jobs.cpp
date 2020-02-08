@@ -12,7 +12,7 @@ namespace QwerkE {
         // TODO: Think of avoiding duplicate jobs
         m_JobList.push(job);
         Event* _event = new JobQueuedEvent();
-        ((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->QueueEvent(_event);
+        EventManager::QueueEvent(_event);
     }
 
     void Jobs::ProcessTasks()
@@ -50,7 +50,7 @@ namespace QwerkE {
         {
             // raise event
             AssetLoadedEvent* _event = new AssetLoadedEvent(fileData);
-            ((EventManager*)QwerkE::Services::GetService(eEngineServices::Event_System))->QueueEvent(_event);
+            EventManager::QueueEvent(_event);
         }
 
         pthread_exit(NULL);

@@ -1,5 +1,4 @@
 #include "OpenAL_Component.h"
-#include "../../../Systems/Services.h"
 #include "../../../Systems/Resources/Resources.h"
 
 namespace QwerkE {

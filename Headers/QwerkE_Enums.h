@@ -84,9 +84,9 @@ namespace QwerkE {
         // Resource_Manager = 0,
         // Input_Manager,
         // Audio_Manager,
-        Data_Manager,
+        // Data_Manager,
         // Graphics (OpenGLManager)
-        Event_System,
+        // Event_System,
         // Scene_Manager,
         // Factory_Entity,
         // Factory_Mesh,
@@ -95,7 +95,7 @@ namespace QwerkE {
         // MessageManager,
         // Renderer,
         // Jobs,
-        WindowManager,
+        // Windows,
         // Network,
         // FileSystem,
 

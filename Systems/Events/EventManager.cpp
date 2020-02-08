@@ -5,13 +5,15 @@
 
 namespace QwerkE {
 
-    EventManager::EventManager()
-    {
-    }
+    const int EventManager::m_EventMax = 100;
+    std::queue<Event*> EventManager::m_EventList;
 
-    EventManager::~EventManager()
+    // EventManager::~EventManager()
+       // m_EventList; // TODO: Delete events
+
+    void EventManager::Initialize()
     {
-        m_EventList; // TODO: Delete events
+
     }
 
     void EventManager::QueueEvent(Event* _event)

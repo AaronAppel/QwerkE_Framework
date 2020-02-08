@@ -28,19 +28,13 @@ namespace QwerkE {
     class Component;
     class Routine;
 
-    class DataManager
+    namespace DataManager
     {
-    public:
-        DataManager();
-        virtual ~DataManager();
-
-        virtual void SaveScene(Scene* scene, const char* fileDir) = 0;
-        virtual void LoadScene(Scene* scene, const char* fileDir) = 0;
-
-    protected:
+        void SaveScene(Scene* scene, const char* fileDir);
+        void LoadScene(Scene* scene, const char* fileDir);
 
         // Utility
-        void AddVec3ToItem(cJSON* item, const char* arrayName, const char* name1, float value1, const char* name2, float value2, const char* name3, float value3) const;
+        void AddVec3ToItem(cJSON* item, const char* arrayName, const char* name1, float value1, const char* name2, float value2, const char* name3, float value3);
         cJSON* ConvertGameObjectToJSON(GameObject* item);
         void UpdateJSONArrayInFile(cJSON* array, const char* fileDir);
         GameObject* ConvertJSONToGameObject(cJSON* item, Scene* scene);
@@ -56,7 +50,7 @@ namespace QwerkE {
         void AddScaleTocJSONItem(cJSON* item, GameObject* object);
 
         // Components
-        void AddComponentTocJSONItem(cJSON* componentList, const Component* component) const;
+        void AddComponentTocJSONItem(cJSON* componentList, const Component* component);
         void AddComponentsTocJSONItem(cJSON* item, GameObject* object);
 
         void AddComponentToGameObject(GameObject* object, cJSON* item);

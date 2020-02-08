@@ -11,11 +11,9 @@
 #include "Systems/Scenes.h"
 #include "Systems/Factory/Factory.h"
 #include "Graphics/Graphics_Header.h"
-#include "Systems/Services.h"
 #include "Systems/Window/CallbackFunctions.h"
 #include "Systems/Physics/Physics.h"
 #include "Systems/DataManager/DataManager.h"
-#include "Systems/DataManager/LevelLoader.h"
 #include "Systems/Renderer/Renderer.h"
 #include "Systems/MessageManager.h"
 #include "Systems/Audio/Audio.h"
@@ -24,7 +22,7 @@
 #include "Systems/ShaderFactory/ShaderFactory.h"
 #include "Systems/Jobs/Jobs.h"
 #include "Systems/Window/Window.h"
-#include "Systems/Window/WindowManager.h"
+#include "Systems/Window/Windows.h"
 #include "Systems/Window/glfw_Window.h"
 #include "Systems/FileSystem/FileSystem.h"
 #include "Systems/DataManager/ConfigHelper.h"
@@ -79,8 +77,6 @@ namespace QwerkE {
 			// Audio, Networking, Graphics (Renderer, GUI), Utilities (Conversion, FileIO, Printing),
             // Physics, Event, Debug, Memory, Window, Application, Input, Resources
 
-			Services::LockServices(false);
-
 			// ShaderFactory// Dependency: resource manager
 
             if (config.libraries.Window == "GLFW3")
@@ -91,10 +87,9 @@ namespace QwerkE {
                 assert(false);
             }
 
-			WindowManager* windowManager = new WindowManager();
-            windowManager->AddWindow(m_Window);
+            Windows::AddWindow(m_Window);
 
-            Input::Initialize((GLFWwindow*)windowManager->GetWindow(0)->GetContext());
+            Input::Initialize((GLFWwindow*)Windows::GetWindow(0)->GetContext());
 
             Resources::Initialize(); // OpenGL init order dependency (Window?)
 
@@ -118,10 +113,7 @@ namespace QwerkE {
 			Renderer::DrawFont("Loading..."); // Message for user while loading
 			m_Window->SwapBuffers();
 
-			Services::RegisterService(eEngineServices::WindowManager, windowManager);
-
-			EventManager* eventManager = new EventManager();
-			Services::RegisterService(eEngineServices::Event_System, eventManager);
+			EventManager::Initialize();
 
             if (config.systems.PhysicsEnabled)
             {
@@ -153,22 +145,11 @@ namespace QwerkE {
 
 			// Network::Initialize();
 
-			DataManager* dataMan = new LevelLoader();
-			Services::RegisterService(eEngineServices::Data_Manager, dataMan);
-
 			Scenes::Initialize(); // Order Dependency
-
-			return Services::ServicesLoaded();
 		}
 
 		eEngineMessage Framework::TearDown()
         {
-			delete ((WindowManager*)Services::UnregisterService(eEngineServices::WindowManager));
-
-			delete (EventManager*)Services::UnregisterService(eEngineServices::Event_System);
-
-			delete (DataManager*)Services::UnregisterService(eEngineServices::Data_Manager);
-
 			Libs_TearDown(); // unload libraries
 
 			// TODO: Safety checks?
@@ -209,8 +190,6 @@ namespace QwerkE {
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 			glViewport(0, 0, g_WindowWidth, g_WindowHeight);
-
-			Services::LockServices(true); // prevent service changes
 
 			// Deltatime + FPS Tracking //
 			// deltatime
@@ -271,9 +250,6 @@ namespace QwerkE {
 					Yield();
 				}
 			}
-
-			// unlock services for clean up
-			Services::LockServices(false);
 		}
 
 		void Framework::Stop()
@@ -289,7 +265,7 @@ namespace QwerkE {
 			Input::NewFrame(); // TODO Replace with static instance call
 
 			// TODO: Process events every frame
-			((EventManager*)Services::GetService(eEngineServices::Event_System))->ProcessEvents();
+			EventManager::ProcessEvents();
 		}
 
 		void Framework::PollInput()
@@ -335,8 +311,7 @@ namespace QwerkE {
 			}
 			if (Input::FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{
-				WindowManager* windowManager = (WindowManager*)Services::GetService(eEngineServices::WindowManager);
-				windowManager->GetWindow(0)->SetClosing(true);
+				Windows::GetWindow(0)->SetClosing(true);
 			}
 		}
 
