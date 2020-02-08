@@ -24,7 +24,7 @@ namespace QwerkE {
 
         if (scene->AddObjectToScene(t_Cube))
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_Cube;
         }
 
@@ -45,7 +45,7 @@ namespace QwerkE {
 
         if (scene->AddObjectToScene(t_Plane))
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_Plane;
         }
 
@@ -66,7 +66,7 @@ namespace QwerkE {
 
         if (scene->AddObjectToScene(t_Sphere))
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_Sphere;
         }
 

@@ -1,6 +1,7 @@
-#ifndef _AudioSource_H_
-#define _AudioSource_H_
+#ifndef _Audio_Source_H_
+#define _Audio_Source_H_
 
+// TODO: Abstract from OpenAL
 #include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 #include "../../QwerkE_Common/DataTypes/Vector.h"
 
@@ -14,11 +15,13 @@ namespace QwerkE {
 
         void SetOrientation(vec3 pos, vec3 rot, vec3 vel);
 
+        // TODO: Abstract from OpenAL
         void Play(ALuint buffer);
 
     private:
+        // TODO: Abstract from OpenAL
         ALuint m_SourceID = 0;
     };
 
 }
-#endif // !_AudioSource_H_
+#endif // _Audio_Source_H_

@@ -36,13 +36,14 @@
 #include "../Systems/Services.h" // Access point for all QwerkE services
 
 // Input //
+#include "../Systems/Input/QwerKE_eKeys.h"
 #include "../Systems/Input/Input.h"
 
 // Scene //
 #include "../Scenes/Scene.h"
 
 // Audio //
-#include "../Systems/Audio/AudioManager.h"
+#include "../Systems/Audio/Audio.h"
 
 // Data management //
 #include "../Systems/DataManager/DataManager.h"
@@ -67,12 +68,7 @@
 // Rendering //
 #include "../Systems/Renderer/Renderer.h"
 
-// Input //
-#include "../Systems/Input/QwerKE_eKeys.h"
-#include "../Systems/Input/Input.h"
-#include "../Systems/Input/Input.h"
-
-#include "../Systems/JobManager/JobManager.h"
+#include "../Systems/Jobs/Jobs.h"
 
 #include "../Systems/Logger/Logger.h"
 
@@ -82,7 +78,7 @@
 #include "../Systems/Network/Network.h"
 
 #include "../Systems/Physics/PhysicsWorld.h"
-#include "../Systems/Physics/PhysicsManager.h"
+#include "../Systems/Physics/Physics.h"
 
 #include "../Systems/Resources/Resources.h"
 

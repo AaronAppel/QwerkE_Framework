@@ -67,9 +67,6 @@
     <Filter Include="Systems\Input">
       <UniqueIdentifier>{8ced35bc-8d87-4114-bc83-ac50f6ffd49e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\JobManager">
-      <UniqueIdentifier>{9a643911-a596-4f62-9f41-ff2c0d024d08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Systems\Logger">
       <UniqueIdentifier>{1d3ba439-6b98-4558-989a-d5d32a56d287}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,9 @@
     </Filter>
     <Filter Include="Systems\Network">
       <UniqueIdentifier>{b84b8b12-8adf-45ce-a1ce-78e38a1f4c10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Jobs">
+      <UniqueIdentifier>{9a643911-a596-4f62-9f41-ff2c0d024d08}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -244,14 +244,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\glfw_InputCallBacks.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.cpp">
-      <Filter>Systems\JobManager</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp">
       <Filter>Systems\Logger</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.cpp">
-      <Filter>Systems\Physics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.cpp">
       <Filter>Systems\Physics</Filter>
@@ -353,6 +347,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Network\Network.cpp">
       <Filter>Systems\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Jobs\Jobs.cpp">
+      <Filter>Systems\Jobs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\Audio.cpp">
+      <Filter>Systems\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.cpp">
+      <Filter>Systems\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -457,9 +460,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioManager.h">
-      <Filter>Systems\Audio</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h">
       <Filter>Systems\Audio</Filter>
     </ClInclude>
@@ -499,14 +499,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h">
       <Filter>Systems\Input</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\JobManager\JobManager.h">
-      <Filter>Systems\JobManager</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.h">
       <Filter>Systems\Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsManager.h">
-      <Filter>Systems\Physics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.h">
       <Filter>Systems\Physics</Filter>
@@ -578,9 +572,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenALAudioManager.h">
       <Filter>Systems\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\NullAudioManager.h">
-      <Filter>Systems\Audio</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h">
       <Filter>Entities\Components</Filter>
     </ClInclude>
@@ -648,6 +639,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Network\Network.h">
       <Filter>Systems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Jobs\Jobs.h">
+      <Filter>Systems\Jobs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\Audio.h">
+      <Filter>Systems\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.h">
+      <Filter>Systems\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

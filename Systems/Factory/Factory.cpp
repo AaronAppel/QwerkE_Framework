@@ -8,7 +8,7 @@
 
 namespace QwerkE {
 
-    int Factory::m_Created = 0;
+    int Factory::m_CreatedCount = 0;
 
     Factory::Factory()
     {

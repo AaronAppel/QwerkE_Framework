@@ -12,10 +12,9 @@ namespace QwerkE {
     // Resources Services::Resources;
 
     EventManager* Services::m_EventManager = nullptr;
-	ShaderFactory* Services::m_ShaderFactory = nullptr;
-	PhysicsManager* Services::m_PhysicsManager = nullptr;
+	Physics* Services::m_Physics = nullptr;
 	MessageManager* Services::m_MessageManager = nullptr;
-	AudioManager* Services::m_AudioManager = nullptr;
+	Audio* Services::m_AudioManager = nullptr;
 	Window* Services::m_Window = nullptr;
 	Network* Services::m_NetworkManager = nullptr;
 	DataManager* Services::m_DataManager = nullptr;
@@ -37,18 +36,6 @@ namespace QwerkE {
 		{
 		case eEngineServices::Event_System:
 			Services::m_EventManager = (EventManager*)service;
-			break;
-		case eEngineServices::Factory_Shader:
-			Services::m_ShaderFactory = (ShaderFactory*)service;
-			break;
-		case eEngineServices::PhysicsManager:
-			Services::m_PhysicsManager = (PhysicsManager*)service;
-			break;
-		case eEngineServices::MessageManager:
-			Services::m_MessageManager = (MessageManager*)service;
-			break;
-		case eEngineServices::Audio_Manager:
-			Services::m_AudioManager = (AudioManager*)service;
 			break;
 		case eEngineServices::WindowManager:
 			Services::m_Window = (Window*)service;
@@ -73,26 +60,6 @@ namespace QwerkE {
 			temp = Services::m_EventManager;
 			Services::m_EventManager = nullptr;
 			return temp;
-		case eEngineServices::Factory_Shader:
-			temp = Services::m_ShaderFactory;
-			Services::m_ShaderFactory = nullptr;
-			return temp;
-			break;
-		case eEngineServices::PhysicsManager:
-			temp = Services::m_PhysicsManager;
-			Services::m_PhysicsManager = nullptr;
-			return temp;
-			break;
-		case eEngineServices::MessageManager:
-			temp = Services::m_MessageManager;
-			Services::m_MessageManager = nullptr;
-			return temp;
-			break;
-		case eEngineServices::Audio_Manager:
-			temp = Services::m_AudioManager;
-			Services::m_AudioManager = nullptr;
-			return temp;
-			break;
 		case eEngineServices::WindowManager:
 			temp = Services::m_Window;
 			Services::m_Window = nullptr;
@@ -117,18 +84,6 @@ namespace QwerkE {
 		case eEngineServices::Event_System:
 			return Services::m_EventManager;
 			break;
-		case eEngineServices::Factory_Shader:
-			return Services::m_ShaderFactory;
-			break;
-		case eEngineServices::PhysicsManager:
-			return Services::m_PhysicsManager;
-			break;
-		case eEngineServices::MessageManager:
-			return Services::m_MessageManager;
-			break;
-		case eEngineServices::Audio_Manager:
-			return Services::m_AudioManager;
-			break;
 		case eEngineServices::WindowManager:
 			return Services::m_Window;
 			break;
@@ -150,22 +105,6 @@ namespace QwerkE {
 			{
 			case eEngineServices::Event_System:
 				if (Services::m_EventManager == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::Factory_Shader:
-				if (Services::m_ShaderFactory == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::PhysicsManager:
-				if (Services::m_PhysicsManager == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::MessageManager:
-				if (Services::m_MessageManager == nullptr)
-					return eEngineMessage::_QFailure; // not loaded
-				break;
-			case eEngineServices::Audio_Manager:
-				if (Services::m_AudioManager == nullptr)
 					return eEngineMessage::_QFailure; // not loaded
 				break;
 			case eEngineServices::WindowManager:

@@ -34,7 +34,7 @@ namespace QwerkE {
 
         if (scene->AddLight(t_pLight))
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_pLight;
         }
 

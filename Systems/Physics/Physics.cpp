@@ -1,16 +1,16 @@
-#include "PhysicsManager.h"
+#include "Physics.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
 
 namespace QwerkE {
 
-    PhysicsManager::PhysicsManager()
+    Physics::Physics()
     {
-        ConsolePrint("\nPhysicsManager loaded successfully\n\n");
+        ConsolePrint("\nPhysics loaded successfully\n\n");
     }
 
-    PhysicsManager::~PhysicsManager()
+    Physics::~Physics()
     {
     }
 

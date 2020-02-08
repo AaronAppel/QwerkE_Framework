@@ -11,7 +11,6 @@ namespace QwerkE {
     // TODO: Change the name to be more appropriate. Other factories exist such as MeshFactory and ShaderFactory.
     // This class could be called EntityFactory and be moved to the System/Entities folder.
 
-    class Resources;
     class GameObject;
     class Scene;
     class RenderComponent;
@@ -65,7 +64,7 @@ namespace QwerkE {
         static RenderComponent* AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName);
 
     private:
-        static int m_Created;
+        static int m_CreatedCount;
     };
 
 }

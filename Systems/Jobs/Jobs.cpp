@@ -1,4 +1,4 @@
-#include "JobManager.h"
+#include "Jobs.h"
 #include "../Events/EventManager.h"
 #include "../Events/JobQueuedEvent.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
@@ -25,6 +25,7 @@ namespace QwerkE {
             next->Process(); // get a thread and process job
         }
     }
+
     // Private
     void Jobs::ProcessNextTask()
     {

@@ -3,14 +3,16 @@
 
 namespace QwerkE {
 
+    // TODO: Consider making singleton to avoid instantiation if disabled
     // TODO: Write class
-    class PhysicsManager
+    class Physics
     {
     public:
-        PhysicsManager();
-        ~PhysicsManager();
+        static void Initialize() {}
 
     private:
+        Physics();
+        ~Physics();
 
     };
 

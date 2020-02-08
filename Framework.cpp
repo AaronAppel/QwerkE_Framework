@@ -13,17 +13,16 @@
 #include "Graphics/Graphics_Header.h"
 #include "Systems/Services.h"
 #include "Systems/Window/CallbackFunctions.h"
-#include "Systems/Physics/PhysicsManager.h"
+#include "Systems/Physics/Physics.h"
 #include "Systems/DataManager/DataManager.h"
 #include "Systems/DataManager/LevelLoader.h"
 #include "Systems/Renderer/Renderer.h"
 #include "Systems/MessageManager.h"
-#include "Systems/Audio/AudioManager.h"
+#include "Systems/Audio/Audio.h"
 #include "Systems/Audio/OpenALAudioManager.h"
-#include "Systems/Audio/NullAudioManager.h"
 #include "Systems/Debugger/Debugger.h"
 #include "Systems/ShaderFactory/ShaderFactory.h"
-#include "Systems/JobManager/JobManager.h"
+#include "Systems/Jobs/Jobs.h"
 #include "Systems/Window/Window.h"
 #include "Systems/Window/WindowManager.h"
 #include "Systems/Window/glfw_Window.h"
@@ -51,6 +50,8 @@ namespace QwerkE {
 
 		eEngineMessage Framework::Startup(std::string configFilePath, std::uint_fast8_t flags)
 		{
+			// TODO: Log loading and skipping. Everything!
+
 			cJSON* root = OpencJSONStream(configFilePath.c_str()); // TODO: Remove engine behaviour
 			cJSON* systems = GetItemFromRootByKey(root, "Systems"); // TODO: Use flags to see if systems are enabled/disabled
 
@@ -80,8 +81,7 @@ namespace QwerkE {
 
 			Services::LockServices(false);
 
-			ShaderFactory* shaderFactory = new ShaderFactory();
-			Services::RegisterService(eEngineServices::Factory_Shader, shaderFactory); // Dependency: resource manager
+			// ShaderFactory// Dependency: resource manager
 
             if (config.libraries.Window == "GLFW3")
                 m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
@@ -98,24 +98,19 @@ namespace QwerkE {
 
             Resources::Initialize(); // OpenGL init order dependency (Window?)
 
-            AudioManager* audioManager = nullptr;
 			cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
             bool enabled = audioEnabled != nullptr ? (bool)audioEnabled->valuedouble : false; // TODO: Improve value handling
 
             if (config.systems.AudioEnabled)
             {
-                if (config.libraries.Audio == "OpenAL")
-                {
-                    audioManager = (AudioManager*) new OpenALAudioManager();
-                }
+				// TODO: Read audio library value and load proper audio library
+				Audio::Initialize();
+                ConsolePrint("\nAudio system initialized with OpenAL.");
             }
-
-            if (audioManager == nullptr)
+			else
             {
-                ConsolePrint("No audio library define detected! Loading NullAudioManager.");
-                audioManager = (AudioManager*) new NullAudioManager();
-            }
-			Services::RegisterService(eEngineServices::Audio_Manager, audioManager); // Resources needs this
+                ConsolePrint("No audio system loaded.");
+			}
 
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TEMP: avoid bright white screen while loading
@@ -128,29 +123,22 @@ namespace QwerkE {
 			EventManager* eventManager = new EventManager();
 			Services::RegisterService(eEngineServices::Event_System, eventManager);
 
-            PhysicsManager* physicsManager = nullptr;
             if (config.systems.PhysicsEnabled)
             {
                 if (config.libraries.Physics == "Bullet3D")
                 {
                     // TODO: Create Bullet3DPhyicsManager class
-                    physicsManager = new PhysicsManager();
+					Physics::Initialize();
                 }
             }
-
-            if (physicsManager == nullptr)
+			else
             {
-                // TODO: Create null physics manager class
-                ConsolePrint("No physics library defined or enabled! Loading NullPhysicsManager.");
-                physicsManager = new PhysicsManager();
-            }
-			Services::RegisterService(eEngineServices::PhysicsManager, physicsManager);
+                ConsolePrint("\nNo physics system loaded.");
+			}
 
-			MessageManager* messageManager = new MessageManager();
-			Services::RegisterService(eEngineServices::MessageManager, messageManager);
+			// MessageManager::Initialize();
 
-
-			cJSON* jobManagerMultiThreaded = GetItemFromArrayByKey(systems, "JobManagerMultiThreadedEnabled");
+			cJSON* jobManagerMultiThreaded = GetItemFromArrayByKey(systems, "JobsMultiThreadedEnabled");
 
 			if (jobManagerMultiThreaded != nullptr && jobManagerMultiThreaded->valueint == 1)
             {
@@ -178,14 +166,6 @@ namespace QwerkE {
 			delete ((WindowManager*)Services::UnregisterService(eEngineServices::WindowManager));
 
 			delete (EventManager*)Services::UnregisterService(eEngineServices::Event_System);
-
-			delete (ShaderFactory*)Services::UnregisterService(eEngineServices::Factory_Shader);
-
-			delete (PhysicsManager*)Services::UnregisterService(eEngineServices::PhysicsManager);
-
-			delete (MessageManager*)Services::UnregisterService(eEngineServices::MessageManager);
-
-			delete (AudioManager*)Services::UnregisterService(eEngineServices::Audio_Manager);
 
 			delete (DataManager*)Services::UnregisterService(eEngineServices::Data_Manager);
 

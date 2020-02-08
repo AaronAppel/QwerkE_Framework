@@ -20,15 +20,15 @@ namespace QwerkE {
             // compile
             if (m_Type == "vert") // TODO: Make an enum for this type
             {
-                m_ShaderHandle = ((ShaderFactory*)QwerkE::Services::GetService(eEngineServices::Factory_Shader))->CreateVertexShader(shaderPath);
+                m_ShaderHandle = ShaderFactory::CreateVertexShader(shaderPath);
             }
             else if (m_Type == "frag")
             {
-                m_ShaderHandle = ((ShaderFactory*)QwerkE::Services::GetService(eEngineServices::Factory_Shader))->CreateFragmentShader(shaderPath);
+                m_ShaderHandle = ShaderFactory::CreateFragmentShader(shaderPath);
             }
             else if (m_Type == "geo")
             {
-                m_ShaderHandle = ((ShaderFactory*)QwerkE::Services::GetService(eEngineServices::Factory_Shader))->CreateGeometryShader(shaderPath);
+                m_ShaderHandle = ShaderFactory::CreateGeometryShader(shaderPath);
             }
             else
             {

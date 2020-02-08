@@ -11,18 +11,14 @@
 
 #include <string>
 
+namespace QwerkE {
+
     class ShaderProgram;
     class ShaderComponent;
 
-namespace QwerkE {
-
     // TODO: Think of separating generated shader code somehow
-    class ShaderFactory
+    namespace ShaderFactory
     {
-    public:
-        ShaderFactory() {}
-        ~ShaderFactory() {}
-
         ShaderProgram* CreateShader(eShaderTypes type);
         ShaderProgram* CreateShader(const char* vertFileDir, const char* fragFileDir, const char* geoFileDir);
         ShaderComponent* CreateShaderComponent(GLenum type, const char* filePath);
@@ -32,6 +28,7 @@ namespace QwerkE {
 
         bool LinkCreatedShaderProgram(ShaderProgram* shader);
 
+        // TODO: Abstract library types
         GLuint CreateVertexShader(const char* vertPath);
         GLuint CreateFragmentShader(const char* fragPath);
         GLuint CreateGeometryShader(const char* geoPath);
@@ -49,16 +46,16 @@ namespace QwerkE {
         void OpenMain(std::string& shaderString);
         void CloseMain(std::string& shaderString);
 
-        /* Getters + Setters */
-        /* Getters */
-        const char* GetAttributePrefix() { return m_AttributePrefix; };
-        const char* GetUniformPrefix() { return m_UniformPrefix; };
-        const char* GetTransferPrefix() { return m_TransferPrefix; };
+        const char* GetAttributePrefix();
+        const char* GetUniformPrefix();
+        const char* GetTransferPrefix();
 
         /* Setters */
-        void SetPrefixes(const char* attr, const char* unif, const char* trans);
+        // void SetPrefixes(const char* attr, const char* unif, const char* trans);
 
-    private:
+        // TODO: Hide
+        // INTERNAL
+
         // Linking
         GLuint LinkShaders(const ShaderComponent* vert, const ShaderComponent* frag, const ShaderComponent* geo);
         GLuint LinkShaders(GLuint vert, GLuint frag, GLuint geo);
@@ -73,11 +70,6 @@ namespace QwerkE {
         // LitMaterial
         std::string LitMaterialVert(std::string vertString);
         std::string LitMaterialFrag(std::string fragString);
-
-        /* Values */
-        const char* m_AttributePrefix = Helper_GetAttributePrefix();
-        const char* m_UniformPrefix = Helper_GetUniformPrefix();
-        const char* m_TransferPrefix = Helper_GetTransferPrefix();
 
         /* Add Shader Variables */
         // Structs
@@ -138,7 +130,7 @@ namespace QwerkE {
         void AddOutputMat2(const char* name, std::string& string);
         void AddOutputMat3(const char* name, std::string& string);
         void AddOutputMat4(const char* name, std::string& string);
-    };
+    }
 
 }
 #endif //!_ShaderFactory_H_

@@ -20,7 +20,6 @@ namespace QwerkE {
     class ShaderComponent;
     class Texture;
     class Material;
-    class ShaderProgram;
     class Resources;
 
     // TODO: Move to own file

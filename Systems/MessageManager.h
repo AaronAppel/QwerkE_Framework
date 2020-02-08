@@ -12,10 +12,11 @@ namespace QwerkE {
     class MessageManager
     {
     public:
-        MessageManager();
-        ~MessageManager();
+        static void Initialize() {}
 
     private:
+        MessageManager();
+        ~MessageManager();
 
     };
 

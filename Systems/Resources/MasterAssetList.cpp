@@ -13,7 +13,7 @@
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../Graphics/Texture.h"
-#include "../JobManager/JobManager.h"
+#include "../Jobs/Jobs.h"
 
 namespace QwerkE {
 
@@ -47,7 +47,6 @@ namespace QwerkE {
 	// TODO: Handle errors and deleting assets before returning nullptr
 	Mesh* Resources::InstantiateMesh(const char* meshFilePath)
 	{
-		MeshFactory t_MeshFactory;
 		Mesh* mesh = nullptr;
 
 		if (FileExists(meshFilePath))
@@ -62,11 +61,11 @@ namespace QwerkE {
 		{
 			if (strcmp(meshFilePath, MeshFolderPath("Create_Quad")) == 0)
 			{
-				mesh = t_MeshFactory.CreateQuad(vec2(10, 10));
+				mesh = MeshFactory::CreateQuad(vec2(10, 10));
 			}
 			else if (strcmp(meshFilePath, null_mesh) == 0)
 			{
-				mesh = t_MeshFactory.ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
+				mesh = MeshFactory::ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
 			}
 			else if (strcmp(meshFilePath, MeshFolderPath("Create_Circle")) == 0)
 			{
@@ -74,21 +73,21 @@ namespace QwerkE {
 			}
 			else if (strcmp(meshFilePath, MeshFolderPath("Create_Cube")) == 0)
 			{
-				mesh = t_MeshFactory.CreateCube(vec3(1, 1, 1), vec2(1, 1), true);
+				mesh = MeshFactory::CreateCube(vec3(1, 1, 1), vec2(1, 1), true);
 			}
 			else if (strcmp(meshFilePath, MeshFolderPath("Tutorial_Cube")) == 0)
 			{
-				mesh = t_MeshFactory.TutorialCube(vec3(1, 1, 1));
+				mesh = MeshFactory::TutorialCube(vec3(1, 1, 1));
 			}
 			else if (strcmp(meshFilePath, MeshFolderPath("Test_Plane")) == 0)
 			{
-				mesh = t_MeshFactory.CreateTestPlane();
+				mesh = MeshFactory::CreateTestPlane();
 			}
 			// update to use new model loading capabilities
 			/*
 			else if (meshName == "Teapot.obj")
 			{
-				mesh = t_MeshFactory.ImportOBJMesh(MeshPath("Teapot.obj"), vec3(0.5f,0.5f,0.5f), vec2(1,1), false);
+				mesh = MeshFactory::ImportOBJMesh(MeshPath("Teapot.obj"), vec3(0.5f,0.5f,0.5f), vec2(1,1), false);
 			}
 			*/
 			else
@@ -209,7 +208,7 @@ namespace QwerkE {
 				result->SetFragShader(GetShaderComponent(result->GetFragName().c_str()));
 				// result->s_geoShader = GetShaderComponentData(result->s_geoName.c_str());
 
-				if (((ShaderFactory*)QwerkE::Services::GetService(eEngineServices::Factory_Shader))->LinkCreatedShaderProgram(result))
+				if (ShaderFactory::LinkCreatedShaderProgram(result))
 				{
 					m_ShaderPrograms[GetFileNameWithExt(schematicFile)] = result;
 					result->FindAttributesAndUniforms();
@@ -228,8 +227,7 @@ namespace QwerkE {
 			ShaderComponent* result = nullptr;
 			if (strcmp(GetFileExtension(componentName).c_str(), vertex_shader_ext) == 0)
 			{
-				result = ((ShaderFactory*)QwerkE::Services::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-					GL_VERTEX_SHADER, componentName);
+				result = ShaderFactory::CreateShaderComponent(GL_VERTEX_SHADER, componentName);
 
 				if (result)
 				{
@@ -243,8 +241,7 @@ namespace QwerkE {
 			}
 			else if (strcmp(GetFileExtension(componentName).c_str(), fragment_shader_ext) == 0)
 			{
-				result = ((ShaderFactory*)QwerkE::Services::GetService(eEngineServices::Factory_Shader))->CreateShaderComponent(
-					GL_FRAGMENT_SHADER, componentName);
+				result = ShaderFactory::CreateShaderComponent(GL_FRAGMENT_SHADER, componentName);
 
 				if (result)
 				{

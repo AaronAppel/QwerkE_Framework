@@ -41,9 +41,15 @@ namespace QwerkE {
     void SaveShaderSchematic(ShaderProgram* shader);
     ShaderProgram* LoadShaderSchematic(const char* schematicPath);
 
-    char* Helper_GetAttributePrefix(); // TODO: Move to a shader specific file like ShaderFactory.h
-    char* Helper_GetUniformPrefix();
-    char* Helper_GetTransferPrefix();
+    // TODO: Move to a better place
+    // TODO: Pick a standard (input OR attribute)
+    // Shader variable prefixes
+
+    constexpr const char* AttributePrefix = "a_";
+    constexpr const char* InputPrefix = "i_";
+    constexpr const char* UniformPrefix = "u_";
+    constexpr const char* TransferPrefix = "t_";
+    constexpr const char* VaryingPrefix = "v_";
 
 }
 #endif // _Graphics_Helpers_H_

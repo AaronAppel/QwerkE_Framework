@@ -1,4 +1,5 @@
 #include "Factory.h"
+#include "../Graphics/Mesh/MeshFactory.h"
 #include "../../Scenes/Scene.h"
 #include "../../QwerkE_Common/Utilities/Helpers.h"
 #include "../../Systems/Resources/Resources.h"
@@ -38,7 +39,7 @@ namespace QwerkE {
 
         if (scene->AddObjectToScene(t_SkyBox)) // Add to render list
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_SkyBox;
         }
 
@@ -82,7 +83,7 @@ namespace QwerkE {
 
         if (scene->AddObjectToScene(t_Cube))
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_Cube;
         }
 
@@ -108,7 +109,7 @@ namespace QwerkE {
 
         if (scene->AddObjectToScene(t_Model))
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_Model;
         }
 
@@ -126,7 +127,7 @@ namespace QwerkE {
         {
             if (scene->AddObjectToScene(t_Object))
             {
-                m_Created++;
+                m_CreatedCount++;
                 return t_Object;
             }
         }

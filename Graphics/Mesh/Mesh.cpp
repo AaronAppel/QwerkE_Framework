@@ -128,7 +128,7 @@ namespace QwerkE {
 
         for (unsigned int i = 0; i < attributes->size(); i++)
         {
-            GLuint attributeLoc = glGetAttribLocation(shader->GetProgram(), DispStrCombine(Helper_GetAttributePrefix(), attributes->at(i).c_str()).c_str());
+            GLuint attributeLoc = glGetAttribLocation(shader->GetProgram(), DispStrCombine(ShaderFactory::GetAttributePrefix(), attributes->at(i).c_str()).c_str());
             if (attributeLoc != -1)
             {
                 if (StringCompare(attributes->at(i), vertexPosition))

@@ -15,12 +15,11 @@ namespace QwerkE {
     class EventManager;
     class Scenes;
     class Factory;
-    class PhysicsManager;
+    class Physics;
     class MessageManager;
-    class AudioManager;
+    class Audio;
     class Window;
     class Network;
-    class ShaderFactory;
     class DataManager;
 
 	// TODO: Improve service accessing
@@ -76,10 +75,9 @@ namespace QwerkE {
 		static bool m_IsLocked; // TODO: Improve security/error prevention
 
         static EventManager* m_EventManager;
-		static ShaderFactory* m_ShaderFactory;
-		static PhysicsManager* m_PhysicsManager;
+		static Physics* m_Physics;
 		static MessageManager* m_MessageManager;
-        static AudioManager* m_AudioManager;
+        static Audio* m_AudioManager;
 		static Window* m_Window;
         static Network* m_NetworkManager;
 		static DataManager* m_DataManager;

@@ -81,7 +81,7 @@ namespace QwerkE {
 
         if (scene->AddCamera(t_pCamera)) // add to scene
         {
-            m_Created++;
+            m_CreatedCount++;
             return t_pCamera; // Success
         }
 

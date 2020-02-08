@@ -1,7 +1,7 @@
 #ifndef _OpenAL_Audio_Manager_H_
 #define _OpenAL_Audio_Manager_H_
 
-#include "AudioManager.h"
+#include "Audio.h"
 
 #include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
 #include "../../QwerkE_Common/Libraries/OpenAL/include/alc.h"
@@ -13,7 +13,7 @@ namespace QwerkE {
 
     class AudioSource;
 
-    class OpenALAudioManager : public AudioManager
+    class OpenALAudioManager : public Audio
     {
     public:
         OpenALAudioManager();

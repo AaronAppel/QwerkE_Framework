@@ -1,9 +1,7 @@
-#ifndef _MeshFactory_H_
-#define _MeshFactory_H_
+#ifndef _Mesh_Factory_H_
+#define _Mesh_Factory_H_
 
 #include "../QwerkE_Common/Math_Includes.h"
-
-// TODO: Class unnecessary
 
 namespace QwerkE {
 
@@ -11,13 +9,8 @@ namespace QwerkE {
     class Mesh;
     class Model;
 
-    class MeshFactory
+    namespace MeshFactory
     {
-    public:
-        // TODO: Make static
-        MeshFactory() {};
-        ~MeshFactory() {};
-
         /* OBJ loading */
         Mesh* ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 UVScale, bool invertFaces);
 
@@ -26,14 +19,14 @@ namespace QwerkE {
 
         /* Mesh creation */
         // defined in MeshShapes.cpp
-        static Mesh* CreateTestModel();
-        static Mesh* CreateTestPlane();
-        static Mesh* CreateQuad(vec2 size);
-        static Mesh* CreateCircle(float radius, unsigned int points, vec2 UVScale);
-        static Mesh* CreateCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
+        Mesh* CreateTestModel();
+        Mesh* CreateTestPlane();
+        Mesh* CreateQuad(vec2 size);
+        Mesh* CreateCircle(float radius, unsigned int points, vec2 UVScale);
+        Mesh* CreateCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
         // static Mesh* CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale);
 
-        static Mesh* TutorialCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
+        Mesh* TutorialCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
 
         // TODO: Make static
         /* Mesh data assignment/re-assignment */
@@ -42,4 +35,4 @@ namespace QwerkE {
     };
 
 }
-#endif //!_MeshFactory_H_
+#endif // _Mesh_Factory_H_

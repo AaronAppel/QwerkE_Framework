@@ -1,5 +1,5 @@
-#ifndef _ShaderComponent_H_
-#define _ShaderComponent_H_
+#ifndef _Shader_Component_H_
+#define _Shader_Component_H_
 
 #include <string>
 
@@ -35,4 +35,4 @@ namespace QwerkE {
     };
 
 }
-#endif // !_ShaderComponent_H_
+#endif // _Shader_Component_H_

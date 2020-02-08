@@ -1,3 +1,4 @@
+#include "MeshFactory.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../Graphics/Graphics_Header.h"
@@ -597,6 +598,7 @@ namespace QwerkE {
 
 		return t_pNewMesh;
 	}
+
 	// worldSize, number of vertices, UVPos,
 	//Mesh* MeshFactory::CreatePlane(vec2 size, vec2 NumOfVerts, vec2 UVScale) // pivot, size, UVStart, UVOffset
 	//{
@@ -683,6 +685,7 @@ namespace QwerkE {
 	//
 	//	return pMesh;
 	//}
+
 	/* Mesh data assignment*/
 	void MeshFactory::GenerateBox(Mesh* mesh, vec2 size, bool invertFaces)
 	{
