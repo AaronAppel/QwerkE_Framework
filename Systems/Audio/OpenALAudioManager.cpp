@@ -1,5 +1,5 @@
 #include "OpenALAudioManager.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../Log/Log.h"
 #include "../FileSystem/FileSystem.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
@@ -33,7 +33,7 @@ namespace QwerkE {
 
 		SetListenerOrientation(vec3(0, 0, 0), vec3(0, 0, 0));
 
-		ConsolePrint("\nOpenAL loaded successfully\n\n");
+		LOG_INFO("OpenAL loaded successfully");
 	}
 
 	OpenALAudioManager::~OpenALAudioManager()

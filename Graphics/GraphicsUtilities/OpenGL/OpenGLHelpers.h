@@ -4,7 +4,6 @@
 namespace QwerkE {
 
     void GLCheckforErrors();
-    void GLCheckforErrors(char* file, int line);
     void GLCheckforErrors(const char* file, int line);
 
     GLuint LoadTextureDataToOpenGL(QImageFile& fileData);

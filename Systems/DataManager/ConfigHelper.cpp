@@ -20,7 +20,7 @@ namespace QwerkE {
         cJSON* root = OpencJSONStream(configFilePath.c_str());
         if (root == nullptr)
         {
-            QwerkE::LogWarning(__FILE__, __LINE__, "Unable to load json for file %s", configFilePath.c_str());
+            LOG_ERROR("Unable to load json for file %s", configFilePath);
             return;
         }
 

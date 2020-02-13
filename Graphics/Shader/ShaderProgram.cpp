@@ -34,7 +34,7 @@ namespace QwerkE {
 
             FindAttributesAndUniforms();
 
-            QwerkE::LogOutput(__FILE__, __LINE__, "Recompiled shader %s");
+            LOG_INFO("Recompiled shader %s");
         }
     }
 

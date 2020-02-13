@@ -57,7 +57,7 @@ namespace QwerkE {
 
 				if (FileExists(SceneFolderPath(sceneFileName)) == false)
 				{
-					QwerkE::LogWarning(__FILE__, __LINE__, "Null scene loaded because scene file not found: %s", sceneFileName);
+					LOG_WARN("Null scene loaded because scene file not found: %s", sceneFileName);
 					continue;
 				}
 

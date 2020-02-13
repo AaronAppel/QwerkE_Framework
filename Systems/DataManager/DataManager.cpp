@@ -64,8 +64,8 @@ namespace QwerkE {
 
         // WRITE TO FILE
         PrintRootObjectToFile(fileDir, root);
-        OutputPrint("\nDataManager: Scene file %s saved\n", fileDir);
-        // delete root
+        LOG_INFO("DataManager: Scene file %s saved", fileDir);
+        ClosecJSONStream(root);
     }
 
     void DataManager::LoadScene(Scene* scene, const char* fileDir)
@@ -73,7 +73,7 @@ namespace QwerkE {
         if (scene == nullptr) { return; } // TODO: Load a null scene
         if (FileExists(fileDir) == false)
         {
-            OutputPrint("\nDataManager: LoadScene() could not open file for reading.\n");
+            LOG_ERROR("DataManager: LoadScene() could not open file for reading.");
             return;
         }
 
@@ -81,7 +81,7 @@ namespace QwerkE {
         cJSON* root = OpencJSONStream(fileDir);
         if (root == nullptr) // Compile error
         {
-            OutputPrint("\nDataManager: LoadScene() null root object.\n");
+            LOG_ERROR("DataManager: LoadScene() null root object.");
             return;
         }
 
@@ -136,7 +136,7 @@ namespace QwerkE {
 
         // END
         ClosecJSONStream(root);
-        OutputPrint("\nDataManager: Scene file %s loaded\n", fileDir);
+        LOG_INFO("DataManager: Scene file %s loaded", fileDir);
     }
 
     // Utility

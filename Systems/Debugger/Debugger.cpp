@@ -1,5 +1,4 @@
 #include "Debugger.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 #ifdef _QDebug
 namespace QwerkE {
@@ -19,11 +18,11 @@ namespace QwerkE {
         m_ConsoleIsOpen = !m_ConsoleIsOpen;
         if (m_ConsoleIsOpen)
         {
-            ConsolePrint("\nConsole opened!");
+            LOG_INFO("Console opened");
         }
         else
         {
-            ConsolePrint("\nConsole closed!");
+            LOG_INFO("Console closed");
         }
     }
 
@@ -32,11 +31,11 @@ namespace QwerkE {
         m_ConsoleIsOpen = visibility;
         if (m_ConsoleIsOpen)
         {
-            ConsolePrint("\nConsole opened!");
+            LOG_INFO("Console opened");
         }
         else
         {
-            ConsolePrint("\nConsole closed!");
+            LOG_INFO("Console closed");
         }
     }
 }

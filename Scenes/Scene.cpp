@@ -300,7 +300,7 @@ namespace QwerkE {
     {
         if (m_LevelFileName == gc_DefaultCharPtrValue)
         {
-            QwerkE::LogError(__FILE__, __LINE__, "Unable to Save scene! m_LevelFileName is \"%s\"", gc_DefaultCharPtrValue);
+            LOG_ERROR("Unable to Save scene! m_LevelFileName is \"%s\"", gc_DefaultCharPtrValue);
             return;
         }
 
@@ -311,7 +311,7 @@ namespace QwerkE {
     {
         if (sceneFileName == gc_DefaultCharPtrValue)
         {
-            QwerkE::LogError(__FILE__, __LINE__, "Unable to Save scene! sceneFileName is \"%s\"", gc_DefaultCharPtrValue);
+            LOG_ERROR("Unable to Load scene! sceneFileName is \"%s\"", gc_DefaultCharPtrValue);
             return;
         }
         m_LevelFileName = sceneFileName;
@@ -322,14 +322,8 @@ namespace QwerkE {
 
     void Scene::ReloadScene()
     {
-        if (m_LevelFileName == gc_DefaultCharPtrValue)
-        {
-            QwerkE::LogError(__FILE__, __LINE__, "Unable to Save scene! m_LevelFileName is \"%s\"", gc_DefaultCharPtrValue);
-            return;
-        }
-
+        // TODO: Add additional reload functionality
         DataManager::LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
-        SetupCameras();
     }
 
     GameObject* Scene::GetGameObject(const char* name)

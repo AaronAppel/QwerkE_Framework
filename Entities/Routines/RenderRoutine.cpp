@@ -43,14 +43,14 @@ namespace QwerkE {
                 ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
         }
         else
-            QwerkE::LogWarning(__FILE__, __LINE__, "m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+            LOG_WARN("m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
     }
     //// Private functions
     void RenderRoutine::DrawMeshData(GameObject* a_Camera)
     {
         if (!m_pRenderComp)
         {
-            QwerkE::LogWarning(__FILE__, __LINE__, "m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+            LOG_WARN("m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
             m_DrawFunc = &RenderRoutine::NullDraw;
             return;
         }
@@ -89,7 +89,7 @@ namespace QwerkE {
     {
         if (!m_pRenderComp)
         {
-            QwerkE::LogWarning(__FILE__, __LINE__, "m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+            LOG_WARN("m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
             m_DrawFunc = &RenderRoutine::NullDraw;
             return;
         }

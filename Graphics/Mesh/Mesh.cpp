@@ -33,14 +33,14 @@ namespace QwerkE {
         // TODO: Return true or false to communicate successful buffering?
         if (!data)
         {
-            QwerkE::LogError(__FILE__, __LINE__, "MeshData is null!");
+            LOG_ERROR("MeshData is null!");
             assert(false);
         }
 
         // TODO: If VBO has data in it, handle deletion and re-assignment of new data
         if (m_BufferData.numPositions != 0) // Empty mesh?
         {
-            QwerkE::LogError(__FILE__, __LINE__, "Mesh already has vertex data!");
+            LOG_ERROR("Mesh already has vertex data!");
             assert(false);
         }
 
@@ -49,7 +49,7 @@ namespace QwerkE {
 
         if (m_BufferData.BufferSize() < 1)
         {
-            QwerkE::LogError(__FILE__, __LINE__, "Error buffering mesh vertex data!");
+            LOG_ERROR("Error buffering mesh vertex data!");
             assert(false);
         }
 
@@ -111,7 +111,7 @@ namespace QwerkE {
         if (m_BufferData.numIndices > 0) { m_DrawFunc = &Mesh::DrawElements; } // Draw using elements
         else if (m_BufferData.numPositions > 0) { m_DrawFunc = &Mesh::DrawArrays; } // No IBO or indices
         else { // Data not initialized/invalid
-            QwerkE::LogWarning(__FILE__, __LINE__, "Mesh assigned null draw method");
+            LOG_WARN("Mesh assigned null draw method");
             m_DrawFunc = &Mesh::NullDraw;
         }
 
@@ -151,14 +151,14 @@ namespace QwerkE {
                     glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.BitangentsOffset());
                 else
                 {
-                    QwerkE::LogWarning(__FILE__, __LINE__, "Attribute name not found/supported: %s", attributes->at(i));
+                    LOG_WARN("Attribute name not found/supported: %s", attributes->at(i).c_str());
                     continue;
                 }
 
                 glEnableVertexAttribArray(attributeLoc); // Enable
             }
             else
-                QwerkE::LogWarning(__FILE__, __LINE__, "Attribute name not found/supported: %s", attributes->at(i));
+                LOG_WARN("Attribute name not found/supported: %s", attributes->at(i).c_str());
         }
         // TODO: Check if vertex arrays should to be disabled after drawing
         glBindVertexArray(0); // Unbind

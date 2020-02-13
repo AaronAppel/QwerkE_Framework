@@ -1,5 +1,5 @@
 #include "../../Graphics_Header.h"
-#include "../../../QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../Systems/Log/Log.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
 #include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
@@ -13,39 +13,32 @@
 
 namespace QwerkE {
 
-    // OpenGLHelpers.cpp
+#ifdef _QDebug
     void GLCheckforErrors()
     {
         GLenum error = glGetError();
         if (error != 0)
-            OutputPrint("\nglGetError: %i-> ", error);
+            LOG_ERROR("glGetError: %i-> ", error);
         if (error == GL_INVALID_VALUE)
-            OutputPrint("Invalid value used.", error);
+            LOG_ERROR("Invalid value used.", error);
         if (error == GL_INVALID_OPERATION)
-            OutputPrint("Invalid operation.", error);
-    }
-
-    void GLCheckforErrors(char* file, int line)
-    {
-        GLenum error = glGetError();
-        if (error != 0)
-            OutputPrint("\nglGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
-        if (error == GL_INVALID_VALUE)
-            OutputPrint("Invalid value. Can't find value.");
-        if (error == GL_INVALID_OPERATION)
-            OutputPrint("Invalid operation.");
+            LOG_ERROR("Invalid operation.", error);
     }
 
     void GLCheckforErrors(const char* file, int line)
     {
         GLenum error = glGetError();
         if (error != 0)
-            OutputPrint("\nglGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
+            LOG_ERROR("glGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
         if (error == GL_INVALID_VALUE)
-            OutputPrint("Invalid value. Can't find value.");
+            LOG_ERROR("Invalid operation. Can't find value.");
         if (error == GL_INVALID_OPERATION)
-            OutputPrint("Invalid operation.");
+            LOG_ERROR("Invalid operation.");
     }
+#else
+    void GLCheckforErrors() {}
+    void GLCheckforErrors(const char* file, int line) {}
+#endif // _QDebug
 
     GLuint LoadTextureDataToOpenGL(QImageFile& fileData)
     {
@@ -90,7 +83,7 @@ namespace QwerkE {
 
         if (!imageData)
         {
-            OutputPrint("GLLoad2DTexture(): Failed to load: \"%s\"\n", filePath);
+            LOG_ERROR("GLLoad2DTexture(): Failed to load: \"%s\"", filePath);
             return 0;
         }
         else
@@ -148,7 +141,7 @@ namespace QwerkE {
 
         if (result != 0) // error decoding image data
         {
-            OutputPrint("LoadTexture(): Error loading image: %s\n", filename);
+            LOG_ERROR("LoadTexture(): Error loading image: %s", filename);
             free(pngbuffer);
             delete[] filebuffer;
             return 0; // exit

@@ -67,9 +67,6 @@
     <Filter Include="Systems\Input">
       <UniqueIdentifier>{8ced35bc-8d87-4114-bc83-ac50f6ffd49e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Systems\Logger">
-      <UniqueIdentifier>{1d3ba439-6b98-4558-989a-d5d32a56d287}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Systems\Physics">
       <UniqueIdentifier>{890f9f4f-4309-4645-8f45-a46e298d91ce}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,12 @@
     </Filter>
     <Filter Include="Systems\Jobs">
       <UniqueIdentifier>{9a643911-a596-4f62-9f41-ff2c0d024d08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Log">
+      <UniqueIdentifier>{1d3ba439-6b98-4558-989a-d5d32a56d287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Profiler">
+      <UniqueIdentifier>{788df397-307e-44bd-835a-cb00e93bef3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -241,9 +244,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\glfw_InputCallBacks.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.cpp">
-      <Filter>Systems\Logger</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.cpp">
       <Filter>Systems\Physics</Filter>
     </ClCompile>
@@ -350,6 +350,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.cpp">
       <Filter>Systems\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Log\Log.cpp">
+      <Filter>Systems\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Profiler\Profiler.cpp">
+      <Filter>Systems\Profiler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -489,9 +495,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h">
       <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Logger\Logger.h">
-      <Filter>Systems\Logger</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.h">
       <Filter>Systems\Physics</Filter>
@@ -636,6 +639,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.h">
       <Filter>Systems\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Log\Log.h">
+      <Filter>Systems\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Profiler\Profiler.h">
+      <Filter>Systems\Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Profiler\Instrumentor.h">
+      <Filter>Systems\Profiler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

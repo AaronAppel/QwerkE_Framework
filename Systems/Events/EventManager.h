@@ -11,6 +11,7 @@ namespace QwerkE {
     {
     public:
         static void Initialize();
+        static void Shutdown();
 
         static void QueueEvent(Event* _event);
 

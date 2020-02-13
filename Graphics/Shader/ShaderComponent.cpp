@@ -38,7 +38,7 @@ namespace QwerkE {
         {
             m_Name = "Error";
             m_Type = "Error";
-            OutputPrint("\nError compiling Shader Component: %s\n", shaderPath);
+            LOG_ERROR("Error compiling Shader Component: %s", shaderPath);
         }
     }
 

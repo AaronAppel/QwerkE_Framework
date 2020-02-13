@@ -91,7 +91,7 @@ namespace QwerkE {
 			*/
 			else
 			{
-				OutputPrint("\nInstantiateMesh(): Mesh not found! %s\n", meshFilePath);
+				LOG_ERROR("InstantiateMesh(): Mesh not found! %s", meshFilePath);
 				return m_Meshes[null_mesh];
 			}
 

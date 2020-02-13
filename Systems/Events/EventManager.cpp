@@ -1,10 +1,14 @@
 #include "EventManager.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
-#include "../../QwerkE_Common/Utilities/Helpers.h"
 #include "Event.h"
+#include "../../QwerkE_Common/Utilities/Helpers.h"
+#include "Systems/Log/Log.h"
+
+#include <pThreads/pthread.h>
 
 namespace QwerkE {
 
+    // TODO: Make QueueEvent() thread safe
+    static pthread_mutex_t* mutex = nullptr;
     const int EventManager::m_EventMax = 100;
     std::queue<Event*> EventManager::m_EventList;
 
@@ -13,22 +17,29 @@ namespace QwerkE {
 
     void EventManager::Initialize()
     {
+        mutex = new pthread_mutex_t();
+    }
 
+    void EventManager::Shutdown()
+    {
+        delete mutex;
     }
 
     void EventManager::QueueEvent(Event* _event)
     {
+        // pthread_mutex_lock(mutex);
         // TODO: Implement thread safe API for multi threaded event queuing
         if (m_EventList.size() < m_EventMax)
         {
             _event->SetID(helpers_GetUniqueID());
             m_EventList.push(_event);
-            OutputPrint("Event %i Queued!", _event->GetID());
+            LOG_INFO("Event %i Queued!", _event->GetID());
         }
         else
         {
-            OutputPrint("Event list is full!");
+            LOG_ERROR("Event list is full!");
         }
+        // pthread_mutex_unlock(mutex);
     }
 
     void EventManager::ProcessEvents()
@@ -49,10 +60,10 @@ namespace QwerkE {
             case eEventTypes::eEvent_InputEvent:
                 break;
             case eEventTypes::eEvent_Invalid:
-                OutputPrint("\nEvent had invalid type!\n");
+                LOG_ERROR("Invalid event type found!");
                 break;
             default:
-                OutputPrint("\nError reading event type!\nMake sure all types are handled.\n");
+                LOG_ERROR("Error reading event type. Make sure all types are handled!");
                 break;
             }
 

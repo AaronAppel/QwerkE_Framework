@@ -67,7 +67,7 @@
 
 #include "../Systems/Jobs/Jobs.h"
 
-#include "../Systems/Logger/Logger.h"
+#include "../Systems/Log/Log.h"
 
 #include "../Systems/MessageManager.h"
 

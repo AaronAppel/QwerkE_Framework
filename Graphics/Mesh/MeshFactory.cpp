@@ -1,6 +1,5 @@
 #include "MeshFactory.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../../Graphics/Graphics_Header.h"
 #include "../../Graphics/Mesh/MeshData.h"
 #include "../../QwerkE_Common/Math_Includes.h"
@@ -151,8 +150,8 @@ namespace QwerkE {
 		char* buffer = LoadCompleteFile(fileDirectory, &length);
 		if (buffer == 0 || length == 0)
 		{
-			delete[] buffer;
-			OutputPrint("\nMesh: ImportOBJMesh() error reading %s\n", fileDirectory);
+            delete[] buffer;
+            LOG_ERROR("Mesh: ImportOBJMesh() error reading %s", fileDirectory);
 			return 0;
 		}
 
@@ -222,8 +221,8 @@ namespace QwerkE {
 					&tempVertexIndices[2], &tempUVIndices[2], &tempNormalIndices[2]);
 
 				if (matches != 9)
-				{
-					OutputPrint("\nMeshHelpers: ImportOBJMesh() -> Error reading %s.\n", fileDirectory);
+                {
+                    LOG_ERROR("MeshHelpers: ImportOBJMesh() -> Error reading %s", fileDirectory);
 				}
 
 				/* Save values */

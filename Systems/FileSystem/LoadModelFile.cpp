@@ -34,7 +34,7 @@ namespace QwerkE {
 				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 				{
                     std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                    LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
+					LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
 					return nullptr; // failure
 				}
 				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, modelFilePath, meshName);
@@ -75,7 +75,7 @@ namespace QwerkE {
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
                 std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
+                LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
 				return false; // failure
 			}
 
@@ -115,7 +115,7 @@ namespace QwerkE {
 				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 				{
                     std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                    LogWarning(__FILE__, __LINE__, "ERROR::ASSIMP::%s", importer.GetErrorString());
+					LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
 					return nullptr; // failure
 				}
 				QwerkE_assimp_loadModelAs1Mesh(scene->mRootNode, scene, mesh, modelFilePath);

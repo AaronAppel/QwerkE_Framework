@@ -1,5 +1,4 @@
 #include "OpenAL_Helpers.h"
-#include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 
 namespace QwerkE {
 
@@ -10,22 +9,23 @@ namespace QwerkE {
             // case AL_INVALID_DEVICE:
             // case AL_INVALID_CONTEXT:
         case AL_INVALID_NAME:
-            OutputPrint("AL_INVALID_NAME");
+            LOG_ERROR("AL_INVALID_NAME");
             break;
         case AL_INVALID_ENUM:
-            OutputPrint("AL_INVALID_ENUM");
+            LOG_ERROR("AL_INVALID_ENUM");
             break;
         case AL_INVALID_VALUE:
-            OutputPrint("AL_INVALID_VALUE");
+            LOG_ERROR("AL_INVALID_VALUE");
             break;
         case AL_OUT_OF_MEMORY:
-            OutputPrint("AL_OUT_OF_MEMORY");
+            LOG_ERROR("AL_OUT_OF_MEMORY");
             break;
         default:
-            OutputPrint("Unknown error!");
+            LOG_ERROR("Unknown error!");
             break;
         }
     }
+
     // TODO: Source this or rewrite
     std::string list_audio_devices(const ALCchar* devices)
     {
@@ -34,15 +34,15 @@ namespace QwerkE {
         std::string retValue = device;
         size_t len = 0;
 
-        fprintf(stdout, "Devices list:\n");
-        fprintf(stdout, "----------\n");
+        LOG_INFO("OpenAL devices list:");
+        LOG_INFO("----------");
         while (device && *device != '\0' && next && *next != '\0') {
-            fprintf(stdout, "%s\n", device);
+            LOG_INFO("%s", (char*)device);
             len = strlen(device);
             device += (len + 1);
             next += (len + 2);
         }
-        fprintf(stdout, "----------\n");
+        LOG_INFO("----------");
         return retValue;
     }
 
@@ -60,7 +60,7 @@ namespace QwerkE {
             else if (soundFile.s_BitsPerSample == 8)
                 format = AL_FORMAT_MONO8;
             else
-                OutputPrint("OpenAL_LoadSound(): Invalid bits per sample in %s", soundFile.s_Name);
+                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in %s", soundFile.s_Name);
         }
         else if (soundFile.s_Channels == 2)
         {
@@ -69,7 +69,7 @@ namespace QwerkE {
             else if (soundFile.s_BitsPerSample == 8)
                 format = AL_FORMAT_STEREO8;
             else
-                OutputPrint("OpenAL_LoadSound(): Invalid bits per sample in %s", soundFile.s_Name);
+                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in %s", soundFile.s_Name);
         }
         else
         {

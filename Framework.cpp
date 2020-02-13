@@ -29,6 +29,7 @@
 #include "Modules/Time.h"
 #include "Graphics/Mesh/MeshFactory.h"
 #include "Systems/Input/Input.h"
+#include "Systems/Log/Log.h"
 
 namespace QwerkE {
 
@@ -63,7 +64,9 @@ namespace QwerkE {
 			{
 				ConsolePrint("\nStartup(): Error loading libraries!\n");
 				return eEngineMessage::_QFailure; // failure
-			}
+            }
+
+            LOG_INFO("Test spdlog message.");
 
             // TODO: Cleanup switch or if/else if statements below. Find a nice way to detect which library objects to load
 
@@ -83,7 +86,7 @@ namespace QwerkE {
                 m_Window = new glfw_Window(g_WindowWidth, g_WindowHeight, g_WindowTitle);
             else
             {
-                LogError(__FILE__, __LINE__, "No window library detected! Check config libraries value.");
+				LOG_ERROR("No window library detected! Check config libraries value.");
                 assert(false);
             }
 
@@ -146,10 +149,15 @@ namespace QwerkE {
 			// Network::Initialize();
 
 			Scenes::Initialize(); // Order Dependency
+
+			return eEngineMessage::_QSuccess;
 		}
 
 		eEngineMessage Framework::TearDown()
         {
+			// TODO: ShutdownSystems();
+            EventManager::Shutdown();
+
 			Libs_TearDown(); // unload libraries
 
 			// TODO: Safety checks?
@@ -157,7 +165,7 @@ namespace QwerkE {
 		}
 
 		void Framework::Run()
-		{
+        {
             assert(m_Window != nullptr); // Don't forget to call Framework::Startup() to initiailize the framework
 
 			// TODO: check if(initialized) in case user defined simple API.

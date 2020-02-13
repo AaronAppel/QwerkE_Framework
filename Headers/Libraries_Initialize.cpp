@@ -9,7 +9,6 @@
 //////////////////////////////
 
 #include "Libraries_Include.h"
-#include "../QwerkE_Common/Utilities/PrintFunctions.h"
 #include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
 
 namespace QwerkE {
@@ -20,7 +19,8 @@ namespace QwerkE {
         ConfigData config = ConfigHelper::GetConfigData(); // TODO: Add #include
         bool errorFree = true; // Return value. If error occurs set to false
 
-        ConsolePrint("Libs_Setup(): Initializing libraries...\n");
+        Log::Safe("Libs_Setup(): Initializing libraries...\n");
+
         // Setup/Load libraries based on platform, architecture, configuration
         // TODO: Clean up #ifs
 #ifdef _Q32Bit // architecture
@@ -50,17 +50,20 @@ namespace QwerkE {
 //////////////////////////////
 // FILES //
 //////////////////////////////
+// spdlog
+        Log::Initialize();
+
 // font loading/rendering
 // freetype2
         FT_Library ft;
         if (FT_Init_FreeType(&ft))
         {
-            ConsolePrint("\nError loading freetype2!\n");
+            Log::Safe("Error loading freetype2!");
             errorFree = false;
         }
         else
         {
-            ConsolePrint("Freetype Loaded,\n");
+            Log::Safe("Freetype Loaded,\n");
             FT_Done_FreeType(ft);
         }
         //////////////////////////////
@@ -72,12 +75,12 @@ namespace QwerkE {
         // GLFW
         if (!glfwInit())
         {
-            ConsolePrint("\nError loading GLFW step 1!\n");
+            Log::Safe("\nError loading GLFW step 1!\n");
             errorFree = false;
         }
         else
         {
-            ConsolePrint("GLFW Loaded,\n");
+            Log::Safe("GLFW Loaded,\n");
 
             // TODO: Setup proper window hints
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); //using OpenGL 4.3
@@ -98,7 +101,7 @@ namespace QwerkE {
             window = glfwCreateWindow(100, 100, "Test", NULL, NULL);
             if (!window)
             {
-                ConsolePrint("\nError loading GLFW step 2!\n");
+                Log::Safe("\nError loading GLFW step 2!\n");
                 errorFree = false;
 
                 /*int code = glfwGetError(NULL);
@@ -147,11 +150,11 @@ namespace QwerkE {
                 glfwMakeContextCurrent(window);
                 if (glewInit() != GLEW_OK)
                 {
-                    ConsolePrint("\nError loading GLEW!\n");
+                    Log::Safe("\nError loading GLEW!\n");
                     errorFree = false;
                 }
                 else
-                    ConsolePrint("GLEW Loaded,\n");
+                    Log::Safe("GLEW Loaded,\n");
 
                 glfwDestroyWindow(window); // Clean up
             }
@@ -166,14 +169,14 @@ namespace QwerkE {
         ImGuiContext* context = ImGui::CreateContext();
         if (context == nullptr)
         {
-            ConsolePrint("\nError loading imgui!\n");
+            Log::Safe("\nError loading imgui!\n");
             errorFree = false;
         }
         else
         {
             ImGui::SetCurrentContext(context);
 
-            ConsolePrint("imgui Loaded,\n");
+            Log::Safe("imgui Loaded,\n");
             ImGuiIO& io = ImGui::GetIO();
 
             io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
@@ -224,9 +227,9 @@ namespace QwerkE {
         //////////////////////////////
 
         if (errorFree)
-            ConsolePrint("Libs_Setup(): Libraries Initialized successfully\n\n");
+            Log::Safe("Libs_Setup(): Libraries Initialized successfully\n\n");
         else
-            ConsolePrint("Libs_Setup(): Error loading libraries\n\n");
+            Log::Safe("Libs_Setup(): Error loading libraries\n\n");
 
         return errorFree;
     }
@@ -235,8 +238,11 @@ namespace QwerkE {
     {
         ImGui_ImplGlfw_Shutdown(); // shutdown imgui
         ImGui::DestroyContext(); // destroy imgui
-        glfwTerminate(); // shutdown glfw
         // TODO: OpenAL, Bullet, freetype2, GLEW?, RakNet
+
+        // Last to keep error logging functionality
+        glfwTerminate();
+        Log::Shutdown();
     }
 
 }
