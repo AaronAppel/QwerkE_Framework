@@ -1,5 +1,5 @@
 #include "Resources.h"
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/glew/GL/glew.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Texture.h"
 #include "../../Graphics/Mesh/Mesh.h"

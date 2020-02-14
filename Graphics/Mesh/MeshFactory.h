@@ -1,8 +1,6 @@
 #ifndef _Mesh_Factory_H_
 #define _Mesh_Factory_H_
 
-#include "../QwerkE_Common/Math_Includes.h"
-
 namespace QwerkE {
 
     struct VertexData;

@@ -1,7 +1,7 @@
 #ifndef _MaterialComponent_H_
 #define _MaterialComponent_H_
 
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/glew/GL/glew.h"
 #include "../Headers/QwerkE_Enums.h"
 
 #include <string>

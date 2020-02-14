@@ -5,7 +5,7 @@
 
 class ShaderProgram;
 typedef float GLfloat;
-#include "../../QwerkE_Common/Libraries/glm/glm/glm.hpp"
+#include "../../Libraries/glm/glm/glm.hpp"
 
 namespace QwerkE {
 

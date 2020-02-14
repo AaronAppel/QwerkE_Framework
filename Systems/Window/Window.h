@@ -2,7 +2,6 @@
 #define _Window_H_
 
 #include "../../QwerkE_Common/DataTypes/Vector.h"
-#include "../../QwerkE_Common/Math_Includes.h"
 
 namespace QwerkE {
 

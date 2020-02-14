@@ -5,7 +5,7 @@
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderVariable_Defines.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/glew/GL/glew.h"
 
 #include <string>
 #include <assert.h>

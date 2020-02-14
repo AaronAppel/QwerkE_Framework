@@ -45,11 +45,11 @@
 //////////////////////////////
 // JSON //
 // cJSON
-#include "../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
+#include "../Libraries/cJSON_Interface/cJSONInterface.h"
 
 // images //
 // lodepng
-#include "../QwerkE_Common/Libraries/lodepng/lodepng.h"
+#include "../Libraries/lodepng/lodepng.h"
 // stb_image
 // TODO: stb_image needs to be loaded later on, after some other ???? library
 // #define STB_IMAGE_IMPLEMENTATION
@@ -60,13 +60,13 @@
 // models //
 // assimp
 #pragma warning( disable : 26495 )
-#include "../QwerkE_Common/Libraries/assimp/config.h"
+#include "../Libraries/assimp/config.h"
 #pragma warning( enable : 26495 )
 
 // font loading/rendering
 // freetype2
-#include "../QwerkE_Common/Libraries/freetype2/ft2build.h"
-#include "../QwerkE_Common/Libraries/freetype2/freetype/freetype.h"
+#include "../Libraries/freetype2/ft2build.h"
+#include "../Libraries/freetype2/freetype/freetype.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -74,9 +74,9 @@
 //////////////////////////////
 // XBOX Controller //
 // xinput
-#include "../QwerkE_Common/Libraries/EasyXinput/EasyXinput.h"
+#include "../Libraries/EasyXinput/EasyXinput.h"
 // lib usb
-// #include "../QwerkE_Common/Libraries/libusb/libusb.h"
+// #include "../Libraries/libusb/libusb.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -84,10 +84,10 @@
 //////////////////////////////
 // openGL extensions wrangler //
 // GLEW
-#include "../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../Libraries/glew/GL/glew.h"
 // window creation //
 // GLFW
-#include "../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+#include "../Libraries/glfw/GLFW/glfw3.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -113,9 +113,9 @@
 // immediate mode //
 // imgui
 #pragma warning( disable : 4244 )
-#include "../QwerkE_Common/Libraries/imgui/imgui.h"
-#include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
-#include "../QwerkE_Common/Libraries/imgui/imgui_impl_opengl3.h"
+#include "../Libraries/imgui/imgui.h"
+#include "../Libraries/imgui/imgui_impl_glfw.h"
+#include "../Libraries/imgui/imgui_impl_opengl3.h"
 #pragma warning( enable : 4244 )
 //////////////////////////////
 
@@ -128,7 +128,7 @@
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
-#include "../QwerkE_Common/Libraries/pThreads/pthread.h"
+#include "../Libraries/pThreads/pthread.h"
 //////////////////////////////
 
 //////////////////////////////
@@ -144,9 +144,9 @@
 //////////////////////////////
 // glm and other math related includes
 #pragma warning( disable : 26495 )
-#include "../QwerkE_Common/Libraries/glm/glm/glm.hpp"
-#include "../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
-#include "../QwerkE_Common/Libraries/glm/glm//gtc/type_ptr.hpp"
+#include "../Libraries/glm/glm/glm.hpp"
+#include "../Libraries/glm/glm/gtc/matrix_transform.hpp"
+#include "../Libraries/glm/glm//gtc/type_ptr.hpp"
 #pragma warning( enable : 26495 )
 /////////////////////////////
 
@@ -163,15 +163,17 @@
 // Bullet3
 // Consider creating a library for bullet projects.
 #pragma warning( disable : 26495 )
-#include "../QwerkE_Common/Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
-#include "../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
-#include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#pragma warning( disable : 4099 )
+//#include "../Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
+//#include "../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+//#include "../Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
+//#include "../Libraries/Bullet3/LinearMath/btAabbUtil2.h"
+//#include "../Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+//#include "../Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+//#include "../Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
+//#include "../Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
 #pragma warning( enable : 26495 )
+#pragma warning( enable : 4099 )
 /////////////////////////////
 
 // TODO: Add necessary headers.

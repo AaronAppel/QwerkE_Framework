@@ -1,9 +1,11 @@
 #ifndef _CameraComponent_H_
 #define _CameraComponent_H_
 
+// TODO: Remove and rely on 1 consistent math library
+#include "QwerkE_Common/Math_Includes.h"
+
 #include "../../../Headers/QwerkE_Global_Constants.h"
-#include "../../../QwerkE_Common/Math_Includes.h"
-#include "../../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../../Libraries/glew/GL/glew.h"
 #include "../../../Headers/QwerkE_Enums.h"
 #include "../../Components/Component.h"
 

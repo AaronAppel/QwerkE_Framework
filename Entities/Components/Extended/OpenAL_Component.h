@@ -3,7 +3,7 @@
 
 #include "../AudioComponent.h"
 
-#include "../../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../../Libraries/OpenAL/include/al.h"
 
 namespace QwerkE {
 

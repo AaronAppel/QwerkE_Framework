@@ -1,6 +1,5 @@
 #include "MeshUtilities.h"
 #include "MeshData.h"
-#include "../../QwerkE_Common/Math_Includes.h"
 
 namespace QwerkE {
 

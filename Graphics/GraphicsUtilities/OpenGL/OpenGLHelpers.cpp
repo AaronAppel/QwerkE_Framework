@@ -2,7 +2,7 @@
 #include "../Systems/Log/Log.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../../QwerkE_Common/Utilities/ImageHelpers.h"
-#include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
+#include "../../../Libraries/lodepng/lodepng.h"
 #include "../../../Systems/FileSystem/FileSystem.h"
 
 // TODO: Find a better spot for stb_image init
@@ -10,7 +10,7 @@
 #pragma warning( disable : 6001 )
 #pragma warning( disable : 6262 )
 #define STB_IMAGE_IMPLEMENTATION
-#include "../../../QwerkE_Common/Libraries/stb_image.h"
+#include "../../../Libraries/stb_image.h"
 #pragma warning( enable : 28182 )
 #pragma warning( enable : 6001 )
 #pragma warning( enable : 6262 )

@@ -5,8 +5,8 @@
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Graphics/Texture.h"
 
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+#include "../../Libraries/glew/GL/glew.h"
+#include "../../Libraries/glfw/GLFW/glfw3.h"
 
 namespace QwerkE {
 

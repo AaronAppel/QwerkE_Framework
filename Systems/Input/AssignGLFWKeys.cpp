@@ -1,6 +1,6 @@
 #include "Mouse.h"
 #include "Keyboard.h"
-#include "../../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+#include "../Libraries/glfw/GLFW/glfw3.h"
 
 namespace QwerkE {
 

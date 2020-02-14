@@ -3,8 +3,8 @@
 #include "Keyboard.h"
 
 #ifdef dearimgui
-#include "../../QwerkE_Common/Libraries/imgui/imgui.h"
-// #include "../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw_gl3.h"
+#include "../../Libraries/imgui/imgui.h"
+// #include "../../Libraries/imgui/imgui_impl_glfw_gl3.h"
 #endif // dearimgui
 
 namespace QwerkE {

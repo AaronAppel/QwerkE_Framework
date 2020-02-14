@@ -1,6 +1,5 @@
 #include "CameraComponent.h"
 #include "StaticCameraComponent.h"
-#include "../../../QwerkE_Common/Math_Includes.h"
 #include "../../../Headers/QwerkE_Enums.h"
 
 namespace QwerkE {

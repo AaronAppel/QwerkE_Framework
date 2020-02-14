@@ -1,6 +1,5 @@
 #include "OpenGLManager.h"
 #include "../Graphics/Graphics_Header.h"
-#include "../QwerkE_Common/Math_Includes.h"
 
 namespace QwerkE {
 

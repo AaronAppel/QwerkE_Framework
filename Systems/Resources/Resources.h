@@ -2,9 +2,9 @@
 #define _Resources_H_
 
 // TODO: Remove includes for all types if possible
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
-#include "../../QwerkE_Common/Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
+#include "../../Libraries/glew/GL/glew.h"
+#include "../../Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
+#include "../../Libraries/OpenAL/include/al.h"
 
 #include <string>
 #include <map>

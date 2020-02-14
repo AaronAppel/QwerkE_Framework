@@ -2,7 +2,7 @@
 #define _RenderRoutine_H_
 
 #include "Routine.h"
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/glew/GL/glew.h"
 #include "../../Graphics/Renderable.h"
 
 #include <vector>

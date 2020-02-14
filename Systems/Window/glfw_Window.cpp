@@ -1,7 +1,7 @@
 #include "glfw_Window.h"
 #include "CallbackFunctions.h"
 #include "Windows.h"
-#include "../../../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
+#include "../../Libraries/imgui/imgui_impl_glfw.h"
 
 namespace QwerkE {
 

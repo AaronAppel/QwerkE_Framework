@@ -1,7 +1,6 @@
 #ifndef _MeshUtilities_H_
 #define _MeshUtilities_H_
 
-#include "../QwerkE_Common/Math_Includes.h"
 #include "MeshData.h"
 #include <vector>
 

@@ -2,7 +2,7 @@
 #define _glfw_Window_H_
 
 #include "Window.h"
-#include "../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+#include "../../Libraries/glfw/GLFW/glfw3.h"
 
 // TODO: Extend window to handle more info such as in the link below
 // http://www.glfw.org/docs/latest/group__native.html

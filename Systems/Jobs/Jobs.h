@@ -10,7 +10,7 @@
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
-#include "../../../QwerkE_Common/Libraries/pThreads/pthread.h"
+#include "../../Libraries/pThreads/pthread.h"
 
 #include "../Events/EventManager.h"
 #include "../Events/Event.h"

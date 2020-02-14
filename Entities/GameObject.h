@@ -1,7 +1,6 @@
 #ifndef _GameObject_H_
 #define _GameObject_H_
 
-#include "../QwerkE_Common/Math_Includes.h"
 #include "../Headers/QwerkE_Enums.h"
 #include "../Headers/QwerkE_Global_Constants.h"
 

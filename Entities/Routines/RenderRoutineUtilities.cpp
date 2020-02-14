@@ -10,7 +10,6 @@
 #include "../../Graphics/Shader/ShaderVariable_Defines.h"
 #include "../../Graphics/Renderable.h"
 #include "../../Scenes/Scene.h"
-#include "../../QwerkE_Common/Math_Includes.h"
 #include "../../Headers/QwerkE_Enums.h"
 
 #include <string>

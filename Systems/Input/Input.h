@@ -11,8 +11,8 @@
 #include "../../QwerkE_Common/DataTypes/Vector.h"
 
 #ifdef GLFW3
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h" // TODO: Need?
-#include "../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+#include "../../Libraries/glew/GL/glew.h" // TODO: Need?
+#include "../../Libraries/glfw/GLFW/glfw3.h"
 #endif // GLFW3
 
 #include <map>

@@ -1,4 +1,4 @@
-#include "../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
+#include "../../Libraries/cJSON_Interface/cJSONInterface.h"
 #include "GraphicsHelpers.h"
 #include "OpenGL/OpenGLHelpers.h"
 #include "../../Entities/Components/RenderComponent.h"
@@ -265,7 +265,7 @@ namespace QwerkE {
             // set texture names
             cJSON* textureNames = GetItemFromRootByKey(root, "TextureNames");
 
-            for (int i = 0; i < GetArraySize(textureNames); i++)
+            for (unsigned int i = 0; i < GetArraySize(textureNames); i++)
             {
                 cJSON* value = GetItemFromArrayByIndex(textureNames, i);
                 if (value)

@@ -1,19 +1,19 @@
 #include "QwerkE_AssimpLoading.h"
-#include "../../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
-#include "../../../../QwerkE_Framework/Graphics/Mesh/MeshData.h"
-#include "../../../../QwerkE_Framework/Graphics/Material.h"
-#include "../../../../QwerkE_Framework/Graphics/Texture.h"
-#include "../../../../QwerkE_Framework/Systems/Resources/Resources.h"
-#include "../../../../QwerkE_Framework/Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "Graphics/Mesh/Mesh.h"
+#include "Graphics/Mesh/MeshData.h"
+#include "Graphics/Material.h"
+#include "Graphics/Texture.h"
+#include "Systems/Resources/Resources.h"
+#include "Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 
 #pragma warning( disable : 26495 )
-#include "../../QwerkE_Common/Libraries/assimp/Importer.hpp"
-#include "../../QwerkE_Common/Libraries/assimp/scene.h"
-#include "../../QwerkE_Common/Libraries/assimp/postprocess.h"
-#include "../../QwerkE_Common/Libraries/assimp/config.h"
-#include "../../QwerkE_Common/Libraries/assimp/material.h"
+#include "../../Libraries/assimp/Importer.hpp"
+#include "../../Libraries/assimp/scene.h"
+#include "../../Libraries/assimp/postprocess.h"
+#include "../../Libraries/assimp/config.h"
+#include "../../Libraries/assimp/material.h"
 #pragma warning( enable : 26495 )
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?

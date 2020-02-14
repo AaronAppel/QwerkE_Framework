@@ -2,7 +2,7 @@
 #define _Mesh_H_
 
 #include "../Headers/QwerkE_Global_Constants.h"
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/glew/GL/glew.h"
 
 #include <string>
 

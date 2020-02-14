@@ -9,7 +9,7 @@
 //////////////////////////////
 
 #include "Libraries_Include.h"
-#include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
+#include "../Libraries/imgui/imgui_impl_glfw.h"
 
 namespace QwerkE {
 

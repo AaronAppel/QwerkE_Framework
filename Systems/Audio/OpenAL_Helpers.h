@@ -1,8 +1,8 @@
 #ifndef _OpenAL_Helpers_H_
 #define _OpenAL_Helpers_H_
 
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
-#include "../../QwerkE_Common/Libraries/OpenAL/include/alc.h"
+#include "../../Libraries/OpenAL/include/al.h"
+#include "../../Libraries/OpenAL/include/alc.h"
 #include "../FileSystem/FileSystem.h"
 
 #include <string>

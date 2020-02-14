@@ -1,14 +1,16 @@
 #include "PhysicsWorld.h"
 #pragma warning( disable : 26495 )
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
-#include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionObject.h"
+#pragma warning( disable : 4099 )
+#include "../../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+#include "../../Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
+#include "../../Libraries/Bullet3/LinearMath/btAabbUtil2.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+#include "../../Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
+#include "../../Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionObject.h"
 #pragma warning( enable : 26495 )
+#pragma warning( enable : 4099 )
 
 #include <assert.h>
 
@@ -82,9 +84,7 @@ namespace QwerkE {
 		// Delete collision shapes.
 		for (int i = 0; i < m_CollisionShapes.size(); i++)
 		{
-			btCollisionShape* shape = m_CollisionShapes[i];
-			m_CollisionShapes[i] = 0;
-			delete shape;
+			delete m_CollisionShapes[i];
 		}
 		m_CollisionShapes.clear();
 

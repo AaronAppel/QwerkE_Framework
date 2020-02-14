@@ -3,8 +3,8 @@
 
 #include "Audio.h"
 
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
-#include "../../QwerkE_Common/Libraries/OpenAL/include/alc.h"
+#include "../../Libraries/OpenAL/include/al.h"
+#include "../../Libraries/OpenAL/include/alc.h"
 #include "../../QwerkE_Common/DataTypes/Vector.h"
 
 #include <vector>

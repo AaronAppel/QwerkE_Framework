@@ -3,7 +3,6 @@
 
 #include "../../Entities/Components/Component.h"
 #include "../../Headers/QwerkE_Enums.h"
-#include "../../QwerkE_Common/Math_Includes.h"
 
 #pragma warning( disable : 26495 )
 class MyMatrix;

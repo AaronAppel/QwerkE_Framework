@@ -6,10 +6,10 @@
 #include <iostream>
 #include <string.h>
 
-#include "../../QwerkE_Common/Libraries/RakNet/Source/RakPeerInterface.h"
-#include "../../QwerkE_Common/Libraries/RakNet/Source/RakNetTypes.h"
-#include "../../QwerkE_Common/Libraries/RakNet/Source/MessageIdentifiers.h"
-#include "../../QwerkE_Common/Libraries/RakNet/Source/BitStream.h"
+#include "../../Libraries/RakNet/Source/RakPeerInterface.h"
+#include "../../Libraries/RakNet/Source/RakNetTypes.h"
+#include "../../Libraries/RakNet/Source/MessageIdentifiers.h"
+#include "../../Libraries/RakNet/Source/BitStream.h"
 
 #define MAX_CLIENTS 10
 #define SERVER_PORT 60000

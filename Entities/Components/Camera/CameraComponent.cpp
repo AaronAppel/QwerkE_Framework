@@ -1,9 +1,8 @@
 #include "../Component.h"
 #include "CameraComponent.h"
 #include "../../GameObject.h"
-#include "../../../QwerkE_Common/Math_Includes.h"
 #include "../../../Headers/QwerkE_Enums.h"
-#include "../../../QwerkE_Common/Libraries/glfw/GLFW/glfw3.h"
+#include "../../../Libraries/glfw/GLFW/glfw3.h"
 #include "../../../Systems/Window/Windows.h"
 #include "../../../Systems/Window/Window.h"
 

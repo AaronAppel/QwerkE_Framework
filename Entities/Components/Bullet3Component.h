@@ -4,7 +4,7 @@
 #include "../../Entities/Components/Component.h"
 #include "../../Entities/Components/PhysicsComponent.h"
 #include "../../Entities/GameObject.h"
-#include "../../../QwerkE_Framework/QwerkE_Common/Libraries/Bullet3/LinearMath/btMotionState.h"
+#include "../../Libraries/Bullet3/LinearMath/btMotionState.h"
 
 namespace QwerkE {
 

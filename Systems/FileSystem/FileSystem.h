@@ -2,8 +2,8 @@
 #define _File_System_H_
 
 // TODO: Remove
-#include "../../QwerkE_Common/Libraries/OpenAL/include/al.h"
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/OpenAL/include/al.h"
+#include "../../Libraries/glew/GL/glew.h"
 #include "../../QwerkE_Common/Utilities/PrintFunctions.h"
 #include <string>
 

@@ -1,6 +1,6 @@
 #include "DataManager.h"
 #include "../Factory/Factory.h"
-#include "../../QwerkE_Common/Libraries/cJSON_Interface/cJSONInterface.h"
+#include "../../Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
 #include "../../Entities/Components/Camera/FreeCameraComponent.h"

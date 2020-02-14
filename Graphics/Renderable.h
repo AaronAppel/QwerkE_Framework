@@ -3,7 +3,7 @@
 
 #include "Mesh/Mesh.h"
 
-#include "../../QwerkE_Common/Libraries/glew/GL/glew.h"
+#include "../../Libraries/glew/GL/glew.h"
 
 class Mesh;
 class ShaderProgram;

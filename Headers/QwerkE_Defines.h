@@ -24,11 +24,11 @@
 
 // TODO: Move to directory defines file
 #ifndef AssetsDir
-#define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // Default uses QwerkE_Common Assets
+#define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // TODO: Remove common assets
 #endif // !AssetsDir
 
 #ifndef LibrariesDir
-#define LibrariesDir FrameworkDir "QwerkE_Common/Libraries/" // Default uses QwerkE_Common Libraries
+#define LibrariesDir FrameworkDir "Libraries/"
 #endif // LibrariesDir
 
 #define RuntimeDirectory "" // TODO: MakeDir

@@ -3,7 +3,6 @@
 
 // graphics
 // #define Wind_CCW 1 // For invert faces
-#include "../QwerkE_Common/Math_Includes.h"
 
 namespace QwerkE {
 
