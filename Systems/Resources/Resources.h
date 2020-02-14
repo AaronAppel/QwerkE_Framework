@@ -16,9 +16,9 @@
 
 namespace QwerkE {
 
+    struct Texture;
     class Mesh;
     class ShaderComponent;
-    class Texture;
     class Material;
     class Resources;
 

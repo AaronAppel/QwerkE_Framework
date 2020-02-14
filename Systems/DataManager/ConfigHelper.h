@@ -59,7 +59,7 @@ namespace QwerkE {
         Systems systems;
     };
 
-    static class ConfigHelper
+    class ConfigHelper
     {
     public:
         static void LoadConfigData(); // TODO: Load from file path. Do not rely on default paths, but instead generate the default path

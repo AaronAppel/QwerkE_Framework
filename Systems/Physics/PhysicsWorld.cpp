@@ -1,4 +1,5 @@
 #include "PhysicsWorld.h"
+#pragma warning( disable : 26495 )
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAabbUtil2.h"
@@ -6,6 +7,8 @@
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
 #include "../../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#include "../../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionObject.h"
+#pragma warning( enable : 26495 )
 
 #include <assert.h>
 

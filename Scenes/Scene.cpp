@@ -48,7 +48,7 @@ namespace QwerkE {
     void Scene::OnWindowResize(unsigned int width, unsigned int height)
     {
         // update camera view and projection matrices
-        for (int i = 0; i < m_CameraList.size(); i++)
+        for (unsigned int i = 0; i < m_CameraList.size(); i++)
         {
             // ((CameraComponent*)m_CameraList.At(i)->GetComponent(Component_Camera))->Setup();
             ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetViewportSize(vec2((float)width, (float)height));
@@ -173,7 +173,7 @@ namespace QwerkE {
     void Scene::RemoveCamera(GameObject* camera)
     {
         if (m_CameraList.size() < 2) { return; } // Need 1 camera
-        for (int i = 0; i < m_CameraList.size(); i++)
+        for (unsigned int i = 0; i < m_CameraList.size(); i++)
         {
             if (m_CameraList.at(i) == camera) // Pointer comparison
             {
@@ -186,7 +186,7 @@ namespace QwerkE {
 
     void Scene::SetupCameras()
     {
-        for (int i = 0; i < m_CameraList.size(); i++)
+        for (unsigned int i = 0; i < m_CameraList.size(); i++)
         {
             ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->Setup();
             ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetTargetPosition(vec3(0, 0, 0)); // Give initial target location
@@ -206,7 +206,7 @@ namespace QwerkE {
     void Scene::RemoveLight(GameObject* light)
     {
         if (m_LightList.size() < 2) { return; }
-        for (int i = 0; i < m_LightList.size(); i++)
+        for (unsigned int i = 0; i < m_LightList.size(); i++)
         {
             if (m_LightList.at(i) == light) // Pointer comparison
             {
@@ -220,7 +220,7 @@ namespace QwerkE {
 
     void Scene::SetupLights()
     {
-        for (int i = 0; i < m_LightList.size(); i++)
+        for (unsigned int i = 0; i < m_LightList.size(); i++)
         {
             // TODO:
         }
@@ -300,7 +300,7 @@ namespace QwerkE {
     {
         if (m_LevelFileName == gc_DefaultCharPtrValue)
         {
-            LOG_ERROR("Unable to Save scene! m_LevelFileName is \"%s\"", gc_DefaultCharPtrValue);
+            LOG_ERROR("Unable to Save scene! m_LevelFileName is \"{0}\"", gc_DefaultCharPtrValue);
             return;
         }
 
@@ -311,7 +311,7 @@ namespace QwerkE {
     {
         if (sceneFileName == gc_DefaultCharPtrValue)
         {
-            LOG_ERROR("Unable to Load scene! sceneFileName is \"%s\"", gc_DefaultCharPtrValue);
+            LOG_ERROR("Unable to Load scene! sceneFileName is \"{0}\"", gc_DefaultCharPtrValue);
             return;
         }
         m_LevelFileName = sceneFileName;

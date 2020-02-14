@@ -129,7 +129,7 @@ namespace QwerkE {
             for (int i = 0; i < QWERKE_ONE_FRAME_MAX_INPUT; i++)
             {
                 if (m_InputEventKeys[i] == key)
-                    return m_InputEventValues[i] == state;
+                    return m_InputEventValues[i] == (bool)state;
             }
         return 0;
     }

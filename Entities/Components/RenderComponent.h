@@ -37,10 +37,10 @@ namespace QwerkE {
 
         // Setters
         void SetSchematicName(std::string name) { m_SchematicName = name; }
-        void SetNameAtIndex(int index, std::string name);
-        void SetShaderAtIndex(int index, ShaderProgram* shader);
-        void SetMaterialAtIndex(int index, Material* material);
-        void SetMeshAtIndex(int index, Mesh* mesh);
+        void SetNameAtIndex(unsigned int index, std::string name);
+        void SetShaderAtIndex(unsigned int index, ShaderProgram* shader);
+        void SetMaterialAtIndex(unsigned int index, Material* material);
+        void SetMeshAtIndex(unsigned int index, Mesh* mesh);
 
         const std::vector<Renderable>* LookAtRenderableList() { return &m_RenderableList; }
 

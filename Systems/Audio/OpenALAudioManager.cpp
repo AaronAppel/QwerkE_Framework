@@ -13,7 +13,7 @@ namespace QwerkE {
 
 	OpenALAudioManager::OpenALAudioManager()
 	{
-		ALuint error;
+		// ALuint error;
 
 		std::string deviceName = list_audio_devices(alcGetString(NULL, ALC_DEVICE_SPECIFIER));
 		Device = alcOpenDevice(deviceName.c_str()); // select the "preferred device"

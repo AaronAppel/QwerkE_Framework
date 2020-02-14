@@ -32,7 +32,7 @@ namespace QwerkE {
     // TODO: Support more than 1 keyboard or multiple mice... for fun.
     // TODO: Fix GLFW callbacks to avoid "static" everywhere
 
-    class InputDevice;
+    struct InputDevice;
 
     class Input
     {

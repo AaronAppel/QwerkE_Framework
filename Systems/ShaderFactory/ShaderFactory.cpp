@@ -83,8 +83,8 @@ namespace QwerkE {
             char* next_token = 0;
             char* ShaderName = strtok_s((char*)shaderData, "\n", &next_token);
             // TODO: error reads as garbage characters.
-            LOG_ERROR("%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, shaderTypeString);
-            LOG_ERROR((const char*)infoLog); // OpenGL message
+            LOG_ERROR("%s: ShaderFactory: CreateShader(Glenum, const char*) {0} compile error-> ", ShaderName, shaderTypeString);
+            LOG_ERROR(infoLog); // OpenGL message
 
             // cleanup
             glDeleteShader(shaderHandle);
@@ -125,19 +125,19 @@ namespace QwerkE {
                     return true;
                 }
                 else
-                    LOG_ERROR("Shader link failed for shader program: %s", shader->GetName());
+                    LOG_ERROR("Shader link failed for shader program: {0}", shader->GetName());
 
                 return false;
             }
             else
             {
-                LOG_ERROR("Shader link failed because of null ShaderComponent*s for shader: %s", shader->GetName());
+                LOG_ERROR("Shader link failed because of null ShaderComponent(s) for shader: {0}", shader->GetName());
                 return false;
             }
         }
         else
         {
-            LOG_ERROR("Shader link failed because of null ShaderProgram*");
+            LOG_ERROR("Shader link failed because of null ShaderProgram!");
             return false;
         }
         return true;
@@ -165,7 +165,7 @@ namespace QwerkE {
                 char* ShaderName = strtok_s((char*)data, "\n", &next_token);
                 // TODO: error reads as garbage characters.
 
-                LOG_ERROR("%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, "GL_VERTEX_SHADER");
+                LOG_ERROR("{0}: ShaderFactory: CreateShader(Glenum, const char*) {1} compile error-> ", ShaderName, "GL_VERTEX_SHADER");
                 LOG_ERROR(infoLog); // OpenGL message
                 
                 // cleanup
@@ -181,7 +181,7 @@ namespace QwerkE {
         }
         else
         {
-            LOG_ERROR("Failed to create vertex shader for file: %s", vertPath);
+            LOG_ERROR("Failed to create vertex shader for file: {0}", vertPath);
             return 0;
         }
     }
@@ -207,7 +207,7 @@ namespace QwerkE {
                 char* next_token = 0;
                 char* ShaderName = strtok_s((char*)data, "\n", &next_token);
                 // TODO: error reads as garbage characters.
-                LOG_ERROR("%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, "GL_FRAGMENT_SHADER");
+                LOG_ERROR("{0}: ShaderFactory: CreateShader(Glenum, const char*) {1} compile error-> ", ShaderName, "GL_FRAGMENT_SHADER");
                 LOG_ERROR(infoLog); // OpenGL message
 
                 // cleanup
@@ -223,7 +223,7 @@ namespace QwerkE {
         }
         else
         {
-            LOG_ERROR("Failed to create fragment shader for file: %s", fragPath);
+            LOG_ERROR("Failed to create fragment shader for file: {0}", fragPath);
             return 0;
         }
     }
@@ -249,7 +249,7 @@ namespace QwerkE {
                 char* next_token = 0;
                 char* ShaderName = strtok_s((char*)data, "\n", &next_token);
                 // TODO: error reads as garbage characters.
-                LOG_ERROR("%s: ShaderFactory: CreateShader(Glenum, const char*) %s compile error-> ", ShaderName, "GL_GEOMETRY_SHADER");
+                LOG_ERROR("{0}: ShaderFactory: CreateShader(Glenum, const char*) {1} compile error-> ", ShaderName, "GL_GEOMETRY_SHADER");
                 LOG_ERROR(infoLog); // OpenGL message
 
                 // Cleanup
@@ -265,7 +265,7 @@ namespace QwerkE {
         }
         else
         {
-            LOG_ERROR("Failed to create geometry shader for file: %s", geoPath);
+            LOG_ERROR("Failed to create geometry shader for file: {0}", geoPath);
             return 0;
         }
     }
@@ -289,7 +289,7 @@ namespace QwerkE {
             vertexData = LitMaterialVert(vertexData);
             break;
         default:
-            LOG_ERROR("ShaderType %i unsupported", shaderType);
+            LOG_ERROR("ShaderType {0} unsupported", shaderType);
             break;
         }
 
@@ -297,7 +297,7 @@ namespace QwerkE {
 
         if (returnString == nullptr)
         {
-            LOG_ERROR("Failed to create vertex shader for type: %i", shaderType);
+            LOG_ERROR("Failed to create vertex shader for type: {0}", shaderType);
         }
         return returnString;
     }
@@ -321,7 +321,7 @@ namespace QwerkE {
             fragData = LitMaterialFrag(fragData);
             break;
         default:
-            LOG_ERROR("ShaderType %i unsupported", shaderType);
+            LOG_ERROR("ShaderType {0} unsupported", shaderType);
             break;
         }
 
@@ -351,7 +351,7 @@ namespace QwerkE {
             shaderString.append("// LitMaterial." + extension);
             break;
         default:
-            LOG_ERROR("ShaderType %i unsupported", shaderType);
+            LOG_ERROR("ShaderType {0} unsupported", shaderType);
             break;
         }
     }
@@ -433,7 +433,7 @@ namespace QwerkE {
     {
         if (!vert && !frag && !geo)
         {
-            LOG_ERROR("Error linking shaders. All components %i", 0); // (int)gc_NullHandleValue);
+            LOG_ERROR("Error linking shaders. All components {0}", 0); // (int)gc_NullHandleValue);
             return 0; // gc_NullHandleValue;
         }
 
@@ -457,7 +457,7 @@ namespace QwerkE {
         {
             GLchar infoLog[512];
             glGetProgramInfoLog(result, 512, NULL, infoLog);
-            LOG_ERROR("Error linking shaders: %i, %i, %i. Message: %s", vert, frag, geo, infoLog);
+            LOG_ERROR("Error linking shaders: {0}, {1}, {2}. Message: {3}", vert, frag, geo, infoLog);
             return 0; // gc_NullHandleValue;
         }
 

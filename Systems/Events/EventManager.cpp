@@ -33,7 +33,7 @@ namespace QwerkE {
         {
             _event->SetID(helpers_GetUniqueID());
             m_EventList.push(_event);
-            LOG_INFO("Event %i Queued!", _event->GetID());
+            LOG_INFO("Event {0} Queued!", _event->GetID());
         }
         else
         {

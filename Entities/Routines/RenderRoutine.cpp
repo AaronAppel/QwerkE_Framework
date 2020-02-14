@@ -30,7 +30,7 @@ namespace QwerkE {
             // Setup mesh, shader, material render time values for each renderable
             std::vector<Renderable>* renderables = m_pRenderComp->GetRenderableList();
 
-            for (int i = 0; i < renderables->size(); i++)
+            for (unsigned int i = 0; i < renderables->size(); i++)
             {
                 if (renderables->at(i).GetShaderSchematic())
                 {
@@ -43,14 +43,14 @@ namespace QwerkE {
                 ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
         }
         else
-            LOG_WARN("m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+            LOG_WARN("m_pRenderComp is nullptr for object {0}!", m_pParent->GetName().c_str());
     }
     //// Private functions
     void RenderRoutine::DrawMeshData(GameObject* a_Camera)
     {
         if (!m_pRenderComp)
         {
-            LOG_WARN("m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+            LOG_WARN("m_pRenderComp is nullptr for object {0}!", m_pParent->GetName().c_str());
             m_DrawFunc = &RenderRoutine::NullDraw;
             return;
         }
@@ -63,7 +63,7 @@ namespace QwerkE {
         {
             t_Renderables[i].GetShaderSchematic()->Use();
 
-            for (int j = 0; j < m_UniformSetupList[i].size(); j++)
+            for (unsigned int j = 0; j < m_UniformSetupList[i].size(); j++)
             {
                 (this->*m_UniformSetupList[i][j])(t_pCamera, &t_Renderables[i]);
             }
@@ -89,7 +89,7 @@ namespace QwerkE {
     {
         if (!m_pRenderComp)
         {
-            LOG_WARN("m_pRenderComp is nullptr for object %s!", m_pParent->GetName().c_str());
+            LOG_WARN("m_pRenderComp is nullptr for object {0}!", m_pParent->GetName().c_str());
             m_DrawFunc = &RenderRoutine::NullDraw;
             return;
         }
@@ -106,7 +106,7 @@ namespace QwerkE {
             m_UniformSetupList.push_back(temp);
         }
 
-        for (int i = 0; i < t_Renderables->size(); i++) // for each renderable
+        for (unsigned int i = 0; i < t_Renderables->size(); i++) // for each renderable
         {
             if (t_Renderables->at(i).GetShaderSchematic()->SeeUniforms()->size() == 0) t_Renderables->at(i).GetShaderSchematic()->FindAttributesAndUniforms();
             const std::vector<std::string>* t_Uniforms = t_Renderables->at(i).GetShaderSchematic()->SeeUniforms(); // get shader

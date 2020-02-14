@@ -66,8 +66,6 @@ namespace QwerkE {
 				return eEngineMessage::_QFailure; // failure
             }
 
-            LOG_INFO("Test spdlog message.");
-
             // TODO: Cleanup switch or if/else if statements below. Find a nice way to detect which library objects to load
 
 			// TODO: Try to reduce or avoid order dependency in system creation.
@@ -102,12 +100,12 @@ namespace QwerkE {
             if (config.systems.AudioEnabled)
             {
 				// TODO: Read audio library value and load proper audio library
-				Audio::Initialize();
-                ConsolePrint("\nAudio system initialized with OpenAL.");
+                Audio::Initialize();
+                Log::Info("Audio system initialized with OpenAL.");
             }
 			else
             {
-                ConsolePrint("No audio system loaded.");
+				Log::Info("No audio system loaded.");
 			}
 
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
@@ -128,7 +126,7 @@ namespace QwerkE {
             }
 			else
             {
-                ConsolePrint("\nNo physics system loaded.");
+                Log::Info("No physics system loaded.");
 			}
 
 			// MessageManager::Initialize();

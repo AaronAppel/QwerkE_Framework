@@ -7,7 +7,7 @@ namespace QwerkE {
 	// Scaling
 	void ScaleUVCOORDS(std::vector<vec2>& verts, vec2 UVScale)
 	{
-		for (int i = 0; i < verts.size(); i++)
+		for (unsigned int i = 0; i < verts.size(); i++)
 		{
 			//verts[i].uv.x * UVScale.x;
 			//verts[i].uv.y * UVScale.y;
@@ -17,7 +17,7 @@ namespace QwerkE {
 		NewScale.x = 1.0f / UVScale.x;
 		NewScale.y = 1.0f / UVScale.y;
 
-		for (int i = 0; i < verts.size(); i++)
+		for (unsigned int i = 0; i < verts.size(); i++)
 		{
 			verts[i].x = verts[i].x / NewScale.x;
 			verts[i].y = verts[i].y / NewScale.y;
@@ -61,7 +61,7 @@ namespace QwerkE {
 		*/
 
 		// scale
-		for (int i = 0; i < verts.size(); i++)
+		for (unsigned int i = 0; i < verts.size(); i++)
 		{
 			verts[i].x = verts[i].x * scale.x;
 			verts[i].y = verts[i].y * scale.y;
@@ -236,7 +236,7 @@ namespace QwerkE {
 		// initialize temporary storage values to a valid vertice position to compare with
 		std::vector<vec3> verts;
 
-		for (int i = 0; i < data.positions.size(); i++)
+		for (unsigned int i = 0; i < data.positions.size(); i++)
 		{
 			verts.push_back(data.positions[i]);
 		}
@@ -306,7 +306,7 @@ namespace QwerkE {
 		}
 
 		// transfer uv coords back to array
-		for (int i = 0; i < data.positions.size(); i++)
+		for (unsigned int i = 0; i < data.positions.size(); i++)
 		{
 			data.positions[i] = verts.at(i);
 		}

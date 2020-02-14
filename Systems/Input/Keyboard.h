@@ -5,6 +5,8 @@
 
 namespace QwerkE {
 
+    // TODO: Should be class?
+    // TODO: Useful?
     struct Keyboard : public InputDevice
     {
         Keyboard(eInputDeviceTypes type) : InputDevice(type) {}

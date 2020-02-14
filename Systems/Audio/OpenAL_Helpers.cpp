@@ -21,7 +21,7 @@ namespace QwerkE {
             LOG_ERROR("AL_OUT_OF_MEMORY");
             break;
         default:
-            LOG_ERROR("Unknown error!");
+            LOG_ERROR("alGetError: Unknown error caught in file {0}({1})", file, line);
             break;
         }
     }
@@ -37,7 +37,7 @@ namespace QwerkE {
         LOG_INFO("OpenAL devices list:");
         LOG_INFO("----------");
         while (device && *device != '\0' && next && *next != '\0') {
-            LOG_INFO("%s", (char*)device);
+            LOG_INFO("{0}", (char*)device);
             len = strlen(device);
             device += (len + 1);
             next += (len + 2);
@@ -60,7 +60,7 @@ namespace QwerkE {
             else if (soundFile.s_BitsPerSample == 8)
                 format = AL_FORMAT_MONO8;
             else
-                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in %s", soundFile.s_Name);
+                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in {0}", soundFile.s_Name);
         }
         else if (soundFile.s_Channels == 2)
         {
@@ -69,7 +69,7 @@ namespace QwerkE {
             else if (soundFile.s_BitsPerSample == 8)
                 format = AL_FORMAT_STEREO8;
             else
-                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in %s", soundFile.s_Name);
+                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in {0}", soundFile.s_Name);
         }
         else
         {

@@ -28,7 +28,7 @@ namespace QwerkE {
 			m_EventQueue.pop();
 			delete pEvent;
 		}*/
-		for (int i = 0; i < m_Scenes.size(); i++)
+		for (unsigned int i = 0; i < m_Scenes.size(); i++)
 		{
 			Scene* temp = m_Scenes[(eSceneTypes)i];
 			delete temp;
@@ -48,7 +48,7 @@ namespace QwerkE {
 			cJSON* root = OpencJSONStream(prefPath);
 			cJSON* scenes = GetItemFromRootByKey(root, "Scenes");
 
-			int size = GetArraySize(scenes);
+			unsigned int size = GetArraySize(scenes);
 			for (unsigned int i = 0; i < size; i++)
 			{
 				cJSON* scene = GetItemFromArrayByIndex(scenes, i);
@@ -57,7 +57,7 @@ namespace QwerkE {
 
 				if (FileExists(SceneFolderPath(sceneFileName)) == false)
 				{
-					LOG_WARN("Null scene loaded because scene file not found: %s", sceneFileName);
+					LOG_WARN("Null scene loaded because scene file not found: {0}", sceneFileName);
 					continue;
 				}
 
@@ -127,7 +127,7 @@ namespace QwerkE {
 
 	void Scenes::DisableAll()
 	{
-		for (int i = 0; i < m_Scenes.size(); i++)
+		for (unsigned int i = 0; i < m_Scenes.size(); i++)
 		{
 			Scene* temp = m_Scenes[(eSceneTypes)i];
 			temp->SetIsEnabled(false);

@@ -5,6 +5,14 @@
 #include "../../../QwerkE_Common/Utilities/StringHelpers.h"
 #include "../../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 
+#pragma warning( disable : 26495 )
+#include "../../QwerkE_Common/Libraries/assimp/Importer.hpp"
+#include "../../QwerkE_Common/Libraries/assimp/scene.h"
+#include "../../QwerkE_Common/Libraries/assimp/postprocess.h"
+#include "../../QwerkE_Common/Libraries/assimp/config.h"
+#include "../../QwerkE_Common/Libraries/assimp/material.h"
+#pragma warning( enable : 26495 )
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -34,7 +42,7 @@ namespace QwerkE {
 				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 				{
                     std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-					LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
+					LOG_ERROR("ERROR::ASSIMP::{0}", importer.GetErrorString());
 					return nullptr; // failure
 				}
 				QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, modelFilePath, meshName);
@@ -75,7 +83,7 @@ namespace QwerkE {
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
                 std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-                LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
+                LOG_ERROR("ERROR::ASSIMP::{0}", importer.GetErrorString());
 				return false; // failure
 			}
 
@@ -115,7 +123,7 @@ namespace QwerkE {
 				if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 				{
                     std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-					LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
+					LOG_ERROR("ERROR::ASSIMP::{0}", importer.GetErrorString());
 					return nullptr; // failure
 				}
 				QwerkE_assimp_loadModelAs1Mesh(scene->mRootNode, scene, mesh, modelFilePath);

@@ -1,16 +1,20 @@
 #include "FileSystem.h"
 #include "LoadImageFile.h"
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../Resources/Resources.h"
+#include "../Log/Log.h"
+
+#pragma warning( disable : 26495 )
+#include "QwerkE_AssimpLoading.h"
 #include "../../QwerkE_Common/Libraries/assimp/Importer.hpp"
 #include "../../QwerkE_Common/Libraries/assimp/scene.h"
 #include "../../QwerkE_Common/Libraries/assimp/postprocess.h"
 #include "../../QwerkE_Common/Libraries/assimp/config.h"
 #include "../../QwerkE_Common/Libraries/assimp/material.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../Resources/Resources.h"
-#include "../Log/Log.h"
-#include "QwerkE_AssimpLoading.h"
+#pragma warning( enable : 26495 )
+
 #include "../../Graphics/Mesh/Mesh.h"
 #include "../Audio/OpenAL_Helpers.h"
 
@@ -69,7 +73,7 @@ namespace QwerkE {
 		if (strcmp(extention.c_str(), "jpg") == 0)
 		{
             // returnBuffer = QwerkE_stb_image_loadImage(path, imageWidth, imageHeight, channels, flipVertically);
-            LOG_ERROR("LoadImageFile(): .jpg image not loaded. No working jpg load function currently: %s", path);
+            LOG_ERROR("LoadImageFile(): .jpg image not loaded. No working jpg load function currently: {0}", path);
 		}
 		else if (strcmp(extention.c_str(), "png") == 0)
 		{
@@ -93,16 +97,16 @@ namespace QwerkE {
 		}
 		else
 		{
-			LOG_WARN("LoadImageFile(): Image type unsupported for file: %s", path);
+			LOG_WARN("LoadImageFile(): Image type unsupported for file: {0}", path);
 		}
 
 		if (!returnBuffer)// (returnBuffer == nullptr || strcmp((const char*)returnBuffer, "") == 0)
 		{
-			LOG_ERROR("LoadImageFile(): Failed to load image: %s", path);
+			LOG_ERROR("LoadImageFile(): Failed to load image: {0}", path);
 			return nullptr; // failed
 		}
 
-		LOG_INFO("LoadImageFile(): Loaded: %s", path);
+		LOG_INFO("LoadImageFile(): Loaded: {0}", path);
 		return returnBuffer;
 	}
 
@@ -142,7 +146,7 @@ namespace QwerkE {
 
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
-				LOG_WARN("ERROR::ASSIMP::%s", importer.GetErrorString());
+				LOG_WARN("ERROR::ASSIMP::{0}", importer.GetErrorString());
 				return nullptr; // failure
 			}
 			QwerkE_assimp_loadModelAs1Mesh(scene->mRootNode, scene, mesh, modelFilePath);
@@ -182,7 +186,7 @@ namespace QwerkE {
 
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
-				LOG_WARN("ERROR::ASSIMP::%s", importer.GetErrorString());
+				LOG_WARN("ERROR::ASSIMP::{0}", importer.GetErrorString());
 				return nullptr; // failure
 			}
 			QwerkE_assimp_loadMeshByName(scene->mRootNode, scene, mesh, modelFilePath, meshName);
@@ -222,7 +226,7 @@ namespace QwerkE {
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-			LOG_ERROR("ERROR::ASSIMP::%s", importer.GetErrorString());
+			LOG_ERROR("ERROR::ASSIMP::{0}", importer.GetErrorString());
 			return false; // failure
 		}
 

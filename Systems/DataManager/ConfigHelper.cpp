@@ -20,7 +20,7 @@ namespace QwerkE {
         cJSON* root = OpencJSONStream(configFilePath.c_str());
         if (root == nullptr)
         {
-            LOG_ERROR("Unable to load json for file %s", configFilePath);
+            LOG_ERROR("Unable to load json for file {0}", configFilePath);
             return;
         }
 
@@ -41,7 +41,7 @@ namespace QwerkE {
         cJSON* scenes = GetItemFromRootByKey(root, "Scenes");
         std::vector<cJSON*> sceneList = GetAllItemsFromArray(scenes);
 
-        for (int i = 0; i < sceneList.size(); i++)
+        for (unsigned int i = 0; i < sceneList.size(); i++)
         {
             m_ConfigData.scenes.fileNames.push_back(sceneList.at(i)->valuestring);
         }
@@ -90,7 +90,7 @@ namespace QwerkE {
         // Scenes // TODO: Put scenes inside SceneSettings
         cJSON* scenes = CreateArray("Scenes");
 
-        for (int i = 0; i < m_ConfigData.scenes.fileNames.size(); i++)
+        for (unsigned int i = 0; i < m_ConfigData.scenes.fileNames.size(); i++)
         {
             AddItemToArray(scenes, CreateString(std::to_string(i).c_str(), m_ConfigData.scenes.fileNames[i].c_str()));
         }

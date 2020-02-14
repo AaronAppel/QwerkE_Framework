@@ -91,7 +91,7 @@ namespace QwerkE {
 			*/
 			else
 			{
-				LOG_ERROR("InstantiateMesh(): Mesh not found! %s", meshFilePath);
+				LOG_ERROR("InstantiateMesh(): Mesh not found! {0}", meshFilePath);
 				return m_Meshes[null_mesh];
 			}
 
@@ -188,7 +188,8 @@ namespace QwerkE {
 
 		if (handle != 0)
 		{
-			m_Sounds[GetFileNameWithExt(soundPath)] = handle;
+            m_Sounds[GetFileNameWithExt(soundPath)] = handle;
+			return handle;
 		}
 		else
 		{

@@ -11,7 +11,7 @@ namespace QwerkE {
     struct VertexData;
     class ShaderProgram;
     class Mesh;
-    class MeshData;
+    struct MeshData;
 
     typedef void (QwerkE::Mesh::* MeshFunction)(); // Draw function
 

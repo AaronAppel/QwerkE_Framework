@@ -59,7 +59,9 @@
 
 // models //
 // assimp
+#pragma warning( disable : 26495 )
 #include "../QwerkE_Common/Libraries/assimp/config.h"
+#pragma warning( enable : 26495 )
 
 // font loading/rendering
 // freetype2
@@ -110,9 +112,11 @@
 //////////////////////////////
 // immediate mode //
 // imgui
+#pragma warning( disable : 4244 )
 #include "../QwerkE_Common/Libraries/imgui/imgui.h"
 #include "../QwerkE_Common/Libraries/imgui/imgui_impl_glfw.h"
 #include "../QwerkE_Common/Libraries/imgui/imgui_impl_opengl3.h"
+#pragma warning( enable : 4244 )
 //////////////////////////////
 
 //////////////////////////////
@@ -139,9 +143,11 @@
 // math
 //////////////////////////////
 // glm and other math related includes
+#pragma warning( disable : 26495 )
 #include "../QwerkE_Common/Libraries/glm/glm/glm.hpp"
 #include "../QwerkE_Common/Libraries/glm/glm/gtc/matrix_transform.hpp"
 #include "../QwerkE_Common/Libraries/glm/glm//gtc/type_ptr.hpp"
+#pragma warning( enable : 26495 )
 /////////////////////////////
 
 //////////////////////////////
@@ -156,6 +162,7 @@
 //////////////////////////////
 // Bullet3
 // Consider creating a library for bullet projects.
+#pragma warning( disable : 26495 )
 #include "../QwerkE_Common/Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
 #include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
 #include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
@@ -164,6 +171,7 @@
 #include "../QwerkE_Common/Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
 #include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
 #include "../QwerkE_Common/Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#pragma warning( enable : 26495 )
 /////////////////////////////
 
 // TODO: Add necessary headers.

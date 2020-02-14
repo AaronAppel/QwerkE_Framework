@@ -151,7 +151,7 @@ namespace QwerkE {
 		if (buffer == 0 || length == 0)
 		{
             delete[] buffer;
-            LOG_ERROR("Mesh: ImportOBJMesh() error reading %s", fileDirectory);
+            LOG_ERROR("Mesh: ImportOBJMesh() error reading {0}", fileDirectory);
 			return 0;
 		}
 
@@ -222,7 +222,7 @@ namespace QwerkE {
 
 				if (matches != 9)
                 {
-                    LOG_ERROR("MeshHelpers: ImportOBJMesh() -> Error reading %s", fileDirectory);
+                    LOG_ERROR("MeshHelpers: ImportOBJMesh() -> Error reading {0}", fileDirectory);
 				}
 
 				/* Save values */

@@ -151,14 +151,14 @@ namespace QwerkE {
                     glVertexAttribPointer(attributeLoc, 3, GL_FLOAT, GL_FALSE, vertexDataStride, (GLvoid*)m_BufferData.BitangentsOffset());
                 else
                 {
-                    LOG_WARN("Attribute name not found/supported: %s", attributes->at(i).c_str());
+                    LOG_WARN("Attribute name not found/supported: {0}", attributes->at(i).c_str());
                     continue;
                 }
 
                 glEnableVertexAttribArray(attributeLoc); // Enable
             }
             else
-                LOG_WARN("Attribute name not found/supported: %s", attributes->at(i).c_str());
+                LOG_WARN("Attribute name not found/supported: {0}", attributes->at(i).c_str());
         }
         // TODO: Check if vertex arrays should to be disabled after drawing
         glBindVertexArray(0); // Unbind

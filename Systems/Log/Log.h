@@ -2,7 +2,18 @@
 #define _Log_H_
 
 #include <memory>
+
+#pragma warning( disable : 26437 )
+#pragma warning( disable : 26451 )
+#pragma warning( disable : 26495 )
+#pragma warning( disable : 26498 )
+#pragma warning( disable : 6387 )
 #include <spdlog/spdlog.h>
+#pragma warning( enable : 26437 )
+#pragma warning( enable : 26451 )
+#pragma warning( enable : 26495 )
+#pragma warning( enable : 26498 )
+#pragma warning( enable : 6387 )
 
 namespace QwerkE {
 

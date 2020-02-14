@@ -3,7 +3,7 @@
 
 namespace QwerkE {
 
-    class Keyboard;
+    struct Keyboard;
 
     class KeyboardExtAPI
     {

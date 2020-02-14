@@ -1,7 +1,9 @@
 #ifndef _PhysicsWorld_H_
 #define _PhysicsWorld_H_
 
+#pragma warning( disable : 26495 )
 #include "../../QwerkE_Common/Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
+#pragma warning( enable : 26495 )
 
 class btDiscreteDynamicsWorld;
 class btCollisionShape;

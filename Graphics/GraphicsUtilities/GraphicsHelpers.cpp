@@ -170,7 +170,7 @@ namespace QwerkE {
                 renderComponent->SetMeshAtIndex(i, Resources::GetMesh(null_mesh));
 
                 std::vector<Renderable>* renderables = renderComponent->GetRenderableList();
-                for (int i = 0; i < renderables->size(); i++)
+                for (unsigned int i = 0; i < renderables->size(); i++)
                 {
                     renderables->at(i).GetMesh()->SetupShaderAttributes(renderables->at(i).GetShaderSchematic());
                 }

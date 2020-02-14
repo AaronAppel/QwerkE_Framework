@@ -5,9 +5,15 @@
 #include "../../../QwerkE_Common/Libraries/lodepng/lodepng.h"
 #include "../../../Systems/FileSystem/FileSystem.h"
 
-// TODO: Find a better spot for st_image init
+// TODO: Find a better spot for stb_image init
+#pragma warning( disable : 28182 )
+#pragma warning( disable : 6001 )
+#pragma warning( disable : 6262 )
 #define STB_IMAGE_IMPLEMENTATION
 #include "../../../QwerkE_Common/Libraries/stb_image.h"
+#pragma warning( enable : 28182 )
+#pragma warning( enable : 6001 )
+#pragma warning( enable : 6262 )
 
 // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 
@@ -18,7 +24,7 @@ namespace QwerkE {
     {
         GLenum error = glGetError();
         if (error != 0)
-            LOG_ERROR("glGetError: %i-> ", error);
+            LOG_ERROR("glGetError: {0}-> ", error);
         if (error == GL_INVALID_VALUE)
             LOG_ERROR("Invalid value used.", error);
         if (error == GL_INVALID_OPERATION)
@@ -29,11 +35,11 @@ namespace QwerkE {
     {
         GLenum error = glGetError();
         if (error != 0)
-            LOG_ERROR("glGetError: Error caught in file %s(%i) -> Error %i ", file, line, error);
+            LOG_ERROR("glGetError: Error caught in file {0}({1}) -> Error {2} ", file, line, error);
         if (error == GL_INVALID_VALUE)
-            LOG_ERROR("Invalid operation. Can't find value.");
+            LOG_ERROR("glGetError: Can't find value in file {0}({1}) -> Error {2} ", file, line, error);
         if (error == GL_INVALID_OPERATION)
-            LOG_ERROR("Invalid operation.");
+            LOG_ERROR("glGetError: Invalid operation caught in file {0}({1}) -> Error {2} ", file, line, error);
     }
 #else
     void GLCheckforErrors() {}
@@ -83,7 +89,7 @@ namespace QwerkE {
 
         if (!imageData)
         {
-            LOG_ERROR("GLLoad2DTexture(): Failed to load: \"%s\"", filePath);
+            LOG_ERROR("GLLoad2DTexture(): Failed to load: \"{0}\"", filePath);
             return 0;
         }
         else
@@ -141,7 +147,7 @@ namespace QwerkE {
 
         if (result != 0) // error decoding image data
         {
-            LOG_ERROR("LoadTexture(): Error loading image: %s", filename);
+            LOG_ERROR("LoadTexture(): Error loading image: {0}", filename);
             free(pngbuffer);
             delete[] filebuffer;
             return 0; // exit

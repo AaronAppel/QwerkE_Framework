@@ -5,7 +5,7 @@
 
 namespace QwerkE {
 
-    class Mouse;
+    struct Mouse;
 
     class MouseExtAPI
     {

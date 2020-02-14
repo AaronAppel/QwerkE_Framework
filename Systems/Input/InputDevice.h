@@ -5,6 +5,7 @@
 
 namespace QwerkE {
 
+    // TODO: Should be class?
     struct InputDevice
     {
         InputDevice() {}
@@ -26,7 +27,6 @@ namespace QwerkE {
 
         virtual void NewFrame();
 
-    protected:
         InputDevice(eInputDeviceTypes type) { m_DeviceType = type; }
 
         eInputDeviceTypes m_DeviceType = eInputDeviceTypes::Max_Device;

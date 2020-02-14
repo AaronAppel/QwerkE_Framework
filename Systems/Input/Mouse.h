@@ -7,6 +7,7 @@
 
 namespace QwerkE {
 
+    // TODO: Should be class?
     struct Mouse : public InputDevice
     {
         vec2 s_MousePos = vec2(0, 0);

@@ -94,7 +94,7 @@ namespace QwerkE {
         m_RenderableList.push_back(renderable);
     }
 
-    void RenderComponent::SetNameAtIndex(int index, std::string name)
+    void RenderComponent::SetNameAtIndex(unsigned int index, std::string name)
     {
         // TODO: More error handling
         if (index < m_RenderableList.size())
@@ -103,7 +103,7 @@ namespace QwerkE {
         }
     }
 
-    void RenderComponent::SetShaderAtIndex(int index, ShaderProgram* shader)
+    void RenderComponent::SetShaderAtIndex(unsigned int index, ShaderProgram* shader)
     {
         // TODO: More error handling
         if (index < m_RenderableList.size() && shader != nullptr)
@@ -120,7 +120,7 @@ namespace QwerkE {
         }
     }
 
-    void RenderComponent::SetMaterialAtIndex(int index, Material* material)
+    void RenderComponent::SetMaterialAtIndex(unsigned int index, Material* material)
     {
         // TODO: More error handling
         if (index < m_RenderableList.size() && material != nullptr)
@@ -128,7 +128,7 @@ namespace QwerkE {
         // TODO: Changing material will need to reset render routine in the future
     }
 
-    void RenderComponent::SetMeshAtIndex(int index, Mesh* mesh)
+    void RenderComponent::SetMeshAtIndex(unsigned int index, Mesh* mesh)
     {
         // TODO: More error handling
         if (index < m_RenderableList.size() && mesh != nullptr)

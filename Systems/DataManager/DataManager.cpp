@@ -47,7 +47,7 @@ namespace QwerkE {
 
         cJSON* t_CameraList = CreateArray("CameraList");
         AddItemToObject(root, t_CameraList);
-        for (int i = 0; i < t_CameraObjectList.size(); i++)
+        for (unsigned int i = 0; i < t_CameraObjectList.size(); i++)
         {
             AddItemToArray(t_CameraList, ConvertGameObjectToJSON(t_CameraObjectList.at(i)));
         }
@@ -57,14 +57,14 @@ namespace QwerkE {
 
         cJSON* t_LightList = CreateArray("LightList");
         AddItemToObject(root, t_LightList);
-        for (int i = 0; i < t_LightObjectList.size(); i++)
+        for (unsigned int i = 0; i < t_LightObjectList.size(); i++)
         {
             AddItemToArray(t_LightList, ConvertGameObjectToJSON(t_LightObjectList.at(i)));
         }
 
         // WRITE TO FILE
         PrintRootObjectToFile(fileDir, root);
-        LOG_INFO("DataManager: Scene file %s saved", fileDir);
+        LOG_INFO("DataManager: Scene file {0} saved", fileDir);
         ClosecJSONStream(root);
     }
 
@@ -136,7 +136,7 @@ namespace QwerkE {
 
         // END
         ClosecJSONStream(root);
-        LOG_INFO("DataManager: Scene file %s loaded", fileDir);
+        LOG_INFO("DataManager: Scene file {0} loaded", fileDir);
     }
 
     // Utility

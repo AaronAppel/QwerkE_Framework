@@ -8,6 +8,14 @@
 #include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../QwerkE_Common/Utilities/StringHelpers.h"
 
+#pragma warning( disable : 26495 )
+#include "../../QwerkE_Common/Libraries/assimp/Importer.hpp"
+#include "../../QwerkE_Common/Libraries/assimp/scene.h"
+#include "../../QwerkE_Common/Libraries/assimp/postprocess.h"
+#include "../../QwerkE_Common/Libraries/assimp/config.h"
+#include "../../QwerkE_Common/Libraries/assimp/material.h"
+#pragma warning( enable : 26495 )
+
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
 // TODO: Split functions into smaller pieces. Ex. LoadMeshFromAI() can call functions to GetVertsFromAIMesh, GetUVs, GetMats... etc
 
