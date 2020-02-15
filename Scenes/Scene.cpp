@@ -4,7 +4,7 @@
 #include "../Entities/Components/Camera/CameraComponent.h"
 #include "../Systems/Input/Input.h"
 #include "../Systems/DataManager/DataManager.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../Systems/Misc/StringHelpers.h"
 
 #include <algorithm>
 

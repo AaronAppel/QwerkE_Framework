@@ -8,8 +8,8 @@
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/GameObject.h"
-#include "../../QwerkE_Common/Utilities/Helpers.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/Helpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
 #include "../FileSystem/FileSystem.h"
 
 #include <string>

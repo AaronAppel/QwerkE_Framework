@@ -5,8 +5,8 @@
 #include "Graphics/Texture.h"
 #include "Systems/Resources/Resources.h"
 #include "Graphics/GraphicsUtilities/GraphicsHelpers.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Systems/FileSystem/FileIO/FileUtilities.h"
 
 #pragma warning( disable : 26495 )
 #include "../../Libraries/assimp/Importer.hpp"

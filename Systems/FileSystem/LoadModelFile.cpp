@@ -2,8 +2,8 @@
 #include "../../../QwerkE_Framework/Systems/Resources/Resources.h"
 #include "../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
 
-#include "QwerkE_Common/Utilities/StringHelpers.h"
-#include "QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Systems/FileSystem/FileIO/FileUtilities.h"
 
 #pragma warning( disable : 26495 )
 #include "../../Libraries/assimp/Importer.hpp"

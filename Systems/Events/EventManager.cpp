@@ -1,6 +1,6 @@
 #include "EventManager.h"
 #include "Event.h"
-#include "../../QwerkE_Common/Utilities/Helpers.h"
+#include "../../Systems/Misc/Helpers.h"
 #include "Systems/Log/Log.h"
 
 #include <pThreads/pthread.h>

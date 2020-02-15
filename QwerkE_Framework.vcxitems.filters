@@ -142,6 +142,21 @@
     <Filter Include="Libraries\spdlog">
       <UniqueIdentifier>{c493e250-321b-46e2-a0f0-4047e888d87e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Math">
+      <UniqueIdentifier>{df1c6fa2-bb1c-49bf-ad9a-cf74f827133e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Time">
+      <UniqueIdentifier>{27c5d69e-9502-4bdf-a6f7-29268982cd8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\DataTypes">
+      <UniqueIdentifier>{e89a3347-5543-4c0d-8b03-7a4d14e51bde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Math\Tween">
+      <UniqueIdentifier>{42e51dd1-9713-4dbf-912d-20324ee277d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems\Misc">
+      <UniqueIdentifier>{b20a5c9f-61f3-4875-becb-a91b5c705d3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Framework.cpp" />
@@ -207,12 +222,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.cpp">
       <Filter>Graphics\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Time.cpp">
-      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.cpp">
       <Filter>Scenes</Filter>
@@ -426,6 +435,54 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\lodepng\lodepng.cpp">
       <Filter>Libraries\lodepng</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\Math.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MathFunctions.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MathStuff.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MyMatrix.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MyQuaternion.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\ValueChecking.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\VectorMathHelpers.cpp">
+      <Filter>Modules\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Time\Time.cpp">
+      <Filter>Modules\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\Tween\TweenFuncs.cpp">
+      <Filter>Modules\Math\Tween</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\FileUtilities.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\MyFileWriter.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\ImageHelpers.cpp">
+      <Filter>Systems\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Log\PrintFunctions.cpp">
+      <Filter>Systems\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Misc\Helpers.cpp">
+      <Filter>Systems\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Misc\ProgramArgs.cpp">
+      <Filter>Systems\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Misc\StringHelpers.cpp">
+      <Filter>Systems\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
@@ -464,9 +521,6 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\LightData.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\material.h">
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialComponent.h">
@@ -510,12 +564,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariable_Defines.h">
       <Filter>Graphics\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time.h">
-      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.h">
       <Filter>Scenes</Filter>
@@ -2337,6 +2385,93 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\spdlog\details\thread_pool.h">
       <Filter>Libraries\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Math.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathConstants.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathFunctions.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathHelpers.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathStuff.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MyMatrix.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MyQuaternion.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\ValueChecking.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Vector_deprecated.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\VectorMathHelpers.h">
+      <Filter>Modules\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time\Time.h">
+      <Filter>Modules\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time\Timer.h">
+      <Filter>Modules\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\CPPList.h">
+      <Filter>Modules\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\MyLinkedList.h">
+      <Filter>Modules\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\ObjectPool.h">
+      <Filter>Modules\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\RangedValue.h">
+      <Filter>Modules\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Tween\Tween.h">
+      <Filter>Modules\Math\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Tween\TweenFuncs.h">
+      <Filter>Modules\Math\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\FileUtilities.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\MyFileWriter.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Material.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\ImageHelpers.h">
+      <Filter>Systems\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Log\PrintFunctions.h">
+      <Filter>Systems\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\GUID.h">
+      <Filter>Systems\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\Helpers.h">
+      <Filter>Systems\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\ProgramArgs.h">
+      <Filter>Systems\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\ReflectionMacros.h">
+      <Filter>Systems\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\SmartPointer.h">
+      <Filter>Systems\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\StringHelpers.h">
+      <Filter>Systems\Misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

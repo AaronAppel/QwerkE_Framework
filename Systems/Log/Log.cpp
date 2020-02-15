@@ -1,7 +1,8 @@
 #include "Log.h"
-#include "Utilities/PrintFunctions.h"
 
 #include <spdlog/sinks/stdout_color_sinks.h>
+
+#include <fstream> // vsnprintf_s
 
 namespace QwerkE {
 
@@ -21,7 +22,7 @@ namespace QwerkE {
 
     void Log::Safe(const char* message)
     {
-        ConsolePrint(message);
+        fprintf(stderr, message);
     }
 
     void Log::Trace(const std::string& message)

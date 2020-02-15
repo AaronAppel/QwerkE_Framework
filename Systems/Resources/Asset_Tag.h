@@ -2,7 +2,7 @@
 #define _Texture_Asset_H_
 
 #include "Asset.h"
-#include "../../QwerkE_Common/DataTypes/Vector.h"
+#include "../../Modules/Math/Vector.h"
 #include "../../Headers/QwerkE_Global_Constants.h"
 
 #include <string>

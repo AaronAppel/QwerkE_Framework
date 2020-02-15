@@ -4,7 +4,7 @@
 #include "../Scenes/PBR_Test1.h"
 #include "../Scenes/Scene.h"
 #include "../Headers/QwerkE_Enums.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "FileSystem/FileIO/FileUtilities.h"
 
 #include <map>
 

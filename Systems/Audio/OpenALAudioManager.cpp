@@ -2,7 +2,7 @@
 #include "../Log/Log.h"
 #include "../FileSystem/FileSystem.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
 #include "../Resources/Resources.h"
 #include "OpenAL_Helpers.h"
 #include "AudioSource.h"

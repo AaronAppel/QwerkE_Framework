@@ -3,7 +3,7 @@
 
 #include "InputDevice.h"
 
-#include "QwerkE_Common/DataTypes/Vector.h"
+#include "../Modules/Math/Vector.h"
 
 namespace QwerkE {
 

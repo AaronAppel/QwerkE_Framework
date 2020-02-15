@@ -1,6 +1,6 @@
 #include "Factory.h"
 #include "../../Scenes/Scene.h"
-#include "../../QwerkE_Common/Utilities/Helpers.h"
+#include "../../Systems/Misc/Helpers.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"

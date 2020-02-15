@@ -153,8 +153,8 @@
 //////////////////////////////
 // physics
 //////////////////////////////
-#include "../QwerkE_Common/Utilities/Tween/Tween.h"
-#include "../QwerkE_Common/Utilities/Tween/TweenFuncs.h"
+#include "../Modules/Math/Tween/Tween.h"
+#include "../Modules/Math/Tween/TweenFuncs.h"
 //////////////////////////////
 
 //////////////////////////////

@@ -2,7 +2,7 @@
 #define _Material_H_
 
 #include "../Libraries/glew/GL/glew.h"
-#include "../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../Systems/FileSystem/FileIO/FileUtilities.h"
 #include "GraphicsUtilities/GraphicsHelpers.h"
 #include "../Headers/QwerkE_Enums.h"
 #include "Texture.h"

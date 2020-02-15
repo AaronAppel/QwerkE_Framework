@@ -2,8 +2,8 @@
 #include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
+#include "../../Systems/FileSystem/FileIO/FileUtilities.h"
+#include "../../Systems/Misc/StringHelpers.h"
 
 namespace QwerkE {
 

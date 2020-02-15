@@ -1,8 +1,8 @@
 #include "FileSystem.h"
 #include "LoadImageFile.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "FileIO/FileUtilities.h"
+#include "FileIO/FileUtilities.h"
+#include "../Misc/StringHelpers.h"
 #include "../Resources/Resources.h"
 #include "../Log/Log.h"
 

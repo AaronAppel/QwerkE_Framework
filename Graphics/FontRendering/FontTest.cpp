@@ -8,7 +8,7 @@
 #include "../../Libraries/glm/glm/common.hpp"
 #include "../../Libraries/glm/glm/gtc/type_ptr.hpp"
 #include "../../Libraries/glm/glm/gtc/matrix_transform.hpp"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
 
 #include <iostream>

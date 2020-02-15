@@ -1,9 +1,10 @@
 #include "CallbackFunctions.h"
 #include "../Resources/Resources.h"
+#include "../Log/Log.h"
 #include "../FileSystem/FileSystem.h"
-#include "../../QwerkE_Common/Utilities/FileIO/FileUtilities.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Graphics/Texture.h"
+#include "../../Systems/FileSystem/FileIO/FileUtilities.h"
 
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../Libraries/glfw/GLFW/glfw3.h"
@@ -89,8 +90,7 @@ namespace QwerkE {
 
     void error_callback(int error, const char* description)
     {
-        // fprintf(stderr, "Error %d: %s\n", error, description);
-        ConsolePrint(description);
+        LOG_ERROR(description);
     }
 
     // file

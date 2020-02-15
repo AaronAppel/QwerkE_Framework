@@ -5,7 +5,7 @@
 #include "Libraries/imgui/imgui_impl_glfw.h"
 #include "Libraries/imgui/imgui_impl_opengl3.h"
 #include "Headers/QwerkE_Enums.h"
-#include "QwerkE_Common/Utilities/Helpers.h"
+#include "Systems/Misc/Helpers.h"
 #include "Headers/Libraries_Initialize.h"
 #include "Systems/Events/EventManager.h"
 #include "Systems/Scenes.h"
@@ -26,7 +26,7 @@
 #include "Systems/Window/glfw_Window.h"
 #include "Systems/FileSystem/FileSystem.h"
 #include "Systems/DataManager/ConfigHelper.h"
-#include "Modules/Time.h"
+#include "Modules/Time/Time.h"
 #include "Graphics/Mesh/MeshFactory.h"
 #include "Systems/Input/Input.h"
 #include "Systems/Log/Log.h"
@@ -62,7 +62,7 @@ namespace QwerkE {
 
 			if (Libs_Setup() == false) // setup libraries
 			{
-				ConsolePrint("\nStartup(): Error loading libraries!\n");
+				Log::Safe("\nStartup(): Error loading libraries!\n");
 				return eEngineMessage::_QFailure; // failure
             }
 

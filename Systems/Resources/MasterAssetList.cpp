@@ -1,18 +1,15 @@
-#include "../../Systems/Resources/Resources.h"
+#include "Resources.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Graphics/Shader/ShaderComponent.h"
-#include "../../Systems/ShaderFactory/ShaderFactory.h"
-#include "QwerkE_Common/Utilities/StringHelpers.h"
-#include "QwerkE_Common/Utilities/PrintFunctions.h"
+#include "../ShaderFactory/ShaderFactory.h"
+#include "../Misc/StringHelpers.h"
 #include "../FileSystem/FileSystem.h"
-#include "../FileSystem/FileSystem.h"
-#include "Utilities/FileIO/FileUtilities.h"
-#include "Math_Includes.h"
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../Graphics/Texture.h"
 #include "../Jobs/Jobs.h"
+#include "../Log/Log.h"
 
 namespace QwerkE {
 
@@ -123,7 +120,7 @@ namespace QwerkE {
 		}
 		else
 		{
-            ConsolePrint("\nInstantiateTexture(): Texture not found!\n");
+			LOG_WARN("InstantiateTexture(): Texture not found: {0}", textureName);
             return m_Textures[null_texture];
 		}
 	}
@@ -142,18 +139,20 @@ namespace QwerkE {
 				material = LoadMaterialSchematic(TextureFolderPath(matName));
 		}
 		else
-		{
-			ConsolePrint("\nInstantiateMaterial(): Not a .msch file!\n");
+        {
+			LOG_WARN("InstantiateMaterial(): Not a .msch file: {0}", matName);
 		}
 
 		if (!material)
-		{
-			ConsolePrint("\nInstantiateMaterial(): Material not found!\n");
+        {
+            LOG_WARN("InstantiateMaterial(): Material not found: {0}", matName);
 			return m_Materials[null_material]; // Do not add another material
 		}
-
-		m_Materials[GetFileNameWithExt(matName).c_str()] = material;
-		return material;
+		else
+        {
+            m_Materials[GetFileNameWithExt(matName).c_str()] = material;
+            return material;
+		}
 	}
 
 	FT_Face Resources::InstantiateFont(const char* fontName)
@@ -166,13 +165,13 @@ namespace QwerkE {
 		{
 			triedInit = true;
 
-			if (FT_Init_FreeType(&ft))
-				ConsolePrint("ERROR::FREETYPE: Could not init FreeType Library");
+            if (FT_Init_FreeType(&ft))
+                LOG_ERROR("ERROR::FREETYPE: Could not init FreeType Library");
 		}
 
 		if (FT_New_Face(ft, fontName, 0, &font))
-		{
-			ConsolePrint("ERROR::FREETYPE: Failed to load font");
+        {
+            LOG_ERROR("ERROR::FREETYPE: Failed to load font");
 			return m_Fonts[null_font];
 		}
 		m_Fonts[fontName] = font;

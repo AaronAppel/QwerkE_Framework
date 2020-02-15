@@ -4,7 +4,7 @@
 #include "../GraphicsUtilities/GraphicsHelpers.h"
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderVariable_Defines.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
 #include "../../Libraries/glew/GL/glew.h"
 
 #include <string>

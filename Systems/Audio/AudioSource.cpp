@@ -1,7 +1,7 @@
 #include "AudioSource.h"
 
 #include "../../Libraries/OpenAL/include/al.h"
-#include "../../QwerkE_Common/DataTypes/Vector.h"
+#include "../../Modules/Math/Vector.h"
 
 namespace QwerkE {
 

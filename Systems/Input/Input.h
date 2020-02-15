@@ -8,7 +8,7 @@
 #include "../../Headers/QwerkE_Defines.h"
 #include "../../Headers/QwerkE_Platform.h"
 #include "../../Headers/Libraries_Include.h"
-#include "../../QwerkE_Common/DataTypes/Vector.h"
+#include "../../Modules/Math/Vector.h"
 
 #ifdef GLFW3
 #include "../../Libraries/glew/GL/glew.h" // TODO: Need?

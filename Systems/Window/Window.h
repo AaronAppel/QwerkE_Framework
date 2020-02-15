@@ -1,7 +1,7 @@
 #ifndef _Window_H_
 #define _Window_H_
 
-#include "../../QwerkE_Common/DataTypes/Vector.h"
+#include "../../Modules/Math/Vector.h"
 
 namespace QwerkE {
 

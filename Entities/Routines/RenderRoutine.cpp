@@ -8,7 +8,7 @@
 #include "../../Graphics/Graphics_Header.h"
 #include "../../Graphics/Material.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
-#include "../../QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
 #include "../../Entities/Components/RenderComponent.h"
 

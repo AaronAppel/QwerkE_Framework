@@ -1,6 +1,6 @@
 #include "Factory.h"
 #include "../../Scenes/Scene.h"
-#include "../../QwerkE_Common/Utilities/Helpers.h"
+#include "../../Systems/Misc/Helpers.h"
 #include "../../Headers/QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Systems/Resources/Resources.h"

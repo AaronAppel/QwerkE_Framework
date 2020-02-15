@@ -1,7 +1,7 @@
 #include "Factory.h"
 #include "../Graphics/Mesh/MeshFactory.h"
 #include "../../Scenes/Scene.h"
-#include "../../QwerkE_Common/Utilities/Helpers.h"
+#include "../../Systems/Misc/Helpers.h"
 #include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Graphics/Material.h"
@@ -10,7 +10,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 
 #include "../FileSystem/FileSystem.h"
-#include "../../QwerkE_Framework/QwerkE_Common/Utilities/StringHelpers.h"
+#include "../../Systems/Misc/StringHelpers.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../../QwerkE_Framework/Systems/Resources/Resources.h"
 
