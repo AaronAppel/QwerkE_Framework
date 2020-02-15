@@ -2,8 +2,8 @@
 
 namespace QwerkE {
 
-    const double* Time::m_DeltaTime = nullptr;
-	const float* Time::m_FPS = nullptr;
+    double Time::m_Delta;
+    double Time::m_LastFrame = DBL_MAX;
 
     Time::Time()
     {
@@ -13,24 +13,24 @@ namespace QwerkE {
     {
     }
 
-    void Time::SetDeltatime(double* deltaTime)
+    void Time::NewFrame()
     {
-        m_DeltaTime = deltaTime;
+        m_LastFrame = m_Delta;
+        m_Delta = Now() - m_LastFrame;
     }
 
-    double Time::GetDeltaTime()
+    double Time::Delta()
     {
-        return *m_DeltaTime;
+        return m_Delta;
     }
 
-	void Time::SetFrameRate(float* framesPerSecond)
-	{
-		m_FPS = framesPerSecond;
-	}
-
-	float Time::GetFrameRate()
-	{
-		return *m_FPS;
-	}
+    double Time::Now()
+    {
+        unsigned __int64 freq;
+        unsigned __int64 time;
+        QueryPerformanceFrequency((LARGE_INTEGER*)&freq);
+        QueryPerformanceCounter((LARGE_INTEGER*)&time);
+        return (double)time / freq;
+    }
 
 }
