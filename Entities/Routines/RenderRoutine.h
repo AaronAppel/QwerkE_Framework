@@ -3,7 +3,7 @@
 
 #include "Routine.h"
 #include "../../Libraries/glew/GL/glew.h"
-#include "../../Graphics/Renderable.h"
+#include "../../Graphics/DataTypes/Renderable.h"
 
 #include <vector>
 

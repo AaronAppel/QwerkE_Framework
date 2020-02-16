@@ -7,7 +7,7 @@
 // The function bodies vary based on graphics libraries.
 //////////////////////////////
 
-#include "../FrameBufferObject.h"
+#include "../DataTypes/FrameBufferObject.h"
 
 namespace QwerkE {
 

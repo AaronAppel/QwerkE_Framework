@@ -2,7 +2,7 @@
 #include "LoadImageFile.h"
 #include "FileIO/FileUtilities.h"
 #include "FileIO/FileUtilities.h"
-#include "../Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 #include "../Resources/Resources.h"
 #include "../Log/Log.h"
 

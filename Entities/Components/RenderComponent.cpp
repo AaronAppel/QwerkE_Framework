@@ -1,6 +1,6 @@
 #include "RenderComponent.h"
 #include "../../Systems/Resources/Resources.h"
-#include "../../Graphics/Material.h"
+#include "../../Graphics/DataTypes/Material.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"

@@ -3,7 +3,7 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Systems/FileSystem/FileIO/FileUtilities.h"
-#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 
 namespace QwerkE {
 

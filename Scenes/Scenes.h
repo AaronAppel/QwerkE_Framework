@@ -4,8 +4,6 @@
 #include "../Headers/QwerkE_Enums.h"
 #include <map>
 
-// class GameCore;
-
 namespace QwerkE {
 
     class Scenes

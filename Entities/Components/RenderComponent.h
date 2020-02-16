@@ -2,7 +2,7 @@
 #define _RenderComponent_H_
 
 #include "Component.h"
-#include "../../Graphics/Renderable.h"
+#include "../../Graphics/DataTypes/Renderable.h"
 
 #include <vector>
 #include <string>

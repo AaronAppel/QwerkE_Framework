@@ -1,6 +1,6 @@
 #include "FileUtilities.h"
 #include "../../Log/Log.h"
-#include "../../Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 
 #include <fstream>
 #include <iostream>

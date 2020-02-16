@@ -1,8 +1,8 @@
 #include "../../Graphics/Graphics_Header.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 #include "../../Graphics/Shader/ShaderComponent.h"
-#include "../../Systems/Misc/StringHelpers.h"
 #include "../../Systems/FileSystem/FileIO/FileUtilities.h"
+#include "../../Utilities/StringHelpers.h"
 
 namespace QwerkE {
 

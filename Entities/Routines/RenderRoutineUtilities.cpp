@@ -5,10 +5,10 @@
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
-#include "../../Graphics/Material.h"
-#include "../../Graphics/Texture.h"
+#include "../../Graphics/DataTypes/Material.h"
+#include "../../Graphics/DataTypes/Texture.h"
 #include "../../Graphics/Shader/ShaderVariable_Defines.h"
-#include "../../Graphics/Renderable.h"
+#include "../../Graphics/DataTypes/Renderable.h"
 #include "../../Scenes/Scene.h"
 #include "../../Headers/QwerkE_Enums.h"
 

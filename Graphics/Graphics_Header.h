@@ -42,10 +42,10 @@ namespace QwerkE {
 #include "Mesh/MeshFactory.h"
 #include "Mesh/MeshUtilities.h"
 
-#include "CubeMap.h"
-#include "FrameBufferObject.h"
-#include "LightData.h"
-#include "Texture.h"
+#include "DataTypes/CubeMap.h"
+#include "DataTypes/FrameBufferObject.h"
+#include "DataTypes/LightData.h"
+#include "DataTypes/Texture.h"
 
 #include "GraphicsUtilities/GraphicsHelpers.h"
 

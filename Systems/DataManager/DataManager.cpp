@@ -14,8 +14,8 @@
 
 // RenderComponent
 #include "../../Entities/Components/RenderComponent.h"
-#include "../../Graphics/Renderable.h"
-#include "../../Graphics/Material.h"
+#include "../../Graphics/DataTypes/Renderable.h"
+#include "../../Graphics/DataTypes/Material.h"
 #include "../../Graphics/Shader/ShaderComponent.h"
 #include "../../Graphics/Shader/ShaderProgram.h"
 

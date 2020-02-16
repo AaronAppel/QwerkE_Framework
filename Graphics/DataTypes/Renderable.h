@@ -1,7 +1,7 @@
 #ifndef _Renderable_H_
 #define _Renderable_H_
 
-#include "Mesh/Mesh.h"
+#include "../Mesh/Mesh.h"
 
 #include "../../Libraries/glew/GL/glew.h"
 

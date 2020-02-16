@@ -1,6 +1,6 @@
 #include "Factory.h"
 #include "../../Scenes/Scene.h"
-#include "../../Systems/Misc/Helpers.h"
+#include "../../Utilities/Helpers.h"
 #include "../../Entities/Components/LightComponent.h"
 #include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"

@@ -4,7 +4,7 @@
 #include "../Entities/Components/Camera/CameraComponent.h"
 #include "../Systems/Input/Input.h"
 #include "../Systems/DataManager/DataManager.h"
-#include "../Systems/Misc/StringHelpers.h"
+#include "../Utilities/StringHelpers.h"
 
 #include <algorithm>
 

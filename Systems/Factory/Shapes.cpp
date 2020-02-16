@@ -1,12 +1,12 @@
 #include "Factory.h"
 #include "../../Scenes/Scene.h"
-#include "../../Systems/Misc/Helpers.h"
+#include "../../Utilities/Helpers.h"
 #include "../../Headers/QwerkE_Enums.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Systems/Resources/Resources.h"
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Graphics/Mesh/Mesh.h"
-#include "../../Graphics/Material.h"
+#include "../../Graphics/DataTypes/Material.h"
 
 namespace QwerkE {
 

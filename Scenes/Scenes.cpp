@@ -4,7 +4,7 @@
 #include "../Scenes/PBR_Test1.h"
 #include "../Scenes/Scene.h"
 #include "../Headers/QwerkE_Enums.h"
-#include "FileSystem/FileIO/FileUtilities.h"
+#include "../Systems/FileSystem/FileIO/FileUtilities.h"
 
 #include <map>
 
@@ -21,24 +21,21 @@ namespace QwerkE {
 
 	Scenes::~Scenes()
 	{
-		//delete m_pController;
-		/*while (m_EventQueue.size() != 0)
-		{
-			Event* pEvent = m_EventQueue.front();
-			m_EventQueue.pop();
-			delete pEvent;
-		}*/
 		for (unsigned int i = 0; i < m_Scenes.size(); i++)
 		{
-			Scene* temp = m_Scenes[(eSceneTypes)i];
-			delete temp;
+			delete m_Scenes[(eSceneTypes)i];
 		}
 	}
 
 	void Scenes::Initialize()
 	{
-		// TODO: Scenes should be added somewhere else
-		// TODO: Load scenes from the Resources/Scenes/... folder to use persistent data
+        // TODO: Scenes should be added somewhere else
+        // TODO: Load scenes from the Resources/Scenes/... folder to use persistent data
+	 	// auto scenes = Resources::SeeScenes();
+		// if (scenes.empty())
+		// {
+		//      Create empty scene
+		// }
 
 		const char* prefPath = ConfigsFolderPath("preferences.qpref");
 		// TODO: does this free memory correctly? std::string pref = ConfigsFolderPath("preferences.qpref");
@@ -46,50 +43,42 @@ namespace QwerkE {
 		if (FileExists(prefPath))
 		{
 			cJSON* root = OpencJSONStream(prefPath);
-			cJSON* scenes = GetItemFromRootByKey(root, "Scenes");
+			cJSON* scenesArray = GetItemFromRootByKey(root, "Scenes");
 
-			unsigned int size = GetArraySize(scenes);
-			for (unsigned int i = 0; i < size; i++)
+			unsigned int numScenes = GetArraySize(scenesArray);
+			for (unsigned int i = 0; i < numScenes; i++)
 			{
-				cJSON* scene = GetItemFromArrayByIndex(scenes, i);
+				cJSON* scene = GetItemFromArrayByIndex(scenesArray, i);
 
 				const char* sceneFileName = scene->valuestring;
 
 				if (FileExists(SceneFolderPath(sceneFileName)) == false)
-				{
-					LOG_WARN("Null scene loaded because scene file not found: {0}", sceneFileName);
+                {
+                    LOG_WARN("Scenes::Initialize(): File not found: {0}", sceneFileName);
 					continue;
 				}
 
-				Scene* temp = new Scene(sceneFileName); // TODO: Improve how scene file names are assigned
+				Scene* newScene = new Scene(sceneFileName); // TODO: Improve how scene file names are assigned
 
-				// TODO: this->SetSceneHotkey(scene->string, temp)); // "1": Scene*
-				temp->LoadScene(sceneFileName);
+				newScene->LoadScene(sceneFileName);
 
 				if (i == 0)
-					m_CurrentScene = temp; // TODO: Improve default starting scene selection/specification
+					m_CurrentScene = newScene; // TODO: Improve default starting scene selection/specification
 
 				// TODO: m_Scenes[sceneFileName] = temp;
-				m_Scenes[(eSceneTypes)i] = temp; // TODO: Deprecate enum type
+				m_Scenes[(eSceneTypes)i] = newScene; // TODO: Deprecate enum type
 			}
+
 			ClosecJSONStream(root);
 		}
 
 		if (m_Scenes.empty())
-		{
-			// instantiate and LoadScene() (splash, main menu, game etc...)
-			// test screen
-			Scene* temp = new TestScene();
-			temp->Initialize();
-			temp->SetIsEnabled(true);
-			m_CurrentScene = temp; // Set current
-			m_Scenes[temp->GetSceneID()] = temp;
-
-			// temp = new PBR_Test1();
-			// temp->Initialize();
-			// temp->SetIsEnabled(true);
-			// m_CurrentScene = temp; // Set current
-			// m_Scenes[temp->GetSceneID()] = temp;
+        {
+			Scene* emptyScene = new Scene();
+			emptyScene->Initialize();
+			emptyScene->SetIsEnabled(true);
+            m_CurrentScene = emptyScene;
+            LOG_WARN("Null scene loaded because no valid scene was found in: {0}", prefPath);
 		}
 		// TODO: free prefPath memory
 	}

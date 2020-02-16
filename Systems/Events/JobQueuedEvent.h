@@ -2,7 +2,7 @@
 #define _JobQueuedEvent_H_
 
 #include "Event.h"
-#include "../../Graphics/Texture.h"
+#include "../../Graphics/DataTypes/Texture.h"
 
 namespace QwerkE {
 

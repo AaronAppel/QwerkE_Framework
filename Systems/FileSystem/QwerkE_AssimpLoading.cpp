@@ -1,11 +1,11 @@
 #include "QwerkE_AssimpLoading.h"
 #include "Graphics/Mesh/Mesh.h"
 #include "Graphics/Mesh/MeshData.h"
-#include "Graphics/Material.h"
-#include "Graphics/Texture.h"
+#include "Graphics/DataTypes/Material.h"
+#include "Graphics/DataTypes/Texture.h"
 #include "Systems/Resources/Resources.h"
 #include "Graphics/GraphicsUtilities/GraphicsHelpers.h"
-#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 #include "../../Systems/FileSystem/FileIO/FileUtilities.h"
 
 #pragma warning( disable : 26495 )

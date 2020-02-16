@@ -80,7 +80,7 @@
 
 #include "../Systems/Resources/Resources.h"
 
-#include "../Systems/Scenes.h"
+#include "../Scenes/Scenes.h"
 
 #include "../Systems/Window/Window.h"
 #include "../Systems/Window/Windows.h"

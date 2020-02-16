@@ -2,7 +2,7 @@
 #include "../../../QwerkE_Framework/Systems/Resources/Resources.h"
 #include "../../../QwerkE_Framework/Graphics/Mesh/Mesh.h"
 
-#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 #include "../../Systems/FileSystem/FileIO/FileUtilities.h"
 
 #pragma warning( disable : 26495 )

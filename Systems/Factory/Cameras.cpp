@@ -8,8 +8,8 @@
 #include "../../Entities/Routines/RenderRoutine.h"
 #include "../../Entities/Components/RenderComponent.h"
 #include "../../Entities/GameObject.h"
-#include "../../Systems/Misc/Helpers.h"
-#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Utilities/Helpers.h"
+#include "../../Utilities/StringHelpers.h"
 #include "../FileSystem/FileSystem.h"
 
 #include <string>
@@ -17,7 +17,6 @@
 namespace QwerkE {
 
     /* Cameras */
-    //First Person
     GameObject* Factory::CreateFreeCamera(Scene* scene, vec3 position)
     {
         return InternalCreateCamera(scene, position, CamType_FreeCam); // TODO: Is this a good way of re-using CreateCamera()?

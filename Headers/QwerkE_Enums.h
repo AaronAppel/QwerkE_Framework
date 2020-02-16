@@ -176,6 +176,7 @@ namespace QwerkE {
     };
 
     /* Scenes */
+    // TODO: Remove
     enum eSceneTypes : std::uint8_t
     {
         //// list in order of opening if possible

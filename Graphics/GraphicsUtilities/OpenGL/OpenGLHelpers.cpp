@@ -2,7 +2,7 @@
 #include "../Systems/Log/Log.h"
 #include "../../Systems/FileSystem/FileIO/FileUtilities.h"
 #include "../../Systems/FileSystem/ImageHelpers.h"
-#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 #include "../../../Libraries/lodepng/lodepng.h"
 #include "../../../Systems/FileSystem/FileSystem.h"
 

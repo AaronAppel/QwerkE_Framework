@@ -62,9 +62,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\ValueChecking.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\VectorMathHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Time\Time.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\TestScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scenes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\Audio.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp" />
@@ -104,9 +103,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Log\Log.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Log\PrintFunctions.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Misc\Helpers.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Misc\ProgramArgs.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Misc\StringHelpers.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Network\Network.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Profiler\Profiler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp" />
@@ -115,7 +111,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\MasterAssetList.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Scenes.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\LitMaterial.cpp" />
@@ -124,6 +119,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Window.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\ProgramArgs.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h" />
@@ -143,27 +141,28 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Routine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\CubeMap.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\CubeMap.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\FrameBufferObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\LightData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\Material.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\MaterialComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\Renderable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\FontRendering\FontTest.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\FrameBufferObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\GraphicsHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Graphics_Header.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\LightData.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Material.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGLManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Renderable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariable_Defines.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\Libraries_Include.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\Libraries_Initialize.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\Libraries_Load.h" />
@@ -722,6 +721,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\MyLinkedList.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\ObjectPool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\RangedValue.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\SmartPointer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathConstants.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathFunctions.h" />
@@ -737,9 +737,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time\Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time\Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\PBR_Test1.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scene.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\TestScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scenes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\Audio.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h" />
@@ -771,27 +770,25 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Log\Log.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Log\PrintFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\MessageManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\GUID.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\Helpers.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\ProgramArgs.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\ReflectionMacros.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\SmartPointer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Misc\StringHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Network\Network.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Profiler\Instrumentor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Profiler\Profiler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset_Tag.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\GUID.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Scenes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Window.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Helpers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ProgramArgs.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ReflectionMacros.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\Direct3D\TODO.txt" />

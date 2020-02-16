@@ -1,7 +1,7 @@
 #ifndef _ShaderProgram_H_
 #define _ShaderProgram_H_
 
-#include "../../Systems/Misc/StringHelpers.h"
+#include "../../Utilities/StringHelpers.h"
 #include "../GraphicsUtilities/GraphicsHelpers.h"
 #include "../Shader/ShaderUtilities.h"
 #include "../../Headers/QwerkE_Global_Constants.h"
