@@ -9,11 +9,11 @@
 #pragma warning( disable : 26498 )
 #pragma warning( disable : 6387 )
 #include <spdlog/spdlog.h>
-#pragma warning( enable : 26437 )
-#pragma warning( enable : 26451 )
-#pragma warning( enable : 26495 )
-#pragma warning( enable : 26498 )
-#pragma warning( enable : 6387 )
+#pragma warning( default : 26437 )
+#pragma warning( default : 26451 )
+#pragma warning( default : 26495 )
+#pragma warning( default : 26498 )
+#pragma warning( default : 6387 )
 
 namespace QwerkE {
 

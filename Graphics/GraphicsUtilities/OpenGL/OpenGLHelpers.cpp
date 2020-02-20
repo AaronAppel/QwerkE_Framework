@@ -12,9 +12,9 @@
 #pragma warning( disable : 6262 )
 #define STB_IMAGE_IMPLEMENTATION
 #include "../../../Libraries/stb_image.h"
-#pragma warning( enable : 28182 )
-#pragma warning( enable : 6001 )
-#pragma warning( enable : 6262 )
+#pragma warning( default : 28182 )
+#pragma warning( default : 6001 )
+#pragma warning( default : 6262 )
 
 // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 

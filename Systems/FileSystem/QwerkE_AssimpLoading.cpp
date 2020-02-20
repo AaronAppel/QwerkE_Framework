@@ -14,7 +14,7 @@
 #include "../../Libraries/assimp/postprocess.h"
 #include "../../Libraries/assimp/config.h"
 #include "../../Libraries/assimp/material.h"
-#pragma warning( enable : 26495 )
+#pragma warning( default : 26495 )
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
 // TODO: Split functions into smaller pieces. Ex. LoadMeshFromAI() can call functions to GetVertsFromAIMesh, GetUVs, GetMats... etc

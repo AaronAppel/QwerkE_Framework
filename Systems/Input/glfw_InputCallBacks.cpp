@@ -69,7 +69,7 @@ namespace QwerkE {
 
     void Input::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
     {
-        ProcessMouseMove(xpos, -ypos);
+        ProcessMouseMove((float)xpos, (float)-ypos);
 
         ypos = (double)g_WindowHeight - ypos; // invert y
     }
@@ -109,8 +109,8 @@ namespace QwerkE {
 #ifdef dearimgui
     // ImGui_ImplGlfwGL3_ScrollCallback(window, xoffset, yoffset);
         ImGuiIO& io = ImGui::GetIO();
-        io.MouseWheelH += xoffset;
-        io.MouseWheel += yoffset;
+        io.MouseWheelH += (float)xoffset;
+        io.MouseWheel += (float)yoffset;
 
 #endif // dearimgui
     }

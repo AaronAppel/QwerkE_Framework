@@ -2,26 +2,15 @@
 
 namespace QwerkE {
 
-    double Time::m_Delta;
-    double Time::m_LastFrame = DBL_MAX;
-
-    Time::Time()
-    {
-    }
-
-    Time::~Time()
-    {
-    }
+    double Time::m_Delta = 0.0;
+    double Time::m_CurrentFrame = 0.0;
+    double Time::m_LastFrame = 0.0;
 
     void Time::NewFrame()
     {
-        m_LastFrame = m_Delta;
-        m_Delta = Now() - m_LastFrame;
-    }
-
-    double Time::Delta()
-    {
-        return m_Delta;
+        m_LastFrame = m_CurrentFrame;
+        m_CurrentFrame = Now();
+        m_Delta = m_CurrentFrame - m_LastFrame;
     }
 
     double Time::Now()

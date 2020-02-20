@@ -6,7 +6,7 @@
 
 #pragma warning( disable : 26495 )
 class MyMatrix;
-#pragma warning( enable : 26495 )
+#pragma warning( default : 26495 )
 
 namespace QwerkE {
 

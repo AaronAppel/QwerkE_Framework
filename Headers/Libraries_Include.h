@@ -61,7 +61,7 @@
 // assimp
 #pragma warning( disable : 26495 )
 #include "../Libraries/assimp/config.h"
-#pragma warning( enable : 26495 )
+#pragma warning( default : 26495 )
 
 // font loading/rendering
 // freetype2
@@ -116,7 +116,7 @@
 #include "../Libraries/imgui/imgui.h"
 #include "../Libraries/imgui/imgui_impl_glfw.h"
 #include "../Libraries/imgui/imgui_impl_opengl3.h"
-#pragma warning( enable : 4244 )
+#pragma warning( default : 4244 )
 //////////////////////////////
 
 //////////////////////////////
@@ -147,7 +147,7 @@
 #include "../Libraries/glm/glm/glm.hpp"
 #include "../Libraries/glm/glm/gtc/matrix_transform.hpp"
 #include "../Libraries/glm/glm//gtc/type_ptr.hpp"
-#pragma warning( enable : 26495 )
+#pragma warning( default : 26495 )
 /////////////////////////////
 
 //////////////////////////////
@@ -172,8 +172,8 @@
 //#include "../Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
 //#include "../Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
 //#include "../Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
-#pragma warning( enable : 26495 )
-#pragma warning( enable : 4099 )
+#pragma warning( default : 26495 )
+#pragma warning( default : 4099 )
 /////////////////////////////
 
 // TODO: Add necessary headers.

@@ -11,7 +11,7 @@
 #include "../../Libraries/assimp/postprocess.h"
 #include "../../Libraries/assimp/config.h"
 #include "../../Libraries/assimp/material.h"
-#pragma warning( enable : 26495 )
+#pragma warning( default : 26495 )
 
 #include <iostream>
 #include <vector>

@@ -6,12 +6,10 @@ namespace QwerkE {
     class Time
     {
     public:
-        Time();
-        ~Time();
         
         static void NewFrame();
 
-        static double Delta();
+        static inline double Delta() { return m_Delta; };
 
         static double Now();
 
@@ -23,7 +21,11 @@ namespace QwerkE {
         // TODO: Add methods: UpdateDeltaTime(), DeltaTime(), GetSystemTime(), GetFixedTimestep()
 
     private:
+        Time() {}
+        ~Time() {}
+
         static double m_Delta;
+        static double m_CurrentFrame;
         static double m_LastFrame;
     };
 

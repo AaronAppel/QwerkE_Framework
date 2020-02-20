@@ -12,7 +12,7 @@
 // matrix
 #pragma warning( disable : 26495 )
 #include "MyMatrix.h"
-#pragma warning( enable : 26495 )
+#pragma warning( default : 26495 )
 typedef MyMatrix mat4;
 
 #endif // !_Math_Includes_H_
