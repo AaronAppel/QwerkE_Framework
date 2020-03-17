@@ -160,6 +160,21 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{8d476f7d-20be-406f-bf32-768d0e555ab0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Libraries\Bullet3">
+      <UniqueIdentifier>{8ed13a9d-75d9-4509-97c6-7a62951600b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3\BulletCollision">
+      <UniqueIdentifier>{0ab212af-712b-43ee-acdc-001837928338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3\BulletDynamics">
+      <UniqueIdentifier>{ebe33459-2ed6-4364-a385-4b362b3a39c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Bullet3\LinearMath">
+      <UniqueIdentifier>{08fdd719-e86b-443f-8bc4-956bd0515a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Routines\Extended">
+      <UniqueIdentifier>{b267fb61-f693-4931-b952-281c05def79e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Framework.cpp" />
@@ -340,9 +355,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.cpp">
       <Filter>Entities\Routines</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.cpp">
-      <Filter>Entities\Components\Extended</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.cpp">
       <Filter>Systems\Resources</Filter>
     </ClCompile>
@@ -483,6 +495,30 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scenes.cpp">
       <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_box_set.cpp">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.cpp">
+      <Filter>Systems\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.cpp">
+      <Filter>Systems\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_World.cpp">
+      <Filter>Systems\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_Physics.cpp">
+      <Filter>Systems\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\Bullet3Component.cpp">
+      <Filter>Entities\Components\Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_PhysicsFactory.cpp">
+      <Filter>Systems\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\Extended\Bullet3Routine.cpp">
+      <Filter>Entities\Routines\Extended</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -679,9 +715,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Flags.h">
       <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Bullet3Component.h">
-      <Filter>Entities\Components\Extended</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.h">
       <Filter>Systems\Resources</Filter>
@@ -2476,6 +2509,681 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scenes.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btBroadphaseProxy.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btDbvt.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btDbvtBroadphase.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btDispatcher.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btOverlappingPairCache.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btOverlappingPairCallback.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btQuantizedBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btSimpleBroadphase.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btBoxBoxDetector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionConfiguration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionCreateFunc.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionDispatcher.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionObject.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionObjectWrapper.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionWorld.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCollisionWorldImporter.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btGhostObject.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btHashedSimplePairCache.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btInternalEdgeUtility.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btManifoldResult.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSimulationIslandManager.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\btUnionFind.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionDispatch\SphereTriangleDetector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btBox2dShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btBoxShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCapsuleShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCollisionMargin.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCollisionShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCompoundShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConcaveShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConeShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvex2dShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexHullShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexInternalShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexPointCloudShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexPolyhedron.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btCylinderShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btEmptyShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMaterial.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMinkowskiSumShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btMultiSphereShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btOptimizedBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btPolyhedralConvexShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btShapeHull.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btSphereShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btStaticPlaneShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btStridingMeshInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTetrahedronShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleBuffer.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleCallback.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleInfoMap.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleMesh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleMeshShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btTriangleShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\CollisionShapes\btUniformScalingShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btBoxCollision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btClipPolygon.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btCompoundFromGimpact.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btContactProcessing.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btContactProcessingStructs.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGenericPoolAllocator.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGeometryOperations.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactBvhStructs.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactMassUtil.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactQuantizedBvh.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactQuantizedBvhStructs.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btGImpactShape.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btQuantization.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\btTriangleShapeEx.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_array.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_basic_geometry_operations.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_bitset.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_box_collision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_box_set.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_clip_polygon.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_contact.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_geom_types.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_geometry.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_hash_table.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_linear_math.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_math.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_memory.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_radixsort.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_tri_collision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btComputeGjkEpaPenetration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btConvexCast.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btConvexPenetrationDepthSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btDiscreteCollisionDetectorInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkCollisionDescription.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkEpa2.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkEpa3.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btManifoldPoint.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btMprPenetration.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btPersistentManifold.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btPointCollector.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btRaycastCallback.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btSimplexSolverInterface.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.h">
+      <Filter>Libraries\Bullet3\BulletCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Character\btCharacterControllerInterface.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Character\btKinematicCharacterController.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btConeTwistConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btContactConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btContactSolverInfo.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btFixedConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGearConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btHinge2Constraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btHingeConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btJacobianEntry.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSliderConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSolverBody.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btSolverConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btTypedConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\ConstraintSolver\btUniversalConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btActionInterface.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btRigidBody.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btSimpleDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Dynamics\btSimulationIslandManagerMt.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBody.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyGearConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyJointFeedback.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyJointMotor.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyLink.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyLinkCollider.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodyPoint2Point.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodySliderConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Featherstone\btMultiBodySolverConstraint.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btDantzigLCP.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btDantzigSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btLemkeSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btMLCPSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btMLCPSolverInterface.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btPATHSolver.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\MLCPSolvers\btSolveProjectedGaussSeidel.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Vehicle\btRaycastVehicle.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Vehicle\btVehicleRaycaster.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletDynamics\Vehicle\btWheelInfo.h">
+      <Filter>Libraries\Bullet3\BulletDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btAabbUtil2.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btAlignedAllocator.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btAlignedObjectArray.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btConvexHull.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btConvexHullComputer.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btCpuFeatureUtility.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btDefaultMotionState.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btGeometryUtil.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btGrahamScan2dConvexHull.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btHashMap.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btIDebugDraw.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btList.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMatrix3x3.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMatrixX.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMinMax.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btMotionState.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btPolarDecomposition.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btPoolAllocator.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btQuadWord.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btQuaternion.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btQuickprof.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btRandom.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btScalar.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btSerializer.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btSpatialAlgebra.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btStackAlloc.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btThreads.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btTransform.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btTransformUtil.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btVector3.h">
+      <Filter>Libraries\Bullet3\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.h">
+      <Filter>Systems\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_World.h">
+      <Filter>Systems\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.h">
+      <Filter>Systems\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\Bullet3Component.h">
+      <Filter>Entities\Components\Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_PhysicsFactory.h">
+      <Filter>Systems\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Extended\Bullet3Routine.h">
+      <Filter>Entities\Routines\Extended</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,20 +1,46 @@
-#ifndef _PhysicsManager_H_
-#define _PhysicsManager_H_
+#ifndef _Physics_H_
+#define _Physics_H_
+
+#include "../../Libraries/Bullet3/LinearMath/btVector3.h"
+#include "../../Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
+
+// TODO: Move or detect define
+#define qw_BULLET3 1
+
+#ifdef qw_BULLET3
+#elif qw_HAVOC
+#elif qw_PHYSX
+#else
+#pragma error "No physics library specified!"
+#endif
+
+// TODO: Find a better spot
+#define STATIC_MASS 0.0f
+
+class btRigidBody;
 
 namespace QwerkE {
 
-    // TODO: Consider making singleton to avoid instantiation if disabled
-    // TODO: Write class
     class Physics
     {
     public:
-        static void Initialize() {}
+        static void Initialize();
+        static void TearDown();
 
-    private:
-        Physics();
-        ~Physics();
+        static void Tick();
 
+        static void RegisterObject(btRigidBody* rigidBody);
+        static void UnregisterObject(btRigidBody* rigidBody);
+
+        static float GetDefaultRestitution();
+        static float GetSphereRestitution();
+
+    protected:
+        Physics() {}
+        ~Physics() {}
+
+        static void LibraryInitialize();
     };
 
 }
-#endif // !_PhysicsManager_H_
+#endif // _Physics_H_

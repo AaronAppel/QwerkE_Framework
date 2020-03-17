@@ -2,7 +2,7 @@
 
 #include "Instrumentor.h"
 
-#define QPROFILING 0
+#define QPROFILING 1
 
 #if QPROFILING
 #define PROFILE_SCOPE(scopeName) InstrumentationTimer timer##__LINE__(scopeName)

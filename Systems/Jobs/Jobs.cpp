@@ -22,7 +22,7 @@ namespace QwerkE {
             QJob* next = m_JobList.front();
             m_JobList.pop();
 
-            next->Process(); // get a thread and process job
+            next->Process();
         }
     }
 
@@ -32,12 +32,13 @@ namespace QwerkE {
         QJob* next = m_JobList.front();
         m_JobList.pop();
 
-        next->Process(); // get a thread and process job
+        next->Process();
     }
 
     void* LoadAssetData(void* value)
     {
         // TODO: Support all types of assets or files
+
         QImageFile fileData;
         fileData.s_Name = (char*)value;
 
@@ -48,7 +49,6 @@ namespace QwerkE {
 
         if (fileData.s_Data != nullptr)
         {
-            // raise event
             AssetLoadedEvent* _event = new AssetLoadedEvent(fileData);
             EventManager::QueueEvent(_event);
         }

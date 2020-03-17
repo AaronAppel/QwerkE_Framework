@@ -50,8 +50,6 @@ namespace QwerkE {
 //////////////////////////////
 // FILES //
 //////////////////////////////
-// spdlog
-        Log::Initialize();
 
 // font loading/rendering
 // freetype2

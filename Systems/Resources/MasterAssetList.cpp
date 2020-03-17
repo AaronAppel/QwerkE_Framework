@@ -37,6 +37,11 @@ namespace QwerkE {
 		// TODO: InstantiateShaderComponent(NullFolderPath(null_geo_component));  // TODO: Remove null component references. Store components and reference them in shader programs
 		InstantiateShaderProgram(NullFolderPath(null_shader_schematic));
 		InstantiateSound(NullFolderPath(null_sound));
+
+		if (m_Sounds.size() == 0)
+		{
+			LOG_ERROR("Error loading null sound {0}. Make sure the AudioManager has been initialized", null_sound);
+		}
 	}
 
 	// Instantiation Functions
@@ -54,14 +59,14 @@ namespace QwerkE {
 				return m_Meshes[null_mesh];
 		}
 		else
-		{
-			if (strcmp(meshFilePath, MeshFolderPath("Create_Quad")) == 0)
+        {
+            if (strcmp(meshFilePath, null_mesh) == 0)
+            {
+				mesh = MeshFactory::ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
+            }
+			else if (strcmp(meshFilePath, MeshFolderPath("Create_Quad")) == 0)
 			{
 				mesh = MeshFactory::CreateQuad(vec2(10, 10));
-			}
-			else if (strcmp(meshFilePath, null_mesh) == 0)
-			{
-				mesh = MeshFactory::ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
 			}
 			else if (strcmp(meshFilePath, MeshFolderPath("Create_Circle")) == 0)
 			{

@@ -407,8 +407,8 @@ namespace QwerkE {
 
 		for (unsigned int j = 0; j < points + 1; j++) // plot circle
 		{
-			Position.x = cosf(t_IncrementAngle * DEG_TO_RAD) * radius;
-			Position.y = sinf(t_IncrementAngle * DEG_TO_RAD) * radius;// 0;
+			Position.x = cosf(t_IncrementAngle * (double)DEG_TO_RAD) * radius;
+			Position.y = sinf(t_IncrementAngle * (double)DEG_TO_RAD) * radius;// 0;
 			Position.z = 0;// sinf(t_IncrementAngle * DEG_TO_RAD) * radius;
 
 			// verts.push_back(VertexData(vec3(Position.x, Position.y, Position.z), vec4(255, 255, 255, 255), vec2(0, 1), vec3(0, 0, 0)));

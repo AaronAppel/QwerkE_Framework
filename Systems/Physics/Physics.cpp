@@ -1,21 +1,22 @@
 #include "Physics.h"
-#pragma warning( disable : 26495 )
-#pragma warning( disable : 4099 )
-#include "../../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
-#include "../../Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
-#include "../../Libraries/Bullet3/LinearMath/btAabbUtil2.h"
-#pragma warning( enable : 26495 )
-#pragma warning( enable : 4099 )
+#include "Systems/Resources/Resources.h"
 
 namespace QwerkE {
 
-    Physics::Physics()
+    void Physics::Initialize()
     {
-        ConsolePrint("\nPhysics loaded successfully");
-    }
+        ConfigData config = ConfigHelper::GetConfigData();
+        
+        if (config.systems.PhysicsEnabled)
+        {
+            LibraryInitialize();
 
-    Physics::~Physics()
-    {
+            // Request shapes from Resources
+            Resources::GetMesh("Cube_UVd.obj");
+        }
+        else
+        {
+            Log::Info("Physics is currently disabled.");
+        }
     }
-
 }

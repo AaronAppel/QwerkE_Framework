@@ -22,16 +22,16 @@ namespace QwerkE {
     {
         if (m_Initialized)
             m_AudioManager->PlaySound(name);
-
-        Log::Trace("Audio.PlaySound()");
+        else
+            Log::Trace("Audio.PlaySound()");
     }
 
     void Audio::SetListenerOrientation(vec3 position, vec3 velocity)
     {
         if (m_Initialized)
             m_AudioManager->SetListenerOrientation(position, velocity);
-
-        Log::Trace("Audio.SetListenerOrientation()");
+        else
+            Log::Trace("Audio.SetListenerOrientation()");
     }
 
 }

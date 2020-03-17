@@ -5,6 +5,7 @@
 #include "../Scenes/Scene.h"
 #include "../Headers/QwerkE_Enums.h"
 #include "../Systems/FileSystem/FileIO/FileUtilities.h"
+#include "../Systems/Profiler/Profiler.h"
 
 #include <map>
 
@@ -145,6 +146,7 @@ namespace QwerkE {
 
 	void Scenes::Update(double deltatime) // update SceneTypes from bottom up (Max-)
 	{
+		PROFILE_SCOPE("Scene Manager Update");
 		if (m_CurrentScene)
 		{
 			if (m_IsRunning) // Add step-through and pause/play button functionality in debug mode
@@ -156,7 +158,8 @@ namespace QwerkE {
 	}
 
 	void Scenes::Draw() // draw SceneTypes from top down (0+)
-	{
+    {
+        PROFILE_SCOPE("Scene Manager Render");
 		if (m_CurrentScene)
 		{
 			if (m_CurrentScene->GetIsEnabled())

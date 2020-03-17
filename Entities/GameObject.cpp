@@ -2,6 +2,7 @@
 #include "../Scenes/Scene.h"
 #include "Routines/Routine.h"
 #include "Components/Component.h"
+#include "Components/Extended/Bullet3Component.h"
 #include "../Headers/QwerkE_Enums.h"
 
 namespace QwerkE {
@@ -93,6 +94,7 @@ namespace QwerkE {
 
     void GameObject::AddRoutine(Routine* routine)
     {
+        // TODO: Deprecate to force using AddUpdateRoutine(), or remove other add methods
         routine->SetParent(this);
         routine->Initialize();
     }
@@ -100,6 +102,8 @@ namespace QwerkE {
     void GameObject::AddUpdateRoutine(Routine* routine)
     {
         if (!routine) { return; }
+
+        routine->SetParent(this);
 
         for (unsigned int i = 0; i < m_UpdateList.size(); i++)
         {
@@ -115,6 +119,8 @@ namespace QwerkE {
     void GameObject::AddDrawRoutine(Routine* routine)
     {
         if (!routine) { return; }
+
+        routine->SetParent(this);
 
         for (unsigned int i = 0; i < m_DrawList.size(); i++)
         {

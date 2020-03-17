@@ -85,7 +85,6 @@ namespace QwerkE {
         bool m_IsEnabled = false;
         eSceneState m_State = eSceneState::SceneState_Running;
         std::string m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
-        Scenes* m_pScenes = nullptr;
         MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
 
         std::map<std::string, GameObject*> m_pGameObjects;

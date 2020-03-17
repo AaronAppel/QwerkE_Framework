@@ -20,7 +20,7 @@ float TweenFunc_SineEaseIn(float startvalue, float valuerange, double timepassed
     float timeperc = (float)(timepassed/totaltime);
     if( timeperc > 1 )
         timeperc = 1;
-    return startvalue + -valuerange * cos(timeperc * PI/2) + valuerange;
+    return startvalue + -valuerange * cos(timeperc * (float)PI/2.0f) + valuerange;
 }
 
 float TweenFunc_SineEaseOut(float startvalue, float valuerange, double timepassed, double totaltime)
@@ -28,7 +28,7 @@ float TweenFunc_SineEaseOut(float startvalue, float valuerange, double timepasse
     float timeperc = (float)(timepassed/totaltime);
     if( timeperc > 1 )
         timeperc = 1;
-    return startvalue + valuerange * sin(timeperc * PI/2);
+    return startvalue + valuerange * sin(timeperc * (float)PI/2.0f);
 }
 
 float TweenFunc_SineEaseInOut(float startvalue, float valuerange, double timepassed, double totaltime)
@@ -36,7 +36,7 @@ float TweenFunc_SineEaseInOut(float startvalue, float valuerange, double timepas
     float timeperc = (float)(timepassed/totaltime);
     if( timeperc > 1 )
         timeperc = 1;
-    return startvalue + -valuerange/2 * (cos(timeperc * PI)-1);
+    return startvalue + -valuerange/2.0f * (cos(timeperc * (float)PI)-1.0f);
 }
 
 float TweenFunc_BounceEaseIn(float startvalue, float valuerange, double timepassed, double totaltime)
@@ -77,24 +77,24 @@ double BounceEaseIn(double t, double b, double c, double d)
 
 double BounceEaseOut(double t, double b, double c, double d)
 {
-    if( (t/=d) < (1/2.75f) )
+    if( (t/=d) < (1.0f/2.75f) )
     {
-        return c*(7.5625f*t*t) + b;
+        return c * (7.5625*t*t) + b;
     }
-    else if (t < (2/2.75f))
+    else if (t < (2/2.75))
     {
-        double postFix = t-=(1.5f/2.75f);
-        return c*(7.5625f*(postFix)*t + .75f) + b;
+        double postFix = t -= 1.5 / 2.75;
+        return c * (7.5625 * postFix * t + .75) + b;
     }
     else if (t < (2.5/2.75))
     {
-        double postFix = t-=(2.25f/2.75f);
-        return c*(7.5625f*(postFix)*t + .9375f) + b;
+        double postFix = t -= 2.25 / 2.75;
+        return c * (7.5625 * postFix * t + .9375) + b;
     }
     else
     {
-        double postFix = t-=(2.625f/2.75f);
-        return c*(7.5625f*(postFix)*t + .984375f) + b;
+        double postFix = t -= 2.625 / 2.75;
+        return c * (7.5625f * postFix * t + .984375) + b;
     }
 }
 
@@ -149,7 +149,7 @@ double ElasticEaseInOut(double t, double b, double c, double d, float elasticity
     if( ( t /= d/2 ) == 2 )
         return b+c;
 
-    double p = d * ( 0.3f * 1.5f );
+    double p = d * ( 0.3 * 1.5 );
     double a = c;
     double s = p/4;
 
@@ -160,5 +160,5 @@ double ElasticEaseInOut(double t, double b, double c, double d, float elasticity
     }
 
     double postFix = a * pow( 10, -elasticity*( t-=1 ) );
-    return postFix * sin( ( t*d-s ) * ( 2*PI )/p ) * 0.5f + c + b;
+    return postFix * sin( ( t*d-s ) * ( 2.0*PI )/p ) * 0.5f + c + b;
 }

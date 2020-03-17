@@ -44,7 +44,7 @@ namespace QwerkE {
 
         void Process()
         {
-            // TODO: check duplicate asset
+            // TODO: Check duplicate asset
             pthread_t threadID;
             pthread_create(&threadID, NULL, LoadAssetData, (void*)m_AssetName);
         };

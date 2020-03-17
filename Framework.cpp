@@ -13,6 +13,7 @@
 #include "Graphics/Graphics_Header.h"
 #include "Systems/Window/CallbackFunctions.h"
 #include "Systems/Physics/Physics.h"
+#include "Systems/Network/Network.h"
 #include "Systems/DataManager/DataManager.h"
 #include "Systems/Renderer/Renderer.h"
 #include "Systems/MessageManager.h"
@@ -49,7 +50,8 @@ namespace QwerkE {
 
 		eEngineMessage Framework::Startup(std::string configFilePath, std::uint_fast8_t flags)
 		{
-			// TODO: Log loading and skipping. Everything!
+            // TODO: Log loading and skipping. Everything!
+            Log::Initialize();
 
 			cJSON* root = OpencJSONStream(configFilePath.c_str()); // TODO: Remove engine behaviour
 			cJSON* systems = GetItemFromRootByKey(root, "Systems"); // TODO: Use flags to see if systems are enabled/disabled
@@ -92,21 +94,21 @@ namespace QwerkE {
 
             Input::Initialize((GLFWwindow*)Windows::GetWindow(0)->GetContext());
 
-            Resources::Initialize(); // OpenGL init order dependency (Window?)
-
-			cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
+            cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
             bool enabled = audioEnabled != nullptr ? (bool)audioEnabled->valuedouble : false; // TODO: Improve value handling
-
             if (config.systems.AudioEnabled)
             {
-				// TODO: Read audio library value and load proper audio library
                 Audio::Initialize();
                 Log::Info("Audio system initialized with OpenAL.");
             }
-			else
+            else
             {
-				Log::Info("No audio system loaded.");
-			}
+                Log::Info("No audio system loaded.");
+            }
+
+			// NOTE: Audio init order dependency
+			// NOTE: OpenGL init order dependency (Window?)
+            Resources::Initialize();
 
 			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TEMP: avoid bright white screen while loading
@@ -115,19 +117,6 @@ namespace QwerkE {
 			m_Window->SwapBuffers();
 
 			EventManager::Initialize();
-
-            if (config.systems.PhysicsEnabled)
-            {
-                if (config.libraries.Physics == "Bullet3D")
-                {
-                    // TODO: Create Bullet3DPhyicsManager class
-					Physics::Initialize();
-                }
-            }
-			else
-            {
-                Log::Info("No physics system loaded.");
-			}
 
 			// MessageManager::Initialize();
 
@@ -147,6 +136,9 @@ namespace QwerkE {
 			// Network::Initialize();
 
 			Scenes::Initialize(); // Order Dependency
+
+			// No dependencies //
+			Physics::Initialize();
 
 			return eEngineMessage::_QSuccess;
 		}
@@ -171,8 +163,8 @@ namespace QwerkE {
 			// leave Run() smaller and abstracted from the functionality.
 			m_IsRunning = true;
 
-			double timeSinceLastFrame = 0.0;
-			float frameRate = 0.0f;
+            // double timeSinceLastFrame = 0.0;
+            // float frameRate = 0.0f;
 
 			// TODO: GL state init should be in a Window() or OpenGLManager()
 			// class or some type of ::Graphics() system.
@@ -230,9 +222,11 @@ namespace QwerkE {
 				//timeSinceLastFrame += deltaTime;
 
                 /* Game Loop */
+                Time::NewFrame();
+
 				double deltaTime = Time::Delta();
 
-				if (deltaTime >= FPS_MAX_DELTA)
+				// if (deltaTime >= FPS_MAX_DELTA)
 				{
 					/* New Frame */
 					Framework::NewFrame();
@@ -241,7 +235,7 @@ namespace QwerkE {
 					Framework::PollInput();
 
 					/* Logic */
-					Framework::Update(timeSinceLastFrame);
+					Framework::Update(deltaTime);
 
 					/* Render */
 					Framework::Draw();
@@ -250,10 +244,11 @@ namespace QwerkE {
 					//framesSincePrint++; // Framerate tracking
 					//timeSinceLastFrame = 0.0; // FPS_Max
 				}
-				else
-				{
-					Yield();
-				}
+				// TODO: Fix delta time issues
+				// else
+				// {
+				// 	Yield();
+				// }
 			}
 		}
 
@@ -325,6 +320,7 @@ namespace QwerkE {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // new frame
 			Scenes::Draw();
 
+			// TODO: Remove imgui from framework
 			ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -336,6 +332,8 @@ namespace QwerkE {
                 ImGui::RenderPlatformWindowsDefault();
                 glfwMakeContextCurrent(backup_current_context);
             }
+
+            Scenes::GetCurrentScene()->Draw();
 
 			m_Window->SwapBuffers(); // Change frame buffers
 		}

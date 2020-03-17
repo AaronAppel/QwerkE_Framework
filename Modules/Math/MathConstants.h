@@ -1,17 +1,17 @@
 #ifndef _MathConstants_H_
 #define _MathConstants_H_
 
-// value defines
-#define PI 3.1415926535897932384626433832795f
+// Value defines
+#define PI 3.1415926535897932384626433832795
 
-// conversion
-#define DEG_TO_RAD  0.01745329251994329576923690768489f
-#define RAD_TO_DEG 57.295779513082320876798154814105f
+// Conversion
+#define DEG_TO_RAD  0.01745329251994329576923690768489
+#define RAD_TO_DEG 57.295779513082320876798154814105
 
-// measurement
+// Measurement
 // TODO: Better names
 #define _QMETER 100
 #define _QCM 10
 #define _QMM 1
 
-#endif // !_MathConstants_H_
+#endif // _MathConstants_H_

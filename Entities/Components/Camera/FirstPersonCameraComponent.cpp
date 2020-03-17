@@ -27,7 +27,7 @@ namespace QwerkE {
 
     void FirstPersonCameraComponent::ProcessKeyboard(eCamera_Movement direction, float deltaTime)
     {
-        this->GetParent()->GetPosition();
+        // this->GetParent()->GetPosition();
 
         float velocity = m_MovementSpeed * deltaTime;
         if (direction == FORWARD)

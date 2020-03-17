@@ -24,7 +24,7 @@ namespace QwerkE {
         typedef void (RenderRoutine::* SetupUniformFunction)(CameraComponent* a_Camera, Renderable* renderable); // Setup shader values function
 
     public:
-        RenderRoutine() {};
+        RenderRoutine();
         ~RenderRoutine() {};
 
         void Initialize();

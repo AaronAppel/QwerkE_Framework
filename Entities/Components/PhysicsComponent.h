@@ -3,20 +3,18 @@
 
 #include "../../Entities/Components/Component.h"
 
+class btRigidBody;
+
 namespace QwerkE {
 
-    class PhysicsComponent : public Component // abstract
+    // TODO: Change/move to b3_PhysicsComponent
+    class PhysicsComponent : public Component
     {
     public:
         PhysicsComponent();
         ~PhysicsComponent();
 
-        /* Getters + Setters */
-        // getters
-
-        // setters
-
-    private:
+    protected:
     };
 
 }

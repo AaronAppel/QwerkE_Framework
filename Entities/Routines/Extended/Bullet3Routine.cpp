@@ -1,15 +1,17 @@
-#include "../../Entities/Components/PhysicsComponent.h"
-#include "../../Headers/QwerkE_Enums.h"
-#include "../../Entities/Components/Component.h"
+#include "Bullet3Routine.h"
+#include "../../Components/Extended/Bullet3Component.h"
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )
 #include "../../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
 #include "../../Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+
 #include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btCollisionShape.h"
-#include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btSphereShape.h"
 #include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btStaticPlaneShape.h"
-#include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btBox2dShape.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btSphereShape.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btBoxShape.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btCylinderShape.h"
+#include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btConeShape.h"
 
 #include "../../Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
 #include "../../Libraries/Bullet3/BulletDynamics/Dynamics/btDynamicsWorld.h"
@@ -24,14 +26,27 @@
 #pragma warning( default : 4099 )
 
 namespace QwerkE {
-
-    PhysicsComponent::PhysicsComponent()
+    
+    Bullet3Routine::Bullet3Routine() :
+        m_bulletComponent(nullptr)
     {
-        m_ComponentTag = Component_Physics;
+        m_Type = eRoutineTypes::Routine_Render;
     }
 
-    PhysicsComponent::~PhysicsComponent()
+    Bullet3Routine::~Bullet3Routine()
     {
+    }
+
+    void Bullet3Routine::Initialize()
+    {
+        m_pParent->AddUpdateRoutine(this);
+        m_bulletComponent = (Bullet3Component*)m_pParent->GetComponent(eComponentTags::Component_Physics);
+    }
+
+    void Bullet3Routine::Update(double a_Deltatime)
+    {
+        m_pParent->SetPosition(m_bulletComponent->GetBodyPosition());
+        m_pParent->SetRotation(m_bulletComponent->GetBodyRotation());
     }
 
 }

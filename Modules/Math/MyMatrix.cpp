@@ -138,8 +138,8 @@ void MyMatrix::Rotate(float angle, float x, float y, float z)
     float sinAngle, cosAngle;
     float mag = sqrtf(x * x + y * y + z * z);
 
-    sinAngle = sinf( angle * PI / 180.0f );
-    cosAngle = cosf( angle * PI / 180.0f );
+    sinAngle = sinf(angle * (float)PI / 180.0f);
+    cosAngle = cosf(angle * (float)PI / 180.0f);
     if( mag > 0.0f )
     {
         float xx, yy, zz, xy, yz, zx, xs, ys, zs;
@@ -382,7 +382,7 @@ Vector3 MyMatrix::GetEulerAngles()
     // rearranged from above and using FEQUALEPSILON to give special cases more chance of hitting
     if( m32 > 1.0f - FEQUALEPSILON ) // Not a unique solution: thetaZ - thetaY = atan2( -m21, m11 )
     {
-        float x = PI/2;
+        float x = (float)PI / 2.0;
         float y = atan2f( m21, m11 );
         float z = 0.0f;
         return Vector3( x, y, z );

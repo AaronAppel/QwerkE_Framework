@@ -588,7 +588,7 @@ namespace QwerkE {
                 (float)GetItemFromArrayByIndex(sca, 2)->valuedouble);
 
             TransformRoutine* transform = new TransformRoutine();
-            transform->SetSpeed(GetItemFromArrayByKey(item, "Speed")->valuedouble);
+            transform->SetSpeed((float)GetItemFromArrayByKey(item, "Speed")->valuedouble);
             transform->SetPositionOff(position);
             transform->SetRotationOff(rotation);
             transform->SetScaleOff(scale);

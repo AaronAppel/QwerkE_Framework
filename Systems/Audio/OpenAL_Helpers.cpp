@@ -60,7 +60,7 @@ namespace QwerkE {
             else if (soundFile.s_BitsPerSample == 8)
                 format = AL_FORMAT_MONO8;
             else
-                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in {0}", soundFile.s_Name);
+                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in file {0}", soundFile.s_Name);
         }
         else if (soundFile.s_Channels == 2)
         {
@@ -69,10 +69,11 @@ namespace QwerkE {
             else if (soundFile.s_BitsPerSample == 8)
                 format = AL_FORMAT_STEREO8;
             else
-                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in {0}", soundFile.s_Name);
+                LOG_ERROR("OpenAL_LoadSound(): Invalid bits per sample in file {0}", soundFile.s_Name);
         }
         else
         {
+            LOG_ERROR("OpenAL_LoadSound(): Invalid number of channels in file {0}", soundFile.s_Name);
             return 0; // invalid number of channels
         }
 

@@ -135,6 +135,7 @@ namespace QwerkE {
     enum eRoutineTypes : std::uint8_t
     {
         Routine_Render = 0,
+        Routine_Physics,
         Routine_Print,
         Routine_Transform,
         Routine_Max,

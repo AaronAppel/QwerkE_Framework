@@ -53,10 +53,10 @@ namespace QwerkE {
         // Systems
         cJSON* systems = GetItemFromRootByKey(root, "Systems");
         m_ConfigData.systems.AudioEnabled = (bool)GetItemFromArrayByKey(systems, "AudioEnabled")->valueint;
-        m_ConfigData.systems.DebuggingEnabled = (bool)GetItemFromArrayByKey(systems, "DebuggingEnabled")->valuestring;
-        m_ConfigData.systems.LoggingEnabled = (bool)GetItemFromArrayByKey(systems, "LoggingEnabled")->valuestring;
-        m_ConfigData.systems.NetworkingEnabled = (bool)GetItemFromArrayByKey(systems, "NetworkingEnabled")->valuestring;
-        m_ConfigData.systems.PhysicsEnabled = (bool)GetItemFromArrayByKey(systems, "PhysicsEnabled")->valuestring;
+        m_ConfigData.systems.DebuggingEnabled = (bool)GetItemFromArrayByKey(systems, "DebuggingEnabled")->valueint;
+        m_ConfigData.systems.LoggingEnabled = (bool)GetItemFromArrayByKey(systems, "LoggingEnabled")->valueint;
+        m_ConfigData.systems.NetworkingEnabled = (bool)GetItemFromArrayByKey(systems, "NetworkingEnabled")->valueint;
+        m_ConfigData.systems.PhysicsEnabled = (bool)GetItemFromArrayByKey(systems, "PhysicsEnabled")->valueint;
 
         ClosecJSONStream(root);
     }

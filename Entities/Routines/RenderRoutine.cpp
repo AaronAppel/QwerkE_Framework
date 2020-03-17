@@ -17,6 +17,11 @@
 #include <assert.h>
 
 namespace QwerkE {
+    
+    RenderRoutine::RenderRoutine()
+    {
+        m_Type = eRoutineTypes::Routine_Render;
+    }
 
     void RenderRoutine::Initialize()
     {
