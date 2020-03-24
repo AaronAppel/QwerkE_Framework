@@ -52,6 +52,7 @@ Libraries I utilize to deliver features.
 - assimp: www.github.com/assimp/assimp  
 - OpenAL: www.openal.org  
 - libusb: www.github.com/libusb/libusb  
+- spdlog: www.github.com/gabime/spdlog
 // - vlc: www.github.com/videolan/vlc  
 
 ## License
