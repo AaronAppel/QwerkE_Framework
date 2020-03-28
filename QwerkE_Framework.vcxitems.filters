@@ -1,102 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Entities">
-      <UniqueIdentifier>{71c262a1-c4b4-4a81-8184-7c15221d82ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Components">
-      <UniqueIdentifier>{cfe36d1f-bb6a-4a75-b680-c1d35bf96d86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Components\Camera">
-      <UniqueIdentifier>{6376be0b-9b8d-4032-a5b0-d8b94ea4c7c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Components\Extended">
-      <UniqueIdentifier>{b5b4a362-a415-4a09-b60c-8a9f0fb4a2bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics">
-      <UniqueIdentifier>{9de07c56-169c-4f56-96b3-8bdf14054bf2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\FontRendering">
-      <UniqueIdentifier>{dcd982d7-aa0c-456e-8bf4-f258c4fd9aad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\GraphicsUtilities">
-      <UniqueIdentifier>{4d1be82b-1a83-4cd0-af0e-0a2c44b59d6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\GraphicsUtilities\Direct3D">
-      <UniqueIdentifier>{689ff0e4-ff43-4c1b-90e0-c222615923da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\GraphicsUtilities\OpenGL">
-      <UniqueIdentifier>{ea21c1d4-0232-4e68-bd44-f753b99a690c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\GraphicsUtilities\Vulcan">
-      <UniqueIdentifier>{c0effccc-eb54-415d-ad9f-814d22a5b24d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Mesh">
-      <UniqueIdentifier>{e5a0bb72-61dc-4037-a098-d986ec00d289}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Shader">
-      <UniqueIdentifier>{1e80390d-04e4-424d-96e0-281530848eba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules">
-      <UniqueIdentifier>{ac7c278c-7b44-4ea6-aaeb-418dd56e613b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems">
-      <UniqueIdentifier>{e64a7f2e-5bd2-4a9d-b9a9-8cc4861deb1a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Audio">
-      <UniqueIdentifier>{6bf29c52-ade8-47e4-a2d6-95f8030be1f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\DataManager">
-      <UniqueIdentifier>{2d01dfb8-49e4-4cea-b50f-14c972dfb875}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Debugger">
-      <UniqueIdentifier>{09ad73fb-301d-4ee4-832f-2f2720ffed01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Events">
-      <UniqueIdentifier>{d0ad6891-5518-40f5-bcfa-1c11330d4caa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Factory">
-      <UniqueIdentifier>{795ba3d8-0d9d-4b56-b5ed-1510c29c370d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\FileSystem">
-      <UniqueIdentifier>{2113df4b-1ccc-4c71-93c7-b319c6fc34d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Input">
-      <UniqueIdentifier>{8ced35bc-8d87-4114-bc83-ac50f6ffd49e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Physics">
-      <UniqueIdentifier>{890f9f4f-4309-4645-8f45-a46e298d91ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Renderer">
-      <UniqueIdentifier>{e5b5b25e-4f8a-48fa-81e8-a8daff60cb82}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\ShaderFactory">
-      <UniqueIdentifier>{9ef09eae-2c77-432a-8b2f-8954807dfab9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Window">
-      <UniqueIdentifier>{c0b8db31-86e1-454b-8f76-51446baab5b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Routines">
-      <UniqueIdentifier>{3577840f-377b-4646-8085-65c006a60881}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headers">
-      <UniqueIdentifier>{52e3b62b-3e5a-4f8d-915c-075d74a23de8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Resources">
-      <UniqueIdentifier>{8001e8f2-a501-4fc9-acd7-1f8eeba20289}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Network">
-      <UniqueIdentifier>{b84b8b12-8adf-45ce-a1ce-78e38a1f4c10}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Jobs">
-      <UniqueIdentifier>{9a643911-a596-4f62-9f41-ff2c0d024d08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Log">
-      <UniqueIdentifier>{1d3ba439-6b98-4558-989a-d5d32a56d287}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Systems\Profiler">
-      <UniqueIdentifier>{788df397-307e-44bd-835a-cb00e93bef3c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Libraries">
       <UniqueIdentifier>{fcfc108a-c590-4fed-a4b3-ed4074b7fa40}</UniqueIdentifier>
     </Filter>
@@ -139,27 +43,6 @@
     <Filter Include="Libraries\spdlog">
       <UniqueIdentifier>{c493e250-321b-46e2-a0f0-4047e888d87e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Math">
-      <UniqueIdentifier>{df1c6fa2-bb1c-49bf-ad9a-cf74f827133e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Time">
-      <UniqueIdentifier>{27c5d69e-9502-4bdf-a6f7-29268982cd8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\DataTypes">
-      <UniqueIdentifier>{e89a3347-5543-4c0d-8b03-7a4d14e51bde}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Math\Tween">
-      <UniqueIdentifier>{42e51dd1-9713-4dbf-912d-20324ee277d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utilities">
-      <UniqueIdentifier>{c866c437-ecfd-45d6-a3ec-1977ef6ed92b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\DataTypes">
-      <UniqueIdentifier>{e171f704-4f8f-45fb-97a9-ed4880b66189}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{8d476f7d-20be-406f-bf32-768d0e555ab0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Libraries\Bullet3">
       <UniqueIdentifier>{8ed13a9d-75d9-4509-97c6-7a62951600b2}</UniqueIdentifier>
     </Filter>
@@ -172,240 +55,131 @@
     <Filter Include="Libraries\Bullet3\LinearMath">
       <UniqueIdentifier>{08fdd719-e86b-443f-8bc4-956bd0515a99}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Entities\Routines\Extended">
-      <UniqueIdentifier>{b267fb61-f693-4931-b952-281c05def79e}</UniqueIdentifier>
+    <Filter Include="Source">
+      <UniqueIdentifier>{e2d4f863-9de7-4168-afb8-db551d7a8b36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core">
+      <UniqueIdentifier>{41eee7f3-7f36-4ea8-bfbb-8b093f25cf9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\DataTypes">
+      <UniqueIdentifier>{0b7cf3ee-0e1c-4a52-b1f7-a1782b37b2e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Debug">
+      <UniqueIdentifier>{4595f103-d97b-42c0-bca5-9a897021c060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Debug\Profiler">
+      <UniqueIdentifier>{df120753-7eb9-4baf-ad52-058e90983132}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Debug\Log">
+      <UniqueIdentifier>{6b432c16-e373-4c36-8e96-8b089e1fb9e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Debug\Debugger">
+      <UniqueIdentifier>{d363add6-0b53-412b-8514-3f864a488da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\FileSystem">
+      <UniqueIdentifier>{c192ff11-e3b4-4904-a1cf-d2efe7717112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Headers">
+      <UniqueIdentifier>{bb6ad927-0c1e-4178-ac64-c8ca626a6515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\FileSystem\FileIO">
+      <UniqueIdentifier>{de52c0de-79f1-40b8-b0b6-fce2a4e42fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utilities">
+      <UniqueIdentifier>{7fcbf7be-4b47-4a57-92d3-99769ab8641e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Audio">
+      <UniqueIdentifier>{bce20d9a-af1a-4367-b71a-f146b4e187ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\DataManager">
+      <UniqueIdentifier>{ada24758-a855-4b40-a452-b35c683db07e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Events">
+      <UniqueIdentifier>{1b82044a-1a00-42dd-aa5d-7799b6ea7b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Factory">
+      <UniqueIdentifier>{a0ebc639-3ca8-4dbe-99f0-89ec04f5d8d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics">
+      <UniqueIdentifier>{619acd61-2824-406e-823f-1d8505e05f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\DataTypes">
+      <UniqueIdentifier>{6c843ca7-86b1-475a-b38b-9ddd1359e580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\FontRendering">
+      <UniqueIdentifier>{d62e9287-4b99-46a5-a96b-f8f3b9a1ea21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\GraphicsUtilities">
+      <UniqueIdentifier>{b5502b63-74f0-4c93-8ed8-a7e013d3868c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\GraphicsUtilities\OpenGL">
+      <UniqueIdentifier>{330ee296-69da-411a-a86a-78603dd033b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\Mesh">
+      <UniqueIdentifier>{325cb529-0331-41ef-8b2c-4b09b243088e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\Shader">
+      <UniqueIdentifier>{cb68d7a8-f3da-4014-b528-0e4e9d60a02f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Graphics\ShaderFactory">
+      <UniqueIdentifier>{048078cb-b95a-4a75-b94c-ef4289e23166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Input">
+      <UniqueIdentifier>{aad9984e-829f-4771-9e7d-12bd1dc13b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Jobs">
+      <UniqueIdentifier>{7f1b6c90-ead6-4fe2-be98-95eaeea4dd96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Math">
+      <UniqueIdentifier>{7e930f4e-f365-4827-8957-4822aa165d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Math\Tween">
+      <UniqueIdentifier>{32c1371a-dabf-46a8-a524-d819305e9b03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Memory">
+      <UniqueIdentifier>{5344fbfe-3f6e-4814-85b2-247cbd40208c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Network">
+      <UniqueIdentifier>{d39bcca9-950c-4023-8bef-37e53a01815f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Physics">
+      <UniqueIdentifier>{137c4d41-947e-4d21-bf1b-b9f5baa11168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Physics\Libraries_Bullet3">
+      <UniqueIdentifier>{14ed6a00-c7c6-4f2a-a8c8-d2b2483fbfdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Resources">
+      <UniqueIdentifier>{965fa5cc-f2d9-498c-af93-4642193a3214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes">
+      <UniqueIdentifier>{028097ec-6c16-41bf-b118-4e0f7054955a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes\Entities">
+      <UniqueIdentifier>{f6451e8c-49e0-40a2-ace9-3fca15ba58f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes\Entities\Components">
+      <UniqueIdentifier>{8e8a1b82-1b50-4dea-8f11-4454e534cc4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes\Entities\Routines">
+      <UniqueIdentifier>{644a03a8-4cdf-424f-8e37-f0bd3de31253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes\Entities\Routines\Extended">
+      <UniqueIdentifier>{82b859d8-e8f9-41c0-becc-3a49e857dcc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes\Entities\Components\Extended">
+      <UniqueIdentifier>{3ad3a386-4f22-474a-9215-bd156c4366ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Scenes\Entities\Components\Camera">
+      <UniqueIdentifier>{73282a44-7d91-42a5-b346-ef5565c16bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Time">
+      <UniqueIdentifier>{5c478f77-d3f9-44cb-841e-110272dc0f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Window">
+      <UniqueIdentifier>{2fdbc810-3c3c-4f13-a64a-7af434030efb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Framework.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\GameObject.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Component.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.cpp">
-      <Filter>Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\CameraComponent.cpp">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FirstPersonCameraComponent.cpp">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FreeCameraComponent.cpp">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\StaticCameraComponent.cpp">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\ThirdPersonCameraComponent.cpp">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.cpp">
-      <Filter>Entities\Components\Extended</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\OpenGLManager.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\FontRendering\FontTest.cpp">
-      <Filter>Graphics\FontRendering</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\GraphicsHelpers.cpp">
-      <Filter>Graphics\GraphicsUtilities</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp">
-      <Filter>Graphics\GraphicsUtilities\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.cpp">
-      <Filter>Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.cpp">
-      <Filter>Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.cpp">
-      <Filter>Graphics\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.cpp">
-      <Filter>Graphics\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.cpp">
-      <Filter>Graphics\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.cpp">
-      <Filter>Graphics\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.cpp">
-      <Filter>Systems\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.cpp">
-      <Filter>Systems\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.cpp">
-      <Filter>Systems\DataManager</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.cpp">
-      <Filter>Systems\Debugger</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\Event.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\EventManager.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\InputEvent.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Cameras.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Characters.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Lights.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Shapes.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Factory\Testing.cpp">
-      <Filter>Systems\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadModelFile.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignGLFWKeys.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\AssignWin32Keys.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\glfw_InputCallBacks.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.cpp">
-      <Filter>Systems\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic2DShader.cpp">
-      <Filter>Systems\ShaderFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Basic3DShader.cpp">
-      <Filter>Systems\ShaderFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\LitMaterial.cpp">
-      <Filter>Systems\ShaderFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.cpp">
-      <Filter>Systems\ShaderFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\CallBackFunctions.cpp">
-      <Filter>Systems\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.cpp">
-      <Filter>Systems\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Window.cpp">
-      <Filter>Systems\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\MessageManager.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.cpp">
-      <Filter>Entities\Routines</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutineUtilities.cpp">
-      <Filter>Entities\Routines</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\Routine.cpp">
-      <Filter>Entities\Routines</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Headers\Libraries_Initialize.cpp">
-      <Filter>Headers</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenALAudioManager.cpp">
-      <Filter>Systems\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.cpp">
-      <Filter>Systems\DataManager</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.cpp">
-      <Filter>Entities\Routines</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.cpp">
-      <Filter>Systems\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset_Tag.cpp">
-      <Filter>Systems\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\MasterAssetList.cpp">
-      <Filter>Systems\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.cpp">
-      <Filter>Systems\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.cpp">
-      <Filter>Systems\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Input.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\MouseExtApi.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\KeyboardExtApi.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.cpp">
-      <Filter>Systems\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Network\Network.cpp">
-      <Filter>Systems\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Jobs\Jobs.cpp">
-      <Filter>Systems\Jobs</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Audio\Audio.cpp">
-      <Filter>Systems\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.cpp">
-      <Filter>Systems\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Log\Log.cpp">
-      <Filter>Systems\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Profiler\Profiler.cpp">
-      <Filter>Systems\Profiler</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\imgui\imgui.cpp">
       <Filter>Libraries\imgui</Filter>
     </ClCompile>
@@ -439,334 +213,325 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\lodepng\lodepng.cpp">
       <Filter>Libraries\lodepng</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\Math.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MathFunctions.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MathStuff.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MyMatrix.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\MyQuaternion.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\ValueChecking.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\VectorMathHelpers.cpp">
-      <Filter>Modules\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Time\Time.cpp">
-      <Filter>Modules\Time</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Modules\Math\Tween\TweenFuncs.cpp">
-      <Filter>Modules\Math\Tween</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\FileUtilities.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\MyFileWriter.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\FileSystem\ImageHelpers.cpp">
-      <Filter>Systems\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Log\PrintFunctions.cpp">
-      <Filter>Systems\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.cpp">
-      <Filter>Systems\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\Helpers.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\ProgramArgs.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.cpp">
-      <Filter>Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scenes\Scenes.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\Gimpact\gim_box_set.cpp">
       <Filter>Libraries\Bullet3\BulletCollision</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.cpp">
-      <Filter>Systems\Physics</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Framework.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Debug\Debugger\Debugger.cpp">
+      <Filter>Source\Debug\Debugger</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.cpp">
-      <Filter>Systems\Physics</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Debug\Log\PrintFunctions.cpp">
+      <Filter>Source\Debug\Log</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_World.cpp">
-      <Filter>Systems\Physics</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Debug\Log\Log.cpp">
+      <Filter>Source\Debug\Log</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_Physics.cpp">
-      <Filter>Systems\Physics</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Debug\Profiler\Profiler.cpp">
+      <Filter>Source\Debug\Profiler</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\Bullet3Component.cpp">
-      <Filter>Entities\Components\Extended</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Headers\Libraries_Initialize.cpp">
+      <Filter>Source\Headers</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_PhysicsFactory.cpp">
-      <Filter>Systems\Physics</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\FileIO\MyFileWriter.cpp">
+      <Filter>Source\FileSystem\FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entities\Routines\Extended\Bullet3Routine.cpp">
-      <Filter>Entities\Routines\Extended</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\FileIO\FileUtilities.cpp">
+      <Filter>Source\FileSystem\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\ImageHelpers.cpp">
+      <Filter>Source\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\LoadImageFile.cpp">
+      <Filter>Source\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\LoadModelFile.cpp">
+      <Filter>Source\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\QwerkE_AssimpLoading.cpp">
+      <Filter>Source\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\FileSystem\FileSystem.cpp">
+      <Filter>Source\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Utilities\StringHelpers.cpp">
+      <Filter>Source\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Utilities\Helpers.cpp">
+      <Filter>Source\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Utilities\ProgramArgs.cpp">
+      <Filter>Source\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenAL_Helpers.cpp">
+      <Filter>Source\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenALAudioManager.cpp">
+      <Filter>Source\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\Audio.cpp">
+      <Filter>Source\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\AudioSource.cpp">
+      <Filter>Source\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\DataManager\ConfigHelper.cpp">
+      <Filter>Source\Core\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\DataManager\DataManager.cpp">
+      <Filter>Source\Core\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\EventManager.cpp">
+      <Filter>Source\Core\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\InputEvent.cpp">
+      <Filter>Source\Core\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\JobQueuedEvent.cpp">
+      <Filter>Source\Core\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\AssetLoadedEvent.cpp">
+      <Filter>Source\Core\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\Event.cpp">
+      <Filter>Source\Core\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Factory.cpp">
+      <Filter>Source\Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Lights.cpp">
+      <Filter>Source\Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Shapes.cpp">
+      <Filter>Source\Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Testing.cpp">
+      <Filter>Source\Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Cameras.cpp">
+      <Filter>Source\Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Characters.cpp">
+      <Filter>Source\Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\OpenGLManager.cpp">
+      <Filter>Source\Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Renderer.cpp">
+      <Filter>Source\Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\FontRendering\FontTest.cpp">
+      <Filter>Source\Core\Graphics\FontRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\GraphicsHelpers.cpp">
+      <Filter>Source\Core\Graphics\GraphicsUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp">
+      <Filter>Source\Core\Graphics\GraphicsUtilities\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshUtilities.cpp">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\Mesh.cpp">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshFactory.cpp">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderComponent.cpp">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderProgram.cpp">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderUtilities.cpp">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\ShaderFactory\LitMaterial.cpp">
+      <Filter>Source\Core\Graphics\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\ShaderFactory\ShaderFactory.cpp">
+      <Filter>Source\Core\Graphics\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\ShaderFactory\Basic2DShader.cpp">
+      <Filter>Source\Core\Graphics\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\ShaderFactory\Basic3DShader.cpp">
+      <Filter>Source\Core\Graphics\ShaderFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\InputDevice.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\Keyboard.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\KeyboardExtApi.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\Mouse.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\MouseExtApi.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\AssignGLFWKeys.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\AssignWin32Keys.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\glfw_InputCallBacks.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\Input.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Jobs\Jobs.cpp">
+      <Filter>Source\Core\Jobs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyQuaternion.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\ValueChecking.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\VectorMathHelpers.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\Math.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathFunctions.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathStuff.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyMatrix.cpp">
+      <Filter>Source\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\TweenFuncs.cpp">
+      <Filter>Source\Core\Math\Tween</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.cpp">
+      <Filter>Source\Core\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Network\Network.cpp">
+      <Filter>Source\Core\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.cpp">
+      <Filter>Source\Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Physics.cpp">
+      <Filter>Source\Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_World.cpp">
+      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_Physics.cpp">
+      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_PhysicsFactory.cpp">
+      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\MasterAssetList.cpp">
+      <Filter>Source\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Resources.cpp">
+      <Filter>Source\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Texture_Asset.cpp">
+      <Filter>Source\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Asset.cpp">
+      <Filter>Source\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Asset_Tag.cpp">
+      <Filter>Source\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Scenes.cpp">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\TestScene.cpp">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\ViewerScene.cpp">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\PBR_Test1.cpp">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Scene.cpp">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\GameObject.cpp">
+      <Filter>Source\Core\Scenes\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\Routine.cpp">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\TransformRoutine.cpp">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\RenderRoutine.cpp">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\RenderRoutineUtilities.cpp">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\Extended\Bullet3Routine.cpp">
+      <Filter>Source\Core\Scenes\Entities\Routines\Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\PhysicsComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\RenderComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Component.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\LightComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Extended\OpenAL_Component.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Extended\Bullet3Component.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Extended</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\FreeCameraComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\StaticCameraComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\ThirdPersonCameraComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\CameraComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\FirstPersonCameraComponent.cpp">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Time\Time.cpp">
+      <Filter>Source\Core\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\Window.cpp">
+      <Filter>Source\Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\Windows.cpp">
+      <Filter>Source\Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\CallBackFunctions.cpp">
+      <Filter>Source\Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\glfw_Window.cpp">
+      <Filter>Source\Core\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Framework.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)QwerkE.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\GameObject.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\CameraComponent.h">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FirstPersonCameraComponent.h">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\FreeCameraComponent.h">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\StaticCameraComponent.h">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Camera\ThirdPersonCameraComponent.h">
-      <Filter>Entities\Components\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\OpenAL_Component.h">
-      <Filter>Entities\Components\Extended</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Graphics_Header.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\MaterialComponent.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGLManager.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\FontRendering\FontTest.h">
-      <Filter>Graphics\FontRendering</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\GraphicsHelpers.h">
-      <Filter>Graphics\GraphicsUtilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h">
-      <Filter>Graphics\GraphicsUtilities\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\Mesh.h">
-      <Filter>Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshFactory.h">
-      <Filter>Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshUtilities.h">
-      <Filter>Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderComponent.h">
-      <Filter>Graphics\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderProgram.h">
-      <Filter>Graphics\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderUtilities.h">
-      <Filter>Graphics\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariable_Defines.h">
-      <Filter>Graphics\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\ViewerScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\AudioSource.h">
-      <Filter>Systems\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenAL_Helpers.h">
-      <Filter>Systems\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\DataManager.h">
-      <Filter>Systems\DataManager</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Debugger\Debugger.h">
-      <Filter>Systems\Debugger</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\Event.h">
-      <Filter>Systems\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\EventManager.h">
-      <Filter>Systems\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\InputEvent.h">
-      <Filter>Systems\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Factory\Factory.h">
-      <Filter>Systems\Factory</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileSystem.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\LoadImageFile.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\QwerkE_AssimpLoading.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\QwerKE_eKeys.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Renderer\Renderer.h">
-      <Filter>Systems\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\Dynamic_ShaderProgram.h">
-      <Filter>Systems\ShaderFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\ShaderFactory\ShaderFactory.h">
-      <Filter>Systems\ShaderFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\CallbackFunctions.h">
-      <Filter>Systems\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\glfw_Window.h">
-      <Filter>Systems\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Window.h">
-      <Filter>Systems\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\MessageManager.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\RenderRoutine.h">
-      <Filter>Entities\Routines</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Routine.h">
-      <Filter>Entities\Routines</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\Libraries_Include.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\Libraries_Initialize.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\Libraries_Load.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\PCH_Includes.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Defines.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Directory_Defines.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Enums.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_File_Defines.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Global_Constants.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Include.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Platform.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\OpenALAudioManager.h">
-      <Filter>Systems\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\AudioComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\LightComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\PhysicsComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\RenderComponent.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\DataManager\ConfigHelper.h">
-      <Filter>Systems\DataManager</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\Mesh\MeshData.h">
-      <Filter>Graphics\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\TransformRoutine.h">
-      <Filter>Entities\Routines</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Headers\QwerkE_Flags.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset.h">
-      <Filter>Systems\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Asset_Tag.h">
-      <Filter>Systems\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Resources.h">
-      <Filter>Systems\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\Texture_Asset.h">
-      <Filter>Systems\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\InputDevice.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Mouse.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Input.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\MouseExtApi.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\KeyboardExtApi.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Input\Keyboard.h">
-      <Filter>Systems\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Network\Network.h">
-      <Filter>Systems\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Jobs\Jobs.h">
-      <Filter>Systems\Jobs</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Audio\Audio.h">
-      <Filter>Systems\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Window\Windows.h">
-      <Filter>Systems\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Log\Log.h">
-      <Filter>Systems\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Profiler\Profiler.h">
-      <Filter>Systems\Profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Profiler\Instrumentor.h">
-      <Filter>Systems\Profiler</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\stb_image.h">
       <Filter>Libraries</Filter>
     </ClInclude>
@@ -2393,123 +2158,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\spdlog\details\thread_pool.h">
       <Filter>Libraries\spdlog</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Math.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathConstants.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathFunctions.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathHelpers.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MathStuff.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MyMatrix.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\MyQuaternion.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\ValueChecking.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Vector_deprecated.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\VectorMathHelpers.h">
-      <Filter>Modules\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time\Time.h">
-      <Filter>Modules\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Time\Timer.h">
-      <Filter>Modules\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\CPPList.h">
-      <Filter>Modules\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\MyLinkedList.h">
-      <Filter>Modules\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\ObjectPool.h">
-      <Filter>Modules\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\RangedValue.h">
-      <Filter>Modules\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Tween\Tween.h">
-      <Filter>Modules\Math\Tween</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\Math\Tween\TweenFuncs.h">
-      <Filter>Modules\Math\Tween</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\FileUtilities.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\FileIO\MyFileWriter.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\FileSystem\ImageHelpers.h">
-      <Filter>Systems\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Log\PrintFunctions.h">
-      <Filter>Systems\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\AssetLoadedEvent.h">
-      <Filter>Systems\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Events\JobQueuedEvent.h">
-      <Filter>Systems\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Component.h">
-      <Filter>Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Resources\GUID.h">
-      <Filter>Systems\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Modules\DataTypes\SmartPointer.h">
-      <Filter>Modules\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Helpers.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ProgramArgs.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\ReflectionMacros.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\StringHelpers.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\CubeMap.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\FrameBufferObject.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\LightData.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\Material.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\MaterialComponent.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\Renderable.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\DataTypes\Texture.h">
-      <Filter>Graphics\DataTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scenes\Scenes.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\BulletCollision\BroadphaseCollision\btAxisSweep3.h">
       <Filter>Libraries\Bullet3\BulletCollision</Filter>
     </ClInclude>
@@ -3167,35 +2815,388 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Libraries\Bullet3\LinearMath\btVector3.h">
       <Filter>Libraries\Bullet3\LinearMath</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\PhysicsWorld.h">
-      <Filter>Systems\Physics</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Framework.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\DataTypes\MyLinkedList.h">
+      <Filter>Source\DataTypes</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_World.h">
-      <Filter>Systems\Physics</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\DataTypes\ObjectPool.h">
+      <Filter>Source\DataTypes</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Physics.h">
-      <Filter>Systems\Physics</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\DataTypes\CPPList.h">
+      <Filter>Source\DataTypes</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Components\Extended\Bullet3Component.h">
-      <Filter>Entities\Components\Extended</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Debug\Debugger\Debugger.h">
+      <Filter>Source\Debug\Debugger</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Systems\Physics\Libraries_Bullet3\b3_PhysicsFactory.h">
-      <Filter>Systems\Physics</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Debug\Log\Log.h">
+      <Filter>Source\Debug\Log</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entities\Routines\Extended\Bullet3Routine.h">
-      <Filter>Entities\Routines\Extended</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Debug\Log\PrintFunctions.h">
+      <Filter>Source\Debug\Log</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\Direct3D\TODO.txt">
-      <Filter>Graphics\GraphicsUtilities\Direct3D</Filter>
-    </Text>
-    <Text Include="$(MSBuildThisFileDirectory)Graphics\GraphicsUtilities\Vulcan\TODO.txt">
-      <Filter>Graphics\GraphicsUtilities\Vulcan</Filter>
-    </Text>
-    <Text Include="$(MSBuildThisFileDirectory)Graphics\Shader\ShaderVariableDoc.txt">
-      <Filter>Graphics\Shader</Filter>
-    </Text>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Debug\Profiler\Instrumentor.h">
+      <Filter>Source\Debug\Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Debug\Profiler\Profiler.h">
+      <Filter>Source\Debug\Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Defines.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Directory_Defines.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Enums.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_File_Defines.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Flags.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Global_Constants.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Include.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Platform.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\Libraries_Include.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\Libraries_Initialize.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\Libraries_Load.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\PCH_Includes.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\FileSystem\FileIO\MyFileWriter.h">
+      <Filter>Source\FileSystem\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\FileSystem\FileIO\FileUtilities.h">
+      <Filter>Source\FileSystem\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\FileSystem\ImageHelpers.h">
+      <Filter>Source\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\FileSystem\LoadImageFile.h">
+      <Filter>Source\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\FileSystem\QwerkE_AssimpLoading.h">
+      <Filter>Source\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\FileSystem\FileSystem.h">
+      <Filter>Source\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Utilities\ProgramArgs.h">
+      <Filter>Source\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Utilities\ReflectionMacros.h">
+      <Filter>Source\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Utilities\StringHelpers.h">
+      <Filter>Source\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Utilities\Helpers.h">
+      <Filter>Source\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\AudioSource.h">
+      <Filter>Source\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenAL_Helpers.h">
+      <Filter>Source\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenALAudioManager.h">
+      <Filter>Source\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\Audio.h">
+      <Filter>Source\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\DataManager\DataManager.h">
+      <Filter>Source\Core\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\DataManager\ConfigHelper.h">
+      <Filter>Source\Core\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Events\EventManager.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Events\InputEvent.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Events\JobQueuedEvent.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Events\AssetLoadedEvent.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Events\Event.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Factory.h">
+      <Filter>Source\Core\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsManager.h">
+      <Filter>Source\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\OpenGLManager.h">
+      <Filter>Source\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Renderer.h">
+      <Filter>Source\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Graphics_Header.h">
+      <Filter>Source\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\FrameBufferObject.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\LightData.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\Material.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\MaterialComponent.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\Renderable.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\Texture.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\DataTypes\CubeMap.h">
+      <Filter>Source\Core\Graphics\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\FontRendering\FontTest.h">
+      <Filter>Source\Core\Graphics\FontRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\GraphicsHelpers.h">
+      <Filter>Source\Core\Graphics\GraphicsUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h">
+      <Filter>Source\Core\Graphics\GraphicsUtilities\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshFactory.h">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshUtilities.h">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\Mesh.h">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshData.h">
+      <Filter>Source\Core\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderUtilities.h">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderVariable_Defines.h">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderComponent.h">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Shader\ShaderProgram.h">
+      <Filter>Source\Core\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\ShaderFactory\Dynamic_ShaderProgram.h">
+      <Filter>Source\Core\Graphics\ShaderFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\ShaderFactory\ShaderFactory.h">
+      <Filter>Source\Core\Graphics\ShaderFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\Input.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\InputDevice.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\Keyboard.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\KeyboardExtApi.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\Mouse.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\MouseExtApi.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Input\QwerKE_eKeys.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Jobs\Jobs.h">
+      <Filter>Source\Core\Jobs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyMatrix.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyQuaternion.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\ValueChecking.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Vector.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Vector_deprecated.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\VectorMathHelpers.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Math.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Math_Includes.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathConstants.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathFunctions.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathHelpers.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathStuff.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\TweenFuncs.h">
+      <Filter>Source\Core\Math\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\Tween.h">
+      <Filter>Source\Core\Math\Tween</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.h">
+      <Filter>Source\Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Network\Network.h">
+      <Filter>Source\Core\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Physics.h">
+      <Filter>Source\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.h">
+      <Filter>Source\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_PhysicsFactory.h">
+      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_World.h">
+      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Resources\GUID.h">
+      <Filter>Source\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Resources.h">
+      <Filter>Source\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Texture_Asset.h">
+      <Filter>Source\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Asset.h">
+      <Filter>Source\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Asset_Tag.h">
+      <Filter>Source\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Scenes.h">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\TestScene.h">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\ViewerScene.h">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\PBR_Test1.h">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Scene.h">
+      <Filter>Source\Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\GameObject.h">
+      <Filter>Source\Core\Scenes\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\Routine.h">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\TransformRoutine.h">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\RenderRoutine.h">
+      <Filter>Source\Core\Scenes\Entities\Routines</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Routines\Extended\Bullet3Routine.h">
+      <Filter>Source\Core\Scenes\Entities\Routines\Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\LightComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\PhysicsComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\RenderComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\AudioComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Component.h">
+      <Filter>Source\Core\Scenes\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Extended\Bullet3Component.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Extended\OpenAL_Component.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Extended</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\FreeCameraComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\StaticCameraComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\ThirdPersonCameraComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\CameraComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\FirstPersonCameraComponent.h">
+      <Filter>Source\Core\Scenes\Entities\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Time\Time.h">
+      <Filter>Source\Core\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Time\Timer.h">
+      <Filter>Source\Core\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\glfw_Window.h">
+      <Filter>Source\Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\Window.h">
+      <Filter>Source\Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\Windows.h">
+      <Filter>Source\Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\CallbackFunctions.h">
+      <Filter>Source\Core\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Libraries\glm\glm\detail\func_common.inl">
