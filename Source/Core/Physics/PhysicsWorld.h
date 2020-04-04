@@ -14,10 +14,9 @@ class btDefaultCollisionConfiguration;
 class btCollisionDispatcher;
 class btSequentialImpulseConstraintSolver;
 
-// Should I make an abstract class that can be swapped
-// when using Box2D/Bulet/PhysX depending on platform.
-
 namespace QwerkE {
+
+    // TODO: Abstract from Bullet3 library
 
     class PhysicsWorld
     {

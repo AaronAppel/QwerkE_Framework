@@ -1,7 +1,7 @@
 #ifndef _Debugger_H_
 #define _Debugger_H_
 
-#include "../Headers/QwerkE_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 
 // #include <fstream> // vsnprintf_s
 // #include <cstdarg> // va_start, va_end
@@ -9,11 +9,33 @@
 // #define MAX_MESSAGE 1024
 
 #ifdef _QDebug
-
-// Error stack like OpenGL and OpenAL for pushing errors.
-// User can manipulate stack to get errors.
+#define DEBUGGER_STRIP_RELEASE ;
+#else
+#define DEBUGGER_STRIP_RELEASE {}
+#endif
 
 namespace QwerkE {
+
+    class Debugger
+    {
+    public:
+        Debugger();
+        ~Debugger();
+
+        static void ToggleConsole() DEBUGGER_STRIP_RELEASE
+        static void SetConsoleVisible(bool visibility) DEBUGGER_STRIP_RELEASE
+
+        static void CheckGraphicsErrors() DEBUGGER_STRIP_RELEASE
+        static void CheckAudioErrors() DEBUGGER_STRIP_RELEASE
+
+    private:
+#ifdef _QDebug
+        static bool m_ConsoleIsOpen;
+#endif
+    };
+
+    // Error stack like OpenGL and OpenAL for pushing errors.
+    // User can manipulate stack to get errors.
 
     // TODO: How should these functions be made static and global, but in the debug namespace/class
     // TODO: These functions inject dependencies into files. Look at a good way of minimizing coupling
@@ -46,29 +68,6 @@ namespace QwerkE {
     //    ConsolePrint(message);
     //}
 
-    class Debugger
-    {
-    public:
-        Debugger();
-        ~Debugger();
-
-        static void ToggleConsole();
-        static void SetConsoleVisible(bool visibility);
-
-    private:
-        static bool m_ConsoleIsOpen;
-    };
 }
-#else
-namespace QwerkE { // If _QDebug is undefined, this prevents missing symbol errors
-{
-    static void LogError(const char* filePath, int line, const char* message, ...)
-    {
-    }
-    static void LogWarning(const char* filePath, int line, const char* message, ...)
-    {
-    }
-}
-#endif // !_QDEBUG
 
-#endif // !_Debugger_H_
+#endif // _Debugger_H_

@@ -21,6 +21,7 @@ class btRigidBody;
 
 namespace QwerkE {
 
+    // TODO: Abstract from Bullet3 library
     class Physics
     {
     public:

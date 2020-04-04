@@ -88,7 +88,7 @@ namespace QwerkE {
         void SetTag(eGameObjectTags tag) { m_Tag = tag; }
 
     private:
-        Scene* m_pScene = nullptr;
+        Scene* m_pScene = nullptr; // TODO: Remove scene reference in GameObject
         std::string m_Name = gc_DefaultStringValue;
         eGameObjectTags m_Tag = GO_Tag_Null;
 

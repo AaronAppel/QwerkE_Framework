@@ -1,5 +1,5 @@
 #include "b3_PhysicsFactory.h"
-#include "../Physics.h"
+#include "../../Core/Physics/Physics.h"
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )

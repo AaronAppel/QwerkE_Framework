@@ -1,8 +1,8 @@
-#include "../Physics.h"
+#include "../../Core/Physics/Physics.h"
 #include "b3_PhysicsFactory.h"
 
 #ifdef qw_BULLET3
-#include "../../../Debug/Profiler/Profiler.h"
+#include "../../Debug/Profiler/Profiler.h"
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )
@@ -85,7 +85,7 @@ namespace QwerkE {
         int numObjects = g_DynamicsWorld->getNumCollisionObjects();
 
         for (int i = numObjects - 1; i >= 0; --i)
-        {   
+        {
             btRigidBody* body = btRigidBody::upcast(objArray[i]);
             g_DynamicsWorld->removeCollisionObject(body);
 

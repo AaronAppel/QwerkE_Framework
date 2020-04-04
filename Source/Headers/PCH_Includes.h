@@ -7,6 +7,15 @@
 
 // TODO: Only use pch for files that do not change (libraries, std, etc)
 
+// Standard C/C++ libraries
+#include <map>
+#include <string>
+#include <vector>
+
+// QwerkE Framework included libraries
 // #include "../../Libraries/assimp/"
+
+// QwerkE Framework static files
+// ...
 
 #endif // _Additional_Includes_H_

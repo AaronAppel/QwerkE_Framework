@@ -24,4 +24,4 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Windows_H_
+#endif // _Windows_H_

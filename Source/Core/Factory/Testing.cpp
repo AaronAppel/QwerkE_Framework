@@ -116,7 +116,7 @@ namespace QwerkE {
 
     GameObject* Factory::CreateEmptyGameObject(Scene* scene, vec3 position)
     {
-        if (!scene) return nullptr;
+        if (scene == nullptr) return nullptr;
 
         GameObject* t_Object = new GameObject(scene, position);
 
@@ -125,6 +125,7 @@ namespace QwerkE {
             if (scene->AddObjectToScene(t_Object))
             {
                 m_CreatedCount++;
+                t_Object->SetName(std::string("abc") + std::to_string(m_CreatedCount)); // TODO: Avoid string concatination
                 return t_Object;
             }
         }

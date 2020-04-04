@@ -112,9 +112,6 @@
     <Filter Include="Source\Core\Graphics\GraphicsUtilities">
       <UniqueIdentifier>{b5502b63-74f0-4c93-8ed8-a7e013d3868c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Core\Graphics\GraphicsUtilities\OpenGL">
-      <UniqueIdentifier>{330ee296-69da-411a-a86a-78603dd033b9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Core\Graphics\Mesh">
       <UniqueIdentifier>{325cb529-0331-41ef-8b2c-4b09b243088e}</UniqueIdentifier>
     </Filter>
@@ -145,9 +142,6 @@
     <Filter Include="Source\Core\Physics">
       <UniqueIdentifier>{137c4d41-947e-4d21-bf1b-b9f5baa11168}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Core\Physics\Libraries_Bullet3">
-      <UniqueIdentifier>{14ed6a00-c7c6-4f2a-a8c8-d2b2483fbfdd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Core\Resources">
       <UniqueIdentifier>{965fa5cc-f2d9-498c-af93-4642193a3214}</UniqueIdentifier>
     </Filter>
@@ -177,6 +171,27 @@
     </Filter>
     <Filter Include="Source\Core\Window">
       <UniqueIdentifier>{2fdbc810-3c3c-4f13-a64a-7af434030efb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended">
+      <UniqueIdentifier>{76668ce4-345d-40f2-86f4-d799b524e080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended\RakNet">
+      <UniqueIdentifier>{f72d37e0-bcb4-4d8d-a7b8-003461f37c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended\OpenAL">
+      <UniqueIdentifier>{0726f213-b0fa-46c9-98f1-2575ed2b3de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended\OpenGL">
+      <UniqueIdentifier>{d2314b94-b5cc-46ce-a415-da8f418b0be3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended\glm">
+      <UniqueIdentifier>{d312abaa-a2ee-408b-852b-491469343246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended\GLFW">
+      <UniqueIdentifier>{e1fbf1c1-07cb-4a93-b4ea-9d2685388e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Extended\Bullet3">
+      <UniqueIdentifier>{aa9859e4-d0da-4e00-b4bc-628b5c979ae8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -262,12 +277,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Utilities\ProgramArgs.cpp">
       <Filter>Source\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenAL_Helpers.cpp">
-      <Filter>Source\Core\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenALAudioManager.cpp">
-      <Filter>Source\Core\Audio</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Audio\Audio.cpp">
       <Filter>Source\Core\Audio</Filter>
     </ClCompile>
@@ -313,9 +322,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Characters.cpp">
       <Filter>Source\Core\Factory</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\OpenGLManager.cpp">
-      <Filter>Source\Core\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Renderer.cpp">
       <Filter>Source\Core\Graphics</Filter>
     </ClCompile>
@@ -324,9 +330,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\GraphicsHelpers.cpp">
       <Filter>Source\Core\Graphics\GraphicsUtilities</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.cpp">
-      <Filter>Source\Core\Graphics\GraphicsUtilities\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshUtilities.cpp">
       <Filter>Source\Core\Graphics\Mesh</Filter>
@@ -373,15 +376,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\MouseExtApi.cpp">
       <Filter>Source\Core\Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\AssignGLFWKeys.cpp">
-      <Filter>Source\Core\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\AssignWin32Keys.cpp">
-      <Filter>Source\Core\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\glfw_InputCallBacks.cpp">
-      <Filter>Source\Core\Input</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Input\Input.cpp">
       <Filter>Source\Core\Input</Filter>
     </ClCompile>
@@ -415,23 +409,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.cpp">
       <Filter>Source\Core\Memory</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Network\Network.cpp">
-      <Filter>Source\Core\Network</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.cpp">
       <Filter>Source\Core\Physics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Physics.cpp">
       <Filter>Source\Core\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_World.cpp">
-      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_Physics.cpp">
-      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_PhysicsFactory.cpp">
-      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\MasterAssetList.cpp">
       <Filter>Source\Core\Resources</Filter>
@@ -523,11 +505,44 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\Windows.cpp">
       <Filter>Source\Core\Window</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\CallBackFunctions.cpp">
-      <Filter>Source\Core\Window</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\RakNet\rkn_Main.cpp">
+      <Filter>Source\Extended\RakNet</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Window\glfw_Window.cpp">
-      <Filter>Source\Core\Window</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\Bullet3\b3_Physics.cpp">
+      <Filter>Source\Extended\Bullet3</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\Bullet3\b3_PhysicsFactory.cpp">
+      <Filter>Source\Extended\Bullet3</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\Bullet3\b3_World.cpp">
+      <Filter>Source\Extended\Bullet3</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\glfw_AssignGLFWKeys.cpp">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\glfw_CallBackFunctions.cpp">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\glfw_InputCallBacks.cpp">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\glfw_Window.cpp">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\AssignWin32Keys.cpp">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\OpenAL\oal_AudioManager.cpp">
+      <Filter>Source\Extended\OpenAL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\OpenAL\oal_Helpers.cpp">
+      <Filter>Source\Extended\OpenAL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\OpenGL\ogl_GLManager.cpp">
+      <Filter>Source\Extended\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Extended\OpenGL\ogl_Helpers.cpp">
+      <Filter>Source\Extended\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2909,12 +2924,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\AudioSource.h">
       <Filter>Source\Core\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenAL_Helpers.h">
-      <Filter>Source\Core\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\OpenALAudioManager.h">
-      <Filter>Source\Core\Audio</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Audio\Audio.h">
       <Filter>Source\Core\Audio</Filter>
     </ClInclude>
@@ -2943,9 +2952,6 @@
       <Filter>Source\Core\Factory</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsManager.h">
-      <Filter>Source\Core\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\OpenGLManager.h">
       <Filter>Source\Core\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Renderer.h">
@@ -2980,9 +2986,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\GraphicsHelpers.h">
       <Filter>Source\Core\Graphics\GraphicsUtilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\GraphicsUtilities\OpenGL\OpenGLHelpers.h">
-      <Filter>Source\Core\Graphics\GraphicsUtilities\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Graphics\Mesh\MeshFactory.h">
       <Filter>Source\Core\Graphics\Mesh</Filter>
@@ -3092,12 +3095,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.h">
       <Filter>Source\Core\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_PhysicsFactory.h">
-      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Libraries_Bullet3\b3_World.h">
-      <Filter>Source\Core\Physics\Libraries_Bullet3</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Resources\GUID.h">
       <Filter>Source\Core\Resources</Filter>
     </ClInclude>
@@ -3185,17 +3182,35 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Time\Timer.h">
       <Filter>Source\Core\Time</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\glfw_Window.h">
-      <Filter>Source\Core\Window</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\Window.h">
       <Filter>Source\Core\Window</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\Windows.h">
       <Filter>Source\Core\Window</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Window\CallbackFunctions.h">
-      <Filter>Source\Core\Window</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\Bullet3\b3_PhysicsFactory.h">
+      <Filter>Source\Extended\Bullet3</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\Bullet3\b3_World.h">
+      <Filter>Source\Extended\Bullet3</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\glfw_CallbackFunctions.h">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\GLFW\glfw_Window.h">
+      <Filter>Source\Extended\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\OpenAL\oal_AudioManager.h">
+      <Filter>Source\Extended\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\OpenAL\oal_Helpers.h">
+      <Filter>Source\Extended\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\OpenGL\ogl_GLManager.h">
+      <Filter>Source\Extended\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Extended\OpenGL\ogl_Helpers.h">
+      <Filter>Source\Extended\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

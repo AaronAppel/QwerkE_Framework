@@ -1,6 +1,7 @@
 #include "Debugger.h"
 
 #ifdef _QDebug
+
 namespace QwerkE {
 
     bool Debugger::m_ConsoleIsOpen = false;
@@ -38,5 +39,18 @@ namespace QwerkE {
             LOG_INFO("Console closed");
         }
     }
+
+    // TODO: What should the debugger handle vs other systems?
+    //     Systems should manage themselves, but expose API for debugger to communicate/control debug behaviour.
+    void Debugger::CheckGraphicsErrors()
+    {
+        CheckAllGraphicsErrors();
+    }
+
+    void Debugger::CheckAudioErrors()
+    {
+        // TODO: Check Audio system error state
+    }
+
 }
-#endif // !_QDebug
+#endif // _QDebug

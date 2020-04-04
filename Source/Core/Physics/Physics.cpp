@@ -6,7 +6,7 @@ namespace QwerkE {
     void Physics::Initialize()
     {
         ConfigData config = ConfigHelper::GetConfigData();
-        
+
         if (config.systems.PhysicsEnabled)
         {
             LibraryInitialize();

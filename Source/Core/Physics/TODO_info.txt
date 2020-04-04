@@ -1,5 +1,0 @@
-Move generalized physics manager and world code to the generic files
-
-Create and manage folders for each physics library that is supported.
-The specific files for each library are stored and loaded from these folders,
-hiding the low level details from other areas of the framework.
