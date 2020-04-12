@@ -2,6 +2,8 @@
 #include "FontRendering/FontTest.h"
 #include "Shader/ShaderProgram.h"
 
+#include "../QwerkE_Framework/Libraries/glew/GL/glew.h"
+
 namespace QwerkE {
 
     Renderer::Renderer()
@@ -11,6 +13,39 @@ namespace QwerkE {
 
     Renderer::~Renderer()
     {
+    }
+
+    // TODO: Move OpenGL code to proper files
+    void Renderer::Initialize()
+    {
+        // TODO: GL state init should be in a Window() or OpenGLManager()
+        //     class or some type of ::Graphics() system.
+        glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        // turn on depth buffer testing
+        glEnable(GL_DEPTH_TEST);
+        glPointSize(10);
+        glLineWidth(10);
+
+        // depth cull for efficiency
+        // TODO: This is also in the framework
+        // glEnable(GL_CULL_FACE);
+        // glDisable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+        if (Wind_CCW) glFrontFace(GL_CCW);
+        else glFrontFace(GL_CW);
+
+        // turn on alpha blending
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        glViewport(0, 0, g_WindowWidth, g_WindowHeight);
+    }
+
+    void Renderer::NewFrame()
+    {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     void Renderer::DrawFont(const char* text)

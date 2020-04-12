@@ -1,6 +1,7 @@
 #include "../cJSON_Interface/cJSON.h"
 #include "cJSONInterface.h"
 #include "../Source/FileSystem/FileIO/FileUtilities.h"
+#include "../Source/Debug/Log/Log.h"
 
 #include <vector>
 

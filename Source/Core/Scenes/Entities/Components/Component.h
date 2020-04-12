@@ -33,4 +33,4 @@ namespace QwerkE {
     };
 
 }
-#endif //!_Component_H_
+#endif // _Component_H_

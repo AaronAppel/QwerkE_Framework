@@ -1,11 +1,12 @@
 #ifndef _Scene_H_
 #define _Scene_H_
 
-#include "../Headers/QwerkE_Enums.h"
-#include "../Headers/QwerkE_Global_Constants.h"
+#include "../../Headers/QwerkE_Enums.h"
+#include "../../Headers/QwerkE_Global_Constants.h"
 
 #include <map>
 #include <vector>
+#include <string>
 
 namespace QwerkE {
 

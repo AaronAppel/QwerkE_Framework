@@ -109,15 +109,11 @@ namespace QwerkE {
 			// NOTE: OpenGL init order dependency (Window?)
             Resources::Initialize();
 
-			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TEMP: avoid bright white screen while loading
-
+			Renderer::Initialize();
 			Renderer::DrawFont("Loading..."); // Message for user while loading
 			m_Window->SwapBuffers();
 
 			EventManager::Initialize();
-
-			// MessageManager::Initialize();
 
 			cJSON* jobManagerMultiThreaded = GetItemFromArrayByKey(systems, "JobsMultiThreadedEnabled");
 
@@ -162,64 +158,14 @@ namespace QwerkE {
 			// leave Run() smaller and abstracted from the functionality.
 			m_IsRunning = true;
 
-            // double timeSinceLastFrame = 0.0;
-            // float frameRate = 0.0f;
+			Renderer::Initialize();
 
-			// TODO: GL state init should be in a Window() or OpenGLManager()
-			// class or some type of ::Graphics() system.
-			glClearColor(0.5f, 0.7f, 0.7f, 1.0f);
-			// turn on depth buffer testing
-			glEnable(GL_DEPTH_TEST);
-			glPointSize(10);
-			glLineWidth(10);
-
-			// depth cull for efficiency
-			glEnable(GL_CULL_FACE);
-			// glDisable(GL_CULL_FACE);
-			glCullFace(GL_BACK);
-			if(Wind_CCW) glFrontFace(GL_CCW);
-			else glFrontFace(GL_CW);
-
-			// turn on alpha blending
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-			glViewport(0, 0, g_WindowWidth, g_WindowHeight);
-
-			// Deltatime + FPS Tracking //
-			// deltatime
-			// double lastFrame = helpers_Time(); // Time of last frame initialized to current time
-			// Limit framerate
-			int FPS_MAX = 120; // maximum number of frames that can be run be second
+			/* Application Loop */
+			int FPS_MAX = 120; // Maximum number of frames that can be made per second
 			float FPS_MAX_DELTA = 1.0f / FPS_MAX;
-			//timeSinceLastFrame = FPS_MAX; // Amount of seconds since the last frame ran initialized to run 1st time
-			//// Printing framerate
-			//float printPeriod = 3.0f; // Print period in seconds
-			//float timeSincePrint = printPeriod; // Seconds since last print initialized to print 1st frame
-			//short framesSincePrint = 0;
 
-			// Application Loop
-			while (m_Window->IsClosing() == false) // Run until close requested
+			while (m_Window->IsClosing() == false)
 			{
-				// setup frame
-				// Calculate deltatime of current frame
-				//double currentFrame = helpers_Time();
-				//deltaTime = currentFrame - lastFrame; // time since last frame
-				//lastFrame = currentFrame; // save last frame time
-
-				//// FPS display + tracking
-				//if (timeSincePrint >= printPeriod) // print period
-				//{
-				//	frameRate = 1.0f / timeSincePrint * framesSincePrint;
-				//	// OutputPrint("\nFPS: %f", frameRate); // FPS printout
-				//	// OutputPrint("\nFrames: %i", framesSincePrint); // Frames printout
-				//	timeSincePrint = 0.0f;
-				//	framesSincePrint = 0;
-				//}
-
-				//timeSincePrint += (float)deltaTime;
-				//timeSinceLastFrame += deltaTime;
-
                 /* Game Loop */
                 Time::NewFrame();
 
@@ -259,16 +205,16 @@ namespace QwerkE {
 
 		void Framework::NewFrame()
 		{
-			/* Reset */
-			// TODO: Reset things...
-			Input::NewFrame(); // TODO Replace with static instance call
-
-			// TODO: Process events every frame
+			Input::NewFrame();
 			EventManager::ProcessEvents();
+			Renderer::NewFrame();
+
+			// NOTE: ImGUI::NewFrame() is in PollInput()!
 		}
 
 		void Framework::PollInput()
 		{
+			// TODO: Abstract libraries
             glfwPollEvents(); // TODO: Better GLFW interface?
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame(); // after Input gets reset, and after glfw input polling is done
@@ -278,48 +224,20 @@ namespace QwerkE {
 
 		void Framework::Update(double deltatime)
 		{
+			Physics::Tick();
 			Scenes::Update(deltatime);
 
-			//if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE)) // DEBUG: A simple way to close the window while testing
-
-			if (Input::FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
-			{
-				static bool paused = false;
-				paused = !paused;
-				if (paused)
-				{
-					Scenes::GetCurrentScene()->SetState(eSceneState::SceneState_Paused);
-				}
-				else
-				{
-					Scenes::GetCurrentScene()->SetState(eSceneState::SceneState_Running);
-				}
-			}
-			if (Input::FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
-			{
-				static bool frozen = false;
-				frozen = !frozen;
-				if (frozen)
-				{
-					Scenes::GetCurrentScene()->SetState(eSceneState::SceneState_Frozen);
-				}
-				else
-				{
-					Scenes::GetCurrentScene()->SetState(eSceneState::SceneState_Running);
-				}
-			}
 			if (Input::FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))
 			{
-				Windows::GetWindow(0)->SetClosing(true);
+				Stop();
 			}
 		}
 
 		void Framework::Draw()
 		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // new frame
-			Scenes::Draw();
+			Scenes::DrawCurrentScene();
 
-			// TODO: Remove imgui from framework
+			// TODO: Abstract libraries
 			ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -332,14 +250,11 @@ namespace QwerkE {
                 glfwMakeContextCurrent(backup_current_context);
             }
 
-            Scenes::GetCurrentScene()->Draw();
-
-			m_Window->SwapBuffers(); // Change frame buffers
+			m_Window->SwapBuffers();
 		}
 
 		void Framework::EndFrame()
 		{
-			// Post frame cleanup? Maybe tell memory manager to clean up 1 frame stacks?
 		}
 
 		bool Framework::StillRunning()

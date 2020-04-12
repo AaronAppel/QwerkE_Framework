@@ -132,7 +132,7 @@
 //////////////////////////////
 
 //////////////////////////////
-// networking
+// Networking
 //////////////////////////////
 // RakNet
 // TODO: Check for architecture and debug/release
@@ -140,7 +140,7 @@
 //////////////////////////////
 
 //////////////////////////////
-// math
+// Math
 //////////////////////////////
 // glm and other math related includes
 #pragma warning( disable : 26495 )
@@ -148,22 +148,17 @@
 #include "../Libraries/glm/glm/gtc/matrix_transform.hpp"
 #include "../Libraries/glm/glm//gtc/type_ptr.hpp"
 #pragma warning( default : 26495 )
-/////////////////////////////
-
-//////////////////////////////
-// physics
-//////////////////////////////
 #include "../Source/Core/Math/Tween/Tween.h"
 #include "../Source/Core/Math/Tween/TweenFuncs.h"
 //////////////////////////////
 
 //////////////////////////////
-// physics
+// Physics
 //////////////////////////////
 // Bullet3
 // Consider creating a library for bullet projects.
-#pragma warning( disable : 26495 )
-#pragma warning( disable : 4099 )
+//#pragma warning( disable : 26495 )
+//#pragma warning( disable : 4099 )
 //#include "../Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
 //#include "../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
 //#include "../Libraries/Bullet3/BulletDynamics/Character/btCharacterControllerInterface.h"
@@ -172,13 +167,13 @@
 //#include "../Libraries/Bullet3/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
 //#include "../Libraries/Bullet3/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h"
 //#include "../Libraries/Bullet3/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
-#pragma warning( default : 26495 )
-#pragma warning( default : 4099 )
+//#pragma warning( default : 26495 )
+//#pragma warning( default : 4099 )
 /////////////////////////////
 
 // TODO: Add necessary headers.
 // TODO: Remove unnecessary headers.
 
-#include "Libraries_Load.h" // load .libs
+#include "Libraries_Load.h"
 
 #endif // !_Libraries_Include_H_

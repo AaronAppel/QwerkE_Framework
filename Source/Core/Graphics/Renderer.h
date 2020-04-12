@@ -6,6 +6,11 @@ namespace QwerkE {
     class Renderer
     {
     public:
+        // TODO: Expose API for changing clear color, culling, etc
+        static void Initialize();
+
+        static void NewFrame();
+
         static void DrawFont(const char* text);
 
     private:

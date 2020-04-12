@@ -29,7 +29,7 @@ namespace QwerkE {
         //void QueueEvent(Event* pEvent);
 
         static void Update(double deltatime);
-        static void Draw();
+        static void DrawCurrentScene();
         static void DrawScene(eSceneTypes scene);
 
         /* Getters + Setters */

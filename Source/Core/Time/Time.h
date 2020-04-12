@@ -6,7 +6,7 @@ namespace QwerkE {
     class Time
     {
     public:
-        
+
         static void NewFrame();
 
         static inline double Delta() { return m_Delta; };

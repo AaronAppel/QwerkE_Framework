@@ -147,25 +147,52 @@ namespace QwerkE {
 	void Scenes::Update(double deltatime) // update SceneTypes from bottom up (Max-)
 	{
 		PROFILE_SCOPE("Scene Manager Update");
+
+		if (Input::FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
+		{
+			static bool paused = false;
+			paused = !paused;
+			if (paused)
+			{
+				GetCurrentScene()->SetState(eSceneState::SceneState_Paused);
+			}
+			else
+			{
+				GetCurrentScene()->SetState(eSceneState::SceneState_Running);
+			}
+		}
+		else if (Input::FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
+		{
+			static bool frozen = false;
+			frozen = !frozen;
+			if (frozen)
+			{
+				GetCurrentScene()->SetState(eSceneState::SceneState_Frozen);
+			}
+			else
+			{
+				GetCurrentScene()->SetState(eSceneState::SceneState_Running);
+			}
+		}
+
 		if (m_CurrentScene)
 		{
 			if (m_IsRunning) // Add step-through and pause/play button functionality in debug mode
+			{
 				if (m_CurrentScene->GetIsEnabled())
 				{
 					m_CurrentScene->Update(deltatime);
 				}
+			}
 		}
 	}
 
-	void Scenes::Draw() // draw SceneTypes from top down (0+)
+	void Scenes::DrawCurrentScene() // draw SceneTypes from top down (0+)
     {
         PROFILE_SCOPE("Scene Manager Render");
-		if (m_CurrentScene)
+		if (m_CurrentScene && m_CurrentScene->GetIsEnabled())
 		{
-			if (m_CurrentScene->GetIsEnabled())
-			{
-				m_CurrentScene->Draw();
-			}
+			m_CurrentScene->Draw();
 		}
 	}
 
