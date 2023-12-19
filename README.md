@@ -70,7 +70,7 @@ www.help.github.com/articles/basic-writing-and-formatting-syntax // temp
 ## Resources
 Tools and other software I used thoughout development.
 
-- Visual Studio 2017
+- Visual Studio 2022
 
 ## Acknowledgments
 Shout outs and thank yous.
