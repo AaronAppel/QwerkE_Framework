@@ -73,6 +73,6 @@ Tools and other software I used thoughout development.
 - Visual Studio 2022
 
 ## Acknowledgments
-Shout outs and thank yous.
+Special thanks and shout outs.
 
-- Placeholder
+- Jimmy Lord : https://github.com/jimmylord
