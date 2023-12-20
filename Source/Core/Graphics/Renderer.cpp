@@ -1,10 +1,16 @@
 #include "Renderer.h"
+
+#include "../Resources/Resources.h"
+
+#include "Renderer.h"
 #include "FontRendering/FontTest.h"
 #include "Shader/ShaderProgram.h"
-
-#include "../QwerkE_Framework/Libraries/glew/GL/glew.h"
+#include "Graphics_Header.h"
 
 namespace QwerkE {
+
+    int Renderer::g_WindowWidth = 1600;
+    int Renderer::g_WindowHeight = 900;
 
     Renderer::Renderer()
     {
@@ -40,7 +46,7 @@ namespace QwerkE {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        glViewport(0, 0, g_WindowWidth, g_WindowHeight);
+        glViewport(0, 0, Renderer::g_WindowWidth, Renderer::g_WindowHeight);
     }
 
     void Renderer::NewFrame()

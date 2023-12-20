@@ -1,6 +1,9 @@
 #include "Physics.h"
 #include "../Resources/Resources.h"
 
+#include "../DataManager/ConfigHelper.h"
+#include "../../Debug/Log/Log.h"
+
 namespace QwerkE {
 
     void Physics::Initialize()

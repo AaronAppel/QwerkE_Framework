@@ -44,7 +44,7 @@ namespace QwerkE {
 
     void EventManager::ProcessEvents()
     {
-        int size = m_EventList.size();
+        int size = (int)m_EventList.size();
 
         for (int i = 0; i < size; i++)
         {

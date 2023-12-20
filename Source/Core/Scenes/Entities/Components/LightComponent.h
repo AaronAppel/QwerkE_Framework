@@ -1,10 +1,12 @@
 #ifndef _LightComponent_H_
 #define _LightComponent_H_
 
-#include "../../Entities/Components/Component.h"
 #include "../../../../Headers/QwerkE_Enums.h"
 
-#pragma warning( disable : 26495 )
+#include "../../Entities/Components/Component.h"
+#include "../../../Math/Vector.h"
+
+#pragma warning( disable : 26495 ) // #TODO Review warning ignore
 class MyMatrix;
 #pragma warning( default : 26495 )
 

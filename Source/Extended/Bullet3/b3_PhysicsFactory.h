@@ -1,7 +1,10 @@
 #ifndef _b3_PhysicsFactory_H_
 #define _b3_PhysicsFactory_H_
 
+#include "../../../Libraries/Bullet3/LinearMath/btVector3.h"
+
 class btRigidBody;
+class btCollisionShape;
 
 namespace QwerkE {
 

@@ -1,10 +1,13 @@
 #ifndef _Scenes_H_
 #define _Scenes_H_
 
-#include "../Headers/QwerkE_Enums.h"
 #include <map>
 
+#include "../../Headers/QwerkE_Enums.h"
+
 namespace QwerkE {
+
+    class Scene;
 
     class Scenes
     {
@@ -36,7 +39,7 @@ namespace QwerkE {
         // getters
         static Scene* GetScene(eSceneTypes a_SceneType) { return m_Scenes[a_SceneType]; };
         static Scene* GetCurrentScene() { return m_CurrentScene; };
-        static int SceneCount() { return m_Scenes.size(); };
+        static int SceneCount() { return (int)m_Scenes.size(); };
         static const std::map<eSceneTypes, Scene*>* LookAtScenes() { return &m_Scenes; };
 
     private:

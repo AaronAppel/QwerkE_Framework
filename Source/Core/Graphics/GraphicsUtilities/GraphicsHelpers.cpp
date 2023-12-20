@@ -1,7 +1,12 @@
+#include "GraphicsHelpers.h"
+
+#include <map>
+#include <string>
+
 #include "../../Libraries/cJSON_Interface/cJSONInterface.h"
+
 #include "../../../FileSystem/FileIO/FileUtilities.h"
 #include "../../../Utilities/StringHelpers.h"
-#include "GraphicsHelpers.h"
 #include "OpenGL/OpenGLHelpers.h"
 #include "../../Scenes/Entities/Components/RenderComponent.h"
 #include "../../Resources/Resources.h"
@@ -12,9 +17,8 @@
 #include "../DataTypes/Renderable.h"
 #include "../DataTypes/Texture.h"
 #include "../../../Headers/QwerkE_Enums.h"
-
-#include <map>
-#include <string>
+#include "../../../Headers/QwerkE_File_Defines.h"
+#include "../../../Headers/QwerkE_Directory_Defines.h"
 
 namespace QwerkE {
 
@@ -352,7 +356,11 @@ namespace QwerkE {
 
         shader->SetVertShader(Resources::GetShaderComponent(shader->GetVertName().c_str()));
         shader->SetFragShader(Resources::GetShaderComponent(shader->GetFragName().c_str()));
-        shader->SetGeoShader(Resources::GetShaderComponent(shader->GetGeoName().c_str()));
+
+        if (!shader->GetGeoName().empty() && shader->GetGeoName() != gc_DefaultStringValue)
+        {
+            shader->SetGeoShader(Resources::GetShaderComponent(shader->GetGeoName().c_str()));
+        }
 
         // TODO: Compile shader program
 

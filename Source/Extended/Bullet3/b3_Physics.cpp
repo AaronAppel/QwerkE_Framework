@@ -1,5 +1,4 @@
 #include "../../Core/Physics/Physics.h"
-#include "b3_PhysicsFactory.h"
 
 #ifdef qw_BULLET3
 #include "../../Debug/Profiler/Profiler.h"
@@ -30,6 +29,10 @@
 
 // NOTE : Following example code copied from Ciro Santilli : https://stackoverflow.com/questions/11175694/bullet-physics-simplest-collision-example
 #define PRINTF_FLOAT "%7.3f"
+
+#include "../../Debug/Log/Log.h"
+
+#include "b3_PhysicsFactory.h"
 
 namespace QwerkE {
 

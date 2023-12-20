@@ -1,5 +1,7 @@
 #include "TransformRoutine.h"
 
+#include "../GameObject.h"
+
 namespace QwerkE {
 
     void TransformRoutine::Initialize()

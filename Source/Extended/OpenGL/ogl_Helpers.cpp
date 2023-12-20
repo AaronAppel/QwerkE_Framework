@@ -1,14 +1,15 @@
 #include "ogl_Helpers.h"
-#include "../../Core/Graphics/Graphics_Header.h"
 
 #include "../../../Libraries/lodepng/lodepng.h"
+
+#include "../../Core/Graphics/Graphics_Header.h"
 #include "../../Debug/Log/Log.h"
 #include "../../FileSystem/FileIO/FileUtilities.h"
 #include "../../FileSystem/ImageHelpers.h"
 #include "../../FileSystem/FileSystem.h"
 #include "../../Utilities/StringHelpers.h"
 
-// TODO: Find a better spot for stb_image init
+// TODO: Find a better spot for stb_image init (Libraries_Initialize.cpp)
 #pragma warning( disable : 28182 )
 #pragma warning( disable : 6001 )
 #pragma warning( disable : 6262 )
@@ -22,7 +23,8 @@
 
 namespace QwerkE {
 
-#ifdef _QDebug
+// #ifdef _QDebug
+#ifdef _DEBUG
     void GLCheckforErrors()
     {
         GLenum error = glGetError();

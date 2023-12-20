@@ -1,7 +1,10 @@
 #include "MouseExtApi.h"
+
 #include "Mouse.h"
 
-namespace QwerkE {    
+#include "../Input/Input.h"
+
+namespace QwerkE {
 
     bool MouseExtAPI::GetIsKeyDown(eKeys key) const
     {

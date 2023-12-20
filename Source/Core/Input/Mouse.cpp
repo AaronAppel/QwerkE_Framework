@@ -1,5 +1,7 @@
 #include "Mouse.h"
 
+#include "../Input/Input.h"
+
 namespace QwerkE {
 
     void Mouse::NewFrame()

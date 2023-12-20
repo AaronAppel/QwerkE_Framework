@@ -1,4 +1,5 @@
 #include "Factory.h"
+
 #include "../Resources/Resources.h"
 #include "../Scenes/Entities/Components/Camera/CameraComponent.h"
 #include "../Scenes/Entities/Components/Camera/FirstPersonCameraComponent.h"
@@ -8,6 +9,7 @@
 #include "../Scenes/Entities/Routines/RenderRoutine.h"
 #include "../Scenes/Entities/Components/RenderComponent.h"
 #include "../Scenes/Entities/GameObject.h"
+#include "../Scenes/Scene.h"
 #include "../../Utilities/Helpers.h"
 #include "../../Utilities/StringHelpers.h"
 #include "../../FileSystem/FileSystem.h"

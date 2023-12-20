@@ -8,11 +8,12 @@
 
 // type definitions
 #define QNULL 0 // Standardized NULL value
-// TODO: Is there an easy way of reducing typing without coupling files like typedef does
+// #TODO: Is there an easy way of reducing typing without coupling files like typedef does
 // typedef unsigned int uint; // less typing and easier to read
 
 #ifndef FrameworkDir
-#pragma error "Define FrameworkDir!"
+// #TODO Build fix
+// #pragma error "Define FrameworkDir!"
 #define FrameworkDir "../../QwerkE_Framework/" // TODO: Find out why RenderingEnv cannot define FrameworkDir
 // string pointing to the QwerkE_Framework folder from your project working directory
 #endif // !FrameworkDir
@@ -24,7 +25,8 @@
 
 // TODO: Move to directory defines file
 #ifndef AssetsDir
-#define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // TODO: Remove common assets
+// #define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // TODO: Remove common assets
+#define AssetsDir FrameworkDir "Assets/" // TODO: Remove common assets
 #endif // !AssetsDir
 
 #ifndef LibrariesDir
@@ -33,14 +35,11 @@
 
 #define RuntimeDirectory "" // TODO: MakeDir
 
-// Define platform macro
-#define _QWindows
-
 // Define architecture macro
 // TODO: Preprocessor defines are lame. Is there a
 // better way to define the architecture?
-#ifdef Win32Bit
-#define _Q32Bit
+#ifdef _WIN32
+// #ifdef _Q32Bit
 // define libraries and systems to build
 #define GLFW3 // TODO: Think of more explicit defines like Qdef_GLEW or w/e
 #define GLEW
@@ -48,14 +47,15 @@
 #define OpenAL
 #define dearimgui
 // #define LibUSB
-#elif defined(Win64Bit)
+// #elif defined(Win64Bit)
+#elif defined(_WIN64)
 #define _Q64Bit
 #else
 #pragma warning "Define architecture!"
 #endif // Win32Bit
 
 // Define debug vs release macro
-#ifdef DEBUG
+#ifdef _DEBUG
 #define _QDebug
 #elif defined(RELEASE)
 #define _QRelease

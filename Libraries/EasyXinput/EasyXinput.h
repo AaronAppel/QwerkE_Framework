@@ -7,16 +7,23 @@
 // "The constant XINPUT_GAMEPAD_TRIGGER_THRESHOLD may be used as the value which bLeftTrigger and bRightTrigger must be greater than to register as pressed." - MSDN XINPUT_GAMEPAD structure
 // XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE
 
+// #TODO temp build fix
+#if !defined(WIN32_LEAN_AND_MEAN)
+#include <SDKDDKVer.h>
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#endif // !platform
+
 #include <Xinput.h>
 // #include Xinput.lib, Xinput9_1_0.lib or other version
 
 /*  HOW TO USE
-XinputHandler newHandler = new XinputHanlder(4);
+XinputHandler newHandler = new XinputHandler(4);
 ...
-newHanlder->ResetStates();
-newHanlder->SetPlayer(0);
-newHanlder->UpdatePlayerState();
-if(newHanlder->AButtonIsDown())
+newHandler->ResetStates();
+newHandler->SetPlayer(0);
+newHandler->UpdatePlayerState();
+if (newHandler->AButtonIsDown())
     m_Player->Jump();
 ...
 */
@@ -48,6 +55,8 @@ struct XinVec2
 class XinputHandler
 {
 public:
+	// #TODO How are stick clicks (LS and RS) tracked?
+
 	// setup
 	XinputHandler(int numPlayers);
 	// tear down

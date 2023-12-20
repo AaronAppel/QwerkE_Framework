@@ -1,11 +1,12 @@
 #ifndef _File_System_H_
 #define _File_System_H_
 
+#include <string>
 // TODO: Remove
 #include "../../Libraries/OpenAL/include/al.h"
 #include "../../Libraries/glew/GL/glew.h"
 
-#include <string>
+#include "../Headers/QwerkE_Global_Constants.h"
 
 namespace QwerkE {
 

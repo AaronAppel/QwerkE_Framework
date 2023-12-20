@@ -1,7 +1,11 @@
 #include "CameraComponent.h"
+
+#include "../../../../../../Libraries/glew/GL/glew.h"
+
+#include "../../../../../Headers/QwerkE_Global_Constants.h"
+
 #include "ThirdPersonCameraComponent.h"
 #include "../../GameObject.h"
-#include "../../../../../Headers/QwerkE_Global_Constants.h"
 #include "../Component.h"
 
 namespace QwerkE {
@@ -17,9 +21,8 @@ namespace QwerkE {
 
     void ThirdPersonCameraComponent::ProcessKeyboard(eCamera_Movement direction, float deltaTime)
     {
-        this->GetParent()->GetPosition();
-
         float velocity = m_MovementSpeed * deltaTime;
+
         if (direction == FORWARD)
             m_Position += m_Forward * velocity;
         if (direction == BACKWARD)
@@ -40,7 +43,6 @@ namespace QwerkE {
 
     void ThirdPersonCameraComponent::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
     {
-        this->GetParent()->GetPosition();
         xoffset *= m_MouseSensitivity;
         yoffset *= m_MouseSensitivity;
 
@@ -50,10 +52,14 @@ namespace QwerkE {
         // Make sure that when pitch is out of bounds, screen doesn't get flipped
         if (constrainPitch)
         {
-            if (m_Pitch > 89.0f)
+            if (m_Pitch > 89.0f) // #TODO Add a clamp method
+            {
                 m_Pitch = 89.0f;
-            if (m_Pitch < -89.0f)
+            }
+            else if (m_Pitch < -89.0f)
+            {
                 m_Pitch = -89.0f;
+            }
         }
 
         // Update m_Forward, m_Right and Up Vectors using the updated Eular angles

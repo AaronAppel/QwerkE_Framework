@@ -13,9 +13,24 @@
 // Note: 64 bit not building currently so all .libs are 32bit
 // TODO: Fix 64 bit
 
+#ifndef LibrariesDir // #TODO Temp build fix (Remove, and use QwerkE_Defines.h)
+#define LibrariesDir FrameworkDir "Libraries/"
+#endif // LibrariesDir
+
+#ifndef FrameworkDir // #TODO Temp build fix
+#define FrameworkDir "QwerkE_Framework/"
+// #define FrameworkDir "../../QwerkE_Framework/"
+#endif // !FrameworkDir
+
+#ifndef AssetsDir // #TODO Temp build fix
+// #define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // TODO: Remove common assets
+#define AssetsDir "Assets/" // TODO: Remove common assets
+#endif // !AssetsDir
+
 // load libraries
-#ifdef DEBUG
+#ifdef _DEBUG
 // OpenGL
+#define OpenGL // Temp build fix
 #ifdef OpenGL
 #pragma comment( lib, "opengl32.lib" ) // Found by Visual Studio
 #elif defined(Direct3D)
@@ -32,17 +47,20 @@
 // freetype2
 #pragma comment( lib, LibrariesDir "freetype2/x86/freetype.lib" )
 
+#define GLEW // Temp build fix
 #ifdef GLEW
 // TODO: Check for architecture and debug/release
 #pragma comment( lib, LibrariesDir "glew/glew32d.lib" )
 #endif // GLEW
 
+#define GLFW3 // Temp build fix
 #ifdef GLFW3
 // TODO: Check for architecture and debug/release
 // #pragma comment( lib, LibrariesDir "glfw/glfw3.lib" )
 #pragma comment( lib, LibrariesDir "glfw/glfw3dll.lib" )
 #endif // GLFW3
 
+#define OpenAL // Temp build fix
 #ifdef OpenAL
 // OpenAL
 #pragma comment( lib, LibrariesDir "OpenAL/libs/Win32/OpenAL32.lib" )

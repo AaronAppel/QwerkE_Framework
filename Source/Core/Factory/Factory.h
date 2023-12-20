@@ -1,7 +1,7 @@
 #ifndef _Factory_H_
 #define _Factory_H_
 
-#include "../Headers/QwerkE_Enums.h"
+#include "../../Headers/QwerkE_Enums.h"
 #include "../Scenes/Entities/GameObject.h"
 
 namespace QwerkE {

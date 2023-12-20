@@ -1,18 +1,24 @@
 #include "FontTest.h"
-#include "../../Graphics/Graphics_Header.h"
-#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
-#include "../Shader/ShaderProgram.h"
-#include "../../Libraries/freetype2/ft2build.h"
+
+#include <iostream>
+#include <map>
+
+#include <ft2build.h>
 #include "../../Libraries/freetype2/freetype/freetype.h"
 #include "../../Libraries/glew/GL/glew.h"
 #include "../../Libraries/glm/glm/common.hpp"
 #include "../../Libraries/glm/glm/gtc/type_ptr.hpp"
 #include "../../Libraries/glm/glm/gtc/matrix_transform.hpp"
-#include "../../../Utilities/StringHelpers.h"
-#include "../../../Headers/QwerkE_Directory_Defines.h"
 
-#include <iostream>
-#include <map>
+#include "../../../Headers/QwerkE_Directory_Defines.h"
+#include "../../../Headers/QwerkE_File_Defines.h"
+
+#include "../../Graphics/Graphics_Header.h"
+#include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../Shader/ShaderProgram.h"
+#include "../../../Utilities/StringHelpers.h"
+#include "../../Resources/Resources.h"
+#include "../Renderer.h"
 
 // Copied from font rendering example : https://learnopengl.com/
 
@@ -26,7 +32,6 @@ namespace QwerkE {
         GLuint Advance;    // Horizontal offset to advance to next glyph
     };
 
-    extern int g_WindowWidth, g_WindowHeight;
     std::map<GLchar, Character> Characters;
     GLuint VAO, VBO;
 
@@ -108,7 +113,7 @@ namespace QwerkE {
     void RenderText(ShaderProgram* shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
     {
         // https://learnopengl.com/In-Practice/Text-Rendering
-        glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(g_WindowWidth), 0.0f, static_cast<GLfloat>(g_WindowHeight));
+        glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(Renderer::g_WindowWidth), 0.0f, static_cast<GLfloat>(Renderer::g_WindowHeight));
 
         shader->Use();
         // glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));

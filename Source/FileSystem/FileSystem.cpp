@@ -1,4 +1,9 @@
 #include "FileSystem.h"
+
+#include <string>
+#include <iostream>
+#include <vector>
+
 #include "LoadImageFile.h"
 #include "FileIO/FileUtilities.h"
 #include "FileIO/FileUtilities.h"
@@ -15,16 +20,14 @@
 #include "../../Libraries/assimp/material.h"
 #pragma warning( default : 26495 )
 
-#include "../Core/Graphics/Mesh/Mesh.h"
-#include "../Core/Audio/OpenAL_Helpers.h"
-
-#define QwerkE_Image_Library_stb 1
+#define QwerkE_Image_Library_stb 1 // #TODO Move somewhere better
 #define QwerkE_Image_Library_lodepng 1
 #define QwerkE_Image_Library_soil 0
 
-#include <string>
-#include <iostream>
-#include <vector>
+#include "../Headers/QwerkE_File_Defines.h"
+
+#include "../Core/Graphics/Mesh/Mesh.h"
+#include "../Core/Audio/OpenAL_Helpers.h"
 
 namespace QwerkE {
 
@@ -55,7 +58,9 @@ namespace QwerkE {
 		}
 
 		if (soundFile.s_Data == nullptr)
+		{
 			LOG_ERROR("OpenAL error buffering sound data!");
+		}
 	}
 
 

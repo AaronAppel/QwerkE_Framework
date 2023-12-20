@@ -1,7 +1,4 @@
 #include "Bullet3Component.h"
-#include "../../../../../Headers/QwerkE_Enums.h"
-#include "../../../Entities/Components/PhysicsComponent.h"
-#include "../../../Entities/Components/Component.h"
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )
@@ -26,6 +23,12 @@
 #include "../../Libraries/Bullet3/LinearMath/btDefaultMotionState.h"
 #pragma warning( default : 26495 )
 #pragma warning( default : 4099 )
+
+#include "../../../../../Headers/QwerkE_Enums.h"
+#include "../../../Entities/Components/PhysicsComponent.h"
+#include "../../../Entities/Components/Component.h"
+#include "../../../../Math/Vector.h"
+#include "../../../Entities/GameObject.h"
 
 namespace QwerkE {
 
@@ -90,7 +93,7 @@ namespace QwerkE {
 
         m_Body->applyForce(btVector3(force.x, force.y, force.z), transform.getOrigin());
     }
-    
+
     void Bullet3Component::ApplyTorque(vec3 force)
     {
         if (!m_Body->isActive())

@@ -12,10 +12,12 @@
 // defines, structs, typedefs for graphics
 #define Wind_CCW 0
 
+#include "../../Headers/QwerkE_Defines.h"
+
 #ifdef OpenGL
-GLuint gc_NullHandleValue = QNULL; // (or 0) For textures, shaders, etc
+// GLuint gc_NullHandleValue;
 #else
-#pragma warning "Define rendering engine!"
+#pragma warning "Define rendering/graphics library!"
 #endif // OpenGL
 
 // TODO: Move enum to maybe ShaderFactory or somewhere

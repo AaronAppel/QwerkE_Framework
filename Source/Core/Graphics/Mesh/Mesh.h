@@ -1,17 +1,20 @@
 #ifndef _Mesh_H_
 #define _Mesh_H_
 
-#include "../Headers/QwerkE_Global_Constants.h"
-#include "../../Libraries/glew/GL/glew.h"
-
 #include <string>
+
+#include "../../../../Libraries/glew/GL/glew.h"
+
+#include "../../../Headers/QwerkE_Global_Constants.h"
+
+#include "MeshData.h"
 
 namespace QwerkE {
 
-    struct VertexData;
-    class ShaderProgram;
     class Mesh;
     struct MeshData;
+    class ShaderProgram;
+    struct VertexData;
 
     typedef void (QwerkE::Mesh::* MeshFunction)(); // Draw function
 
@@ -59,11 +62,11 @@ namespace QwerkE {
         char* PackModelData(MeshData* data);
 
         /* Draw functionality */
-        MeshFunction m_DrawFunc = &Mesh::NullDraw;
-
         void DrawElements(); // Use IBO
         void DrawArrays(); // Draw raw vertex data
         void NullDraw(); // Not setup or invalid data
+
+        MeshFunction m_DrawFunc = &Mesh::NullDraw;
     };
 
 }

@@ -1,15 +1,15 @@
 #include "Scene.h"
+
+#include <algorithm>
+
+#include "../../Debug/Log/Log.h"
+
 #include "Entities/GameObject.h"
 #include "Entities/Components/Component.h"
 #include "Entities/Components/Camera/CameraComponent.h"
 #include "../Input/Input.h"
 #include "../DataManager/DataManager.h"
 #include "../../Utilities/StringHelpers.h"
-
-#include <algorithm>
-
-extern int g_WindowWidth;
-extern int g_WindowHeight;
 
 namespace QwerkE {
 

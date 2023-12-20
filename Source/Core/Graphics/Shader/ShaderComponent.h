@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "../../../Headers/QwerkE_Global_Constants.h"
+
 typedef unsigned int GLuint;
 
 namespace QwerkE {

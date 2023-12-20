@@ -1,5 +1,7 @@
 #include "ProgramArgs.h"
 
+#include "StringHelpers.h"
+
 bool ArgumentExists(unsigned  int argc, char** argv, const char* argumentString)
 {
 	for (size_t i = 0; i < argc; i++)

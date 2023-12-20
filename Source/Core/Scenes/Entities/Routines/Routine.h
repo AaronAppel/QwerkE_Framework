@@ -3,7 +3,7 @@
 
 #include "../../../../Headers/QwerkE_Enums.h"
 
-class GameObject;
+#include "../GameObject.h"
 
 namespace QwerkE {
 

@@ -9,6 +9,14 @@
 // folder path altering/moving.
 //////////////////////////////
 
+#include "../Utilities/StringHelpers.h"
+
+// #TODO Remove hard coded fix
+#ifndef FrameworkDir // If the framework is running without the engine (no end user override)
+#define FrameworkDir "../../QwerkE_Framework/"
+#define AssetsDir "Assets/"
+#endif
+
 //USER: Set the offset from your project working directory
 // You must #define AssetDir "Assets/" (path to assets)
 
@@ -20,7 +28,7 @@
 // TODO: should macros express the file extension? Need to if the loader is looking for that file
 // TODO: Procedurally generate null object to guarantee instantiation
 // TODO: Use file extension as name consistently. Either everywhere, or no where
-#define NullFolderPath(fullFileName) StringAppend(FrameworkNullAssetsDir, fullFileName) // TOD: What is this for?
+#define NullFolderPath(fullFileName) StringAppend(FrameworkNullAssetsDir, fullFileName) // TODO: What is this for?
 
 // Define paths to resource folders that can change easily from project
 // to project using a preprocessor define. Paths can also change or be

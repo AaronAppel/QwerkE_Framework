@@ -3,9 +3,9 @@
 
 #include "../../../../Headers/QwerkE_Enums.h"
 
-class GameObject;
-
 namespace QwerkE {
+
+    class GameObject;
 
     class Component
     {

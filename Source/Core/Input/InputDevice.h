@@ -3,6 +3,8 @@
 
 #include "QwerKE_eKeys.h"
 
+#include "../../Headers/QwerkE_Enums.h"
+
 namespace QwerkE {
 
     // TODO: Should be class?

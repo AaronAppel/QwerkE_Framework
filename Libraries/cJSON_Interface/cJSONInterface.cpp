@@ -1,9 +1,11 @@
-#include "../cJSON_Interface/cJSON.h"
 #include "cJSONInterface.h"
-#include "../Source/FileSystem/FileIO/FileUtilities.h"
-#include "../Source/Debug/Log/Log.h"
 
 #include <vector>
+
+#include "cJSON.h"
+
+#include "../../Source/Debug/Log/Log.h"
+#include "../../Source/FileSystem/FileIO/FileUtilities.h"
 
 cJSON* OpencJSONStream(const char* fileDirectory)
 {
@@ -12,7 +14,7 @@ cJSON* OpencJSONStream(const char* fileDirectory)
 		char* str = LoadFile(fileDirectory);
 		cJSON* root = cJSON_Parse(str);
 
-		delete[] str; // cleanup
+		delete[] str; // Cleanup
 
 		if (root == nullptr)
 		{
@@ -27,7 +29,7 @@ void ClosecJSONStream(cJSON* root)
 {
 	if (root)
 	{
-		cJSON_Delete(root); // cleanup
+		cJSON_Delete(root); // Cleanup
 	}
 }
 

@@ -1,9 +1,11 @@
 #ifndef _Texture_H_
 #define _Texture_H_
 
+#include <string>
+
 #include "../Libraries/glew/GL/glew.h"
 
-#include <string>
+#include "../../../Headers/QwerkE_Global_Constants.h"
 
 namespace QwerkE {
 

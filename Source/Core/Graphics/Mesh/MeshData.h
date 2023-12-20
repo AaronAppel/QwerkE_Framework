@@ -1,6 +1,10 @@
 #ifndef _Mesh_Data_H_
 #define _Mesh_Data_H_
 
+#include <vector>
+
+#include "../../Math/Vector.h"
+
 namespace QwerkE {
 
     struct MeshBufferInfo
@@ -81,13 +85,13 @@ namespace QwerkE {
         MeshBufferInfo BufferInfo()
         {
             MeshBufferInfo bufferInfo;
-            bufferInfo.numIndices = indices.size();
-            bufferInfo.numPositions = positions.size();
-            bufferInfo.numColors = colors.size();
-            bufferInfo.numUVs = UVs.size();
-            bufferInfo.numNormals = normals.size();
-            bufferInfo.numTangents = tangents.size();
-            bufferInfo.numBitangents = bitangents.size();
+            bufferInfo.numIndices = (unsigned int)indices.size();
+            bufferInfo.numPositions = (unsigned int)positions.size();
+            bufferInfo.numColors = (unsigned int)colors.size();
+            bufferInfo.numUVs = (unsigned int)UVs.size();
+            bufferInfo.numNormals = (unsigned int)normals.size();
+            bufferInfo.numTangents = (unsigned int)tangents.size();
+            bufferInfo.numBitangents = (unsigned int)bitangents.size();
 
             return bufferInfo;
         }

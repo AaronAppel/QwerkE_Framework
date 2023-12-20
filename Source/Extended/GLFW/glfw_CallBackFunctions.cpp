@@ -1,4 +1,8 @@
 #include "glfw_CallbackFunctions.h"
+
+#include "../../../Libraries/glew/GL/glew.h"
+#include "../../../Libraries/glfw/GLFW/glfw3.h"
+
 #include "../../Debug/Log/Log.h"
 #include "../../FileSystem/FileIO/FileUtilities.h"
 #include "../../FileSystem/FileSystem.h"
@@ -6,13 +10,7 @@
 #include "../../Core/Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Core/Graphics/DataTypes/Texture.h"
 
-#include "../../../Libraries/glew/GL/glew.h"
-#include "../../../Libraries/glfw/GLFW/glfw3.h"
-
 namespace QwerkE {
-
-    // TODO: No Globals!
-    extern int g_WindowWidth, g_WindowHeight;
 
     void SetupCallbacks(GLFWwindow* window)
     {

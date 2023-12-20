@@ -1,10 +1,14 @@
 #include "../Component.h"
+
 #include "../../../../../../Libraries/glfw/GLFW/glfw3.h"
+
+#include "../../../../../Headers/QwerkE_Enums.h"
+
 #include "CameraComponent.h"
 #include "../../GameObject.h"
-#include "../../../../../Headers/QwerkE_Enums.h"
-#include "../../../../Window/Windows.h"
 #include "../../../../Window/Window.h"
+#include "../../../../Window/Windows.h"
+#include "../../../../Math/Vector.h"
 
 namespace QwerkE {
 
@@ -52,7 +56,6 @@ namespace QwerkE {
 
 	void CameraComponent::Setup()
 	{
-		// update child values
 		m_Position.x = m_pParent->GetPosition().x;
 		m_Position.y = m_pParent->GetPosition().y;
 		m_Position.z = m_pParent->GetPosition().z;

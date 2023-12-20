@@ -1,14 +1,17 @@
 #ifndef _Material_H_
 #define _Material_H_
 
-#include "../Libraries/glew/GL/glew.h"
-#include "../../../FileSystem/FileIO/FileUtilities.h"
-#include "../GraphicsUtilities/GraphicsHelpers.h"
-#include "../../../Headers/QwerkE_Enums.h"
-#include "Texture.h"
-
 #include <string>
 #include <map>
+
+#include "../Libraries/glew/GL/glew.h"
+
+#include "../../../Headers/QwerkE_Enums.h"
+#include "../../../Headers/QwerkE_Global_Constants.h"
+
+#include "../../../FileSystem/FileIO/FileUtilities.h"
+#include "../GraphicsUtilities/GraphicsHelpers.h"
+#include "Texture.h"
 
 namespace QwerkE {
 
@@ -35,7 +38,7 @@ namespace QwerkE {
             m_Components = *othercomponents; // TODO: Check how data is copied. Shallow copy should work.
         }
 
-        int NumberOfMaterials() { return m_Components.size(); }
+        int NumberOfMaterials() { return (int)m_Components.size(); }
 
         const std::map<eMaterialMaps, Texture*>* SeeMaterials() const { return &m_Components; }
 

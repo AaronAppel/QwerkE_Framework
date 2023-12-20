@@ -1,8 +1,17 @@
 #include "ShaderProgram.h"
+
+#include "../../../Debug/Log/Log.h"
+
 #include "../ShaderFactory/ShaderFactory.h"
 #include "ShaderComponent.h"
+#include "../Shader/ShaderUtilities.h"
 
 namespace QwerkE {
+
+    void ShaderProgram::FindAttributesAndUniforms()
+    {
+        FindShaderUniformsAndAttributesInComponentStrings(this, m_Attributes, m_Uniforms);
+    }
 
     void ShaderProgram::RecompileShaderType(GLenum type, const char* shaderData)
     {

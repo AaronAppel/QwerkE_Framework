@@ -1,9 +1,11 @@
 #ifndef _Mouse_H_
 #define _Mouse_H_
 
-#include "InputDevice.h"
+#include "../../Headers/QwerkE_Enums.h"
 
 #include "../Math/Vector.h"
+
+#include "InputDevice.h"
 
 namespace QwerkE {
 

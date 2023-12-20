@@ -1,6 +1,8 @@
 #ifndef _Program_Args_H_
 #define _Program_Args_H_
 
+#include <map>
+
 bool ArgumentExists(unsigned int argc, char** argv, const char* argumentString);
 std::map<const char*, const char*> ArgumentKeyValuePairs(unsigned int argc, char** argv);
 

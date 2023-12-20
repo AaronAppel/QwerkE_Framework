@@ -1,6 +1,10 @@
 #ifndef _OpenGLHelpers_H_
 #define _OpenGLHelpers_H_
 
+#include "../../../../../Libraries/glew/GL/glew.h"
+
+struct QImageFile;
+
 namespace QwerkE {
 
     void GLCheckforErrors();

@@ -1,4 +1,9 @@
 #include "RenderRoutine.h"
+
+#include <string>
+#include <vector>
+#include <map>
+
 #include "../GameObject.h"
 #include "../../Entities/Components/Component.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
@@ -11,10 +16,7 @@
 #include "../../../Graphics/DataTypes/Renderable.h"
 #include "../../../Scenes/Scene.h"
 #include "../../../../Headers/QwerkE_Enums.h"
-
-#include <string>
-#include <vector>
-#include <map>
+#include "../../../Math/Vector.h"
 
 namespace QwerkE {
 

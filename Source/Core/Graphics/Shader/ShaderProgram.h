@@ -1,13 +1,15 @@
 #ifndef _ShaderProgram_H_
 #define _ShaderProgram_H_
 
-#include "../../Utilities/StringHelpers.h"
-#include "../GraphicsUtilities/GraphicsHelpers.h"
-#include "../Shader/ShaderUtilities.h"
-#include "../../Headers/QwerkE_Global_Constants.h"
-
 #include <string>
 #include <vector>
+
+#include "../Libraries/glew/GL/glew.h"
+
+#include "../../../Headers/QwerkE_Global_Constants.h"
+
+#include "../../../Utilities/StringHelpers.h"
+#include "../GraphicsUtilities/GraphicsHelpers.h"
 
 namespace QwerkE {
 
@@ -23,7 +25,7 @@ namespace QwerkE {
         GLuint GetProgram() const { return m_ProgramHandle; }
         void SetProgram(GLuint handle) { m_ProgramHandle = handle; }
 
-        void FindAttributesAndUniforms() { FindShaderUniformsAndAttributesInComponentStrings(this, m_Attributes, m_Uniforms); };
+        void FindAttributesAndUniforms();
 
         // TODO: void RecompileShaderType(GLenum type);
         void RecompileShaderType(GLenum type, const char* shaderData);

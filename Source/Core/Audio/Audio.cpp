@@ -1,5 +1,9 @@
 #include "Audio.h"
+
+#include "../../Debug/Log/Log.h"
+
 #include "OpenALAudioManager.h"
+#include "../Math/Vector.h"
 
 namespace QwerkE {
 

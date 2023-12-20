@@ -5,11 +5,11 @@
 
 #include "../../Libraries/glew/GL/glew.h"
 
-class Mesh;
-class ShaderProgram;
-class Material;
-
 namespace QwerkE {
+
+    class Mesh;
+    class ShaderProgram;
+    class Material;
 
     class Renderable
     {

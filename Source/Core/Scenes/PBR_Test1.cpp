@@ -29,7 +29,7 @@ namespace QwerkE {
         // Create cameras
         Factory::CreateFreeCamera(this, vec3(2, 0, -15))->SetRotation(vec3(0, 45, 0));
         Scene::SetupCameras();
-        
+
         // Create objects
         for (int i = 0; i < 10; i++)
         {
@@ -49,12 +49,12 @@ namespace QwerkE {
         Factory::CreateLight(this, vec3(10, 5, -10));
     }
 
-    void PBR_Test1::p_Running(double deltatime)
+    void PBR_Test1::p_Running(double deltatime) // #TODO Consider using a float
     {
         for (size_t i = 0; i < m_Subjects.size(); i++)
         {
             m_Subjects[i]->SetRotation(vec3(m_Subjects[i]->GetRotation().x,
-                (float)m_Subjects[i]->GetRotation().y + 45.0 * deltatime,
+                (float)m_Subjects[i]->GetRotation().y + 45.0f * (float)deltatime,
                 m_Subjects[i]->GetRotation().z));
 
             if (m_Subjects[i]->GetRotation().y >= 360.0f)

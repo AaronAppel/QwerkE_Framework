@@ -3,6 +3,8 @@
 #include "../Events/JobQueuedEvent.h"
 #include "../../FileSystem/FileIO/FileUtilities.h"
 
+#include "../../Headers/QwerkE_Defines.h"
+
 namespace QwerkE {
 
     std::queue<QJob*> Jobs::m_JobList;

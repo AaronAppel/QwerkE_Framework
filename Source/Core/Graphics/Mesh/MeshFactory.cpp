@@ -1,11 +1,17 @@
 #include "MeshFactory.h"
+
+#include <vector>
+
+#include "../../Libraries/glm/glm/vec3.hpp"
+#include "../../Libraries/glm/glm/gtx/quaternion.inl"
+
 #include "../../../FileSystem/FileIO/FileUtilities.h"
 #include "../Graphics_Header.h"
 #include "../Mesh/MeshData.h"
 
 #include "../../Math/MathConstants.h"
 
-#include <vector>
+#include "../../../Debug/Log/Log.h"
 
 namespace QwerkE {
 

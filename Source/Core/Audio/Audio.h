@@ -1,6 +1,8 @@
 #ifndef _Audio_H_
 #define _Audio_H_
 
+#include "../Math/Vector.h"
+
 namespace QwerkE {
 
     class OpenALAudioManager;

@@ -1,23 +1,24 @@
 #include "RenderRoutine.h"
+
+#include "../../../../Headers/QwerkE_Enums.h"
+
+#include "../../../../Debug/Log/Log.h"
+
+#include "../../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../../../Graphics/Graphics_Header.h"
+#include "../../../../Utilities/StringHelpers.h"
 #include "../GameObject.h"
 #include "../Routines/Routine.h"
 #include "../../../Graphics/DataTypes/Material.h"
 #include "../../../Graphics/DataTypes/Renderable.h"
 #include "../../../Graphics/Shader/ShaderProgram.h"
 #include "../../../Graphics/Mesh/Mesh.h"
-#include "../../../Graphics/Graphics_Header.h"
 #include "../../../Graphics/DataTypes/Material.h"
-#include "../../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Entities/Components/Camera/CameraComponent.h"
 #include "../../Entities/Components/RenderComponent.h"
-#include "../../../../Utilities/StringHelpers.h"
-
-#include "../../../../Headers/QwerkE_Enums.h"
-
-#include <assert.h>
 
 namespace QwerkE {
-    
+
     RenderRoutine::RenderRoutine()
     {
         m_Type = eRoutineTypes::Routine_Render;
@@ -48,7 +49,9 @@ namespace QwerkE {
                 ((RenderRoutine*)m_pParent->GetFirstDrawRoutineOfType(eRoutineTypes::Routine_Render))->ResetUniformList();
         }
         else
+        {
             LOG_WARN("m_pRenderComp is nullptr for object {0}!", m_pParent->GetName().c_str());
+        }
     }
     //// Private functions
     void RenderRoutine::DrawMeshData(GameObject* a_Camera)

@@ -6,17 +6,18 @@
 	https://computing.llnl.gov/tutorials/pthreads/
 */
 
+#include <queue>
+
 // TODO: Remove have struct order dependency
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
 #include "../../Libraries/pThreads/pthread.h"
 
+#include "../../Utilities/StringHelpers.h"
 #include "../Events/EventManager.h"
 #include "../Events/Event.h"
 #include "../Events/AssetLoadedEvent.h"
-
-#include <queue>
 
 namespace QwerkE {
 

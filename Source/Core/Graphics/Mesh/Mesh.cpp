@@ -1,15 +1,20 @@
 #include "Mesh.h"
+
+#include <string>
+#include <assert.h>
+#include <vector>
+
+#include "../../../../Libraries/glew/GL/glew.h"
+
+#include "../../../Debug/Log/Log.h"
+
 #include "MeshData.h"
 #include "../Shader/ShaderProgram.h"
 #include "../GraphicsUtilities/GraphicsHelpers.h"
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderVariable_Defines.h"
 #include "../../../Utilities/StringHelpers.h"
-#include "../../../../Libraries/glew/GL/glew.h"
-
-#include <string>
-#include <assert.h>
-#include <vector>
+#include "../../Graphics/ShaderFactory/ShaderFactory.h"
 
 namespace QwerkE {
 

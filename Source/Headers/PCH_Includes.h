@@ -14,6 +14,7 @@
 
 // QwerkE Framework included libraries
 // #include "../../Libraries/assimp/"
+#include "Libraries_Include.h"
 
 // QwerkE Framework static files
 // ...

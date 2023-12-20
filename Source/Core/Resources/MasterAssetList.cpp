@@ -223,19 +223,19 @@ namespace QwerkE {
         return m_ShaderPrograms[null_shader_schematic];
 	}
 
-	ShaderComponent* Resources::InstantiateShaderComponent(const char* componentName)
+	ShaderComponent* Resources::InstantiateShaderComponent(const char* componentFilePath)
 	{
 		// TODO: Add assert for geometry shaders
-		if (FileExists(componentName))
+		if (FileExists(componentFilePath))
 		{
 			ShaderComponent* result = nullptr;
-			if (strcmp(GetFileExtension(componentName).c_str(), vertex_shader_ext) == 0)
+			if (strcmp(GetFileExtension(componentFilePath).c_str(), vertex_shader_ext) == 0)
 			{
-				result = ShaderFactory::CreateShaderComponent(GL_VERTEX_SHADER, componentName);
+				result = ShaderFactory::CreateShaderComponent(GL_VERTEX_SHADER, componentFilePath);
 
 				if (result)
 				{
-					m_ShaderComponents[componentName] = result;
+					m_ShaderComponents[componentFilePath] = result;
 					return result;
 				}
 				else
@@ -243,13 +243,13 @@ namespace QwerkE {
 					return m_ShaderComponents[null_vert_component];
 				}
 			}
-			else if (strcmp(GetFileExtension(componentName).c_str(), fragment_shader_ext) == 0)
+			else if (strcmp(GetFileExtension(componentFilePath).c_str(), fragment_shader_ext) == 0)
 			{
-				result = ShaderFactory::CreateShaderComponent(GL_FRAGMENT_SHADER, componentName);
+				result = ShaderFactory::CreateShaderComponent(GL_FRAGMENT_SHADER, componentFilePath);
 
 				if (result)
 				{
-					m_ShaderComponents[componentName] = result;
+					m_ShaderComponents[componentFilePath] = result;
 					return result;
 				}
 				else
@@ -276,6 +276,19 @@ namespace QwerkE {
 		}
 
 		// TODO: Find a nice way to return a valid value
+
+		if (strcmp(GetFileExtension(componentFilePath).c_str(), vertex_shader_ext) == 0)
+		{
+			return Resources::GetShaderComponent(null_vert_component);
+		}
+		else if (strcmp(GetFileExtension(componentFilePath).c_str(), vertex_shader_ext) == 0)
+		{
+			return Resources::GetShaderComponent(null_frag_component);
+		}
+		else
+		{
+			LOG_CRITICAL("Could not find shader component type for file name {0}", componentFilePath);
+		}
 		return nullptr;
 	}
 

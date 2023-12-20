@@ -1,5 +1,4 @@
 #include "Bullet3Routine.h"
-#include "../../Components/Extended/Bullet3Component.h"
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )
@@ -25,8 +24,12 @@
 #pragma warning( default : 26495 )
 #pragma warning( default : 4099 )
 
+#include "../../Components/Extended/Bullet3Component.h"
+#include "../../GameObject.h"
+#include "../../../../Math/Vector.h"
+
 namespace QwerkE {
-    
+
     Bullet3Routine::Bullet3Routine() :
         m_bulletComponent(nullptr)
     {

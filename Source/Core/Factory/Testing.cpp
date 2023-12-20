@@ -1,4 +1,5 @@
 #include "Factory.h"
+
 #include "../Graphics/Mesh/MeshFactory.h"
 #include "../Resources/Resources.h"
 #include "../Scenes/Scene.h"
@@ -7,11 +8,11 @@
 #include "../Graphics/DataTypes/Material.h"
 #include "../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../Graphics/Mesh/Mesh.h"
-
 #include "../../FileSystem/FileSystem.h"
 #include "../../Utilities/StringHelpers.h"
 #include "../../Utilities/Helpers.h"
 #include "../../Headers/QwerkE_Directory_Defines.h"
+#include "../../Headers/QwerkE_File_Defines.h"
 
 namespace QwerkE {
 

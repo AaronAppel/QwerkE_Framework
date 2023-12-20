@@ -1,9 +1,11 @@
 #include "Factory.h"
+
 #include "../Resources/Resources.h"
 #include "../Scenes/Entities/Components/RenderComponent.h"
 #include "../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../FileSystem/FileIO/FileUtilities.h"
 #include "../../Utilities/StringHelpers.h"
+#include "../../Headers/QwerkE_Directory_Defines.h"
 
 namespace QwerkE {
 

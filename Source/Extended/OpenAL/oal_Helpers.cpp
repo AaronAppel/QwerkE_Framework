@@ -1,5 +1,7 @@
 #include "oal_Helpers.h"
 
+#include "../../Debug/Log/Log.h"
+
 namespace QwerkE {
 
     void CheckForOpenALErrors(const char* file, int line)

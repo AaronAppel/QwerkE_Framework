@@ -11,6 +11,10 @@
 #include "Libraries_Include.h"
 #include "../Libraries/imgui/imgui_impl_glfw.h"
 
+#include "../Debug/Log/Log.h"
+
+#include "../Core/DataManager/ConfigHelper.h"
+
 namespace QwerkE {
 
     // TODO: Use _QFailure and other error messages?
@@ -23,16 +27,18 @@ namespace QwerkE {
 
         // Setup/Load libraries based on platform, architecture, configuration
         // TODO: Clean up #ifs
-#ifdef _Q32Bit // architecture
+// #ifdef _Q32Bit // architecture
+#ifdef _WIN32 // architecture
 // platform
-#ifdef _QWindows
+// #ifdef _QWindows
+#ifdef _WIN32 // OS
 // TODO: setup libraries
 
 #elif _Android
 #elif _Mac
 #elif _Linux
 #else
-#pragma warning "Define Platform!"
+#pragma warning ("Define Platform!")
 #endif
 
 #elif _Q64Bit // architecture
@@ -45,6 +51,8 @@ namespace QwerkE {
 #pragma warning "Define Platform!"
 #endif
 
+#else
+#pragma warning "Define Platform!"
 #endif // !platform
 
 //////////////////////////////

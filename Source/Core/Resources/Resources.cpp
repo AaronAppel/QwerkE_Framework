@@ -1,13 +1,18 @@
 #include "Resources.h"
+
+#include <map>
+#include <memory>
+
 #include "../../Libraries/glew/GL/glew.h"
+
 #include "../Graphics/DataTypes/Material.h"
 #include "../Graphics/DataTypes/Texture.h"
 #include "../Graphics/Mesh/Mesh.h"
 #include "../Graphics/Shader/ShaderProgram.h"
 #include "../../FileSystem/FileSystem.h"
-
-#include <map>
-#include <memory>
+#include "../../Headers/QwerkE_Directory_Defines.h"
+#include "../../Headers/QwerkE_File_Defines.h"
+#include "../Jobs/Jobs.h"
 
 namespace QwerkE {
 

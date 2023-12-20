@@ -1,20 +1,23 @@
 #ifndef _GameObject_H_
 #define _GameObject_H_
 
-#include "../Headers/QwerkE_Enums.h"
-#include "../Headers/QwerkE_Global_Constants.h"
-
 #include <map>
+#include <string>
 #include <vector>
+
+#include "../../../Headers/QwerkE_Enums.h"
+#include "../../../Headers/QwerkE_Global_Constants.h"
+
+#include "../../Math/Vector.h"
 
 namespace QwerkE {
 
-    class Scene;
     class Component;
     class Routine;
-    class GameObject;
+    class Scene;
 
-    // TODO: setup a Unity esq transform for a GameObject
+    // TODO: setup a Unity-esque transform for a GameObject
+    // TODO: Move transform to it's own math file
     struct Transform
     {
         // MyMatrix s_Mat; Use?
@@ -32,7 +35,7 @@ namespace QwerkE {
         void Rotate(vec3 rotation) {}
         void Translate(vec3 translation) {}
 
-        // TODO: Use quaternions to avoid gimble lock
+        // TODO: Use quaternions to avoid gimbal lock
     };
 
     class GameObject
@@ -66,7 +69,7 @@ namespace QwerkE {
         // getters
         std::string GetName() { return m_Name; };
         // Transform* GetTransform() const { return &m_Transform; }
-        vec3 GetPosition() const { return m_Transform.s_Position; };
+        vec3 GetPosition() const { return m_Transform.s_Position; }; // #TODO const &
         vec3 GetRotation() const { return m_Transform.s_Rotation; };
         vec3 GetScale() const { return m_Transform.s_Scale; };
         Component* GetComponent(eComponentTags tag);

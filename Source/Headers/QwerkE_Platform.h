@@ -2,7 +2,9 @@
 #define _QwerkE_Platform_H_
 
 // platform includes
-#if defined(_Q32Bit) && defined(_QWindows)
+// #if defined(_Q32Bit) && defined(_QWindows)
+// #if defined(_WIN32) && defined(_QWindows)
+#if defined(_WIN32)
 #include <SDKDDKVer.h>
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>

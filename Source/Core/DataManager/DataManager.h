@@ -17,6 +17,8 @@
 	save/load functions some 7where in game specific code.
 */
 
+#include "../Math/Vector.h"
+
 struct cJSON;
 
 namespace QwerkE {

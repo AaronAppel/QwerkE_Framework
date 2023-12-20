@@ -2,6 +2,9 @@
 
 #ifdef _QDebug
 
+#include "../Log/Log.h"
+#include "../../Core/Graphics/GraphicsUtilities/GraphicsHelpers.h"
+
 namespace QwerkE {
 
     bool Debugger::m_ConsoleIsOpen = false;

@@ -1,6 +1,7 @@
 #include "ShaderUtilities.h"
-#include "../Shader/ShaderProgram.h"
+
 #include "ShaderComponent.h"
+#include "../Shader/ShaderProgram.h"
 
 namespace QwerkE {
 

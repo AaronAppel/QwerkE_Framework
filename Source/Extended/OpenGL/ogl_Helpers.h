@@ -1,6 +1,10 @@
 #ifndef _ogl_Helpers_H_
 #define _ogl_Helpers_H_
 
+#include "../../../Libraries/glew/GL/glew.h"
+
+#include "../../FileSystem/FileSystem.h"
+
 namespace QwerkE {
 
     void GLCheckforErrors();

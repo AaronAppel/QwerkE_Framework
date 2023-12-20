@@ -1,6 +1,11 @@
 #include "DataManager.h"
-#include "../Factory/Factory.h"
+
 #include "../../Libraries/cJSON_Interface/cJSONInterface.h"
+
+#include "../../Headers/QwerkE_File_Defines.h"
+
+#include "../../Debug/Log/Log.h"
+#include "../Factory/Factory.h"
 #include "../Scenes/Entities/GameObject.h"
 #include "../Scenes/Entities/Components/Camera/CameraComponent.h"
 #include "../Scenes/Entities/Components/Camera/FreeCameraComponent.h"
@@ -11,6 +16,9 @@
 #include "../Scenes/Entities/Routines/Routine.h"
 #include "../Scenes/Entities/Routines/RenderRoutine.h"
 #include "../Scenes/Entities/Routines/TransformRoutine.h"
+#include "../Scenes/Scene.h"
+
+#include "../Resources/Resources.h"
 
 // RenderComponent
 #include "../Scenes/Entities/Components/RenderComponent.h"

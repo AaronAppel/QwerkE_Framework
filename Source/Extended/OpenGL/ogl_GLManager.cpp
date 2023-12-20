@@ -1,4 +1,5 @@
 #include "ogl_GLManager.h"
+
 #include "../../Core/Graphics/Graphics_Header.h"
 
 namespace QwerkE {

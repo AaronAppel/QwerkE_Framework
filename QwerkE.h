@@ -49,7 +49,7 @@
     // of how their files look for each other using set include paths.
 
 	// Additional includes...
-	// freetype2, bullet3, OpenAL.
+	// freetype2, bullet3, OpenAL, and more...
 
     // Other than that you should only need to #include QwerkE.h and make sure the file structure
     // is kept the same as how it is distributed from https://github.com/AaronAppel/QwerkE.

@@ -1,5 +1,9 @@
 cd ../
 
+rem Delete all .dll files in framework root directory
+del *.dll
+rem del *.vcx* #TODO Uncomment once build system generates files
+
 del /Q /F /S /AH .vs\*
 del /Q /F /S x64
 rmdir /Q /S .vs

@@ -1,5 +1,12 @@
 #include "Time.h"
 
+#ifdef _WIN32
+#include <profileapi.h>
+#include <winnt.h>
+#else
+#error "Support non windows platform!"
+#endif
+
 namespace QwerkE {
 
     double Time::m_Delta = 0.0;

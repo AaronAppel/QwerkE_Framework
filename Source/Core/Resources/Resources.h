@@ -1,13 +1,15 @@
 #ifndef _Resources_H_
 #define _Resources_H_
 
-// TODO: Remove includes for all types if possible
-#include "../../Libraries/glew/GL/glew.h"
-#include "../../Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
-#include "../../Libraries/OpenAL/include/al.h"
-
 #include <string>
 #include <map>
+
+#include "../../../Libraries/glew/GL/glew.h"
+#include "../Libraries/freetype2/ft2build.h" // #TODO Temp build fix
+#include "../../../Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
+#include "../../../Libraries/OpenAL/include/al.h"
+
+#include "../../Headers/QwerkE_Global_Constants.h"
 
 // For instances where 1 asset may be shared between objects in
 // possibly many scenes, the Resources() may want to count
@@ -16,11 +18,12 @@
 
 namespace QwerkE {
 
-    struct Texture;
-    class Mesh;
-    class ShaderComponent;
     class Material;
+    class Mesh;
     class Resources;
+    class ShaderComponent;
+    class ShaderProgram;
+    struct Texture;
 
     // TODO: Move to own file
     struct AssetInfo

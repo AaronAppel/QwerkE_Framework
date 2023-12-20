@@ -1,8 +1,14 @@
+#include "ShaderFactory.h"
+
+#include "../../../FileSystem/FileIO/FileUtilities.h"
+#include "../../../Debug/Log/Log.h"
+
+#include "../../../Utilities/StringHelpers.h"
 #include "../Graphics_Header.h"
+#include "../../../Headers/QwerkE_File_Defines.h"
+
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderComponent.h"
-#include "../../../FileSystem/FileIO/FileUtilities.h"
-#include "../../../Utilities/StringHelpers.h"
 
 namespace QwerkE {
 
@@ -166,7 +172,7 @@ namespace QwerkE {
 
                 LOG_ERROR("{0}: ShaderFactory: CreateShader(Glenum, const char*) {1} compile error-> ", ShaderName, "GL_VERTEX_SHADER");
                 LOG_ERROR(infoLog); // OpenGL message
-                
+
                 // cleanup
                 glDeleteShader(shaderHandle);
                 delete[] data;
@@ -657,7 +663,7 @@ namespace QwerkE {
         string.append(UniformPrefix);
         string.append("Texture");
         string.append(std::to_string(*count));
-        *count++; // increment
+        *count += 1;
         string.append(";");
     }
     // input
@@ -732,7 +738,7 @@ namespace QwerkE {
         string.append(name);
         string.append(";");
     }
-    // output
+    // Output
     void ShaderFactory::AddOutputInt(const char* name, std::string& string)
     {
         const char* line = "\nout int ";

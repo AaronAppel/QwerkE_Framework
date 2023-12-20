@@ -1,9 +1,8 @@
 #include "FileSystem.h"
-#include "../Core/Resources/Resources.h"
-#include "../Core/Graphics/Mesh/Mesh.h"
 
-#include "../Utilities/StringHelpers.h"
-#include "FileIO/FileUtilities.h"
+#include <iostream>
+#include <vector>
+#include <string>
 
 #pragma warning( disable : 26495 )
 #include "../../Libraries/assimp/Importer.hpp"
@@ -13,10 +12,6 @@
 #include "../../Libraries/assimp/material.h"
 #pragma warning( default : 26495 )
 
-#include <iostream>
-#include <vector>
-#include <string>
-
 // define generic functions for model loading but
 // use library specific prototype and body defines
 #ifdef AI_CONFIG_H_INC // assimp
@@ -25,6 +20,15 @@
 #else
 #pragma error "Define model loading library!"
 #endif
+
+#include "../Core/Resources/Resources.h"
+#include "../Core/Graphics/Mesh/Mesh.h"
+
+#include "../Utilities/StringHelpers.h"
+#include "FileIO/FileUtilities.h"
+
+#include "../Debug/Log/Log.h"
+#include "../Headers/QwerkE_File_Defines.h"
 
 namespace QwerkE {
 

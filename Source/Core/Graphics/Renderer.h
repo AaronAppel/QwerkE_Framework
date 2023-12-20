@@ -6,6 +6,8 @@ namespace QwerkE {
     class Renderer
     {
     public:
+        static int g_WindowWidth, g_WindowHeight; // #TODO No globals
+
         // TODO: Expose API for changing clear color, culling, etc
         static void Initialize();
 

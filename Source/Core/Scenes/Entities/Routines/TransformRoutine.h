@@ -3,6 +3,8 @@
 
 #include "Routine.h"
 
+#include "../../../Math/Vector.h"
+
 namespace QwerkE {
 
     class TransformRoutine : Routine

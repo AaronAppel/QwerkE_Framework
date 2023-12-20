@@ -2,7 +2,7 @@
 #define _Audio_Source_H_
 
 // TODO: Abstract from OpenAL
-#include "../../Libraries/OpenAL/include/al.h"
+#include "../../../Libraries/OpenAL/include/al.h"
 #include "../Math/Vector.h"
 
 namespace QwerkE {

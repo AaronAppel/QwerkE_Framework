@@ -25,7 +25,7 @@ static float CalculateDistance3DXY(Vector3 a_TipPosition, Vector3 a_TailPosition
 static float CalculateAngleXZ(Vector3 a_TipPosition, Vector3 a_TailPosition)
 {
 	Vector3 difference = a_TipPosition - a_TailPosition;
-	float angle = atan2(difference.z, difference.x) * RAD_TO_DEG;
+	float angle = atan2(difference.z, difference.x) * (float)RAD_TO_DEG;
 
 	if (angle < 0)
 		angle = 360 + angle;

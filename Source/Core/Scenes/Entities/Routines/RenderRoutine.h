@@ -1,20 +1,21 @@
 #ifndef _RenderRoutine_H_
 #define _RenderRoutine_H_
 
-#include "Routine.h"
-#include "../../Libraries/glew/GL/glew.h"
-#include "../../../Graphics/DataTypes/Renderable.h"
-
 #include <vector>
+
+#include "../../Libraries/glew/GL/glew.h"
+
+#include "Routine.h"
+#include "../../../Graphics/DataTypes/Renderable.h"
 
 namespace QwerkE {
 
-    class GameObject;
     class CameraComponent;
-    class ShaderProgram;
+    class GameObject;
+    class Material;
     class Mesh;
     class RenderComponent;
-    class Material;
+    class ShaderProgram;
 
     class RenderRoutine : Routine
     {

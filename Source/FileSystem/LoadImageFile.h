@@ -1,6 +1,8 @@
 #ifndef _LoadImageFile_H_
 #define _LoadImageFile_H_
 
+#include "../../Libraries/glew/GL/glew.h"
+
 namespace QwerkE {
 
     // for internal calls from LoadImageFileData

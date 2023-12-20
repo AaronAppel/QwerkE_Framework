@@ -1,11 +1,15 @@
 #include "../../Core/Input/Input.h"
-#include "../../Core/Input/Mouse.h"
-#include "../../Core/Input/Keyboard.h"
 
 #ifdef dearimgui
 #include "../../Libraries/imgui/imgui.h"
 // #include "../../Libraries/imgui/imgui_impl_glfw_gl3.h"
 #endif // dearimgui
+
+#include "../../Headers/QwerkE_Global_Constants.h"
+
+#include "../../Core/Input/Mouse.h"
+#include "../../Core/Input/Keyboard.h"
+#include "../../Core/Graphics/Renderer.h"
 
 namespace QwerkE {
 
@@ -71,7 +75,7 @@ namespace QwerkE {
     {
         ProcessMouseMove((float)xpos, (float)-ypos);
 
-        ypos = (double)g_WindowHeight - ypos; // invert y
+        ypos = (double)Renderer::g_WindowHeight - ypos; // invert y
     }
 
     void Input::cursor_enter_callback(GLFWwindow* window, int entered)

@@ -1,9 +1,9 @@
 #include "b3_PhysicsFactory.h"
-#include "../../Core/Physics/Physics.h"
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )
 #include "../../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+#include "../../Libraries/Bullet3/BulletCollision/BroadphaseCollision/btDispatcher.h"
 #include "../../Libraries/Bullet3/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
 
 #include "../../Libraries/Bullet3/BulletCollision/CollisionShapes/btCollisionShape.h"
@@ -25,6 +25,8 @@
 #pragma warning( default : 26495 )
 #pragma warning( default : 4099 )
 
+#include "../../Core/Physics/Physics.h"
+
 namespace QwerkE {
 
     btRigidBody* PhysicsFactory::CreateRigidSphere(btVector3 origin, float radius, float mass)
@@ -42,13 +44,13 @@ namespace QwerkE {
 
     btRigidBody* PhysicsFactory::CreateRigidCube(btVector3 origin, float width, float height, float depth, float mass)
     {
-        btCollisionShape* shape = new btBoxShape(btVector3(width / 2.0, height / 2.0, depth / 2.0));
+        btCollisionShape* shape = new btBoxShape(btVector3(width / 2.0f, height / 2.0f, depth / 2.0f));
         return CreateRigidBody(origin, shape, mass);
     }
 
     btRigidBody* PhysicsFactory::CreateRigidCylinder(btVector3 origin, float radius, float height, float mass)
     {
-        btCollisionShape* shape = new btCylinderShape(btVector3(radius / 2.0, height / 2.0, radius / 2.0));
+        btCollisionShape* shape = new btCylinderShape(btVector3(radius / 2.0f, height / 2.0f, radius / 2.0f));
         return CreateRigidBody(origin, shape, mass);
     }
 

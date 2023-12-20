@@ -2,8 +2,7 @@
 
 const char* StringAppend(const char* a, const char* b)
 {
-	int size = 0;
-	size = strlen(a) + strlen(b);
+	size_t size = strlen(a) + strlen(b);
 
 	char* newString = new char[size]; // RAM:
 	strcpy_s(newString, strlen(a) + 1, a);
@@ -15,8 +14,7 @@ const char* StringAppend(const char* a, const char* b)
 
 const char* StringAppend(const char* a, const char* b, const char* c)
 {
-	int size = 0;
-	size = strlen(a) + strlen(b) + strlen(c);
+	size_t size = strlen(a) + strlen(b) + strlen(c);
 
 	const char* newString = new char[size]; // RAM:
 	strcpy_s((char*)newString, strlen(a) + 1, a);
@@ -51,7 +49,7 @@ char* DeepCopyString(const char* string)
 const char* CombineStrings(const char* a, const char* b)
 {
 	// Cannot use an initialized string
-	int size = strlen(a) + strlen(b) + 1;
+	size_t size = strlen(a) + strlen(b) + 1;
 	char* buffer = new char[size];
 
 	// overwrite "string" to buffer
@@ -105,8 +103,8 @@ const char* ReverseString(const char* value)
 {
 	// TODO: Debug
 	std::string t_temp;
-	int size = strlen(value);
-	for (int i = 0; i < size; i++)
+	size_t size = strlen(value);
+	for (size_t i = 0; i < size; i++)
 	{
 		t_temp.push_back(value[size - i - 1]);
 	}

@@ -1,11 +1,13 @@
 #ifndef _Mesh_Factory_H_
 #define _Mesh_Factory_H_
 
+#include "../../Math/Vector.h"
+
 namespace QwerkE {
 
-    struct VertexData;
     class Mesh;
     class Model;
+    struct VertexData;
 
     namespace MeshFactory
     {

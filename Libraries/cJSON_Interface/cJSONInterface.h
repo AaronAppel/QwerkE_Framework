@@ -1,8 +1,9 @@
 #ifndef _CJSONINTERFACE_H_
 #define _CJSONINTERFACE_H_
 
-#include "cJSON.h"
 #include <vector>
+
+#include "cJSON.h"
 
 //////////////////////////
 // possible TODO:: Add classes for easy root creation

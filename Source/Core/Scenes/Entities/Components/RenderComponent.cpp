@@ -1,10 +1,13 @@
 #include "RenderComponent.h"
+
 #include "../../../Resources/Resources.h"
 #include "../../../Graphics/DataTypes/Material.h"
 #include "../../../Graphics/Shader/ShaderProgram.h"
 #include "../../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../Entities/GameObject.h"
 #include "../../Entities/Routines/RenderRoutine.h"
+
+#include "../../../../Headers/QwerkE_File_Defines.h"
 
 namespace QwerkE {
 

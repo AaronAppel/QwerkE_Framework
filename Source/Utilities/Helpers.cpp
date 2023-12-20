@@ -2,7 +2,9 @@
 #include <assert.h>
 
 #ifdef _WIN32
-#include <Windows.h>
+// #include <Windows.h>
+#include <profileapi.h>
+#include <winnt.h>
 double helpers_Time()
 {
 	unsigned __int64 freq;
