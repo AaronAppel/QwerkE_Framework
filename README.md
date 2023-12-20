@@ -76,3 +76,4 @@ Tools and other software I used thoughout development.
 Special thanks and shout outs.
 
 - Jimmy Lord : https://github.com/jimmylord
+- Eric Bibeau
