@@ -6,7 +6,7 @@
 #include "../Graphics/ShaderFactory/ShaderFactory.h"
 #include "../../Utilities/StringHelpers.h"
 #include "../../FileSystem/FileSystem.h"
-#include "../../Headers/QwerkE_Directory_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 #include "../Graphics/DataTypes/Texture.h"
 #include "../Jobs/Jobs.h"
 #include "../../Debug/Log/Log.h"
@@ -64,23 +64,23 @@ namespace QwerkE {
             {
 				mesh = MeshFactory::ImportOBJMesh(null_mesh, vec3(0.5f, 0.5f, 0.5f), vec2(1, 1), false);
             }
-			else if (strcmp(meshFilePath, MeshFolderPath("Create_Quad")) == 0)
+			else if (strcmp(meshFilePath, MeshesFolderPath("Create_Quad")) == 0)
 			{
 				mesh = MeshFactory::CreateQuad(vec2(10, 10));
 			}
-			else if (strcmp(meshFilePath, MeshFolderPath("Create_Circle")) == 0)
+			else if (strcmp(meshFilePath, MeshesFolderPath("Create_Circle")) == 0)
 			{
 				mesh = MeshFactory::CreateCircle(1.0f, 20, vec2(1, 1));
 			}
-			else if (strcmp(meshFilePath, MeshFolderPath("Create_Cube")) == 0)
+			else if (strcmp(meshFilePath, MeshesFolderPath("Create_Cube")) == 0)
 			{
 				mesh = MeshFactory::CreateCube(vec3(1, 1, 1), vec2(1, 1), true);
 			}
-			else if (strcmp(meshFilePath, MeshFolderPath("Tutorial_Cube")) == 0)
+			else if (strcmp(meshFilePath, MeshesFolderPath("Tutorial_Cube")) == 0)
 			{
 				mesh = MeshFactory::TutorialCube(vec3(1, 1, 1));
 			}
-			else if (strcmp(meshFilePath, MeshFolderPath("Test_Plane")) == 0)
+			else if (strcmp(meshFilePath, MeshesFolderPath("Test_Plane")) == 0)
 			{
 				mesh = MeshFactory::CreateTestPlane();
 			}
@@ -141,7 +141,7 @@ namespace QwerkE {
 			if (FileExists(matName))
 				material = LoadMaterialSchematic(matName);
 			else
-				material = LoadMaterialSchematic(TextureFolderPath(matName));
+				material = LoadMaterialSchematic(TexturesFolderPath(matName));
 		}
 		else
         {
@@ -279,11 +279,11 @@ namespace QwerkE {
 
 		if (strcmp(GetFileExtension(componentFilePath).c_str(), vertex_shader_ext) == 0)
 		{
-			return Resources::GetShaderComponent(null_vert_component);
+			return m_ShaderComponents[null_vert_component];
 		}
 		else if (strcmp(GetFileExtension(componentFilePath).c_str(), vertex_shader_ext) == 0)
 		{
-			return Resources::GetShaderComponent(null_frag_component);
+			return m_ShaderComponents[null_frag_component];
 		}
 		else
 		{

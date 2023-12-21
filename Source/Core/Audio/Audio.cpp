@@ -1,8 +1,7 @@
 #include "Audio.h"
 
 #include "../../Debug/Log/Log.h"
-
-#include "OpenALAudioManager.h"
+#include "../../Extended/OpenAL/oal_AudioManager.h"
 #include "../Math/Vector.h"
 
 namespace QwerkE {
@@ -10,10 +9,14 @@ namespace QwerkE {
     OpenALAudioManager* Audio::m_AudioManager = nullptr;
     bool Audio::m_Initialized = false;
 
-    void Audio::Initialize()
+    bool Audio::Initialize()
     {
         m_AudioManager = new OpenALAudioManager();
-        m_Initialized = true;
+        m_Initialized = m_AudioManager->Initialize();
+
+        // CheckForOpenALErrors()
+
+        return m_Initialized;
     }
 
     void Audio::Shutdown()
@@ -25,9 +28,13 @@ namespace QwerkE {
     void Audio::PlaySound(const char* name)
     {
         if (m_Initialized)
+        {
             m_AudioManager->PlaySound(name);
+        }
         else
-            Log::Trace("Audio.PlaySound()");
+        {
+            LOG_TRACE("Audio.PlaySound()");
+        }
     }
 
     void Audio::SetListenerOrientation(vec3 position, vec3 velocity)
@@ -35,7 +42,7 @@ namespace QwerkE {
         if (m_Initialized)
             m_AudioManager->SetListenerOrientation(position, velocity);
         else
-            Log::Trace("Audio.SetListenerOrientation()");
+            LOG_TRACE("Audio.SetListenerOrientation()");
     }
 
 }

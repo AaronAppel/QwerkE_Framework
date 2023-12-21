@@ -10,7 +10,7 @@ namespace QwerkE {
     class Audio
     {
     public:
-        static void Initialize();
+        static bool Initialize();
         static void Shutdown();
 
         static void PlaySound(const char* name);

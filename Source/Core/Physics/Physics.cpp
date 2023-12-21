@@ -8,18 +8,19 @@ namespace QwerkE {
 
     void Physics::Initialize()
     {
-        ConfigData config = ConfigHelper::GetConfigData();
+        const ConfigData config = ConfigHelper::GetConfigData();
 
         if (config.systems.PhysicsEnabled)
         {
             LibraryInitialize();
 
+            // #TODO Review GetMesh() call
             // Request shapes from Resources
-            Resources::GetMesh("Cube_UVd.obj");
+            // Resources::GetMesh("Cube_UVd.obj");
         }
         else
         {
-            Log::Info("Physics is currently disabled.");
+            Log::Safe("Physics is currently disabled.");
         }
     }
 }

@@ -5,7 +5,7 @@
 
 #include "../../../Utilities/StringHelpers.h"
 #include "../Graphics_Header.h"
-#include "../../../Headers/QwerkE_File_Defines.h"
+#include "../../../Headers/QwerkE_Defines.h"
 
 #include "../Shader/ShaderProgram.h"
 #include "../Shader/ShaderComponent.h"

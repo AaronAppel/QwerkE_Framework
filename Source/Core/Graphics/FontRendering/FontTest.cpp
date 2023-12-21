@@ -10,8 +10,7 @@
 #include "../../Libraries/glm/glm/gtc/type_ptr.hpp"
 #include "../../Libraries/glm/glm/gtc/matrix_transform.hpp"
 
-#include "../../../Headers/QwerkE_Directory_Defines.h"
-#include "../../../Headers/QwerkE_File_Defines.h"
+#include "../../../Headers/QwerkE_Defines.h"
 
 #include "../../Graphics/Graphics_Header.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"

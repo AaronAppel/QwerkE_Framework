@@ -36,6 +36,7 @@ namespace QwerkE {
         std::string retValue = device;
         size_t len = 0;
 
+        // LOG_INFO("OpenAL devices list:");
         LOG_INFO("OpenAL devices list:");
         LOG_INFO("----------");
         while (device && *device != '\0' && next && *next != '\0') {

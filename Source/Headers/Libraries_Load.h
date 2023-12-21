@@ -1,31 +1,7 @@
 #ifndef _Libraries_Load_H_
 #define _Libraries_Load_H_
 
-//////////////////////////////
-// Libraries_Load.h
-// Loads all .lib fils for static or dynamic libraries used throughout the project.
-// Instead of using project settings I prefer to load through code for convenience
-// and in some cases more dynamic control.
-
-// Try to avoid making the end user load .libs for all libraries.
-//////////////////////////////
-
-// Note: 64 bit not building currently so all .libs are 32bit
-// TODO: Fix 64 bit
-
-#ifndef LibrariesDir // #TODO Temp build fix (Remove, and use QwerkE_Defines.h)
-#define LibrariesDir FrameworkDir "Libraries/"
-#endif // LibrariesDir
-
-#ifndef FrameworkDir // #TODO Temp build fix
-#define FrameworkDir "QwerkE_Framework/"
-// #define FrameworkDir "../../QwerkE_Framework/"
-#endif // !FrameworkDir
-
-#ifndef AssetsDir // #TODO Temp build fix
-// #define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // TODO: Remove common assets
-#define AssetsDir "Assets/" // TODO: Remove common assets
-#endif // !AssetsDir
+#include "QwerkE_Defines.h"
 
 // load libraries
 #ifdef _DEBUG

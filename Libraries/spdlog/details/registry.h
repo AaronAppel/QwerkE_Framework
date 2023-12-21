@@ -82,9 +82,9 @@ public:
     }
 
     // Return raw ptr to the default logger.
-    // To be used directly by the spdlog default api (e.g. spdlog::info)
+    // To be used directly by the spdlog default api (e.g. spdLOG_INFO)
     // This make the default API faster, but cannot be used concurrently with set_default_logger().
-    // e.g do not call set_default_logger() from one thread while calling spdlog::info() from another.
+    // e.g do not call set_default_logger() from one thread while calling spdLOG_INFO() from another.
     logger *get_default_raw()
     {
         return default_logger_.get();

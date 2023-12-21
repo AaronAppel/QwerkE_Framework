@@ -8,7 +8,7 @@
 
 #include "../../../Libraries/cJSON_Interface/cJSONInterface.h"
 #include "../../Debug/Log/Log.h"
-#include "../../Headers/QwerkE_Directory_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 
 namespace QwerkE {
 

@@ -1,22 +1,9 @@
-#ifndef _Additional_Includes_H_
-#define _Additional_Includes_H_
+#pragma once
 
-/////////////////////////////////////////////////
-// include FRAMEWORK code for faster build times
-/////////////////////////////////////////////////
-
-// TODO: Only use pch for files that do not change (libraries, std, etc)
-
-// Standard C/C++ libraries
 #include <map>
 #include <string>
 #include <vector>
 
-// QwerkE Framework included libraries
-// #include "../../Libraries/assimp/"
 #include "Libraries_Include.h"
 
-// QwerkE Framework static files
-// ...
-
-#endif // _Additional_Includes_H_
+// NOTE: Add additional .h files below, if they rarely change

@@ -1,66 +1,27 @@
+#include "Libraries_Initialize.h"
+
+#include "Libraries_Include.h"
+
 #include "QwerkE_Defines.h"
 #include "QwerkE_Platform.h"
 
-// TODO: Hide loading behind load/splash screen?
-
-//////////////////////////////
-// Setup any libraries that have program wide states
-// that need to be initialized before used
-//////////////////////////////
-
-#include "Libraries_Include.h"
-#include "../Libraries/imgui/imgui_impl_glfw.h"
-
 #include "../Debug/Log/Log.h"
-
 #include "../Core/DataManager/ConfigHelper.h"
 
 namespace QwerkE {
 
-    // TODO: Use _QFailure and other error messages?
     bool Libs_Setup()
     {
-        ConfigData config = ConfigHelper::GetConfigData(); // TODO: Add #include
+        // #TODO Control initializing libraries if their systems are not enabled
+        // const ConfigData configData = ConfigHelper::GetConfigData();
+        // if (configData.systems.AudioEnabled) {}
         bool errorFree = true; // Return value. If error occurs set to false
 
         Log::Safe("Libs_Setup(): Initializing libraries...\n");
 
         // Setup/Load libraries based on platform, architecture, configuration
         // TODO: Clean up #ifs
-// #ifdef _Q32Bit // architecture
-#ifdef _WIN32 // architecture
-// platform
-// #ifdef _QWindows
-#ifdef _WIN32 // OS
-// TODO: setup libraries
 
-#elif _Android
-#elif _Mac
-#elif _Linux
-#else
-#pragma warning ("Define Platform!")
-#endif
-
-#elif _Q64Bit // architecture
-// platform
-#ifdef _QWindows
-#elif _Android
-#elif _Mac
-#elif _Linux
-#else
-#pragma warning "Define Platform!"
-#endif
-
-#else
-#pragma warning "Define Platform!"
-#endif // !platform
-
-//////////////////////////////
-// FILES //
-//////////////////////////////
-
-// font loading/rendering
-// freetype2
         FT_Library ft;
         if (FT_Init_FreeType(&ft))
         {
@@ -72,13 +33,7 @@ namespace QwerkE {
             Log::Safe("Freetype Loaded,\n");
             FT_Done_FreeType(ft);
         }
-        //////////////////////////////
 
-        //////////////////////////////
-        // Graphics //
-        //////////////////////////////
-        // window creation //
-        // GLFW
         if (!glfwInit())
         {
             Log::Safe("\nError loading GLFW step 1!\n");
@@ -165,13 +120,7 @@ namespace QwerkE {
                 glfwDestroyWindow(window); // Clean up
             }
         }
-        //////////////////////////////
 
-        //////////////////////////////
-        // GUIs //
-        //////////////////////////////
-        // immediate mode //
-        // imgui
         ImGuiContext* context = ImGui::CreateContext();
         if (context == nullptr)
         {
@@ -206,31 +155,6 @@ namespace QwerkE {
 
             ImGui_ImplOpenGL3_Init("#version 410");
         }
-        //////////////////////////////
-
-        //////////////////////////////
-        // threading //
-        //////////////////////////////
-        // pthreads
-        // Load anything?
-        //////////////////////////////
-
-        //////////////////////////////
-        // networking
-        //////////////////////////////
-        // RakNet
-        // Load anything?
-        //////////////////////////////
-
-        //////////////////////////////
-        // Audio
-        //////////////////////////////
-        // OpenAL
-        // TODO: Test startup and shutdown of system
-        // TODO: Init alut?
-        // ConsolePrint("\nError loading OpenAL!\n");
-
-        //////////////////////////////
 
         if (errorFree)
             Log::Safe("Libs_Setup(): Libraries Initialized successfully\n\n");

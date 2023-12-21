@@ -5,9 +5,9 @@
 *.idb
 *.ilk
 *.exe
-*.vcx*
 .ipch
+*.dll
 
-# TODO Review .dll includes
-# *.dll
-*.vcxitems
+# TODO Review VS project file inclusion
+# *.vcx*
+# *.vcxitems

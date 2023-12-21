@@ -10,8 +10,7 @@
 #include "../Graphics/Mesh/Mesh.h"
 #include "../Graphics/Shader/ShaderProgram.h"
 #include "../../FileSystem/FileSystem.h"
-#include "../../Headers/QwerkE_Directory_Defines.h"
-#include "../../Headers/QwerkE_File_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 #include "../Jobs/Jobs.h"
 
 namespace QwerkE {
@@ -177,7 +176,7 @@ namespace QwerkE {
 		{
 			return m_Meshes[meshName];
 		}
-		return InstantiateMesh(MeshFolderPath(meshName));
+		return InstantiateMesh(MeshesFolderPath(meshName));
 	}
 
 	Mesh* Resources::GetMeshFromFile(const char* fileName, const char* meshName)
@@ -185,7 +184,7 @@ namespace QwerkE {
         if (MeshExists(meshName))
             return m_Meshes[meshName];
 
-		Mesh* result = FileSystem::LoadMeshInModelByName(MeshFolderPath(fileName), meshName);
+		Mesh* result = FileSystem::LoadMeshInModelByName(MeshesFolderPath(fileName), meshName);
 		if (result)
 		{
 			m_Meshes[meshName] = result;
@@ -213,7 +212,7 @@ namespace QwerkE {
 		else
 		{
 			// NOTE: Auto loading should be avoided. Callers expecting to load a file should check if it exists already.
-			if (FileExists(TextureFolderPath(name)))
+			if (FileExists(TexturesFolderPath(name)))
 			{
 				Texture* tex = new Texture();
 				tex->s_Handle = m_Textures[null_texture]->s_Handle;
@@ -229,7 +228,7 @@ namespace QwerkE {
 			}
 		}
 		/*/
-		return InstantiateTexture(TextureFolderPath(name));
+		return InstantiateTexture(TexturesFolderPath(name));
 		// */
 	}
 
@@ -246,7 +245,7 @@ namespace QwerkE {
 		if (m_Materials.find(name) != m_Materials.end())
 			return m_Materials[name];
 
-		return InstantiateMaterial(TextureFolderPath(name));
+		return InstantiateMaterial(TexturesFolderPath(name));
 	}
 
 	Material* Resources::GetMaterialFromPath(const char* filePath)
@@ -262,7 +261,7 @@ namespace QwerkE {
 		if (m_Fonts.find(name) != m_Fonts.end())
 			return m_Fonts[name];
 
-		return InstantiateFont(FontFolderPath(name));
+		return InstantiateFont(FontsFolderPath(name));
 	}
 
 	FT_Face Resources::GetFontFromPath(const char* filePath)
@@ -278,7 +277,7 @@ namespace QwerkE {
 		if (SoundExists(name))
 			return m_Sounds[name];
 
-		return InstantiateSound(SoundFolderPath(name));
+		return InstantiateSound(SoundsFolderPath(name));
 	}
 
 	ALuint Resources::GetSoundFromPath(const char* filePath)
@@ -294,7 +293,7 @@ namespace QwerkE {
 		if (ShaderProgramExists(name))
 			return m_ShaderPrograms[name];
 
-		return InstantiateShaderProgram(ShaderFolderPath(name));
+		return InstantiateShaderProgram(ShadersFolderPath(name));
 	}
 
 	ShaderProgram* Resources::GetShaderProgramFromPath(const char* filePath)
@@ -310,7 +309,7 @@ namespace QwerkE {
 		if (ShaderComponentExists(name))
 			return m_ShaderComponents[name];
 
-		return InstantiateShaderComponent(ShaderFolderPath(name));
+		return InstantiateShaderComponent(ShadersFolderPath(name));
 	}
 
 	ShaderComponent* Resources::GetShaderComponentFromPath(const char* filePath)

@@ -304,7 +304,7 @@ namespace QwerkE {
             return;
         }
 
-        DataManager::SaveScene(this, SceneFolderPath(m_LevelFileName.c_str()));
+        DataManager::SaveScene(this, ScenesFolderPath(m_LevelFileName.c_str()));
     }
 
     void Scene::LoadScene(const char* sceneFileName)
@@ -316,14 +316,14 @@ namespace QwerkE {
         }
         m_LevelFileName = sceneFileName;
 
-        DataManager::LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
+        DataManager::LoadScene(this, ScenesFolderPath(m_LevelFileName.c_str()));
         SetupCameras();
     }
 
     void Scene::ReloadScene()
     {
         // TODO: Add additional reload functionality
-        DataManager::LoadScene(this, SceneFolderPath(m_LevelFileName.c_str()));
+        DataManager::LoadScene(this, ScenesFolderPath(m_LevelFileName.c_str()));
     }
 
     GameObject* Scene::GetGameObject(const char* name)

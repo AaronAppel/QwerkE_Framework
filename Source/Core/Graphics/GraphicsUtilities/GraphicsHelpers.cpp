@@ -17,8 +17,7 @@
 #include "../DataTypes/Renderable.h"
 #include "../DataTypes/Texture.h"
 #include "../../../Headers/QwerkE_Enums.h"
-#include "../../../Headers/QwerkE_File_Defines.h"
-#include "../../../Headers/QwerkE_Directory_Defines.h"
+#include "../../../Headers/QwerkE_Defines.h"
 
 namespace QwerkE {
 
@@ -98,7 +97,7 @@ namespace QwerkE {
 
     void SaveObjectSchematic(RenderComponent* rComp) // Save to file
     {
-        const char* filePath = ObjectSchematicFolderPath(StringAppend(rComp->GetSchematicName().c_str(), object_schematic_ext));
+        const char* filePath = ObjectSchematicsFolderPath(StringAppend(rComp->GetSchematicName().c_str(), object_schematic_ext));
 
         // If file does not exist, create one, otherwise overwrite data
         if (!FileExists(filePath))
@@ -194,7 +193,7 @@ namespace QwerkE {
 
     void SaveMaterialSchematic(Material* mat)
     {
-        const char* filePath = TextureFolderPath(StringAppend(mat->GetMaterialName().c_str(), material_schematic_ext));
+        const char* filePath = TexturesFolderPath(StringAppend(mat->GetMaterialName().c_str(), material_schematic_ext));
 
         // if file does not exist, create one,otherwise overwrite data
         if (!FileExists(filePath))

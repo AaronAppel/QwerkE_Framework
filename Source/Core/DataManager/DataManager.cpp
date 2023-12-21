@@ -2,7 +2,7 @@
 
 #include "../../Libraries/cJSON_Interface/cJSONInterface.h"
 
-#include "../../Headers/QwerkE_File_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 
 #include "../../Debug/Log/Log.h"
 #include "../Factory/Factory.h"
@@ -26,6 +26,8 @@
 #include "../Graphics/DataTypes/Material.h"
 #include "../Graphics/Shader/ShaderComponent.h"
 #include "../Graphics/Shader/ShaderProgram.h"
+
+#define no_file "None" // #TODO Consider coupling to cJSON logic and moving out of here
 
 namespace QwerkE {
 

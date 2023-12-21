@@ -4,7 +4,7 @@
 
 #include "../Libraries/cJSON_Interface/cJSONInterface.h"
 
-#include "../../Headers/QwerkE_Directory_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 
 #include "../../Debug/Log/Log.h"
 
@@ -62,7 +62,7 @@ namespace QwerkE {
 
 				const char* sceneFileName = scene->valuestring;
 
-				if (FileExists(SceneFolderPath(sceneFileName)) == false)
+				if (FileExists(ScenesFolderPath(sceneFileName)) == false)
                 {
                     LOG_WARN("Scenes::Initialize(): File not found: {0}", sceneFileName);
 					continue;

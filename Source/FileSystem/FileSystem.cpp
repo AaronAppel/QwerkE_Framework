@@ -24,7 +24,7 @@
 #define QwerkE_Image_Library_lodepng 1
 #define QwerkE_Image_Library_soil 0
 
-#include "../Headers/QwerkE_File_Defines.h"
+#include "../Headers/QwerkE_Defines.h"
 
 #include "../Core/Graphics/Mesh/Mesh.h"
 #include "../Core/Audio/OpenAL_Helpers.h"

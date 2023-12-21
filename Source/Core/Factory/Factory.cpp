@@ -5,7 +5,7 @@
 #include "../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 #include "../../FileSystem/FileIO/FileUtilities.h"
 #include "../../Utilities/StringHelpers.h"
-#include "../../Headers/QwerkE_Directory_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 
 namespace QwerkE {
 
@@ -37,13 +37,13 @@ namespace QwerkE {
     {
         GameObject* object = CreateGameObject(scene, position);
         object->SetName(GetFileNameWithExt(schematicName));
-        object->AddComponent(LoadRenderComponentFromSchematic(ObjectSchematicFolderPath(schematicName)));
+        object->AddComponent(LoadRenderComponentFromSchematic(ObjectSchematicsFolderPath(schematicName)));
         return object;
     }
 
     RenderComponent* Factory::AddModelComponentFromSchematic(GameObject* entity, const char* objectRecipeName)
     {
-        RenderComponent* mComp = LoadRenderComponentFromSchematic(ObjectSchematicFolderPath(objectRecipeName));
+        RenderComponent* mComp = LoadRenderComponentFromSchematic(ObjectSchematicsFolderPath(objectRecipeName));
         entity->AddComponent((Component*)mComp);
         return mComp;
     }

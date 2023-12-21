@@ -1,58 +1,11 @@
-#ifndef _QwerkE_Defines_H_
-#define _QwerkE_Defines_H_
+#pragma once
 
-/* Defines values to be used in other ares of the framework.*/
-
-// defines
-// #define IncludeDir "../Shared_Common/Utilities/FileIO/FileUtilities.h"
-
-// type definitions
-#define QNULL 0 // Standardized NULL value
-// #TODO: Is there an easy way of reducing typing without coupling files like typedef does
-// typedef unsigned int uint; // less typing and easier to read
-
-#ifndef FrameworkDir
-// #TODO Build fix
-// #pragma error "Define FrameworkDir!"
-#define FrameworkDir "../../QwerkE_Framework/" // TODO: Find out why RenderingEnv cannot define FrameworkDir
-// string pointing to the QwerkE_Framework folder from your project working directory
-#endif // !FrameworkDir
-
-// TODO: Move to Engine folder (not a part of framework)
-#ifndef ProjectsDir
-#define ProjectsDir FrameworkDir "Projects/"
-#endif // !ProjectsDir
-
-// TODO: Move to directory defines file
-#ifndef AssetsDir
-// #define AssetsDir FrameworkDir "QwerkE_Common/Assets/" // TODO: Remove common assets
-#define AssetsDir FrameworkDir "Assets/" // TODO: Remove common assets
-#endif // !AssetsDir
-
-#ifndef LibrariesDir
-#define LibrariesDir FrameworkDir "Libraries/"
-#endif // LibrariesDir
-
-#define RuntimeDirectory "" // TODO: MakeDir
-
-// Define architecture macro
-// TODO: Preprocessor defines are lame. Is there a
-// better way to define the architecture?
-#ifdef _WIN32
-// #ifdef _Q32Bit
-// define libraries and systems to build
-#define GLFW3 // TODO: Think of more explicit defines like Qdef_GLEW or w/e
+// Define libraries and systems to build
+#define GLFW3
 #define GLEW
 #define OpenGL
 #define OpenAL
 #define dearimgui
-// #define LibUSB
-// #elif defined(Win64Bit)
-#elif defined(_WIN64)
-#define _Q64Bit
-#else
-#pragma warning "Define architecture!"
-#endif // Win32Bit
 
 // Define debug vs release macro
 #ifdef _DEBUG
@@ -69,12 +22,94 @@
 
 #define _QExample // Working example to show functionality
 
-#define _QEasy // Beginner API
-#define _QMedium // Simple control
-#define _QHard // Mixed control
-#define _QUltra // Full control
+#ifndef _QAdvancedApi // Fully unlocked API
+#define _QSimpleApi // Limited API for simpler usability off the start
+#endif
 
-#include "QwerkE_Directory_Defines.h"
-#include "QwerkE_File_Defines.h"
+#ifndef ProjectName
+#define ProjectName "Qwerk"
+#endif
 
-#endif // !_QwerkE_Defines_H_
+#ifndef FrameworkDir
+#define FrameworkStandAlone // #TODO Review Framework assets needs
+#define FrameworkDir ""
+#endif
+
+#ifndef AssetsDir
+#define AssetsDir FrameworkDir "Assets/" // TODO: Remove common assets
+#endif
+
+#ifndef LibrariesDir
+#define LibrariesDir FrameworkDir "Libraries/"
+#endif
+
+#include "../Utilities/StringHelpers.h"
+
+//USER: Set the offset from your project working directory
+// You must #define AssetDir "Assets/" (path to assets)
+
+#define FrameworkNullAssetsDir FrameworkDir "Assets/" // Framework null objects to use if user assets fail to load
+
+// Define "hard coded" file names for handling null objects for ease of use
+// but also to ensure consistency and prevent unintended changes.
+// Any external files should have matching names for the same reasons.
+// TODO: should macros express the file extension? Need to if the loader is looking for that file
+// TODO: Procedurally generate null object to guarantee instantiation
+// TODO: Use file extension as name consistently. Either everywhere, or no where
+#define NullFolderPath(fullFileName) StringAppend(FrameworkNullAssetsDir, fullFileName) // TODO: What is this for?
+
+// Define paths to resource folders that can change easily from project
+// to project using a preprocessor define. Paths can also change or be
+// manipulated at runtime so be careful since this is a good and bad thing.
+// #define MeshFolder AssetDir "Meshes/"
+
+#ifdef FrameworkStandAlone
+#define MeshesFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define ShadersFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define TexturesFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define FontsFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define SoundsFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define ScenesFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define ConfigsFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#define ObjectSchematicsFolderPath(fullFileName) StringAppend(AssetsDir, fullFileName)
+#else
+#define MeshesFolderPath(fullFileName) StringAppend(AssetsDir, "Meshes/", fullFileName)
+#define ShadersFolderPath(fullFileName) StringAppend(AssetsDir, "Shaders/", fullFileName)
+#define TexturesFolderPath(fullFileName) StringAppend(AssetsDir, "Textures/", fullFileName)
+#define FontsFolderPath(fullFileName) StringAppend(AssetsDir, "Fonts/", fullFileName)
+#define SoundsFolderPath(fullFileName) StringAppend(AssetsDir, "Sounds/", fullFileName)
+#define ScenesFolderPath(fullFileName) StringAppend(AssetsDir, "Scenes/", fullFileName)
+#define ConfigsFolderPath(fullFileName) StringAppend(AssetsDir, "Configs/", fullFileName)
+#define ObjectSchematicsFolderPath(fullFileName) StringAppend(AssetsDir, "BluePrints_Prefabs_Schematic/", fullFileName)
+#endif
+
+// Define "hard coded" file names for handling null objects for ease of use
+// but also to ensure consistency and prevent unintended changes.
+// TODO: should macros express the file extension? Need to if the loader is looking for that file
+// TODO: Use file extension as name consistently. Either everywhere, or no where (probably use them everywhere)
+#define null_mesh_filename "null_mesh.obj"
+#define null_mesh "null_mesh"
+#define null_shader "null_shader"
+#define null_texture "null_texture.png"
+#define null_material "null_material.msch"
+#define null_font "null_font.ttf"
+#define null_sound "null_sound.wav"
+#define null_scene "null_scene.qscene"
+
+// Null schematics
+#define null_object_schematic "null_object.osch"
+#define null_material_schematic "null_material.msch"
+#define null_shader_schematic "null_shader.ssch" // TODO: Maybe use an enum for shader types
+#define null_vert_component "null_shader.vert"
+#define null_frag_component "null_shader.frag"
+#define null_geo_component "null_shader.geo"
+
+// Standardized file extensions
+#define vertex_shader_ext "vert"
+#define fragment_shader_ext "frag"
+#define geometry_shader_ext "geo"
+#define object_schematic_ext ".osch"
+#define material_schematic_ext "msch"
+#define shader_schematic_ext "ssch"
+#define scene_ext "qscene"
+#define configs_ext "qpref"

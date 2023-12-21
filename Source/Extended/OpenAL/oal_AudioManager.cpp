@@ -1,8 +1,10 @@
 #include "oal_AudioManager.h"
+
+#include "../../Headers/QwerkE_Defines.h"
+
 #include "oal_Helpers.h"
 #include "../../Debug/Log/Log.h"
 #include "../../FileSystem/FileSystem.h"
-#include "../../Headers/QwerkE_Directory_Defines.h"
 #include "../../Utilities/StringHelpers.h"
 #include "../../Core/Resources/Resources.h"
 #include "../../Core/Audio/AudioSource.h"
@@ -11,17 +13,24 @@
 
 namespace QwerkE {
 
-	OpenALAudioManager::OpenALAudioManager()
+	bool OpenALAudioManager::Initialize()
 	{
-		// ALuint error;
-
 		std::string deviceName = list_audio_devices(alcGetString(NULL, ALC_DEVICE_SPECIFIER));
-		Device = alcOpenDevice(deviceName.c_str()); // select the "preferred device"
+		m_Device = alcOpenDevice(deviceName.c_str()); // select the "preferred device"
 
-		assert(Device); // ALDevice error
+		// #TODO :
+		// Log::Critical("Device error code {0}", Device);
+		// assert(m_Device); // ALDevice error
 
-		Context = alcCreateContext(Device, NULL);
-		alcMakeContextCurrent(Context);
+		if (!m_Device)
+		{
+			Log::Safe("Error initializing audio system");
+			// LOG_CRITICAL("Error initializing audio system");
+			return false;
+		}
+
+		m_Context = alcCreateContext(m_Device, NULL);
+		alcMakeContextCurrent(m_Context);
 
 		// Check for EAX 2.0 support
 		// g_bEAX = alIsExtensionPresent("EAX2.0"); // Why?
@@ -34,9 +43,15 @@ namespace QwerkE {
 		SetListenerOrientation(vec3(0, 0, 0), vec3(0, 0, 0));
 
 		LOG_INFO("OpenAL loaded successfully");
+		return true;
 	}
 
 	OpenALAudioManager::~OpenALAudioManager()
+	{
+		Shutdown();
+	}
+
+	void OpenALAudioManager::Shutdown()
 	{
 		delete m_Source;
 		// TODO: cleanup openal

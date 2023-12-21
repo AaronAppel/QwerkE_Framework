@@ -73,7 +73,7 @@ namespace QwerkE {
         t_pCamComp->Setup();
         t_pCamComp->SetTargetPosition(vec3(0, 0, 0));
 
-        // ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshFolderPath("Camera.obj"));
+        // ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshesFolderPath("Camera.obj"));
         AddModelComponentFromSchematic(t_pCamera, "camera.osch");
 
         RenderRoutine* renderRoutine = new RenderRoutine();

@@ -16,7 +16,7 @@
 #include "../Core/Resources/Resources.h"
 #include "../Utilities/StringHelpers.h"
 #include "FileIO/FileUtilities.h"
-#include "../Headers/QwerkE_File_Defines.h"
+#include "../Headers/QwerkE_Defines.h"
 
 // TODO: Support triangle and quad rendering? Set a macro to define the number of verts per face?
 // TODO: Split functions into smaller pieces. Ex. LoadMeshFromAI() can call functions to GetVertsFromAIMesh, GetUVs, GetMats... etc

@@ -67,7 +67,7 @@ namespace QwerkE {
         static void SaveConfigData();
         static void SaveConfigData(ConfigData config);
 
-        static ConfigData GetConfigData() { return m_ConfigData; }
+        static const ConfigData& GetConfigData() { return m_ConfigData; }
         static void SetConfigData(ConfigData config) { m_ConfigData = config; }
 
     private:

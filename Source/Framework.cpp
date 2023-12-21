@@ -10,7 +10,6 @@
 #include "Headers/Libraries_Initialize.h"
 
 #include "Core/Audio/Audio.h"
-#include "Core/Audio/OpenALAudioManager.h"
 #include "Core/DataManager/ConfigHelper.h"
 #include "Core/DataManager/DataManager.h"
 #include "Core/Events/EventManager.h"
@@ -52,7 +51,6 @@ namespace QwerkE {
 
 		eEngineMessage Framework::Startup(std::string configFilePath, std::uint_fast8_t flags)
 		{
-            // TODO: Log loading and skipping. Everything!
             Log::Initialize();
 
 			cJSON* root = OpencJSONStream(configFilePath.c_str()); // TODO: Remove engine behaviour
@@ -63,7 +61,7 @@ namespace QwerkE {
 			}
 
             ConfigHelper::LoadConfigData(configFilePath); // Init config data
-            ConfigData config = ConfigHelper::GetConfigData();
+            const ConfigData config = ConfigHelper::GetConfigData();
 
             // TODO: Load libraries dynamically. Need functions to load .dlls
 			// TODO: Avoid loading unused libraries. React to system flags
@@ -100,17 +98,16 @@ namespace QwerkE {
 
             Input::Initialize((GLFWwindow*)Windows::GetWindow(0)->GetContext());
 
-            // cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
-            // bool enabled = audioEnabled != nullptr ? (bool)audioEnabled->valuedouble : false; // TODO: Improve value handling
-            // if (config.systems.AudioEnabled)
-            // {
-            //     Audio::Initialize();
-            //     Log::Info("Audio system initialized with OpenAL.");
-            // }
-            // else
+            cJSON* audioEnabled = GetItemFromArrayByKey(systems, "AudioEnabled");
+            bool enabled = audioEnabled != nullptr ? (bool)audioEnabled->valuedouble : false; // TODO: Improve value handling
+            if (config.systems.AudioEnabled && Audio::Initialize())
             {
-				// #TODO Fix logger null exception
-				// Log::Info("No audio system loaded.");
+                Log::Safe("Audio system initialized with OpenAL.");
+            }
+            else
+            {
+				// #TODO Swap with LOG_CRITICAL()
+				Log::Safe("No audio system loaded.");
             }
 
 			// NOTE: Audio init order dependency
@@ -233,7 +230,12 @@ namespace QwerkE {
 
 		void Framework::Update(double deltatime)
 		{
-			Physics::Tick();
+			const ConfigData config = ConfigHelper::GetConfigData();
+			if (config.systems.PhysicsEnabled)
+			{
+				Physics::Tick();
+			}
+
 			Scenes::Update(deltatime);
 
 			if (Input::FrameKeyAction(eKeys::eKeys_Escape, eKeyState::eKeyState_Press))

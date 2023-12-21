@@ -16,8 +16,10 @@ namespace QwerkE {
     class OpenALAudioManager : public Audio
     {
     public:
-        OpenALAudioManager();
         ~OpenALAudioManager();
+
+        bool Initialize();
+        void Shutdown();
 
         void PlaySound(const char* name);
         // music, effect, dialogue
@@ -26,8 +28,8 @@ namespace QwerkE {
 
     private:
 
-        ALCdevice* Device = nullptr;
-        ALCcontext* Context = nullptr;
+        ALCdevice* m_Device = nullptr;
+        ALCcontext* m_Context = nullptr;
 
         // ALboolean g_bEAX; // Why?
 

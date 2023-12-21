@@ -11,8 +11,7 @@
 #include "../../FileSystem/FileSystem.h"
 #include "../../Utilities/StringHelpers.h"
 #include "../../Utilities/Helpers.h"
-#include "../../Headers/QwerkE_Directory_Defines.h"
-#include "../../Headers/QwerkE_File_Defines.h"
+#include "../../Headers/QwerkE_Defines.h"
 
 namespace QwerkE {
 

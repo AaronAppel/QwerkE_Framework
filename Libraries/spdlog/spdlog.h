@@ -126,7 +126,7 @@ inline void shutdown()
 }
 
 // API for using default logger (stdout_color_mt),
-// e.g: spdlog::info("Message {}", 1);
+// e.g: spdLOG_INFO("Message {}", 1);
 //
 // The default logger object can be accessed using the spdlog::default_logger():
 // For example, to add another sink to it:
@@ -138,7 +138,7 @@ inline void shutdown()
 // IMPORTANT:
 // The default API is thread safe (for _mt loggers), but:
 // set_default_logger() *should not* be used concurrently with the default API.
-// e.g do not call set_default_logger() from one thread while calling spdlog::info() from another.
+// e.g do not call set_default_logger() from one thread while calling spdLOG_INFO() from another.
 
 inline std::shared_ptr<spdlog::logger> default_logger()
 {
