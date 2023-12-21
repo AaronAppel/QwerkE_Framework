@@ -77,3 +77,5 @@ Special thanks and shout outs.
 
 - Jimmy Lord : https://github.com/jimmylord
 - Eric Bibeau
+- Aurelien Simoni
+- Antonio Santamaria
