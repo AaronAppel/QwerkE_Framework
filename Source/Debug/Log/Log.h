@@ -1,5 +1,6 @@
-#ifndef _Log_H_
-#define _Log_H_
+#pragma once
+
+#include "../../Headers/QwerkE_Defines.h"
 
 #pragma warning( disable : 26437 )
 #pragma warning( disable : 26451 )
@@ -13,11 +14,9 @@
 #pragma warning( default : 26498 )
 #pragma warning( default : 6387 )
 
-#include "../../Headers/QwerkE_Defines.h"
-
 namespace QwerkE {
 
-    class Log
+    class Log final
     {
     public:
         static void Initialize();
@@ -26,8 +25,7 @@ namespace QwerkE {
         static void Safe(const char* message...);
 
     private:
-        Log() {}
-        ~Log() {}
+        Log() = default;
 
         static bool m_initialized;
     };
@@ -62,5 +60,3 @@ namespace QwerkE {
 #define LOG_ERROR(...)      (void)0
 #define LOG_CRITICAL(...)   (void)0
 #endif // _QDebug
-
-#endif // _Log_H_

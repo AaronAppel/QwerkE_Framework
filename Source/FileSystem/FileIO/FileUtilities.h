@@ -1,5 +1,4 @@
-#ifndef _FileUtilities_H_
-#define _FileUtilities_H_
+#pragma once
 
 #include <string>
 #include <vector>
@@ -27,5 +26,3 @@ void CreateUniqueFile(const char* filename); // won't overwrite existing file
 std::string GetFileExtension(const char* filePath);
 std::string GetFileNameWithExt(const char* filePath);
 std::string GetFileNameNoExt(const char* filePath);
-
-#endif // _FileUtilities_H_

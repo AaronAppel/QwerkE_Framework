@@ -1,5 +1,4 @@
-#ifndef _PhysicsComponent_H_
-#define _PhysicsComponent_H_
+#pragma once
 
 #include "../../Entities/Components/Component.h"
 
@@ -18,4 +17,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_PhysicsComponent_H_

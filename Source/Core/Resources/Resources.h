@@ -1,5 +1,4 @@
-#ifndef _Resources_H_
-#define _Resources_H_
+#pragma once
 
 #include <string>
 #include <map>
@@ -34,7 +33,7 @@ namespace QwerkE {
         short m_References = 0; // When not 0, it is in RAM
     };
 
-    class Resources
+    class Resources final
     {
     public:
         static void Initialize();
@@ -96,7 +95,7 @@ namespace QwerkE {
         static void DeleteAllResources();
 
     private:
-        Resources();
+        Resources() = default;
         ~Resources();
 
         // TODO: Consider using unordered maps
@@ -140,4 +139,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Resources_H_

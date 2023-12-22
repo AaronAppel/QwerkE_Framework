@@ -1,5 +1,4 @@
-#ifndef _QwerkE_Platform_H_
-#define _QwerkE_Platform_H_
+#pragma once
 
 #if _WIN32 || _WIN64
 #define _QWindows
@@ -14,5 +13,3 @@
 #else
 #pragma warning "Define Platform!"
 #endif
-
-#endif // !_QwerkE_Platform_H_

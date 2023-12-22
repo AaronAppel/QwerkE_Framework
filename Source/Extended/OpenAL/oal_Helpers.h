@@ -1,11 +1,11 @@
-#ifndef _OpenAL_Helpers_H_
-#define _OpenAL_Helpers_H_
+#pragma once
+
+#include <string>
 
 #include "../../../Libraries/OpenAL/include/al.h"
 #include "../../../Libraries/OpenAL/include/alc.h"
-#include "../../FileSystem/FileSystem.h"
 
-#include <string>
+#include "../../FileSystem/FileSystem.h"
 
 namespace QwerkE {
 
@@ -14,4 +14,3 @@ namespace QwerkE {
     ALuint OpenAL_LoadSound(const QSoundFile& soundFile);
 
 }
-#endif // !_OpenAL_Helpers_H_

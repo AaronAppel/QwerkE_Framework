@@ -1,5 +1,4 @@
-#ifndef _JobQueuedEvent_H_
-#define _JobQueuedEvent_H_
+#pragma once
 
 #include "Event.h"
 #include "../Graphics/DataTypes/Texture.h"
@@ -16,4 +15,4 @@ namespace QwerkE {
     };
 
 }
-#endif // _JobQueuedEvent_H_
+

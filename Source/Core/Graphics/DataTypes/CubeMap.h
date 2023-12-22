@@ -1,5 +1,4 @@
-#ifndef _CubeMap_H_
-#define _CubeMap_H_
+#pragma once
 
 #include <vector>
 #include <string>
@@ -10,7 +9,7 @@ namespace QwerkE {
 
 	struct CubeMapData
 	{
-		const char* m_PosX = 0; // GL_TEXTURE_CUBE_MAP_POSITIVE_X
+		const char* m_PosX = 0; // GL_TEXTURE_CUBE_MAP_POSITIVE_X // #TODO Review mapping comments
 		const char* m_NegX = 0;
 		const char* m_PosY = 0;
 		const char* m_NegY = 0;
@@ -35,6 +34,7 @@ namespace QwerkE {
 		void Init()
 		{
 			std::vector<std::string> t_Faces;
+			// #TODO Review commented code block
 			// m_TextureHandle = loadCubemap(t_Faces);
 
 			/*int width, height, nrChannels;
@@ -87,4 +87,3 @@ namespace QwerkE {
 	};
 
 }
-#endif //!_CubeMap_H_

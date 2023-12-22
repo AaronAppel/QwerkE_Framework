@@ -1,5 +1,4 @@
-#ifndef _b3_World_H_
-#define _b3_World_H_
+#pragma once
 
 #include "../../Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
 
@@ -39,4 +38,3 @@ namespace QwerkE {
 	};
 
 }
-#endif // _b3_World_H_

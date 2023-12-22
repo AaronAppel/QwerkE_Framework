@@ -1,5 +1,4 @@
-#ifndef _Windows_H_
-#define _Windows_H_
+#pragma once
 
 #include <vector>
 
@@ -24,4 +23,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _Windows_H_

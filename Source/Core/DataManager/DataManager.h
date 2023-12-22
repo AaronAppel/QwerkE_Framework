@@ -1,6 +1,6 @@
-#ifndef _DataManager_H_
-#define _DataManager_H_
+#pragma once
 
+// #TODO Review comment
 /*
 	The DataManager() class is meant to be used to load/save
 	information from/to external save files at run time.
@@ -66,4 +66,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_DataManager_H_

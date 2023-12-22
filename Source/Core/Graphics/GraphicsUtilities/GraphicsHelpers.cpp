@@ -21,10 +21,11 @@
 
 namespace QwerkE {
 
-    // TODO: Use #define to strip graphics checks from release builds
+    // #TODO Use #define to strip graphics checks from release builds
+
     void CheckAllGraphicsErrors()
     {
-        // TODO: Handle all sorts of graphics system errors?
+        // #TODO Handle all sorts of graphics system errors
     }
 
     #ifdef OpenGL
@@ -44,7 +45,7 @@ namespace QwerkE {
         GLCheckforErrors(file, line);
     }
 
-    // TODO: Return a valid handle and try to avoid a stack frame if not necessary
+    // #TODO Return a valid handle and try to avoid a stack frame if not necessary
     GLuint Load2DTexture(const char* filename, bool flipVertically)
     {
         return GLLoad2DTexture(filename, flipVertically);
@@ -57,11 +58,10 @@ namespace QwerkE {
 
     GLuint CopyFBOToTexture(FrameBufferObject& fbo, int w, int h, int x, int y)
     {
-        // TODO: abstract from library specific implementation
-        // Note: You can specify what region of the framebuffer to take which
+        // #TODO abstract from library specific implementation
+        // #NOTE You can specify what region of the frame buffer to take which
         // means you can easily capture a specified square from the scene.
 
-        // Bind framebuffer
         fbo.Bind();
         glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, x, y, w, h, 0);
 
@@ -79,9 +79,8 @@ namespace QwerkE {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // , , GL_CLAMP
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-        // return handle to newly created texture
         fbo.UnBind();
-        glBindTexture(GL_TEXTURE_2D, 0); // unbind
+        glBindTexture(GL_TEXTURE_2D, 0);
         return result;
     }
 
@@ -93,48 +92,41 @@ namespace QwerkE {
     #else
     #pragma error "Define graphics library!"
 
-    #endif // OpenGL
+    #endif
 
-    void SaveObjectSchematic(RenderComponent* rComp) // Save to file
+    void SaveObjectSchematic(RenderComponent* rComp)
     {
         const char* filePath = ObjectSchematicsFolderPath(StringAppend(rComp->GetSchematicName().c_str(), object_schematic_ext));
 
-        // If file does not exist, create one, otherwise overwrite data
         if (!FileExists(filePath))
         {
             CreateEmptycJSONFile(filePath);
         }
-        else
-        {
-            EmptycJSONFile(filePath);
-        }
 
         cJSON* root = OpencJSONStream(filePath);
+        if (!root) { return; }
 
-        if (root)
+        AddItemToRoot(root, CreateString("Name", rComp->GetSchematicName().c_str()));
+
+        cJSON* renderables = CreateArray("Renderables");
+
+        // #TODO Better way to get access to renderable values?
+        std::vector<Renderable>* renderablesList = (std::vector<Renderable>*)rComp->LookAtRenderableList();
+
+        for (size_t i = 0; i < renderablesList->size(); i++)
         {
-            AddItemToRoot(root, CreateString("Name", rComp->GetSchematicName().c_str()));
+            // #TODO Set the renderable names
+            cJSON* renderable = CreateArray(StringAppend("R", std::to_string(i).c_str()));
 
-            cJSON* renderables = CreateArray("Renderables");
+            AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
+            AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->GetMaterialName().c_str()));
+            AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
+            AddItemToArray(renderable, CreateString("MeshName", renderablesList->at(i).GetMesh()->GetName().c_str()));
 
-            // TODO: Better way to get access to renderable values?
-            std::vector<Renderable>* renderablesList = (std::vector<Renderable>*)rComp->LookAtRenderableList();
-
-            for (size_t i = 0; i < renderablesList->size(); i++)
-            {
-                // TODO: Set the renderable names
-                cJSON* renderable = CreateArray(StringAppend("R", std::to_string(i).c_str()));
-
-                AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
-                AddItemToArray(renderable, CreateString("Material", renderablesList->at(i).GetMaterialSchematic()->GetMaterialName().c_str()));
-                AddItemToArray(renderable, CreateString("MeshFile", renderablesList->at(i).GetMesh()->GetFileName().c_str()));
-                AddItemToArray(renderable, CreateString("MeshName", renderablesList->at(i).GetMesh()->GetName().c_str()));
-
-                AddItemToArray(renderables, renderable);
-            }
-
-            AddItemToRoot(root, renderables);
+            AddItemToArray(renderables, renderable);
         }
+
+        AddItemToRoot(root, renderables);
 
         PrintRootObjectToFile(filePath, root);
         ClosecJSONStream(root);
@@ -195,26 +187,22 @@ namespace QwerkE {
     {
         const char* filePath = TexturesFolderPath(StringAppend(mat->GetMaterialName().c_str(), material_schematic_ext));
 
-        // if file does not exist, create one,otherwise overwrite data
         if (!FileExists(filePath))
         {
             CreateEmptycJSONFile(filePath);
         }
-        else
-        {
-            EmptycJSONFile(filePath);
-        }
 
         // save data
         // Note: I am not saving texture handles because they are not reliable.
-        // TODO: Should I use struct member names like "s_Name"?
+        // #TODO Should I use struct member names like "s_Name"?
         cJSON* root = OpencJSONStream(filePath);
+        if (!root) { return; }
 
         AddItemToRoot(root, CreateString("Name", "MaterialSchematic1.msch"));
 
         //cJSON* OtherData = CreateArray("OtherData");
         //AddItemToArray(OtherData, CreateNumber("Shine", mat->s_Shine));
-        // TODO: LightData AddItemToArray(OtherData, CreateNumber("LightData", mat->s_Shine)); {r,g,b,a}
+        // #TODO LightData AddItemToArray(OtherData, CreateNumber("LightData", mat->s_Shine)); {r,g,b,a}
         // AddItemToRoot(root, OtherData);
 
         cJSON* names = CreateArray("MaterialComponents");
@@ -263,7 +251,7 @@ namespace QwerkE {
             // load "other" data
             //cJSON* otherData = GetItemFromRootByKey(root, "OtherData");
             //mat->s_Shine = GetItemFromArrayByKey(otherData, "Shine")->valuedouble;
-            // TODO: mat->s_LightValue = GetItemFromArrayByKey(otherData, "LightData")->valuedouble;
+            // #TODO mat->s_LightValue = GetItemFromArrayByKey(otherData, "LightData")->valuedouble;
 
             // set texture names
             cJSON* textureNames = GetItemFromRootByKey(root, "TextureNames");
@@ -295,7 +283,7 @@ namespace QwerkE {
 
         // load texture handles from Resources
 
-        // TODO: Stop trying to load "Empty" files
+        // #TODO Stop trying to load "Empty" files
         // material->s_AmbientHandle = Resources::GetTexture(mat->s_AmbientName.c_str());
         // material->s_DiffuseHandle = Resources::GetTexture(mat->s_DiffuseName.c_str());
         // material->s_SpecularHandle = Resources::GetTexture(mat->s_SpecularName.c_str());
@@ -318,23 +306,17 @@ namespace QwerkE {
         {
             CreateEmptycJSONFile(filePath);
         }
-        else
-        {
-            EmptycJSONFile(filePath);
-        }
 
         cJSON* root = OpencJSONStream(filePath);
+        if (!root) { return; }
 
-        if (root)
-        {
-            AddItemToRoot(root, CreateString("Name", shader->GetName().c_str()));
+        AddItemToRoot(root, CreateString("Name", shader->GetName().c_str()));
 
-            AddItemToRoot(root, CreateString("vert", shader->GetVertShader()->GetName().c_str()));
-            AddItemToRoot(root, CreateString("frag", shader->GetFragShader()->GetName().c_str()));
-            AddItemToRoot(root, CreateString("geo", shader->GetGeoShader()->GetName().c_str()));
+        AddItemToRoot(root, CreateString("vert", shader->GetVertShader()->GetName().c_str()));
+        AddItemToRoot(root, CreateString("frag", shader->GetFragShader()->GetName().c_str()));
+        AddItemToRoot(root, CreateString("geo", shader->GetGeoShader()->GetName().c_str()));
 
-            PrintRootObjectToFile(filePath, root);
-        }
+        PrintRootObjectToFile(filePath, root);
         ClosecJSONStream(root);
     }
 
@@ -351,8 +333,11 @@ namespace QwerkE {
             shader->SetVertName(GetItemFromRootByKey(root, "vert")->valuestring);
             shader->SetFragName(GetItemFromRootByKey(root, "frag")->valuestring);
             shader->SetGeoName(GetItemFromRootByKey(root, "geo")->valuestring);
+
+            ClosecJSONStream(root);
         }
 
+        // #TODO Test
         shader->SetVertShader(Resources::GetShaderComponent(shader->GetVertName().c_str()));
         shader->SetFragShader(Resources::GetShaderComponent(shader->GetFragName().c_str()));
 
@@ -360,10 +345,6 @@ namespace QwerkE {
         {
             shader->SetGeoShader(Resources::GetShaderComponent(shader->GetGeoName().c_str()));
         }
-
-        // TODO: Compile shader program
-
-        ClosecJSONStream(root);
 
         return shader;
     }

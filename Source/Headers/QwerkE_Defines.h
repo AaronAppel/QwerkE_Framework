@@ -6,6 +6,7 @@
 #define OpenGL
 #define OpenAL
 #define dearimgui
+#define qw_BULLET3
 
 // Define debug vs release macro
 #ifdef _DEBUG

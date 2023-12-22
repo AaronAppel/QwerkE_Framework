@@ -1,5 +1,4 @@
-#ifndef _LightData_H_
-#define _LightData_H_
+#pragma once
 
 namespace QwerkE {
 
@@ -13,4 +12,3 @@ namespace QwerkE {
     };
 
 }
-#endif //__LightData_H__

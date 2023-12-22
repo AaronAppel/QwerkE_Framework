@@ -1,5 +1,4 @@
-#ifndef _Jobs_H_
-#define _Jobs_H_
+#pragma once
 
 /*
 	An interface for multi threaded tasks
@@ -69,4 +68,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _Jobs_H_

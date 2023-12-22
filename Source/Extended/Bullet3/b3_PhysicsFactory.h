@@ -1,5 +1,4 @@
-#ifndef _b3_PhysicsFactory_H_
-#define _b3_PhysicsFactory_H_
+#pragma once
 
 #include "../../../Libraries/Bullet3/LinearMath/btVector3.h"
 
@@ -22,4 +21,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _b3_PhysicsFactory_H_

@@ -1,5 +1,4 @@
-#ifndef _LightComponent_H_
-#define _LightComponent_H_
+#pragma once
 
 #include "../../../../Headers/QwerkE_Enums.h"
 
@@ -39,4 +38,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_LightComponent_H_

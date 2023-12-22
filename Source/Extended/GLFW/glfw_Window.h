@@ -1,5 +1,4 @@
-#ifndef _glfw_Window_H_
-#define _glfw_Window_H_
+#pragma once
 
 #include "../../Core/Window/Window.h"
 #include "../../Libraries/glfw/GLFW/glfw3.h"
@@ -39,4 +38,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_glfw_Window_H_

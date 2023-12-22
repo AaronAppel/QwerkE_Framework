@@ -749,7 +749,7 @@ private:
         {
             if (*it == '%')
             {
-                // if (user_chars) // #TODO Does this check do anything?
+                // if (user_chars) // @aappel #TODO Does this check do anything?
                 {
                     // append user chars found so far
                     formatters_.push_back(std::move(user_chars));

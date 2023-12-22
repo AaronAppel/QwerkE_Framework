@@ -1,9 +1,8 @@
-#ifndef _OpenAL_Component_H_
-#define _OpenAL_Component_H_
-
-#include "../AudioComponent.h"
+#pragma once
 
 #include "../../../../../../Libraries/OpenAL/include/al.h"
+
+#include "../AudioComponent.h"
 
 namespace QwerkE {
 
@@ -20,4 +19,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_OpenAL_Component_H_

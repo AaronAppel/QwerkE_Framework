@@ -1,12 +1,11 @@
-#ifndef _StringHelpers_H_
-#define _StringHelpers_H_
+#pragma once
 
 #include <string>
-// Easy to use utility functions for use with std:string
-// TODO: GetStringExtension()
 
-// TODO: String append function that takes a variable number
-// of char*s andappends them in order
+// Easy to use utility functions for use with std:string
+// FEATURE: GetStringExtension()
+
+// FEATURE: String append function that takes a variable number of char*s and appends them in order
 const char* StringAppend(const char* a, const char* b);
 const char* StringAppend(const char* a, const char* b, const char* c);
 
@@ -27,5 +26,3 @@ int StringToInt(const char* string);
 
 const char* ReverseString(std::string value);
 const char* ReverseString(const char* value);
-
-#endif // !_StringHelpers_H_

@@ -1,5 +1,4 @@
-#ifndef __MyLinkedList_H_
-#define __MyLinkedList_H_
+#pragma once
 
 // LinearList<> is a dynamic container for storing objects.
 // It behaves similar to std::vector<> but does not store data
@@ -292,8 +291,6 @@ template <class LIST_OBJECT_TYPE>
 LIST_OBJECT_TYPE* Linear2LinkedList<LIST_OBJECT_TYPE>::CreateArray()
 {
 	// !beware the memory!
-	LIST_OBJECT_TYPE* t_Array = new LIST_OBJECT_TYPE[m_Count]; // unhandled allocation
+	LIST_OBJECT_TYPE* t_Array = new LIST_OBJECT_TYPE[m_Count]; // Unhandled allocation
 	return t_Array;
 }
-
-#endif // __MyLinkedList_H_

@@ -12,13 +12,3 @@
 #define PROFILE_SCOPE(scopeName)
 #define PROFILE_FUNC(scopeName)
 #endif
-
-namespace QwerkE {
-
-    class Profiler
-    {
-    public:
-    private:
-    };
-
-}

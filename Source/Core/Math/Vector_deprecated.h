@@ -7,10 +7,9 @@
 // 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
-#include "MathHelpers.h"
+#pragma once
 
-#ifndef __Vector_H__
-#define __Vector_H__
+#include "MathHelpers.h"
 
 class Vector2
 {
@@ -279,9 +278,7 @@ public:
     inline Vector2T<MyType> operator -=(const Vector2T<MyType>& o) { this->x -= o.x; this->y -= o.y; return *this; }
 };
 
-// EDIT: Aaron Appel June 1sy 2018
+// EDIT: Aaron Appel June 1st 2018
 typedef Vector2 vec2;
 typedef Vector3 vec3;
 typedef Vector4 vec4;
-
-#endif //__Vector_H__

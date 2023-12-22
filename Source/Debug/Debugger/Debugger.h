@@ -1,5 +1,4 @@
-#ifndef _Debugger_H_
-#define _Debugger_H_
+#pragma once
 
 #include "../../Headers/QwerkE_Defines.h"
 
@@ -69,5 +68,3 @@ namespace QwerkE {
     //}
 
 }
-
-#endif // _Debugger_H_

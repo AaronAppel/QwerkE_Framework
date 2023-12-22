@@ -1,11 +1,11 @@
-#ifndef _Texture_Asset_H_
-#define _Texture_Asset_H_
+#pragma once
+
+#include <string>
+
+#include "../../Headers/QwerkE_Global_Constants.h"
 
 #include "Asset.h"
 #include "../Math/Vector.h"
-#include "../../Headers/QwerkE_Global_Constants.h"
-
-#include <string>
 
 typedef unsigned int GLuint;
 
@@ -28,4 +28,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Texture_Asset_H_

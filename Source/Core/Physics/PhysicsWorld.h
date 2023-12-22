@@ -1,5 +1,4 @@
-#ifndef _PhysicsWorld_H_
-#define _PhysicsWorld_H_
+#pragma once
 
 #pragma warning( disable : 26495 )
 #pragma warning( disable : 4099 )
@@ -45,4 +44,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_PhysicsWorld_H_

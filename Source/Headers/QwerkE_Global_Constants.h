@@ -1,5 +1,4 @@
-#ifndef _QwerkE_Global_Constants_H_
-#define _QwerkE_Global_Constants_H_
+#pragma once
 
 // Default object values
 #define gc_DefaultStringValue "null"
@@ -17,6 +16,4 @@ const float gc_SENSITIVTY = 0.1f;
 const float gc_ZOOM = 45.0f;
 
 // Null value definitions
-// TODO: Define null values for types
-
-#endif //!_QwerkE_Global_Constants_H_
+// TODO: Define null values for types. Reference *Defines.h header(s)

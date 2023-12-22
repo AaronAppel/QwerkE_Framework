@@ -1,5 +1,4 @@
-#ifndef _Shader_Component_H_
-#define _Shader_Component_H_
+#pragma once
 
 #include <string>
 
@@ -37,4 +36,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _Shader_Component_H_

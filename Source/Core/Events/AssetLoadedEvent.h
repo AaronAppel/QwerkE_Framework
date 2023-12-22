@@ -1,6 +1,4 @@
-#ifndef _AssetLoadedEvent_H_
-#define _AssetLoadedEvent_H_
-
+#pragma once
 #include "Event.h"
 #include "../../FileSystem/FileSystem.h"
 
@@ -9,9 +7,8 @@ namespace QwerkE {
     class AssetLoadedEvent : public Event
     {
     public:
-        // TODO: Change from texture to ambiguous asset event
         AssetLoadedEvent(QImageFile asset);
-        ~AssetLoadedEvent();
+        virtual ~AssetLoadedEvent() = default;
 
         QImageFile GetAsset() { return m_Asset; }
 
@@ -22,4 +19,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_AssetLoadedEvent_H_

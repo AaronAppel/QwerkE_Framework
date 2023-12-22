@@ -1,5 +1,4 @@
-#ifndef _Material_H_
-#define _Material_H_
+#pragma once
 
 #include <string>
 #include <map>
@@ -28,14 +27,13 @@ namespace QwerkE {
         Material(const std::map<eMaterialMaps, Texture*>& textures)
         {
             m_Components.clear();
-            m_Components = textures; // TODO: Check how data is copied. Shallow copy should work.
+            m_Components = textures; // #TODO Check how data is copied. Shallow copy should work.
         }
 
-        Material(Material* material) // a simple copy constructor
+        Material(Material* material)
         {
-            // shallow copy components to not duplicate them
             const std::map<eMaterialMaps, Texture*>* othercomponents = material->SeeMaterials();
-            m_Components = *othercomponents; // TODO: Check how data is copied. Shallow copy should work.
+            m_Components = *othercomponents; // #TODO Check how data is copied. Shallow copy should work.
         }
 
         int NumberOfMaterials() { return (int)m_Components.size(); }
@@ -55,8 +53,7 @@ namespace QwerkE {
 
         void AddTexture(Texture* comp, eMaterialMaps type)
         {
-            // only add if type is not already assigned
-            if (type < eMaterialMaps::MatMap_Max && (int)type > -1)
+            if (type < eMaterialMaps::MatMap_Max && (int)type >= 0)
             {
                 m_Components[type] = comp;
             }
@@ -76,12 +73,9 @@ namespace QwerkE {
         std::string m_Name = gc_DefaultStringValue;
         std::map<eMaterialMaps, Texture*> m_Components;
 
-        // TODO: Create a basic colour component just for specific uses
-
-        // other data needed by shaders
+        // #TODO Other data needed by shaders
         // float s_Shine = 0.5f;
         // vec4 s_LightValue = vec4(1,1,1,1);
     };
 
 }
-#endif //!_Material_H_

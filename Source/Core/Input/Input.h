@@ -1,7 +1,15 @@
-#ifndef _Input_H_
-#define _Input_H_
+#pragma once
 
 // Reference: https://www.gamedev.net/blogs/entry/2250186-designing-a-robust-input-handling-system-for-games/
+
+#include <map>
+
+#ifdef GLFW3
+#include "../../Libraries/glew/GL/glew.h" // #TODO Review GLEW inclusion
+#include "../../Libraries/glfw/GLFW/glfw3.h"
+#else
+#error Define library!
+#endif // GLFW3
 
 #include "../../Headers/QwerkE_Enums.h"
 #include "QwerKE_eKeys.h"
@@ -9,13 +17,6 @@
 #include "../../Headers/QwerkE_Platform.h"
 #include "../../Headers/Libraries_Include.h"
 #include "../Math/Vector.h"
-
-#ifdef GLFW3
-#include "../../Libraries/glew/GL/glew.h" // TODO: Need?
-#include "../../Libraries/glfw/GLFW/glfw3.h"
-#endif // GLFW3
-
-#include <map>
 
 namespace QwerkE {
 
@@ -112,4 +113,3 @@ namespace QwerkE {
         static unsigned short* m_KeyCodex;
     };
 }
-#endif // !_Input_H_

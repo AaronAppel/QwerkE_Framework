@@ -1,12 +1,5 @@
-#ifndef _Graphics_Header_H_
-#define _Graphics_Header_H_
+#pragma once
 
-//////////////////////////////
-// Graphics_Header.h
-// #includes several graphics files for convenient includes
-// in another file.
-// TODO: Think of removing and only adding files that are needed.
-//////////////////////////////
 /* Ensures graphics classes are included in order */
 
 // defines, structs, typedefs for graphics
@@ -50,5 +43,3 @@ namespace QwerkE {
 #include "DataTypes/Texture.h"
 
 #include "GraphicsUtilities/GraphicsHelpers.h"
-
-#endif // !_Graphics_Header_H_

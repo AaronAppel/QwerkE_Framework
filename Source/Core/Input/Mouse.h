@@ -1,5 +1,4 @@
-#ifndef _Mouse_H_
-#define _Mouse_H_
+#pragma once
 
 #include "../../Headers/QwerkE_Enums.h"
 
@@ -24,4 +23,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Mouse_H_

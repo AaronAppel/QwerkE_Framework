@@ -1,5 +1,4 @@
-#ifndef _Bullet3Routine_H_
-#define _Bullet3Routine_H_
+#pragma once
 
 #include "../../Routines/Routine.h"
 
@@ -22,4 +21,3 @@ namespace QwerkE {
 	};
 
 }
-#endif // _Bullet3Routine_H_

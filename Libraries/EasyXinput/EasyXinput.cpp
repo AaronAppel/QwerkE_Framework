@@ -7,38 +7,42 @@
 // avoid declaring <cmath> in header
 float XinVec2::Length() const { return sqrt(x*x + y * y); }
 
-// setup
-XinputHandler::XinputHandler(int numPlayers)
+// Setup
+XinputHandler::XinputHandler(int numPlayers) :
+	m_CurrentPlayer(-1),
+	m_TriggerDeadZone(0)
 {
 	m_NumPlayers = numPlayers;
 	m_PlayerStates = new XINPUT_STATE*[numPlayers];
 
-	for (int i = 0; i < numPlayers; i++) // load player list
+	for (int i = 0; i < numPlayers; i++)
 	{
 		m_PlayerStates[i] = new XINPUT_STATE;
 	}
+
+	m_StickDeadZone = XinVec2(0, 0);
 }
-// tear down
+// Tear down
 XinputHandler::~XinputHandler()
 {
 }
-// utility
+// Utility
 void XinputHandler::ResetState(int player)
 {
-	memset(&m_PlayerStates[player], 0, sizeof(XINPUT_STATE)); // clear data
+	memset(&m_PlayerStates[player], 0, sizeof(XINPUT_STATE));
 }
 
 void XinputHandler::ResetStates()
 {
 	for (unsigned int i = 0; i < m_NumPlayers; i++)
 	{
-		memset(&m_PlayerStates[i], 0, sizeof(XINPUT_STATE)); // clear data
+		memset(&m_PlayerStates[i], 0, sizeof(XINPUT_STATE));
 	}
 }
 
 bool XinputHandler::UpdatePlayerState(int player)
 {
-	// TODO: Figure out why XInputGetState gives LNK2019
+	// #TODO Figure out why XInputGetState gives LNK2019
 	DWORD result = 0;// = XInputGetState((DWORD)player, m_PlayerStates[player]); // XInputGetState(PORT, &ControllerState );
 	if (result == Xin_Success)
 		return true;
@@ -48,7 +52,7 @@ bool XinputHandler::UpdatePlayerState(int player)
 		return false;
 	}
 }
-// input
+// Input
 XinVec2 XinputHandler::LeftStick(int player)
 {
 	XinVec2 leftstick = XinVec2(m_PlayerStates[player]->Gamepad.sThumbRX, m_PlayerStates[player]->Gamepad.sThumbRY);

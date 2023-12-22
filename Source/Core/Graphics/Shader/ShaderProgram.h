@@ -1,5 +1,4 @@
-#ifndef _ShaderProgram_H_
-#define _ShaderProgram_H_
+#pragma once
 
 #include <string>
 #include <vector>
@@ -89,4 +88,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_ShaderProgram_H_

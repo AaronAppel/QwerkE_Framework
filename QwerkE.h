@@ -1,5 +1,4 @@
-#ifndef _QwerkE_H_
-#define _QwerkE_H_
+#pragma once
 
 // ORIGINAL SOURCE LINK: https://github.com/AaronAppel/QwerkE_Framework
 
@@ -70,5 +69,3 @@
 
 // START:
 #include "Source/Headers/QwerkE_Include.h"
-
-#endif // !_QwerkE_H_

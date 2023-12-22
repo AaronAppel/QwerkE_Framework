@@ -1,5 +1,4 @@
-#ifndef _RenderRoutine_H_
-#define _RenderRoutine_H_
+#pragma once
 
 #include <vector>
 
@@ -66,4 +65,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_RenderRoutine_H_

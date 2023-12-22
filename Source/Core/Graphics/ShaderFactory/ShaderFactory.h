@@ -1,15 +1,9 @@
-#ifndef _ShaderFactory_H_
-#define _ShaderFactory_H_
+#pragma once
 
-////* Work in progress *////
-
-//enum eShaderTypes {};
-// NOTE: add \n to beginning of string ex."\nText"
+#include <string>
 
 #include "../../Graphics/Graphics_Header.h"
 #include "../../Graphics/GraphicsUtilities/GraphicsHelpers.h"
-
-#include <string>
 
 namespace QwerkE {
 
@@ -133,4 +127,3 @@ namespace QwerkE {
     }
 
 }
-#endif //!_ShaderFactory_H_

@@ -1,27 +1,18 @@
 #include "Factory.h"
 
-#include "../Resources/Resources.h"
-#include "../Scenes/Entities/Components/RenderComponent.h"
-#include "../Graphics/GraphicsUtilities/GraphicsHelpers.h"
+#include "../../Headers/QwerkE_Defines.h"
+
 #include "../../FileSystem/FileIO/FileUtilities.h"
 #include "../../Utilities/StringHelpers.h"
-#include "../../Headers/QwerkE_Defines.h"
+
+#include "../Resources/Resources.h"
+
+#include "../Scenes/Entities/Components/RenderComponent.h"
+#include "../Graphics/GraphicsUtilities/GraphicsHelpers.h"
 
 namespace QwerkE {
 
     int Factory::m_CreatedCount = 0;
-
-    Factory::Factory()
-    {
-    }
-
-    Factory::~Factory()
-    {
-    }
-
-    void Factory::ClearResources()
-    {
-    }
 
     GameObject* Factory::CreateGameObject(Scene* scene)
     {

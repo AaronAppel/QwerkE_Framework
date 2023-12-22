@@ -1,5 +1,4 @@
-#ifndef _AudioComponent_H_
-#define _AudioComponent_H_
+#pragma once
 
 #include "Component.h"
 
@@ -16,4 +15,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_AudioComponent_H_

@@ -1,5 +1,4 @@
-#ifndef _Scenes_H_
-#define _Scenes_H_
+#pragma once
 
 #include <map>
 
@@ -56,4 +55,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _Scenes_H_

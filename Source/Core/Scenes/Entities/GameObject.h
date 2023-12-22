@@ -1,5 +1,4 @@
-#ifndef _GameObject_H_
-#define _GameObject_H_
+#pragma once
 
 #include <map>
 #include <string>
@@ -107,4 +106,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_GameObject_H_

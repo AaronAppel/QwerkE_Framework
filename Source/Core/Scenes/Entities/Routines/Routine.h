@@ -1,5 +1,4 @@
-#ifndef _Routine_H_
-#define _Routine_H_
+#pragma once
 
 #include "../../../../Headers/QwerkE_Enums.h"
 
@@ -41,4 +40,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_Routine_H_

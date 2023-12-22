@@ -1,5 +1,4 @@
-#ifndef _MathConstants_H_
-#define _MathConstants_H_
+#pragma once
 
 // Value defines
 #define PI 3.1415926535897932384626433832795
@@ -13,5 +12,3 @@
 #define _QMETER 100
 #define _QCM 10
 #define _QMM 1
-
-#endif // _MathConstants_H_

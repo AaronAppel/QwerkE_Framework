@@ -1,8 +1,4 @@
-#ifndef _OpenGLManager_H_
-#define _OpenGLManager_H_
-
-// graphics
-// #define Wind_CCW 1 // For invert faces
+#pragma once
 
 #include "../../Core/Math/Vector.h"
 
@@ -36,4 +32,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_OpenGLManager_H_

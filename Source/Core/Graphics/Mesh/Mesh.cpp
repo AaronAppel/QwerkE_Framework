@@ -8,26 +8,29 @@
 
 #include "../../../Debug/Log/Log.h"
 
+#include "../GraphicsUtilities/GraphicsHelpers.h"
+#include "../../../Utilities/StringHelpers.h"
+#include "../Shader/ShaderVariable_Defines.h"
+
 #include "MeshData.h"
 #include "../Shader/ShaderProgram.h"
-#include "../GraphicsUtilities/GraphicsHelpers.h"
 #include "../Shader/ShaderProgram.h"
-#include "../Shader/ShaderVariable_Defines.h"
-#include "../../../Utilities/StringHelpers.h"
 #include "../../Graphics/ShaderFactory/ShaderFactory.h"
 
 namespace QwerkE {
 
+    // #TODO Review comments
+
     Mesh::Mesh()
     {
         glGenBuffers(1, &m_VBO);
-        glGenBuffers(1, &m_EBO); // TODO: Always generate an EBO? What if a mesh does not use indices (silly, but still)?
+        glGenBuffers(1, &m_EBO); // #TODO Always generate an EBO? What if a mesh does not use indices (silly, but still)?
         glGenVertexArrays(1, &m_VAO);
     }
 
     Mesh::~Mesh()
     {
-        // TODO: Move code to a function (Destroy() or something) to be used for unloading mesh data and rebuffering
+        // #TODO Move code to a function (Destroy() or something) to be used for unloading mesh data and re-buffering
         glDeleteBuffers(1, &m_VBO);
         glDeleteBuffers(1, &m_EBO);
         glDeleteVertexArrays(1, &m_VAO);
@@ -35,21 +38,20 @@ namespace QwerkE {
 
     void Mesh::BufferMeshData(MeshData* data)
     {
-        // TODO: Return true or false to communicate successful buffering?
+        // #TODO Return true or false to communicate successful buffering?
         if (!data)
         {
             LOG_ERROR("MeshData is null!");
             assert(false);
         }
 
-        // TODO: If VBO has data in it, handle deletion and re-assignment of new data
+        // #TODO If VBO has data in it, handle deletion and re-assignment of new data
         if (m_BufferData.numPositions != 0) // Empty mesh?
         {
             LOG_ERROR("Mesh already has vertex data!");
             assert(false);
         }
 
-        // Save buffer info for later use
         m_BufferData = data->BufferInfo();
 
         if (m_BufferData.BufferSize() < 1)
@@ -71,7 +73,7 @@ namespace QwerkE {
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * m_BufferData.numIndices, data->indices.data(), GL_STATIC_DRAW);
         }
 
-        // unbind for safety
+        // Unbind for safety
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
@@ -160,34 +162,34 @@ namespace QwerkE {
                     continue;
                 }
 
-                glEnableVertexAttribArray(attributeLoc); // Enable
+                glEnableVertexAttribArray(attributeLoc);
             }
             else
                 LOG_WARN("Attribute name not found/supported: {0}", attributes->at(i).c_str());
         }
-        // TODO: Check if vertex arrays should to be disabled after drawing
-        glBindVertexArray(0); // Unbind
+        // #TODO Check if vertex arrays should to be disabled after drawing
+        glBindVertexArray(0);
         CheckGraphicsErrors(__FILE__, __LINE__);
     }
 
     void Mesh::DrawElements()
     {
-        glBindVertexArray(m_VAO); // Enable attribute arrays
-        // KNOWN ISSUE: If there is a read access violation, it is because SetupAttributes was not called
+        glBindVertexArray(m_VAO);
+        // #NOTE If there is a read access violation, it is because SetupAttributes was not called
         glDrawElements(m_PrimitiveType, m_BufferData.numIndices, GL_UNSIGNED_INT, 0); // (drawMode, numIndices, EBOType, dataOffset)
-        glBindVertexArray(0); // unbind
+        glBindVertexArray(0);
     }
 
     void Mesh::DrawArrays()
     {
-        glBindVertexArray(m_VAO); // Enable attribute arrays
+        glBindVertexArray(m_VAO);
         glDrawArrays(m_PrimitiveType, 0, m_BufferData.numPositions); // (drawMode, firstIndex, numVerts)
-        glBindVertexArray(0); // unbind
+        glBindVertexArray(0);
     }
 
     void Mesh::NullDraw()
     {
-        // TODO: Should there be code here?
+        // #TODO Review possible re-attempt at setup or removal of method body
         // SetupShaderAttributes();
         // if (m_IndexCount > 0) { DrawElements(); }
         // else if (m_VertCount > 0) { DrawArrays(); }
@@ -195,7 +197,7 @@ namespace QwerkE {
 
     void Mesh::ToggleWireframe()
     {
-        if (m_PrimitiveType == GL_TRIANGLES) // TEMP: hacked in for now
+        if (m_PrimitiveType == GL_TRIANGLES) // #TODO Examine temporary hack
         {
             m_PrimitiveType = GL_POINTS;
         }
@@ -203,11 +205,6 @@ namespace QwerkE {
         {
             m_PrimitiveType = GL_TRIANGLES;
         }
-    }
-
-    void Mesh::DestroyMesh()
-    {
-        // TODO:: Find a good way to allow for mesh data re-assignment
     }
 
 }

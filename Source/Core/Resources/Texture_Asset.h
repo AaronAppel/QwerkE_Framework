@@ -1,6 +1,6 @@
-#ifndef _Texture_Asset_H_
-#define _Texture_Asset_H_
+#pragma once
 
+// #TODO Review file need or usage
 // #include "Asset.h"
 
 namespace QwerkE {
@@ -16,4 +16,3 @@ namespace QwerkE {
     //};
 
 }
-#endif // !_Texture_Asset_H_

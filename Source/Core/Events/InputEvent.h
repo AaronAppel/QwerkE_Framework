@@ -1,5 +1,4 @@
-#ifndef _InputEvent_H_
-#define _InputEvent_H_
+#pragma once
 
 #include "Event.h"
 
@@ -16,4 +15,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_InputEvent_H_

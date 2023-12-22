@@ -1,5 +1,4 @@
-#ifndef _FontTest_H_
-#define _FontTest_H_
+#pragma once
 
 #include <string>
 
@@ -14,4 +13,3 @@ namespace QwerkE {
     void RenderText(ShaderProgram* shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
 
 }
-#endif // !_FontTest_H_

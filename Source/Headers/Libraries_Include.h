@@ -1,5 +1,4 @@
-#ifndef _Libraries_Include_H_
-#define _Libraries_Include_H_
+#pragma once
 
 #include "QwerkE_Defines.h" // #TODO Determine which libraries to load using #defines
 
@@ -110,5 +109,3 @@
 #pragma warning( default : 26495 )
 #pragma warning( default : 4099 )
 #pragma warning( default : 26495 )
-
-#endif // !_Libraries_Include_H_

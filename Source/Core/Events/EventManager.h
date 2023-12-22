@@ -1,5 +1,4 @@
-#ifndef _EventManager_H_
-#define _EventManager_H_
+#pragma once
 
 #include <queue>
 
@@ -28,4 +27,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_EventManager_H_

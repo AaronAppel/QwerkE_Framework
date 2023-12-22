@@ -1,5 +1,4 @@
-#ifndef __ObjectPool_H__
-#define __ObjectPool_H__
+#pragma once
 
 template <class POOL_OBJECT_TYPE>
 
@@ -88,5 +87,3 @@ int ObjectPool<POOL_OBJECT_TYPE>::GetInactivePoolSize()
 	}
 	return counter;
 }
-
-#endif //__ObjectPool_H__

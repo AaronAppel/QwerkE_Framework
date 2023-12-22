@@ -301,9 +301,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\AssetLoadedEvent.cpp">
       <Filter>Source\Core\Events</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\Event.cpp">
-      <Filter>Source\Core\Events</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Factory\Factory.cpp">
       <Filter>Source\Core\Factory</Filter>
     </ClCompile>
@@ -397,17 +394,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathFunctions.cpp">
       <Filter>Source\Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathStuff.cpp">
-      <Filter>Source\Core\Math</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyMatrix.cpp">
       <Filter>Source\Core\Math</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\TweenFuncs.cpp">
       <Filter>Source\Core\Math\Tween</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.cpp">
-      <Filter>Source\Core\Memory</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.cpp">
       <Filter>Source\Core\Physics</Filter>
@@ -467,9 +458,6 @@
       <Filter>Source\Core\Scenes\Entities\Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\RenderComponent.cpp">
-      <Filter>Source\Core\Scenes\Entities\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Component.cpp">
       <Filter>Source\Core\Scenes\Entities\Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\LightComponent.cpp">
@@ -2858,13 +2846,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Defines.h">
       <Filter>Source\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Directory_Defines.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Enums.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_File_Defines.h">
       <Filter>Source\Headers</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Headers\QwerkE_Flags.h">
@@ -3074,17 +3056,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathHelpers.h">
       <Filter>Source\Core\Math</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathStuff.h">
-      <Filter>Source\Core\Math</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\TweenFuncs.h">
       <Filter>Source\Core\Math\Tween</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\Tween.h">
       <Filter>Source\Core\Math\Tween</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.h">
-      <Filter>Source\Core\Memory</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Network\Network.h">
       <Filter>Source\Core\Network</Filter>

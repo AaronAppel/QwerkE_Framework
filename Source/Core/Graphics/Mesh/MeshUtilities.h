@@ -1,8 +1,8 @@
-#ifndef _MeshUtilities_H_
-#define _MeshUtilities_H_
+#pragma once
+
+#include <vector>
 
 #include "MeshData.h"
-#include <vector>
 
 namespace QwerkE {
 
@@ -27,4 +27,3 @@ namespace QwerkE {
     void GenerateBitangents();
 
 }
-#endif //!_MeshUtilities_H_

@@ -1,6 +1,15 @@
 #include "Factory.h"
 
+// #TODO Rename file to something better and factory related
+
+#include <string>
+
+#include "../../Utilities/Helpers.h"
+#include "../../Utilities/StringHelpers.h"
+#include "../../FileSystem/FileSystem.h"
+
 #include "../Resources/Resources.h"
+
 #include "../Scenes/Entities/Components/Camera/CameraComponent.h"
 #include "../Scenes/Entities/Components/Camera/FirstPersonCameraComponent.h"
 #include "../Scenes/Entities/Components/Camera/FreeCameraComponent.h"
@@ -10,18 +19,12 @@
 #include "../Scenes/Entities/Components/RenderComponent.h"
 #include "../Scenes/Entities/GameObject.h"
 #include "../Scenes/Scene.h"
-#include "../../Utilities/Helpers.h"
-#include "../../Utilities/StringHelpers.h"
-#include "../../FileSystem/FileSystem.h"
-
-#include <string>
 
 namespace QwerkE {
 
-    /* Cameras */
     GameObject* Factory::CreateFreeCamera(Scene* scene, vec3 position)
     {
-        return InternalCreateCamera(scene, position, CamType_FreeCam); // TODO: Is this a good way of re-using CreateCamera()?
+        return InternalCreateCamera(scene, position, CamType_FreeCam); // #TODO Is this a good way of re-using CreateCamera()?
     }
 
     GameObject* Factory::CreateFirstPersonCamera(Scene* scene, vec3 position)
@@ -65,29 +68,30 @@ namespace QwerkE {
             break;
         case CamType_Static:
             t_pCamComp = new StaticCameraComponent();
-            t_pCamComp->SetType(CamType_Static); // TODO: Set in component constructor.
+            t_pCamComp->SetType(CamType_Static);
             break;
         }
 
-        t_pCamera->AddComponent(t_pCamComp); // add to object
+        t_pCamera->AddComponent(t_pCamComp);
         t_pCamComp->Setup();
         t_pCamComp->SetTargetPosition(vec3(0, 0, 0));
 
+        // #TODO Review line below
         // ((FileSystem*)QwerkE::Services::GetService(eEngineServices::FileSystem))->LoadModelFileToMeshes(MeshesFolderPath("Camera.obj"));
         AddModelComponentFromSchematic(t_pCamera, "camera.osch");
 
         RenderRoutine* renderRoutine = new RenderRoutine();
         t_pCamera->AddRoutine((Routine*)renderRoutine);
 
-        if (scene->AddCamera(t_pCamera)) // add to scene
+        if (scene->AddCamera(t_pCamera))
         {
             m_CreatedCount++;
-            return t_pCamera; // Success
+            return t_pCamera;
         }
 
         delete t_pCamera;
         delete t_pCamComp;
-        return nullptr; // Failed
+        return nullptr;
     }
 
 }

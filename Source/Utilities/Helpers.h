@@ -1,5 +1,4 @@
-#ifndef _Helpers_H_
-#define _Helpers_H_
+#pragma once
 
 double helpers_Time();
 
@@ -41,5 +40,3 @@ int CharToInt(char num);
 // void IfElseIf(comparisonValue, trioData[]);
 
 void* VoidCheck(void* check);
-
-#endif // !_Helpers_H_

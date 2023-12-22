@@ -1,21 +1,7 @@
-#ifndef _ShaderVariable_Defines_H_
-#define _ShaderVariable_Defines_H_
+#pragma once
 
-//////////////////////////////
-// ShaderVariable_Defines.h
-// Define shader variable names so finding and loading their
-// data is easy. These defines allow quick and easy name changes
-// while maintaining consistency throughout the code. No need for
-// hard coded "strings" anywhere!
-
-// This data should mirror ShaderVariableDoc.txt.
-//////////////////////////////
-
-// List all shader variable strings to read and change them
-// easily and maintain consistency.
-
-// NOTE: Do not include prefixes. There will be added to the front to variable
-// name at run time. The value used is in GraphicsHelpers.cpp
+// #NOTE This data should mirror ShaderVariableDoc.txt.
+// #NOTE Do not include prefixes. They are auto-added at runtime and exist in GraphicsHelpers.h/cpp
 
 /* Attributes */
 #define vertexPosition "Position"
@@ -60,7 +46,5 @@
 // Other
 #define objectColor "ObjectColor"
 
-// TODO: How to handle transfer variables
+// #TODO How to handle transfer variables
 /* Transfers */
-
-#endif // !_ShaderVariable_Defines_H_

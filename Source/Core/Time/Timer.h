@@ -1,5 +1,4 @@
-#ifndef _Timer_H_
-#define _Timer_H_
+#pragma once
 
 // Simplified time management.
 // Pretty basic implementation so far but is intended
@@ -37,6 +36,7 @@ public:
     bool HasCompleted() { return m_HasCompleted; };
     // void SetCallBack(CallBack* callback) { m_CallBack = callback;};
     // void CallBack(...); // build a universal function callback pointer if possible
+
 private:
     void CheckIfCompleted()
     {
@@ -54,5 +54,3 @@ private:
 
     // CallBack* m_CallBack = nullptr;
 };
-
-#endif //!_Timer_H_

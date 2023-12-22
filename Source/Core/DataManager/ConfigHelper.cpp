@@ -16,7 +16,7 @@ namespace QwerkE {
 
     void ConfigHelper::LoadConfigData()
     {
-        std::string configFilePath = ConfigsFolderPath("preferences.qpref"); // TODO: How to handle file names?
+        std::string configFilePath = ConfigsFolderPath("preferences.qpref"); // #TODO How to handle file names?
         LoadConfigData(configFilePath);
     }
 
@@ -42,7 +42,7 @@ namespace QwerkE {
         m_ConfigData.libraries.Rendering = GetItemFromArrayByKey(libraries, "Rendering")->valuestring;
         m_ConfigData.libraries.Window = GetItemFromArrayByKey(libraries, "Window")->valuestring;
 
-        // Scenes // TODO: Put scenes inside SceneSettings
+        // Scenes // #TODO Put scenes inside SceneSettings
         cJSON* scenes = GetItemFromRootByKey(root, "Scenes");
         std::vector<cJSON*> sceneList = GetAllItemsFromArray(scenes);
 
@@ -92,7 +92,7 @@ namespace QwerkE {
 
         AddItemToRoot(root, libraries);
 
-        // Scenes // TODO: Put scenes inside SceneSettings
+        // Scenes // #TODO Put scenes inside SceneSettings
         cJSON* scenes = CreateArray("Scenes");
 
         for (unsigned int i = 0; i < m_ConfigData.scenes.fileNames.size(); i++)
@@ -120,7 +120,7 @@ namespace QwerkE {
 
         AddItemToRoot(root, systems);
 
-        std::string path = ConfigsFolderPath("preferences.qpref"); // TODO: How to handle file names?
+        std::string path = ConfigsFolderPath("preferences.qpref"); // #TODO How to handle file names?
         PrintRootObjectToFile(path.c_str(), root);
     }
 

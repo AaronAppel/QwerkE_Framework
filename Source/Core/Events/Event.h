@@ -1,9 +1,11 @@
-#ifndef _Event_H_
-#define _Event_H_
+#pragma once
 
 #include <cstdint>
 
 namespace QwerkE {
+
+#define INVALID_EVENT_ID -1
+#define INVALID_EVENT_VALUE -1
 
     enum class eEventTypes : std::uint8_t
     {
@@ -15,29 +17,25 @@ namespace QwerkE {
         eEvent_Max
     };
 
-    // TODO: Design Event system
-
-    class Event // abstract
+    class Event
     {
     public:
-        Event();
-        ~Event();
+        virtual ~Event() = default;
 
-        void SetID(int id);
-        int GetID();
+        void SetID(int id) { m_EventID = id; }
+        signed int GetID() { return m_EventID; }
 
-        void SetValue(int value);
-        int GetValue();
+        void SetValue(int value) { m_Value = value; }
+        signed int GetValue() { return m_Value; }
 
-        eEventTypes GetType();
+        eEventTypes GetType() { return m_EventType; }
 
-        virtual void Process() {}
+        virtual void Process() = 0;
 
     protected:
-        signed int m_EventID;
-        eEventTypes m_EventType;
-        int m_Value;
+        signed int m_EventID = INVALID_EVENT_ID;
+        eEventTypes m_EventType = eEventTypes::eEvent_Invalid;
+        int m_Value = INVALID_EVENT_VALUE;
     };
 
 }
-#endif // !_Event_H_

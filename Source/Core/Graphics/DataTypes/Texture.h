@@ -1,5 +1,4 @@
-#ifndef _Texture_H_
-#define _Texture_H_
+#pragma once
 
 #include <string>
 
@@ -27,4 +26,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Texture_H_

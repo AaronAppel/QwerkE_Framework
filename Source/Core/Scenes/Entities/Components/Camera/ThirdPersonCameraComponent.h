@@ -1,5 +1,4 @@
-#ifndef _ThirdPersonCameraComponent_H_
-#define _ThirdPersonCameraComponent_H_
+#pragma once
 
 #include "CameraComponent.h"
 
@@ -17,4 +16,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_ThirdPersonCameraComponent_H_

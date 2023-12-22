@@ -1,5 +1,4 @@
-#ifndef _Transform_Routine_H_
-#define _Transform_Routine_H_
+#pragma once
 
 #include "Routine.h"
 
@@ -38,4 +37,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_Transform_Routine_H_

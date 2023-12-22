@@ -31,7 +31,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\DataManager\ConfigHelper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\DataManager\DataManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\AssetLoadedEvent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\Event.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\EventManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\InputEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Events\JobQueuedEvent.cpp" />
@@ -63,13 +62,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Jobs\Jobs.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\Math.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathFunctions.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathStuff.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyMatrix.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyQuaternion.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\Tween\TweenFuncs.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\ValueChecking.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Math\VectorMathHelpers.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Physics.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Resources\Asset.cpp" />
@@ -82,7 +79,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\FreeCameraComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\StaticCameraComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Camera\ThirdPersonCameraComponent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Extended\Bullet3Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\Extended\OpenAL_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Source\Core\Scenes\Entities\Components\LightComponent.cpp" />
@@ -939,7 +935,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathConstants.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathFunctions.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathHelpers.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MathStuff.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Math_Includes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyMatrix.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\MyQuaternion.h" />
@@ -949,7 +944,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Vector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\VectorMathHelpers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Math\Vector_deprecated.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Memory\Memory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Network\Network.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\Physics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Source\Core\Physics\PhysicsWorld.h" />

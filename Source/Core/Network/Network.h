@@ -1,5 +1,4 @@
-#ifndef _Network_H_
-#define _Network_H_
+#pragma once
 
 #include <string>
 
@@ -32,4 +31,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _Network_H_

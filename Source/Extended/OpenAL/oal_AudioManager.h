@@ -1,13 +1,12 @@
-#ifndef _OpenAL_Audio_Manager_H_
-#define _OpenAL_Audio_Manager_H_
+#pragma once
 
-#include "../../Core/Audio/Audio.h"
+#include <vector>
 
 #include "../../Libraries/OpenAL/include/al.h"
 #include "../../Libraries/OpenAL/include/alc.h"
-#include "../../Core/Math/Vector.h"
 
-#include <vector>
+#include "../../Core/Audio/Audio.h"
+#include "../../Core/Math/Vector.h"
 
 namespace QwerkE {
 
@@ -39,4 +38,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _OpenAL_Audio_Manager_H_

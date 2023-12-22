@@ -1,5 +1,4 @@
-#ifndef _Reflection_Macros_H_
-#define _Reflection_Macros_H_
+#pragma once
 
 // Reference : Timmy_A
 // https://stackoverflow.com/questions/3386861/converting-a-variable-name-to-a-string-in-c
@@ -13,4 +12,5 @@
 
 #define TYPE_TO_STRING(Type) (void(sizeof(Type)),#Type)
 
-#endif // !_Reflection_Macros_H_
+// #TODO Look into stringify reflection logic for variables, functions, types, etc
+#define STRINGIFY_VARIABLE #

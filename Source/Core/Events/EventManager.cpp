@@ -1,19 +1,17 @@
 #include "EventManager.h"
+
+#include <pThreads/pthread.h> // #TODO Review referencing source files in project instead of what might be installed locally
+
 #include "Event.h"
 #include "../../Utilities/Helpers.h"
 #include "../../Debug/Log/Log.h"
 
-#include <pThreads/pthread.h>
-
 namespace QwerkE {
 
-    // TODO: Make QueueEvent() thread safe
+    // #TODO Review QueueEvent() thread safety
     static pthread_mutex_t* mutex = nullptr;
     const int EventManager::m_EventMax = 100;
     std::queue<Event*> EventManager::m_EventList;
-
-    // EventManager::~EventManager()
-       // m_EventList; // TODO: Delete events
 
     void EventManager::Initialize()
     {
@@ -22,13 +20,13 @@ namespace QwerkE {
 
     void EventManager::Shutdown()
     {
-        delete mutex;
+        delete mutex; // #TODO Delete events
     }
 
     void EventManager::QueueEvent(Event* _event)
     {
         // pthread_mutex_lock(mutex);
-        // TODO: Implement thread safe API for multi threaded event queuing
+        // #TODO Implement thread safe API for multi threaded event queuing
         if (m_EventList.size() < m_EventMax)
         {
             _event->SetID(helpers_GetUniqueID());
@@ -67,7 +65,7 @@ namespace QwerkE {
                 break;
             }
 
-            m_EventList.pop(); // Remove event from queue
+            m_EventList.pop();
         }
     }
 

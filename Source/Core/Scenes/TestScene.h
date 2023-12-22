@@ -1,5 +1,4 @@
-#ifndef _TestScene_H_
-#define _TestScene_H_
+#pragma once
 
 #include "Scene.h"
 
@@ -18,4 +17,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_TestScene_H_

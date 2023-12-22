@@ -93,15 +93,12 @@ namespace QwerkE {
         if (!scene) return nullptr;
 
         GameObject* t_Model = new GameObject(scene, position);
-        // info //
         t_Model->SetName("Object" + std::to_string(helpers_GetUniqueID()));
         t_Model->SetRenderOrder(50);
         t_Model->SetTag(GO_Tag_TestModel);
 
-        // Rendering //
         AddModelComponentFromSchematic(t_Model, "nanosuit.osch");
 
-        // render routine
         t_Model->AddRoutine((Routine*)new RenderRoutine());
 
         if (scene->AddObjectToScene(t_Model))
@@ -125,7 +122,7 @@ namespace QwerkE {
             if (scene->AddObjectToScene(t_Object))
             {
                 m_CreatedCount++;
-                t_Object->SetName(std::string("abc") + std::to_string(m_CreatedCount)); // TODO: Avoid string concatination
+                t_Object->SetName(std::string("abc") + std::to_string(m_CreatedCount)); // #TODO Improve string concatenation
                 return t_Object;
             }
         }

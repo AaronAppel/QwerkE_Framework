@@ -1,10 +1,6 @@
-#ifndef _ViewerScene_H_
-#define _ViewerScene_H_
+#pragma once
 
 #include "Scene.h"
-
-// TODO: Turn into some model viewer scene maybe.
-// Have a targeted camera that rotates around a stationary object.
 
 namespace QwerkE {
 
@@ -21,4 +17,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_ViewerScene_H_

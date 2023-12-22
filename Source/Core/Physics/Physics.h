@@ -1,11 +1,9 @@
-#ifndef _Physics_H_
-#define _Physics_H_
+#pragma once
 
 #include "../../Libraries/Bullet3/LinearMath/btVector3.h"
 #include "../../Libraries/Bullet3/LinearMath/btAlignedObjectArray.h"
 
-// TODO: Move or detect define
-#define qw_BULLET3 1
+#include "../../Headers/QwerkE_Defines.h"
 
 #ifdef qw_BULLET3
 #elif qw_HAVOC
@@ -44,4 +42,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _Physics_H_

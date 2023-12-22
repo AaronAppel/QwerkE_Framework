@@ -1,5 +1,4 @@
-#ifndef _ogl_Helpers_H_
-#define _ogl_Helpers_H_
+#pragma once
 
 #include "../../../Libraries/glew/GL/glew.h"
 
@@ -15,4 +14,3 @@ namespace QwerkE {
     GLuint GLLoadCubeMapTexture(const char* filePath);
 
 }
-#endif // _ogl_Helpers_H_

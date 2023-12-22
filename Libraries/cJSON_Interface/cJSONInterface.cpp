@@ -14,7 +14,7 @@ cJSON* OpencJSONStream(const char* fileDirectory)
 		char* str = LoadFile(fileDirectory);
 		cJSON* root = cJSON_Parse(str);
 
-		delete[] str; // Cleanup
+		delete[] str;
 
 		if (root == nullptr)
 		{
@@ -29,7 +29,7 @@ void ClosecJSONStream(cJSON* root)
 {
 	if (root)
 	{
-		cJSON_Delete(root); // Cleanup
+		cJSON_Delete(root);
 	}
 }
 
@@ -154,16 +154,16 @@ std::vector<cJSON*> GetAllItemsFromArray(cJSON* arrayObject) // return array of 
 	return itemList;
 }
 
-std::vector<cJSON*> GetItemsFromArrayByKey(cJSON* jObjectArray, const char* key) // TODO:: BROKEN
+std::vector<cJSON*> GetItemsFromArrayByKey(cJSON* jObjectArray, const char* key) // #TODO Test
 {
 	int t_ArraySize = cJSON_GetArraySize(jObjectArray->child);
 
 	std::vector<cJSON*> itemList;
 
-	for (int i = 0; i < t_ArraySize; i++) // each immediate Object inside root
+	for (int i = 0; i < t_ArraySize; i++)
 	{
 		cJSON* temp = cJSON_GetArrayItem(jObjectArray->child, i);
-		if (*temp->string == *key) // <- false comparison
+		if (*temp->string == *key) // #TODO Review false comparison
 		{
 			itemList.push_back(temp);
 		}
@@ -222,19 +222,19 @@ cJSON* GetItemFromArrayByKey(cJSON* cJSONArray, const char* key) // TODO:: BROKE
 	for (int i = 0; i < arraySize; i++)
 	{
 		cJSON* item = cJSON_GetArrayItem(cJSONArray->child, i);
-		if (strcmp(item->string, key) == 0) // TODO:: TEST
+		if (strcmp(item->string, key) == 0) // #TODO:: Test for bugs
 		{
 			return item;
 		}
 		if (*item->string == *key)
 		{
-			//return item; // TODO:: remove
+			//return item; // #TODO:: Properly remove
 		}
 	}
 	return nullptr;
 }
 
-cJSON* GetItemFromArrayByString(cJSON* cJSONArray, const char* value) // <-- deprecated
+cJSON* GetItemFromArrayByString(cJSON* cJSONArray, const char* value) // #TODO Deprecate
 {
 	int arraySize = cJSON_GetArraySize(cJSONArray->child);
 
@@ -266,7 +266,7 @@ cJSON* GetItemFromArrayByIndex(cJSON* cJSONarray, int index)
 
 void AddItemsToObject(cJSON* cJSONObject, std::vector<cJSON*> cJSONItems)
 {
-	// TODO::
+	// #TODO Implement
 }
 
 void AddItemToObject(cJSON* cJSONObject, cJSON* item)
@@ -276,7 +276,7 @@ void AddItemToObject(cJSON* cJSONObject, cJSON* item)
 
 void AddItemsToArray(cJSON* cJSONArray, std::vector<cJSON*> cJSONItems)
 {
-	// TODO::
+	// #TODO:: Implement
 }
 
 void AddItemToArray(cJSON* cJSONArray, cJSON* item)
@@ -289,7 +289,7 @@ void AddItemToArray(cJSON* cJSONArray, cJSON* item)
 	}
 	else
 	{
-		cJSONArray->child = CreateObject(); // create array object [{}]
+		cJSONArray->child = CreateObject();
 	}
 
 	if (arraySize > 0)
@@ -318,25 +318,26 @@ void ReplaceItemInObject(cJSON* cJSONObject, cJSON* oldItem, cJSON* newItem)
 
 		if (*temp->string == *oldItem->string)
 		{
-			cJSON_ReplaceItemInArray(cJSONObject, i, newItem); // TODO:: test
+			cJSON_ReplaceItemInArray(cJSONObject, i, newItem); // #TODO Test
 		}
 	}
 }
+
 //*- Replacing Array Items -*
 void ReplaceItemInArray(cJSON* cJSONArray, cJSON* oldItem, cJSON* newItem)
 {
-	ReplaceItemInObject(cJSONArray->child, oldItem, newItem); // TODO:: test
+	ReplaceItemInObject(cJSONArray->child, oldItem, newItem); // #TODO Test
 }
 //// Updating Items In File //// <- updating vs flat replacement
 // Updating items in objects
 void UpdateItemInObject(cJSON* cJSONObject)
 {
-	// TODO::
+	// #TODO Implement
 }
 // Updating items in arrays // TODO::
 void UpdateItemInArray(cJSON* cJSONObject)
 {
-	// TODO::
+	// #TODO Implement
 }
 
 //// Removing Items From File ////
@@ -371,7 +372,7 @@ void RemoveItemFromObjectByString(cJSON* cJSONObject, const char* value)
 //*- Removing From Array -*
 void RemoveItemsFromArray()
 {
-	// TODO::
+	// #TODO Implement
 }
 
 void RemoveItemFromArray(cJSON* cJSONArray, cJSON* item)
@@ -402,7 +403,7 @@ void RemoveItemFromArrayByString(cJSON* cJSONArray, const char* value)
 	}
 }
 
-void RemoveItemFromArrayByIndex(cJSON* cJSONArray, int index) // remove from back to front
+void RemoveItemFromArrayByIndex(cJSON* cJSONArray, int index)
 {
 	cJSON_DeleteItemFromArray(cJSONArray->child, index);
 }
@@ -458,7 +459,7 @@ bool TypeIsObject(cJSON* item)
 cJSON* CreateBool(const char* key, bool value)
 {
 	cJSON* returnBool = cJSON_CreateBool(value);
-	returnBool->string = _strdup(key); // TODO:: Check for redundant memory allocations
+	returnBool->string = _strdup(key); // #TODO Check for redundant memory allocations
 	return returnBool;
 }
 
@@ -514,7 +515,7 @@ void AddNumberToArray()
 
 cJSON* CopyRootObject(cJSON* root)
 {
-	char* newRoot = cJSON_Print(root); // memory allocation
+	char* newRoot = cJSON_Print(root); // #TODO Handle memory allocation
 	return cJSON_Parse(newRoot);
 }
 
@@ -528,8 +529,7 @@ unsigned int GetArraySize(cJSON* cJSONArray)
 	return cJSON_GetArraySize(cJSONArray->child);
 }
 
-// recursive search through whole object tree
-cJSON* DeepSearchForItemByKey(cJSON* object, const char* key) // returns first instance of an item by char* key. pseudo random order
+cJSON* DeepSearchForItemByKey(cJSON* object, const char* key)
 {
 	cJSON* search = object->child;
 
@@ -539,11 +539,11 @@ cJSON* DeepSearchForItemByKey(cJSON* object, const char* key) // returns first i
 		{
 			if (*search->string == *key)
 			{
-				return search; // found item
+				return search;
 			}
 		}
 
-		if (search->next) // check siblings
+		if (search->next)
 		{
 			std::vector<cJSON*> siblings;
 
@@ -576,24 +576,27 @@ cJSON* DeepSearchForItemByKey(cJSON* object, const char* key) // returns first i
 	return nullptr;
 }
 
-// utility helpers
-bool json_FileExists(const char* filename) // TODO:: Move to helpers.h/.cpp
+//*- Utility Helpers -*
+bool json_FileExists(const char* filename) // #TODO Move to helpers.h/.cpp
 {
 	FILE* filehandle;
-	fopen_s(&filehandle, filename, "r"); // returns error if no file to read
-											//errno_t error = fopen_s(&filehandle, filename, "r");
+	fopen_s(&filehandle, filename, "r"); // #TODO Handle error
+	// errno_t error = fopen_s(&filehandle, filename, "r");
+
 	if (filehandle)
 	{
-		fclose(filehandle); // close file stream
-		return true; // file exists already
+		fclose(filehandle);
+		return true;
 	}
 	else
 	{
+		// #TODO Handle error
 		// OutputPrint("\nFileExists(): Could not find file. Ensure %s exists!\n\n", filename);
-		return false; // could not find file
+		return false;
 	}
 }
-void json_CreateNewFile(const char* filename) // checks if file already exists
+
+void json_CreateNewFile(const char* filename)
 {
 	FILE* filehandle;
 	errno_t error = fopen_s(&filehandle, filename, "r");
@@ -609,7 +612,7 @@ void json_CreateNewFile(const char* filename) // checks if file already exists
 		fclose(filehandle);
 	}
 }
-// Create empty file with "{\n}" to fill cJSON structure
+
 void CreateEmptycJSONFile(const char* filePath)
 {
 	FILE* f;
@@ -621,7 +624,7 @@ void CreateEmptycJSONFile(const char* filePath)
 		fclose(f);
 	}
 }
-// writing
+
 void AddItemToRootOfFile(cJSON* item, const char* filename)
 {
 	cJSON* root = OpencJSONStream(filename);
@@ -632,9 +635,10 @@ void AddItemToRootOfFile(cJSON* item, const char* filename)
 		ClosecJSONStream(root);
 	}
 }
+
 void PrintRootObjectToFile(const char* filename, cJSON* root)
 {
 	const char* jSonstr = cJSON_Print(root);
 	WriteStringToFile(filename, jSonstr);
 	free((char*)jSonstr);
-	}
+}

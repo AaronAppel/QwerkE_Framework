@@ -1,5 +1,4 @@
-#ifndef _Window_H_
-#define _Window_H_
+#pragma once
 
 #include "../Math/Vector.h"
 
@@ -32,4 +31,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Window_H_

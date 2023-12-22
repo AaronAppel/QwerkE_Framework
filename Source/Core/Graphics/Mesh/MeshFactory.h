@@ -1,5 +1,4 @@
-#ifndef _Mesh_Factory_H_
-#define _Mesh_Factory_H_
+#pragma once
 
 #include "../../Math/Vector.h"
 
@@ -14,8 +13,8 @@ namespace QwerkE {
         /* OBJ loading */
         Mesh* ImportOBJMesh(const char* fileDirectory, vec3 objScale, vec2 UVScale, bool invertFaces);
 
-        // TODO: Deprecated?
-        // Model* ImportOBJModel(const char* fileDirectory, vec3 objScale = vec3(1,1,1), vec2 UVScale = vec2(1,1), bool invertFaces = false) { return new Model(); }; // TODO: Write function
+        // #TODO Implement or deprecate
+        // Model* ImportOBJModel(const char* fileDirectory, vec3 objScale = vec3(1,1,1), vec2 UVScale = vec2(1,1), bool invertFaces = false) { return new Model(); };
 
         /* Mesh creation */
         // defined in MeshShapes.cpp
@@ -28,11 +27,11 @@ namespace QwerkE {
 
         Mesh* TutorialCube(vec3 size, vec2 UVScale = vec2(1.0f, 1.0f), bool invertFaces = false);
 
-        // TODO: Make static
+        // #TODO Make static
         /* Mesh data assignment/re-assignment */
         void GenerateBox(Mesh* mesh, vec2 size, bool invertFaces = false);
         void GenerateCube(Mesh* mesh, vec3 size, bool invertFaces = false);
     };
 
 }
-#endif // _Mesh_Factory_H_
+

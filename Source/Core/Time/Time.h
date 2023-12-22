@@ -1,5 +1,4 @@
-#ifndef _Time_H_
-#define _Time_H_
+#pragma once
 
 namespace QwerkE {
 
@@ -30,4 +29,4 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Time_H_
+

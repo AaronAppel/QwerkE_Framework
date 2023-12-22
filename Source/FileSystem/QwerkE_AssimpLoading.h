@@ -1,5 +1,4 @@
-#ifndef _QwerkE_AssimpLoading_H_
-#define _QwerkE_AssimpLoading_H_
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -18,4 +17,3 @@ namespace QwerkE {
     void QwerkE_assimp_loadModelAs1Mesh(aiNode* node, const aiScene* scene, Mesh*& mesh, const char* modelFilePath);
 
 }
-#endif // _QwerkE_AssimpLoading_H_

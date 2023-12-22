@@ -1,5 +1,4 @@
-#ifndef _File_System_H_
-#define _File_System_H_
+#pragma once
 
 #include <string>
 // TODO: Remove
@@ -79,4 +78,3 @@ namespace QwerkE {
     };
 
 }
-#endif //_File_System_H_

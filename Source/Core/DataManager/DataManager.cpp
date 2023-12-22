@@ -33,7 +33,7 @@ namespace QwerkE {
 
     void DataManager::SaveScene(Scene* scene, const char* fileDir)
     {
-        // TODO: Error checking
+        // #TODO Error checking
         cJSON* root = CreateObject();
 
         // Scene settings
@@ -80,16 +80,15 @@ namespace QwerkE {
 
     void DataManager::LoadScene(Scene* scene, const char* fileDir)
     {
-        if (scene == nullptr) { return; } // TODO: Load a null scene
+        if (scene == nullptr) { return; } // #TODO Load a null scene
         if (FileExists(fileDir) == false)
         {
             LOG_ERROR("DataManager: LoadScene() could not open file for reading.");
             return;
         }
 
-        // Read scene json file
         cJSON* root = OpencJSONStream(fileDir);
-        if (root == nullptr) // Compile error
+        if (root == nullptr)
         {
             LOG_ERROR("DataManager: LoadScene() null root object.");
             return;
@@ -97,7 +96,7 @@ namespace QwerkE {
 
         scene->RemoveAllObjectsFromScene(); // Empty scene of objects
 
-        // TODO: Improve below loops. A lot of copied code
+        // #TODO Improve below loops. A lot of copied code
 
         // Scene settings
         cJSON* t_Settings = GetItemFromRootByKey(root, "Settings");
@@ -108,8 +107,7 @@ namespace QwerkE {
             scene->SetIsEnabled((bool)GetItemFromArrayByKey(t_Settings, "Enabled")->valuedouble);
         }
 
-        // CREATE OBJECTS
-        {
+        {   // Objects
             cJSON* t_JSONObjectList = GetItemFromObjectByKey(root, "ObjectList");
             std::vector<cJSON*> t_GameObjects = GetAllItemsFromArray(t_JSONObjectList);
 
@@ -120,8 +118,7 @@ namespace QwerkE {
             }
         }
 
-        // CREATE CAMERAS
-        {
+        {   // Cameras
             cJSON* t_JSONCameraList = GetItemFromObjectByKey(root, "CameraList");
             std::vector<cJSON*> t_CameraObjects = GetAllItemsFromArray(t_JSONCameraList);
 
@@ -132,8 +129,7 @@ namespace QwerkE {
             }
         }
 
-        // CREATE LIGHTS
-        {
+        {   // Lights
             cJSON* t_JSONLightList = GetItemFromObjectByKey(root, "LightList");
             std::vector<cJSON*> t_LightObjects = GetAllItemsFromArray(t_JSONLightList);
 
@@ -144,7 +140,6 @@ namespace QwerkE {
             }
         }
 
-        // END
         ClosecJSONStream(root);
         LOG_INFO("DataManager: Scene file {0} loaded", fileDir);
     }
@@ -213,11 +208,9 @@ namespace QwerkE {
 
         GameObject* object = new GameObject(scene);
 
-        // Misc
         object->SetName(item->string);
         object->SetTag((eGameObjectTags)GetItemFromArrayByKey(item, "ObjectTag")->valueint);
 
-        // Transform
         cJSON* tempObject = GetItemFromArrayByKey(item, "Position");
         vec3 position = GetPositionFromcJSONItem(tempObject);
         object->SetPosition(position);
@@ -228,30 +221,30 @@ namespace QwerkE {
         vec3 scale = GetScaleFromcJSONItem(tempObject);
         object->SetScale(scale);
 
-        // Components
         AddComponentsToGameObject(object, item);
-
-        // Routines
         AddRoutinesToGameObject(object, item);
 
-        return object; // TODO: Finish
+        return object;
     }
 
-    void DataManager::UpdateJSONArrayInFile(cJSON* array, const char* fileDir)
+    void DataManager::UpdateJSONArrayInFile(cJSON* array, const char* fileDir) // #TODO Implement
     {
         // Open file stream
         // find object and overwrite it
         // save new cJSON string to file
     }
-    // Getters
+
     vec3 DataManager::GetPositionFromcJSONItem(cJSON* item)
     {
         vec3 Position;
+
+        // #TODO Find a way to re-use name for read and write logic to avoid typos
         Position.x = (float)GetItemFromArrayByKey(item, "PositionX")->valuedouble;
         Position.y = (float)GetItemFromArrayByKey(item, "PositionY")->valuedouble;
         Position.z = (float)GetItemFromArrayByKey(item, "PositionZ")->valuedouble;
         return Position;
     }
+
     vec3 DataManager::GetRotationFromcJSONItem(cJSON* item)
     {
         vec3 Rotation;
@@ -260,6 +253,7 @@ namespace QwerkE {
         Rotation.z = (float)GetItemFromArrayByKey(item, "RotationZ")->valuedouble;
         return Rotation;
     }
+
     vec3 DataManager::GetScaleFromcJSONItem(cJSON* item)
     {
         vec3 Scale;
@@ -268,9 +262,9 @@ namespace QwerkE {
         Scale.z = (float)GetItemFromArrayByKey(item, "ScaleZ")->valuedouble;
         return Scale;
     }
-    // TODO: Getters for data types: float vec3, etc. Not specific to names, but just per type
 
-    // Transform
+    // #TODO Getters for more data types: float vec3, etc. Not specific to names, but just per type
+
     void DataManager::AddPositionTocJSONItem(cJSON* item, GameObject* object)
     {
         cJSON* t_Position = CreateArray("Position");
@@ -279,6 +273,7 @@ namespace QwerkE {
         AddItemToArray(t_Position, CreateNumber((char*)"PositionZ", object->GetPosition().z));
         AddItemToArray(item, t_Position);
     }
+
     void DataManager::AddRotationTocJSONItem(cJSON* item, GameObject* object)
     {
         cJSON* t_Rotation = CreateArray("Rotation");
@@ -287,6 +282,7 @@ namespace QwerkE {
         AddItemToArray(t_Rotation, CreateNumber((char*)"RotationZ", object->GetRotation().z));
         AddItemToArray(item, t_Rotation);
     }
+
     void DataManager::AddScaleTocJSONItem(cJSON* item, GameObject* object)
     {
         cJSON* t_Scale = CreateArray("Scale");
@@ -295,7 +291,7 @@ namespace QwerkE {
         AddItemToArray(t_Scale, CreateNumber((char*)"ScaleZ", object->GetScale().z));
         AddItemToArray(item, t_Scale);
     }
-    /* Components */
+
     void DataManager::AddComponentTocJSONItem(cJSON* componentList, const Component* component)
     {
         if (!component) return;
@@ -312,6 +308,7 @@ namespace QwerkE {
         }
         break;
         case Component_Physics:
+            // #TODO Implement physics component add
             break;
         case Component_Light:
         {
@@ -325,14 +322,17 @@ namespace QwerkE {
                 //     "Green", ((LightComponent*)component)->GetColour().y,
                 // 	   "Blue", ((LightComponent*)component)->GetColour().z);
                 break;
-            case LightType_Area: // TODO: Implement other light types.
+
+            // #TODO Implement other light types.
+            case LightType_Area:
                 break;
-            case LightType_Spot: // TODO: Implement other light types.
+            case LightType_Spot:
                 break;
             }
         }
         break;
         case Component_Controller:
+            // #TODO Implement controller component add
             break;
         case Component_Render:
         {
@@ -345,7 +345,7 @@ namespace QwerkE {
 
             for (size_t i = 0; i < renderablesList->size(); i++)
             {
-                // TODO: Set the renderable names
+                // #TODO Set the renderable names
                 cJSON* renderable = CreateArray(renderablesList->at(i).GetRenderableName().c_str());
 
                 AddItemToArray(renderable, CreateString("Shader", renderablesList->at(i).GetShaderSchematic()->GetName().c_str()));
@@ -365,8 +365,10 @@ namespace QwerkE {
         }
         break;
         case Component_Print:
+            // #TODO Implement print/debug component add
             break;
         case Component_SkyBox:
+            // #TODO Implement sjybox component add
             break;
         }
         AddItemToArray(componentList, t_Component);
@@ -397,7 +399,7 @@ namespace QwerkE {
         case Component_Camera:
         {
             CameraComponent* t_pCamComp = nullptr;
-            eCamType camType = eCamType::CamType_FreeCam; // TODO: Get dynamically
+            eCamType camType = eCamType::CamType_FreeCam; // #TODO Get dynamically
             switch (camType)
             {
             case CamType_FreeCam:
@@ -413,11 +415,12 @@ namespace QwerkE {
                 t_pCamComp = new StaticCameraComponent();
                 break;
             }
-            t_pCamComp->SetType(camType); // TODO: Set in component constructor.
+            t_pCamComp->SetType(camType); // #TODO Set in component constructor.
             object->AddComponent(t_pCamComp);
         }
         break;
         case Component_Physics:
+            // #TODO Implement physics component add
             break;
         case Component_Light:
         {
@@ -429,6 +432,7 @@ namespace QwerkE {
         }
         break;
         case Component_Controller:
+            // #TODO Implement controller component add
             break;
         case Component_Render:
         {
@@ -462,6 +466,8 @@ namespace QwerkE {
             object->AddComponent(rComp);
         }
         break;
+
+        // #TODO Implement component adds
         case Component_Print:
             break;
         case Component_SkyBox:
@@ -490,7 +496,6 @@ namespace QwerkE {
         }
     }
 
-    // Routines
     void DataManager::AddRoutineTocJSONItem(cJSON* routineList, Routine* routine)
     {
         if (!routine) return;
@@ -536,9 +541,6 @@ namespace QwerkE {
             AddItemToArray(scale, CreateNumber("ScaleZ", sca.z));
 
             AddItemToArray(transform, scale);
-
-            // TODO: Save routine values... or create a component
-
             AddItemToArray(t_Routine, transform);
             break;
         }
@@ -580,6 +582,7 @@ namespace QwerkE {
         case eRoutineTypes::Routine_Render:
             object->AddRoutine((Routine*)new RenderRoutine());
         case eRoutineTypes::Routine_Print:
+            // #TODO Debug
             // object->AddDrawRoutine((Routine*)new PrintRoutine());
             break;
         case eRoutineTypes::Routine_Transform:

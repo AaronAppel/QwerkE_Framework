@@ -1,5 +1,4 @@
-#ifndef _Mouse_Ext_Api_H_
-#define _Mouse_Ext_Api_H_
+#pragma once
 
 #include "QwerKE_eKeys.h"
 
@@ -22,4 +21,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Mouse_Ext_Api_H_

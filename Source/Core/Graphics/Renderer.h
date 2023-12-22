@@ -1,24 +1,22 @@
-#ifndef _Renderer_H_
-#define _Renderer_H_
+#pragma once
 
 namespace QwerkE {
 
-    class Renderer
+    class Renderer final
     {
     public:
         static int g_WindowWidth, g_WindowHeight; // #TODO No globals
 
         // TODO: Expose API for changing clear color, culling, etc
-        static void Initialize();
+        static void Initialize(); // #TODO Review any missing shutdown logic
 
         static void NewFrame();
 
         static void DrawFont(const char* text);
 
     private:
-        Renderer();
-        ~Renderer();
+        Renderer() = default;
     };
 
 }
-#endif // !_Renderer_H_
+

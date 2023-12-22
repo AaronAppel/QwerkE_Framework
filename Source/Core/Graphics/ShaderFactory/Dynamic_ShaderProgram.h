@@ -1,17 +1,8 @@
-#ifndef _Dynamic_ShaderProgram_H_
-#define _Dynamic_ShaderProgram_H_
-
-//////////////////////////////
-// Dynamic_ShaderProgram.h
-// TODO: Create a shader that can be easily manipulated during
-// run time to create interesting effects efficiently.
-//////////////////////////////
-
+#pragma once
 
 namespace QwerkE {
 
-    // Experimental:
-    class DynamicShaderProgram
+    class DynamicShaderProgram // #EXPERIMENTAL
     {
     public:
         DynamicShaderProgram() {};
@@ -25,4 +16,3 @@ namespace QwerkE {
     DynamicShaderProgram::~DynamicShaderProgram() {};
 
 }
-#endif // !_Dynamic_ShaderProgram_H_

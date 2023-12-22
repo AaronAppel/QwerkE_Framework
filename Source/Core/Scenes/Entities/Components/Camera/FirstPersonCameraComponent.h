@@ -1,5 +1,4 @@
-#ifndef _FirstPersonCameraComponent_H_
-#define _FirstPersonCameraComponent_H_
+#pragma once
 
 namespace QwerkE {
 
@@ -20,4 +19,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_FirstPersonCameraComponent_H_

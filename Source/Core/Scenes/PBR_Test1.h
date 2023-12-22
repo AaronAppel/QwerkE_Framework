@@ -1,5 +1,4 @@
-#ifndef _PBR_Test1_H_
-#define _PBR_Test1_H_
+#pragma once
 
 #include "Scene.h"
 
@@ -19,4 +18,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_PBR_Test1_H_

@@ -1,5 +1,4 @@
-#ifndef _QwerkE_Enums_H_
-#define _QwerkE_Enums_H_
+#pragma once
 
 #include <cstdint>
 
@@ -124,7 +123,7 @@ namespace QwerkE {
         Component_Light,
         Component_Controller,
         Component_Render,
-        Component_Print,
+        Component_Print, // #TODO Rename to debug component or something better if applicable
         Component_SkyBox,
         Component_SoundPlayer,
         Component_SoundListener,
@@ -269,4 +268,3 @@ namespace QwerkE {
     };
 
 }
-#endif // _QwerkE_Enums_H_

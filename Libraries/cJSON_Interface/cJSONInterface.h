@@ -1,5 +1,4 @@
-#ifndef _CJSONINTERFACE_H_
-#define _CJSONINTERFACE_H_
+#pragma once
 
 #include <vector>
 
@@ -13,9 +12,7 @@
 
 /* Abstract the extra [{object}] from the user */
 
-//class cJSON;
-
-// TODO: Check for memory leaks. There are many...
+// #TODO Check for memory leaks. There are many...
 
 //// Defines For Deliberate Root Accessing ////
 //*- Getting -*
@@ -31,7 +28,7 @@
 
 //// File I/O ////
 //*- File Reading -*
-cJSON* OpencJSONStream(const char* fileDirectory); // open stream
+cJSON* OpencJSONStream(const char* fileDirectory);
 void ClosecJSONStream(cJSON* root); // clean up
 
 //*- File Writing -*
@@ -61,28 +58,28 @@ cJSON* GetItemFromArrayByIndex(cJSON* jObjectArray, int index);
 
 //// Adding Items To File ////
 //*- Adding To Objects -*
-void AddItemsToObject(cJSON* cJSONObject, std::vector<cJSON*> cJSONItems); // TODO::
+void AddItemsToObject(cJSON* cJSONObject, std::vector<cJSON*> cJSONItems);
 
 void AddItemToObject(cJSON* cJSONObject, cJSON* item);
 
 //*- Adding To Arrays -*
-void AddItemsToArray(cJSON* cJSONArray, std::vector<cJSON*> cJSONItems); // TODO::
+void AddItemsToArray(cJSON* cJSONArray, std::vector<cJSON*> cJSONItems);
 
 void AddItemToArray(cJSON* cJSONArray, cJSON* item); // TODO:: Think of returning the new item to be used?
 
 //// Replacing Items In File ////
 //*- Replacing Object Items -*
-void ReplaceItemInObject(cJSON* cJSONObject, cJSON* oldItem, cJSON* newItem); // TODO::
+void ReplaceItemInObject(cJSON* cJSONObject, cJSON* oldItem, cJSON* newItem);
 
 //*- Replacing Array Items -*
-void ReplaceItemInArray(cJSON* cJSONArray, cJSON* oldItem, cJSON* newItem); // TODO::
+void ReplaceItemInArray(cJSON* cJSONArray, cJSON* oldItem, cJSON* newItem);
 
-//// Updating Items In File //// <- updating vs flat replacement
-// Updating items in objects // TODO::
-void UpdateItemInObject(cJSON* cJSONObject); // TODO::
+//// Updating Items In File //// #TODO Review updating vs replacement/overwriting
+// Updating items in objects //
+void UpdateItemInObject(cJSON* cJSONObject);
 
-// Updating items in arrays // TODO::
-void UpdateItemInArray(cJSON* cJSONObject); // TODO::
+// Updating items in arrays //
+void UpdateItemInArray(cJSON* cJSONObject);
 
 //// Removing Items From File ////
 //*- Removing From Object -*
@@ -91,12 +88,12 @@ void RemoveItemFromObjectByKey(cJSON* cJSONObject, const char* key);
 void RemoveItemFromObjectByString(cJSON* cJSONObject, const char* value);
 
 //*- Removing From Array -*
-void RemoveItemsFromArray(); // TODO::
+void RemoveItemsFromArray();
 
 void RemoveItemFromArray(cJSON* cJSONArray, cJSON* item);
 void RemoveItemFromArrayByKey(cJSON* cJSONArray, const char* key);
 void RemoveItemFromArrayByString(cJSON* cJSONArray, const char* value);
-void RemoveItemFromArrayByIndex(cJSON* cJSONArray, int index); // remove from back to front
+void RemoveItemFromArrayByIndex(cJSON* cJSONArray, int index);
 
 //// Type Check Convenience ////
 bool TypeIsBool(cJSON* item);
@@ -108,8 +105,8 @@ bool TypeIsObject(cJSON* item);
 
 //// Conversion Functions ////
 /*create conversion functions for each data type you wish to convert between*/
-//cJSON* ConvertObjectTocJSONObject() { return nullptr; }; // TODO:: examples
-//void ConvertObjectFromcJSONObject() {}; // TODO:: examples
+//cJSON* ConvertObjectTocJSONObject() { return nullptr; }; // #TODO Provide examples
+//void ConvertObjectFromcJSONObject() {}; // #TODO Provide examples
 
 //// Creation Functions ////
 cJSON* CreateBool(const char* key, bool value);
@@ -129,23 +126,19 @@ cJSON* CopyRootObject(cJSON* root);
 //// Helpers ////
 bool json_FileExists(const char* filename);
 void json_CreateNewFile(const char* filename);
-#define EmptycJSONFile(a) CreateEmptycJSONFile(a)
-void CreateEmptycJSONFile(const char* filePath); // TODO: Return error status?
+void CreateEmptycJSONFile(const char* filePath); // #TODO Consider returning an error status
 
 unsigned int GetObjectSize(cJSON* cJSONObject);
 unsigned int GetArraySize(cJSON* cJSONArray);
 
-//cJSON* DuplicatecJSON(cJSON* cJSON) { return nullptr; }; // TODO::
+//cJSON* DuplicatecJSON(cJSON* cJSON) { return nullptr; }; // #TODO Implement
 
 // search entire .json file for item key
 // *search order is different per file so ensure the search value is unique for best results*
-cJSON* DeepSearchForItemByKey(cJSON* object, const char* key); // TODO:: Test
-//cJSON* DeepSearchForItemByString(cJSON* object, char* value); // TODO::
+cJSON* DeepSearchForItemByKey(cJSON* object, const char* key); // #TODO Test
+//cJSON* DeepSearchForItemByString(cJSON* object, char* value); // #TODO Implement
 
-// TODO:: Polish
 // add search by number, bool value.
 // add GetItemIndexFromObject/Array for convenience inside and out of library
 // Cleanup variable and function names for readability
 // organize .h and .cpp files to be correct order and properly commented
-
-#endif // !_CJSONINTERFACE_H_

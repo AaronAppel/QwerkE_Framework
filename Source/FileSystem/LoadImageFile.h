@@ -1,5 +1,4 @@
-#ifndef _LoadImageFile_H_
-#define _LoadImageFile_H_
+#pragma once
 
 #include "../../Libraries/glew/GL/glew.h"
 
@@ -11,4 +10,3 @@ namespace QwerkE {
     // void QwerkE_soil_loadImage();
 
 }
-#endif // !_LoadImageFile_H_

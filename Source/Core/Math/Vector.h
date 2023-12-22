@@ -1,5 +1,4 @@
-#ifndef _Vector_H_
-#define _Vector_H_
+#pragma once
 
 //////////////////////////////
 // Vector.h
@@ -155,5 +154,3 @@ struct Vector4
 typedef Vector2 vec2;
 typedef Vector3 vec3;
 typedef Vector4 vec4;
-
-#endif // !_Vector_H_

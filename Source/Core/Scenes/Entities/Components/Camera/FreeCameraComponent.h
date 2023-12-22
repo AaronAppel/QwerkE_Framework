@@ -1,10 +1,11 @@
-#ifndef _FreeCameraComponent_H_
-#define _FreeCameraComponent_H_
+#pragma once
 
 #include "../../../../../../Libraries/glew/GL/glew.h"
+
+#include "../../../../../Headers/QwerkE_Global_Constants.h"
+
 #include "../Component.h"
 #include "CameraComponent.h"
-#include "../../../../../Headers/QwerkE_Global_Constants.h"
 
 namespace QwerkE {
 
@@ -23,4 +24,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_FreeCameraComponent_H_

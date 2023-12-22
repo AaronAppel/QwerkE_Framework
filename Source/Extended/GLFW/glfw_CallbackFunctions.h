@@ -1,5 +1,4 @@
-#ifndef _CallBackFunctions_H_
-#define _CallBackFunctions_H_
+#pragma once
 
 struct GLFWwindow;
 
@@ -25,4 +24,3 @@ namespace QwerkE {
     void file_drop_callback(GLFWwindow* window, int count, const char** paths);
 
 }
-#endif // !_CallBackFunctions_H_

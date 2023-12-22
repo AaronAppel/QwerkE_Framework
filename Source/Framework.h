@@ -1,5 +1,4 @@
-#ifndef _Framework_H_
-#define _Framework_H_
+#pragma once
 
 #include <string>
 
@@ -25,5 +24,3 @@ namespace QwerkE {
 		bool StillRunning();
 	}
 }
-
-#endif // !_Framework_H_

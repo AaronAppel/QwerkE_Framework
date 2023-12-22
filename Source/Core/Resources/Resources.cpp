@@ -15,10 +15,6 @@
 
 namespace QwerkE {
 
-	Resources::Resources()
-	{
-	}
-
 	Resources::~Resources()
 	{
 		DeleteAllResources();

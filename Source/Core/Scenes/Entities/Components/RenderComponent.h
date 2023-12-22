@@ -1,11 +1,10 @@
-#ifndef _RenderComponent_H_
-#define _RenderComponent_H_
-
-#include "Component.h"
-#include "../../../Graphics/DataTypes/Renderable.h"
+#pragma once
 
 #include <vector>
 #include <string>
+
+#include "Component.h"
+#include "../../../Graphics/DataTypes/Renderable.h"
 
 namespace QwerkE {
 
@@ -50,4 +49,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_RenderComponent_H_

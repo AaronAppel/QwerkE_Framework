@@ -1,5 +1,4 @@
-#ifndef _Keyboard_Ext_Api_H_
-#define _Keyboard_Ext_Api_H_
+#pragma once
 
 #include "../Input/Input.h"
 
@@ -22,4 +21,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Keyboard_Ext_Api_H_

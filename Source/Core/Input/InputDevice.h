@@ -1,5 +1,4 @@
-#ifndef _Input_Device_H_
-#define _Input_Device_H_
+#pragma once
 
 #include "QwerKE_eKeys.h"
 
@@ -35,4 +34,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Input_Device_H_

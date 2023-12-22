@@ -1,13 +1,11 @@
-#ifndef _CameraComponent_H_
-#define _CameraComponent_H_
-
-// TODO: Remove and rely on 1 consistent math library
+#pragma once
 
 #include "../../../../../../Libraries/glew/GL/glew.h"
 
 #include "../../../../Math/Math_Includes.h"
 #include "../../../../../Headers/QwerkE_Global_Constants.h"
 #include "../../../../../Headers/QwerkE_Enums.h"
+
 #include "../../Components/Component.h"
 
 const vec3 g_WORLDUP = vec3(0, 1, 0); // TODO: Fix inverted world Y-axis
@@ -88,4 +86,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_CameraComponent_H_

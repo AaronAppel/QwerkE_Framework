@@ -1,5 +1,4 @@
-#ifndef _Mesh_Data_H_
-#define _Mesh_Data_H_
+#pragma once
 
 #include <vector>
 
@@ -98,4 +97,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_Mesh_Data_H_

@@ -1,12 +1,9 @@
-#ifndef _Keyboard_H_
-#define _Keyboard_H_
+#pragma once
 
 #include "InputDevice.h"
 
 namespace QwerkE {
 
-    // TODO: Should be class?
-    // TODO: Useful?
     struct Keyboard : public InputDevice
     {
         Keyboard(eInputDeviceTypes type) : InputDevice(type) {}
@@ -14,4 +11,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Keyboard_H_

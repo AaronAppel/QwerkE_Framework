@@ -1,5 +1,4 @@
-#ifndef _Renderable_H_
-#define _Renderable_H_
+#pragma once
 
 #include "../Mesh/Mesh.h"
 
@@ -14,7 +13,7 @@ namespace QwerkE {
     class Renderable
     {
     public:
-        Renderable() {}
+        Renderable() = default;
         Renderable(ShaderProgram* shader, Material* material, Mesh* mesh)
         {
             m_Shader = shader;
@@ -67,4 +66,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Renderable_H_

@@ -1,5 +1,4 @@
-#ifndef __Tween_H__
-#define __Tween_H__
+#pragma once
 
 #include "TweenFuncs.h"
 
@@ -47,5 +46,3 @@ private:
 	float m_ElapsedTime = 0.0f;
 	float m_EndTime = 0.0f;
 };
-
-#endif //!__Tween_H__

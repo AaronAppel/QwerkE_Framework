@@ -1,5 +1,4 @@
-#ifndef _QwerkE_Flags_H_
-#define _QwerkE_Flags_H_
+#pragma once
 
 // QwerkE flags for things like framework systems, etc
 
@@ -14,5 +13,3 @@ constexpr std::uint_fast8_t Flag_Audio{ 1 << 2 }; // 0000 0100
 //constexpr std::uint_fast8_t Flag_Physics{ 1 << 5 }; // 0010 0000
 //constexpr std::uint_fast8_t Flag_Physics{ 1 << 6 }; // 0100 0000
 //constexpr std::uint_fast8_t Flag_Physics{ 1 << 7 }; // 1000 0000
-
-#endif // !_QwerkE_Flags_H_

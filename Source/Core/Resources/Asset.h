@@ -1,13 +1,12 @@
-#ifndef _Asset_H_
-#define _Asset_H_
-
-#include "../../Headers/QwerkE_Global_Constants.h"
+#pragma once
 
 #include <string>
 
-class Asset_Tag;
+#include "../../Headers/QwerkE_Global_Constants.h"
 
 namespace QwerkE {
+
+    class Asset_Tag;
 
     class Asset
     {
@@ -28,4 +27,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Asset_H_

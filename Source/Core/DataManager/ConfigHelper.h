@@ -1,5 +1,4 @@
-#ifndef _Config_Helper_H_
-#define _Config_Helper_H_
+#pragma once
 
 #include <string>
 #include <vector>
@@ -40,7 +39,7 @@ namespace QwerkE {
         bool LoggingEnabled = true;
     };
 
-    // TODO: Hide the data for safety. Find a better API for ConfigData
+    // #TODO Hide the data for safety. Find a better API for ConfigData
     struct ConfigData
     {
         // ConfigData() {};
@@ -62,8 +61,8 @@ namespace QwerkE {
     class ConfigHelper
     {
     public:
-        static void LoadConfigData(); // TODO: Load from file path. Do not rely on default paths, but instead generate the default path
-        static void LoadConfigData(std::string configFilePath); // TODO: Write and chain with above overloaded method
+        static void LoadConfigData(); // #TODO Load from file path. Do not rely on default paths, but instead generate the default path
+        static void LoadConfigData(std::string configFilePath); // #TODO Write and chain with above overloaded method
         static void SaveConfigData();
         static void SaveConfigData(ConfigData config);
 
@@ -78,4 +77,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Config_Helper_H_

@@ -12,18 +12,11 @@ namespace QwerkE {
     int Renderer::g_WindowWidth = 1600;
     int Renderer::g_WindowHeight = 900;
 
-    Renderer::Renderer()
-    {
-        LoadFonts();
-    }
-
-    Renderer::~Renderer()
-    {
-    }
-
     // TODO: Move OpenGL code to proper files
     void Renderer::Initialize()
     {
+        LoadFonts();
+
         // TODO: GL state init should be in a Window() or OpenGLManager()
         //     class or some type of ::Graphics() system.
         glClearColor(0.5f, 0.7f, 0.7f, 1.0f);

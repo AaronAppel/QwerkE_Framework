@@ -36,15 +36,13 @@ namespace QwerkE {
 
     void LoadFonts()
     {
-        // FreeType
         FT_Library ft;
-        // All functions return a value different than 0 whenever an error occurred
         if (FT_Init_FreeType(&ft))
             std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
 
         // Load font as face
         FT_Face face;
-        // TODO:Fix freetype font loading to use Resources().
+        // #TODO Change freetype font loading to use Resources().
         if (FT_New_Face(ft, NullFolderPath(null_font), 0, &face))
             std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 

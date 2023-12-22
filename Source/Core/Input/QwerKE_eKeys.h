@@ -1,5 +1,4 @@
-#ifndef _QwerkE_eKeys_H_
-#define _QwerkE_eKeys_H_
+#pragma once
 
 namespace QwerkE {
 
@@ -217,4 +216,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_QwerkE_eKeys_H_

@@ -1,5 +1,4 @@
-#ifndef _EasyXinput_H_
-#define _EasyXinput_H_
+#pragma once
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/microsoft.directx_sdk.reference.xinput_gamepad(v=vs.85).aspx <-- button codes
 // https://katyscode.wordpress.com/2013/08/30/xinput-tutorial-part-1-adding-gamepad-support-to-your-windows-game/ <-- reading Xinput
@@ -7,12 +6,10 @@
 // "The constant XINPUT_GAMEPAD_TRIGGER_THRESHOLD may be used as the value which bLeftTrigger and bRightTrigger must be greater than to register as pressed." - MSDN XINPUT_GAMEPAD structure
 // XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE
 
-// #TODO temp build fix
-#if !defined(WIN32_LEAN_AND_MEAN)
-#include <SDKDDKVer.h>
-#define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
-#endif // !platform
+// #TODO Review dependencies and possibly list them in a comment for users
+// #define WIN32_LEAN_AND_MEAN
+// #include <SDKDDKVer.h>
+// #include <Windows.h>
 
 #include <Xinput.h>
 // #include Xinput.lib, Xinput9_1_0.lib or other version
@@ -28,15 +25,13 @@ if (newHandler->AButtonIsDown())
 ...
 */
 
-// TODO:: increase efficiency
 // Compare previous frame state to see if face buttons changed.
 // If they did, queue an event, otherwise don't waste ram and processor's time
 // Add option to disable auto stick+trigger event generation
 
-// TODO: consider removing dependencies like vec2 and std::vector to make incorporation simpler
-// TODO: Remove m_CurrentPlayer?
+// #TODO consider removing dependencies like vec2 and std::vector to make incorporation simpler
+// #TODO Remove m_CurrentPlayer value?
 
-// TODO:: Finalize interface.
 // Find better variable and function names. Possibly add prefixes like xin_.
 
 struct XinVec2
@@ -57,12 +52,9 @@ class XinputHandler
 public:
 	// #TODO How are stick clicks (LS and RS) tracked?
 
-	// setup
 	XinputHandler(int numPlayers);
-	// tear down
 	~XinputHandler();
 
-	// utility
 	void ResetState() { ResetState(m_CurrentPlayer); };
 	void ResetState(int player);
 	void ResetStates();
@@ -74,8 +66,6 @@ public:
 	bool UpdatePlayerState() { return UpdatePlayerState(m_CurrentPlayer); };
 	bool UpdatePlayerState(int player);
 
-	//// input
-	// Sticks + Triggers
 	XinVec2 LeftStick() { return LeftStick(m_CurrentPlayer); };
 	XinVec2 LeftStick(int player);
 
@@ -88,7 +78,6 @@ public:
 	bool ButtonIsDown(int button, int player = 0);
 	bool ButtonIsDown(int button);
 
-	// Face
 	bool ADown() { return ADown(m_CurrentPlayer); };
 	bool ADown(int player);
 
@@ -100,7 +89,7 @@ public:
 
 	bool YDown() { return YDown(m_CurrentPlayer); };
 	bool YDown(int player);
-	// DPad
+
 	bool PadUpIsDown() { return PadUpIsDown(m_CurrentPlayer); };
 	bool PadUpIsDown(int player);
 
@@ -112,13 +101,13 @@ public:
 
 	bool PadRightIsDown() { return PadRightIsDown(m_CurrentPlayer); };
 	bool PadRightIsDown(int player);
-	// Bumper
+
 	bool BumpLeftDown() { return BumpLeftDown(m_CurrentPlayer); };
 	bool BumpLeftDown(int player);
 
 	bool BumpRightDown() { return BumpRightDown(m_CurrentPlayer); };
 	bool BumpRightDown(int player);
-	// Start + Back
+
 	bool StartDown() { return StartDown(m_CurrentPlayer); };
 	bool StartDown(int player);
 
@@ -129,12 +118,10 @@ private:
 	XinVec2 m_StickDeadZone;
 	int m_TriggerDeadZone;
 
-	unsigned int m_NumPlayers; // change numPlayers during runtime?
+	unsigned int m_NumPlayers;
 	unsigned int m_CurrentPlayer;
 
-	// TODO: reduce polling by generating events.
-	// Or let input manager handle that
 	XINPUT_STATE** m_PlayerStates;
-};
 
-#endif // !_EasyXinput_H_
+	// #FEATURE Reduce polling by using events
+};

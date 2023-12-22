@@ -1,5 +1,4 @@
-#ifndef _StaticCameraComponent_H_
-#define _StaticCameraComponent_H_
+#pragma once
 
 namespace QwerkE {
 
@@ -18,4 +17,3 @@ namespace QwerkE {
     };
 
 }
-#endif //!_StaticCameraComponent_H_

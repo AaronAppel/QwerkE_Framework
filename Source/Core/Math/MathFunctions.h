@@ -1,8 +1,10 @@
-#ifndef _Math_Functions_H_
-#define _Math_Functions_H_
+#pragma once
+
+int RandomNumber();
 
 int RandomInt(int max, int min);
 
-float RandFloatInRange(float min, float max);
+int RandInRange(int min, int max);
+float RandInRange(float min, float max);
 
-#endif // !_Math_Functions_H_
+// #TODO RandomWeighted(array) { ; // Get random number and find where it fits along a sum of all array elements, then return array index where rand lands }

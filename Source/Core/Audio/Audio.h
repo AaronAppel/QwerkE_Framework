@@ -1,5 +1,4 @@
-#ifndef _Audio_H_
-#define _Audio_H_
+#pragma once
 
 #include "../Math/Vector.h"
 
@@ -26,9 +25,9 @@ namespace QwerkE {
     private:
         static bool m_Initialized;
 
-        // TODO: Abstract from OpenAL
+        // #TODO Abstract from OpenAL
         static OpenALAudioManager* m_AudioManager;
     };
 
 }
-#endif // _Audio_H_
+

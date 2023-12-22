@@ -1,5 +1,4 @@
-#ifndef _Math_H_
-#define _Math_H_
+#pragma once
 
 // TODO: What is a good way of creating an interface for math
 // and other utilty functions? Non engine specific files should
@@ -29,4 +28,3 @@ namespace QwerkE {
     };
 
 }
-#endif // !_Time_H_

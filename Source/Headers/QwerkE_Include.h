@@ -4,7 +4,7 @@
 #include "QwerkE_Platform.h"
 
 #include "Libraries_Include.h"
-// #include "Libraries_Load.h"
+#include "Libraries_Load.h"
 
 #include "QwerkE_Enums.h"
 #include "QwerkE_Flags.h"

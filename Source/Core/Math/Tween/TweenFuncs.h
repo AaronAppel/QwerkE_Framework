@@ -1,5 +1,4 @@
-#ifndef __TweenFuncs_H__
-#define __TweenFuncs_H__
+#pragma once
 
 typedef float(*TweenFunc) (float startvalue, float valuerange, double timepassed, double totaltime);
 
@@ -13,5 +12,3 @@ float TweenFunc_BounceEaseInOut(float startvalue, float valuerange, double timep
 float TweenFunc_ElasticEaseIn(float startvalue, float valuerange, double timepassed, double totaltime);
 float TweenFunc_ElasticEaseOut(float startvalue, float valuerange, double timepassed, double totaltime);
 float TweenFunc_ElasticEaseInOut(float startvalue, float valuerange, double timepassed, double totaltime);
-
-#endif //__TweenFuncs_H__
