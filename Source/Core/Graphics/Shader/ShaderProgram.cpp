@@ -15,11 +15,13 @@ namespace QwerkE {
 
     void ShaderProgram::RecompileShaderType(GLenum type, const char* shaderData)
     {
+        // #TODO Deallocate or re-use existing allocation(s)
+
         ShaderComponent* result = ShaderFactory::GenerateShaderFromData(type, shaderData);
 
         if (result)
         {
-            // TODO: Handle old shader value
+            // #TODO Handle old shader value
             switch (type)
             {
             case GL_VERTEX_SHADER:
@@ -38,7 +40,7 @@ namespace QwerkE {
                 m_GeoShader = result;
                 break;
             }
-            // link new shader
+
             ShaderFactory::LinkCreatedShaderProgram(this);
 
             FindAttributesAndUniforms();
@@ -47,10 +49,8 @@ namespace QwerkE {
         }
     }
 
-    /* Attribute value assignment */
     // void SetAttributeData() {} good idea?
 
-    /* Uniform value assignment */
     // int
     void ShaderProgram::SetUniformInt1(const char* name, int value)
     {
@@ -90,7 +90,7 @@ namespace QwerkE {
     // Matrix
     void ShaderProgram::SetUniformMat4(const char* name, const GLfloat* matrix)
     {
-        // TODO: Improve uniform prefixing
+        // #TODO Improve uniform prefixing
         glUniformMatrix4fv(glGetUniformLocation(m_ProgramHandle, DispStrCombine(ShaderFactory::GetUniformPrefix(), name).c_str()), 1, GL_FALSE, matrix);
     }
 

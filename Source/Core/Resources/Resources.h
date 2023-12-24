@@ -5,7 +5,7 @@
 
 #include "../../../Libraries/glew/GL/glew.h"
 #include "../Libraries/freetype2/ft2build.h" // #TODO Temp build fix
-#include "../../../Libraries/freetype2/freetype/freetype.h" // TODO: create a font class?
+#include "../../../Libraries/freetype2/freetype/freetype.h" // #TODO create a font class?
 #include "../../../Libraries/OpenAL/include/al.h"
 
 #include "../../Headers/QwerkE_Global_Constants.h"
@@ -24,7 +24,7 @@ namespace QwerkE {
     class ShaderProgram;
     struct Texture;
 
-    // TODO: Move to own file
+    // #TODO Move to own file
     struct AssetInfo
     {
         AssetInfo(std::string name, std::string directory) { m_ID = name, m_Directory = directory; }
@@ -53,12 +53,12 @@ namespace QwerkE {
         static bool AddSound(const char* name, ALuint sound);
         static bool AddShaderProgram(const char* name, ShaderProgram* ShaderProgram);
         static bool AddShaderComponent(const char* name, ShaderComponent* shaderComponent);
-        // TODO: Other add functions
+        // #TODO Other add functions
 
         // getters
-        // TODO: return const*s so they cannot be modified externally
+        // #TODO return const*s so they cannot be modified externally
         // The following functions guarantee a valid return variable using null or error objects
-        // TODO: Should getters generate objects? What would be a better way?
+        // #TODO Should getters generate objects? What would be a better way?
         static Mesh* GetMesh(const char* name); // specify .ext
         static Mesh* GetMeshFromFile(const char* filePath, const char* meshName); // specify .ext
         static void UpdateTexture(const char* name, int handle); // TESTING:
@@ -83,13 +83,13 @@ namespace QwerkE {
         static const std::map<std::string, ShaderProgram*>* SeeShaderPrograms() { return &m_ShaderPrograms; };
         static const std::map<std::string, ShaderComponent*>* SeeShaderComponents() { return &m_ShaderComponents; };
 
-        // TODO: Handle loading additional resources
+        // #TODO Handle loading additional resources
         // CubeMap* GetCubeMap(const char* name); // specify .ext
         // FBO* GetFBO(const char* name); // specify .ext
         // Sound* GetSound(const char* name); // specify .ext
 
         // Load directory
-        // void LoadDirectory(const char* folder); // TODO: Move outside and into a FileLoader object
+        // void LoadDirectory(const char* folder); // #TODO Move outside and into a FileLoader object
 
         // Cleanup
         static void DeleteAllResources();
@@ -98,13 +98,13 @@ namespace QwerkE {
         Resources() = default;
         ~Resources();
 
-        // TODO: Consider using unordered maps
+        // #TODO Consider using unordered maps
         // resource storage
         static std::map<std::string, Mesh*> m_Meshes;
         static std::map<std::string, Texture*> m_Textures;
         static std::map<std::string, Material*> m_Materials;
         static std::map<std::string, FT_Face> m_Fonts;
-        static std::map<std::string, ALuint> m_Sounds; // TODO: Abstract OpenAL
+        static std::map<std::string, ALuint> m_Sounds; // #TODO Abstract OpenAL
         static std::map<std::string, ShaderProgram*> m_ShaderPrograms;
         static std::map<std::string, ShaderComponent*> m_ShaderComponents;
 
@@ -127,7 +127,7 @@ namespace QwerkE {
         static ShaderComponent* InstantiateShaderComponent(const char* componentName);
 
         // Deletions
-        // TODO: void* return? Actually write functions.
+        // #TODO void* return? Actually write functions.
         // Remember that smart pointers may be necessary for references.
         static bool DeleteMesh(const char* name) {}
         static bool DeleteTexture(const char* name) {}

@@ -59,10 +59,11 @@ namespace QwerkE {
         MatMap_Null
     };
 
+    // #TODO Move engine enums to their own engine specific file
     enum class eEngineMessage : std::uint8_t
     {
-        _QFailure = 0,
-        _QSuccess,
+        _QSuccess = 0,
+        _QFailure,
 
         _QMax
     };
@@ -72,13 +73,13 @@ namespace QwerkE {
         SceneState_Running = 0,
         SceneState_Frozen, // Cameras can move
         SceneState_Paused, // No updating
-        SceneState_SlowMo, // Smaller deltatime
+        SceneState_SlowMo, // Smaller delta time
         SceneState_Animating, // Cameras and Animation only
 
         SceneState_Max
     };
 
-    enum class eEngineServices : std::uint8_t // TODO: Rename engine to framework
+    enum class eEngineServices : std::uint16_t // TODO: Rename engine to framework
     {
         // Resource_Manager = 0,
         // Input_Manager,
