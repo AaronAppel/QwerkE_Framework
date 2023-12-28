@@ -4,17 +4,17 @@
 
 namespace QwerkE {
 
-    // TODO: Create windows for different libraries
-    class Window // abstract
+    class Window
     {
     public:
         Window(int windowWidth, int windowHeight, const char* windowTitle);
-        virtual ~Window();
+        virtual ~Window() = default;
 
-        void SetResolution(vec2 resolution) { m_Resolution = resolution; }
-        vec2 GetResolution() { return m_Resolution; }
+        void SetResolution(vec2 resolution);
+        const vec2& GetResolution() const { return m_Resolution; }
+        const vec2& GetAspectRatio() const { return m_AspectRatio; }
 
-        virtual void* GetContext() = 0; // TODO: Remove
+        virtual void* GetContext() = 0;
 
         virtual void SwapBuffers() = 0;
 
@@ -22,12 +22,13 @@ namespace QwerkE {
         bool IsClosing() { return m_IsClosing; };
 
     protected:
-        // TODO: Expand interface. Remember to be generic for all libraries.
-        vec2 m_Resolution = vec2(16, 9);
-        vec2 m_ScreenSize = m_Resolution * 0.5f;
+        vec2 m_Resolution = vec2(1600.f, 900.f);
+        vec2 m_AspectRatio = vec2(16.f, 9.f);
+
         bool m_IsFocused = false;
         bool m_IsClosing = false;
-        const char* m_WindowTitle = "null"; // TODO: Use a global constant value
+
+        const char* m_WindowTitle = "null";
     };
 
 }

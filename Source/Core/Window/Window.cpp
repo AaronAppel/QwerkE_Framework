@@ -8,8 +8,9 @@ namespace QwerkE {
     {
     }
 
-    Window::~Window()
+    void Window::SetResolution(vec2 resolution)
     {
+        m_Resolution = resolution;
+        m_AspectRatio = vec2(16.f, 9.0f); // #TODO Calculate aspect ratio
     }
-
 }

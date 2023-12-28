@@ -11,6 +11,7 @@ namespace QwerkE {
     public:
         static void AddWindow(Window* window);
         static Window* GetWindow(int windowID);
+        static const Window* GetLastFocusedWindow();
 
         static void Initialize();
         static void Shutdown();
@@ -20,6 +21,7 @@ namespace QwerkE {
         ~Windows() {}
 
         static std::vector<Window*> m_Windows;
+        static unsigned char m_lastFocusedWindowIndex;
     };
 
 }

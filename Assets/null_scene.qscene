@@ -1,56 +1,26 @@
 {
 	"ObjectList":	[{
-			"Cube3":	[{
+			"Nanosuit":	[{
 					"Position":	[{
 							"PositionX":	0,
-							"PositionY":	0,
-							"PositionZ":	50
+							"PositionY":	-2,
+							"PositionZ":	30
 						}],
-					"Position":	[{
-							"PositionX":	0,
-							"PositionY":	0,
-							"PositionZ":	50
+					"Rotation":	[{
+							"RotationX":	0,
+							"RotationY":	180,
+							"RotationZ":	0
 						}],
 					"Scale":	[{
 							"ScaleX":	1,
 							"ScaleY":	1,
 							"ScaleZ":	1
 						}],
-					"ObjectTag":	3,
+					"ObjectTag":	9,
 					"ComponentList":	[{
-							"Render":	[{
-									"SchematicName":	"Cube.osch",
-									"Renderables":	[{
-											"Cube":	[{
-													"Shader":	"LitMaterial.ssch",
-													"Material":	"null_material.msch",
-													"MeshFile":	"Cube.obj",
-													"MeshName":	"Cube"
-												}]
-										}]
-								}]
-						}]
-				}],
-			"Object2":	[{
-					"Position":	[{
-							"PositionX":	0,
-							"PositionY":	-5,
-							"PositionZ":	30
-						}],
-					"Position":	[{
-							"PositionX":	0,
-							"PositionY":	-5,
-							"PositionZ":	30
-						}],
-					"Scale":	[{
-							"ScaleX":	1,
-							"ScaleY":	1,
-							"ScaleZ":	1
-						}],
-					"ObjectTag":	6,
-					"ComponentList":	[{
-							"Render":	[{
-									"SchematicName":	"nanosuit.osch",
+							"4":	[{
+									"ComponentName":	"Render",
+									"SchematicName":	"None",
 									"Renderables":	[{
 											"Visor":	[{
 													"Shader":	"LitMaterial.ssch",
@@ -96,52 +66,29 @@
 												}]
 										}]
 								}]
+						}],
+					"RoutineList":	[{
+							"UpdateRoutines":	[{
+							}],
+							"DrawRoutines":	[{
+									"0":	[{
+											"RoutineName":	"Render"
+										}]
+								}]
 						}]
 				}]
 		}],
 	"CameraList":	[{
 			"Camera0":	[{
 					"Position":	[{
-							"PositionX":	1.621889,
-							"PositionY":	-2.683809,
-							"PositionZ":	8.580444
+							"PositionX":	0.501858,
+							"PositionY":	0.401084,
+							"PositionZ":	5.958960
 						}],
-					"Position":	[{
-							"PositionX":	1.621889,
-							"PositionY":	-2.683809,
-							"PositionZ":	8.580444
-						}],
-					"Scale":	[{
-							"ScaleX":	1,
-							"ScaleY":	1,
-							"ScaleZ":	1
-						}],
-					"ObjectTag":	1,
-					"ComponentList":	[{
-							"Render":	[{
-									"SchematicName":	"camera.osch",
-									"Renderables":	[{
-											"Camera":	[{
-													"Shader":	"LitMaterial.ssch",
-													"Material":	"null_material.msch",
-													"MeshFile":	"Camera.obj",
-													"MeshName":	"Camera"
-												}]
-										}]
-								}]
-						}],
-					"CamType":	0
-				}],
-			"Camera1":	[{
-					"Position":	[{
-							"PositionX":	0,
-							"PositionY":	0,
-							"PositionZ":	15
-						}],
-					"Position":	[{
-							"PositionX":	0,
-							"PositionY":	0,
-							"PositionZ":	15
+					"Rotation":	[{
+							"RotationX":	0,
+							"RotationY":	0,
+							"RotationZ":	0
 						}],
 					"Scale":	[{
 							"ScaleX":	1,
@@ -150,32 +97,30 @@
 						}],
 					"ObjectTag":	1,
 					"ComponentList":	[{
-							"Render":	[{
-									"SchematicName":	"camera.osch",
-									"Renderables":	[{
-											"Camera":	[{
-													"Shader":	"LitMaterial.ssch",
-													"Material":	"null_material.msch",
-													"MeshFile":	"Camera.obj",
-													"MeshName":	"Camera"
-												}]
-										}]
+							"0":	[{
+									"ComponentName":	"Camera",
+									"CamType":	0
 								}]
 						}],
-					"CamType":	0
+					"RoutineList":	[{
+							"UpdateRoutines":	[{
+							}],
+							"DrawRoutines":	[{
+							}]
+						}]
 				}]
 		}],
 	"LightList":	[{
-			"Light4":	[{
+			"Light13":	[{
 					"Position":	[{
 							"PositionX":	0,
 							"PositionY":	5,
 							"PositionZ":	-10
 						}],
-					"Position":	[{
-							"PositionX":	0,
-							"PositionY":	5,
-							"PositionZ":	-10
+					"Rotation":	[{
+							"RotationX":	0,
+							"RotationY":	0,
+							"RotationZ":	0
 						}],
 					"Scale":	[{
 							"ScaleX":	1,
@@ -184,17 +129,28 @@
 						}],
 					"ObjectTag":	2,
 					"ComponentList":	[{
-							"Light":	[{
-							}],
-							"Render":	[{
-									"SchematicName":	"light.osch",
+							"2":	[{
+									"ComponentName":	"Light"
+								}],
+							"4":	[{
+									"ComponentName":	"Render",
+									"SchematicName":	"None",
 									"Renderables":	[{
 											"Light":	[{
 													"Shader":	"Basic3D.ssch",
 													"Material":	"null_material.msch",
-													"MeshFile":	"LightBulb.obj",
-													"MeshName":	"LightBulb"
+													"MeshFile":	"null_mesh.obj",
+													"MeshName":	"null_mesh"
 												}]
+										}]
+								}]
+						}],
+					"RoutineList":	[{
+							"UpdateRoutines":	[{
+							}],
+							"DrawRoutines":	[{
+									"0":	[{
+											"RoutineName":	"Render"
 										}]
 								}]
 						}]

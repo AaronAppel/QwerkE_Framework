@@ -2,13 +2,11 @@
 
 namespace QwerkE {
 
-    class Window;
-
     std::vector<Window*> Windows::m_Windows;
+    unsigned char Windows::m_lastFocusedWindowIndex = 0;
 
     void Windows::Initialize()
     {
-
     }
 
     void Windows::Shutdown()
@@ -27,7 +25,19 @@ namespace QwerkE {
 
     Window* Windows::GetWindow(int windowID)
     {
-        return m_Windows.at(windowID);
+        if (windowID >= 0 && windowID < m_Windows.size())
+        {
+            return m_Windows.at(windowID);
+        }
+    }
+
+    const Window* Windows::GetLastFocusedWindow()
+    {
+        if (m_lastFocusedWindowIndex < m_Windows.size())
+        {
+            return m_Windows.at(m_lastFocusedWindowIndex);
+        }
+        return nullptr;
     }
 
 }
