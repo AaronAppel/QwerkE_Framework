@@ -115,10 +115,8 @@ namespace QwerkE {
         LROTATE
     };
 
-    /* Component Tagging */
     enum eComponentTags : std::uint8_t
     {
-        /* General */
         Component_Camera = 0,
         Component_Physics,
         Component_Light,
@@ -131,7 +129,7 @@ namespace QwerkE {
         Component_Max,
         Component_Null
     };
-    /* Routines */
+
     enum eRoutineTypes : std::uint8_t
     {
         Routine_Render = 0,
@@ -142,7 +140,6 @@ namespace QwerkE {
         Routine_NULL
     };
 
-    /* Input */
     enum eGameButtons : std::uint8_t
     {
         // Application functionality

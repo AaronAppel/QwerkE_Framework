@@ -41,18 +41,20 @@ namespace QwerkE {
             delete l_LoopVar.second;
         }
         m_Components.clear();
+
         for (unsigned int i = 0; i < m_UpdateList.size(); i++)
         {
             if (m_UpdateList.at(i) != nullptr)
             {
-                m_UpdateList.at(i)->CleanUp(); // Detach foreign routines
+                m_UpdateList.at(i)->CleanUp();
             }
         }
         for (unsigned int i = 0; i < m_UpdateList.size(); i++)
         {
-            delete m_UpdateList.at(i); // TODO: Delete or nullptr?
+            delete m_UpdateList.at(i);
         }
         m_UpdateList.clear();
+
         for (unsigned int i = 0; i < m_DrawList.size(); i++)
         {
             delete m_DrawList.at(i);
@@ -83,25 +85,28 @@ namespace QwerkE {
         }
     }
 
-    void GameObject::AddComponent(Component* component)
+    bool GameObject::AddComponent(Component* component)
     {
         if (m_Components.find(component->GetTag()) == m_Components.end())
         {
             m_Components[component->GetTag()] = component;
             component->SetParent(this);
+            return true;
         }
+        return false;
     };
 
-    void GameObject::AddRoutine(Routine* routine)
+    bool GameObject::AddRoutine(Routine* routine)
     {
         // TODO: Deprecate to force using AddUpdateRoutine(), or remove other add methods
         routine->SetParent(this);
         routine->Initialize();
+        return true;
     }
 
-    void GameObject::AddUpdateRoutine(Routine* routine)
+    bool GameObject::AddUpdateRoutine(Routine* routine)
     {
-        if (!routine) { return; }
+        if (!routine) { return false; }
 
         routine->SetParent(this);
 
@@ -114,6 +119,7 @@ namespace QwerkE {
             }
         }
         m_UpdateList.push_back(routine);
+        return true;
     }
 
     void GameObject::AddDrawRoutine(Routine* routine)

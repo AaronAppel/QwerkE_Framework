@@ -47,13 +47,13 @@ namespace QwerkE {
         void Update(double deltatime);
         void Draw(GameObject* camera);
 
-        void AddComponent(Component* component);
+        bool AddComponent(Component* component);
         void RemoveComponent(eComponentTags tag) { m_Components.erase(tag); };
 
-        void AddRoutine(Routine* routine);
+        bool AddRoutine(Routine* routine);
         void RemoveRoutine(Routine* routine);
 
-        void AddUpdateRoutine(Routine* routine);
+        bool AddUpdateRoutine(Routine* routine);
         void AddDrawRoutine(Routine* routine);
 
         void Reset();
