@@ -68,17 +68,6 @@ namespace QwerkE {
         _QMax
     };
 
-    enum class eSceneState : std::uint8_t
-    {
-        SceneState_Running = 0,
-        SceneState_Frozen, // Cameras can move
-        SceneState_Paused, // No updating
-        SceneState_SlowMo, // Smaller delta time
-        SceneState_Animating, // Cameras and Animation only
-
-        SceneState_Max
-    };
-
     enum class eEngineServices : std::uint16_t // TODO: Rename engine to framework
     {
         // Resource_Manager = 0,

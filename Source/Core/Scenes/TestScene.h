@@ -10,10 +10,9 @@ namespace QwerkE {
         TestScene();
         virtual ~TestScene();
 
-        void Initialize();
+        void Update(float deltaTime);
 
-    private:
-        void p_Running(double TimePassed);
+        void Initialize();
     };
 
 }

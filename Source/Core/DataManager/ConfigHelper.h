@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "../Input/QwerKE_eKeys.h"
+
 namespace QwerkE {
 
     struct FrameworkData
@@ -39,6 +41,16 @@ namespace QwerkE {
         bool LoggingEnabled = true;
     };
 
+    struct Controls
+    {
+        eKeys Camera_Forward = eKeys::eKeys_MAX;
+        eKeys Camera_Backward = eKeys::eKeys_MAX;
+        eKeys Camera_MoveLeft = eKeys::eKeys_MAX;
+        eKeys Camera_MoveRight = eKeys::eKeys_MAX;
+        eKeys Camera_MoveUp = eKeys::eKeys_MAX;
+        eKeys Camera_MoveDown = eKeys::eKeys_MAX;
+    };
+
     // #TODO Hide the data for safety. Find a better API for ConfigData
     struct ConfigData
     {
@@ -56,6 +68,7 @@ namespace QwerkE {
         ScenesData scenes;
         SceneSettings sceneSettings;
         Systems systems;
+        Controls controls;
     };
 
     class ConfigHelper

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "Scene.h"
 
 namespace QwerkE {
@@ -8,12 +10,13 @@ namespace QwerkE {
     {
     public:
         PBR_Test1();
-        virtual ~PBR_Test1();
+        ~PBR_Test1() = default;
 
-        void Initialize();
+        void Update(float deltatime) override;
+
+        void Initialize() override;
 
     private:
-        void p_Running(double TimePassed);
         std::vector<GameObject*> m_Subjects;
     };
 

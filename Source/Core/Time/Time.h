@@ -8,13 +8,13 @@ namespace QwerkE {
 
         static void NewFrame();
 
-        static inline double Delta() { return m_Delta; };
+        static inline float Delta() { return m_Delta; };
 
-        static double Now();
+        static float Now();
 
-		// TODO: This should be in window or some other engine section
-        // static void SetFrameRate(float framesPerSecond);
-		// static float GetFrameRate();
+		// #TODO This should be in window or some other engine section
+        // static void SetMaxFrameRate(float framesPerSecond);
+		// static float GetMaxFrameRate();
 
         // TODO: Make class static
         // TODO: Add methods: UpdateDeltaTime(), DeltaTime(), GetSystemTime(), GetFixedTimestep()
@@ -23,9 +23,9 @@ namespace QwerkE {
         Time() {}
         ~Time() {}
 
-        static double m_Delta;
-        static double m_CurrentFrame;
-        static double m_LastFrame;
+        static float m_Delta;
+        static float m_CurrentFrame;
+        static float m_LastFrame;
     };
 
 }

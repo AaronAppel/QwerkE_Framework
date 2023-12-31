@@ -93,17 +93,11 @@ namespace QwerkE {
 		// TODO: free prefPath memory
 	}
 
-	void Scenes::ResetScene(eSceneTypes type)
-	{
-		m_Scenes[type]->ResetScene();
-	}
-
 	void Scenes::ResetAll()
 	{
 		for (int i = 0; i < Scene_Max; i++)
 		{
 			Scene* temp = m_Scenes[(eSceneTypes)i];
-			temp->ResetScene();
 		}
 	}
 
@@ -114,9 +108,14 @@ namespace QwerkE {
 
 	void Scenes::SetCurrentScene(eSceneTypes type)
 	{
-		// TODO: Make sure scene exists
-		// m_CurrentScene = m_Scenes[type];
-		// TODO: Enable new current scene?
+		if (m_Scenes.find(type) != m_Scenes.end())
+		{
+			m_CurrentScene = m_Scenes[type];
+		}
+		else
+		{
+			LOG_ERROR("Scene not in scenes list!");
+		}
 	}
 
 	void Scenes::DisableScene(eSceneTypes type)
@@ -153,50 +152,25 @@ namespace QwerkE {
 			return nullptr;
 	}
 
-	void Scenes::Update(double deltatime) // update SceneTypes from bottom up (Max-)
+	void Scenes::Update(float deltatime)
 	{
 		PROFILE_SCOPE("Scene Manager Update");
 
-		if (Input::FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press)) // pause entire scene
+		if (Input::FrameKeyAction(eKeys::eKeys_P, eKeyState::eKeyState_Press))
 		{
-			static bool paused = false;
-			paused = !paused;
-			if (paused)
-			{
-				GetCurrentScene()->SetState(eSceneState::SceneState_Paused);
-			}
-			else
-			{
-				GetCurrentScene()->SetState(eSceneState::SceneState_Running);
-			}
-		}
-		else if (Input::FrameKeyAction(eKeys::eKeys_Z, eKeyState::eKeyState_Press))// pause actor updates
-		{
-			static bool frozen = false;
-			frozen = !frozen;
-			if (frozen)
-			{
-				GetCurrentScene()->SetState(eSceneState::SceneState_Frozen);
-			}
-			else
-			{
-				GetCurrentScene()->SetState(eSceneState::SceneState_Running);
-			}
+			GetCurrentScene()->ToggleIsPaused();
 		}
 
-		if (m_CurrentScene)
+		if (m_CurrentScene && m_IsRunning)
 		{
-			if (m_IsRunning) // Add step-through and pause/play button functionality in debug mode
+			if (m_CurrentScene->GetIsEnabled())
 			{
-				if (m_CurrentScene->GetIsEnabled())
-				{
-					m_CurrentScene->Update(deltatime);
-				}
+				m_CurrentScene->Update(deltatime);
 			}
 		}
 	}
 
-	void Scenes::DrawCurrentScene() // draw SceneTypes from top down (0+)
+	void Scenes::DrawCurrentScene()
     {
         PROFILE_SCOPE("Scene Manager Render");
 		if (m_CurrentScene && m_CurrentScene->GetIsEnabled())
@@ -209,29 +183,5 @@ namespace QwerkE {
 	{
 		m_Scenes[scene]->Draw();
 	}
-
-	//void Scenes::QueueEvent(Event* pEvent)
-	//{
-	//	m_EventQueue.push(pEvent);
-	//}
-
-	//void Scenes::ProcessEvents()
-	//{
-	//	while (m_EventQueue.size() != 0)
-	//	{
-	//		Event* pEvent = m_EventQueue.front();
-	//		m_EventQueue.pop();
-	//
-	//		this->OnEvent(pEvent);
-	//		delete pEvent;
-	//	}
-	//}
-
-	//void Scenes::OnEvent(Event* pEvent)
-	//{
-	//#if _WIN32
-	//#endif // _WIN32
-	//	// other event types...
-	//}
 
 }

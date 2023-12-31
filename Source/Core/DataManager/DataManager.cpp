@@ -36,12 +36,10 @@ namespace QwerkE {
         // #TODO Error checking
         cJSON* root = CreateObject();
 
-        // Scene settings
         cJSON* t_Settings = CreateArray("Settings");
-        AddItemToArray(t_Settings, CreateNumber("State", (int)scene->GetState()));
-        AddItemToArray(t_Settings, CreateNumber("Enabled", scene->GetIsEnabled()));
+        AddItemToArray(t_Settings, CreateBool("Paused", (int)scene->GetIsPaused()));
+        AddItemToArray(t_Settings, CreateBool("Enabled", scene->GetIsEnabled()));
 
-        // Scene entities
         std::map<std::string, GameObject*> t_GameObjectList = scene->GetObjectList(); // GameObjects, Lights (Not cameras)
 
         cJSON* t_ObjectList = CreateArray("ObjectList");
@@ -52,9 +50,7 @@ namespace QwerkE {
             AddItemToArray(t_ObjectList, ConvertGameObjectToJSON(it->second));
         }
 
-        // ADD CAMERAS
-        std::vector<GameObject*> t_CameraObjectList = scene->GetCameraList(); // Cameras only
-
+        std::vector<GameObject*> t_CameraObjectList = scene->GetCameraList();
         cJSON* t_CameraList = CreateArray("CameraList");
         AddItemToObject(root, t_CameraList);
         for (unsigned int i = 0; i < t_CameraObjectList.size(); i++)
@@ -62,9 +58,7 @@ namespace QwerkE {
             AddItemToArray(t_CameraList, ConvertGameObjectToJSON(t_CameraObjectList.at(i)));
         }
 
-        // ADD LIGHTS
-        std::vector<GameObject*> t_LightObjectList = scene->GetLightList(); // Cameras only
-
+        std::vector<GameObject*> t_LightObjectList = scene->GetLightList();
         cJSON* t_LightList = CreateArray("LightList");
         AddItemToObject(root, t_LightList);
         for (unsigned int i = 0; i < t_LightObjectList.size(); i++)
@@ -72,7 +66,6 @@ namespace QwerkE {
             AddItemToArray(t_LightList, ConvertGameObjectToJSON(t_LightObjectList.at(i)));
         }
 
-        // WRITE TO FILE
         PrintRootObjectToFile(fileDir, root);
         LOG_INFO("DataManager: Scene file {0} saved", fileDir);
         ClosecJSONStream(root);
@@ -94,17 +87,16 @@ namespace QwerkE {
             return;
         }
 
-        scene->RemoveAllObjectsFromScene(); // Empty scene of objects
+        scene->RemoveAllObjectsFromScene();
 
         // #TODO Improve below loops. A lot of copied code
 
-        // Scene settings
         cJSON* t_Settings = GetItemFromRootByKey(root, "Settings");
 
         if (t_Settings != nullptr)
         {
-            scene->SetState((eSceneState)((int)(GetItemFromArrayByKey(t_Settings, "State")->valuedouble)));
-            scene->SetIsEnabled((bool)GetItemFromArrayByKey(t_Settings, "Enabled")->valuedouble);
+            scene->SetIsPaused((bool)GetItemFromArrayByKey(t_Settings, "Paused")->valueint);
+            scene->SetIsEnabled((bool)GetItemFromArrayByKey(t_Settings, "Enabled")->valueint);
         }
 
         {   // Objects

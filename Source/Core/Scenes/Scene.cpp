@@ -7,15 +7,12 @@
 #include "Entities/GameObject.h"
 #include "Entities/Components/Component.h"
 #include "Entities/Components/Camera/CameraComponent.h"
-#include "../Input/Input.h"
+#include "../DataManager/ConfigHelper.h"
 #include "../DataManager/DataManager.h"
+#include "../Input/Input.h"
 #include "../../Utilities/StringHelpers.h"
 
 namespace QwerkE {
-
-    Scene::Scene()
-    {
-    }
 
     Scene::~Scene()
     {
@@ -55,72 +52,30 @@ namespace QwerkE {
         }
     }
 
-    void Scene::ResetScene()
+    void Scene::Update(float deltatime)
     {
-    }
+        if (m_IsPaused)
+            return;
 
-    void Scene::p_Running(double deltatime)
-    {
-        CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.at(m_CurrentCamera)->GetComponent(Component_Camera));
-        // temporary active camera control
-        // mouse
-        {
-            //vec2 t_mousedelta = t_controller->getmouseposdelta();
-            //t_activecamera->processmousemovement(t_mousedelta.x, t_mousedelta.y);
-            //// m_zoom
-            //t_activecamera->processmousescroll(t_controller->getmousescrolldelta());
-        }
-
-        // keyboard
         CameraInput(deltatime);
 
-        // update all of the Scene objects in the list.
         for (auto object : m_pGameObjects)
         {
             object.second->Update(deltatime);
         }
     }
 
-    void Scene::p_Frozen(double deltatime)
-    {
-        CameraInput(deltatime);
-    }
-
-    void Scene::p_SlowMotion(double deltatime)
-    {
-        p_Running(deltatime * 0.10);
-
-        // TODO: Create animation functionality
-        // for (auto object : m_pGameObjects)
-        {
-            // AnimationComponent* aComp (()object.second->GetComponent(Component_Animation));
-            // if (aComp)
-            // aComp->Animate();
-        }
-    }
-
-    void Scene::p_Animating(double deltatime)
-    {
-        CameraInput(deltatime);
-
-        // TODO: Create animation functionality
-        // for (auto object : m_pGameObjects)
-        {
-            // AnimationComponent* aComp (()object.second->GetComponent(Component_Animation));
-            // if (aComp)
-                // aComp->Animate();
-        }
-    }
-
-    void Scene::CameraInput(double deltatime) // camera control
+    void Scene::CameraInput(float deltatime)
     {
         CameraComponent* t_activecamera = ((CameraComponent*)m_CameraList.at(m_CurrentCamera)->GetComponent(Component_Camera));
 
-        if (Input::GetIsKeyDown(eKeys::eKeys_W))
+        const ConfigData& configHelper = ConfigHelper::GetConfigData();
+
+        if (Input::GetIsKeyDown(configHelper.controls.Camera_Forward)) // eKeys::eKeys_W
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::FORWARD, (float)deltatime);
         }
-        if (Input::GetIsKeyDown(eKeys::eKeys_S))
+        if (Input::GetIsKeyDown(configHelper.controls.Camera_Backward)) // eKeys::eKeys_S
         {
             t_activecamera->ProcessKeyboard(eCamera_Movement::BACKWARD, (float)deltatime);
         }
@@ -152,33 +107,35 @@ namespace QwerkE {
 
     void Scene::Draw()
     {
-        // TODO:: Define draw behaviour (Highest first vs lowest first)
+        // #TODO Define draw behaviour (Highest first vs lowest first?)
+
         GameObject* camera = m_CameraList.at(m_CurrentCamera);
         for (int i = m_SceneDrawList.size() - 1; i >= 0; i--)
         {
-            m_SceneDrawList.at(i)->Draw(camera); // TODO:: Control render order
+            m_SceneDrawList.at(i)->Draw(camera);
         }
     }
 
     bool Scene::AddCamera(GameObject* camera)
     {
-        if (camera) // TODO: What conditions would prevent camera insertion?
-        {
-            m_CameraList.push_back(camera);
-            return true;
-        }
-        return false;
+        m_CameraList.push_back(camera);
+        return true;
     }
 
     void Scene::RemoveCamera(GameObject* camera)
     {
-        if (m_CameraList.size() < 2) { return; } // Need 1 camera
+        if (m_CameraList.size() < 2)
+        {
+            LOG_ERROR("Unable to remove camera as 1 must remain");
+            return;
+        }
+
         for (unsigned int i = 0; i < m_CameraList.size(); i++)
         {
-            if (m_CameraList.at(i) == camera) // Pointer comparison
+            if (m_CameraList.at(i) == camera)
             {
                 m_CameraList.erase(m_CameraList.begin() + i);
-                // Delete
+                // #TODO Delete?
                 return;
             }
         }
@@ -189,23 +146,28 @@ namespace QwerkE {
         for (unsigned int i = 0; i < m_CameraList.size(); i++)
         {
             ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->Setup();
-            ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetTargetPosition(vec3(0, 0, 0)); // Give initial target location
+            ((CameraComponent*)m_CameraList.at(i)->GetComponent(Component_Camera))->SetTargetPosition(vec3(0, 0, 0));
         }
     }
 
     bool Scene::AddLight(GameObject* light)
     {
-        if (true) // TODO: What conditions would prevent light insertion?
-        {
-            m_LightList.push_back(light);
-            m_SceneDrawList.push_back(light);
-            return true;
-        }
-        return false;
+        // #TODO Insert in/by render order, or sort after all objects have been added
+
+        m_LightList.push_back(light);
+        m_SceneDrawList.push_back(light);
+        return true;
     }
+
     void Scene::RemoveLight(GameObject* light)
     {
-        if (m_LightList.size() < 2) { return; }
+        if (m_LightList.size() < 2)
+        {
+            // #TODO Reduce minimum light instance dependency
+            LOG_ERROR("Unable to remove light as 1 must remain");
+            return;
+        }
+
         for (unsigned int i = 0; i < m_LightList.size(); i++)
         {
             if (m_LightList.at(i) == light) // Pointer comparison
@@ -215,14 +177,6 @@ namespace QwerkE {
                 // TODO: Deallocate memory
                 return;
             }
-        }
-    }
-
-    void Scene::SetupLights()
-    {
-        for (unsigned int i = 0; i < m_LightList.size(); i++)
-        {
-            // TODO:
         }
     }
 
@@ -266,34 +220,6 @@ namespace QwerkE {
         m_LightList.clear();
         m_CameraList.clear();
         m_pGameObjects.clear();
-    }
-
-    // Setters
-    void Scene::SetState(eSceneState newState)
-    {
-        switch (newState)
-        {
-        case eSceneState::SceneState_Running:
-            m_UpdateFunc = &Scene::p_Running;
-            m_State = eSceneState::SceneState_Running;
-            break;
-        case eSceneState::SceneState_Frozen:
-            m_UpdateFunc = &Scene::p_Frozen;
-            m_State = eSceneState::SceneState_Frozen;
-            break;
-        case eSceneState::SceneState_Paused:
-            m_UpdateFunc = &Scene::p_Paused;
-            m_State = eSceneState::SceneState_Paused;
-            break;
-        case eSceneState::SceneState_SlowMo:
-            m_UpdateFunc = &Scene::p_SlowMotion;
-            m_State = eSceneState::SceneState_SlowMo;
-            break;
-        case eSceneState::SceneState_Animating:
-            m_UpdateFunc = &Scene::p_Animating;
-            m_State = eSceneState::SceneState_Animating;
-            break;
-        }
     }
 
     void Scene::SaveScene()

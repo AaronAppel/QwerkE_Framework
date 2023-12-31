@@ -8,12 +8,8 @@ namespace QwerkE {
     {
     public:
         ViewerScene();
-        ~ViewerScene();
 
-        void Initialize();
-
-    private:
-        void p_Update(double TimePassed);
+        virtual void Initialize();
     };
 
 }

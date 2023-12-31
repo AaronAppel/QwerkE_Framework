@@ -182,15 +182,18 @@ namespace QwerkE {
 			int FPS_MAX = 120; // Maximum number of frames that can be made per second
 			float FPS_MAX_DELTA = 1.0f / FPS_MAX;
 
+			Time::NewFrame();
+
 			while (m_Window->IsClosing() == false)
 			{
                 /* Game Loop */
-                Time::NewFrame();
 
 				double deltaTime = Time::Delta();
 
 				// if (deltaTime >= FPS_MAX_DELTA)
 				{
+					Time::NewFrame();
+
 					/* New Frame */
 					Framework::NewFrame();
 

@@ -2,11 +2,9 @@
 
 #include "Component.h"
 
-class AudioSource;
-
 namespace QwerkE {
 
-    class AudioComponent : public Component // abstract
+    class AudioComponent : public Component
     {
     public:
         virtual ~AudioComponent() {};

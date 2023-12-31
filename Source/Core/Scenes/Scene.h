@@ -9,81 +9,61 @@
 
 namespace QwerkE {
 
-    extern int g_WindowWidth, g_WindowHeight; // TODO: Remove
-
     class GameCore;
     class MyMatrix;
     class Scenes;
     class GameObject;
 
-    class Scene; // forward declare for function* typedef
-
-    typedef void (Scene::* StateFunc)(double deltatime); // Scene state function
-
-    class Scene // Abstract class
+    class Scene
     {
     public:
-        Scene();
+        Scene() = default;
         Scene(const char* sceneFileName) { m_LevelFileName = sceneFileName; }
-        virtual ~Scene();
+        ~Scene();
 
         virtual void Initialize();
 
-        virtual void OnWindowResize(unsigned int width, unsigned int height);
-        virtual void ResetScene();
+        void OnWindowResize(unsigned int width, unsigned int height);
 
-        virtual void Update(double deltatime) { (this->*m_UpdateFunc)(deltatime); }
-        virtual void Draw();
+        virtual void Update(float deltatime);
+        void Draw();
 
-        // cameras
-        virtual bool AddCamera(GameObject* camera);
-        virtual void RemoveCamera(GameObject* camera);
-        virtual void SetupCameras();
+        bool AddCamera(GameObject* camera);
+        void RemoveCamera(GameObject* camera);
+        void SetupCameras();
 
-        // lights
-        virtual bool AddLight(GameObject* light);
-        virtual void RemoveLight(GameObject* light);
-        virtual void SetupLights();
+        bool AddLight(GameObject* light);
+        void RemoveLight(GameObject* light);
 
-        virtual bool AddObjectToScene(GameObject* object);
-        virtual void RemoveObjectFromScene(GameObject* object);
+        bool AddObjectToScene(GameObject* object);
+        void RemoveObjectFromScene(GameObject* object);
 
-        virtual void RemoveAllObjectsFromScene(); // Possibly a scene reset
+        void RemoveAllObjectsFromScene();
 
-        // Save/Load
-        virtual void SaveScene();
-        virtual void LoadScene(const char* sceneFileName);
-        virtual void ReloadScene();
+        void SaveScene();
+        void LoadScene(const char* sceneFileName);
+        void ReloadScene();
 
-        /* Getters + Setters */
-        // getters
         GameObject* GetGameObject(const char* name);
         bool GetIsEnabled() { return m_IsEnabled; };
+        bool GetIsPaused() { return m_IsPaused; };
         std::vector<GameObject*> GetCameraList() { return m_CameraList; };
         std::map<std::string, GameObject*> GetObjectList() { return m_pGameObjects; };
         int GetCurrentCamera() { return m_CurrentCamera; };
         std::vector<GameObject*> GetLightList() { return m_LightList; };
         eSceneTypes GetSceneID() { return m_ID; }
-        eSceneState GetState() { return m_State; }
 
-        // setters
         void SetIsEnabled(bool isEnabled) { m_IsEnabled = isEnabled; };
-        void SetCurrentCamera(int camera) { m_CurrentCamera = camera; }; // TODO:: Better way for ImGUI to change camera
-        void SetState(eSceneState newState);
-        // TODO: void ToggleFrozenState() { SetIsFrozen(!m_IsFrozen); }
+        void SetIsPaused(bool isPaused) { m_IsPaused = isPaused; };
+        void SetCurrentCamera(int camera) { m_CurrentCamera = camera; };
+
+        void ToggleIsPaused() { m_IsPaused = !m_IsPaused; };
 
     protected:
-        virtual void p_Running(double deltatime);
-        virtual void p_Frozen(double deltatime); // only update cameras
-        virtual void p_Paused(double deltatime) {} // Currently empty to avoid updating
-        virtual void p_Animating(double deltatime); // for testing animations
-        virtual void p_SlowMotion(double deltatime);
-        StateFunc m_UpdateFunc = &Scene::p_Running;
-
-        void CameraInput(double deltatime);
+        void CameraInput(float deltatime);
 
         bool m_IsEnabled = false;
-        eSceneState m_State = eSceneState::SceneState_Running;
+        bool m_IsPaused = false;
         std::string m_LevelFileName = gc_DefaultCharPtrValue;// "Uninitialized"; // TODO: Find out why I can't assign gc_DefaultCharPtrValue
         MyMatrix* m_pViewMatrix = nullptr; // TODO:: create cameras with different view matrices
 
@@ -95,7 +75,7 @@ namespace QwerkE {
 
         std::vector<GameObject*> m_LightList;
 
-        std::vector<GameObject*> m_SceneDrawList; // TODO: sort by render order
+        std::vector<GameObject*> m_SceneDrawList;
     };
 
 }

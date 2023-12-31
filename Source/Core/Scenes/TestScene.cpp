@@ -20,7 +20,7 @@ namespace QwerkE {
 	{
 	}
 
-	GameObject* obj;
+	GameObject* obj; // #TODO Fix hack
 	void TestScene::Initialize()
 	{
 		// TODO: Resolve feature
@@ -67,7 +67,7 @@ namespace QwerkE {
 		}
 	}
 
-	void TestScene::p_Running(double deltatime)
+	void TestScene::Update(float deltatime)
 	{
 		/*obj->SetRotation(vec3(obj->GetRotation().x,
 			obj->GetRotation().y + 90.0f * deltatime,
@@ -75,8 +75,6 @@ namespace QwerkE {
 
 		if (obj->GetRotation().y >= 360.0f)
 			obj->SetRotation(vec3(obj->GetRotation().x, obj->GetRotation().y - 360.0f, obj->GetRotation().z));*/
-
-		Scene::p_Running(deltatime);
 	}
 
 }

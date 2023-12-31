@@ -1,4 +1,5 @@
 #include "ViewerScene.h"
+
 #include "../Resources/Resources.h"
 #include "../Factory/Factory.h"
 
@@ -10,26 +11,12 @@ namespace QwerkE {
         m_LevelFileName = "ViewerScene.qscene";
     }
 
-    ViewerScene::~ViewerScene()
-    {
-    }
-
     void ViewerScene::Initialize()
     {
-        // Cameras
         Factory::CreateFreeCamera(this, vec3(0, 0, 5));
         Scene::SetupCameras();
 
-        // Lights
         Factory::CreateLight(this, vec3(0, 5, -10));
-
-        // Actors
-        // none. Add one and use it to take thumbnail pictures for assets
-    }
-
-    void ViewerScene::p_Update(double TimePassed)
-    {
-        Scene::p_Running(TimePassed);
     }
 
 }
