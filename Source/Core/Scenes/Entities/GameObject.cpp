@@ -115,7 +115,7 @@ namespace QwerkE {
             if (m_UpdateList.at(i) == nullptr)
             {
                 m_UpdateList.at(i) = routine;
-                return;
+                return false;
             }
         }
         m_UpdateList.push_back(routine);
